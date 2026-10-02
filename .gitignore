@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python parser service
+/services/parser/.venv/
+/services/parser/**/__pycache__/
+/services/parser/**/*.py[cod]
+/services/parser/*.egg-info/
