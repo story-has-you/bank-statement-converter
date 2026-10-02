@@ -1,21 +1,19 @@
 import { FileSpreadsheetIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
+import { AuthControl } from "@/components/auth-control";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { Link } from "@/i18n/navigation";
+import { createClient } from "@/lib/supabase/server";
 
-export function HomeHeader() {
-  const t = useTranslations("HomeHeader");
+export async function HomeHeader() {
+  const t = await getTranslations("HomeHeader");
+  const supabase = await createClient();
+  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
 
   return (
     <header className="border-b border-border">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
+      <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 py-2 sm:px-8">
         <Link className="flex min-w-0 items-center gap-2.5" href="/">
           <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <FileSpreadsheetIcon className="size-5" aria-hidden="true" />
@@ -32,14 +30,7 @@ export function HomeHeader() {
 
         <div className="flex shrink-0 items-center gap-2">
           <ThemeToggle />
-          <Tooltip>
-            <TooltipTrigger render={<span className="inline-flex" />}>
-              <Button variant="outline" disabled aria-label={t("loginUnavailable")}>
-                {t("login")}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>{t("loginUnavailable")}</TooltipContent>
-          </Tooltip>
+          <AuthControl configured={Boolean(supabase)} email={user?.email ?? null} signedIn={Boolean(user)} />
         </div>
       </div>
     </header>
