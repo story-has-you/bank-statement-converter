@@ -1,0 +1,98 @@
+{
+  "Metadata": {
+    "title": "流水转换 | 银行流水 PDF 转 Excel",
+    "description": "支持多家银行的流水 PDF 转 Excel。匿名每天免费 1 页，登录每天免费 5 页；文件不留存。"
+  },
+  "HomeHeader": {
+    "brand": "流水转换",
+    "navigation": "页面导航",
+    "convert": "转换",
+    "features": "特点",
+    "plans": "使用额度",
+    "faq": "常见问题",
+    "login": "登录",
+    "loginUnavailable": "登录服务尚未开放"
+  },
+  "HomeIntro": {
+    "eyebrow": "银行流水转换",
+    "title": "银行流水 PDF 转 Excel",
+    "description": "支持多家银行对账单，准确整理流水信息。无需登录，也可从每日免费额度开始。"
+  },
+  "PdfUpload": {
+    "title": "新建转换",
+    "description": "一次处理一份 PDF 文件",
+    "status": "服务准备中",
+    "fileLabel": "银行流水 PDF 文件",
+    "dropzone": "点击选择或拖放 PDF 文件",
+    "dropzoneHint": "仅选择文件，不会上传",
+    "help": "选择后可查看文件名并随时移除。",
+    "errorTitle": "文件无法使用",
+    "invalidPdf": "请选择 PDF 文件。",
+    "multipleFiles": "请一次选择一个 PDF 文件。",
+    "removeFile": "移除文件",
+    "quota": "匿名每天 1 页，登录每天 5 页",
+    "serviceUnavailable": "订阅会员可转换更多文件。转换服务尚未开放。",
+    "start": "开始转换"
+  },
+  "HomeFeatures": {
+    "title": "为银行流水而设计",
+    "securityTitle": "安全处理",
+    "securityDescription": "文件只用于本次转换，不保存 PDF、Excel 或流水明细。",
+    "banksTitle": "支持多家银行",
+    "banksDescription": "适配多家银行的常见对账单 PDF，覆盖不同的账单排版。",
+    "accuracyTitle": "准确整理",
+    "accuracyDescription": "提取流水信息并整理成 Excel，便于逐项核对。"
+  },
+  "UsageTiers": {
+    "title": "按需使用，免费开始",
+    "description": "免费额度按每天累计的 PDF 页数计算；需要处理更多文件时可订阅会员。",
+    "anonymous": "匿名用户",
+    "anonymousAmount": "1 页",
+    "anonymousDescription": "无需注册，每天累计可转换 1 页。",
+    "signedIn": "登录用户",
+    "signedInAmount": "5 页",
+    "signedInDescription": "免费登录，每天累计可转换 5 页。",
+    "perDay": "/ 天",
+    "subscriber": "订阅会员",
+    "subscriberAmount": "更多文件",
+    "subscriberDescription": "获得更高使用额度；具体套餐随后公布。"
+  },
+  "HomeFaq": {
+    "title": "常见问题",
+    "banks": {
+      "question": "支持哪些银行的对账单？",
+      "answer": "支持多家银行的常见对账单 PDF，并持续扩展格式覆盖。具体银行名单会在逐一验证后公布。"
+    },
+    "accuracy": {
+      "question": "转换结果还需要核对吗？",
+      "answer": "会提取流水信息并整理成 Excel。银行版式复杂或原件文字不清晰时，建议下载后对照原账单核对结果。"
+    },
+    "quota": {
+      "question": "免费额度和会员额度如何计算？",
+      "answer": "匿名用户每天累计可转换 1 页 PDF，登录的免费用户每天累计可转换 5 页 PDF。订阅会员可转换更多文件，具体额度与价格以公布的套餐为准。"
+    },
+    "scans": {
+      "question": "扫描件或加密 PDF 可以转换吗？",
+      "answer": "请优先使用从银行下载、可以正常打开的 PDF。扫描件和加密文件的支持范围尚未确定。"
+    },
+    "storage": {
+      "question": "会保存 PDF、Excel 或流水明细吗？",
+      "answer": "不会。文件和流水内容只用于本次转换与下载，不写入文件历史；离开本次流程后无法重新下载结果。"
+    },
+    "failure": {
+      "question": "转换失败会怎样？",
+      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败时的额度扣减规则尚未确定。"
+    }
+  },
+  "HomeFooter": {
+    "brand": "流水转换",
+    "plans": "使用额度",
+    "faq": "常见问题"
+  },
+  "ThemeToggle": {
+    "label": "切换外观",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  }
+}

@@ -6,7 +6,7 @@ import { HomeIntro } from "@/components/home-intro";
 import { PdfUpload } from "@/components/pdf-upload";
 import { UsageTiers } from "@/components/usage-tiers";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <HomeHeader />

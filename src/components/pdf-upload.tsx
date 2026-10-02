@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { CircleAlertIcon, Clock3Icon, FileTextIcon, UploadIcon, XIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -21,9 +22,10 @@ function formatFileSize(bytes: number): string {
 }
 
 export function PdfUpload() {
+  const t = useTranslations("PdfUpload");
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<"invalidPdf" | "multipleFiles" | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
   function selectFile(candidate: File | undefined) {
@@ -34,7 +36,7 @@ export function PdfUpload() {
       (candidate.type && candidate.type !== "application/pdf")
     ) {
       setFile(null);
-      setError("请选择 PDF 文件。");
+      setError("invalidPdf");
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -53,7 +55,7 @@ export function PdfUpload() {
 
     if (event.dataTransfer.files.length > 1) {
       setFile(null);
-      setError("请一次选择一个 PDF 文件。");
+      setError("multipleFiles");
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -75,15 +77,15 @@ export function PdfUpload() {
     >
       <div className="mb-5 flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h2 id="workspace-title" className="text-base font-semibold">新建转换</h2>
-          <p className="text-sm text-muted-foreground">一次处理一份 PDF 文件</p>
+          <h2 id="workspace-title" className="text-base font-semibold">{t("title")}</h2>
+          <p className="text-sm text-muted-foreground">{t("description")}</p>
         </div>
-        <Badge variant="secondary">服务准备中</Badge>
+        <Badge variant="secondary">{t("status")}</Badge>
       </div>
 
       <FieldGroup>
         <Field data-invalid={Boolean(error)}>
-          <FieldLabel htmlFor="statement-pdf" className="sr-only">银行流水 PDF 文件</FieldLabel>
+          <FieldLabel htmlFor="statement-pdf" className="sr-only">{t("fileLabel")}</FieldLabel>
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
@@ -109,8 +111,8 @@ export function PdfUpload() {
             <span className="flex size-11 items-center justify-center rounded-md border border-border bg-background text-primary">
               <UploadIcon className="size-5" aria-hidden="true" />
             </span>
-            <span className="text-sm font-medium">点击选择或拖放 PDF 文件</span>
-            <span className="text-xs font-normal text-muted-foreground">仅选择文件，不会上传</span>
+            <span className="text-sm font-medium">{t("dropzone")}</span>
+            <span className="text-xs font-normal text-muted-foreground">{t("dropzoneHint")}</span>
           </button>
           <Input
             ref={inputRef}
@@ -122,15 +124,15 @@ export function PdfUpload() {
             className="hidden"
             onChange={handleInputChange}
           />
-          <FieldDescription id="pdf-help">选择后可查看文件名并随时移除。</FieldDescription>
+          <FieldDescription id="pdf-help">{t("help")}</FieldDescription>
         </Field>
       </FieldGroup>
 
       {error && (
         <Alert variant="destructive" className="mt-4">
           <CircleAlertIcon aria-hidden="true" />
-          <AlertTitle>文件无法使用</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
+          <AlertTitle>{t("errorTitle")}</AlertTitle>
+          <AlertDescription>{t(error)}</AlertDescription>
         </Alert>
       )}
 
@@ -149,8 +151,8 @@ export function PdfUpload() {
             variant="ghost"
             size="icon"
             onClick={removeFile}
-            aria-label="移除文件"
-            title="移除文件"
+            aria-label={t("removeFile")}
+            title={t("removeFile")}
           >
             <XIcon data-icon="inline-start" />
           </Button>
@@ -161,12 +163,12 @@ export function PdfUpload() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">匿名每天 1 页，登录每天 5 页</p>
-          <p className="text-xs text-muted-foreground">订阅会员可转换更多文件。转换服务尚未开放。</p>
+          <p className="text-sm font-medium">{t("quota")}</p>
+          <p className="text-xs text-muted-foreground">{t("serviceUnavailable")}</p>
         </div>
         <Button type="button" size="lg" disabled className="w-full sm:w-auto">
           <Clock3Icon data-icon="inline-start" />
-          开始转换
+          {t("start")}
         </Button>
       </div>
     </section>
