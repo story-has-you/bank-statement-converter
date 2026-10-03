@@ -7,7 +7,7 @@
 ```bash
 python3.14 -m venv .venv
 .venv/bin/python -m pip install -e .
-.venv/bin/python -m uvicorn app.main:app --reload
+.venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ## HTTP 接口
@@ -26,7 +26,9 @@ curl -s \
   http://127.0.0.1:8000/parse
 ```
 
-服务限制单个文件不超过 20 MB、最多 50 页。响应中的 `tables[].columns` 保留 PDF 表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
+服务限制单个文件不超过 20 MB、最多 50 页。两页 PDF 会合并为一个逻辑结果页和一个结果表；`rows[].source.page` 仍保留原始 PDF 页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
+
+解析表格前会根据文字层中的字符样式、相对字号、旋转角度和页面覆盖范围识别重复覆盖文字，并过滤候选水印字符；识别不依赖固定银行名称、水印文案或固定坐标。图片型水印没有文字层，不会被当作流水文字参与表格解析。
 
 扫描图片 PDF、密码保护 PDF、无可用表格的 PDF 会返回带有 `code` 和 `message` 的 JSON 错误。当前没有绑定具体银行，实际支持范围需要使用脱敏电子版样本逐家验收。
 

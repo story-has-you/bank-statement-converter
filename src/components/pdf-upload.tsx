@@ -1,15 +1,18 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
-import { CircleAlertIcon, Clock3Icon, FileTextIcon, UploadIcon, XIcon } from "lucide-react";
+import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { isParseResponse } from "@/lib/conversion-types";
+import { saveConversionPayload } from "@/lib/conversion-storage";
 
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) {
@@ -23,10 +26,14 @@ function formatFileSize(bytes: number): string {
 
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState<"invalidPdf" | "multipleFiles" | null>(null);
+  const [error, setError] = useState<
+    "invalidPdf" | "multipleFiles" | "conversionFailed" | "parserUnavailable" | null
+  >(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [isPending, setIsPending] = useState(false);
 
   function selectFile(candidate: File | undefined) {
     if (!candidate) return;
@@ -69,6 +76,50 @@ export function PdfUpload() {
     if (inputRef.current) inputRef.current.value = "";
   }
 
+  async function startConversion() {
+    if (!file || isPending) return;
+
+    setError(null);
+    setIsPending(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/convert", {
+        method: "POST",
+        body: formData,
+      });
+      const payload: unknown = await response.json().catch(() => null);
+
+      if (!response.ok || !isParseResponse(payload)) {
+        if (
+          typeof payload === "object" &&
+          payload !== null &&
+          "code" in payload &&
+          payload.code === "PARSER_UNAVAILABLE"
+        ) {
+          setError("parserUnavailable");
+        } else {
+          setError("conversionFailed");
+        }
+        return;
+      }
+
+      try {
+        saveConversionPayload(file.name, payload);
+      } catch {
+        setError("conversionFailed");
+        return;
+      }
+
+      router.push("/result");
+    } catch {
+      setError("parserUnavailable");
+    } finally {
+      setIsPending(false);
+    }
+  }
+
   return (
     <section
       id="workspace"
@@ -80,7 +131,7 @@ export function PdfUpload() {
           <h2 id="workspace-title" className="text-base font-semibold">{t("title")}</h2>
           <p className="text-sm text-muted-foreground">{t("description")}</p>
         </div>
-        <Badge variant="secondary">{t("status")}</Badge>
+        <Badge variant="secondary">{isPending ? t("converting") : t("status")}</Badge>
       </div>
 
       <FieldGroup>
@@ -164,11 +215,21 @@ export function PdfUpload() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
           <p className="text-sm font-medium">{t("quota")}</p>
-          <p className="text-xs text-muted-foreground">{t("serviceUnavailable")}</p>
+          <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
-        <Button type="button" size="lg" disabled className="w-full sm:w-auto">
-          <Clock3Icon data-icon="inline-start" />
-          {t("start")}
+        <Button
+          type="button"
+          size="lg"
+          disabled={!file || isPending}
+          onClick={startConversion}
+          className="w-full sm:w-auto"
+        >
+          {isPending ? (
+            <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />
+          ) : (
+            <ArrowRightIcon data-icon="inline-start" />
+          )}
+          {isPending ? t("converting") : t("start")}
         </Button>
       </div>
     </section>

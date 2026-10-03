@@ -6,6 +6,8 @@ from dataclasses import dataclass, field
 import re
 from typing import Any
 
+from .pdf_reader import filter_watermark_page
+
 
 HEADER_TERMS = (
     "日期",
@@ -79,6 +81,7 @@ class _WordLine:
 def extract_page_tables(page: Any, page_number: int) -> list[RawTable]:
     """Extract bordered tables first and use coordinate reconstruction as fallback."""
 
+    page = filter_watermark_page(page)
     tables = _extract_pdfplumber_tables(page, page_number)
     if tables:
         return tables
@@ -105,6 +108,53 @@ def merge_compatible_tables(tables: list[RawTable]) -> list[RawTable]:
             continue
         merged.append(table)
     return merged
+
+
+def merge_tables_into_single_table(tables: list[RawTable]) -> list[RawTable]:
+    """Flatten parsed tables into one logical table while preserving source rows."""
+
+    if not tables:
+        return []
+
+    headers: list[str] = []
+    header_indexes: dict[str, list[int]] = {}
+    for table in tables:
+        occurrences: dict[str, int] = {}
+        for header in table.headers:
+            normalized = _normalize_for_match(header)
+            occurrence = occurrences.get(normalized, 0)
+            occurrences[normalized] = occurrence + 1
+            indexes = header_indexes.setdefault(normalized, [])
+            if occurrence == len(indexes):
+                indexes.append(len(headers))
+                headers.append(header)
+
+    rows: list[RawRow] = []
+    warnings: list[str] = []
+    for table in tables:
+        occurrences: dict[str, int] = {}
+        indexes: list[int] = []
+        for header in table.headers:
+            normalized = _normalize_for_match(header)
+            occurrence = occurrences.get(normalized, 0)
+            occurrences[normalized] = occurrence + 1
+            indexes.append(header_indexes[normalized][occurrence])
+        for row in table.rows:
+            cells: list[str | None] = [None] * len(headers)
+            for index, cell in zip(indexes, row.cells):
+                cells[index] = cell
+            rows.append(
+                RawRow(
+                    cells=cells,
+                    page=row.page,
+                    row=row.row,
+                    warnings=list(row.warnings),
+                    failed=row.failed,
+                )
+            )
+        warnings.extend(table.warnings)
+
+    return [RawTable(page_start=1, page_end=1, headers=headers, rows=rows, warnings=warnings)]
 
 
 def _extract_pdfplumber_tables(
@@ -179,16 +229,23 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
     return RawTable(page_number, page_number, headers, parsed_rows, table_warnings)
 
 
-def _rebuild_table_from_words(page: Any, page_number: int) -> list[RawTable]:
-    try:
-        words = page.extract_words(
-            x_tolerance=3,
-            y_tolerance=3,
-            keep_blank_chars=False,
-            use_text_flow=False,
-        )
-    except Exception:
-        return []
+def _rebuild_table_from_words(
+    page: Any,
+    page_number: int,
+    extracted_words: list[dict[str, object]] | None = None,
+) -> list[RawTable]:
+    if extracted_words is None:
+        try:
+            words = page.extract_words(
+                x_tolerance=3,
+                y_tolerance=3,
+                keep_blank_chars=False,
+                use_text_flow=False,
+            )
+        except Exception:
+            return []
+    else:
+        words = extracted_words
 
     normalized_words = [
         {

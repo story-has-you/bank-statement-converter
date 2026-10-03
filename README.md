@@ -4,19 +4,25 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+先启动 Python 解析服务，再启动 Next.js 服务。两个服务分别使用独立终端：
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd services/parser
+python3.14 -m venv .venv
+.venv/bin/python -m pip install -e .
+.venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+```bash
+pnpm install
+pnpm dev --port 3000
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+浏览器只请求 Next.js 的同源 `/api/convert`，Next.js 服务端再调用 Python 的 `http://127.0.0.1:8000/parse`，因此不需要为 Python 服务开放浏览器 CORS。默认解析地址可以通过仅服务端使用的 `PARSER_SERVICE_URL` 覆盖。
+
+转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和 Excel 不写入数据库、对象存储或服务器文件系统。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
