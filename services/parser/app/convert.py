@@ -1,1 +1,137 @@
-"""Coordinate PDF extraction, transaction validation, and workbook creation."""
+"""Coordinate PDF extraction and dynamic table JSON creation."""
+
+from __future__ import annotations
+
+from .models import (
+    ColumnModel,
+    ParseError,
+    ParseResponse,
+    ParseSummary,
+    ParsedRow,
+    ParsedTable,
+    RowStatus,
+    SourceLocation,
+    SummaryStatus,
+)
+from .pdf_reader import ParserError, extract_page_words, open_text_pdf, validate_pdf_input
+from .table_parser import RawTable, extract_page_tables, merge_compatible_tables
+
+
+def parse_statement(data: bytes, filename: str) -> ParseResponse:
+    """Parse one electronic PDF into dynamic tables and raw cell values."""
+
+    validate_pdf_input(data, filename)
+    with open_text_pdf(data) as pdf:
+        page_words: list[list[dict[str, object]]] = []
+        raw_tables: list[RawTable] = []
+        errors: list[ParseError] = []
+
+        for page_number, page in enumerate(pdf.pages, start=1):
+            words = extract_page_words(page)
+            page_words.append(words)
+            if not words:
+                continue
+            try:
+                raw_tables.extend(extract_page_tables(page, page_number))
+            except Exception:
+                errors.append(
+                    ParseError(
+                        code="PARSE_FAILED",
+                        message="部分页面表格解析失败",
+                        page=page_number,
+                    )
+                )
+
+        if not any(page_words):
+            raise ParserError(
+                "UNSUPPORTED_SCANNED_PDF",
+                "当前仅支持电子版 PDF，不支持扫描图片 PDF",
+                400,
+            )
+
+        tables = merge_compatible_tables(raw_tables)
+        if not tables:
+            raise ParserError(
+                "TABLE_NOT_FOUND",
+                "未识别到可用的银行流水表格",
+                422,
+            )
+
+        parsed_tables = [
+            _to_parsed_table(table, index)
+            for index, table in enumerate(tables, start=1)
+        ]
+        summary = _build_summary(parsed_tables)
+        if errors and summary.status is SummaryStatus.SUCCESS:
+            summary.status = SummaryStatus.PARTIAL
+        return ParseResponse(
+            filename=filename,
+            pageCount=len(pdf.pages),
+            tables=parsed_tables,
+            summary=summary,
+            errors=errors,
+        )
+
+
+def _to_parsed_table(table: RawTable, table_index: int) -> ParsedTable:
+    max_width = max([len(table.headers), *(len(row.cells) for row in table.rows)])
+    headers = list(table.headers)
+    while len(headers) < max_width:
+        headers.append(f"extra_{len(headers) - len(table.headers) + 1}")
+
+    columns = [
+        ColumnModel(key=f"c{index}", label=label, index=index)
+        for index, label in enumerate(headers)
+    ]
+    parsed_rows: list[ParsedRow] = []
+    for raw_row in table.rows:
+        values = {
+            f"c{index}": raw_row.cells[index] if index < len(raw_row.cells) else None
+            for index in range(max_width)
+        }
+        warnings = list(raw_row.warnings)
+        if len(raw_row.cells) > len(table.headers):
+            warnings.append("该行包含超出表头数量的单元格，已保留到额外列")
+        if raw_row.failed:
+            status = RowStatus.FAILED
+        elif warnings:
+            status = RowStatus.WARNING
+        else:
+            status = RowStatus.VALID
+        parsed_rows.append(
+            ParsedRow(
+                values=values,
+                source=SourceLocation(page=raw_row.page, row=raw_row.row),
+                status=status,
+                warnings=warnings,
+            )
+        )
+
+    return ParsedTable(
+        id=f"table-{table_index}",
+        pageStart=table.page_start,
+        pageEnd=table.page_end,
+        columns=columns,
+        rows=parsed_rows,
+        warnings=table.warnings,
+    )
+
+
+def _build_summary(tables: list[ParsedTable]) -> ParseSummary:
+    rows = [row for table in tables for row in table.rows]
+    valid_count = sum(row.status is RowStatus.VALID for row in rows)
+    warning_count = sum(row.status is RowStatus.WARNING for row in rows)
+    failed_count = sum(row.status is RowStatus.FAILED for row in rows)
+    status = SummaryStatus.SUCCESS
+    if failed_count or warning_count:
+        status = SummaryStatus.PARTIAL
+    if not rows:
+        status = SummaryStatus.FAILED
+    return ParseSummary(
+        status=status,
+        tableCount=len(tables),
+        rowCount=len(rows),
+        validRowCount=valid_count,
+        warningRowCount=warning_count,
+        failedRowCount=failed_count,
+    )
