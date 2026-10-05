@@ -24,6 +24,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和 Excel 不写入数据库、对象存储或服务器文件系统。
 
+## PayPal Sandbox 订阅配置
+
+会员方案使用 PayPal Sandbox 自动续费订阅。环境变量模板见
+[`docs/paypal-sandbox.env.example`](docs/paypal-sandbox.env.example)。复制需要的配置到本地环境文件，并补充 PayPal Client ID、Secret 和 Supabase Service Role Key；Secret 和 Service Role Key 只能放在服务端环境变量中。
+
+执行 Supabase migration 后，将 PayPal Sandbox Webhook 的公开地址配置为：
+
+```text
+https://<your-domain>/api/paypal/webhooks
+```
+
+本地开发需要使用 PayPal 可访问的 HTTPS 隧道。支付激活接口要求用户先完成 Supabase 登录，并会在服务端重新查询 PayPal 订阅后写入会员状态。
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

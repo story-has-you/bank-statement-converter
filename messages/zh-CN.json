@@ -8,7 +8,7 @@
     "navigation": "主导航",
     "convert": "开始转换",
     "features": "功能",
-    "plans": "免费额度",
+    "plans": "会员方案",
     "faq": "常见问题"
   },
   "AuthControl": {
@@ -109,7 +109,7 @@
   },
   "UsageTiers": {
     "title": "先试用，再决定",
-    "description": "不登录也能开始。登录后每天可处理更多页；订阅方案还在准备中。",
+    "description": "不登录也能开始。登录后每天可处理更多页；需要更高额度时，可以选择按月订阅。",
     "anonymous": "不登录",
     "anonymousAmount": "1 页",
     "anonymousDescription": "每天累计可转换 1 页 PDF。",
@@ -117,9 +117,51 @@
     "signedInAmount": "5 页",
     "signedInDescription": "每天累计可转换 5 页 PDF。",
     "perDay": "/ 天",
-    "subscriber": "订阅方案",
-    "subscriberAmount": "待公布",
-    "subscriberDescription": "套餐、价格和额度会在开放前公布。"
+    "perMonth": "/ 月",
+    "current": "当前方案",
+    "plans": {
+      "standard": {
+        "name": "标准",
+        "price": "$30",
+        "description": "适合需要稳定处理银行流水的个人用户。"
+      },
+      "professional": {
+        "name": "专业",
+        "price": "$60",
+        "description": "适合经常处理多份银行流水的专业用户。"
+      },
+      "enterprise": {
+        "name": "企业",
+        "price": "$99",
+        "description": "适合团队或企业级流水处理需求。"
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "请先登录，再开始订阅。",
+    "unavailable": "支付服务暂时不可用，请稍后再试。",
+    "subscribe": "使用 PayPal 订阅",
+    "processing": "正在打开 PayPal",
+    "activationFailed": "支付已完成，但会员激活没有完成，请联系客服。",
+    "activated": "会员已激活。",
+    "cancelled": "你已取消本次订阅。",
+    "paymentFailed": "支付没有完成，请稍后再试。",
+    "currentPlan": "你正在使用此方案。",
+    "api": {
+      "loginUnavailable": "登录服务暂时不可用。",
+      "loginRequired": "请先登录后再订阅。",
+      "emailMissing": "当前账号缺少邮箱，暂时无法激活订阅。",
+      "invalidRequest": "订阅请求格式无效。",
+      "invalidTier": "请选择有效的会员套餐。",
+      "configurationMissing": "支付服务尚未完成配置。",
+      "subscriptionBelongsToAnotherAccount": "该订阅已绑定到其他账号。",
+      "verificationFailed": "PayPal 订阅尚未通过验证。",
+      "activationFailed": "订阅验证没有完成，请稍后再试。",
+      "createFailed": "无法开始 PayPal 订阅，请稍后再试。",
+      "webhookInvalidRequest": "Webhook 请求格式无效。",
+      "webhookSignatureFailed": "Webhook 签名验证失败。",
+      "webhookProcessingFailed": "Webhook 处理失败。"
+    }
   },
   "HomeFaq": {
     "title": "常见问题",
@@ -133,7 +175,7 @@
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "不登录每天可转换 1 页，登录后每天可转换 5 页，按 PDF 页数累计。订阅方案尚未开放，价格和额度待公布。"
+      "answer": "不登录每天可转换 1 页，登录后每天可转换 5 页，按 PDF 页数累计。标准、专业和企业订阅按月计费，具体额度按当前页面说明为准。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -151,7 +193,7 @@
   "HomeFooter": {
     "brand": "银行对账单转换",
     "navigation": "页脚导航",
-    "plans": "免费额度",
+    "plans": "会员方案",
     "faq": "常见问题",
     "terms": "服务条款",
     "privacy": "隐私政策"
@@ -165,8 +207,8 @@
       "description": "了解流水转换的文件处理、使用额度、订阅与用户责任。"
     },
     "title": "服务条款",
-    "intro": "本服务由 ReAvid Ltd 运营，通过 <site>{domain}</site> 提供。使用网站及未来开放的转换服务时，请阅读本条款及隐私政策。",
-    "availability": "PDF 转 Excel 和订阅功能目前尚未开放；下述与这些功能有关的约定在相应功能开放后适用。",
+    "intro": "本服务由 ReAvid Ltd 运营，通过 <site>{domain}</site> 提供。使用网站提供的转换和订阅服务时，请阅读本条款及隐私政策。",
+    "availability": "PDF 转 Excel 和 PayPal 订阅服务按页面当前状态提供；套餐价格和可用状态可能因服务配置变化而调整。",
     "service": {
       "title": "服务范围",
       "body": "服务用于将受支持的银行对账单 PDF 中的流水信息整理为 Excel，供您下载和核对。支持的银行、文件类型及处理限制以服务页面届时公布的信息为准。我们不提供银行账户连接、银行业务或财务、税务、法律建议。"
@@ -185,7 +227,7 @@
     },
     "subscription": {
       "title": "订阅与付款",
-      "body": "订阅会员可获得更高的使用额度。具体价格、计费周期、额度、是否自动续费、取消方式及退款条件将在购买前清楚展示；只有在您确认购买后才会收费。当前尚未开放订阅，也未确定支付服务商。"
+      "body": "标准、专业和企业套餐按月自动续费，价格会在购买前清楚展示。付款通过 PayPal 完成，只有在您确认购买后才会收费。订阅状态、续费和支付失败信息可能由 PayPal 发送给本服务；如需取消自动续费，请在 PayPal 账户中管理对应订阅。"
     },
     "files": {
       "title": "文件与下载",
@@ -222,15 +264,15 @@
       "description": "了解流水转换如何处理银行对账单、账号、使用额度和计费信息。"
     },
     "title": "隐私政策",
-    "intro": "ReAvid Ltd 运营 <site>{domain}</site>。本政策说明使用网站及未来开放的转换服务时，我们如何处理相关信息。",
-    "availability": "PDF 转 Excel 和订阅功能目前尚未开放；相关数据处理说明在相应功能开放后适用。",
+    "intro": "ReAvid Ltd 运营 <site>{domain}</site>。本政策说明使用网站的转换和 PayPal 订阅服务时，我们如何处理相关信息。",
+    "availability": "本政策适用于当前开放的 PDF 转 Excel、账号登录和 PayPal 订阅功能。",
     "documents": {
       "title": "银行对账单与转换内容",
       "body": "您上传的 PDF 可能包含姓名、账号、交易日期、金额、余额和交易说明等敏感信息。转换功能开放后，我们仅为完成您请求的转换与下载处理 PDF、提取的流水明细及生成的 Excel；不会将这些内容用于广告或其他无关目的。"
     },
     "accountData": {
       "title": "账号、额度与计费信息",
-      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅功能开放后，可能另行保存订阅状态、每日使用量及计费元数据。这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。具体支付服务商和付款时收集的信息将在付款前说明。"
+      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、PayPal 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。PayPal 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。"
     },
     "technicalData": {
       "title": "必要的技术信息",
@@ -243,11 +285,11 @@
     "retention": {
       "title": "保存期限",
       "documents": "PDF、提取的流水明细和生成的 Excel 只在本次转换及下载所需的处理过程中使用，不写入持久化数据库、对象存储或文件历史。处理结束后，不保留可供再次下载的文件。",
-      "metadata": "账号、额度及计费元数据只在提供相关服务或履行适用法律义务所需的期限内保留；达到目的后按实际系统和法律要求删除或匿名化。具体期限将在相关功能启用前依据实际流程进一步说明。"
+      "metadata": "账号、额度及计费元数据只在提供相关服务或履行适用法律义务所需的期限内保留；达到目的后按实际系统和法律要求删除或匿名化。购买时保存的账号邮箱属于订阅记录的一部分。"
     },
     "providers": {
       "title": "服务提供方与跨境处理",
-      "body": "账号登录使用 Google 和 Supabase。若转换或订阅付款需要其他服务提供方，我们将在启用前核实其处理范围，并更新本政策。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。"
+      "body": "账号登录使用 Google 和 Supabase，订阅付款和订阅状态同步使用 PayPal。PayPal 可能在其适用的服务条款和隐私政策下处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。"
     },
     "storage": {
       "title": "浏览器存储",
