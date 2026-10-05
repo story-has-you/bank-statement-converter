@@ -45,8 +45,10 @@
     "multipleFiles": "一次只能处理一个 PDF。",
     "conversionFailed": "转换没有完成，请换一份文件再试。",
     "parserUnavailable": "解析服务暂时没有响应，请稍后再试。",
+    "quotaExceeded": "当前额度已用完，或这份 PDF 超过剩余额度。",
+    "quotaUnavailable": "额度服务暂时不可用，请稍后再试。",
     "removeFile": "移除文件",
-    "quota": "免费额度：匿名每天 1 页，登录后每天 5 页",
+    "quota": "免费额度：匿名每天 {anonymousPages} 页，登录后每天 {authenticatedPages} 页",
     "serviceReady": "文件只用于这次转换，不会保存。",
     "status": "可以上传",
     "converting": "正在处理",
@@ -80,6 +82,7 @@
     },
     "table": {
       "title": "表格 {id}",
+      "singleTitle": "银行流水明细",
       "pages": "第 {start} 至 {end} 页",
       "rowCount": "{count} 行",
       "status": "状态",
@@ -111,13 +114,14 @@
     "title": "先试用，再决定",
     "description": "不登录也能开始。登录后每天可处理更多页；需要更高额度时，可以选择按月订阅。",
     "anonymous": "不登录",
-    "anonymousAmount": "1 页",
-    "anonymousDescription": "每天累计可转换 1 页 PDF。",
+    "anonymousAmount": "{pages} 页",
+    "anonymousDescription": "每天累计可转换 {pages} 页 PDF。",
     "signedIn": "登录后",
-    "signedInAmount": "5 页",
-    "signedInDescription": "每天累计可转换 5 页 PDF。",
+    "signedInAmount": "{pages} 页",
+    "signedInDescription": "每天累计可转换 {pages} 页 PDF。",
     "perDay": "/ 天",
     "perMonth": "/ 月",
+    "planQuota": "每月 {pages} 页",
     "current": "当前方案",
     "plans": {
       "standard": {
@@ -175,7 +179,7 @@
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "不登录每天可转换 1 页，登录后每天可转换 5 页，按 PDF 页数累计。标准、专业和企业订阅按月计费，具体额度按当前页面说明为准。"
+      "answer": "不登录每天可转换 {anonymousPages} 页，登录后每天可转换 {authenticatedPages} 页，按 PDF 页数累计。standard 每月 {standardPages} 页，professional 每月 {professionalPages} 页，enterprise 每月 {enterprisePages} 页。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -187,7 +191,7 @@
     },
     "failure": {
       "question": "转换失败会怎样？",
-      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败时是否扣减额度，规则还没有确定。"
+      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败转换不会扣减额度；partial 结果会按 PDF 页数累计。"
     }
   },
   "HomeFooter": {
@@ -223,7 +227,7 @@
     },
     "quota": {
       "title": "免费使用额度",
-      "body": "服务开放后，匿名用户每天累计可转换 1 页 PDF，已登录的免费用户每天累计可转换 5 页 PDF。额度按 PDF 页数计算；每日重置时间、失败转换是否扣减及其他计算规则将在服务开放前公布。"
+      "body": "匿名用户每天累计可转换 {anonymousPages} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages} 页 PDF。standard 每月 {standardPages} 页，professional 每月 {professionalPages} 页，enterprise 每月 {enterprisePages} 页。日额度按 UTC 重置，会员额度按 PayPal 当前计费周期计算；失败转换不会扣减额度，partial 结果会按 PDF 页数累计。"
     },
     "subscription": {
       "title": "订阅与付款",

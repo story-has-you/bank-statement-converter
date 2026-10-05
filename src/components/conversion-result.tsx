@@ -102,7 +102,13 @@ export function ConversionResult() {
       </dl>
 
       <div className="flex flex-col gap-4">
-        {result.tables.map((table) => <ConversionTable key={table.id} table={table} />)}
+        {result.tables.map((table) => (
+          <ConversionTable
+            key={table.id}
+            table={table}
+            title={result.tables.length === 1 ? t("table.singleTitle") : undefined}
+          />
+        ))}
       </div>
 
       <div className="flex justify-start">

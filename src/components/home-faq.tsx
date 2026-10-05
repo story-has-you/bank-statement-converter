@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { usageQuotaConfig } from "@/lib/usage/config";
 
 const questionIds = ["banks", "accuracy", "quota", "scans", "storage", "failure"] as const;
 
@@ -21,7 +22,15 @@ export function HomeFaq() {
             <AccordionItem key={id} value={id}>
               <AccordionTrigger className="py-4">{t(`${id}.question`)}</AccordionTrigger>
               <AccordionContent className="leading-6 text-muted-foreground">
-                {t(`${id}.answer`)}
+                {id === "quota"
+                  ? t("quota.answer", {
+                      anonymousPages: usageQuotaConfig.anonymous.pages,
+                      authenticatedPages: usageQuotaConfig.authenticated.pages,
+                      standardPages: usageQuotaConfig.subscriptions.standard.pages,
+                      professionalPages: usageQuotaConfig.subscriptions.professional.pages,
+                      enterprisePages: usageQuotaConfig.subscriptions.enterprise.pages,
+                    })
+                  : t(`${id}.answer`)}
               </AccordionContent>
             </AccordionItem>
           ))}

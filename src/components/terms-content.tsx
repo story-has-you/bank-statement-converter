@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { LegalSection } from "@/components/legal-section";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
+import { usageQuotaConfig } from "@/lib/usage/config";
 
 export function TermsContent() {
   const t = useTranslations("Terms");
@@ -39,7 +40,15 @@ export function TermsContent() {
       </LegalSection>
 
       <LegalSection id="quota" title={t("quota.title")}>
-        <p>{t("quota.body")}</p>
+        <p>
+          {t("quota.body", {
+            anonymousPages: usageQuotaConfig.anonymous.pages,
+            authenticatedPages: usageQuotaConfig.authenticated.pages,
+            standardPages: usageQuotaConfig.subscriptions.standard.pages,
+            professionalPages: usageQuotaConfig.subscriptions.professional.pages,
+            enterprisePages: usageQuotaConfig.subscriptions.enterprise.pages,
+          })}
+        </p>
       </LegalSection>
 
       <LegalSection id="subscription" title={t("subscription.title")}>

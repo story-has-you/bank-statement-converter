@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { isParseResponse } from "@/lib/conversion-types";
 import { saveConversionPayload } from "@/lib/conversion-storage";
+import { usageQuotaConfig } from "@/lib/usage/config";
 
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) {
@@ -30,7 +31,13 @@ export function PdfUpload() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<
-    "invalidPdf" | "multipleFiles" | "conversionFailed" | "parserUnavailable" | null
+    | "invalidPdf"
+    | "multipleFiles"
+    | "conversionFailed"
+    | "parserUnavailable"
+    | "quotaExceeded"
+    | "quotaUnavailable"
+    | null
   >(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isPending, setIsPending] = useState(false);
@@ -92,13 +99,16 @@ export function PdfUpload() {
       const payload: unknown = await response.json().catch(() => null);
 
       if (!response.ok || !isParseResponse(payload)) {
-        if (
-          typeof payload === "object" &&
-          payload !== null &&
-          "code" in payload &&
-          payload.code === "PARSER_UNAVAILABLE"
-        ) {
+        const code =
+          typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string"
+            ? payload.code
+            : null;
+        if (code === "PARSER_UNAVAILABLE") {
           setError("parserUnavailable");
+        } else if (code === "QUOTA_EXCEEDED") {
+          setError("quotaExceeded");
+        } else if (code === "QUOTA_UNAVAILABLE") {
+          setError("quotaUnavailable");
         } else {
           setError("conversionFailed");
         }
@@ -214,7 +224,12 @@ export function PdfUpload() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">{t("quota")}</p>
+          <p className="text-sm font-medium">
+            {t("quota", {
+              anonymousPages: usageQuotaConfig.anonymous.pages,
+              authenticatedPages: usageQuotaConfig.authenticated.pages,
+            })}
+          </p>
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
         <Button

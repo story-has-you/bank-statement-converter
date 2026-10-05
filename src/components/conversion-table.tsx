@@ -7,6 +7,7 @@ import type { ParsedTable, RowStatus } from "@/lib/conversion-types";
 
 type ConversionTableProps = {
   table: ParsedTable;
+  title?: string;
 };
 
 function statusVariant(status: RowStatus): "default" | "secondary" | "destructive" {
@@ -24,7 +25,7 @@ function columnWidthClass(index: number): string {
   return "min-w-28";
 }
 
-export function ConversionTable({ table }: ConversionTableProps) {
+export function ConversionTable({ table, title }: ConversionTableProps) {
   const t = useTranslations("ConversionResult");
 
   function getStatusLabel(status: RowStatus): string {
@@ -38,7 +39,7 @@ export function ConversionTable({ table }: ConversionTableProps) {
       <div className="flex flex-col gap-1 border-b border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 id={`${table.id}-title`} className="text-sm font-semibold">
-            {t("table.title", { id: table.id })}
+            {title ?? t("table.title", { id: table.id })}
           </h2>
           <p className="text-xs text-muted-foreground">
             {t("table.pages", { start: table.pageStart, end: table.pageEnd })}

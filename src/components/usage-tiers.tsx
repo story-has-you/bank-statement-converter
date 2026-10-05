@@ -10,6 +10,7 @@ import {
   getPayPalPlans,
 } from "@/lib/paypal/config";
 import { createClient } from "@/lib/supabase/server";
+import { usageQuotaConfig } from "@/lib/usage/config";
 
 export async function UsageTiers() {
   const t = await getTranslations("UsageTiers");
@@ -40,18 +41,22 @@ export async function UsageTiers() {
           <div className="flex flex-col gap-3 py-5 sm:pr-6">
             <h3 className="text-sm font-medium text-muted-foreground">{t("anonymous")}</h3>
             <p className="text-3xl font-semibold">
-              {t("anonymousAmount")}
+              {t("anonymousAmount", { pages: usageQuotaConfig.anonymous.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
             </p>
-            <p className="text-sm text-muted-foreground">{t("anonymousDescription")}</p>
+            <p className="text-sm text-muted-foreground">
+              {t("anonymousDescription", { pages: usageQuotaConfig.anonymous.pages })}
+            </p>
           </div>
           <div className="flex flex-col gap-3 border-t border-border py-5 sm:border-t-0 sm:pl-6">
             <h3 className="text-sm font-medium text-muted-foreground">{t("signedIn")}</h3>
             <p className="text-3xl font-semibold">
-              {t("signedInAmount")}
+              {t("signedInAmount", { pages: usageQuotaConfig.authenticated.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
             </p>
-            <p className="text-sm text-muted-foreground">{t("signedInDescription")}</p>
+            <p className="text-sm text-muted-foreground">
+              {t("signedInDescription", { pages: usageQuotaConfig.authenticated.pages })}
+            </p>
           </div>
         </div>
 
@@ -78,7 +83,10 @@ export async function UsageTiers() {
                       </span>
                     )}
                   </div>
-                  <p className="min-h-12 text-sm leading-6 text-muted-foreground">{plan.description}</p>
+                  <p className="text-sm leading-6 text-muted-foreground">{plan.description}</p>
+                  <p className="text-sm font-medium">
+                    {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}
+                  </p>
                   {!isLowerTier && (
                     <PayPalSubscriptionButton
                       clientId={clientId}
