@@ -41,13 +41,13 @@ HEADER_TERMS = (
 )
 SUMMARY_TERMS = ("合计", "总计", "本页小计", "累计", "total", "subtotal", "ending balance")
 DATE_PATTERN = re.compile(
-    r"^(?:\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4})\b"
+    r"^(?:\d{8}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4})\b"
 )
-MONEY_PATTERN = re.compile(r"^[€$£]?\(?-?\d[\d.,]*[.,]\d{2}\)?[€$£]?$", re.ASCII)
+MONEY_PATTERN = re.compile(r"^[€$£]?\(?[+-]?\d[\d.,]*[.,]\d{2}\)?[€$£]?$", re.ASCII)
 OPENING_BALANCE_TERMS = ("previous balance", "opening balance", "saldovortrag", "anfangssaldo")
 SECTION_END_TERMS = ("checks", "daily balance summary", "fees", "interest charged")
 ROW_Y_TOLERANCE = 3.0
-CELL_GAP = 18.0
+HEADER_CELL_GAP = 6.0
 
 
 @dataclass
@@ -280,6 +280,7 @@ def _rebuild_table_from_words(
     parsed_rows: list[RawRow] = []
     warnings = ["使用文字坐标重建表格，未检测到明确表格边界"]
     seen_data = False
+    last_data_top: float | None = None
 
     for line_index, line in enumerate(lines[header_index + 1 :], start=header_index + 2):
         cells = _assign_words_to_anchors(line.words, anchors, amount_edges)
@@ -297,15 +298,21 @@ def _rebuild_table_from_words(
         if _is_opening_balance(cells):
             continue
         if not _looks_like_data_row(cells):
-            if seen_data and _is_description_continuation(cells, headers):
-                description_index = _description_column(headers)
-                previous = parsed_rows[-1].cells[description_index]
-                parsed_rows[-1].cells[description_index] = _clean_text(
-                    f"{previous or ''} {cells[description_index] or ''}"
+            continuation_index = _continuation_column(cells)
+            if (
+                seen_data
+                and continuation_index is not None
+                and last_data_top is not None
+                and line.top - last_data_top <= 60
+            ):
+                previous = parsed_rows[-1].cells[continuation_index]
+                parsed_rows[-1].cells[continuation_index] = _clean_text(
+                    f"{previous or ''} {cells[continuation_index] or ''}"
                 )
             continue
         seen_data = True
         parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row))
+        last_data_top = line.top
 
     if not parsed_rows:
         return []
@@ -343,7 +350,7 @@ def _cluster_words(words: list[dict[str, object]]) -> list[dict[str, object]]:
     for word in ordered[1:]:
         previous = clusters[-1][-1]
         gap = float(word["x0"]) - float(previous["x1"])
-        if gap <= CELL_GAP:
+        if gap <= HEADER_CELL_GAP:
             clusters[-1].append(word)
         else:
             clusters.append([word])
@@ -429,13 +436,12 @@ def _find_data_start(rows: list[list[str | None]], start: int) -> int | None:
 
 
 def _looks_like_data_row(row: list[str | None]) -> bool:
-    first_cell = next((cell for cell in row if cell), "")
-    return bool(DATE_PATTERN.match(first_cell.strip()))
+    return any(DATE_PATTERN.match(cell.strip()) for cell in row if cell)
 
 
 def _is_statement_header(row: list[str | None]) -> bool:
     text = _normalize_for_match(" ".join(cell or "" for cell in row))
-    has_date = any(term in text for term in ("日期", "date", "datum", "wertstellung"))
+    has_date = any(term in text for term in ("日期", "时间", "date", "time", "datum", "wertstellung"))
     has_description = any(
         term in text
         for term in ("摘要", "description", "transaction", "buchung", "jahreskontoauszug")
@@ -470,19 +476,17 @@ def _is_section_end(words: list[dict[str, object]]) -> bool:
     return any(text.startswith(term.replace(" ", "")) for term in SECTION_END_TERMS)
 
 
-def _description_column(headers: list[str]) -> int:
-    return next(
-        index
-        for index, label in enumerate(headers)
-        if any(term in label.lower() for term in ("description", "摘要", "buchung", "jahreskontoauszug"))
-    )
+def _continuation_column(cells: list[str | None]) -> int | None:
+    """Return the only populated non-date column on a wrapped transaction line."""
 
-
-def _is_description_continuation(cells: list[str | None], headers: list[str]) -> bool:
-    description_index = _description_column(headers)
-    return cells[description_index] is not None and all(
-        cell is None for index, cell in enumerate(cells) if index != description_index
-    )
+    populated = [index for index, cell in enumerate(cells) if cell]
+    if len(populated) != 1:
+        return None
+    index = populated[0]
+    cell = cells[index]
+    if cell is None or DATE_PATTERN.match(cell.strip()) or index < 2:
+        return None
+    return index
 
 
 def _requires_coordinate_rebuild(headers: list[str], rows: list[RawRow]) -> bool:
