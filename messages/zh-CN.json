@@ -1,77 +1,77 @@
 {
   "Metadata": {
     "title": "流水转换 | 银行流水 PDF 转 Excel",
-    "description": "支持多家银行的流水 PDF 转 Excel。匿名每天免费 1 页，登录每天免费 5 页；文件不留存。"
+    "description": "把银行流水 PDF 整理成 Excel，转换后可预览并下载。文件只用于本次转换，不会保存。"
   },
   "HomeHeader": {
-    "brand": "流水转换",
-    "navigation": "页面导航",
-    "convert": "转换",
-    "features": "特点",
-    "plans": "使用额度",
+    "brand": "银行对账单转换",
+    "navigation": "主导航",
+    "convert": "开始转换",
+    "features": "功能",
+    "plans": "免费额度",
     "faq": "常见问题"
   },
   "AuthControl": {
-    "account": "我的账号",
-    "signInWithGoogle": "使用 Google 登录",
+    "account": "账号",
+    "signInWithGoogle": "Google 登录",
     "signOut": "退出登录",
-    "unavailable": "登录服务暂时不可用",
-    "signInFailed": "登录失败，请稍后重试。",
-    "signOutFailed": "退出失败，请稍后重试。"
+    "unavailable": "登录暂时不可用",
+    "signInFailed": "登录没有完成，请稍后再试。",
+    "signOutFailed": "退出没有完成，请稍后再试。"
   },
   "AuthError": {
     "metadata": {
-      "title": "登录失败 | 流水转换",
-      "description": "Google 登录未完成。"
+      "title": "登录未完成 | 流水转换",
+      "description": "Google 登录未完成，请返回首页重试。"
     },
-    "title": "登录未完成",
-    "description": "Google 登录已取消或未能完成，请返回首页重试。",
-    "backHome": "返回首页"
+    "title": "登录没有完成",
+    "description": "Google 登录已取消或未完成。请返回首页，再试一次。",
+    "backHome": "回到首页"
   },
   "HomeIntro": {
-    "eyebrow": "银行流水转换",
-    "title": "银行流水 PDF 转 Excel",
-    "description": "支持多家银行对账单，准确整理流水信息。无需登录，也可从每日免费额度开始。"
+    "eyebrow": "银行流水 PDF 转换",
+    "title": "把银行流水 PDF 整理成 Excel",
+    "description": "上传一份对账单，先查看识别结果，再下载 Excel。文件只在这次转换中使用，不会保存。"
   },
   "PdfUpload": {
-    "title": "新建转换",
-    "description": "一次处理一份 PDF 文件",
-    "fileLabel": "银行流水 PDF 文件",
-    "dropzone": "点击选择或拖放 PDF 文件",
-    "dropzoneHint": "仅支持 PDF 文件，文件只用于本次转换。",
-    "help": "选择后可查看文件名并随时移除。",
-    "errorTitle": "转换无法完成",
-    "invalidPdf": "请选择 PDF 文件。",
-    "multipleFiles": "请一次选择一个 PDF 文件。",
-    "conversionFailed": "转换失败，请检查文件后重试。",
-    "parserUnavailable": "解析服务暂时不可用，请稍后重试。",
+    "title": "上传对账单",
+    "description": "一次处理一份 PDF",
+    "fileLabel": "银行流水 PDF",
+    "dropzone": "选择 PDF，或拖到这里",
+    "dropzoneHint": "请上传能正常打开、带文字内容的 PDF。",
+    "help": "选好后会显示文件名，你也可以随时移除。",
+    "errorTitle": "这份文件没能转换",
+    "invalidPdf": "请上传 PDF 文件。",
+    "multipleFiles": "一次只能处理一个 PDF。",
+    "conversionFailed": "转换没有完成，请换一份文件再试。",
+    "parserUnavailable": "解析服务暂时没有响应，请稍后再试。",
     "removeFile": "移除文件",
-    "quota": "匿名每天 1 页，登录每天 5 页",
-    "serviceReady": "文件只用于本次转换，不会保存。",
-    "status": "服务就绪",
-    "converting": "正在转换",
-    "start": "开始转换"
+    "quota": "免费额度：匿名每天 1 页，登录后每天 5 页",
+    "serviceReady": "文件只用于这次转换，不会保存。",
+    "status": "可以上传",
+    "converting": "正在处理",
+    "start": "转换并查看结果"
   },
   "ConversionResult": {
     "metadata": {
       "title": "转换结果 | 流水转换",
-      "description": "预览银行流水 PDF 的解析结果并下载 Excel。"
+      "description": "查看银行流水 PDF 的识别结果，核对后下载 Excel。"
     },
     "eyebrow": "转换结果",
-    "description": "请对照原始 PDF 核对结果后再使用下载文件。",
+    "description": "先对照原 PDF 检查标记，再下载 Excel。",
     "download": "下载 Excel",
-    "backHome": "返回首页",
+    "backHome": "重新转换",
     "summary": {
-      "status": "解析状态",
+      "status": "状态",
       "pages": "PDF 页数",
-      "tables": "表格数量",
+      "tables": "表格数",
       "rows": "数据行数",
-      "warnings": "需核对行数"
+      "warnings": "待检查行数"
     },
     "summaryStatus": {
-      "success": "完成",
+      "success": "已完成",
       "partial": "部分完成",
-      "failed": "失败"
+      "failed": "未完成"
     },
     "rowStatus": {
       "valid": "已识别",
@@ -82,76 +82,76 @@
       "title": "表格 {id}",
       "pages": "第 {start} 至 {end} 页",
       "rowCount": "{count} 行",
-      "status": "解析状态",
-      "warnings": "解析提示"
+      "status": "状态",
+      "warnings": "核对提示"
     },
     "partial": {
-      "title": "结果包含需要核对的内容",
-      "description": "已识别的行仍可预览和下载；请结合原始 PDF 检查标记为需核对或识别失败的内容。"
+      "title": "有些内容需要核对",
+      "description": "已识别的内容仍可预览和下载。带有“需核对”或“识别失败”标记的行，请回看原 PDF。"
     },
     "empty": {
       "title": "没有可下载的数据",
-      "description": "解析结果没有可用表格行，请返回首页重新选择文件。"
+      "description": "这份 PDF 没有识别出可用的表格行，请回到首页重新上传。"
     },
     "missing": {
-      "title": "转换结果已失效",
-      "description": "结果只在当前转换流程中临时保留，请返回首页重新上传 PDF。"
+      "title": "结果已失效",
+      "description": "结果只在当前转换流程中临时保留。请回到首页重新上传 PDF。"
     }
   },
   "HomeFeatures": {
-    "title": "为银行流水而设计",
-    "securityTitle": "安全处理",
-    "securityDescription": "文件只用于本次转换，不保存 PDF、Excel 或流水明细。",
-    "banksTitle": "支持多家银行",
-    "banksDescription": "适配多家银行的常见对账单 PDF，覆盖不同的账单排版。",
-    "accuracyTitle": "准确整理",
-    "accuracyDescription": "提取流水信息并整理成 Excel，便于逐项核对。"
+    "title": "这次转换会做这些事",
+    "securityTitle": "文件不留存",
+    "securityDescription": "PDF、生成的 Excel 和流水内容只用于这次转换，不写入文件历史。",
+    "banksTitle": "按原表整理",
+    "banksDescription": "读取 PDF 中的表头和单元格文字，按表格展示，方便回到原文件核对。",
+    "accuracyTitle": "异常行有标记",
+    "accuracyDescription": "识别不完整或对不齐的行会标为“需核对”或“识别失败”，下载前可以先查看。"
   },
   "UsageTiers": {
-    "title": "按需使用，免费开始",
-    "description": "免费额度按每天累计的 PDF 页数计算；需要处理更多文件时可订阅会员。",
-    "anonymous": "匿名用户",
+    "title": "先试用，再决定",
+    "description": "不登录也能开始。登录后每天可处理更多页；订阅方案还在准备中。",
+    "anonymous": "不登录",
     "anonymousAmount": "1 页",
-    "anonymousDescription": "无需注册，每天累计可转换 1 页。",
-    "signedIn": "登录用户",
+    "anonymousDescription": "每天累计可转换 1 页 PDF。",
+    "signedIn": "登录后",
     "signedInAmount": "5 页",
-    "signedInDescription": "免费登录，每天累计可转换 5 页。",
+    "signedInDescription": "每天累计可转换 5 页 PDF。",
     "perDay": "/ 天",
-    "subscriber": "订阅会员",
-    "subscriberAmount": "更多文件",
-    "subscriberDescription": "获得更高使用额度；具体套餐随后公布。"
+    "subscriber": "订阅方案",
+    "subscriberAmount": "待公布",
+    "subscriberDescription": "套餐、价格和额度会在开放前公布。"
   },
   "HomeFaq": {
     "title": "常见问题",
     "banks": {
-      "question": "支持哪些银行的对账单？",
-      "answer": "支持多家银行的常见对账单 PDF，并持续扩展格式覆盖。具体银行名单会在逐一验证后公布。"
+      "question": "支持哪些对账单？",
+      "answer": "目前适配多种银行的电子版对账单。具体银行和版式会在逐一验证后公布。"
     },
     "accuracy": {
-      "question": "转换结果还需要核对吗？",
-      "answer": "会提取流水信息并整理成 Excel。银行版式复杂或原件文字不清晰时，建议下载后对照原账单核对结果。"
+      "question": "为什么还要核对转换结果？",
+      "answer": "系统会尽量保留 PDF 中的表头和单元格文字。版式复杂、文字模糊或表格对齐异常时，部分行可能会标为“需核对”；记账、申报或提交前，请对照原 PDF 检查。"
     },
     "quota": {
-      "question": "免费额度和会员额度如何计算？",
-      "answer": "匿名用户每天累计可转换 1 页 PDF，登录的免费用户每天累计可转换 5 页 PDF。订阅会员可转换更多文件，具体额度与价格以公布的套餐为准。"
+      "question": "每天可以转换多少页？",
+      "answer": "不登录每天可转换 1 页，登录后每天可转换 5 页，按 PDF 页数累计。订阅方案尚未开放，价格和额度待公布。"
     },
     "scans": {
-      "question": "扫描件或加密 PDF 可以转换吗？",
-      "answer": "请优先使用从银行下载、可以正常打开的 PDF。扫描件和加密文件的支持范围尚未确定。"
+      "question": "扫描件或加密 PDF 能转换吗？",
+      "answer": "目前主要处理带文字内容、可以正常打开的电子版 PDF。扫描件、密码保护文件或没有可识别表格的 PDF 可能无法转换。"
     },
     "storage": {
-      "question": "会保存 PDF、Excel 或流水明细吗？",
-      "answer": "不会。文件和流水内容只用于本次转换与下载，不写入文件历史；离开本次流程后无法重新下载结果。"
+      "question": "PDF、Excel 和流水明细会保存吗？",
+      "answer": "不会。它们只用于本次转换和下载，不写入文件历史；离开当前流程后，不能重新下载结果。"
     },
     "failure": {
       "question": "转换失败会怎样？",
-      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败时的额度扣减规则尚未确定。"
+      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败时是否扣减额度，规则还没有确定。"
     }
   },
   "HomeFooter": {
-    "brand": "流水转换",
+    "brand": "银行对账单转换",
     "navigation": "页脚导航",
-    "plans": "使用额度",
+    "plans": "免费额度",
     "faq": "常见问题",
     "terms": "服务条款",
     "privacy": "隐私政策"
@@ -275,7 +275,7 @@
     }
   },
   "ThemeToggle": {
-    "label": "切换外观",
+    "label": "切换主题",
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统"
