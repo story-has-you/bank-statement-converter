@@ -16,6 +16,7 @@ export async function UsageTiers() {
   const supabase = await createClient();
   const user = supabase ? (await supabase.auth.getUser()).data.user : null;
   const activeSubscription = user ? await findActiveBillingSubscription(user.id) : null;
+  const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const planIds = new Map(getPayPalPlans().map((plan) => [plan.tier, plan.planId]));
   const clientId = getPayPalClientId();
   const environment = getPayPalEnvironment();
@@ -58,6 +59,8 @@ export async function UsageTiers() {
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {membershipTiers.map((tier) => {
               const plan = plans[tier];
+              const tierIndex = membershipTiers.indexOf(tier);
+              const isLowerTier = activeTierIndex > tierIndex;
 
               return (
                 <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
@@ -76,13 +79,15 @@ export async function UsageTiers() {
                     )}
                   </div>
                   <p className="min-h-12 text-sm leading-6 text-muted-foreground">{plan.description}</p>
-                  <PayPalSubscriptionButton
-                    clientId={clientId}
-                    current={activeSubscription?.tier === tier}
-                    planId={planIds.get(tier) ?? null}
-                    signedIn={Boolean(user)}
-                    tier={tier}
-                  />
+                  {!isLowerTier && (
+                    <PayPalSubscriptionButton
+                      clientId={clientId}
+                      current={activeSubscription?.tier === tier}
+                      planId={planIds.get(tier) ?? null}
+                      signedIn={Boolean(user)}
+                      tier={tier}
+                    />
+                  )}
                 </article>
               );
             })}
