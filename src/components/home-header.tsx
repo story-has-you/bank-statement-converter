@@ -1,7 +1,7 @@
-import { FileSpreadsheetIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { AuthControl } from "@/components/auth-control";
+import { BrandLogo } from "@/components/brand-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -15,9 +15,7 @@ export async function HomeHeader() {
     <header className="border-b border-border">
       <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 py-2 sm:px-8">
         <Link className="flex min-w-0 items-center gap-2.5" href="/">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <FileSpreadsheetIcon className="size-5" aria-hidden="true" />
-          </span>
+          <BrandLogo className="size-9 shrink-0" />
           <span className="truncate text-sm font-semibold">{t("brand")}</span>
         </Link>
 
