@@ -18,6 +18,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 type ErrorPayload = {
   code: string;
@@ -153,6 +154,14 @@ export async function POST(request: Request): Promise<Response> {
   );
 
   const parserBaseUrl = (process.env.PARSER_SERVICE_URL ?? "http://127.0.0.1:8000").replace(/\/+$/, "");
+  const parserSecret = process.env.PARSER_SHARED_SECRET?.trim();
+  if (!parserSecret) {
+    return setAnonymousCookie(
+      errorResponse("PARSER_UNAVAILABLE", "解析服务暂时不可用", 503),
+      anonymousCookie,
+    );
+  }
+
   const parserUrl = `${parserBaseUrl}/parse`;
   let parserResponse: Response;
   try {
@@ -160,6 +169,10 @@ export async function POST(request: Request): Promise<Response> {
       method: "POST",
       body: upstreamData,
       cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${parserSecret}`,
+      },
+      signal: AbortSignal.timeout(55_000),
     });
   } catch {
     return setAnonymousCookie(

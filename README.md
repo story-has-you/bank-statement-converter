@@ -10,11 +10,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 cd services/parser
 python3.14 -m venv .venv
 .venv/bin/python -m pip install -e .
+export PARSER_SHARED_SECRET=local-development-secret
 .venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ```bash
 pnpm install
+export PARSER_SHARED_SECRET=local-development-secret
 pnpm dev --port 3000
 ```
 
@@ -55,3 +57,61 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Production deployment
+
+生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
+
+正式地址：
+
+```text
+https://bankstatementconverter.xyz
+https://parser.bankstatementconverter.xyz
+```
+
+### Cloudflare parser
+
+在 `services/parser` 目录执行：
+
+```bash
+pnpm install --frozen-lockfile
+pnpm exec wrangler login
+pnpm exec wrangler secret put PARSER_SHARED_SECRET
+pnpm exec wrangler deploy
+```
+
+`wrangler.jsonc` 已配置 `parser.bankstatementconverter.xyz` Custom Domain、Container 端口 `8080` 和 `/health` readiness 检查。部署前需要 Docker 可用；Cloudflare 会构建 `services/parser/Dockerfile`。
+
+### Vercel Next.js
+
+将仓库根目录连接到 Vercel，使用 `pnpm install --frozen-lockfile` 和 `pnpm build`。Production 环境需要配置：
+
+```text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SERVICE_ROLE_KEY
+NEXT_PUBLIC_PAYPAL_CLIENT_ID
+PAYPAL_CLIENT_ID
+PAYPAL_CLIENT_SECRET
+PAYPAL_ENVIRONMENT=sandbox
+PAYPAL_PLAN_ID_STANDARD
+PAYPAL_PLAN_ID_PROFESSIONAL
+PAYPAL_PLAN_ID_ENTERPRISE
+PAYPAL_WEBHOOK_ID
+PARSER_SERVICE_URL=https://parser.bankstatementconverter.xyz
+PARSER_SHARED_SECRET
+```
+
+将 `bankstatementconverter.xyz` 添加为 Vercel Production Domain。Supabase Auth 回调地址为：
+
+```text
+https://bankstatementconverter.xyz/api/auth/callback
+```
+
+PayPal Sandbox Webhook 地址为：
+
+```text
+https://bankstatementconverter.xyz/api/paypal/webhooks
+```
+
+不要把 `SUPABASE_SERVICE_ROLE_KEY`、`PAYPAL_CLIENT_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
