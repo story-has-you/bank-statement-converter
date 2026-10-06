@@ -1,0 +1,365 @@
+{
+  "Metadata": {
+    "title": "Kontoauszugskonverter | PDF nach Excel",
+    "description": "Wandeln Sie ein textbasiertes Kontoauszugs-PDF in eine Excel-Datei um, die Sie überprüfen können. Dateien werden nur für diese Konvertierung verwendet.",
+    "keywords": "Bankauszug PDF zu Excel, PDF-zu-Excel-Konverter, Banktransaktionen extrahieren",
+    "brand": "Bankauszugs-Konverter",
+    "alternateName": "Bankauszug-PDF-zu-Excel-Konverter"
+  },
+  "HomeHeader": {
+    "brand": "Kontoauszugskonverter",
+    "navigation": "Hauptnavigation",
+    "convert": "Konvertieren",
+    "features": "Merkmale",
+    "plans": "Pläne",
+    "faq": "FAQ"
+  },
+  "LanguageSwitcher": {
+    "label": "Choose language",
+    "current": "Current",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español"
+  },
+  "AuthControl": {
+    "account": "Konto",
+    "signInWithGoogle": "Melden Sie sich mit Google an",
+    "signOut": "Abmelden",
+    "unavailable": "Die Anmeldung ist vorübergehend nicht möglich",
+    "signInFailed": "Die Anmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+    "signOutFailed": "Die Abmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal."
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Anmeldung unvollständig | Kontoauszugskonverter",
+      "description": "Die Google-Anmeldung wurde nicht abgeschlossen. Kehren Sie zur Startseite zurück und versuchen Sie es erneut."
+    },
+    "title": "Anmeldung unvollständig",
+    "description": "Die Google-Anmeldung wurde abgebrochen oder nicht abgeschlossen. Kehren Sie zur Startseite zurück und versuchen Sie es erneut.",
+    "backHome": "Zurück zur Homepage"
+  },
+  "HomeIntro": {
+    "eyebrow": "Konvertierung von Kontoauszügen in PDF",
+    "title": "Kontoauszugskonverter für PDF in Excel",
+    "description": "Laden Sie ein textbasiertes Kontoauszugs-PDF hoch, überprüfen Sie die extrahierten Zeilen und laden Sie dann die Excel-Datei herunter. Wir verwenden Ihre Datei nur für diese Konvertierung."
+  },
+  "PdfUpload": {
+    "title": "Laden Sie einen Kontoauszug hoch",
+    "description": "Verarbeiten Sie jeweils ein PDF",
+    "fileLabel": "Kontoauszug PDF",
+    "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
+    "dropzoneHint": "Laden Sie eine PDF-Datei hoch, die normal geöffnet wird und auswählbaren Text enthält.",
+    "help": "Ihr Dateiname wird hier angezeigt. Entfernen Sie die Datei bei Bedarf.",
+    "errorTitle": "Diese Datei konnte nicht konvertiert werden",
+    "invalidPdf": "Bitte laden Sie eine PDF-Datei hoch.",
+    "multipleFiles": "Es kann jeweils nur ein PDF verarbeitet werden.",
+    "conversionFailed": "Die Konvertierung wurde nicht abgeschlossen. Versuchen Sie es mit einer anderen Datei.",
+    "parserUnavailable": "Der Analysedienst hat nicht geantwortet. Bitte versuchen Sie es später noch einmal.",
+    "quotaExceeded": "Ihr aktuelles Kontingent ist aufgebraucht oder dieses PDF ist größer als Ihr verbleibendes Kontingent.",
+    "quotaUnavailable": "Der Quotendienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+    "removeFile": "Datei entfernen",
+    "quota": "Kostenloses Kontingent: {anonymousPages} Seite pro Tag anonym, {authenticatedPages} Seiten pro Tag bei Anmeldung",
+    "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
+    "status": "Bereit zum Hochladen",
+    "converting": "Konvertieren",
+    "start": "Konvertieren und überprüfen"
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Konvertierungsergebnis | Kontoauszugskonverter",
+      "description": "Überprüfen Sie extrahierte Kontoauszugszeilen, überprüfen Sie Risikobezeichnungen und laden Sie das Excel-Ergebnis herunter."
+    },
+    "eyebrow": "Konvertierungsergebnis",
+    "description": "Vergleichen Sie vor dem Herunterladen die markierten Zeilen mit dem Original-PDF.",
+    "download": "Laden Sie Excel herunter",
+    "backHome": "Konvertieren Sie eine andere Datei",
+    "summary": {
+      "status": "Status",
+      "pages": "PDF-Seiten",
+      "tables": "Tische",
+      "rows": "Datenzeilen",
+      "warnings": "Zu überprüfende Zeilen"
+    },
+    "summaryStatus": {
+      "success": "Vollständig",
+      "partial": "Teilergebnis",
+      "failed": "Unvollständig"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Tabelle {id}",
+      "singleTitle": "Kontoauszugstransaktionen",
+      "pages": "Seiten {start} bis {end}",
+      "rowCount": "{count}-Zeilen",
+      "status": "Status",
+      "warnings": "Überprüfen Sie die Notizen"
+    },
+    "partial": {
+      "title": "Einige Inhalte müssen überprüft werden",
+      "description": "Erkannte Inhalte können weiterhin geprüft und heruntergeladen werden. Vergleichen Sie Zeilen mit „DISCREPANCY“ oder „UNVERIFIABLE“ mit dem Original-PDF."
+    },
+    "empty": {
+      "title": "Es gibt keine herunterladbaren Daten",
+      "description": "In diesem PDF wurden keine verwendbaren Tabellenzeilen gefunden. Kehren Sie zur Startseite zurück und laden Sie eine weitere Datei hoch."
+    },
+    "missing": {
+      "title": "Dieses Ergebnis ist abgelaufen",
+      "description": "Die Ergebnisse werden vorübergehend für den aktuellen Konvertierungsfluss gespeichert. Kehren Sie zur Startseite zurück und laden Sie das PDF erneut hoch."
+    },
+    "issues": {
+      "repeatedHeader": "Zeile {row} wiederholt den Tabellenkopf und wurde übersprungen.",
+      "summaryRow": "Zeile {row} sieht aus wie eine Zusammenfassungszeile und wurde übersprungen.",
+      "extraCells": "Diese Zeile enthält mehr Zellen als die Kopfzeile. Die zusätzlichen Zellen wurden behalten.",
+      "unknown": "Dieser Artikel muss überprüft werden."
+    }
+  },
+  "HomeFeatures": {
+    "title": "Was Sie von einer Konvertierung erhalten",
+    "securityTitle": "Kein Dateiverlauf",
+    "securityDescription": "Die PDF-Datei, die generierte Excel-Datei und der Transaktionsinhalt werden nur für diese Konvertierung verwendet und nicht zum Dateiverlauf hinzugefügt.",
+    "banksTitle": "Behält das Quelllayout bei",
+    "banksDescription": "Der Konverter liest Tabellenüberschriften und Zellentexte aus dem PDF und stellt das Ergebnis in Tabellen zum Vergleich mit der Quelldatei dar.",
+    "accuracyTitle": "Markiert Zeilen zur Überprüfung",
+    "accuracyDescription": "Zeilen mit unvollständigen Belegen oder Zuordnungsproblemen werden vor dem Download als „DISCREPANCY“ oder „UNVERIFIABLE“ markiert."
+  },
+  "UsageTiers": {
+    "title": "Beginnen Sie mit einer kostenlosen Konvertierung",
+    "description": "Sie können den Konverter ohne Konto ausprobieren. Melden Sie sich für ein größeres Tageskontingent an oder wählen Sie einen Monatsplan für die regelmäßige Nutzung.",
+    "anonymous": "Ohne Anmeldung",
+    "anonymousAmount": "{pages}-Seite",
+    "anonymousDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
+    "signedIn": "Angemeldet",
+    "signedInAmount": "{pages}-Seiten",
+    "signedInDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
+    "perDay": "/ day",
+    "perMonth": "/ month",
+    "planQuota": "{pages} Seiten pro Monat",
+    "current": "Aktueller Plan",
+    "plans": {
+      "standard": {
+        "name": "Standard",
+        "price": "$30",
+        "description": "Für Personen, die eine zuverlässige Möglichkeit zur Verarbeitung von Kontoauszügen benötigen."
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$60",
+        "description": "Für Profis, die regelmäßig mehrere Kontoauszüge verarbeiten."
+      },
+      "enterprise": {
+        "name": "Unternehmen",
+        "price": "$99",
+        "description": "Für Teams und Organisationen mit umfangreicheren Kontoauszugs-Workflows."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
+    "unavailable": "Die Zahlung ist vorübergehend nicht möglich. Bitte versuchen Sie es später noch einmal.",
+    "subscribe": "Abonnieren Sie mit PayPal",
+    "processing": "PayPal öffnen",
+    "activationFailed": "Die Zahlung wurde abgeschlossen, der Plan konnte jedoch nicht aktiviert werden. Bitte wenden Sie sich an den Support.",
+    "activated": "Ihr Plan ist aktiv.",
+    "cancelled": "Sie haben dieses Abonnement gekündigt.",
+    "paymentFailed": "Die Zahlung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+    "currentPlan": "Sie verwenden diesen Plan.",
+    "api": {
+      "loginUnavailable": "Die Anmeldung ist vorübergehend nicht möglich.",
+      "loginRequired": "Melden Sie sich an, bevor Sie ein Abonnement abschließen.",
+      "emailMissing": "Ihr Konto hat keine E-Mail-Adresse, daher kann das Abonnement nicht aktiviert werden.",
+      "invalidRequest": "Die Abonnementanfrage ist ungültig.",
+      "invalidTier": "Wählen Sie ein gültiges Abonnement.",
+      "configurationMissing": "Die Zahlung wurde noch nicht konfiguriert.",
+      "subscriptionBelongsToAnotherAccount": "Dieses Abonnement gehört zu einem anderen Konto.",
+      "verificationFailed": "Das PayPal-Abonnement konnte nicht verifiziert werden.",
+      "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+      "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
+      "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
+      "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
+      "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen."
+    }
+  },
+  "HomeFaq": {
+    "title": "Häufig gestellte Fragen",
+    "banks": {
+      "question": "Welche Aussagen werden unterstützt?",
+      "answer": "Der Konverter wird anhand mehrerer elektronischer Kontoauszugslayouts validiert. Bestimmte Bänke und Layoutvarianten werden nach der Überprüfung aufgelistet."
+    },
+    "accuracy": {
+      "question": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
+      "answer": "Der Konverter übernimmt Tabellenüberschriften und Zelltexte, soweit möglich. Komplexe Layouts, unscharfer Text oder ungleichmäßige Spalten können Zeilen als „DISCREPANCY“ oder „UNVERIFIABLE“ markieren. Vergleichen Sie die Excel-Datei vor der Verwendung mit dem Original-PDF."
+    },
+    "quota": {
+      "question": "Wie viele Seiten kann ich pro Tag konvertieren?",
+      "answer": "Anonyme Benutzer können {anonymousPages}-Seiten pro Tag konvertieren, und angemeldete Benutzer können {authenticatedPages}-Seiten pro Tag konvertieren. Zu den Monatsplänen gehören {standardPages}-Seiten für Standard, {professionalPages}-Seiten für Professional und {enterprisePages}-Seiten für Enterprise."
+    },
+    "scans": {
+      "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
+      "answer": "Die erste Version konzentriert sich auf elektronische PDFs mit auswählbarem Text, die sich normal öffnen lassen. Gescannte Dateien, passwortgeschützte Dateien oder PDFs ohne erkennbare Tabellen werden möglicherweise nicht konvertiert."
+    },
+    "storage": {
+      "question": "Werden meine PDF-, Excel-Datei oder Transaktionen gespeichert?",
+      "answer": "Nein. Sie werden nur für die aktuelle Konvertierung und den aktuellen Download verwendet und nicht zum Dateiverlauf hinzugefügt. Sobald Sie den aktuellen Ablauf verlassen, kann das Ergebnis nicht erneut heruntergeladen werden."
+    },
+    "failure": {
+      "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
+      "answer": "Die Seite meldet den Fehler und stellt keine ungültige Excel-Datei bereit. Bei fehlgeschlagenen Konvertierungen wird kein Kontingent verwendet. Teilergebnisse zählen PDF-Seiten."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Kontoauszugskonverter",
+    "navigation": "Fußzeilennavigation",
+    "plans": "Pläne",
+    "faq": "FAQ",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzrichtlinie"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Letzte Aktualisierung: 2. Oktober 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Nutzungsbedingungen | Kontoauszugskonverter",
+      "description": "Erfahren Sie, wie Bank Statement Converter mit Dateien, Kontingenten, Abonnements und Benutzerverantwortungen umgeht."
+    },
+    "title": "Nutzungsbedingungen",
+    "intro": "Dieser Dienst wird von ReAvid Ltd betrieben und über <site>{domain}</site> bereitgestellt. Lesen Sie diese Bedingungen und die Datenschutzrichtlinie, bevor Sie die Konvertierungs- und Abonnementdienste nutzen.",
+    "availability": "Die Konvertierung von PDF in Excel und PayPal-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
+    "service": {
+      "title": "Leistungsumfang",
+      "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an."
+    },
+    "authorization": {
+      "title": "Berechtigung zum Hochladen von Dateien",
+      "body": "Laden Sie nur Kontoauszüge hoch, zu deren Verwendung und Verarbeitung Sie berechtigt sind. Stellen Sie sicher, dass das Hochladen und Verarbeiten persönlicher oder finanzieller Informationen im Einklang mit geltendem Recht und Ihren Verpflichtungen gegenüber anderen Personen steht. Laden Sie keine Dateien hoch, die Sie ohne Genehmigung erhalten haben."
+    },
+    "accuracy": {
+      "title": "Überprüfung der Konvertierungsergebnisse",
+      "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen."
+    },
+    "quota": {
+      "title": "Kostenloses Kontingent",
+      "body": "Anonyme Benutzer können {anonymousPages} PDF-Seiten pro Tag konvertieren, und angemeldete kostenlose Benutzer können {authenticatedPages} PDF-Seiten pro Tag konvertieren. Standard umfasst {standardPages} Seiten pro Monat, Professional umfasst {professionalPages} und Enterprise umfasst {enterprisePages}. Das tägliche Kontingent wird in UTC zurückgesetzt und das Plankontingent richtet sich nach dem aktuellen PayPal-Abrechnungszeitraum. Bei fehlgeschlagenen Konvertierungen wird kein Kontingent verwendet. Teilergebnisse zählen PDF-Seiten."
+    },
+    "subscription": {
+      "title": "Abonnements und Zahlung",
+      "body": "Standard-, Professional- und Enterprise-Pläne verlängern sich monatlich. Die Preise werden vor dem Kauf angezeigt. Die Zahlung erfolgt über PayPal und wird erst abgebucht, nachdem Sie den Kauf bestätigt haben. PayPal sendet möglicherweise Informationen zum Abonnementstatus, zur Verlängerung und zu Zahlungsfehlern an diesen Dienst. Verwalten Sie die automatische Verlängerung eines Abonnements in Ihrem PayPal-Konto."
+    },
+    "files": {
+      "title": "Dateien und Downloads",
+      "body": "Hochgeladene PDFs, extrahierte Transaktionen und generierte Excel-Dateien werden nur zum Abschließen der aktuellen Konvertierung und zum Herunterladen verwendet. Sie werden nicht als dauerhafter Dateiverlauf gespeichert. Bewahren Sie Ihre Originalabrechnung und das heruntergeladene Ergebnis selbst auf; Der Dienst stellt keine historischen erneuten Downloads bereit, nachdem der aktuelle Fluss endet."
+    },
+    "prohibited": {
+      "title": "Verbotener Missbrauch",
+      "body": "Nutzen Sie den Dienst nicht, um Finanzunterlagen zu fälschen oder falsch darzustellen, die Rechte einer anderen Person zu verletzen, Betrug zu begehen, schädliche Dateien zu verbreiten oder Quoten, Sicherheitsmaßnahmen oder Zugriffsbeschränkungen zu umgehen. Wir können den Zugang zu Diensten aufgrund illegaler oder eindeutig missbräuchlicher Aktivitäten einschränken."
+    },
+    "rights": {
+      "title": "Eigentum",
+      "body": "Sie behalten die Rechte, die Sie an Dateien und deren Inhalt haben. Durch das Hochladen einer Datei erhalten wir lediglich die Erlaubnis, die Datei für die aktuelle Konvertierung zu verarbeiten. Es wird kein Eigentum übertragen. Die Rechte an der Website-Software, der Benutzeroberfläche und der Marke verbleiben bei ihren rechtmäßigen Eigentümern."
+    },
+    "liability": {
+      "title": "Verfügbarkeit und Haftung",
+      "body": "Wir arbeiten daran, den Dienst verfügbar zu halten, garantieren jedoch nicht, dass jede Datei konvertiert wird, dass der Dienst immer verfügbar ist oder dass die Ergebnisse völlig korrekt sind. Soweit gesetzlich zulässig, haften wir nicht für indirekte Verluste, die durch unterlassene Überprüfung der Ergebnisse, nicht unterstützte Formate oder Dienstunterbrechungen entstehen. Haftungs- und Nutzungsrechte, die gesetzlich nicht ausgeschlossen werden können, bleiben hiervon unberührt."
+    },
+    "privacy": {
+      "title": "Datenschutz und persönliche Informationen",
+      "body": "Wie mit Dateien und persönlichen Daten umgegangen wird, ist in der <link>Datenschutzerklärung</link> beschrieben."
+    },
+    "changes": {
+      "title": "Änderungen dieser Bedingungen",
+      "body": "Wir können diese Bedingungen aktualisieren, wenn sich der Service oder die gesetzlichen Anforderungen ändern, und zeigen das Aktualisierungsdatum auf dieser Seite an. Wichtige Änderungen, die ein bestehendes Abonnement betreffen, werden gemäß den gesetzlichen Bestimmungen und den beim Kauf angezeigten Regeln mitgeteilt."
+    },
+    "contact": {
+      "title": "Kontaktieren Sie uns",
+      "body": "Bei Fragen zu diesen Bedingungen wenden Sie sich bitte an ReAvid Ltd unter <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Datenschutzrichtlinie | Kontoauszugskonverter",
+      "description": "Erfahren Sie, wie der Bank Statement Converter Kontoauszüge, Konten, Nutzungskontingente und Rechnungsinformationen verarbeitet."
+    },
+    "title": "Datenschutzrichtlinie",
+    "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und PayPal-Abonnementdienste nutzen.",
+    "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und PayPal-Abonnementfunktionen.",
+    "documents": {
+      "title": "Kontoauszüge und Umrechnungsinhalte",
+      "body": "Hochgeladene PDFs können Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Transaktionsbeschreibungen enthalten. Wenn eine Konvertierung verfügbar ist, verarbeiten wir das PDF, die extrahierten Transaktionen und die generierte Excel-Datei nur, um die gewünschte Konvertierung und den Download abzuschließen. Wir nutzen diese Inhalte nicht für Werbe- oder sonstige Zwecke."
+    },
+    "accountData": {
+      "title": "Konto-, Kontingent- und Rechnungsinformationen",
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, PayPal-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. PayPal verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte."
+    },
+    "technicalData": {
+      "title": "Necessary technical information",
+      "body": "Für den Betrieb der Website, die Sicherheit und die Fehleranalyse können wir Zugriffszeit, IP-Adresse, Browser- oder Geräteinformationen sowie Fehleraufzeichnungen ohne Kontoauszugsinhalte verarbeiten. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können Zugriffszeit, IP-Adresse sowie Browser- oder Geräteinformationen erhalten. Kontoauszüge, extrahierte Transaktionen und erzeugte Excel-Inhalte werden nicht an diese Analysedienste übermittelt."
+    },
+    "purposes": {
+      "title": "Verarbeitungszwecke",
+      "body": "Die Informationen werden nur verwendet, um Konvertierungen und Downloads durchzuführen, Websitebesuche zu messen und die Website zu verbessern, Konten und Kontingente zu verwalten, Abonnements und Abrechnungen bereitzustellen, auf Anfragen zu reagieren, die Servicesicherheit aufrechtzuerhalten und geltende rechtliche Verpflichtungen zu erfüllen."
+    },
+    "retention": {
+      "title": "Zurückbehaltung",
+      "documents": "PDFs, extrahierte Transaktionen und generierte Excel-Dateien werden nur während der Verarbeitung verwendet, die für die aktuelle Konvertierung und den Download erforderlich ist. Sie werden nicht in eine persistente Datenbank, einen Objektspeicher oder einen Dateiverlauf geschrieben und nicht für einen späteren Download aufbewahrt.",
+      "metadata": "Konto-, Kontingent- und Abrechnungsmetadaten werden nur so lange aufbewahrt, wie es für die Bereitstellung des Dienstes oder die Erfüllung geltender gesetzlicher Verpflichtungen erforderlich ist. Die Löschung bzw. Anonymisierung erfolgt, wenn sie entsprechend der aktuellen Systematik und den gesetzlichen Vorgaben nicht mehr benötigt wird. Die beim Kauf gespeicherte Konto-E-Mail-Adresse ist Teil des Abonnementdatensatzes."
+    },
+    "providers": {
+      "title": "Anbieter und internationale Abwicklung",
+      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Abonnementzahlung und Statussynchronisierung erfolgen über PayPal. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. PayPal kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen."
+    },
+    "storage": {
+      "title": "Browserspeicher",
+      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten."
+    },
+    "security": {
+      "title": "Informationssicherheit",
+      "body": "Wir nutzen angemessene Maßnahmen, die der Sensibilität der verarbeiteten Informationen angemessen sind, jedoch können Internetübertragungs- und Softwaresysteme keine absolute Sicherheit garantieren. Schützen Sie Ihre Originalauszüge, heruntergeladenen Excel-Dateien und Kontozugangsdaten."
+    },
+    "rights": {
+      "title": "Ihre Datenschutzrechte",
+      "body": "Abhängig von den Gesetzen, die an Ihrem Wohnort gelten, haben Sie möglicherweise das Recht, auf personenbezogene Daten zuzugreifen, diese zu korrigieren, zu löschen oder eine Kopie davon zu erhalten oder einer bestimmten Verarbeitung zu widersprechen oder diese einzuschränken. Kontaktieren Sie uns über die untenstehende E-Mail. Gegebenenfalls können Sie sich auch bei einer Aufsichtsbehörde beschweren. Wir prüfen und bearbeiten Anfragen gemäß geltendem Recht."
+    },
+    "terms": {
+      "title": "Verwandte Begriffe",
+      "body": "Für die Nutzung des Dienstes ist außerdem das Lesen der <link>Nutzungsbedingungen</link> erforderlich."
+    },
+    "changes": {
+      "title": "Richtlinienaktualisierungen",
+      "body": "Wir können diese Richtlinie aktualisieren, wenn sich Servicefunktionen, Verarbeitungsmethoden oder rechtliche Anforderungen ändern, und zeigen das Aktualisierungsdatum auf dieser Seite an. Wir werden Benutzer über wesentliche Änderungen gemäß den geltenden Gesetzen informieren."
+    },
+    "contact": {
+      "title": "Kontaktieren Sie uns",
+      "body": "Bei Fragen zur Informationsverarbeitung oder zur Ausübung geltender Datenschutzrechte wenden Sie sich an ReAvid Ltd unter <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Thema ändern",
+    "light": "Licht",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "Die Upload-Anfrage konnte nicht gelesen werden.",
+    "INVALID_FILE": "Wählen Sie eine gültige PDF-Datei.",
+    "PARSER_UNAVAILABLE": "Der Parsing-Dienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+    "QUOTA_EXCEEDED": "Sie haben das verfügbare Kontingent für diese Konvertierung erreicht.",
+    "QUOTA_UNAVAILABLE": "Der Quotendienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+    "FILE_TOO_LARGE": "Dieses PDF ist größer als 20 MB.",
+    "INVALID_FILE_TYPE": "Es werden nur PDF-Dateien unterstützt.",
+    "INVALID_PDF": "Diese Datei ist kein lesbares PDF.",
+    "PASSWORD_PROTECTED_PDF": "Passwortgeschützte PDFs können nicht konvertiert werden.",
+    "TOO_MANY_PAGES": "Dieses PDF hat mehr als 50 Seiten.",
+    "UNSUPPORTED_SCANNED_PDF": "Diese Version akzeptiert elektronische PDFs mit auswählbarem Text, keine gescannten Bilder.",
+    "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
+    "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
+    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+  }
+}

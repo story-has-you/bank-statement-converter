@@ -5,6 +5,7 @@ from __future__ import annotations
 from .models import (
     ColumnModel,
     ParseError,
+    ParseIssue,
     ParseResponse,
     ParseSummary,
     ParsedRow,
@@ -42,7 +43,6 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
                 errors.append(
                     ParseError(
                         code="PARSE_FAILED",
-                        message="部分页面表格解析失败",
                         page=page_number,
                     )
                 )
@@ -50,7 +50,6 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
         if not any(page_words):
             raise ParserError(
                 "UNSUPPORTED_SCANNED_PDF",
-                "当前仅支持电子版 PDF，不支持扫描图片 PDF",
                 400,
             )
 
@@ -62,7 +61,6 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
         if not tables:
             raise ParserError(
                 "TABLE_NOT_FOUND",
-                "未识别到可用的银行流水表格",
                 422,
             )
 
@@ -100,7 +98,7 @@ def _to_parsed_table(table: RawTable, table_index: int) -> ParsedTable:
         }
         warnings = list(raw_row.warnings)
         if len(raw_row.cells) > len(table.headers):
-            warnings.append("该行包含超出表头数量的单元格，已保留到额外列")
+            warnings.append(ParseIssue(code="EXTRA_CELLS"))
         if raw_row.failed:
             status = RowStatus.FAILED
         elif warnings:

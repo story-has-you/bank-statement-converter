@@ -1,0 +1,365 @@
+{
+  "Metadata": {
+    "title": "은행 명세서 변환기 | PDF를 엑셀로",
+    "description": "텍스트 기반 은행 명세서 PDF를 검토할 수 있는 Excel 파일로 변환하세요. 파일은 이 변환에만 사용됩니다.",
+    "keywords": "은행 명세서 PDF Excel, PDF Excel 변환기, 은행 거래 추출",
+    "brand": "은행 명세서 변환기",
+    "alternateName": "은행 명세서 PDF를 Excel로 변환"
+  },
+  "HomeHeader": {
+    "brand": "은행 명세서 변환기",
+    "navigation": "메인 네비게이션",
+    "convert": "전환하다",
+    "features": "특징",
+    "plans": "계획",
+    "faq": "FAQ"
+  },
+  "LanguageSwitcher": {
+    "label": "Choose language",
+    "current": "Current",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español"
+  },
+  "AuthControl": {
+    "account": "계정",
+    "signInWithGoogle": "Google로 로그인",
+    "signOut": "로그아웃",
+    "unavailable": "일시적으로 로그인을 사용할 수 없습니다",
+    "signInFailed": "로그인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+    "signOutFailed": "로그아웃이 완료되지 않았습니다. 나중에 다시 시도해 주세요."
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "로그인이 완료되지 않았습니다 | 은행 명세서 변환기",
+      "description": "Google sign-in did not complete. Return to the homepage and try again."
+    },
+    "title": "로그인이 완료되지 않았습니다.",
+    "description": "Google 로그인이 취소되었거나 완료되지 않았습니다. 홈페이지로 돌아가서 다시 시도해 보세요.",
+    "backHome": "홈페이지로 돌아가기"
+  },
+  "HomeIntro": {
+    "eyebrow": "은행 명세서 PDF 변환",
+    "title": "PDF를 Excel로 변환하는 은행 명세서 변환기",
+    "description": "텍스트 기반 은행 명세서 PDF를 업로드하고 추출된 행을 확인한 후 Excel 파일을 다운로드하세요. 우리는 이 변환에만 귀하의 파일을 사용합니다."
+  },
+  "PdfUpload": {
+    "title": "은행 명세서 업로드",
+    "description": "한 번에 하나의 PDF를 처리합니다.",
+    "fileLabel": "은행 명세서 PDF",
+    "dropzone": "PDF를 선택하거나 여기에 드롭하세요.",
+    "dropzoneHint": "정상적으로 열리고 선택 가능한 텍스트가 포함된 PDF를 업로드하세요.",
+    "help": "파일 이름이 여기에 표시됩니다. 필요할 때마다 파일을 제거하십시오.",
+    "errorTitle": "이 파일을 변환할 수 없습니다.",
+    "invalidPdf": "PDF 파일을 업로드해주세요.",
+    "multipleFiles": "한 번에 하나의 PDF만 처리할 수 있습니다.",
+    "conversionFailed": "변환이 완료되지 않았습니다. 다른 파일을 사용해 보세요.",
+    "parserUnavailable": "구문 분석 서비스가 응답하지 않았습니다. 나중에 다시 시도해 주세요.",
+    "quotaExceeded": "현재 할당량이 모두 사용되었거나 이 PDF가 남은 할당량보다 큽니다.",
+    "quotaUnavailable": "할당량 서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
+    "removeFile": "파일 삭제",
+    "quota": "무료 할당량: 익명으로 하루에 {anonymousPages}페이지, 로그인 시 하루에 {authenticatedPages}페이지",
+    "serviceReady": "파일은 이 변환에만 사용되며 저장되지 않습니다.",
+    "status": "업로드 준비 완료",
+    "converting": "변환 중",
+    "start": "변환 및 검토"
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "변환 결과 | 은행 명세서 변환기",
+      "description": "추출된 은행 계좌 명세서 행을 검토하고, 위험 라벨을 확인하고, Excel 결과를 다운로드하세요."
+    },
+    "eyebrow": "변환 결과",
+    "description": "다운로드하기 전에 표시된 행을 원본 PDF와 비교하십시오.",
+    "download": "엑셀 다운로드",
+    "backHome": "다른 파일 변환",
+    "summary": {
+      "status": "상태",
+      "pages": "PDF 페이지",
+      "tables": "테이블",
+      "rows": "데이터 행",
+      "warnings": "검토할 행"
+    },
+    "summaryStatus": {
+      "success": "Complete",
+      "partial": "부분적인 결과",
+      "failed": "불완전한"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "테이블 {id}",
+      "singleTitle": "은행 명세서 거래",
+      "pages": "페이지 {start} ~ {end}",
+      "rowCount": "{count} 행",
+      "status": "상태",
+      "warnings": "메모 검토"
+    },
+    "partial": {
+      "title": "일부 콘텐츠에 대한 검토가 필요함",
+      "description": "인식된 내용은 계속 검토하고 다운로드할 수 있습니다. “DISCREPANCY” 또는 “UNVERIFIABLE”로 표시된 행은 원본 PDF와 비교하세요."
+    },
+    "empty": {
+      "title": "다운로드 가능한 데이터가 없습니다",
+      "description": "이 PDF에는 사용 가능한 테이블 행이 없습니다. 홈페이지로 돌아가서 다른 파일을 업로드하세요."
+    },
+    "missing": {
+      "title": "이 결과는 만료되었습니다",
+      "description": "결과는 현재 변환 흐름에 대해 일시적으로 보관됩니다. 홈페이지로 돌아가서 PDF를 다시 업로드하세요."
+    },
+    "issues": {
+      "repeatedHeader": "{row} 행은 테이블 헤더를 반복하므로 건너뛰었습니다.",
+      "summaryRow": "{row} 행은 요약 행처럼 보이므로 건너뛰었습니다.",
+      "extraCells": "이 행에는 머리글보다 더 많은 셀이 있습니다. 여분의 셀은 유지되었습니다.",
+      "unknown": "이 항목은 검토가 필요합니다."
+    }
+  },
+  "HomeFeatures": {
+    "title": "전환을 통해 얻는 것",
+    "securityTitle": "파일 기록 없음",
+    "securityDescription": "PDF, 생성된 Excel 파일 및 거래 내용은 이 변환에만 사용되며 파일 기록에 추가되지 않습니다.",
+    "banksTitle": "소스 레이아웃 유지",
+    "banksDescription": "변환기는 PDF에서 테이블 헤더와 셀 텍스트를 읽고 소스 파일과 비교할 수 있도록 결과를 테이블에 표시합니다.",
+    "accuracyTitle": "검토할 행을 표시합니다.",
+    "accuracyDescription": "근거가 불완전하거나 열을 맞추기 어려운 행에는 다운로드 전에 “DISCREPANCY” 또는 “UNVERIFIABLE”을 표시합니다."
+  },
+  "UsageTiers": {
+    "title": "무료 변환으로 시작하세요",
+    "description": "You can try the converter without an account. Sign in for a larger daily quota, or choose a monthly plan for regular use.",
+    "anonymous": "Without signing in",
+    "anonymousAmount": "{pages} 페이지",
+    "anonymousDescription": "하루에 최대 {pages} PDF 페이지로 변환하세요.",
+    "signedIn": "로그인됨",
+    "signedInAmount": "{pages} 페이지",
+    "signedInDescription": "하루에 최대 {pages} PDF 페이지로 변환하세요.",
+    "perDay": "/ day",
+    "perMonth": "/ month",
+    "planQuota": "월별 {pages} 페이지",
+    "current": "현재 계획",
+    "plans": {
+      "standard": {
+        "name": "기준",
+        "price": "$30",
+        "description": "은행 명세서를 처리하는 신뢰할 수 있는 방법이 필요한 개인을 위한 제품입니다."
+      },
+      "professional": {
+        "name": "전문적인",
+        "price": "$60",
+        "description": "여러 은행 명세서를 정기적으로 처리하는 전문가를 위한 제품입니다."
+      },
+      "enterprise": {
+        "name": "기업",
+        "price": "$99",
+        "description": "대규모 명세서 워크플로를 사용하는 팀 및 조직에 적합합니다."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "구독을 시작하기 전에 로그인하세요.",
+    "unavailable": "일시적으로 결제가 불가능합니다. 나중에 다시 시도해 주세요.",
+    "subscribe": "PayPal로 구독",
+    "processing": "페이팔 개설",
+    "activationFailed": "결제가 완료되었지만 요금제를 활성화할 수 없습니다. 지원팀에 문의하세요.",
+    "activated": "귀하의 계획이 활성화되었습니다.",
+    "cancelled": "이 구독을 취소했습니다.",
+    "paymentFailed": "결제가 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+    "currentPlan": "이 요금제를 사용하고 계십니다.",
+    "api": {
+      "loginUnavailable": "일시적으로 로그인을 사용할 수 없습니다.",
+      "loginRequired": "구독하기 전에 로그인하세요.",
+      "emailMissing": "귀하의 계정에는 이메일 주소가 없으므로 구독을 활성화할 수 없습니다.",
+      "invalidRequest": "구독 요청이 잘못되었습니다.",
+      "invalidTier": "유효한 구독 요금제를 선택하세요.",
+      "configurationMissing": "결제가 아직 구성되지 않았습니다.",
+      "subscriptionBelongsToAnotherAccount": "이 구독은 다른 계정에 속해 있습니다.",
+      "verificationFailed": "PayPal 구독을 확인할 수 없습니다.",
+      "activationFailed": "구독 확인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+      "createFailed": "PayPal 구독을 시작할 수 없습니다. 나중에 다시 시도해 주세요.",
+      "webhookInvalidRequest": "웹훅 요청이 잘못되었습니다.",
+      "webhookSignatureFailed": "웹훅 서명 확인에 실패했습니다.",
+      "webhookProcessingFailed": "웹훅 처리에 실패했습니다."
+    }
+  },
+  "HomeFaq": {
+    "title": "자주 묻는 질문",
+    "banks": {
+      "question": "어떤 문이 지원되나요?",
+      "answer": "변환기는 여러 전자 은행 명세서 레이아웃에 대해 검증되고 있습니다. 특정 뱅크 및 레이아웃 변형은 확인된 대로 나열됩니다."
+    },
+    "accuracy": {
+      "question": "변환 결과를 검토해야 하는 이유는 무엇입니까?",
+      "answer": "변환기는 가능한 한 표 머리글과 셀 텍스트를 유지합니다. 복잡한 레이아웃, 흐린 텍스트 또는 어긋난 열에서는 행이 “DISCREPANCY” 또는 “UNVERIFIABLE”로 표시될 수 있습니다. 사용 전에 원본 PDF와 Excel 파일을 비교하세요."
+    },
+    "quota": {
+      "question": "하루에 몇 페이지까지 변환할 수 있나요?",
+      "answer": "익명 사용자는 매일 {anonymousPages} 페이지를 변환할 수 있으며, 로그인한 사용자는 매일 {authenticatedPages} 페이지를 변환할 수 있습니다. 월간 요금제에는 Standard용 {standardPages} 페이지, Professional용 {professionalPages} 페이지, Enterprise용 {enterprisePages} 페이지가 포함됩니다."
+    },
+    "scans": {
+      "question": "스캔했거나 암호화된 PDF를 변환할 수 있나요?",
+      "answer": "첫 번째 릴리스는 정상적으로 열리는 선택 가능한 텍스트가 포함된 전자 PDF에 중점을 둡니다. 스캔한 파일, 비밀번호로 보호된 파일 또는 인식할 수 있는 표가 없는 PDF는 변환되지 않을 수 있습니다."
+    },
+    "storage": {
+      "question": "내 PDF, Excel 파일 또는 거래가 저장됩니까?",
+      "answer": "아니요. 현재 변환 및 다운로드에만 사용되며 파일 기록에 추가되지 않습니다. 현재 흐름을 벗어나면 결과를 다시 다운로드할 수 없습니다."
+    },
+    "failure": {
+      "question": "변환에 실패하면 어떻게 되나요?",
+      "answer": "페이지에서 실패를 보고하고 잘못된 Excel 파일을 제공하지 않습니다. 실패한 변환에는 할당량이 사용되지 않습니다. 부분 결과는 PDF 페이지 수를 계산합니다."
+    }
+  },
+  "HomeFooter": {
+    "brand": "은행 명세서 변환기",
+    "navigation": "바닥글 탐색",
+    "plans": "계획",
+    "faq": "FAQ",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy"
+  },
+  "LegalCommon": {
+    "lastUpdated": "최종 업데이트 날짜: 2026년 10월 2일"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Terms of service | Bank Statement Converter",
+      "description": "은행 명세서 변환기가 파일, 할당량, 구독 및 사용자 책임을 처리하는 방법을 알아보세요."
+    },
+    "title": "서비스 약관",
+    "intro": "본 서비스는 ReAvid Ltd가 운영하며 <site>{domain}</site>를 통해 제공됩니다. 전환 및 구독 서비스를 이용하기 전에 본 약관과 개인정보 보호정책을 읽어보세요.",
+    "availability": "현재 페이지 상태에 따라 PDF를 Excel로 변환하고 PayPal 구독이 제공됩니다. 요금제 가격 및 가용성은 서비스 구성에 따라 변경될 수 있습니다.",
+    "service": {
+      "title": "서비스 범위",
+      "body": "이 서비스는 지원되는 은행 계좌 명세서 PDF의 거래 정보를 다운로드 및 검토를 위해 Excel 파일로 구성합니다. 지원되는 뱅크, 파일 형식, 처리 한도는 서비스 페이지에 설명되어 있습니다. 우리는 은행 계좌 연결, 은행 서비스 또는 금융, 세금 또는 법률 자문을 제공하지 않습니다."
+    },
+    "authorization": {
+      "title": "파일 업로드 권한",
+      "body": "사용 및 처리 권한이 있는 명세서만 업로드하세요. 귀하의 개인 정보 또는 금융 정보의 업로드 및 처리가 해당 법률 및 타인에 대한 귀하의 의무를 준수하는지 확인하십시오. 허가 없이 얻은 파일을 업로드하지 마십시오."
+    },
+    "accuracy": {
+      "title": "변환 결과 검토",
+      "body": "명령문 레이아웃, 명확성 및 내용은 추출에 영향을 미칠 수 있습니다. 결과에는 누락, 중복 또는 잘못 식별된 필드가 포함될 수 있습니다. 부기, 파일링, 자료 제출 또는 다른 결정을 내리기 전에 Excel 파일을 원래 명세서와 비교하십시오."
+    },
+    "quota": {
+      "title": "Free quota",
+      "body": "익명 사용자는 매일 {anonymousPages} PDF 페이지를 변환할 수 있으며, 로그인한 무료 사용자는 매일 {authenticatedPages} PDF 페이지를 변환할 수 있습니다. Standard에는 월별 {standardPages} 페이지가 포함되고, Professional에는 {professionalPages}가 포함되며, Enterprise에는 {enterprisePages}가 포함됩니다. 일일 할당량은 UTC로 재설정되며 계획 할당량은 현재 PayPal 청구 기간을 따릅니다. 실패한 변환에는 할당량이 사용되지 않습니다. 부분 결과는 PDF 페이지 수를 계산합니다."
+    },
+    "subscription": {
+      "title": "구독 및 결제",
+      "body": "Standard, Professional 및 Enterprise 요금제는 매월 갱신됩니다. 가격은 구매 전 표시됩니다. 결제는 PayPal을 통해 완료되며 구매를 확인한 후에만 요금이 청구됩니다. PayPal은 구독 상태, 갱신 및 결제 실패 정보를 이 서비스로 보낼 수 있습니다. PayPal 계정에서 구독 자동 갱신을 관리하세요."
+    },
+    "files": {
+      "title": "파일 및 다운로드",
+      "body": "업로드된 PDF, 추출된 트랜잭션 및 생성된 Excel 파일은 현재 변환을 완료하고 다운로드하는 데만 사용됩니다. 영구 파일 기록으로 보관되지 않습니다. 명세서 원본과 다운로드한 결과를 직접 보관하세요. 서비스는 현재 흐름이 종료된 후 기록 재다운로드를 제공하지 않습니다."
+    },
+    "prohibited": {
+      "title": "오용 금지",
+      "body": "금융 기록을 위조 또는 허위 진술하거나, 타인의 권리를 침해하거나, 사기를 저지르거나, 악성 파일을 배포하거나, 할당량, 보안 조치 또는 액세스 제한을 우회하는 데 서비스를 사용하지 마십시오. 불법적이거나 명백히 남용적인 활동에 대해서는 서비스 접근을 제한할 수 있습니다."
+    },
+    "rights": {
+      "title": "소유권",
+      "body": "귀하는 파일과 그 내용에 대해 귀하가 갖고 있는 권리를 보유합니다. 파일을 업로드하면 현재 변환을 위해 파일을 처리하는 데 필요한 권한만 부여됩니다. 소유권을 이전하지 않습니다. 웹사이트 소프트웨어, 인터페이스 및 브랜드에 대한 권리는 합법적인 소유자에게 있습니다."
+    },
+    "liability": {
+      "title": "가용성 및 책임",
+      "body": "우리는 서비스를 계속 사용할 수 있도록 노력하지만 모든 파일이 변환되거나 서비스가 항상 사용 가능하거나 결과가 완전히 정확할 것이라고 보장하지는 않습니다. 법률이 허용하는 한도 내에서 당사는 결과 검토 실패, 지원되지 않는 형식 또는 서비스 중단으로 인해 발생한 간접적인 손실에 대해 책임을 지지 않습니다. 이는 법률에 의해 배제될 수 없는 책임이나 사용자 권리를 배제하지 않습니다."
+    },
+    "privacy": {
+      "title": "개인 정보 보호 및 개인 정보",
+      "body": "파일 및 개인정보 처리 방법은 <link>개인정보취급방침</link>에 설명되어 있습니다."
+    },
+    "changes": {
+      "title": "본 약관의 변경",
+      "body": "서비스 또는 법적 요구 사항이 변경되면 본 약관을 업데이트할 수 있으며 이 페이지에 업데이트 날짜가 표시됩니다. 기존 구독에 영향을 미치는 중요한 변경 사항은 법률 및 구매 시 표시된 규칙에 따라 전달됩니다."
+    },
+    "contact": {
+      "title": "문의하기",
+      "body": "본 약관에 대한 질문이 있는 경우 ReAvid Ltd(<link>{email}</link>)에 문의하세요."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "개인정보 보호정책 | 은행 명세서 변환기",
+      "description": "은행 명세서 변환기가 은행 명세서, 계좌, 사용 할당량 및 청구 정보를 처리하는 방법을 알아보세요."
+    },
+    "title": "개인 정보 보호 정책",
+    "intro": "ReAvid Ltd는 <site>{domain}</site>를 운영합니다. 이 정책은 귀하가 전환 및 PayPal 구독 서비스를 사용할 때 당사가 정보를 처리하는 방법을 설명합니다.",
+    "availability": "이 정책은 현재 사용 가능한 PDF-Excel 변환, 계정 로그인 및 PayPal 구독 기능에 적용됩니다.",
+    "documents": {
+      "title": "은행 명세서 및 변환 내용",
+      "body": "업로드된 PDF에는 이름, 계좌 번호, 거래 날짜, 금액, 잔액 및 거래 설명이 포함될 수 있습니다. 변환이 가능한 경우, 당사는 귀하가 요청한 변환 및 다운로드를 완료하기 위해서만 PDF, 추출된 거래 및 생성된 Excel 파일을 처리합니다. 우리는 이 콘텐츠를 광고나 관련 없는 목적으로 사용하지 않습니다."
+    },
+    "accountData": {
+      "title": "계정, 할당량, 결제 정보",
+      "body": "귀하가 Google로 로그인하면 Supabase는 계정 서비스를 제공하는 데 필요한 ID 및 계정 세부정보를 저장합니다. 구독이 활성화된 후 당사는 구독 상태, 요금제, PayPal 구독 식별자, 청구 기간, 지불인 이메일 및 구매 시 웹사이트 계정 이메일 스냅샷을 저장합니다. PayPal은 결제 정보를 처리합니다. 이러한 기록에는 PDF 원본, 추출된 거래 또는 Excel 콘텐츠가 포함되어 있지 않습니다."
+    },
+    "technicalData": {
+      "title": "필요한 기술 정보",
+      "body": "사이트 운영, 보안 유지 및 장애 조사를 위해 접속 시간, IP 주소, 브라우저 또는 기기 정보와 명세서 내용을 포함하지 않는 오류 기록을 처리할 수 있습니다. 방문 통계에는 Google Analytics와 Pageview를 사용하며, 이 서비스들이 접속 시간, IP 주소, 브라우저 또는 기기 정보를 받을 수 있습니다. 은행 명세서, 추출된 거래 내용 또는 생성된 Excel 내용은 이러한 분석 서비스로 전송하지 않습니다."
+    },
+    "purposes": {
+      "title": "처리목적",
+      "body": "정보는 변환 및 다운로드 완료, 사이트 방문 측정 및 개선, 계정 및 할당량 관리, 구독 및 청구 제공, 요청 응답, 서비스 보안 유지 및 해당 법적 의무 이행을 위해서만 사용됩니다."
+    },
+    "retention": {
+      "title": "보유",
+      "documents": "PDF, 추출된 트랜잭션 및 생성된 Excel 파일은 현재 변환 및 다운로드에 필요한 처리 중에만 사용됩니다. 영구 데이터베이스, 객체 스토리지 또는 파일 기록에 기록되지 않으며 나중에 다운로드할 수 있도록 보관되지 않습니다.",
+      "metadata": "계정, 할당량, 청구 메타데이터는 서비스를 제공하거나 관련 법적 의무를 이행하는 데 필요한 기간 동안만 보관됩니다. 실제 시스템 및 법적 요구 사항에 따라 더 이상 필요하지 않은 경우 삭제되거나 익명 처리됩니다. 구매 시 저장된 계정 이메일은 구독 기록의 일부입니다."
+    },
+    "providers": {
+      "title": "공급자 및 국제 처리",
+      "body": "계정 로그인은 Google 및 Supabase를 사용합니다. 구독 결제 및 상태 동기화는 PayPal을 사용합니다. 사이트 방문 통계에는 Google Analytics와 Pageview를 사용하며, 이 서비스들은 해당 약관 및 개인정보 보호정책에 따라 방문 관련 기술 정보를 처리할 수 있습니다. PayPal은 결제 및 계정 정보를 처리할 수 있습니다. 처리가 국경을 넘어 이루어지는 경우, 당사는 해당 법률에서 요구하는 보호 조치를 적용하고 실제 조치를 설명합니다. 우리는 은행 명세서나 거래 정보를 판매하지 않습니다."
+    },
+    "storage": {
+      "title": "브라우저 저장공간",
+      "body": "웹사이트는 브라우저 로컬 저장소를 사용하여 표시 설정을 기억하고 로그인 유지를 위해 필요한 세션 쿠키를 사용합니다. 분석 서비스도 방문 통계를 위해 쿠키나 유사한 브라우저 식별자를 사용할 수 있습니다. 브라우저 설정에서 로컬 저장소와 쿠키를 관리할 수 있습니다."
+    },
+    "security": {
+      "title": "정보 보안",
+      "body": "당사는 처리되는 정보의 민감도에 적합한 합리적인 조치를 사용하지만, 인터넷 전송 및 소프트웨어 시스템은 절대적인 보안을 보장할 수 없습니다. 명세서 원본, 다운로드한 Excel 파일, 계정 액세스 세부정보를 보호하세요."
+    },
+    "rights": {
+      "title": "귀하의 개인정보 보호 권리",
+      "body": "귀하가 거주하는 지역에 적용되는 법률에 따라 귀하는 개인 정보에 접근, 수정, 삭제 또는 사본을 획득하거나 특정 처리에 반대하거나 제한할 권리가 있을 수 있습니다. 아래 이메일을 사용하여 문의해 주세요. 해당되는 경우 규제 기관에 불만을 제기할 수도 있습니다. 당사는 해당 법률에 따라 요청을 확인하고 처리합니다."
+    },
+    "terms": {
+      "title": "관련 용어",
+      "body": "서비스를 이용하려면 <link>서비스 약관</link>도 읽어야 합니다."
+    },
+    "changes": {
+      "title": "정책 업데이트",
+      "body": "서비스 기능, 처리 방법 또는 법적 요구 사항이 변경되면 이 정책을 업데이트할 수 있으며 이 페이지에 업데이트 날짜가 표시됩니다. 당사는 해당 법률에서 요구하는 바에 따라 중요한 변경 사항을 사용자에게 알립니다."
+    },
+    "contact": {
+      "title": "문의하기",
+      "body": "정보 처리에 대한 질문이 있거나 관련 개인정보 보호 권리를 행사하려면 ReAvid Ltd(<link>{email}</link>)에 문의하세요."
+    }
+  },
+  "ThemeToggle": {
+    "label": "테마 변경",
+    "light": "빛",
+    "dark": "어두운",
+    "system": "체계"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "업로드 요청을 읽을 수 없습니다.",
+    "INVALID_FILE": "유효한 PDF 파일을 선택하세요.",
+    "PARSER_UNAVAILABLE": "구문 분석 서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
+    "QUOTA_EXCEEDED": "이 전환에 사용 가능한 할당량에 도달했습니다.",
+    "QUOTA_UNAVAILABLE": "할당량 서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
+    "FILE_TOO_LARGE": "이 PDF는 20MB보다 큽니다.",
+    "INVALID_FILE_TYPE": "PDF 파일만 지원됩니다.",
+    "INVALID_PDF": "이 파일은 읽을 수 있는 PDF가 아닙니다.",
+    "PASSWORD_PROTECTED_PDF": "비밀번호로 보호된 PDF는 변환할 수 없습니다.",
+    "TOO_MANY_PAGES": "이 PDF는 50페이지를 초과합니다.",
+    "UNSUPPORTED_SCANNED_PDF": "이 버전은 스캔한 이미지가 아닌 선택 가능한 텍스트가 포함된 전자 PDF를 허용합니다.",
+    "TABLE_NOT_FOUND": "사용 가능한 은행 명세서 테이블을 찾을 수 없습니다.",
+    "PARSE_FAILED": "PDF를 구문 분석할 수 없습니다. 다른 파일로 다시 시도해 주세요.",
+    "UNKNOWN": "문제가 발생했습니다. 다시 시도해 주세요."
+  }
+}

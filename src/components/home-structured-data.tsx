@@ -9,6 +9,7 @@ const questionIds = ["banks", "accuracy", "quota", "scans", "storage", "failure"
 export async function HomeStructuredData() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "HomeFaq" });
+  const metadataT = await getTranslations({ locale, namespace: "Metadata" });
   const usageT = await getTranslations({ locale, namespace: "UsageTiers" });
   const questions = questionIds.map((id) => ({
     "@type": "Question",
@@ -31,8 +32,8 @@ export async function HomeStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      name: "Bank Statement Converter",
-      alternateName: "Bank Statement PDF to Excel Converter",
+      name: metadataT("brand"),
+      alternateName: metadataT("alternateName"),
       url: getLocalizedAlternates("/", locale).canonical,
       description: (await getTranslations({ locale, namespace: "Metadata" }))("description"),
       applicationCategory: "FinanceApplication",
@@ -57,7 +58,7 @@ export async function HomeStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "Bank Statement Converter",
+      name: metadataT("brand"),
       url: getLocalizedAlternates("/", locale).canonical,
       inLanguage: locale,
     },

@@ -15,6 +15,9 @@ import {
   UsageUnavailableError,
 } from "@/lib/usage/server";
 import { createClient } from "@/lib/supabase/server";
+import { getRequestLocale } from "@/i18n/locale";
+import type { AppLocale } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,19 +33,46 @@ type ErrorPayload = {
 };
 
 const ANONYMOUS_COOKIE = "bank-statement-converter-anonymous";
+const apiErrorCodes = [
+  "INVALID_REQUEST",
+  "INVALID_FILE",
+  "PARSER_UNAVAILABLE",
+  "QUOTA_EXCEEDED",
+  "QUOTA_UNAVAILABLE",
+  "FILE_TOO_LARGE",
+  "INVALID_FILE_TYPE",
+  "INVALID_PDF",
+  "PASSWORD_PROTECTED_PDF",
+  "TOO_MANY_PAGES",
+  "UNSUPPORTED_SCANNED_PDF",
+  "TABLE_NOT_FOUND",
+  "PARSE_FAILED",
+  "UNKNOWN",
+] as const;
+type ApiErrorCode = (typeof apiErrorCodes)[number];
 
-function errorResponse(
+function getApiErrorKey(code: string): ApiErrorCode {
+  return apiErrorCodes.includes(code as ApiErrorCode) ? (code as ApiErrorCode) : "UNKNOWN";
+}
+
+async function errorResponse(
   code: string,
-  message: string,
   status: number,
+  locale: AppLocale,
   quota?: Partial<Pick<ErrorPayload, "period" | "usedPages" | "remainingPages" | "limitPages">>,
-): NextResponse<ErrorPayload> {
+): Promise<NextResponse<ErrorPayload>> {
+  const t = await getTranslations({ locale, namespace: "ApiErrors" });
+  const message = t(getApiErrorKey(code));
   return NextResponse.json({ code, message, ...quota }, { status });
 }
 
-function setAnonymousCookie(response: NextResponse, value: string | null): NextResponse {
+async function setAnonymousCookie(
+  response: NextResponse | Promise<NextResponse>,
+  value: string | null,
+): Promise<NextResponse> {
+  const resolvedResponse = await response;
   if (value) {
-    response.cookies.set({
+    resolvedResponse.cookies.set({
       name: ANONYMOUS_COOKIE,
       value,
       httpOnly: true,
@@ -52,7 +82,7 @@ function setAnonymousCookie(response: NextResponse, value: string | null): NextR
       maxAge: 60 * 60 * 24 * 365,
     });
   }
-  return response;
+  return resolvedResponse;
 }
 
 function isCurrentUsageAtLimit(
@@ -81,41 +111,40 @@ async function getRequestActor(): Promise<{ actor: UsageActor; cookieValue: stri
   };
 }
 
-async function readErrorPayload(response: Response): Promise<ErrorPayload> {
+async function readErrorPayload(response: Response): Promise<Pick<ErrorPayload, "code">> {
   try {
     const payload: unknown = await response.json();
     if (
       typeof payload === "object" &&
       payload !== null &&
       "code" in payload &&
-      "message" in payload &&
-      typeof payload.code === "string" &&
-      typeof payload.message === "string"
+      typeof payload.code === "string"
     ) {
-      return { code: payload.code, message: payload.message };
+      return { code: payload.code };
     }
   } catch {
     // The parser may return a non-JSON error when it is unavailable.
   }
 
-  return { code: "PARSER_UNAVAILABLE", message: "解析服务暂时不可用" };
+  return { code: "PARSER_UNAVAILABLE" };
 }
 
 export async function POST(request: Request): Promise<Response> {
+  const locale = getRequestLocale(request);
   let formData: FormData;
   try {
     formData = await request.formData();
   } catch {
-    return errorResponse("INVALID_REQUEST", "无法读取上传文件", 400);
+    return errorResponse("INVALID_REQUEST", 400, locale);
   }
 
   const entry = formData.get("file");
   if (!(entry instanceof File)) {
-    return errorResponse("INVALID_FILE", "请选择一个 PDF 文件", 400);
+    return errorResponse("INVALID_FILE", 400, locale);
   }
 
   if (!entry.name.toLowerCase().endsWith(".pdf") || entry.size === 0) {
-    return errorResponse("INVALID_FILE", "请选择有效的 PDF 文件", 400);
+    return errorResponse("INVALID_FILE", 400, locale);
   }
 
   let actor: UsageActor;
@@ -130,7 +159,7 @@ export async function POST(request: Request): Promise<Response> {
     const currentUsage = await getUsageRecord(actor);
     if (isCurrentUsageAtLimit(currentUsage, context)) {
       return setAnonymousCookie(
-        errorResponse("QUOTA_EXCEEDED", "QUOTA_EXCEEDED", 429, {
+        errorResponse("QUOTA_EXCEEDED", 429, locale, {
           period: context.window.period,
           usedPages: currentUsage?.used_pages,
           remainingPages: 0,
@@ -143,7 +172,7 @@ export async function POST(request: Request): Promise<Response> {
     if (!(error instanceof UsageUnavailableError)) {
       console.error("Failed to resolve conversion quota", error);
     }
-    return errorResponse("QUOTA_UNAVAILABLE", "QUOTA_UNAVAILABLE", 503);
+    return errorResponse("QUOTA_UNAVAILABLE", 503, locale);
   }
 
   const upstreamData = new FormData();
@@ -157,7 +186,7 @@ export async function POST(request: Request): Promise<Response> {
   const parserSecret = process.env.PARSER_SHARED_SECRET?.trim();
   if (!parserSecret) {
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", "解析服务暂时不可用", 503),
+      errorResponse("PARSER_UNAVAILABLE", 503, locale),
       anonymousCookie,
     );
   }
@@ -176,7 +205,7 @@ export async function POST(request: Request): Promise<Response> {
     });
   } catch {
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", "解析服务暂时不可用，请确认 Python 服务已启动", 502),
+      errorResponse("PARSER_UNAVAILABLE", 502, locale),
       anonymousCookie,
     );
   }
@@ -184,7 +213,7 @@ export async function POST(request: Request): Promise<Response> {
   if (!parserResponse.ok) {
     const payload = await readErrorPayload(parserResponse);
     return setAnonymousCookie(
-      errorResponse(payload.code, payload.message, parserResponse.status),
+      errorResponse(payload.code, parserResponse.status, locale),
       anonymousCookie,
     );
   }
@@ -193,7 +222,7 @@ export async function POST(request: Request): Promise<Response> {
     const payload: unknown = await parserResponse.json();
     if (!isParseResponse(payload) || !Number.isInteger(payload.pageCount) || payload.pageCount <= 0) {
       return setAnonymousCookie(
-        errorResponse("PARSER_UNAVAILABLE", "解析服务返回了无效结果", 502),
+        errorResponse("PARSER_UNAVAILABLE", 502, locale),
         anonymousCookie,
       );
     }
@@ -204,14 +233,14 @@ export async function POST(request: Request): Promise<Response> {
     } catch (error) {
       console.error("Failed to record conversion usage", error);
       return setAnonymousCookie(
-        errorResponse("QUOTA_UNAVAILABLE", "QUOTA_UNAVAILABLE", 503),
+        errorResponse("QUOTA_UNAVAILABLE", 503, locale),
         anonymousCookie,
       );
     }
 
     if (!quotaResult.allowed) {
       return setAnonymousCookie(
-        errorResponse("QUOTA_EXCEEDED", "QUOTA_EXCEEDED", 429, {
+        errorResponse("QUOTA_EXCEEDED", 429, locale, {
           period: quotaResult.period,
           usedPages: quotaResult.usedPages,
           remainingPages: quotaResult.remainingPages,
@@ -224,7 +253,7 @@ export async function POST(request: Request): Promise<Response> {
     return setAnonymousCookie(NextResponse.json(payload, { status: 200 }), anonymousCookie);
   } catch {
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", "解析服务返回了无效结果", 502),
+      errorResponse("PARSER_UNAVAILABLE", 502, locale),
       anonymousCookie,
     );
   }

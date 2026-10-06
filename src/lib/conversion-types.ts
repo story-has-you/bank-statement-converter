@@ -15,7 +15,12 @@ export type ParsedRow = {
     row: number;
   };
   status: RowStatus;
-  warnings: string[];
+  warnings: ParseIssue[];
+};
+
+export type ParseIssue = {
+  code: string;
+  params: Record<string, number | string>;
 };
 
 export type ParsedTable = {
@@ -24,7 +29,7 @@ export type ParsedTable = {
   pageEnd: number;
   columns: ParseColumn[];
   rows: ParsedRow[];
-  warnings: string[];
+  warnings: ParseIssue[];
 };
 
 export type ParseResponse = {
@@ -100,7 +105,8 @@ export function isParseResponse(value: unknown): value is ParseResponse {
       typeof table.pageEnd !== "number" ||
       !Array.isArray(table.columns) ||
       !Array.isArray(table.rows) ||
-      !Array.isArray(table.warnings)
+        !Array.isArray(table.warnings) ||
+        !table.warnings.every(isParseIssue)
     ) {
       return false;
     }
@@ -119,6 +125,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
         !isRecord(row.source) ||
         !isRowStatus(row.status) ||
         !Array.isArray(row.warnings) ||
+        !row.warnings.every(isParseIssue) ||
         typeof row.source.page !== "number" ||
         typeof row.source.row !== "number"
       ) {
@@ -132,4 +139,17 @@ export function isParseResponse(value: unknown): value is ParseResponse {
 
     return columnsAreValid && rowsAreValid;
   });
+}
+
+function isParseIssue(value: unknown): value is ParseIssue {
+  if (typeof value !== "object" || value === null || !("code" in value) || !("params" in value)) {
+    return false;
+  }
+
+  return (
+    typeof value.code === "string" &&
+    typeof value.params === "object" &&
+    value.params !== null &&
+    Object.values(value.params).every((param) => typeof param === "string" || typeof param === "number")
+  );
 }

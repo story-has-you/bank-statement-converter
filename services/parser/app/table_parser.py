@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 import re
 from typing import Any
 
+from .models import ParseIssue
 from .pdf_reader import filter_watermark_page
 
 
@@ -60,7 +61,7 @@ class RawRow:
     cells: list[str | None]
     page: int
     row: int
-    warnings: list[str] = field(default_factory=list)
+    warnings: list[ParseIssue] = field(default_factory=list)
     failed: bool = False
 
 
@@ -72,7 +73,7 @@ class RawTable:
     page_end: int
     headers: list[str]
     rows: list[RawRow]
-    warnings: list[str] = field(default_factory=list)
+    warnings: list[ParseIssue] = field(default_factory=list)
 
 
 @dataclass
@@ -133,7 +134,7 @@ def merge_tables_into_single_table(tables: list[RawTable]) -> list[RawTable]:
                 headers.append(header)
 
     rows: list[RawRow] = []
-    warnings: list[str] = []
+    warnings: list[ParseIssue] = []
     for table in tables:
         occurrences: dict[str, int] = {}
         indexes: list[int] = []
@@ -210,14 +211,14 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
     if data_start is None:
         return None
     parsed_rows: list[RawRow] = []
-    table_warnings: list[str] = []
+    table_warnings: list[ParseIssue] = []
     for offset, cells in enumerate(cleaned_rows[data_start:], start=data_start + 1):
         cells = [cells[index] if index < len(cells) else None for index in kept_columns]
         if _is_repeated_header(cells, headers):
-            table_warnings.append(f"第 {offset} 行重复表头，已忽略")
+            table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": offset}))
             continue
         if _is_summary_row(cells):
-            table_warnings.append(f"第 {offset} 行疑似合计行，已忽略")
+            table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": offset}))
             break
         if _is_opening_balance(cells):
             continue
@@ -281,7 +282,7 @@ def _rebuild_table_from_words(
         if _is_amount_header(headers[index])
     }
     parsed_rows: list[RawRow] = []
-    warnings: list[str] = []
+    warnings: list[ParseIssue] = []
     seen_data = False
     last_data_top: float | None = None
 
@@ -291,10 +292,10 @@ def _rebuild_table_from_words(
         if _is_section_end(line.words):
             break
         if _is_repeated_header(cells, headers):
-            warnings.append(f"第 {source_row} 行重复表头，已忽略")
+            warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": source_row}))
             continue
         if _is_summary_row(cells):
-            warnings.append(f"第 {source_row} 行疑似合计行，已忽略")
+            warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": source_row}))
             break
         if _is_page_number(cells):
             continue

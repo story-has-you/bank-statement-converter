@@ -1,8 +1,10 @@
 {
   "Metadata": {
-    "title": "流水转换 | 银行流水 PDF 转 Excel",
-    "description": "把银行流水 PDF 整理成 Excel，转换后可预览并下载。文件只用于本次转换，不会保存。",
-    "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取"
+    "title": "银行流水转换 | PDF 转 Excel",
+    "description": "把文字型银行流水 PDF 整理成可核对的 Excel。文件只用于这次转换，不会保存。",
+    "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取",
+    "brand": "银行流水转换",
+    "alternateName": "银行流水 PDF 转 Excel"
   },
   "HomeHeader": {
     "brand": "银行对账单转换",
@@ -16,7 +18,12 @@
     "label": "选择语言",
     "current": "当前",
     "en": "English",
-    "zh-CN": "中文"
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español"
   },
   "AuthControl": {
     "account": "账号",
@@ -38,7 +45,7 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "把银行流水 PDF 整理成 Excel",
-    "description": "上传一份对账单，先查看识别结果，再下载 Excel。文件只在这次转换中使用，不会保存。"
+    "description": "上传文字型银行流水 PDF，先检查识别出的明细，再下载 Excel。文件只用于这次转换。"
   },
   "PdfUpload": {
     "title": "上传对账单",
@@ -106,10 +113,16 @@
     "missing": {
       "title": "结果已失效",
       "description": "结果只在当前转换流程中临时保留。请回到首页重新上传 PDF。"
+    },
+    "issues": {
+      "repeatedHeader": "第 {row} 行重复了表头，已跳过。",
+      "summaryRow": "第 {row} 行看起来是合计行，已跳过。",
+      "extraCells": "这一行的单元格多于表头，额外内容已保留。",
+      "unknown": "这项内容需要核对。"
     }
   },
   "HomeFeatures": {
-    "title": "这次转换会做这些事",
+    "title": "一次转换能得到什么",
     "securityTitle": "文件不留存",
     "securityDescription": "PDF、生成的 Excel 和流水内容只用于这次转换，不写入文件历史。",
     "banksTitle": "按原表整理",
@@ -118,8 +131,8 @@
     "accuracyDescription": "识别不完整或对不齐的行会标为“需核对”或“识别失败”，下载前可以先查看。"
   },
   "UsageTiers": {
-    "title": "先试用，再决定",
-    "description": "不登录也能开始。登录后每天可处理更多页；需要更高额度时，可以选择按月订阅。",
+    "title": "先免费试一次",
+    "description": "不登录也能试用。登录后每天可处理更多页，需要经常使用时再选择按月套餐。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages} 页",
     "anonymousDescription": "每天累计可转换 {pages} 页 PDF。",
@@ -287,11 +300,11 @@
     },
     "technicalData": {
       "title": "必要的技术信息",
-      "body": "为保障网站运行、安全及排查故障，可能处理访问时间、IP 地址、浏览器或设备信息以及不含对账单内容的错误记录。我们不会把银行流水明细写入这类技术记录。"
+      "body": "为保障网站运行、安全及排查故障，我们可能处理访问时间、IP 地址、浏览器或设备信息，以及不含对账单内容的错误记录。为统计网站访问，Google Analytics 和 Pageview 可能接收访问时间、IP 地址和浏览器或设备信息。我们不会把银行对账单、提取的流水明细或生成的 Excel 内容发送给这些统计服务。"
     },
     "purposes": {
       "title": "处理目的",
-      "body": "相关信息仅用于完成转换和下载、管理账号及使用额度、提供订阅与计费服务、回应用户请求，以及维护服务安全和履行适用的法律义务。"
+      "body": "相关信息仅用于完成转换和下载、统计并改进网站访问、管理账号及使用额度、提供订阅与计费服务、回应用户请求，以及维护服务安全和履行适用的法律义务。"
     },
     "retention": {
       "title": "保存期限",
@@ -300,11 +313,11 @@
     },
     "providers": {
       "title": "服务提供方与跨境处理",
-      "body": "账号登录使用 Google 和 Supabase，订阅付款和订阅状态同步使用 PayPal。PayPal 可能在其适用的服务条款和隐私政策下处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。"
+      "body": "账号登录使用 Google 和 Supabase，订阅付款和订阅状态同步使用 PayPal。网站访问统计使用 Google Analytics 和 Pageview，这些服务可能按其适用的服务条款和隐私政策处理访问相关的技术信息。PayPal 可能处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。"
     },
     "storage": {
       "title": "浏览器存储",
-      "body": "网站使用浏览器本地存储记住外观偏好，并使用必要的会话 Cookie 维持登录状态。您可以通过浏览器设置管理本地存储和 Cookie。"
+      "body": "网站使用浏览器本地存储记住外观偏好，并使用必要的会话 Cookie 维持登录状态。统计服务还可能使用 Cookie 或类似的浏览器标识来统计访问。您可以通过浏览器设置管理本地存储和 Cookie。"
     },
     "security": {
       "title": "信息安全",
@@ -312,7 +325,7 @@
     },
     "rights": {
       "title": "您的隐私权利",
-      "body": "对于欧盟和美国的用户，根据您所在地区适用的法律，您可能有权请求查阅、更正、删除或获取个人信息副本，或反对、限制某些处理。您可通过下方邮箱提出请求；在适用情况下，也可向相关监管机构投诉。我们将按适用法律核实并处理请求。"
+      "body": "根据您所在地区适用的法律，您可能有权查阅、更正、删除或获取个人信息副本，或反对、限制某些处理。您可通过下方邮箱提出请求；在适用情况下，也可向相关监管机构投诉。我们将按适用法律核实和处理请求。"
     },
     "terms": {
       "title": "相关条款",
@@ -332,5 +345,21 @@
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "无法读取上传请求。",
+    "INVALID_FILE": "请选择有效的 PDF 文件。",
+    "PARSER_UNAVAILABLE": "解析服务暂时不可用，请稍后再试。",
+    "QUOTA_EXCEEDED": "当前转换额度已用完。",
+    "QUOTA_UNAVAILABLE": "额度服务暂时不可用，请稍后再试。",
+    "FILE_TOO_LARGE": "PDF 不能超过 20 MB。",
+    "INVALID_FILE_TYPE": "只支持 PDF 文件。",
+    "INVALID_PDF": "这不是可读取的有效 PDF。",
+    "PASSWORD_PROTECTED_PDF": "不支持需要密码的 PDF。",
+    "TOO_MANY_PAGES": "PDF 不能超过 50 页。",
+    "UNSUPPORTED_SCANNED_PDF": "当前版本只支持带可选文字的电子版 PDF，不支持扫描图片。",
+    "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
+    "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
+    "UNKNOWN": "出了点问题，请稍后再试。"
   }
 }

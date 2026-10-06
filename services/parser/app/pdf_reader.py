@@ -15,12 +15,11 @@ MAX_PAGE_COUNT = 50
 
 
 class ParserError(Exception):
-    """A safe, user-facing parser error."""
+    """A parser error identified by a stable code."""
 
-    def __init__(self, code: str, message: str, status_code: int, page: int | None = None) -> None:
-        super().__init__(message)
+    def __init__(self, code: str, status_code: int, page: int | None = None) -> None:
+        super().__init__(code)
         self.code = code
-        self.message = message
         self.status_code = status_code
         self.page = page
 
@@ -29,13 +28,13 @@ def validate_pdf_input(data: bytes, filename: str) -> None:
     """Validate size, filename, and the PDF signature before opening the file."""
 
     if len(data) > MAX_FILE_BYTES:
-        raise ParserError("FILE_TOO_LARGE", "PDF 文件不能超过 20 MB", 413)
+        raise ParserError("FILE_TOO_LARGE", 413)
 
     if not filename.lower().endswith(".pdf"):
-        raise ParserError("INVALID_FILE_TYPE", "只支持 PDF 文件", 400)
+        raise ParserError("INVALID_FILE_TYPE", 400)
 
     if not data.startswith(b"%PDF-"):
-        raise ParserError("INVALID_PDF", "文件不是有效的 PDF", 400)
+        raise ParserError("INVALID_PDF", 400)
 
 
 def open_text_pdf(data: bytes) -> Any:
@@ -48,20 +47,18 @@ def open_text_pdf(data: bytes) -> Any:
         if "password" in message or "encrypt" in message:
             raise ParserError(
                 "PASSWORD_PROTECTED_PDF",
-                "不支持需要密码的 PDF",
                 400,
             ) from exc
-        raise ParserError("INVALID_PDF", "无法读取 PDF 文件", 400) from exc
+        raise ParserError("INVALID_PDF", 400) from exc
 
     try:
         if len(pdf.pages) > MAX_PAGE_COUNT:
-            raise ParserError("TOO_MANY_PAGES", "PDF 不能超过 50 页", 413)
+            raise ParserError("TOO_MANY_PAGES", 413)
 
         document = getattr(pdf, "doc", None)
         if document is not None and getattr(document, "is_extractable", True) is False:
             raise ParserError(
                 "PASSWORD_PROTECTED_PDF",
-                "PDF 禁止文本提取或需要密码",
                 400,
             )
     except Exception:
@@ -84,7 +81,7 @@ def extract_page_words(page: Any) -> list[dict[str, object]]:
             extra_attrs=["size"],
         )
     except Exception as exc:
-        raise ParserError("PARSE_FAILED", "无法提取 PDF 页面文字", 500) from exc
+        raise ParserError("PARSE_FAILED", 500) from exc
 
     extracted: list[dict[str, object]] = []
     for word in words:

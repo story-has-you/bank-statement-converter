@@ -1,0 +1,365 @@
+{
+  "Metadata": {
+    "title": "銀行明細変換 | PDFをExcelへ",
+    "description": "文字を選択できる銀行明細PDFを、確認しやすいExcelに変換します。ファイルは今回の変換にだけ使い、保存しません。",
+    "keywords": "銀行明細変換, 銀行明細 PDF Excel, PDF Excel 変換, 銀行取引抽出",
+    "brand": "銀行明細変換",
+    "alternateName": "銀行明細PDFからExcelへの変換"
+  },
+  "HomeHeader": {
+    "brand": "銀行明細変換",
+    "navigation": "メインナビゲーション",
+    "convert": "変換",
+    "features": "機能",
+    "plans": "プラン",
+    "faq": "よくある質問"
+  },
+  "LanguageSwitcher": {
+    "label": "言語を選択",
+    "current": "現在",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español"
+  },
+  "AuthControl": {
+    "account": "アカウント",
+    "signInWithGoogle": "Googleでログイン",
+    "signOut": "ログアウト",
+    "unavailable": "ログインは一時的に利用できません",
+    "signInFailed": "ログインが完了しませんでした。しばらくしてから再試行してください。",
+    "signOutFailed": "ログアウトが完了しませんでした。しばらくしてから再試行してください。"
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "ログイン未完了 | 銀行明細変換",
+      "description": "Googleログインが完了しませんでした。トップページに戻ってもう一度お試しください。"
+    },
+    "title": "ログインが完了しませんでした",
+    "description": "Googleログインがキャンセルされたか、完了しませんでした。トップページに戻って再試行してください。",
+    "backHome": "トップページへ"
+  },
+  "HomeIntro": {
+    "eyebrow": "銀行明細PDFの変換",
+    "title": "銀行明細PDFをExcelに変換",
+    "description": "文字を選択できる銀行明細PDFをアップロードし、抽出結果を確認してからExcelをダウンロードします。ファイルは今回の変換にだけ使います。"
+  },
+  "PdfUpload": {
+    "title": "銀行明細をアップロード",
+    "description": "一度に1つのPDFを処理します",
+    "fileLabel": "銀行明細PDF",
+    "dropzone": "PDFを選ぶか、ここにドロップ",
+    "dropzoneHint": "正常に開けて、文字を選択できるPDFをアップロードしてください。",
+    "help": "選んだファイル名がここに表示されます。いつでも削除できます。",
+    "errorTitle": "このファイルを変換できませんでした",
+    "invalidPdf": "PDFファイルをアップロードしてください。",
+    "multipleFiles": "一度に処理できるPDFは1つです。",
+    "conversionFailed": "変換を完了できませんでした。別のファイルでお試しください。",
+    "parserUnavailable": "解析サービスから応答がありません。しばらくしてから再試行してください。",
+    "quotaExceeded": "利用できる上限に達したか、このPDFが残りの上限を超えています。",
+    "quotaUnavailable": "上限サービスを一時的に利用できません。しばらくしてから再試行してください。",
+    "removeFile": "ファイルを削除",
+    "quota": "無料枠：匿名は1日{anonymousPages}ページ、ログイン後は1日{authenticatedPages}ページ",
+    "serviceReady": "ファイルは今回の変換にだけ使い、保存しません。",
+    "status": "アップロードできます",
+    "converting": "変換中",
+    "start": "変換して確認"
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "変換結果 | 銀行明細変換",
+      "description": "銀行明細の抽出行とリスク表示を確認し、Excelをダウンロードします。"
+    },
+    "eyebrow": "変換結果",
+    "description": "ダウンロード前に、印の付いた行を元のPDFと照合してください。",
+    "download": "Excelをダウンロード",
+    "backHome": "別のファイルを変換",
+    "summary": {
+      "status": "状態",
+      "pages": "PDFページ",
+      "tables": "表",
+      "rows": "データ行",
+      "warnings": "要確認の行"
+    },
+    "summaryStatus": {
+      "success": "完了",
+      "partial": "一部結果",
+      "failed": "未完了"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "表 {id}",
+      "singleTitle": "銀行明細",
+      "pages": "{start}〜{end}ページ",
+      "rowCount": "{count}行",
+      "status": "状態",
+      "warnings": "確認メモ"
+    },
+    "partial": {
+      "title": "確認が必要な内容があります",
+      "description": "認識できた内容は確認・ダウンロードできます。“DISCREPANCY”または“UNVERIFIABLE”の行は元のPDFと照合してください。"
+    },
+    "empty": {
+      "title": "ダウンロードできるデータがありません",
+      "description": "利用できる表の行を見つけられませんでした。トップページに戻って別のPDFをアップロードしてください。"
+    },
+    "missing": {
+      "title": "結果の有効期限が切れました",
+      "description": "結果は今回の変換中だけ一時的に保持されます。トップページに戻ってPDFをもう一度アップロードしてください。"
+    },
+    "issues": {
+      "repeatedHeader": "{row}行目は重複した見出しのためスキップしました。",
+      "summaryRow": "{row}行目は合計行と思われるためスキップしました。",
+      "extraCells": "この行には見出しより多いセルがあります。余分なセルも保持しました。",
+      "unknown": "この項目は確認が必要です。"
+    }
+  },
+  "HomeFeatures": {
+    "title": "変換でできること",
+    "securityTitle": "ファイル履歴なし",
+    "securityDescription": "PDF、生成したExcel、取引内容は今回の変換だけに使い、ファイル履歴には追加しません。",
+    "banksTitle": "元の表を保つ",
+    "banksDescription": "PDFの見出しとセルの文字を読み取り、元ファイルと照合できる表で表示します。",
+    "accuracyTitle": "確認が必要な行を表示",
+    "accuracyDescription": "根拠が足りない行や位置を合わせにくい行には“DISCREPANCY”または“UNVERIFIABLE”を付けます。"
+  },
+  "UsageTiers": {
+    "title": "まず無料で試す",
+    "description": "アカウントなしで試せます。ログインすると1日の上限が増え、定期的に使う場合は月額プランを選べます。",
+    "anonymous": "ログインなし",
+    "anonymousAmount": "{pages}ページ",
+    "anonymousDescription": "1日に{pages}ページまで変換できます。",
+    "signedIn": "ログイン済み",
+    "signedInAmount": "{pages}ページ",
+    "signedInDescription": "1日に{pages}ページまで変換できます。",
+    "perDay": "/ 日",
+    "perMonth": "/ 月",
+    "planQuota": "月{pages}ページ",
+    "current": "現在のプラン",
+    "plans": {
+      "standard": {
+        "name": "スタンダード",
+        "price": "$30",
+        "description": "銀行明細を個人で処理する方に。"
+      },
+      "professional": {
+        "name": "プロフェッショナル",
+        "price": "$60",
+        "description": "複数の明細を定期的に処理する方に。"
+      },
+      "enterprise": {
+        "name": "エンタープライズ",
+        "price": "$99",
+        "description": "チームや組織で大量に処理する場合に。"
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "サブスクリプションを始める前にログインしてください。",
+    "unavailable": "支払いを一時的に利用できません。しばらくしてから再試行してください。",
+    "subscribe": "PayPalで購読",
+    "processing": "PayPalを開いています",
+    "activationFailed": "支払いは完了しましたが、プランを有効にできませんでした。サポートに連絡してください。",
+    "activated": "プランが有効になりました。",
+    "cancelled": "この購読をキャンセルしました。",
+    "paymentFailed": "支払いを完了できませんでした。しばらくしてから再試行してください。",
+    "currentPlan": "このプランを利用中です。",
+    "api": {
+      "loginUnavailable": "ログインを一時的に利用できません。",
+      "loginRequired": "購読する前にログインしてください。",
+      "emailMissing": "アカウントにメールアドレスがないため、購読を有効にできません。",
+      "invalidRequest": "購読リクエストが無効です。",
+      "invalidTier": "有効なプランを選択してください。",
+      "configurationMissing": "支払い設定がまだ完了していません。",
+      "subscriptionBelongsToAnotherAccount": "この購読は別のアカウントに紐付いています。",
+      "verificationFailed": "PayPalの購読を確認できませんでした。",
+      "activationFailed": "購読の確認を完了できませんでした。しばらくしてから再試行してください。",
+      "createFailed": "PayPal購読を開始できませんでした。しばらくしてから再試行してください。",
+      "webhookInvalidRequest": "Webhookリクエストが無効です。",
+      "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
+      "webhookProcessingFailed": "Webhook処理に失敗しました。"
+    }
+  },
+  "HomeFaq": {
+    "title": "よくある質問",
+    "banks": {
+      "question": "どの明細に対応していますか？",
+      "answer": "複数の電子銀行明細レイアウトで検証を進めています。確認済みの銀行とレイアウトは順次掲載します。"
+    },
+    "accuracy": {
+      "question": "なぜ変換結果を確認する必要がありますか？",
+      "answer": "PDFの見出しとセルの文字をできるだけ保ちますが、複雑なレイアウトやぼやけた文字、ずれた列では“DISCREPANCY”または“UNVERIFIABLE”になることがあります。利用前に元のPDFと照合してください。"
+    },
+    "quota": {
+      "question": "1日に何ページ変換できますか？",
+      "answer": "匿名は1日{anonymousPages}ページ、ログイン後は{authenticatedPages}ページまでです。月額プランはStandardが{standardPages}ページ、Professionalが{professionalPages}ページ、Enterpriseが{enterprisePages}ページです。"
+    },
+    "scans": {
+      "question": "スキャンPDFや暗号化PDFは変換できますか？",
+      "answer": "最初のリリースでは、文字を選択できて正常に開く電子PDFを対象にしています。スキャン、パスワード保護、表を認識できないPDFは変換できない場合があります。"
+    },
+    "storage": {
+      "question": "PDF、Excel、取引内容は保存されますか？",
+      "answer": "保存しません。今回の変換とダウンロードにだけ使い、ファイル履歴には追加しません。現在のフローを離れると再ダウンロードできません。"
+    },
+    "failure": {
+      "question": "変換に失敗するとどうなりますか？",
+      "answer": "失敗を表示し、使えないExcelは提供しません。失敗した変換は上限を消費せず、一部結果はPDFページ数で計算します。"
+    }
+  },
+  "HomeFooter": {
+    "brand": "銀行明細変換",
+    "navigation": "フッターナビゲーション",
+    "plans": "プラン",
+    "faq": "よくある質問",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー"
+  },
+  "LegalCommon": {
+    "lastUpdated": "最終更新：2026年10月2日"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "利用規約 | 銀行明細変換",
+      "description": "ファイル、上限、購読、利用者の責任について説明します。"
+    },
+    "title": "利用規約",
+    "intro": "本サービスはReAvid Ltdが運営し、<site>{domain}</site>で提供します。変換と購読サービスを使う前に、この規約とプライバシーポリシーをご確認ください。",
+    "availability": "PDFからExcelへの変換とPayPal購読は、現在のサービス設定に従って提供します。料金や利用状況は変更される場合があります。",
+    "service": {
+      "title": "サービスの範囲",
+      "body": "対応する銀行明細PDFの取引情報を、確認とダウンロード用のExcelに整理します。対応する銀行、ファイル形式、処理上限はサービスページに記載します。銀行口座接続、銀行業務、財務・税務・法律上の助言は提供しません。"
+    },
+    "authorization": {
+      "title": "ファイルをアップロードする権限",
+      "body": "使用と処理の権限がある明細だけをアップロードしてください。個人情報や金融情報の処理が適用法と関係者への義務に沿うことを確認してください。"
+    },
+    "accuracy": {
+      "title": "変換結果の確認",
+      "body": "明細のレイアウト、鮮明さ、内容は抽出結果に影響します。欠落、重複、誤認識が生じる可能性があるため、記帳や提出の前にExcelと元の明細を照合してください。"
+    },
+    "quota": {
+      "title": "無料上限",
+      "body": "匿名利用は1日{anonymousPages}ページ、ログイン済みの無料利用は1日{authenticatedPages}ページまでです。Standardは月{standardPages}ページ、Professionalは{professionalPages}ページ、Enterpriseは{enterprisePages}ページです。日次上限はUTCでリセットし、購読上限はPayPalの請求期間に従います。"
+    },
+    "subscription": {
+      "title": "購読と支払い",
+      "body": "Standard、Professional、Enterpriseは月次更新です。料金は購入前に表示します。支払いはPayPalで確認後に行われます。自動更新はPayPalアカウントで管理してください。"
+    },
+    "files": {
+      "title": "ファイルとダウンロード",
+      "body": "アップロードしたPDF、抽出した取引、生成したExcelは今回の変換とダウンロードにだけ使います。ファイル履歴として保存せず、フロー終了後の再ダウンロードも提供しません。"
+    },
+    "prohibited": {
+      "title": "禁止される利用",
+      "body": "財務記録の偽造、他者の権利侵害、不正行為、悪意あるファイルの配布、上限や安全対策の回避に使わないでください。違法または明らかな濫用にはアクセスを制限する場合があります。"
+    },
+    "rights": {
+      "title": "権利",
+      "body": "ファイルと内容についてあなたが持つ権利は維持されます。アップロードは今回の処理に必要な許可だけを与えるもので、所有権は移りません。"
+    },
+    "liability": {
+      "title": "利用可能性と責任",
+      "body": "すべてのファイルを変換できること、常に利用できること、結果が完全に正確であることは保証しません。法律で許される範囲で、確認不足や未対応形式、停止による間接損害を負いません。"
+    },
+    "privacy": {
+      "title": "プライバシーと個人情報",
+      "body": "ファイルと個人情報の扱いは<link>プライバシーポリシー</link>に記載しています。"
+    },
+    "changes": {
+      "title": "規約の変更",
+      "body": "サービスや法律の変更に応じて規約を更新し、このページに更新日を表示します。既存の購読に影響する変更は適用法に従って通知します。"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "body": "規約については<link>{email}</link>までReAvid Ltdにお問い合わせください。"
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "プライバシーポリシー | 銀行明細変換",
+      "description": "銀行明細、アカウント、上限、請求情報の扱いを説明します。"
+    },
+    "title": "プライバシーポリシー",
+    "intro": "ReAvid Ltdは<site>{domain}</site>を運営しています。このポリシーは変換とPayPal購読の利用時に情報をどう扱うかを説明します。",
+    "availability": "このポリシーは、現在提供しているPDFからExcelへの変換、ログイン、PayPal購読に適用します。",
+    "documents": {
+      "title": "銀行明細と変換内容",
+      "body": "アップロードしたPDFには氏名、口座番号、取引日、金額、残高、説明が含まれる場合があります。依頼された変換とダウンロードを行うためだけに処理し、広告や無関係な目的には使いません。"
+    },
+    "accountData": {
+      "title": "アカウント、上限、請求情報",
+      "body": "Googleログインでは、アカウント提供に必要な識別情報をSupabaseに保存します。購読を有効にした後は、状態、プラン、PayPal識別子、請求期間、支払者のメールなどを保存します。PDFや取引内容は含みません。"
+    },
+    "technicalData": {
+      "title": "必要な技術情報",
+      "body": "サイト運営、安全確保、障害調査のため、アクセス時刻、IPアドレス、ブラウザや端末の情報、明細内容を含まないエラー記録を処理する場合があります。アクセス状況の把握にはGoogle AnalyticsとPageviewを使用し、これらのサービスがアクセス時刻、IPアドレス、ブラウザや端末の情報を受け取る場合があります。銀行明細、抽出した取引、生成したExcelの内容は、これらの分析サービスに送信しません。"
+    },
+    "purposes": {
+      "title": "処理の目的",
+      "body": "情報は変換とダウンロード、サイトへのアクセスの把握と改善、アカウントと上限の管理、購読と請求、問い合わせ対応、安全確保、適用法上の義務にだけ使います。"
+    },
+    "retention": {
+      "title": "保存期間",
+      "documents": "PDF、抽出した取引、生成したExcelは今回の処理とダウンロード中だけ使います。永続保存せず、後からの再ダウンロード用にも保持しません。",
+      "metadata": "アカウント、上限、請求のメタデータはサービス提供や法的義務に必要な期間だけ保持し、不要になれば削除または匿名化します。"
+    },
+    "providers": {
+      "title": "提供者と越境処理",
+      "body": "ログインにはGoogleとSupabase、支払いと状態同期にはPayPal、アクセス解析にはGoogle AnalyticsとPageviewを使います。分析サービスは、適用される利用規約とプライバシーポリシーに従ってアクセスに関する技術情報を処理する場合があります。越境処理がある場合は適用法が求める保護措置を取ります。銀行明細や取引情報は販売しません。"
+    },
+    "storage": {
+      "title": "ブラウザ保存",
+      "body": "外観設定にはブラウザのローカルストレージ、ログイン維持には必要なCookieを使います。分析サービスもアクセス状況の把握にCookieや類似のブラウザ識別子を使用する場合があります。ローカルストレージとCookieはブラウザ設定で管理できます。"
+    },
+    "security": {
+      "title": "情報セキュリティ",
+      "body": "情報の機微性に応じた対策を取りますが、インターネットやソフトウェアに絶対の安全はありません。元の明細、Excel、アカウント情報を管理してください。"
+    },
+    "rights": {
+      "title": "プライバシー権利",
+      "body": "居住地に適用される法律により、個人情報へのアクセス、訂正、削除、コピーの取得、処理への異議や制限を求められる場合があります。下記メールでご連絡ください。"
+    },
+    "terms": {
+      "title": "関連する規約",
+      "body": "サービスの利用には<link>利用規約</link>も適用されます。"
+    },
+    "changes": {
+      "title": "ポリシーの更新",
+      "body": "機能、処理方法、法律の変更に応じて更新し、このページに日付を表示します。重要な変更は適用法に従って通知します。"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "body": "情報の扱いや権利行使については<link>{email}</link>までReAvid Ltdにお問い合わせください。"
+    }
+  },
+  "ThemeToggle": {
+    "label": "テーマを変更",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "アップロード要求を読み取れません。",
+    "INVALID_FILE": "有効なPDFファイルを選んでください。",
+    "PARSER_UNAVAILABLE": "解析サービスを一時的に利用できません。",
+    "QUOTA_EXCEEDED": "この変換で利用できる上限に達しました。",
+    "QUOTA_UNAVAILABLE": "上限サービスを一時的に利用できません。",
+    "FILE_TOO_LARGE": "PDFは20MB以下にしてください。",
+    "INVALID_FILE_TYPE": "PDFファイルのみ対応しています。",
+    "INVALID_PDF": "読み取れるPDFではありません。",
+    "PASSWORD_PROTECTED_PDF": "パスワード付きPDFには対応していません。",
+    "TOO_MANY_PAGES": "PDFは50ページ以下にしてください。",
+    "UNSUPPORTED_SCANNED_PDF": "文字を選択できる電子PDFのみ対応しています。",
+    "TABLE_NOT_FOUND": "利用できる銀行明細の表が見つかりません。",
+    "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
+    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。"
+  }
+}

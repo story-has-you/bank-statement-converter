@@ -38,11 +38,16 @@ class SourceLocation(ParserModel):
     row: int
 
 
+class ParseIssue(ParserModel):
+    code: str
+    params: dict[str, int | str] = Field(default_factory=dict)
+
+
 class ParsedRow(ParserModel):
     values: dict[str, str | None]
     source: SourceLocation
     status: RowStatus
-    warnings: list[str] = Field(default_factory=list)
+    warnings: list[ParseIssue] = Field(default_factory=list)
 
 
 class ParsedTable(ParserModel):
@@ -51,7 +56,7 @@ class ParsedTable(ParserModel):
     page_end: int = Field(alias="pageEnd")
     columns: list[ColumnModel]
     rows: list[ParsedRow]
-    warnings: list[str] = Field(default_factory=list)
+    warnings: list[ParseIssue] = Field(default_factory=list)
 
 
 class ParseSummary(ParserModel):
@@ -65,7 +70,6 @@ class ParseSummary(ParserModel):
 
 class ParseError(ParserModel):
     code: str
-    message: str
     page: int | None = None
 
 
@@ -80,4 +84,3 @@ class ParseResponse(ParserModel):
 
 class ErrorResponse(ParserModel):
     code: str
-    message: str

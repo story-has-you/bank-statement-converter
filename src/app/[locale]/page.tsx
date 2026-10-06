@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     alternates: getLocalizedAlternates("/", locale),
     openGraph: {
       type: "website",
-      siteName: "Bank Statement Converter",
+      siteName: t("brand"),
       title: t("title"),
       description: t("description"),
       url: getLocalizedAlternates("/", locale).canonical,

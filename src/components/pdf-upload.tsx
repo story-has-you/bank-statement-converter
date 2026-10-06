@@ -2,7 +2,7 @@
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -27,6 +27,7 @@ function formatFileSize(bytes: number): string {
 
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
+  const locale = useLocale();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -39,6 +40,7 @@ export function PdfUpload() {
     | "quotaUnavailable"
     | null
   >(null);
+  const [serverError, setServerError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isPending, setIsPending] = useState(false);
 
@@ -51,12 +53,14 @@ export function PdfUpload() {
     ) {
       setFile(null);
       setError("invalidPdf");
+      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
 
     setFile(candidate);
     setError(null);
+    setServerError(null);
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -70,6 +74,7 @@ export function PdfUpload() {
     if (event.dataTransfer.files.length > 1) {
       setFile(null);
       setError("multipleFiles");
+      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -80,6 +85,7 @@ export function PdfUpload() {
   function removeFile() {
     setFile(null);
     setError(null);
+    setServerError(null);
     if (inputRef.current) inputRef.current.value = "";
   }
 
@@ -87,6 +93,7 @@ export function PdfUpload() {
     if (!file || isPending) return;
 
     setError(null);
+    setServerError(null);
     setIsPending(true);
     const formData = new FormData();
     formData.append("file", file);
@@ -95,6 +102,7 @@ export function PdfUpload() {
       const response = await fetch("/api/convert", {
         method: "POST",
         body: formData,
+        headers: { "x-app-locale": locale },
       });
       const payload: unknown = await response.json().catch(() => null);
 
@@ -112,19 +120,24 @@ export function PdfUpload() {
         } else {
           setError("conversionFailed");
         }
+        if (typeof payload === "object" && payload !== null && "message" in payload && typeof payload.message === "string") {
+          setServerError(payload.message);
+        }
         return;
       }
 
       try {
         saveConversionPayload(file.name, payload);
-      } catch {
+    } catch {
         setError("conversionFailed");
+        setServerError(null);
         return;
       }
 
       router.push("/result");
     } catch {
       setError("parserUnavailable");
+      setServerError(null);
     } finally {
       setIsPending(false);
     }
@@ -193,7 +206,7 @@ export function PdfUpload() {
         <Alert variant="destructive" className="mt-4">
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("errorTitle")}</AlertTitle>
-          <AlertDescription>{t(error)}</AlertDescription>
+          <AlertDescription>{serverError ?? t(error)}</AlertDescription>
         </Alert>
       )}
 

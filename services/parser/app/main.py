@@ -36,7 +36,7 @@ async def parse(
 
     try:
         if file.content_type not in (None, "application/pdf", "application/octet-stream"):
-            raise ParserError("INVALID_FILE_TYPE", "只支持 PDF 文件", 400)
+            raise ParserError("INVALID_FILE_TYPE", 400)
 
         data = await file.read(MAX_FILE_BYTES + 1)
         return parse_statement(data, file.filename or "statement.pdf")
@@ -48,7 +48,6 @@ async def parse(
             status_code=500,
             content=ErrorResponse(
                 code="PARSE_FAILED",
-                message="PDF 解析失败，请稍后重试",
             ).model_dump(by_alias=True),
         )
     finally:
@@ -58,7 +57,7 @@ async def parse(
 def _error_response(error: ParserError) -> JSONResponse:
     return JSONResponse(
         status_code=error.status_code,
-        content=ErrorResponse(code=error.code, message=error.message).model_dump(by_alias=True),
+        content=ErrorResponse(code=error.code).model_dump(by_alias=True),
     )
 
 
@@ -71,7 +70,6 @@ def _authorize_request(request: Request) -> JSONResponse | None:
             status_code=503,
             content=ErrorResponse(
                 code="PARSER_AUTH_NOT_CONFIGURED",
-                message="解析服务认证未配置",
             ).model_dump(by_alias=True),
         )
 
@@ -82,7 +80,6 @@ def _authorize_request(request: Request) -> JSONResponse | None:
             status_code=401,
             content=ErrorResponse(
                 code="UNAUTHORIZED",
-                message="解析服务认证失败",
             ).model_dump(by_alias=True),
         )
 
@@ -91,7 +88,6 @@ def _authorize_request(request: Request) -> JSONResponse | None:
             status_code=401,
             content=ErrorResponse(
                 code="UNAUTHORIZED",
-                message="解析服务认证失败",
             ).model_dump(by_alias=True),
         )
 

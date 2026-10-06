@@ -60,7 +60,7 @@ function getWebhookStatus(eventType: string, resource: Record<string, unknown>):
 }
 
 export async function POST(request: Request): Promise<Response> {
-  const t = await getPayPalApiTranslations();
+  const t = await getPayPalApiTranslations(request);
   const rawBody = await request.text();
   let payload: unknown;
 

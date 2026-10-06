@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 
 import { Button } from "@/components/ui/button";
 import type { ParseResponse } from "@/lib/conversion-types";
+import { getParseIssueKey } from "@/lib/parse-issues";
 
 type ExcelDownloadProps = {
   filename: string;
@@ -34,7 +35,7 @@ export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
       const rows = table.rows.map((row) => [
         ...table.columns.map((column) => row.values[column.key] ?? ""),
         row.status,
-        row.warnings.join("; "),
+        row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; "),
       ]);
       const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
       worksheet["!cols"] = table.columns.map(() => ({ wch: 20 })).concat([

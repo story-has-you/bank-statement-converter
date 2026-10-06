@@ -1,8 +1,10 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF to Excel",
-    "description": "Convert text-based bank statement PDFs to reviewable Excel files. Preview extracted rows, check risk labels, and download the result without file history.",
-    "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction"
+    "description": "Turn a text-based bank statement PDF into an Excel file you can review. Files are used for this conversion only.",
+    "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction",
+    "brand": "Bank Statement Converter",
+    "alternateName": "Bank statement PDF to Excel converter"
   },
   "HomeHeader": {
     "brand": "Bank Statement Converter",
@@ -16,7 +18,12 @@
     "label": "Choose language",
     "current": "Current",
     "en": "English",
-    "zh-CN": "中文"
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español"
   },
   "AuthControl": {
     "account": "Account",
@@ -38,7 +45,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter for PDF to Excel",
-    "description": "Upload a text-based bank statement PDF, review the extracted rows, and download an Excel file. Your files are used for this conversion and are not saved."
+    "description": "Upload a text-based bank statement PDF, check the extracted rows, then download the Excel file. We use your file for this conversion only."
   },
   "PdfUpload": {
     "title": "Upload a bank statement",
@@ -46,7 +53,7 @@
     "fileLabel": "Bank statement PDF",
     "dropzone": "Choose a PDF or drop it here",
     "dropzoneHint": "Upload a PDF that opens normally and contains selectable text.",
-    "help": "The selected filename will appear here. You can remove it at any time.",
+    "help": "Your filename will appear here. Remove the file whenever you need to.",
     "errorTitle": "This file could not be converted",
     "invalidPdf": "Please upload a PDF file.",
     "multipleFiles": "Only one PDF can be processed at a time.",
@@ -97,7 +104,7 @@
     },
     "partial": {
       "title": "Some content needs review",
-      "description": "Recognized content can still be previewed and downloaded. Check rows marked “DISCREPANCY” or “UNVERIFIABLE” against the original PDF."
+      "description": "Recognized content can still be previewed and downloaded. Check rows marked \"DISCREPANCY\" or \"UNVERIFIABLE\" against the original PDF."
     },
     "empty": {
       "title": "There is no downloadable data",
@@ -106,20 +113,26 @@
     "missing": {
       "title": "This result has expired",
       "description": "Results are kept temporarily for the current conversion flow. Return to the homepage and upload the PDF again."
+    },
+    "issues": {
+      "repeatedHeader": "Row {row} repeats the table header and was skipped.",
+      "summaryRow": "Row {row} looks like a summary row and was skipped.",
+      "extraCells": "This row has more cells than the header. The extra cells were kept.",
+      "unknown": "This item needs review."
     }
   },
   "HomeFeatures": {
-    "title": "What this conversion does",
+    "title": "What you get from a conversion",
     "securityTitle": "No file history",
     "securityDescription": "The PDF, generated Excel file, and transaction content are used for this conversion only and are not added to file history.",
     "banksTitle": "Keeps the source layout",
     "banksDescription": "The converter reads table headers and cell text from the PDF and presents the result in tables for comparison with the source file.",
     "accuracyTitle": "Marks rows to review",
-    "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked “DISCREPANCY” or “UNVERIFIABLE” before download."
+    "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked \"DISCREPANCY\" or \"UNVERIFIABLE\" before download."
   },
   "UsageTiers": {
-    "title": "Try it first, then choose a plan",
-    "description": "You can start without signing in. Sign in for a larger daily quota, or choose a monthly plan when you need more capacity.",
+    "title": "Start with a free conversion",
+    "description": "You can try the converter without an account. Sign in for a larger daily quota, or choose a monthly plan for regular use.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages} page",
     "anonymousDescription": "Convert up to {pages} PDF page per day.",
@@ -182,7 +195,7 @@
     },
     "accuracy": {
       "question": "Why should I review the conversion result?",
-      "answer": "The converter aims to preserve table headers and cell text from the PDF. Complex layouts, blurred text, or misaligned tables can leave rows marked “DISCREPANCY” or “UNVERIFIABLE”. Compare the result with the original PDF before bookkeeping, filing, or submission."
+      "answer": "The converter keeps table headers and cell text where it can. Complex layouts, blurred text, or uneven columns can leave rows marked \"DISCREPANCY\" or \"UNVERIFIABLE\". Check the Excel file against the original PDF before you use it."
     },
     "quota": {
       "question": "How many pages can I convert each day?",
@@ -287,11 +300,11 @@
     },
     "technicalData": {
       "title": "Necessary technical information",
-      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. We do not write bank transactions into these technical records."
+      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. To measure visits, Google Analytics and Pageview may receive access time, IP address, and browser or device information. We do not send bank statements, extracted transactions, or generated Excel content to these analytics services."
     },
     "purposes": {
       "title": "Processing purposes",
-      "body": "Information is used only to complete conversions and downloads, manage accounts and quotas, provide subscriptions and billing, respond to requests, maintain service security, and meet applicable legal obligations."
+      "body": "Information is used only to complete conversions and downloads, measure and improve site visits, manage accounts and quotas, provide subscriptions and billing, respond to requests, maintain service security, and meet applicable legal obligations."
     },
     "retention": {
       "title": "Retention",
@@ -300,11 +313,11 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
+      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
     },
     "storage": {
       "title": "Browser storage",
-      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. You can manage local storage and cookies through your browser settings."
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings."
     },
     "security": {
       "title": "Information security",
@@ -332,5 +345,21 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "The upload request could not be read.",
+    "INVALID_FILE": "Choose a valid PDF file.",
+    "PARSER_UNAVAILABLE": "The parsing service is temporarily unavailable. Please try again later.",
+    "QUOTA_EXCEEDED": "You have reached the available quota for this conversion.",
+    "QUOTA_UNAVAILABLE": "The quota service is temporarily unavailable. Please try again later.",
+    "FILE_TOO_LARGE": "This PDF is larger than 20 MB.",
+    "INVALID_FILE_TYPE": "Only PDF files are supported.",
+    "INVALID_PDF": "This file is not a readable PDF.",
+    "PASSWORD_PROTECTED_PDF": "Password-protected PDFs cannot be converted.",
+    "TOO_MANY_PAGES": "This PDF has more than 50 pages.",
+    "UNSUPPORTED_SCANNED_PDF": "This version accepts electronic PDFs with selectable text, not scanned images.",
+    "TABLE_NOT_FOUND": "No usable bank statement table was found.",
+    "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
+    "UNKNOWN": "Something went wrong. Please try again."
   }
 }

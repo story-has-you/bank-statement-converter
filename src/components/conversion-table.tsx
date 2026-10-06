@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import type { ParsedTable, RowStatus } from "@/lib/conversion-types";
+import { getParseIssueKey } from "@/lib/parse-issues";
 
 type ConversionTableProps = {
   table: ParsedTable;
@@ -51,7 +52,9 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
       {table.warnings.length > 0 && (
         <div className="border-b border-border bg-secondary/40 px-4 py-3 text-xs text-secondary-foreground">
           {table.warnings.map((warning) => (
-            <p key={warning}>{warning}</p>
+            <p key={`${warning.code}-${JSON.stringify(warning.params)}`}>
+              {t(getParseIssueKey(warning), warning.params)}
+            </p>
           ))}
         </div>
       )}
@@ -92,7 +95,9 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
                   <Badge variant={statusVariant(row.status)}>{getStatusLabel(row.status)}</Badge>
                 </td>
                 <td className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
-                  {row.warnings.length > 0 ? row.warnings.join("; ") : "-"}
+                  {row.warnings.length > 0
+                    ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ")
+                    : "-"}
                 </td>
               </tr>
             ))}

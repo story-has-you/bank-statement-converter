@@ -13,7 +13,7 @@ function errorResponse(message: string, status: number): NextResponse {
 }
 
 export async function POST(request: Request): Promise<Response> {
-  const t = await getPayPalApiTranslations();
+  const t = await getPayPalApiTranslations(request);
   const supabase = await createClient();
   if (!supabase) return errorResponse(t("loginUnavailable"), 503);
 

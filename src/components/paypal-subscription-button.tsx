@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { usePayPalSubscriptionPaymentSession } from "@paypal/react-paypal-js/sdk-v6";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
   current,
 }) => {
   const t = useTranslations("PayPal");
+  const locale = useLocale();
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -39,7 +41,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
       createSubscription: async () => {
         const response = await fetch("/api/paypal/subscriptions/create", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "x-app-locale": locale },
           body: JSON.stringify({ tier }),
         });
         const payload = (await response.json()) as {
@@ -69,7 +71,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
   async function activateSubscription(subscriptionId: string): Promise<void> {
     const response = await fetch("/api/paypal/subscriptions/activate", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-app-locale": locale },
       body: JSON.stringify({ subscriptionId, tier }),
     });
     const payload = (await response.json()) as ActivateResponse;
