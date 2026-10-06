@@ -82,6 +82,17 @@ pnpm exec wrangler deploy
 
 `wrangler.jsonc` 已配置 `parser.bankstatementconverter.xyz` Custom Domain、Container 端口 `8080` 和 `/health` readiness 检查。部署前需要 Docker 可用；Cloudflare 会构建 `services/parser/Dockerfile`。
 
+#### GitHub Actions 自动部署
+
+仓库已配置 `.github/workflows/deploy-parser.yml`。向 `master` 推送提交后，GitHub Actions 会在 `services/parser` 目录执行 `wrangler deploy`，自动更新 Cloudflare Worker 和 Parser Container。工作流使用仓库 Secrets 中的以下配置：
+
+```text
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
+```
+
+`CLOUDFLARE_API_TOKEN` 需要具备目标 Cloudflare 账户的 Worker 部署权限。`PARSER_SHARED_SECRET` 不放入 GitHub Actions 配置；请先在 Cloudflare 中执行一次 `pnpm exec wrangler secret put PARSER_SHARED_SECRET`，后续自动部署会保留该 Worker Secret。
+
 ### Vercel Next.js
 
 将仓库根目录连接到 Vercel，使用 `pnpm install --frozen-lockfile` 和 `pnpm build`。Production 环境需要配置：
