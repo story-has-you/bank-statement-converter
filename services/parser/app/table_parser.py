@@ -41,9 +41,12 @@ HEADER_TERMS = (
 )
 SUMMARY_TERMS = ("合计", "总计", "本页小计", "累计", "total", "subtotal", "ending balance")
 DATE_PATTERN = re.compile(
-    r"^(?:\d{8}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4})\b"
+    r"^(?:\d{8}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}(?:[-/.]\d{2,4})?)\b"
 )
-MONEY_PATTERN = re.compile(r"^[€$£]?\(?[+-]?\d[\d.,]*[.,]\d{2}\)?[€$£]?$", re.ASCII)
+MONEY_PATTERN = re.compile(
+    r"^(?:[€$£]?\(?[+-]?\d[\d.,]*[.,]\d{2}\)?|\([€$£]?[+-]?\d[\d.,]*[.,]\d{2}[€$£]?\))$",
+    re.ASCII,
+)
 OPENING_BALANCE_TERMS = ("previous balance", "opening balance", "saldovortrag", "anfangssaldo")
 SECTION_END_TERMS = ("checks", "daily balance summary", "fees", "interest charged")
 ROW_Y_TOLERANCE = 3.0
@@ -278,7 +281,7 @@ def _rebuild_table_from_words(
         if _is_amount_header(headers[index])
     }
     parsed_rows: list[RawRow] = []
-    warnings = ["使用文字坐标重建表格，未检测到明确表格边界"]
+    warnings: list[str] = []
     seen_data = False
     last_data_top: float | None = None
 
@@ -449,7 +452,9 @@ def _is_statement_header(row: list[str | None]) -> bool:
     has_amounts = (
         "余额" in text
         or "balance" in text
+        or "amount" in text
         or ("debit" in text and "credit" in text)
+        or ("withdrawal" in text and "deposit" in text)
         or ("lastschrift" in text and "gutschrift" in text)
     )
     return has_date and has_description and has_amounts
@@ -461,7 +466,7 @@ def _is_amount_header(label: str) -> bool:
         term in text
         for term in (
             "金额", "余额", "amount", "balance", "debit", "credit",
-            "betrag", "saldo", "lastschrift", "gutschrift",
+            "withdrawal", "deposit", "betrag", "saldo", "lastschrift", "gutschrift",
         )
     )
 
@@ -503,7 +508,10 @@ def _requires_coordinate_rebuild(headers: list[str], rows: list[RawRow]) -> bool
 
 
 def _is_page_number(row: list[str | None]) -> bool:
-    text = next((cell for cell in row if cell), "")
+    populated = [cell for cell in row if cell]
+    if len(populated) != 1:
+        return False
+    text = populated[0]
     return bool(re.fullmatch(r"\d+\s*/\s*\d+", text.strip()))
 
 

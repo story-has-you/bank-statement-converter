@@ -1,0 +1,336 @@
+{
+  "Metadata": {
+    "title": "Bank Statement Converter | PDF to Excel",
+    "description": "Convert text-based bank statement PDFs to reviewable Excel files. Preview extracted rows, check risk labels, and download the result without file history.",
+    "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction"
+  },
+  "HomeHeader": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Main navigation",
+    "convert": "Convert",
+    "features": "Features",
+    "plans": "Plans",
+    "faq": "FAQ"
+  },
+  "LanguageSwitcher": {
+    "label": "Choose language",
+    "current": "Current",
+    "en": "English",
+    "zh-CN": "中文"
+  },
+  "AuthControl": {
+    "account": "Account",
+    "signInWithGoogle": "Sign in with Google",
+    "signOut": "Sign out",
+    "unavailable": "Sign-in is temporarily unavailable",
+    "signInFailed": "Sign-in did not complete. Please try again later.",
+    "signOutFailed": "Sign-out did not complete. Please try again later."
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Sign-in incomplete | Bank Statement Converter",
+      "description": "Google sign-in did not complete. Return to the homepage and try again."
+    },
+    "title": "Sign-in incomplete",
+    "description": "Google sign-in was cancelled or did not complete. Return to the homepage and try again.",
+    "backHome": "Back to homepage"
+  },
+  "HomeIntro": {
+    "eyebrow": "Bank statement PDF conversion",
+    "title": "Bank Statement Converter for PDF to Excel",
+    "description": "Upload a text-based bank statement PDF, review the extracted rows, and download an Excel file. Your files are used for this conversion and are not saved."
+  },
+  "PdfUpload": {
+    "title": "Upload a bank statement",
+    "description": "Process one PDF at a time",
+    "fileLabel": "Bank statement PDF",
+    "dropzone": "Choose a PDF or drop it here",
+    "dropzoneHint": "Upload a PDF that opens normally and contains selectable text.",
+    "help": "The selected filename will appear here. You can remove it at any time.",
+    "errorTitle": "This file could not be converted",
+    "invalidPdf": "Please upload a PDF file.",
+    "multipleFiles": "Only one PDF can be processed at a time.",
+    "conversionFailed": "The conversion did not complete. Try another file.",
+    "parserUnavailable": "The parsing service did not respond. Please try again later.",
+    "quotaExceeded": "Your current quota is used up, or this PDF is larger than your remaining quota.",
+    "quotaUnavailable": "The quota service is temporarily unavailable. Please try again later.",
+    "removeFile": "Remove file",
+    "quota": "Free quota: {anonymousPages} page per day anonymously, {authenticatedPages} pages per day when signed in",
+    "serviceReady": "Files are used for this conversion only and are not saved.",
+    "status": "Ready to upload",
+    "converting": "Converting",
+    "start": "Convert and review"
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Conversion result | Bank Statement Converter",
+      "description": "Review extracted bank statement rows, check risk labels, and download the Excel result."
+    },
+    "eyebrow": "Conversion result",
+    "description": "Compare the marked rows with the original PDF before downloading.",
+    "download": "Download Excel",
+    "backHome": "Convert another file",
+    "summary": {
+      "status": "Status",
+      "pages": "PDF pages",
+      "tables": "Tables",
+      "rows": "Data rows",
+      "warnings": "Rows to review"
+    },
+    "summaryStatus": {
+      "success": "Complete",
+      "partial": "Partial result",
+      "failed": "Incomplete"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Table {id}",
+      "singleTitle": "Bank statement transactions",
+      "pages": "Pages {start} to {end}",
+      "rowCount": "{count} rows",
+      "status": "Status",
+      "warnings": "Review notes"
+    },
+    "partial": {
+      "title": "Some content needs review",
+      "description": "Recognized content can still be previewed and downloaded. Check rows marked “DISCREPANCY” or “UNVERIFIABLE” against the original PDF."
+    },
+    "empty": {
+      "title": "There is no downloadable data",
+      "description": "No usable table rows were found in this PDF. Return to the homepage and upload another file."
+    },
+    "missing": {
+      "title": "This result has expired",
+      "description": "Results are kept temporarily for the current conversion flow. Return to the homepage and upload the PDF again."
+    }
+  },
+  "HomeFeatures": {
+    "title": "What this conversion does",
+    "securityTitle": "No file history",
+    "securityDescription": "The PDF, generated Excel file, and transaction content are used for this conversion only and are not added to file history.",
+    "banksTitle": "Keeps the source layout",
+    "banksDescription": "The converter reads table headers and cell text from the PDF and presents the result in tables for comparison with the source file.",
+    "accuracyTitle": "Marks rows to review",
+    "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked “DISCREPANCY” or “UNVERIFIABLE” before download."
+  },
+  "UsageTiers": {
+    "title": "Try it first, then choose a plan",
+    "description": "You can start without signing in. Sign in for a larger daily quota, or choose a monthly plan when you need more capacity.",
+    "anonymous": "Without signing in",
+    "anonymousAmount": "{pages} page",
+    "anonymousDescription": "Convert up to {pages} PDF page per day.",
+    "signedIn": "Signed in",
+    "signedInAmount": "{pages} pages",
+    "signedInDescription": "Convert up to {pages} PDF pages per day.",
+    "perDay": "/ day",
+    "perMonth": "/ month",
+    "planQuota": "{pages} pages per month",
+    "current": "Current plan",
+    "plans": {
+      "standard": {
+        "name": "Standard",
+        "price": "$30",
+        "description": "For individuals who need a dependable way to process bank statements."
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$60",
+        "description": "For professionals who process multiple bank statements regularly."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$99",
+        "description": "For teams and organizations with higher-volume statement workflows."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Sign in before starting a subscription.",
+    "unavailable": "Payment is temporarily unavailable. Please try again later.",
+    "subscribe": "Subscribe with PayPal",
+    "processing": "Opening PayPal",
+    "activationFailed": "Payment completed, but the plan could not be activated. Please contact support.",
+    "activated": "Your plan is active.",
+    "cancelled": "You cancelled this subscription.",
+    "paymentFailed": "Payment did not complete. Please try again later.",
+    "currentPlan": "You are using this plan.",
+    "api": {
+      "loginUnavailable": "Sign-in is temporarily unavailable.",
+      "loginRequired": "Sign in before subscribing.",
+      "emailMissing": "Your account has no email address, so the subscription cannot be activated.",
+      "invalidRequest": "The subscription request is invalid.",
+      "invalidTier": "Choose a valid subscription plan.",
+      "configurationMissing": "Payment has not been configured yet.",
+      "subscriptionBelongsToAnotherAccount": "This subscription belongs to another account.",
+      "verificationFailed": "The PayPal subscription could not be verified.",
+      "activationFailed": "Subscription verification did not complete. Please try again later.",
+      "createFailed": "The PayPal subscription could not be started. Please try again later.",
+      "webhookInvalidRequest": "The webhook request is invalid.",
+      "webhookSignatureFailed": "Webhook signature verification failed.",
+      "webhookProcessingFailed": "Webhook processing failed."
+    }
+  },
+  "HomeFaq": {
+    "title": "Frequently asked questions",
+    "banks": {
+      "question": "Which statements are supported?",
+      "answer": "The converter is being validated against multiple electronic bank statement layouts. Specific banks and layout variants will be listed as they are verified."
+    },
+    "accuracy": {
+      "question": "Why should I review the conversion result?",
+      "answer": "The converter aims to preserve table headers and cell text from the PDF. Complex layouts, blurred text, or misaligned tables can leave rows marked “DISCREPANCY” or “UNVERIFIABLE”. Compare the result with the original PDF before bookkeeping, filing, or submission."
+    },
+    "quota": {
+      "question": "How many pages can I convert each day?",
+      "answer": "Anonymous users can convert {anonymousPages} page per day, and signed-in users can convert {authenticatedPages} pages per day. Monthly plans include {standardPages} pages for Standard, {professionalPages} pages for Professional, and {enterprisePages} pages for Enterprise."
+    },
+    "scans": {
+      "question": "Can I convert scanned or encrypted PDFs?",
+      "answer": "The first release focuses on electronic PDFs with selectable text that open normally. Scanned files, password-protected files, or PDFs without recognizable tables may not convert."
+    },
+    "storage": {
+      "question": "Are my PDF, Excel file, or transactions saved?",
+      "answer": "No. They are used for the current conversion and download only and are not added to file history. Once you leave the current flow, the result cannot be downloaded again."
+    },
+    "failure": {
+      "question": "What happens if conversion fails?",
+      "answer": "The page reports the failure and does not provide an invalid Excel file. Failed conversions do not use quota; partial results count PDF pages."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Footer navigation",
+    "plans": "Plans",
+    "faq": "FAQ",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Last updated: October 2, 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Terms of service | Bank Statement Converter",
+      "description": "Learn how Bank Statement Converter handles files, quotas, subscriptions, and user responsibilities."
+    },
+    "title": "Terms of service",
+    "intro": "This service is operated by ReAvid Ltd and provided through <site>{domain}</site>. Read these terms and the privacy policy before using the conversion and subscription services.",
+    "availability": "PDF to Excel conversion and PayPal subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
+    "service": {
+      "title": "Service scope",
+      "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice."
+    },
+    "authorization": {
+      "title": "Authorization to upload files",
+      "body": "Upload only statements that you are authorized to use and process. Make sure your upload and processing of personal or financial information comply with applicable law and your obligations to other people. Do not upload files obtained without authorization."
+    },
+    "accuracy": {
+      "title": "Reviewing conversion results",
+      "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision."
+    },
+    "quota": {
+      "title": "Free quota",
+      "body": "Anonymous users can convert {anonymousPages} PDF page per day, and signed-in free users can convert {authenticatedPages} PDF pages per day. Standard includes {standardPages} pages per month, Professional includes {professionalPages}, and Enterprise includes {enterprisePages}. Daily quota resets in UTC and plan quota follows the current PayPal billing period. Failed conversions do not use quota; partial results count PDF pages."
+    },
+    "subscription": {
+      "title": "Subscriptions and payment",
+      "body": "Standard, Professional, and Enterprise plans renew monthly. Prices are shown before purchase. Payment is completed through PayPal and is charged only after you confirm the purchase. PayPal may send subscription status, renewal, and payment failure information to this service. Manage automatic renewal for a subscription in your PayPal account."
+    },
+    "files": {
+      "title": "Files and downloads",
+      "body": "Uploaded PDFs, extracted transactions, and generated Excel files are used to complete the current conversion and download only. They are not kept as persistent file history. Keep your original statement and downloaded result yourself; the service does not provide historical re-downloads after the current flow ends."
+    },
+    "prohibited": {
+      "title": "Prohibited misuse",
+      "body": "Do not use the service to forge or misrepresent financial records, infringe another person's rights, commit fraud, distribute malicious files, or bypass quotas, security measures, or access limits. We may restrict service access for illegal or clearly abusive activity."
+    },
+    "rights": {
+      "title": "Ownership",
+      "body": "You retain the rights you have to files and their contents. Uploading a file gives us only the permission needed to process it for the current conversion; it does not transfer ownership. Rights in the website software, interface, and brand remain with their lawful owners."
+    },
+    "liability": {
+      "title": "Availability and liability",
+      "body": "We work to keep the service available but do not guarantee that every file will convert, that the service will always be available, or that results will be completely accurate. To the extent allowed by law, we are not liable for indirect losses caused by failure to review results, unsupported formats, or service interruptions. This does not exclude liability or user rights that cannot be excluded by law."
+    },
+    "privacy": {
+      "title": "Privacy and personal information",
+      "body": "How files and personal information are handled is described in the <link>privacy policy</link>."
+    },
+    "changes": {
+      "title": "Changes to these terms",
+      "body": "We may update these terms when the service or legal requirements change and will show the update date on this page. Important changes affecting an existing subscription will be communicated as required by law and the rules shown at purchase."
+    },
+    "contact": {
+      "title": "Contact us",
+      "body": "For questions about these terms, contact ReAvid Ltd at <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Privacy policy | Bank Statement Converter",
+      "description": "Learn how Bank Statement Converter handles bank statements, accounts, usage quotas, and billing information."
+    },
+    "title": "Privacy policy",
+    "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and PayPal subscription services.",
+    "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and PayPal subscription features.",
+    "documents": {
+      "title": "Bank statements and conversion content",
+      "body": "Uploaded PDFs may contain names, account numbers, transaction dates, amounts, balances, and transaction descriptions. When conversion is available, we process the PDF, extracted transactions, and generated Excel file only to complete your requested conversion and download. We do not use this content for advertising or unrelated purposes."
+    },
+    "accountData": {
+      "title": "Account, quota, and billing information",
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, PayPal subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. PayPal handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content."
+    },
+    "technicalData": {
+      "title": "Necessary technical information",
+      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. We do not write bank transactions into these technical records."
+    },
+    "purposes": {
+      "title": "Processing purposes",
+      "body": "Information is used only to complete conversions and downloads, manage accounts and quotas, provide subscriptions and billing, respond to requests, maintain service security, and meet applicable legal obligations."
+    },
+    "retention": {
+      "title": "Retention",
+      "documents": "PDFs, extracted transactions, and generated Excel files are used during the processing required for the current conversion and download only. They are not written to a persistent database, object storage, or file history, and are not kept for later download.",
+      "metadata": "Account, quota, and billing metadata is retained only as long as needed to provide the service or meet applicable legal obligations. It is deleted or anonymized when no longer needed according to the actual system and legal requirements. The account email stored at purchase is part of the subscription record."
+    },
+    "providers": {
+      "title": "Providers and international processing",
+      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
+    },
+    "storage": {
+      "title": "Browser storage",
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. You can manage local storage and cookies through your browser settings."
+    },
+    "security": {
+      "title": "Information security",
+      "body": "We use reasonable measures appropriate to the sensitivity of the information being processed, but internet transmission and software systems cannot guarantee absolute security. Protect your original statements, downloaded Excel files, and account access details."
+    },
+    "rights": {
+      "title": "Your privacy rights",
+      "body": "Depending on the laws that apply where you live, you may have the right to access, correct, delete, or obtain a copy of personal information, or to object to or restrict certain processing. Contact us using the email below. Where applicable, you may also complain to a regulator. We will verify and handle requests under applicable law."
+    },
+    "terms": {
+      "title": "Related terms",
+      "body": "Using the service also requires reading the <link>terms of service</link>."
+    },
+    "changes": {
+      "title": "Policy updates",
+      "body": "We may update this policy when service features, processing methods, or legal requirements change and will show the update date on this page. We will notify users of material changes as required by applicable law."
+    },
+    "contact": {
+      "title": "Contact us",
+      "body": "For questions about information processing or to exercise applicable privacy rights, contact ReAvid Ltd at <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Change theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

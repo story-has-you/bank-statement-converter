@@ -1,7 +1,8 @@
 {
   "Metadata": {
     "title": "流水转换 | 银行流水 PDF 转 Excel",
-    "description": "把银行流水 PDF 整理成 Excel，转换后可预览并下载。文件只用于本次转换，不会保存。"
+    "description": "把银行流水 PDF 整理成 Excel，转换后可预览并下载。文件只用于本次转换，不会保存。",
+    "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取"
   },
   "HomeHeader": {
     "brand": "银行对账单转换",
@@ -10,6 +11,12 @@
     "features": "功能",
     "plans": "会员方案",
     "faq": "常见问题"
+  },
+  "LanguageSwitcher": {
+    "label": "选择语言",
+    "current": "当前",
+    "en": "English",
+    "zh-CN": "中文"
   },
   "AuthControl": {
     "account": "账号",

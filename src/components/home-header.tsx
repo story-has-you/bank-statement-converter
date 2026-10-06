@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { AuthControl } from "@/components/auth-control";
 import { BrandLogo } from "@/components/brand-logo";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -27,6 +28,7 @@ export async function HomeHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
           <AuthControl configured={Boolean(supabase)} email={user?.email ?? null} signedIn={Boolean(user)} />
         </div>

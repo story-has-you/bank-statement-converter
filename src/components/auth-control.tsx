@@ -1,7 +1,7 @@
 "use client";
 
 import { LogInIcon, LogOutIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -17,6 +17,7 @@ type AuthControlProps = {
 
 export function AuthControl({ configured, email, signedIn }: AuthControlProps) {
   const t = useTranslations("AuthControl");
+  const locale = useLocale();
   const router = useRouter();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +34,9 @@ export function AuthControl({ configured, email, signedIn }: AuthControlProps) {
     try {
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}/api/auth/callback` },
+        options: {
+          redirectTo: `${window.location.origin}/api/auth/callback?locale=${encodeURIComponent(locale)}`,
+        },
       });
       if (authError) throw authError;
     } catch {

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { routing } from "@/i18n/routing";
+import { siteConfig } from "@/config/site";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -25,7 +26,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
-  return { title: t("title"), description: t("description") };
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {

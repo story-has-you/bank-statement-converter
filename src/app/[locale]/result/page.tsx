@@ -7,7 +7,7 @@ import { HomeHeader } from "@/components/home-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("ConversionResult.metadata");
-  return { title: t("title"), description: t("description") };
+  return { title: t("title"), description: t("description"), robots: { index: false, follow: false } };
 }
 
 export default function ConversionResultPage() {
