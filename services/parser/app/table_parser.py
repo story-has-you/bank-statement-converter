@@ -8,6 +8,7 @@ from typing import Any
 
 from .models import ParseIssue
 from .pdf_reader import filter_watermark_page
+from .row_validation import DATE_HEADERS
 
 
 HEADER_TERMS = (
@@ -217,9 +218,9 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         if _is_repeated_header(cells, headers):
             table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": offset}))
             continue
-        if _is_summary_row(cells):
+        if _is_summary_row(cells, headers):
             table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": offset}))
-            break
+            continue
         if _is_opening_balance(cells):
             continue
         if not _looks_like_data_row(cells):
@@ -294,9 +295,9 @@ def _rebuild_table_from_words(
         if _is_repeated_header(cells, headers):
             warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": source_row}))
             continue
-        if _is_summary_row(cells):
+        if _is_summary_row(cells, headers):
             warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": source_row}))
-            break
+            continue
         if _is_page_number(cells):
             continue
         if _is_opening_balance(cells):
@@ -427,9 +428,14 @@ def _is_repeated_header(row: list[str | None], headers: list[str]) -> bool:
     return normalized_row == normalized_headers
 
 
-def _is_summary_row(row: list[str | None]) -> bool:
-    text = _normalize_for_match(" ".join(cell or "" for cell in row))
-    return any(term in text for term in SUMMARY_TERMS)
+def _is_summary_row(row: list[str | None], headers: list[str]) -> bool:
+    date_indexes = [index for index, header in enumerate(headers) if any(term in header.lower() for term in DATE_HEADERS)]
+    if any(index < len(row) and row[index] and DATE_PATTERN.match(row[index].strip()) for index in date_indexes):
+        return False
+    label = next((_normalize_for_match(cell) for cell in row if cell), "")
+    labels = {_normalize_for_match(term) for term in SUMMARY_TERMS}
+    labels.update({"totalwithdrawals", "totaldeposits", "totaldebits", "totalcredits", "totaltransactions"})
+    return label in labels
 
 
 def _find_data_start(rows: list[list[str | None]], start: int) -> int | None:

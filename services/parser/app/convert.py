@@ -129,7 +129,7 @@ def _build_summary(tables: list[ParsedTable]) -> ParseSummary:
     warning_count = sum(row.status is RowStatus.WARNING for row in rows)
     failed_count = sum(row.status is RowStatus.FAILED for row in rows)
     status = SummaryStatus.SUCCESS
-    if failed_count or warning_count:
+    if failed_count or warning_count or any(table.warnings for table in tables):
         status = SummaryStatus.PARTIAL
     if not rows:
         status = SummaryStatus.FAILED
