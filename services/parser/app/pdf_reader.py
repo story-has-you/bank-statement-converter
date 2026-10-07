@@ -23,6 +23,9 @@ class ParserError(Exception):
         self.status_code = status_code
         self.page = page
 
+    def __reduce__(self) -> tuple[object, tuple[str, int, int | None]]:
+        return type(self), (self.code, self.status_code, self.page)
+
 
 def validate_pdf_input(data: bytes, filename: str) -> None:
     """Validate size, filename, and the PDF signature before opening the file."""

@@ -106,6 +106,15 @@ def extract_page_tables(page: Any, page_number: int) -> list[RawTable]:
     return _rebuild_table_from_words(page, page_number)
 
 
+def page_contains_transaction_evidence(words: list[dict[str, object]]) -> bool:
+    """Detect date and amount evidence on a page that failed table reconstruction."""
+
+    texts = [str(word.get("text", "")).strip() for word in words]
+    has_date = any(DATE_PATTERN.match(text) for text in texts)
+    has_amount = any(MONEY_PATTERN.fullmatch(text) for text in texts)
+    return has_date and has_amount
+
+
 def merge_compatible_tables(tables: list[RawTable]) -> list[RawTable]:
     """Merge adjacent tables whose normalized headers are identical."""
 

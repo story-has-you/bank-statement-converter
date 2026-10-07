@@ -7,6 +7,7 @@ import os
 import secrets
 from typing import Annotated
 
+import anyio.to_process
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.responses import JSONResponse
 
@@ -16,6 +17,8 @@ from .pdf_reader import MAX_FILE_BYTES, ParserError
 
 app = FastAPI(title="Bank Statement Parser")
 logger = logging.getLogger(__name__)
+PARSE_CONCURRENCY = max(1, int(os.environ.get("PARSER_MAX_CONCURRENCY", "2")))
+parse_limiter = anyio.to_process.CapacityLimiter(PARSE_CONCURRENCY)
 
 
 @app.get("/health")
@@ -39,7 +42,13 @@ async def parse(
             raise ParserError("INVALID_FILE_TYPE", 400)
 
         data = await file.read(MAX_FILE_BYTES + 1)
-        return parse_statement(data, file.filename or "statement.pdf")
+        return await anyio.to_process.run_sync(
+            parse_statement,
+            data,
+            file.filename or "statement.pdf",
+            cancellable=True,
+            limiter=parse_limiter,
+        )
     except ParserError as exc:
         return _error_response(exc)
     except Exception:

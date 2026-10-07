@@ -20,6 +20,7 @@ from .table_parser import (
     RawTable,
     extract_page_tables,
     merge_compatible_tables,
+    page_contains_transaction_evidence,
 )
 
 
@@ -33,19 +34,21 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
         errors: list[ParseError] = []
 
         for page_number, page in enumerate(pdf.pages, start=1):
-            words = extract_page_words(page)
+            try:
+                words = extract_page_words(page)
+            except ParserError:
+                errors.append(ParseError(code="PAGE_PARSE_FAILED", page=page_number))
+                continue
             page_words.append(words)
             if not words:
                 continue
             try:
-                raw_tables.extend(extract_page_tables(page, page_number))
+                page_tables = extract_page_tables(page, page_number)
+                raw_tables.extend(page_tables)
+                if not page_tables and page_contains_transaction_evidence(words):
+                    errors.append(ParseError(code="PAGE_UNPARSED", page=page_number))
             except Exception:
-                errors.append(
-                    ParseError(
-                        code="PARSE_FAILED",
-                        page=page_number,
-                    )
-                )
+                errors.append(ParseError(code="PAGE_PARSE_FAILED", page=page_number))
 
         if not any(page_words):
             raise ParserError(
