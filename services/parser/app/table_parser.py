@@ -42,6 +42,18 @@ HEADER_TERMS = (
     "jahreskontoauszug",
 )
 SUMMARY_TERMS = ("合计", "总计", "本页小计", "累计", "total", "subtotal", "ending balance")
+SUMMARY_LABELS = frozenset(
+    re.sub(r"\s+", "", term).lower()
+    for term in (
+        *SUMMARY_TERMS,
+        "total withdrawals",
+        "total deposits",
+        "total debits",
+        "total credits",
+        "total transactions",
+    )
+)
+DATE_HEADER_TERMS = ("日期", "时间", "date", "time", "datum", "wertstellung")
 DATE_PATTERN = re.compile(
     r"^(?:\d{8}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}(?:[-/.]\d{2,4})?)\b"
 )
@@ -171,9 +183,9 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         if _is_repeated_header(cells, headers):
             table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": offset}))
             continue
-        if _is_summary_row(cells):
+        if _is_summary_row(cells, headers):
             table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": offset}))
-            break
+            continue
         if _is_opening_balance(cells):
             continue
         if not is_transaction_candidate(headers, cells):
@@ -248,9 +260,9 @@ def _rebuild_table_from_words(
         if _is_repeated_header(cells, headers):
             warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": source_row}))
             continue
-        if _is_summary_row(cells):
+        if _is_summary_row(cells, headers):
             warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": source_row}))
-            break
+            continue
         if _is_page_number(cells):
             continue
         if _is_opening_balance(cells):
@@ -302,7 +314,7 @@ def _is_coordinate_header(lines: list[_WordLine], index: int) -> bool:
     following = lines[index + 1 : index + 7]
     for line in following:
         row = _assign_words_to_anchors(line.words, anchors, amount_edges)
-        if _is_summary_row(row) or _is_opening_balance(row):
+        if _is_summary_row(row, headers) or _is_opening_balance(row):
             continue
         if is_transaction_candidate(headers, row):
             return True
@@ -391,16 +403,32 @@ def _is_repeated_header(row: list[str | None], headers: list[str]) -> bool:
     return normalized_row == normalized_headers
 
 
-def _is_summary_row(row: list[str | None]) -> bool:
-    text = _normalize_for_match(" ".join(cell or "" for cell in row))
-    return any(term in text for term in SUMMARY_TERMS)
+def _is_summary_row(row: list[str | None], headers: list[str]) -> bool:
+    date_indexes = [
+        index
+        for index, header in enumerate(headers)
+        if any(term in _normalize_for_match(header) for term in DATE_HEADER_TERMS)
+    ]
+    if any(
+        index < len(row)
+        and row[index]
+        and DATE_PATTERN.match(row[index].strip())
+        for index in date_indexes
+    ):
+        return False
+
+    return any(
+        cell and _normalize_for_match(cell) in SUMMARY_LABELS
+        for index, cell in enumerate(row)
+        if index not in date_indexes
+    )
 
 
 def _find_data_start(
     rows: list[list[str | None]], start: int, headers: list[str]
 ) -> int | None:
     for index in range(start, len(rows)):
-        if _is_summary_row(rows[index]) or _is_opening_balance(rows[index]):
+        if _is_summary_row(rows[index], headers) or _is_opening_balance(rows[index]):
             continue
         if is_transaction_candidate(headers, rows[index]):
             return index
