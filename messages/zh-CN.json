@@ -90,9 +90,9 @@
       "failed": "未完成"
     },
     "rowStatus": {
-      "valid": "已识别",
-      "warning": "需核对",
-      "failed": "识别失败"
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
     },
     "table": {
       "title": "表格 {id}",
@@ -100,11 +100,13 @@
       "pages": "第 {start} 至 {end} 页",
       "rowCount": "{count} 行",
       "status": "状态",
-      "warnings": "核对提示"
+      "warnings": "核对提示",
+      "sourcePage": "原始页码",
+      "sourceRow": "页内行号"
     },
     "partial": {
       "title": "有些内容需要核对",
-      "description": "已识别的内容仍可预览和下载。带有“需核对”或“识别失败”标记的行，请回看原 PDF。"
+      "description": "已识别的内容仍可预览和下载。带有 DISCREPANCY 或 UNVERIFIABLE 标记的行，请回看原 PDF。"
     },
     "empty": {
       "title": "没有可下载的数据",
@@ -118,7 +120,13 @@
       "repeatedHeader": "第 {row} 行重复了表头，已跳过。",
       "summaryRow": "第 {row} 行看起来是合计行，已跳过。",
       "extraCells": "这一行的单元格多于表头，额外内容已保留。",
-      "unknown": "这项内容需要核对。"
+      "unknown": "这项内容需要核对。",
+      "missingDate": "交易日期缺失。",
+      "invalidDate": "交易日期无效。",
+      "missingDescription": "交易描述缺失。",
+      "missingAmount": "交易金额缺失。",
+      "invalidAmount": "交易金额格式无效。",
+      "amountColumnMismatch": "金额出现在非交易金额列，无法确认对应关系。"
     }
   },
   "HomeFeatures": {
@@ -128,7 +136,7 @@
     "banksTitle": "按原表整理",
     "banksDescription": "读取 PDF 中的表头和单元格文字，按表格展示，方便回到原文件核对。",
     "accuracyTitle": "异常行有标记",
-    "accuracyDescription": "识别不完整或对不齐的行会标为“需核对”或“识别失败”，下载前可以先查看。"
+    "accuracyDescription": "识别不完整或对不齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，下载前可以先查看。"
   },
   "UsageTiers": {
     "title": "先免费试一次",
@@ -195,7 +203,7 @@
     },
     "accuracy": {
       "question": "为什么还要核对转换结果？",
-      "answer": "系统会尽量保留 PDF 中的表头和单元格文字。版式复杂、文字模糊或表格对齐异常时，部分行可能会标为“需核对”；记账、申报或提交前，请对照原 PDF 检查。"
+      "answer": "系统会尽量保留 PDF 中的表头和单元格文字。版式复杂、文字模糊或表格对齐异常时，部分行可能会标为 DISCREPANCY 或 UNVERIFIABLE；记账、申报或提交前，请对照原 PDF 检查。"
     },
     "quota": {
       "question": "每天可以转换多少页？",
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "PDF 不能超过 50 页。",
     "UNSUPPORTED_SCANNED_PDF": "当前版本只支持带可选文字的电子版 PDF，不支持扫描图片。",
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
+    "NO_VERIFIABLE_TRANSACTIONS": "没有可核对的交易行。",
     "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
     "UNKNOWN": "出了点问题，请稍后再试。"
   }

@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
-import type { ParsedTable, RowStatus } from "@/lib/conversion-types";
+import { getRowRiskCode, type ParsedTable, type RowStatus } from "@/lib/conversion-types";
 import { getParseIssueKey } from "@/lib/parse-issues";
 
 type ConversionTableProps = {
@@ -28,12 +28,6 @@ function columnWidthClass(index: number): string {
 
 export function ConversionTable({ table, title }: ConversionTableProps) {
   const t = useTranslations("ConversionResult");
-
-  function getStatusLabel(status: RowStatus): string {
-    if (status === "failed") return t("rowStatus.failed");
-    if (status === "warning") return t("rowStatus.warning");
-    return t("rowStatus.valid");
-  }
 
   return (
     <section className="rounded-md border border-border bg-card shadow-xs" aria-labelledby={`${table.id}-title`}>
@@ -78,6 +72,12 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
               <th scope="col" className="min-w-48 border-b border-border px-3 py-2 font-medium">
                 {t("table.warnings")}
               </th>
+              <th scope="col" className="min-w-24 border-b border-border px-3 py-2 font-medium">
+                {t("table.sourcePage")}
+              </th>
+              <th scope="col" className="min-w-24 border-b border-border px-3 py-2 font-medium">
+                {t("table.sourceRow")}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -92,13 +92,15 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
                   </td>
                 ))}
                 <td className="min-w-28 border-b border-border px-3 py-2">
-                  <Badge variant={statusVariant(row.status)}>{getStatusLabel(row.status)}</Badge>
+                  <Badge variant={statusVariant(row.status)}>{getRowRiskCode(row.status)}</Badge>
                 </td>
                 <td className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
                   {row.warnings.length > 0
                     ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ")
                     : "-"}
                 </td>
+                <td className="border-b border-border px-3 py-2">{row.source.page}</td>
+                <td className="border-b border-border px-3 py-2">{row.source.row}</td>
               </tr>
             ))}
           </tbody>

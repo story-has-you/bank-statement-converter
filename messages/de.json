@@ -100,7 +100,9 @@
       "pages": "Seiten {start} bis {end}",
       "rowCount": "{count}-Zeilen",
       "status": "Status",
-      "warnings": "Überprüfen Sie die Notizen"
+      "warnings": "Überprüfen Sie die Notizen",
+      "sourcePage": "Originalseite",
+      "sourceRow": "Zeile auf der Seite"
     },
     "partial": {
       "title": "Einige Inhalte müssen überprüft werden",
@@ -118,7 +120,13 @@
       "repeatedHeader": "Zeile {row} wiederholt den Tabellenkopf und wurde übersprungen.",
       "summaryRow": "Zeile {row} sieht aus wie eine Zusammenfassungszeile und wurde übersprungen.",
       "extraCells": "Diese Zeile enthält mehr Zellen als die Kopfzeile. Die zusätzlichen Zellen wurden behalten.",
-      "unknown": "Dieser Artikel muss überprüft werden."
+      "unknown": "Dieser Artikel muss überprüft werden.",
+      "missingDate": "Das Transaktionsdatum fehlt.",
+      "invalidDate": "Das Transaktionsdatum ist ungültig.",
+      "missingDescription": "Die Transaktionsbeschreibung fehlt.",
+      "missingAmount": "Der Transaktionsbetrag fehlt.",
+      "invalidAmount": "Der Transaktionsbetrag ist ungültig.",
+      "amountColumnMismatch": "Ein Betrag steht außerhalb der Transaktionsbetragsspalte und kann nicht sicher zugeordnet werden."
     }
   },
   "HomeFeatures": {
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "Dieses PDF hat mehr als 50 Seiten.",
     "UNSUPPORTED_SCANNED_PDF": "Diese Version akzeptiert elektronische PDFs mit auswählbarem Text, keine gescannten Bilder.",
     "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Keine Transaktion enthält genügend Angaben zur Prüfung.",
     "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
     "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
   }

@@ -100,7 +100,9 @@
       "pages": "Pages {start} to {end}",
       "rowCount": "{count} rows",
       "status": "Status",
-      "warnings": "Review notes"
+      "warnings": "Review notes",
+      "sourcePage": "Source page",
+      "sourceRow": "Row on page"
     },
     "partial": {
       "title": "Some content needs review",
@@ -118,7 +120,13 @@
       "repeatedHeader": "Row {row} repeats the table header and was skipped.",
       "summaryRow": "Row {row} looks like a summary row and was skipped.",
       "extraCells": "This row has more cells than the header. The extra cells were kept.",
-      "unknown": "This item needs review."
+      "unknown": "This item needs review.",
+      "missingDate": "The transaction date is missing.",
+      "invalidDate": "The transaction date is invalid.",
+      "missingDescription": "The transaction description is missing.",
+      "missingAmount": "The transaction amount is missing.",
+      "invalidAmount": "The transaction amount is invalid.",
+      "amountColumnMismatch": "An amount appears outside the transaction amount column and cannot be matched reliably."
     }
   },
   "HomeFeatures": {
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "This PDF has more than 50 pages.",
     "UNSUPPORTED_SCANNED_PDF": "This version accepts electronic PDFs with selectable text, not scanned images.",
     "TABLE_NOT_FOUND": "No usable bank statement table was found.",
+    "NO_VERIFIABLE_TRANSACTIONS": "No transaction has enough evidence to review.",
     "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
     "UNKNOWN": "Something went wrong. Please try again."
   }

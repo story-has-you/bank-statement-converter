@@ -1,5 +1,11 @@
 export type RowStatus = "valid" | "warning" | "failed";
 
+export function getRowRiskCode(status: RowStatus): "OK" | "DISCREPANCY" | "UNVERIFIABLE" {
+  if (status === "failed") return "UNVERIFIABLE";
+  if (status === "warning") return "DISCREPANCY";
+  return "OK";
+}
+
 export type SummaryStatus = "success" | "partial" | "failed";
 
 export type ParseColumn = {

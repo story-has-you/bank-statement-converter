@@ -46,6 +46,7 @@ const apiErrorCodes = [
   "TOO_MANY_PAGES",
   "UNSUPPORTED_SCANNED_PDF",
   "TABLE_NOT_FOUND",
+  "NO_VERIFIABLE_TRANSACTIONS",
   "PARSE_FAILED",
   "UNKNOWN",
 ] as const;
@@ -223,6 +224,15 @@ export async function POST(request: Request): Promise<Response> {
     if (!isParseResponse(payload) || !Number.isInteger(payload.pageCount) || payload.pageCount <= 0) {
       return setAnonymousCookie(
         errorResponse("PARSER_UNAVAILABLE", 502, locale),
+        anonymousCookie,
+      );
+    }
+    if (
+      payload.summary.status === "failed" ||
+      payload.summary.validRowCount + payload.summary.warningRowCount === 0
+    ) {
+      return setAnonymousCookie(
+        errorResponse("NO_VERIFIABLE_TRANSACTIONS", 422, locale),
         anonymousCookie,
       );
     }

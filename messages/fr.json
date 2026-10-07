@@ -100,7 +100,9 @@
       "pages": "Pages {start} à {end}",
       "rowCount": "Lignes {count}",
       "status": "Statut",
-      "warnings": "Notes de révision"
+      "warnings": "Notes de révision",
+      "sourcePage": "Page source",
+      "sourceRow": "Ligne dans la page"
     },
     "partial": {
       "title": "Certains contenus doivent être révisés",
@@ -118,7 +120,13 @@
       "repeatedHeader": "La ligne {row} répète l'en-tête du tableau et a été ignorée.",
       "summaryRow": "La ligne {row} ressemble à une ligne récapitulative et a été ignorée.",
       "extraCells": "Cette ligne contient plus de cellules que l'en-tête. Les cellules supplémentaires ont été conservées.",
-      "unknown": "Cet article doit être révisé."
+      "unknown": "Cet article doit être révisé.",
+      "missingDate": "La date de l'opération manque.",
+      "invalidDate": "La date de l'opération est invalide.",
+      "missingDescription": "La description de l'opération manque.",
+      "missingAmount": "Le montant de l'opération manque.",
+      "invalidAmount": "Le montant de l'opération est invalide.",
+      "amountColumnMismatch": "Un montant figure hors de la colonne des montants et ne peut pas être associé avec certitude."
     }
   },
   "HomeFeatures": {
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "Ce PDF compte plus de 50 pages.",
     "UNSUPPORTED_SCANNED_PDF": "Cette version accepte les PDF électroniques avec du texte sélectionnable, pas les images numérisées.",
     "TABLE_NOT_FOUND": "Aucun tableau de relevé bancaire utilisable n'a été trouvé.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Aucune opération ne contient assez de données pour être vérifiée.",
     "PARSE_FAILED": "Le PDF n'a pas pu être analysé. Veuillez réessayer avec un autre fichier.",
     "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer."
   }

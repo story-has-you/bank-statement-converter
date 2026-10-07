@@ -100,7 +100,9 @@
       "pages": "{start}〜{end}ページ",
       "rowCount": "{count}行",
       "status": "状態",
-      "warnings": "確認メモ"
+      "warnings": "確認メモ",
+      "sourcePage": "元のページ",
+      "sourceRow": "ページ内の行"
     },
     "partial": {
       "title": "確認が必要な内容があります",
@@ -118,7 +120,13 @@
       "repeatedHeader": "{row}行目は重複した見出しのためスキップしました。",
       "summaryRow": "{row}行目は合計行と思われるためスキップしました。",
       "extraCells": "この行には見出しより多いセルがあります。余分なセルも保持しました。",
-      "unknown": "この項目は確認が必要です。"
+      "unknown": "この項目は確認が必要です。",
+      "missingDate": "取引日がありません。",
+      "invalidDate": "取引日が無効です。",
+      "missingDescription": "取引内容がありません。",
+      "missingAmount": "取引金額がありません。",
+      "invalidAmount": "取引金額が無効です。",
+      "amountColumnMismatch": "金額が取引金額の列以外にあり、対応関係を確認できません。"
     }
   },
   "HomeFeatures": {
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "PDFは50ページ以下にしてください。",
     "UNSUPPORTED_SCANNED_PDF": "文字を選択できる電子PDFのみ対応しています。",
     "TABLE_NOT_FOUND": "利用できる銀行明細の表が見つかりません。",
+    "NO_VERIFIABLE_TRANSACTIONS": "照合できる取引行がありません。",
     "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
     "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。"
   }

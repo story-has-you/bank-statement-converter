@@ -8,6 +8,7 @@ from typing import Any
 
 from .models import ParseIssue
 from .pdf_reader import filter_watermark_page
+from .row_validation import is_date_column, is_transaction_candidate
 
 
 HEADER_TERMS = (
@@ -160,7 +161,7 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
     if len(kept_columns) < 3:
         return None
     headers = _ensure_header_labels([cleaned_rows[header_index][index] for index in kept_columns])
-    data_start = _find_data_start(cleaned_rows, header_index + 1)
+    data_start = _find_data_start(cleaned_rows, header_index + 1, headers)
     if data_start is None:
         return None
     parsed_rows: list[RawRow] = []
@@ -175,7 +176,7 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
             break
         if _is_opening_balance(cells):
             continue
-        if not _looks_like_data_row(cells):
+        if not is_transaction_candidate(headers, cells):
             break
         parsed_rows.append(RawRow(cells=cells, page=page_number, row=offset))
 
@@ -254,8 +255,8 @@ def _rebuild_table_from_words(
             continue
         if _is_opening_balance(cells):
             continue
-        if not _looks_like_data_row(cells):
-            continuation_index = _continuation_column(cells)
+        if not is_transaction_candidate(headers, cells):
+            continuation_index = _continuation_column(cells, headers)
             if (
                 seen_data
                 and continuation_index is not None
@@ -289,13 +290,23 @@ def _group_words_into_lines(words: list[dict[str, object]]) -> list[_WordLine]:
 
 def _is_coordinate_header(lines: list[_WordLine], index: int) -> bool:
     cells = _cluster_words(lines[index].words)
-    if len(cells) < 3 or not _is_statement_header([str(cell["text"]) for cell in cells]):
+    headers = [str(cell["text"]) for cell in cells]
+    if len(cells) < 3 or not _is_statement_header(headers):
         return False
+    anchors = [float(cell["x0"]) for cell in cells]
+    amount_edges = {
+        column: float(cell["x1"])
+        for column, cell in enumerate(cells)
+        if _is_amount_header(headers[column])
+    }
     following = lines[index + 1 : index + 7]
-    return any(
-        _looks_like_data_row([str(word["text"]) for word in line.words])
-        for line in following
-    )
+    for line in following:
+        row = _assign_words_to_anchors(line.words, anchors, amount_edges)
+        if _is_summary_row(row) or _is_opening_balance(row):
+            continue
+        if is_transaction_candidate(headers, row):
+            return True
+    return False
 
 
 def _cluster_words(words: list[dict[str, object]]) -> list[dict[str, object]]:
@@ -334,7 +345,7 @@ def _assign_words_to_anchors(
     values: list[list[str]] = [[] for _ in anchors]
     for word in sorted(words, key=lambda item: float(item["x0"])):
         text = str(word["text"])
-        if amount_edges and MONEY_PATTERN.fullmatch(text) and not DATE_PATTERN.fullmatch(text):
+        if amount_edges and MONEY_PATTERN.fullmatch(text):
             column = min(amount_edges, key=lambda index: abs(float(word["x1"]) - amount_edges[index]))
             if abs(float(word["x1"]) - amount_edges[column]) <= 45:
                 values[column].append(text)
@@ -385,15 +396,15 @@ def _is_summary_row(row: list[str | None]) -> bool:
     return any(term in text for term in SUMMARY_TERMS)
 
 
-def _find_data_start(rows: list[list[str | None]], start: int) -> int | None:
+def _find_data_start(
+    rows: list[list[str | None]], start: int, headers: list[str]
+) -> int | None:
     for index in range(start, len(rows)):
-        if _looks_like_data_row(rows[index]):
+        if _is_summary_row(rows[index]) or _is_opening_balance(rows[index]):
+            continue
+        if is_transaction_candidate(headers, rows[index]):
             return index
     return None
-
-
-def _looks_like_data_row(row: list[str | None]) -> bool:
-    return any(DATE_PATTERN.match(cell.strip()) for cell in row if cell)
 
 
 def _is_statement_header(row: list[str | None]) -> bool:
@@ -435,7 +446,7 @@ def _is_section_end(words: list[dict[str, object]]) -> bool:
     return any(text.startswith(term.replace(" ", "")) for term in SECTION_END_TERMS)
 
 
-def _continuation_column(cells: list[str | None]) -> int | None:
+def _continuation_column(cells: list[str | None], headers: list[str]) -> int | None:
     """Return the only populated non-date column on a wrapped transaction line."""
 
     populated = [index for index, cell in enumerate(cells) if cell]
@@ -443,7 +454,7 @@ def _continuation_column(cells: list[str | None]) -> int | None:
         return None
     index = populated[0]
     cell = cells[index]
-    if cell is None or DATE_PATTERN.match(cell.strip()) or index < 2:
+    if cell is None or is_date_column(headers, index) or index < 2:
         return None
     return index
 

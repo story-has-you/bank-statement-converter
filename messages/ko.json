@@ -100,7 +100,9 @@
       "pages": "페이지 {start} ~ {end}",
       "rowCount": "{count} 행",
       "status": "상태",
-      "warnings": "메모 검토"
+      "warnings": "메모 검토",
+      "sourcePage": "원본 페이지",
+      "sourceRow": "페이지 내 행"
     },
     "partial": {
       "title": "일부 콘텐츠에 대한 검토가 필요함",
@@ -118,7 +120,13 @@
       "repeatedHeader": "{row} 행은 테이블 헤더를 반복하므로 건너뛰었습니다.",
       "summaryRow": "{row} 행은 요약 행처럼 보이므로 건너뛰었습니다.",
       "extraCells": "이 행에는 머리글보다 더 많은 셀이 있습니다. 여분의 셀은 유지되었습니다.",
-      "unknown": "이 항목은 검토가 필요합니다."
+      "unknown": "이 항목은 검토가 필요합니다.",
+      "missingDate": "거래 날짜가 없습니다.",
+      "invalidDate": "거래 날짜가 유효하지 않습니다.",
+      "missingDescription": "거래 설명이 없습니다.",
+      "missingAmount": "거래 금액이 없습니다.",
+      "invalidAmount": "거래 금액이 유효하지 않습니다.",
+      "amountColumnMismatch": "거래 금액 열 밖에 금액이 있어 대응 관계를 확인할 수 없습니다."
     }
   },
   "HomeFeatures": {
@@ -359,6 +367,7 @@
     "TOO_MANY_PAGES": "이 PDF는 50페이지를 초과합니다.",
     "UNSUPPORTED_SCANNED_PDF": "이 버전은 스캔한 이미지가 아닌 선택 가능한 텍스트가 포함된 전자 PDF를 허용합니다.",
     "TABLE_NOT_FOUND": "사용 가능한 은행 명세서 테이블을 찾을 수 없습니다.",
+    "NO_VERIFIABLE_TRANSACTIONS": "확인할 수 있는 거래 행이 없습니다.",
     "PARSE_FAILED": "PDF를 구문 분석할 수 없습니다. 다른 파일로 다시 시도해 주세요.",
     "UNKNOWN": "문제가 발생했습니다. 다시 시도해 주세요."
   }
