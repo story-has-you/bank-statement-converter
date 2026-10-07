@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 浏览器只请求 Next.js 的同源 `/api/convert`，Next.js 服务端再调用 Python 的 `http://127.0.0.1:8000/parse`，因此不需要为 Python 服务开放浏览器 CORS。默认解析地址可以通过仅服务端使用的 `PARSER_SERVICE_URL` 覆盖。
 
-转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和 Excel 不写入数据库、对象存储或服务器文件系统。
+转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和 Excel 不写入数据库、对象存储或持久化文件历史。multipart 请求解析可能短暂使用内存或系统临时文件，处理结束后关闭并清理，不提供再次下载的文件。
 
 ## PayPal Sandbox 订阅配置
 
