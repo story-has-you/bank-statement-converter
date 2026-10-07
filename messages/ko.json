@@ -66,7 +66,8 @@
     "serviceReady": "파일은 이 변환에만 사용되며 저장되지 않습니다.",
     "status": "업로드 준비 완료",
     "converting": "변환 중",
-    "start": "변환 및 검토"
+    "start": "변환 및 검토",
+    "fileTooLarge": "PDF는 4MB보다 클 수 없습니다."
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "PayPal 구독을 확인할 수 없습니다.",
       "activationFailed": "구독 확인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
       "createFailed": "PayPal 구독을 시작할 수 없습니다. 나중에 다시 시도해 주세요.",
-"existingSubscription": "이 계정에는 활성 또는 대기 중인 구독이 이미 있습니다.",
+      "existingSubscription": "이 계정에는 활성 또는 대기 중인 구독이 이미 있습니다.",
       "webhookInvalidRequest": "웹훅 요청이 잘못되었습니다.",
       "webhookSignatureFailed": "웹훅 서명 확인에 실패했습니다.",
       "webhookProcessingFailed": "웹훅 처리에 실패했습니다."
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "구문 분석 서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
     "QUOTA_EXCEEDED": "이 전환에 사용 가능한 할당량에 도달했습니다.",
     "QUOTA_UNAVAILABLE": "할당량 서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
-    "FILE_TOO_LARGE": "이 PDF는 20MB보다 큽니다.",
+    "FILE_TOO_LARGE": "PDF는 4MB보다 클 수 없습니다.",
     "INVALID_FILE_TYPE": "PDF 파일만 지원됩니다.",
     "INVALID_PDF": "이 파일은 읽을 수 있는 PDF가 아닙니다.",
     "PASSWORD_PROTECTED_PDF": "비밀번호로 보호된 PDF는 변환할 수 없습니다.",

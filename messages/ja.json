@@ -66,7 +66,8 @@
     "serviceReady": "ファイルは今回の変換にだけ使い、保存しません。",
     "status": "アップロードできます",
     "converting": "変換中",
-    "start": "変換して確認"
+    "start": "変換して確認",
+    "fileTooLarge": "PDFは4MB以下にしてください。"
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "PayPalの購読を確認できませんでした。",
       "activationFailed": "購読の確認を完了できませんでした。しばらくしてから再試行してください。",
       "createFailed": "PayPal購読を開始できませんでした。しばらくしてから再試行してください。",
-"existingSubscription": "このアカウントには有効または保留中の購読があります。",
+      "existingSubscription": "このアカウントには有効または保留中の購読があります。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
       "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
       "webhookProcessingFailed": "Webhook処理に失敗しました。"
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "解析サービスを一時的に利用できません。",
     "QUOTA_EXCEEDED": "この変換で利用できる上限に達しました。",
     "QUOTA_UNAVAILABLE": "上限サービスを一時的に利用できません。",
-    "FILE_TOO_LARGE": "PDFは20MB以下にしてください。",
+    "FILE_TOO_LARGE": "PDFは4MB以下にしてください。",
     "INVALID_FILE_TYPE": "PDFファイルのみ対応しています。",
     "INVALID_PDF": "読み取れるPDFではありません。",
     "PASSWORD_PROTECTED_PDF": "パスワード付きPDFには対応していません。",

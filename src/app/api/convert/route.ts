@@ -22,6 +22,7 @@ import { getTranslations } from "next-intl/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
+const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 type ErrorPayload = {
   code: string;
@@ -146,6 +147,9 @@ export async function POST(request: Request): Promise<Response> {
 
   if (!entry.name.toLowerCase().endsWith(".pdf") || entry.size === 0) {
     return errorResponse("INVALID_FILE", 400, locale);
+  }
+  if (entry.size > MAX_UPLOAD_BYTES) {
+    return errorResponse("FILE_TOO_LARGE", 413, locale);
   }
 
   let actor: UsageActor;

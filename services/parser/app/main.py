@@ -5,10 +5,8 @@ from __future__ import annotations
 import logging
 import os
 import secrets
-from typing import Annotated
-
 import anyio.to_process
-from fastapi import FastAPI, File, Request, UploadFile
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from .convert import parse_statement
@@ -29,7 +27,6 @@ def health() -> dict[str, str]:
 @app.post("/parse", response_model=ParseResponse)
 async def parse(
     request: Request,
-    file: Annotated[UploadFile, File(...)],
 ) -> ParseResponse | JSONResponse:
     """Parse one uploaded electronic PDF and return dynamic table JSON."""
 
@@ -38,14 +35,30 @@ async def parse(
         return auth_error
 
     try:
-        if file.content_type not in (None, "application/pdf", "application/octet-stream"):
+        content_type = request.headers.get("content-type", "")
+        if "multipart/form-data" not in content_type:
+            raise ParserError("INVALID_FILE_TYPE", 400)
+        form = await request.form()
+        file = form.get("file")
+        if not hasattr(file, "read"):
+            raise ParserError("INVALID_FILE", 400)
+        filename = getattr(file, "filename", None) or "statement.pdf"
+        file_type = getattr(file, "content_type", None)
+        if file_type not in (None, "application/pdf", "application/octet-stream"):
             raise ParserError("INVALID_FILE_TYPE", 400)
 
-        data = await file.read(MAX_FILE_BYTES + 1)
+        data = bytearray()
+        while True:
+            chunk = await file.read(min(256 * 1024, MAX_FILE_BYTES + 1 - len(data)))
+            if not chunk:
+                break
+            data.extend(chunk)
+            if len(data) > MAX_FILE_BYTES:
+                raise ParserError("FILE_TOO_LARGE", 413)
         return await anyio.to_process.run_sync(
             parse_statement,
-            data,
-            file.filename or "statement.pdf",
+            bytes(data),
+            filename,
             cancellable=True,
             limiter=parse_limiter,
         )
@@ -60,7 +73,8 @@ async def parse(
             ).model_dump(by_alias=True),
         )
     finally:
-        await file.close()
+        if "file" in locals() and hasattr(file, "close"):
+            await file.close()
 
 
 def _error_response(error: ParserError) -> JSONResponse:

@@ -34,7 +34,7 @@ export PARSER_SHARED_SECRET=local-development-secret
 
 `GET /health` 不需要认证，供 Cloudflare Container readiness 检查使用。容器部署文件位于本目录的 `Dockerfile`，生产监听端口为 `8080`。
 
-服务限制单个文件不超过 20 MB、最多 50 页。`pageCount` 始终是原始 PDF 页数；相邻且表头兼容的表格可以合并为一个逻辑表，表格范围和 `rows[].source.page` 保留原始页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
+服务限制单个文件不超过 4 MB、最多 50 页。`pageCount` 始终是原始 PDF 页数；相邻且表头兼容的表格可以合并为一个逻辑表，表格范围和 `rows[].source.page` 保留原始页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
 
 解析表格前会根据文字层中的字符样式、相对字号、旋转角度和页面覆盖范围识别重复覆盖文字，并过滤候选水印字符；识别不依赖固定银行名称、水印文案或固定坐标。图片型水印没有文字层，不会被当作流水文字参与表格解析。
 

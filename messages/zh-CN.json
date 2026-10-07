@@ -66,7 +66,8 @@
     "serviceReady": "文件只用于这次转换，不会保存。",
     "status": "可以上传",
     "converting": "正在处理",
-    "start": "转换并查看结果"
+    "start": "转换并查看结果",
+    "fileTooLarge": "PDF 不能超过 4 MB。"
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "PayPal 订阅尚未通过验证。",
       "activationFailed": "订阅验证没有完成，请稍后再试。",
       "createFailed": "无法开始 PayPal 订阅，请稍后再试。",
-"existingSubscription": "当前账号已有生效或待确认的订阅。",
+      "existingSubscription": "当前账号已有生效或待确认的订阅。",
       "webhookInvalidRequest": "Webhook 请求格式无效。",
       "webhookSignatureFailed": "Webhook 签名验证失败。",
       "webhookProcessingFailed": "Webhook 处理失败。"
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "解析服务暂时不可用，请稍后再试。",
     "QUOTA_EXCEEDED": "当前转换额度已用完。",
     "QUOTA_UNAVAILABLE": "额度服务暂时不可用，请稍后再试。",
-    "FILE_TOO_LARGE": "PDF 不能超过 20 MB。",
+    "FILE_TOO_LARGE": "PDF 不能超过 4 MB。",
     "INVALID_FILE_TYPE": "只支持 PDF 文件。",
     "INVALID_PDF": "这不是可读取的有效 PDF。",
     "PASSWORD_PROTECTED_PDF": "不支持需要密码的 PDF。",

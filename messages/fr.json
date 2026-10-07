@@ -66,7 +66,8 @@
     "serviceReady": "Les fichiers sont utilisés uniquement pour cette conversion et ne sont pas enregistrés.",
     "status": "Prêt à télécharger",
     "converting": "Conversion",
-    "start": "Convertir et réviser"
+    "start": "Convertir et réviser",
+    "fileTooLarge": "Ce PDF fait plus de 4 Mo."
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "L'abonnement PayPal n'a pas pu être vérifié.",
       "activationFailed": "La vérification de l'abonnement n'a pas abouti. Veuillez réessayer plus tard.",
       "createFailed": "L'abonnement PayPal n'a pas pu être démarré. Veuillez réessayer plus tard.",
-"existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
+      "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
       "webhookSignatureFailed": "La vérification de la signature du webhook a échoué.",
       "webhookProcessingFailed": "Le traitement du webhook a échoué."
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "Le service d'analyse est temporairement indisponible. Veuillez réessayer plus tard.",
     "QUOTA_EXCEEDED": "Vous avez atteint le quota disponible pour cette conversion.",
     "QUOTA_UNAVAILABLE": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
-    "FILE_TOO_LARGE": "Ce PDF fait plus de 20 Mo.",
+    "FILE_TOO_LARGE": "Ce PDF fait plus de 4 Mo.",
     "INVALID_FILE_TYPE": "Seuls les fichiers PDF sont pris en charge.",
     "INVALID_PDF": "Ce fichier n'est pas un PDF lisible.",
     "PASSWORD_PROTECTED_PDF": "Les PDF protégés par mot de passe ne peuvent pas être convertis.",

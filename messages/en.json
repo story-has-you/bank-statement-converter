@@ -66,7 +66,8 @@
     "serviceReady": "Files are used for this conversion only and are not saved.",
     "status": "Ready to upload",
     "converting": "Converting",
-    "start": "Convert and review"
+    "start": "Convert and review",
+    "fileTooLarge": "This PDF is larger than 4 MB."
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "The PayPal subscription could not be verified.",
       "activationFailed": "Subscription verification did not complete. Please try again later.",
       "createFailed": "The PayPal subscription could not be started. Please try again later.",
-"existingSubscription": "An active or pending subscription already exists for this account.",
+      "existingSubscription": "An active or pending subscription already exists for this account.",
       "webhookInvalidRequest": "The webhook request is invalid.",
       "webhookSignatureFailed": "Webhook signature verification failed.",
       "webhookProcessingFailed": "Webhook processing failed."
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "The parsing service is temporarily unavailable. Please try again later.",
     "QUOTA_EXCEEDED": "You have reached the available quota for this conversion.",
     "QUOTA_UNAVAILABLE": "The quota service is temporarily unavailable. Please try again later.",
-    "FILE_TOO_LARGE": "This PDF is larger than 20 MB.",
+    "FILE_TOO_LARGE": "This PDF is larger than 4 MB.",
     "INVALID_FILE_TYPE": "Only PDF files are supported.",
     "INVALID_PDF": "This file is not a readable PDF.",
     "PASSWORD_PROTECTED_PDF": "Password-protected PDFs cannot be converted.",

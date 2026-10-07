@@ -79,6 +79,11 @@ function isValidPeriod(startValue: string | null, endValue: string | null, now: 
   return !Number.isNaN(start.valueOf()) && !Number.isNaN(end.valueOf()) && start < end && now >= start && now < end;
 }
 
+function sameInstant(left: string, right: Date): boolean {
+  const parsed = new Date(left);
+  return !Number.isNaN(parsed.valueOf()) && parsed.valueOf() === right.valueOf();
+}
+
 function getSubscriptionWindow(subscription: BillingSubscription, now: Date): UsageWindow | null {
   if (!isValidPeriod(subscription.current_period_start, subscription.current_period_end, now)) {
     return null;
@@ -168,7 +173,7 @@ export async function consumeConversionQuota(
 export function isUsageRecordCurrent(record: UsageRecord, context: QuotaContext): boolean {
   return (
     record.period === context.window.period &&
-    record.period_start === context.window.start.toISOString() &&
-    record.period_end === context.window.end.toISOString()
+    sameInstant(record.period_start, context.window.start) &&
+    sameInstant(record.period_end, context.window.end)
   );
 }

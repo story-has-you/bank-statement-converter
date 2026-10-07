@@ -66,7 +66,8 @@
     "serviceReady": "Los archivos se utilizan únicamente para esta conversión y no se guardan.",
     "status": "Listo para cargar",
     "converting": "Mudado",
-    "start": "Convertir y revisar"
+    "start": "Convertir y revisar",
+    "fileTooLarge": "Este PDF pesa más de 4 MB."
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "No se pudo verificar la suscripción de PayPal.",
       "activationFailed": "La verificación de la suscripción no se completó. Inténtelo de nuevo más tarde.",
       "createFailed": "No se pudo iniciar la suscripción de PayPal. Inténtelo de nuevo más tarde.",
-"existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
+      "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
       "webhookSignatureFailed": "Error en la verificación de la firma del webhook.",
       "webhookProcessingFailed": "Error al procesar el webhook."
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "El servicio de análisis no está disponible temporalmente. Inténtelo de nuevo más tarde.",
     "QUOTA_EXCEEDED": "Ha alcanzado la cuota disponible para esta conversión.",
     "QUOTA_UNAVAILABLE": "El servicio de cuotas no está disponible temporalmente. Inténtelo de nuevo más tarde.",
-    "FILE_TOO_LARGE": "Este PDF pesa más de 20 MB.",
+    "FILE_TOO_LARGE": "Este PDF pesa más de 4 MB.",
     "INVALID_FILE_TYPE": "Sólo se admiten archivos PDF.",
     "INVALID_PDF": "Este archivo no es un PDF legible.",
     "PASSWORD_PROTECTED_PDF": "Los archivos PDF protegidos con contraseña no se pueden convertir.",

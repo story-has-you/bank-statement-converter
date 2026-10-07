@@ -25,6 +25,8 @@ function formatFileSize(bytes: number): string {
   return (bytes / (1024 * 1024)).toFixed(1) + " MB";
 }
 
+const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
   const locale = useLocale();
@@ -54,6 +56,14 @@ export function PdfUpload() {
       setFile(null);
       setError("invalidPdf");
       setServerError(null);
+      if (inputRef.current) inputRef.current.value = "";
+      return;
+    }
+
+    if (candidate.size > MAX_UPLOAD_BYTES) {
+      setFile(null);
+      setError("invalidPdf");
+      setServerError(t("fileTooLarge"));
       if (inputRef.current) inputRef.current.value = "";
       return;
     }

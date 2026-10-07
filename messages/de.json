@@ -66,7 +66,8 @@
     "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
     "status": "Bereit zum Hochladen",
     "converting": "Konvertieren",
-    "start": "Konvertieren und überprüfen"
+    "start": "Konvertieren und überprüfen",
+    "fileTooLarge": "Dieses PDF ist größer als 4 MB."
   },
   "ConversionResult": {
     "metadata": {
@@ -190,7 +191,7 @@
       "verificationFailed": "Das PayPal-Abonnement konnte nicht verifiziert werden.",
       "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
       "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
-"existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
+      "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
       "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
       "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen."
@@ -361,7 +362,7 @@
     "PARSER_UNAVAILABLE": "Der Parsing-Dienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
     "QUOTA_EXCEEDED": "Sie haben das verfügbare Kontingent für diese Konvertierung erreicht.",
     "QUOTA_UNAVAILABLE": "Der Quotendienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
-    "FILE_TOO_LARGE": "Dieses PDF ist größer als 20 MB.",
+    "FILE_TOO_LARGE": "Dieses PDF ist größer als 4 MB.",
     "INVALID_FILE_TYPE": "Es werden nur PDF-Dateien unterstützt.",
     "INVALID_PDF": "Diese Datei ist kein lesbares PDF.",
     "PASSWORD_PROTECTED_PDF": "Passwortgeschützte PDFs können nicht konvertiert werden.",
