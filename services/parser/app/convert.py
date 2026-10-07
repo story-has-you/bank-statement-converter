@@ -17,6 +17,8 @@ from .models import (
 from .pdf_reader import ParserError, extract_page_words, open_text_pdf, validate_pdf_input
 from .row_validation import validate_row
 from .table_parser import (
+    DATE_PATTERN,
+    MONEY_PATTERN,
     RawTable,
     extract_page_tables,
     merge_compatible_tables,
@@ -33,12 +35,18 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
         errors: list[ParseError] = []
 
         for page_number, page in enumerate(pdf.pages, start=1):
-            words = extract_page_words(page)
-            page_words.append(words)
-            if not words:
-                continue
             try:
-                raw_tables.extend(extract_page_tables(page, page_number))
+                words = extract_page_words(page)
+                page_words.append(words)
+                if not words:
+                    if page.images:
+                        errors.append(ParseError(code="UNSUPPORTED_SCANNED_PDF", page=page_number))
+                    continue
+                page_tables = extract_page_tables(page, page_number)
+                raw_tables.extend(page_tables)
+                texts = [str(word["text"]) for word in words]
+                if not page_tables and any(DATE_PATTERN.match(text) for text in texts) and any(MONEY_PATTERN.fullmatch(text) for text in texts):
+                    errors.append(ParseError(code="TABLE_NOT_FOUND", page=page_number))
             except Exception:
                 errors.append(
                     ParseError(
@@ -49,7 +57,7 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
 
         if not any(page_words):
             raise ParserError(
-                "UNSUPPORTED_SCANNED_PDF",
+                "PARSE_FAILED" if any(error.code == "PARSE_FAILED" for error in errors) else "UNSUPPORTED_SCANNED_PDF",
                 400,
             )
 
