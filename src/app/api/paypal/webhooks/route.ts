@@ -77,6 +77,7 @@ export async function POST(request: Request): Promise<Response> {
   try {
     const verified = await verifyPayPalWebhookSignature(request.headers, payload);
     if (!verified) {
+      console.warn("PayPal webhook signature verification failed");
       return NextResponse.json({ error: t("webhookSignatureFailed") }, { status: 400 });
     }
 
@@ -87,11 +88,17 @@ export async function POST(request: Request): Promise<Response> {
     const status = eventType ? getWebhookStatus(eventType, resource) : null;
 
     if (!eventId || !eventType || !subscriptionId || !status) {
+      console.info("PayPal webhook ignored", { eventId, eventType, reason: "unsupported_or_incomplete" });
       return NextResponse.json({ received: true });
     }
 
     const existing = await findBillingSubscriptionByPayPalId(subscriptionId);
-    if (!existing || existing.last_webhook_event_id === eventId) {
+    if (!existing) {
+      console.info("PayPal webhook ignored", { eventId, eventType, reason: "subscription_not_found" });
+      return NextResponse.json({ received: true });
+    }
+    if (existing.last_webhook_event_id === eventId) {
+      console.info("PayPal webhook ignored", { eventId, eventType, reason: "duplicate" });
       return NextResponse.json({ received: true });
     }
 
@@ -111,6 +118,7 @@ export async function POST(request: Request): Promise<Response> {
       last_event_at: payload.create_time ?? new Date().toISOString(),
     });
 
+    console.info("PayPal webhook processed", { eventId, eventType, status });
     return NextResponse.json({ received: true });
   } catch (error) {
     console.error("Failed to process PayPal webhook", error);
