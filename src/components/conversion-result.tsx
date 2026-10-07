@@ -10,7 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { consumeConversionPayload } from "@/lib/conversion-storage";
+import { readConversionPayload } from "@/lib/conversion-storage";
 import type { ConversionPayload, SummaryStatus } from "@/lib/conversion-types";
 
 export function ConversionResult() {
@@ -19,7 +19,7 @@ export function ConversionResult() {
 
   useEffect(() => {
     const loadPayload = window.setTimeout(() => {
-      setPayload(consumeConversionPayload());
+      setPayload(readConversionPayload());
     }, 0);
 
     return () => window.clearTimeout(loadPayload);
@@ -75,6 +75,22 @@ export function ConversionResult() {
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("empty.title")}</AlertTitle>
           <AlertDescription>{t("empty.description")}</AlertDescription>
+        </Alert>
+      )}
+
+      {result.errors.length > 0 && (
+        <Alert>
+          <CircleAlertIcon aria-hidden="true" />
+          <AlertTitle>{t("pageRisks.title")}</AlertTitle>
+          <AlertDescription>
+            <ul className="list-disc space-y-1 pl-5">
+              {result.errors.map((error, index) => (
+                <li key={`${error.code}-${error.page ?? "document"}-${index}`}>
+                  {t("pageRisks.item", { page: error.page ?? "?", code: error.code })}
+                </li>
+              ))}
+            </ul>
+          </AlertDescription>
         </Alert>
       )}
 

@@ -128,6 +128,10 @@
       "missingAmount": "Der Transaktionsbetrag fehlt.",
       "invalidAmount": "Der Transaktionsbetrag ist ungültig.",
       "amountColumnMismatch": "Ein Betrag steht außerhalb der Transaktionsbetragsspalte und kann nicht sicher zugeordnet werden."
+    },
+    "pageRisks": {
+      "title": "Seitenrisiken",
+      "item": "Seite {page}: {code}"
     }
   },
   "HomeFeatures": {

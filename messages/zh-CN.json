@@ -128,6 +128,10 @@
       "missingAmount": "交易金额缺失。",
       "invalidAmount": "交易金额格式无效。",
       "amountColumnMismatch": "金额出现在非交易金额列，无法确认对应关系。"
+    },
+    "pageRisks": {
+      "title": "页面风险",
+      "item": "第 {page} 页：{code}"
     }
   },
   "HomeFeatures": {

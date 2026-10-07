@@ -12,18 +12,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { usePathname } from "@/i18n/navigation";
-import { getLocalizedPath } from "@/i18n/metadata";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
 
 export function LanguageSwitcher() {
   const t = useTranslations("LanguageSwitcher");
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
 
   function switchLocale(nextLocale: AppLocale): void {
     if (nextLocale !== locale) {
-      window.location.assign(getLocalizedPath(nextLocale, pathname));
+      router.replace(pathname, { locale: nextLocale });
     }
   }
 

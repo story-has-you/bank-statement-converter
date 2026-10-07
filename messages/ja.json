@@ -128,6 +128,10 @@
       "missingAmount": "取引金額がありません。",
       "invalidAmount": "取引金額が無効です。",
       "amountColumnMismatch": "金額が取引金額の列以外にあり、対応関係を確認できません。"
+    },
+    "pageRisks": {
+      "title": "ページのリスク",
+      "item": "ページ {page}: {code}"
     }
   },
   "HomeFeatures": {

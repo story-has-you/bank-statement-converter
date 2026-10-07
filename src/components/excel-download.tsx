@@ -42,7 +42,37 @@ export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
         row.source.page,
         row.source.row,
       ]);
-      const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+      const sheetRows = tableIndex === 0
+        ? [
+            ...result.errors.map((error) => [
+              t("pageRisks.item", { page: error.page ?? "?", code: error.code }),
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+            ]),
+            ...table.warnings.map((warning) => [
+              t(getParseIssueKey(warning), warning.params),
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+            ]),
+            headers,
+            ...rows,
+          ]
+        : [headers, ...rows];
+      const worksheet = XLSX.utils.aoa_to_sheet(sheetRows);
       worksheet["!cols"] = table.columns.map(() => ({ wch: 20 })).concat([
         { wch: 14 },
         { wch: 36 },

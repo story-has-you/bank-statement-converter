@@ -128,6 +128,10 @@
       "missingAmount": "The transaction amount is missing.",
       "invalidAmount": "The transaction amount is invalid.",
       "amountColumnMismatch": "An amount appears outside the transaction amount column and cannot be matched reliably."
+    },
+    "pageRisks": {
+      "title": "Page risks",
+      "item": "Page {page}: {code}"
     }
   },
   "HomeFeatures": {
