@@ -190,6 +190,7 @@
       "verificationFailed": "Das PayPal-Abonnement konnte nicht verifiziert werden.",
       "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
       "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
+"existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
       "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
       "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen."

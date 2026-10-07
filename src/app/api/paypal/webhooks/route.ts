@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 
-import {
-  findBillingSubscriptionByPayPalId,
-  upsertBillingSubscription,
-} from "@/lib/billing/server";
-import { verifyPayPalWebhookSignature } from "@/lib/paypal/server";
+import { applyBillingWebhook } from "@/lib/billing/server";
+import { getPayPalSubscription, verifyPayPalWebhookSignature } from "@/lib/paypal/server";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
 import { isSubscriptionStatus, type SubscriptionStatus } from "@/lib/billing/types";
 
@@ -28,9 +25,9 @@ function getString(value: unknown): string | null {
 
 function getSubscriptionId(resource: Record<string, unknown>): string | null {
   return (
-    getString(resource.id) ??
+    getString(resource.billing_agreement_id) ??
     getString(resource.subscription_id) ??
-    getString(resource.billing_agreement_id)
+    getString(resource.id)
   );
 }
 
@@ -84,7 +81,9 @@ export async function POST(request: Request): Promise<Response> {
     const eventId = getString(payload.id);
     const eventType = getString(payload.event_type);
     const resource = getResourceObject(payload.resource);
-    const subscriptionId = getSubscriptionId(resource);
+    const subscriptionId = eventType?.startsWith("PAYMENT.SALE.")
+      ? getString(resource.billing_agreement_id) ?? getString(resource.subscription_id)
+      : getSubscriptionId(resource);
     const status = eventType ? getWebhookStatus(eventType, resource) : null;
 
     if (!eventId || !eventType || !subscriptionId || !status) {
@@ -92,33 +91,26 @@ export async function POST(request: Request): Promise<Response> {
       return NextResponse.json({ received: true });
     }
 
-    const existing = await findBillingSubscriptionByPayPalId(subscriptionId);
-    if (!existing) {
-      console.info("PayPal webhook ignored", { eventId, eventType, reason: "subscription_not_found" });
-      return NextResponse.json({ received: true });
-    }
-    if (existing.last_webhook_event_id === eventId) {
-      console.info("PayPal webhook ignored", { eventId, eventType, reason: "duplicate" });
-      return NextResponse.json({ received: true });
-    }
-
-    const billingInfo = getResourceObject(resource.billing_info);
-    const subscriber = getResourceObject(resource.subscriber);
-    const resourceEmail = getString(subscriber.email_address);
-    const resourcePayerId = getString(subscriber.payer_id);
-    const nextBillingTime = getString(billingInfo.next_billing_time);
-
-    await upsertBillingSubscription({
-      ...existing,
-      status,
-      payer_id: resourcePayerId ?? existing.payer_id,
-      subscriber_email: resourceEmail ?? existing.subscriber_email,
-      current_period_end: nextBillingTime ?? existing.current_period_end,
-      last_webhook_event_id: eventId,
-      last_event_at: payload.create_time ?? new Date().toISOString(),
+    const eventAt = payload.create_time ?? new Date().toISOString();
+    const authoritative = await getPayPalSubscription(subscriptionId);
+    const billingInfo = authoritative.billingInfo;
+    const subscriber = authoritative.subscriber;
+    const result = await applyBillingWebhook({
+      eventId,
+      eventAt,
+      subscriptionId,
+      status: authoritative.status && isSubscriptionStatus(authoritative.status) ? authoritative.status : status,
+      payerId: subscriber?.payerId ?? getString(getResourceObject(resource.subscriber).payer_id),
+      subscriberEmail: subscriber?.emailAddress ?? getString(getResourceObject(resource.subscriber).email_address),
+      currentPeriodStart: authoritative.startTime ?? getString(resource.start_time),
+      currentPeriodEnd: billingInfo?.nextBillingTime ?? getString(getResourceObject(resource.billing_info).next_billing_time),
     });
+    if (result === "not_found") {
+      console.warn("PayPal webhook deferred", { eventId, eventType, reason: "subscription_not_found" });
+      return NextResponse.json({ received: false }, { status: 409 });
+    }
 
-    console.info("PayPal webhook processed", { eventId, eventType, status });
+    console.info("PayPal webhook processed", { eventId, eventType, status, result });
     return NextResponse.json({ received: true });
   } catch (error) {
     console.error("Failed to process PayPal webhook", error);

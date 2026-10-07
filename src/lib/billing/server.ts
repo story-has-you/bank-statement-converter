@@ -44,7 +44,24 @@ export async function findActiveBillingSubscription(userId: string): Promise<Bil
     .from("billing_subscriptions")
     .select("*")
     .eq("user_id", userId)
-    .in("status", ["APPROVED", "ACTIVE"])
+    .eq("status", "ACTIVE")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data as BillingSubscription | null;
+}
+
+export async function findOpenBillingSubscription(userId: string): Promise<BillingSubscription | null> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+
+  const { data, error } = await admin
+    .from("billing_subscriptions")
+    .select("*")
+    .eq("user_id", userId)
+    .in("status", ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "SUSPENDED"])
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
@@ -69,4 +86,34 @@ export async function upsertBillingSubscription(
 
   if (error) throw error;
   return data as BillingSubscription;
+}
+
+export type BillingWebhookUpdate = {
+  eventId: string;
+  eventAt: string;
+  subscriptionId: string;
+  status: SubscriptionStatus;
+  payerId: string | null;
+  subscriberEmail: string | null;
+  currentPeriodStart: string | null;
+  currentPeriodEnd: string | null;
+};
+
+export async function applyBillingWebhook(update: BillingWebhookUpdate): Promise<"applied" | "ignored" | "not_found"> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+
+  const { data, error } = await admin.rpc("apply_billing_webhook", {
+    p_event_id: update.eventId,
+    p_event_at: update.eventAt,
+    p_subscription_id: update.subscriptionId,
+    p_status: update.status,
+    p_payer_id: update.payerId,
+    p_subscriber_email: update.subscriberEmail,
+    p_current_period_start: update.currentPeriodStart,
+    p_current_period_end: update.currentPeriodEnd,
+  });
+  if (error) throw error;
+  if (data === "applied" || data === "ignored" || data === "not_found") return data;
+  throw new Error("Billing webhook returned an invalid result");
 }

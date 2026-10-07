@@ -190,6 +190,7 @@
       "verificationFailed": "The PayPal subscription could not be verified.",
       "activationFailed": "Subscription verification did not complete. Please try again later.",
       "createFailed": "The PayPal subscription could not be started. Please try again later.",
+"existingSubscription": "An active or pending subscription already exists for this account.",
       "webhookInvalidRequest": "The webhook request is invalid.",
       "webhookSignatureFailed": "Webhook signature verification failed.",
       "webhookProcessingFailed": "Webhook processing failed."

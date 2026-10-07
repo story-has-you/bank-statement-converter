@@ -75,7 +75,7 @@ export async function POST(request: Request): Promise<Response> {
     if (
       subscription.id !== payload.subscriptionId ||
       subscription.planId !== expectedPlanId ||
-      (subscription.customId !== undefined && subscription.customId !== data.user.id) ||
+      subscription.customId !== data.user.id ||
       (status !== "APPROVED" && status !== "ACTIVE")
     ) {
       return errorResponse(t("verificationFailed"), 400);

@@ -98,8 +98,8 @@ export function getQuotaContext(
 ): QuotaContext {
   if (subscription) {
     const config = usageQuotaConfig.subscriptions[subscription.tier];
-    const window = getSubscriptionWindow(subscription, now) ?? createUtcWindow(config.period, now);
-    return { ...actor, limitPages: config.pages, window };
+    const window = getSubscriptionWindow(subscription, now);
+    if (window) return { ...actor, limitPages: config.pages, window };
   }
 
   const config = actor.type === "anonymous" ? usageQuotaConfig.anonymous : usageQuotaConfig.authenticated;
