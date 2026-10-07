@@ -2,7 +2,7 @@
 
 import { DownloadIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import * as XLSX from "xlsx";
+import * as XLSX from "xlsx-js-style";
 
 import { Button } from "@/components/ui/button";
 import { getRowRiskCode, type ParseResponse } from "@/lib/conversion-types";
