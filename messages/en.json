@@ -118,7 +118,10 @@
       "repeatedHeader": "Row {row} repeats the table header and was skipped.",
       "summaryRow": "Row {row} looks like a summary row and was skipped.",
       "extraCells": "This row has more cells than the header. The extra cells were kept.",
-      "unknown": "This item needs review."
+      "unknown": "This item needs review.",
+      "missingDate": "The date is missing or invalid.",
+      "missingDescription": "The transaction description is missing.",
+      "missingAmount": "The transaction amount is missing or invalid."
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "This version accepts electronic PDFs with selectable text, not scanned images.",
     "TABLE_NOT_FOUND": "No usable bank statement table was found.",
     "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
-    "UNKNOWN": "Something went wrong. Please try again."
+    "UNKNOWN": "Something went wrong. Please try again.",
+    "NO_VERIFIABLE_TRANSACTIONS": "No transaction has enough evidence to review."
   }
 }

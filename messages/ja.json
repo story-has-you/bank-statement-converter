@@ -118,7 +118,10 @@
       "repeatedHeader": "{row}行目は重複した見出しのためスキップしました。",
       "summaryRow": "{row}行目は合計行と思われるためスキップしました。",
       "extraCells": "この行には見出しより多いセルがあります。余分なセルも保持しました。",
-      "unknown": "この項目は確認が必要です。"
+      "unknown": "この項目は確認が必要です。",
+      "missingDate": "日付がないか無効です。",
+      "missingDescription": "取引の説明がありません。",
+      "missingAmount": "取引金額がないか無効です。"
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "文字を選択できる電子PDFのみ対応しています。",
     "TABLE_NOT_FOUND": "利用できる銀行明細の表が見つかりません。",
     "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
-    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。"
+    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。",
+    "NO_VERIFIABLE_TRANSACTIONS": "照合に必要な情報を持つ取引がありません。"
   }
 }

@@ -15,6 +15,7 @@ from .models import (
     SummaryStatus,
 )
 from .pdf_reader import ParserError, extract_page_words, open_text_pdf, validate_pdf_input
+from .row_validation import validate_row
 from .table_parser import (
     RawTable,
     extract_page_tables,
@@ -64,6 +65,8 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
             for index, table in enumerate(tables, start=1)
         ]
         summary = _build_summary(parsed_tables)
+        if summary.valid_row_count + summary.warning_row_count == 0:
+            raise ParserError("NO_VERIFIABLE_TRANSACTIONS", 422)
         if errors and summary.status is SummaryStatus.SUCCESS:
             summary.status = SummaryStatus.PARTIAL
         return ParseResponse(
@@ -91,10 +94,11 @@ def _to_parsed_table(table: RawTable, table_index: int) -> ParsedTable:
             f"c{index}": raw_row.cells[index] if index < len(raw_row.cells) else None
             for index in range(max_width)
         }
-        warnings = list(raw_row.warnings)
+        evidence_issues = validate_row(table.headers, raw_row.cells)
+        warnings = [*raw_row.warnings, *evidence_issues]
         if len(raw_row.cells) > len(table.headers):
             warnings.append(ParseIssue(code="EXTRA_CELLS"))
-        if raw_row.failed:
+        if raw_row.failed or evidence_issues:
             status = RowStatus.FAILED
         elif warnings:
             status = RowStatus.WARNING

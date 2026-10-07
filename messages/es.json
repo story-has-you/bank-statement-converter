@@ -118,7 +118,10 @@
       "repeatedHeader": "La fila {row} repite el encabezado de la tabla y se omitió.",
       "summaryRow": "La fila {row} parece una fila de resumen y se omitió.",
       "extraCells": "Esta fila tiene más celdas que el encabezado. Se conservaron las celdas adicionales.",
-      "unknown": "Este artículo necesita revisión."
+      "unknown": "Este artículo necesita revisión.",
+      "missingDate": "La fecha falta o no es válida.",
+      "missingDescription": "Falta la descripción de la transacción.",
+      "missingAmount": "El importe falta o no es válido."
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "Esta versión acepta archivos PDF electrónicos con texto seleccionable, no imágenes escaneadas.",
     "TABLE_NOT_FOUND": "No se encontró ninguna tabla de extractos bancarios utilizable.",
     "PARSE_FAILED": "No se pudo analizar el PDF. Inténtelo de nuevo con otro archivo.",
-    "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo."
+    "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Ninguna transacción tiene información suficiente para revisarla."
   }
 }

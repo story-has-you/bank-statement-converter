@@ -118,7 +118,10 @@
       "repeatedHeader": "La ligne {row} répète l'en-tête du tableau et a été ignorée.",
       "summaryRow": "La ligne {row} ressemble à une ligne récapitulative et a été ignorée.",
       "extraCells": "Cette ligne contient plus de cellules que l'en-tête. Les cellules supplémentaires ont été conservées.",
-      "unknown": "Cet article doit être révisé."
+      "unknown": "Cet article doit être révisé.",
+      "missingDate": "La date est absente ou invalide.",
+      "missingDescription": "La description de la transaction est absente.",
+      "missingAmount": "Le montant est absent ou invalide."
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "Cette version accepte les PDF électroniques avec du texte sélectionnable, pas les images numérisées.",
     "TABLE_NOT_FOUND": "Aucun tableau de relevé bancaire utilisable n'a été trouvé.",
     "PARSE_FAILED": "Le PDF n'a pas pu être analysé. Veuillez réessayer avec un autre fichier.",
-    "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer."
+    "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Aucune transaction ne contient assez d’informations pour être vérifiée."
   }
 }

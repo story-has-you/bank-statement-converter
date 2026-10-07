@@ -118,7 +118,10 @@
       "repeatedHeader": "第 {row} 行重复了表头，已跳过。",
       "summaryRow": "第 {row} 行看起来是合计行，已跳过。",
       "extraCells": "这一行的单元格多于表头，额外内容已保留。",
-      "unknown": "这项内容需要核对。"
+      "unknown": "这项内容需要核对。",
+      "missingDate": "日期缺失或无效。",
+      "missingDescription": "交易描述缺失。",
+      "missingAmount": "交易金额缺失或无效。"
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "当前版本只支持带可选文字的电子版 PDF，不支持扫描图片。",
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
     "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
-    "UNKNOWN": "出了点问题，请稍后再试。"
+    "UNKNOWN": "出了点问题，请稍后再试。",
+    "NO_VERIFIABLE_TRANSACTIONS": "没有具备足够证据可供核对的交易。"
   }
 }

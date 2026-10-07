@@ -46,6 +46,7 @@ const apiErrorCodes = [
   "TOO_MANY_PAGES",
   "UNSUPPORTED_SCANNED_PDF",
   "TABLE_NOT_FOUND",
+  "NO_VERIFIABLE_TRANSACTIONS",
   "PARSE_FAILED",
   "UNKNOWN",
 ] as const;

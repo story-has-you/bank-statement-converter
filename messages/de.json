@@ -118,7 +118,10 @@
       "repeatedHeader": "Zeile {row} wiederholt den Tabellenkopf und wurde übersprungen.",
       "summaryRow": "Zeile {row} sieht aus wie eine Zusammenfassungszeile und wurde übersprungen.",
       "extraCells": "Diese Zeile enthält mehr Zellen als die Kopfzeile. Die zusätzlichen Zellen wurden behalten.",
-      "unknown": "Dieser Artikel muss überprüft werden."
+      "unknown": "Dieser Artikel muss überprüft werden.",
+      "missingDate": "Das Datum fehlt oder ist ungültig.",
+      "missingDescription": "Die Transaktionsbeschreibung fehlt.",
+      "missingAmount": "Der Transaktionsbetrag fehlt oder ist ungültig."
     }
   },
   "HomeFeatures": {
@@ -360,6 +363,7 @@
     "UNSUPPORTED_SCANNED_PDF": "Diese Version akzeptiert elektronische PDFs mit auswählbarem Text, keine gescannten Bilder.",
     "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
     "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
-    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Keine Transaktion enthält genügend Angaben zur Prüfung."
   }
 }
