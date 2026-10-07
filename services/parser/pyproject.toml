@@ -17,3 +17,6 @@ dependencies = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
+
+[project.optional-dependencies]
+test = ["reportlab>=4.4,<5"]

@@ -19,7 +19,6 @@ from .table_parser import (
     RawTable,
     extract_page_tables,
     merge_compatible_tables,
-    merge_tables_into_single_table,
 )
 
 
@@ -54,10 +53,6 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
             )
 
         tables = merge_compatible_tables(raw_tables)
-        logical_page_count = len(pdf.pages)
-        if len(pdf.pages) == 2:
-            tables = merge_tables_into_single_table(tables)
-            logical_page_count = 1
         if not tables:
             raise ParserError(
                 "TABLE_NOT_FOUND",
@@ -73,7 +68,7 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
             summary.status = SummaryStatus.PARTIAL
         return ParseResponse(
             filename=filename,
-            pageCount=logical_page_count,
+            pageCount=len(pdf.pages),
             tables=parsed_tables,
             summary=summary,
             errors=errors,
