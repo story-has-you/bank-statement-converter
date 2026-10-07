@@ -189,6 +189,24 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         if _is_opening_balance(cells):
             continue
         if not is_transaction_candidate(headers, cells):
+            continuation_index = _continuation_column(cells, headers)
+            if parsed_rows and continuation_index is not None:
+                previous = parsed_rows[-1].cells[continuation_index]
+                parsed_rows[-1].cells[continuation_index] = _clean_text(
+                    f"{previous or ''} {cells[continuation_index] or ''}"
+                )
+                continue
+            if _looks_like_unverifiable_row(cells):
+                parsed_rows.append(
+                    RawRow(
+                        cells=cells,
+                        page=page_number,
+                        row=offset,
+                        warnings=[ParseIssue(code="UNVERIFIABLE_ROW")],
+                        failed=True,
+                    )
+                )
+                continue
             break
         parsed_rows.append(RawRow(cells=cells, page=page_number, row=offset))
 
@@ -475,16 +493,30 @@ def _is_section_end(words: list[dict[str, object]]) -> bool:
 
 
 def _continuation_column(cells: list[str | None], headers: list[str]) -> int | None:
-    """Return the only populated non-date column on a wrapped transaction line."""
+    """Return the description column when a row contains only wrapped text."""
 
     populated = [index for index, cell in enumerate(cells) if cell]
     if len(populated) != 1:
         return None
     index = populated[0]
     cell = cells[index]
-    if cell is None or is_date_column(headers, index) or index < 2:
+    if cell is None or is_date_column(headers, index):
         return None
-    return index
+    header = _normalize_for_match(headers[index]) if index < len(headers) else ""
+    description_terms = (
+        "摘要", "描述", "交易", "对手", "description", "transaction", "counterparty",
+        "buchung", "jahreskontoauszug",
+    )
+    return index if any(term in header for term in description_terms) else None
+
+
+def _looks_like_unverifiable_row(cells: list[str | None]) -> bool:
+    """Keep suspicious text and amount rows instead of silently truncating a table."""
+
+    populated = [cell for cell in cells if cell]
+    if len(populated) < 2:
+        return False
+    return any(MONEY_PATTERN.fullmatch(cell.strip()) for cell in populated)
 
 
 def _requires_coordinate_rebuild(headers: list[str], rows: list[RawRow]) -> bool:
