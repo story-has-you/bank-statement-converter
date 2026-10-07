@@ -8,7 +8,7 @@ from typing import Any
 
 from .models import ParseIssue
 from .pdf_reader import filter_watermark_page
-from .row_validation import DATE_HEADERS
+from .row_validation import DATE_HEADERS, DESCRIPTION_HEADERS
 
 
 HEADER_TERMS = (
@@ -224,7 +224,13 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         if _is_opening_balance(cells):
             continue
         if not _looks_like_data_row(cells):
-            break
+            continuation_index = _continuation_column(cells, headers)
+            if parsed_rows and continuation_index is not None:
+                previous = parsed_rows[-1].cells[continuation_index]
+                parsed_rows[-1].cells[continuation_index] = _clean_text(f"{previous or ''} {cells[continuation_index] or ''}")
+                continue
+            parsed_rows.append(RawRow(cells=cells, page=page_number, row=offset, failed=True))
+            continue
         parsed_rows.append(RawRow(cells=cells, page=page_number, row=offset))
 
     if not parsed_rows:
@@ -303,7 +309,7 @@ def _rebuild_table_from_words(
         if _is_opening_balance(cells):
             continue
         if not _looks_like_data_row(cells):
-            continuation_index = _continuation_column(cells)
+            continuation_index = _continuation_column(cells, headers)
             if (
                 seen_data
                 and continuation_index is not None
@@ -314,6 +320,8 @@ def _rebuild_table_from_words(
                 parsed_rows[-1].cells[continuation_index] = _clean_text(
                     f"{previous or ''} {cells[continuation_index] or ''}"
                 )
+            elif any(cells):
+                parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row, failed=True))
             continue
         seen_data = True
         parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row))
@@ -488,7 +496,7 @@ def _is_section_end(words: list[dict[str, object]]) -> bool:
     return any(text.startswith(term.replace(" ", "")) for term in SECTION_END_TERMS)
 
 
-def _continuation_column(cells: list[str | None]) -> int | None:
+def _continuation_column(cells: list[str | None], headers: list[str]) -> int | None:
     """Return the only populated non-date column on a wrapped transaction line."""
 
     populated = [index for index, cell in enumerate(cells) if cell]
@@ -496,7 +504,9 @@ def _continuation_column(cells: list[str | None]) -> int | None:
         return None
     index = populated[0]
     cell = cells[index]
-    if cell is None or DATE_PATTERN.match(cell.strip()) or index < 2:
+    if cell is None or DATE_PATTERN.match(cell.strip()) or index >= len(headers):
+        return None
+    if not any(term in headers[index].lower() for term in DESCRIPTION_HEADERS):
         return None
     return index
 
