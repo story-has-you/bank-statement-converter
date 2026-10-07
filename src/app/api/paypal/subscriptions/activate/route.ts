@@ -76,7 +76,11 @@ export async function POST(request: Request): Promise<Response> {
       subscription.id !== payload.subscriptionId ||
       subscription.planId !== expectedPlanId ||
       subscription.customId !== data.user.id ||
-      (status !== "APPROVED" && status !== "ACTIVE")
+      status !== "ACTIVE" ||
+      !subscription.startTime ||
+      !subscription.billingInfo?.nextBillingTime ||
+      new Date(subscription.startTime) >= new Date(subscription.billingInfo.nextBillingTime) ||
+      new Date(subscription.billingInfo.nextBillingTime) <= new Date()
     ) {
       return errorResponse(t("verificationFailed"), 400);
     }
