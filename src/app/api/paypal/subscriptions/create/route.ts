@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 
 import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
 import { createPayPalSubscription } from "@/lib/paypal/server";
-import { upsertBillingSubscription, findOpenBillingSubscription } from "@/lib/billing/server";
+import {
+  completeBillingSubscriptionIntent,
+  findOpenBillingSubscription,
+  releaseBillingSubscriptionIntent,
+  reserveBillingSubscriptionIntent,
+} from "@/lib/billing/server";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
 import { createClient } from "@/lib/supabase/server";
 
@@ -41,27 +46,34 @@ export async function POST(request: Request): Promise<Response> {
 
   try {
     const existing = await findOpenBillingSubscription(data.user.id);
-    if (existing) return errorResponse(t("existingSubscription"), 409);
+    if (existing || !(await reserveBillingSubscriptionIntent(data.user.id, tier, planId))) {
+      return errorResponse(t("existingSubscription"), 409);
+    }
 
-    const subscription = await createPayPalSubscription(planId, data.user.id);
-    if (!subscription.id) return errorResponse(t("createFailed"), 502);
-
-    await upsertBillingSubscription({
-      user_id: data.user.id,
-      email: data.user.email ?? "",
-      tier,
-      paypal_subscription_id: subscription.id,
-      paypal_plan_id: planId,
-      status: subscription.status === "APPROVED" || subscription.status === "ACTIVE"
+    let subscription;
+    try {
+      subscription = await createPayPalSubscription(planId, data.user.id);
+      if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
+      const status = subscription.status === "APPROVED" || subscription.status === "ACTIVE"
         ? subscription.status
-        : "APPROVAL_PENDING",
-      payer_id: subscription.subscriber?.payerId ?? null,
-      subscriber_email: subscription.subscriber?.emailAddress ?? null,
-      current_period_start: subscription.startTime ?? null,
-      current_period_end: subscription.billingInfo?.nextBillingTime ?? null,
-      last_webhook_event_id: null,
-      last_event_at: null,
-    });
+        : "APPROVAL_PENDING";
+      const completed = await completeBillingSubscriptionIntent({
+        userId: data.user.id,
+        email: data.user.email ?? "",
+        tier,
+        planId,
+        subscriptionId: subscription.id,
+        status,
+        payerId: subscription.subscriber?.payerId ?? null,
+        subscriberEmail: subscription.subscriber?.emailAddress ?? null,
+        periodStart: subscription.startTime ?? null,
+        periodEnd: subscription.billingInfo?.nextBillingTime ?? null,
+      });
+      if (!completed) throw new Error("Billing subscription intent could not be completed");
+    } catch (error) {
+      await releaseBillingSubscriptionIntent(data.user.id);
+      throw error;
+    }
     return NextResponse.json({ subscriptionId: subscription.id });
   } catch (error) {
     console.error("Failed to create PayPal subscription", error);

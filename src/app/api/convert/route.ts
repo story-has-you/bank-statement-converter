@@ -12,6 +12,7 @@ import {
   isUsageRecordCurrent,
   type UsageActor,
   type QuotaContext,
+  SubscriptionPeriodUnavailableError,
   UsageUnavailableError,
 } from "@/lib/usage/server";
 import { createClient } from "@/lib/supabase/server";
@@ -23,6 +24,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+const MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 
 type ErrorPayload = {
   code: string;
@@ -41,6 +43,7 @@ const apiErrorCodes = [
   "QUOTA_EXCEEDED",
   "QUOTA_UNAVAILABLE",
   "FILE_TOO_LARGE",
+  "PARSER_RESPONSE_TOO_LARGE",
   "INVALID_FILE_TYPE",
   "INVALID_PDF",
   "PASSWORD_PROTECTED_PDF",
@@ -94,7 +97,12 @@ function isCurrentUsageAtLimit(
   return Boolean(record && isUsageRecordCurrent(record, context) && record.used_pages >= context.limitPages);
 }
 
-async function getRequestActor(): Promise<{ actor: UsageActor; cookieValue: string | null }> {
+function getClientAddress(request: Request): string | null {
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
+  return forwarded || request.headers.get("x-real-ip")?.trim() || null;
+}
+
+async function getRequestActor(request: Request): Promise<{ actor: UsageActor; cookieValue: string | null }> {
   const supabase = await createClient();
   const user = supabase ? (await supabase.auth.getUser()).data.user : null;
   if (user) {
@@ -107,8 +115,12 @@ async function getRequestActor(): Promise<{ actor: UsageActor; cookieValue: stri
   const cookieStore = await cookies();
   const existingCookie = cookieStore.get(ANONYMOUS_COOKIE)?.value;
   const cookieValue = existingCookie ?? createAnonymousId();
+  const clientAddress = getClientAddress(request);
+  const actorKey = clientAddress
+    ? hashAnonymousId(`network:${clientAddress}`)
+    : hashAnonymousId(`cookie:${cookieValue}`);
   return {
-    actor: { type: "anonymous", key: hashAnonymousId(cookieValue), email: null },
+    actor: { type: "anonymous", key: actorKey, email: null },
     cookieValue: existingCookie ? null : cookieValue,
   };
 }
@@ -156,7 +168,7 @@ export async function POST(request: Request): Promise<Response> {
   let anonymousCookie: string | null;
   let context: QuotaContext;
   try {
-    const requestActor = await getRequestActor();
+    const requestActor = await getRequestActor(request);
     actor = requestActor.actor;
     anonymousCookie = requestActor.cookieValue;
     const subscription = actor.type === "user" ? await getActiveSubscription(actor.key) : null;
@@ -174,7 +186,7 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
   } catch (error) {
-    if (!(error instanceof UsageUnavailableError)) {
+    if (!(error instanceof UsageUnavailableError) && !(error instanceof SubscriptionPeriodUnavailableError)) {
       console.error("Failed to resolve conversion quota", error);
     }
     return errorResponse("QUOTA_UNAVAILABLE", 503, locale);
@@ -224,7 +236,14 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    const payload: unknown = await parserResponse.json();
+    const responseBytes = await parserResponse.arrayBuffer();
+    if (responseBytes.byteLength > MAX_RESPONSE_BYTES) {
+      return setAnonymousCookie(
+        errorResponse("PARSER_RESPONSE_TOO_LARGE", 502, locale),
+        anonymousCookie,
+      );
+    }
+    const payload: unknown = JSON.parse(new TextDecoder().decode(responseBytes));
     if (!isParseResponse(payload) || !Number.isInteger(payload.pageCount) || payload.pageCount <= 0) {
       return setAnonymousCookie(
         errorResponse("PARSER_UNAVAILABLE", 502, locale),

@@ -2,11 +2,11 @@
 
 import { DownloadIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import * as XLSX from "xlsx-js-style";
+import * as XLSX from "@e965/xlsx";
 
 import { Button } from "@/components/ui/button";
 import { getRowRiskCode, type ParseResponse } from "@/lib/conversion-types";
-import { getParseIssueKey } from "@/lib/parse-issues";
+import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
 type ExcelDownloadProps = {
   filename: string;
@@ -45,7 +45,7 @@ export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
       const sheetRows = tableIndex === 0
         ? [
             ...result.errors.map((error) => [
-              t("pageRisks.item", { page: error.page ?? "?", code: error.code }),
+              t(getParseErrorKey(error.code), { page: error.page ?? "?" }),
               "",
               "",
               "",

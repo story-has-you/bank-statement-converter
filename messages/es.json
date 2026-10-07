@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "Riesgos de página",
-      "item": "Página {page}: {code}"
+      "item": "Página {page}: {code}",
+      "pageParseFailed": "No se pudo leer la página {page}.",
+      "pageUnparsed": "La página {page} contiene indicios de transacciones, pero no se pudo reconstruir una tabla fiable.",
+      "unknown": "La página {page} necesita revisión."
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "No se encontró ninguna tabla de extractos bancarios utilizable.",
     "NO_VERIFIABLE_TRANSACTIONS": "Ninguna transacción tiene datos suficientes para revisarla.",
     "PARSE_FAILED": "No se pudo analizar el PDF. Inténtelo de nuevo con otro archivo.",
-    "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo."
+    "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo.",
+    "PARSER_RESPONSE_TOO_LARGE": "La respuesta del analizador es demasiado grande para devolverla de forma segura."
   }
 }

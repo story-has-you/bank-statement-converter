@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -12,7 +12,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { isParseResponse } from "@/lib/conversion-types";
-import { saveConversionPayload } from "@/lib/conversion-storage";
+import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 function formatFileSize(bytes: number): string {
@@ -45,6 +45,10 @@ export function PdfUpload() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isPending, setIsPending] = useState(false);
+
+  useEffect(() => {
+    clearConversionPayload();
+  }, []);
 
   function selectFile(candidate: File | undefined) {
     if (!candidate) return;

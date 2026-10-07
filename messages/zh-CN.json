@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "页面风险",
-      "item": "第 {page} 页：{code}"
+      "item": "第 {page} 页：{code}",
+      "pageParseFailed": "第 {page} 页读取失败。",
+      "pageUnparsed": "第 {page} 页包含交易证据，但未能可靠还原表格。",
+      "unknown": "第 {page} 页需要核对。"
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
     "NO_VERIFIABLE_TRANSACTIONS": "没有可核对的交易行。",
     "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
-    "UNKNOWN": "出了点问题，请稍后再试。"
+    "UNKNOWN": "出了点问题，请稍后再试。",
+    "PARSER_RESPONSE_TOO_LARGE": "解析结果过大，无法安全返回。"
   }
 }

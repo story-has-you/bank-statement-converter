@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "Page risks",
-      "item": "Page {page}: {code}"
+      "item": "Page {page}: {code}",
+      "pageParseFailed": "Page {page} could not be read.",
+      "pageUnparsed": "Page {page} contains transaction evidence but no reliable table was reconstructed.",
+      "unknown": "Page {page} needs review."
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "No usable bank statement table was found.",
     "NO_VERIFIABLE_TRANSACTIONS": "No transaction has enough evidence to review.",
     "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
-    "UNKNOWN": "Something went wrong. Please try again."
+    "UNKNOWN": "Something went wrong. Please try again.",
+    "PARSER_RESPONSE_TOO_LARGE": "The parser response is too large to return safely."
   }
 }

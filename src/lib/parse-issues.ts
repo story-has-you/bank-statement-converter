@@ -36,3 +36,14 @@ export function getParseIssueKey(issue: ParseIssue): ParseIssueTranslationKey {
       return "issues.unknown";
   }
 }
+
+export type ParseErrorTranslationKey =
+  | "pageRisks.pageParseFailed"
+  | "pageRisks.pageUnparsed"
+  | "pageRisks.unknown";
+
+export function getParseErrorKey(code: string): ParseErrorTranslationKey {
+  if (code === "PAGE_PARSE_FAILED") return "pageRisks.pageParseFailed";
+  if (code === "PAGE_UNPARSED") return "pageRisks.pageUnparsed";
+  return "pageRisks.unknown";
+}

@@ -70,6 +70,59 @@ export async function findOpenBillingSubscription(userId: string): Promise<Billi
   return data as BillingSubscription | null;
 }
 
+export async function reserveBillingSubscriptionIntent(
+  userId: string,
+  tier: MembershipTier,
+  planId: string,
+): Promise<boolean> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+  const { data, error } = await admin.rpc("reserve_billing_subscription_intent", {
+    p_user_id: userId,
+    p_tier: tier,
+    p_plan_id: planId,
+  });
+  if (error) throw error;
+  return data === true;
+}
+
+export async function releaseBillingSubscriptionIntent(userId: string): Promise<void> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+  const { error } = await admin.rpc("release_billing_subscription_intent", { p_user_id: userId });
+  if (error) throw error;
+}
+
+export async function completeBillingSubscriptionIntent(input: {
+  userId: string;
+  email: string;
+  tier: MembershipTier;
+  planId: string;
+  subscriptionId: string;
+  status: SubscriptionStatus;
+  payerId: string | null;
+  subscriberEmail: string | null;
+  periodStart: string | null;
+  periodEnd: string | null;
+}): Promise<boolean> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+  const { data, error } = await admin.rpc("complete_billing_subscription_intent", {
+    p_user_id: input.userId,
+    p_email: input.email,
+    p_tier: input.tier,
+    p_plan_id: input.planId,
+    p_subscription_id: input.subscriptionId,
+    p_status: input.status,
+    p_payer_id: input.payerId,
+    p_subscriber_email: input.subscriberEmail,
+    p_period_start: input.periodStart,
+    p_period_end: input.periodEnd,
+  });
+  if (error) throw error;
+  return data === true;
+}
+
 export async function upsertBillingSubscription(
   subscription: BillingSubscription | Omit<BillingSubscription, "id">,
 ): Promise<BillingSubscription> {

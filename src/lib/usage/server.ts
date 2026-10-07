@@ -50,6 +50,13 @@ export class UsageUnavailableError extends Error {
   }
 }
 
+export class SubscriptionPeriodUnavailableError extends Error {
+  constructor() {
+    super("Active subscription period is unavailable");
+    this.name = "SubscriptionPeriodUnavailableError";
+  }
+}
+
 export function createAnonymousId(): string {
   return randomUUID();
 }
@@ -105,6 +112,7 @@ export function getQuotaContext(
     const config = usageQuotaConfig.subscriptions[subscription.tier];
     const window = getSubscriptionWindow(subscription, now);
     if (window) return { ...actor, limitPages: config.pages, window };
+    throw new SubscriptionPeriodUnavailableError();
   }
 
   const config = actor.type === "anonymous" ? usageQuotaConfig.anonymous : usageQuotaConfig.authenticated;

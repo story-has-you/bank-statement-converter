@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "ページのリスク",
-      "item": "ページ {page}: {code}"
+      "item": "ページ {page}: {code}",
+      "pageParseFailed": "ページ {page} を読み取れませんでした。",
+      "pageUnparsed": "ページ {page} に取引の証拠がありますが、表を確実に再構成できませんでした。",
+      "unknown": "ページ {page} を確認してください。"
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "利用できる銀行明細の表が見つかりません。",
     "NO_VERIFIABLE_TRANSACTIONS": "照合できる取引行がありません。",
     "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
-    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。"
+    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。",
+    "PARSER_RESPONSE_TOO_LARGE": "解析結果が大きすぎるため、安全に返せません。"
   }
 }

@@ -10,7 +10,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { readConversionPayload } from "@/lib/conversion-storage";
+import { clearConversionPayload, readConversionPayload } from "@/lib/conversion-storage";
+import { getParseErrorKey } from "@/lib/parse-issues";
 import type { ConversionPayload, SummaryStatus } from "@/lib/conversion-types";
 
 export function ConversionResult() {
@@ -30,7 +31,7 @@ export function ConversionResult() {
       <section className="rounded-md border border-border bg-card p-6 shadow-xs" aria-labelledby="result-missing-title">
         <h1 id="result-missing-title" className="text-lg font-semibold">{t("missing.title")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">{t("missing.description")}</p>
-        <Link href="/" className={buttonVariants({ className: "mt-5" })}>
+        <Link href="/" onClick={clearConversionPayload} className={buttonVariants({ className: "mt-5" })}>
           {t("backHome")}
         </Link>
       </section>
@@ -86,7 +87,7 @@ export function ConversionResult() {
             <ul className="list-disc space-y-1 pl-5">
               {result.errors.map((error, index) => (
                 <li key={`${error.code}-${error.page ?? "document"}-${index}`}>
-                  {t("pageRisks.item", { page: error.page ?? "?", code: error.code })}
+                  {t(getParseErrorKey(error.code), { page: error.page ?? "?" })}
                 </li>
               ))}
             </ul>
@@ -128,7 +129,7 @@ export function ConversionResult() {
       </div>
 
       <div className="flex justify-start">
-        <Link href="/" className={buttonVariants({ variant: "outline" })}>
+        <Link href="/" onClick={clearConversionPayload} className={buttonVariants({ variant: "outline" })}>
           {t("backHome")}
         </Link>
       </div>

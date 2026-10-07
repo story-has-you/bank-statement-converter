@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "Risques de page",
-      "item": "Page {page} : {code}"
+      "item": "Page {page} : {code}",
+      "pageParseFailed": "La page {page} n’a pas pu être lue.",
+      "pageUnparsed": "La page {page} contient des indices de transaction, mais aucune table fiable n’a pu être reconstruite.",
+      "unknown": "La page {page} doit être vérifiée."
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "Aucun tableau de relevé bancaire utilisable n'a été trouvé.",
     "NO_VERIFIABLE_TRANSACTIONS": "Aucune opération ne contient assez de données pour être vérifiée.",
     "PARSE_FAILED": "Le PDF n'a pas pu être analysé. Veuillez réessayer avec un autre fichier.",
-    "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer."
+    "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "PARSER_RESPONSE_TOO_LARGE": "La réponse du parseur est trop volumineuse pour être renvoyée en toute sécurité."
   }
 }

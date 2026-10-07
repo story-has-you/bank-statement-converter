@@ -7,6 +7,10 @@ export function saveConversionPayload(filename: string, result: ParseResponse): 
   sessionStorage.setItem(CONVERSION_STORAGE_KEY, JSON.stringify(payload));
 }
 
+export function clearConversionPayload(): void {
+  sessionStorage.removeItem(CONVERSION_STORAGE_KEY);
+}
+
 export function consumeConversionPayload(): ConversionPayload | null {
   try {
     const serialized = sessionStorage.getItem(CONVERSION_STORAGE_KEY);

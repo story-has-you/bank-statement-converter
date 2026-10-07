@@ -131,7 +131,10 @@
     },
     "pageRisks": {
       "title": "Seitenrisiken",
-      "item": "Seite {page}: {code}"
+      "item": "Seite {page}: {code}",
+      "pageParseFailed": "Seite {page} konnte nicht gelesen werden.",
+      "pageUnparsed": "Seite {page} enthält Transaktionshinweise, aber es konnte keine zuverlässige Tabelle erstellt werden.",
+      "unknown": "Seite {page} muss geprüft werden."
     }
   },
   "HomeFeatures": {
@@ -375,6 +378,7 @@
     "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
     "NO_VERIFIABLE_TRANSACTIONS": "Keine Transaktion enthält genügend Angaben zur Prüfung.",
     "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
-    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+    "PARSER_RESPONSE_TOO_LARGE": "Die Parserantwort ist zu groß, um sie sicher zurückzugeben."
   }
 }
