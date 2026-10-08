@@ -21,16 +21,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.6.0
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: pnpm
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 12.6.0
 
       - name: Install web dependencies
         run: pnpm install --frozen-lockfile --allow-build esbuild --allow-build workerd
@@ -70,11 +70,23 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Deploy parser Worker and container
-        uses: cloudflare/wrangler-action@v4
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4.147.0"
-          workingDirectory: services/parser
-          command: deploy
+          version: 12.6.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install parser Worker dependencies
+        working-directory: services/parser
+        run: pnpm install --frozen-lockfile --allow-build esbuild --allow-build workerd
+
+      - name: Deploy parser Worker and container
+        working-directory: services/parser
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy
