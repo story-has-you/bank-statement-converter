@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "price": "$30",
         "description": "Für Personen, die eine zuverlässige Möglichkeit zur Verarbeitung von Kontoauszügen benötigen."
       },
       "professional": {
         "name": "Professional",
-        "price": "$60",
         "description": "Für Profis, die regelmäßig mehrere Kontoauszüge verarbeiten."
       },
       "enterprise": {
         "name": "Unternehmen",
-        "price": "$99",
         "description": "Für Teams und Organisationen mit umfangreicheren Kontoauszugs-Workflows."
       }
     }

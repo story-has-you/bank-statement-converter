@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "price": "$30",
         "description": "For individuals who need a dependable way to process bank statements."
       },
       "professional": {
         "name": "Professional",
-        "price": "$60",
         "description": "For professionals who process multiple bank statements regularly."
       },
       "enterprise": {
         "name": "Enterprise",
-        "price": "$99",
         "description": "For teams and organizations with higher-volume statement workflows."
       }
     }

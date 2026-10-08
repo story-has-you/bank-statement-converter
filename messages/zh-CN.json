@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "标准",
-        "price": "$30",
         "description": "适合需要稳定处理银行流水的个人用户。"
       },
       "professional": {
         "name": "专业",
-        "price": "$60",
         "description": "适合经常处理多份银行流水的专业用户。"
       },
       "enterprise": {
         "name": "企业",
-        "price": "$99",
         "description": "适合团队或企业级流水处理需求。"
       }
     }

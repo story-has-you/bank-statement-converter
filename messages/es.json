@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "Estándar",
-        "price": "$30",
         "description": "Para personas que necesitan una forma confiable de procesar extractos bancarios."
       },
       "professional": {
         "name": "Profesional",
-        "price": "$60",
         "description": "Para profesionales que procesan varios extractos bancarios con regularidad."
       },
       "enterprise": {
         "name": "Empresa",
-        "price": "$99",
         "description": "Para equipos y organizaciones con flujos de trabajo de estados de cuenta de mayor volumen."
       }
     }

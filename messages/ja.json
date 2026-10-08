@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "スタンダード",
-        "price": "$30",
         "description": "銀行明細を個人で処理する方に。"
       },
       "professional": {
         "name": "プロフェッショナル",
-        "price": "$60",
         "description": "複数の明細を定期的に処理する方に。"
       },
       "enterprise": {
         "name": "エンタープライズ",
-        "price": "$99",
         "description": "チームや組織で大量に処理する場合に。"
       }
     }

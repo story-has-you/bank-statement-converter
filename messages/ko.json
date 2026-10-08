@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "기준",
-        "price": "$30",
         "description": "은행 명세서를 처리하는 신뢰할 수 있는 방법이 필요한 개인을 위한 제품입니다."
       },
       "professional": {
         "name": "전문적인",
-        "price": "$60",
         "description": "여러 은행 명세서를 정기적으로 처리하는 전문가를 위한 제품입니다."
       },
       "enterprise": {
         "name": "기업",
-        "price": "$99",
         "description": "대규모 명세서 워크플로를 사용하는 팀 및 조직에 적합합니다."
       }
     }

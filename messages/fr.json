@@ -162,17 +162,14 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "price": "$30",
         "description": "Pour les personnes qui ont besoin d’un moyen fiable pour traiter les relevés bancaires."
       },
       "professional": {
         "name": "Professionnel",
-        "price": "$60",
         "description": "Pour les professionnels qui traitent régulièrement plusieurs relevés bancaires."
       },
       "enterprise": {
         "name": "Entreprise",
-        "price": "$99",
         "description": "Pour les équipes et les organisations avec des workflows de relevés à volume plus élevé."
       }
     }

@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { PayPalSubscriptionButton } from "@/components/paypal-subscription-button";
 import { PayPalScriptProviderWrapper } from "@/components/paypal-script-provider";
+import { siteConfig } from "@/config/site";
 import { findActiveBillingSubscription } from "@/lib/billing/server";
 import {
   membershipTiers,
@@ -24,7 +25,7 @@ export async function UsageTiers() {
   const readRawTranslation = t.raw as (key: string) => unknown;
   const plans = readRawTranslation("plans") as Record<
     (typeof membershipTiers)[number],
-    { name: string; price: string; description: string }
+    { name: string; description: string }
   >;
 
   return (
@@ -73,7 +74,7 @@ export async function UsageTiers() {
                     <div className="grid gap-1">
                       <h3 className="text-base font-semibold">{plan.name}</h3>
                       <p className="text-3xl font-semibold">
-                        {plan.price}
+                        {siteConfig.subscriptionPrices[tier]}
                         <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
                       </p>
                     </div>
