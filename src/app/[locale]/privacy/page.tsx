@@ -8,7 +8,11 @@ import { PrivacyContent } from "@/components/privacy-content";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
+type PrivacyPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale, namespace: "Privacy.metadata" });

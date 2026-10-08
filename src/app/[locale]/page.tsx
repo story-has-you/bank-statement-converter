@@ -14,7 +14,9 @@ import { UsageTiers } from "@/components/usage-tiers";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 
-type HomePageProps = PageProps<"/[locale]">;
+type HomePageProps = {
+  params: Promise<{ locale: string }>;
+};
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;

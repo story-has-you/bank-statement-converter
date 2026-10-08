@@ -8,7 +8,11 @@ import { TermsContent } from "@/components/terms-content";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/terms">): Promise<Metadata> {
+type TermsPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const t = await getTranslations({ locale, namespace: "Terms.metadata" });
