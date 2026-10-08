@@ -33,7 +33,7 @@ jobs:
           cache: pnpm
 
       - name: Install web dependencies
-        run: pnpm install --frozen-lockfile --allow-build esbuild --allow-build workerd
+        run: pnpm install --frozen-lockfile
 
       - name: TypeScript check
         run: pnpm exec tsc --noEmit
@@ -59,7 +59,7 @@ jobs:
 
       - name: Check parser Worker bundle
         working-directory: services/parser
-        run: pnpm install --frozen-lockfile --allow-build esbuild --allow-build workerd && pnpm exec wrangler deploy --dry-run --containers-rollout=none
+        run: pnpm install --frozen-lockfile && pnpm exec wrangler deploy --dry-run --containers-rollout=none
 
   deploy:
     name: Deploy parser container
@@ -82,7 +82,7 @@ jobs:
 
       - name: Install parser Worker dependencies
         working-directory: services/parser
-        run: pnpm install --frozen-lockfile --allow-build esbuild --allow-build workerd
+        run: pnpm install --frozen-lockfile
 
       - name: Deploy parser Worker and container
         working-directory: services/parser
