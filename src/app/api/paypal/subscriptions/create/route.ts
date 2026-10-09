@@ -1,14 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { findOpenBillingSubscription } from "@/lib/billing/server";
 import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
-import { createPayPalSubscription } from "@/lib/paypal/server";
-import {
-  bindBillingSubscriptionIntent,
-  findOpenBillingSubscription,
-  releaseBillingSubscriptionIntent,
-  reserveBillingSubscriptionIntent,
-} from "@/lib/billing/server";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
+import { createPayPalSubscription } from "@/lib/paypal/server";
 import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
@@ -46,21 +41,13 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    const existing = await findOpenBillingSubscription(data.user.id);
-    if (existing || !(await reserveBillingSubscriptionIntent(data.user.id, tier, planId))) {
+    if (await findOpenBillingSubscription(data.user.id)) {
       return errorResponse(t("existingSubscription"), 409);
     }
 
-    try {
-      const subscription = await createPayPalSubscription(planId, data.user.id);
-      if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
-      const bound = await bindBillingSubscriptionIntent(data.user.id, subscription.id);
-      if (!bound) throw new Error("Billing subscription intent could not be bound");
-      return NextResponse.json({ subscriptionId: subscription.id });
-    } catch (error) {
-      await releaseBillingSubscriptionIntent(data.user.id);
-      throw error;
-    }
+    const subscription = await createPayPalSubscription(planId, data.user.id);
+    if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
+    return NextResponse.json({ subscriptionId: subscription.id });
   } catch (error) {
     console.error("Failed to create PayPal subscription", error);
     return errorResponse(t("createFailed"), 502);

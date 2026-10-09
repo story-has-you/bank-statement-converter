@@ -196,7 +196,6 @@
       "subscriptionBelongsToAnotherAccount": "この購読は別のアカウントに紐付いています。",
       "verificationFailed": "PayPalの購読を確認できませんでした。",
       "activationFailed": "購読の確認を完了できませんでした。しばらくしてから再試行してください。",
-      "intentReleaseFailed": "サブスクリプションの試行をリセットできませんでした。しばらくしてから再試行してください。",
       "createFailed": "PayPal購読を開始できませんでした。しばらくしてから再試行してください。",
       "existingSubscription": "このアカウントには有効または保留中の購読があります。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",

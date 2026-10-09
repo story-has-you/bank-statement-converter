@@ -196,7 +196,6 @@
       "subscriptionBelongsToAnotherAccount": "Dieses Abonnement gehört zu einem anderen Konto.",
       "verificationFailed": "Das PayPal-Abonnement konnte nicht verifiziert werden.",
       "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
-      "intentReleaseFailed": "Der Abonnementversuch konnte nicht zurückgesetzt werden. Bitte versuchen Sie es später erneut.",
       "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
       "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",

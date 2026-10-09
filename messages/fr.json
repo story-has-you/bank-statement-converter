@@ -196,7 +196,6 @@
       "subscriptionBelongsToAnotherAccount": "Cet abonnement appartient à un autre compte.",
       "verificationFailed": "L'abonnement PayPal n'a pas pu être vérifié.",
       "activationFailed": "La vérification de l'abonnement n'a pas abouti. Veuillez réessayer plus tard.",
-      "intentReleaseFailed": "La tentative d'abonnement n'a pas pu être réinitialisée. Réessayez plus tard.",
       "createFailed": "L'abonnement PayPal n'a pas pu être démarré. Veuillez réessayer plus tard.",
       "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
