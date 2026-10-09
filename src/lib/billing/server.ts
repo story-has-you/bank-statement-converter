@@ -89,25 +89,31 @@ export type BillingWebhookUpdate = {
 };
 
 export async function applyBillingWebhook(update: BillingWebhookUpdate): Promise<"applied" | "ignored"> {
+  if (await findBillingSubscriptionByPayPalId(update.subscriptionId)) return "ignored";
+
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
-  const { data, error } = await admin.rpc("apply_billing_subscription_activation", {
-    p_event_id: update.eventId,
-    p_event_at: update.eventAt,
-    p_subscription_id: update.subscriptionId,
-    p_payer_id: update.payerId,
-    p_subscriber_email: update.subscriberEmail,
-    p_current_period_start: update.currentPeriodStart,
-    p_current_period_end: update.currentPeriodEnd,
-    p_user_id: update.userId,
-    p_email: update.email,
-    p_tier: update.tier,
-    p_plan_id: update.planId,
-    p_amount: update.amount,
-    p_currency_code: update.currencyCode,
+  const { error } = await admin.from("billing_subscriptions").insert({
+    user_id: update.userId,
+    email: update.email,
+    tier: update.tier,
+    paypal_subscription_id: update.subscriptionId,
+    paypal_plan_id: update.planId,
+    status: "ACTIVE",
+    amount: update.amount,
+    currency_code: update.currencyCode,
+    payer_id: update.payerId,
+    subscriber_email: update.subscriberEmail,
+    current_period_start: update.currentPeriodStart,
+    current_period_end: update.currentPeriodEnd,
+    last_webhook_event_id: update.eventId,
+    last_event_at: update.eventAt,
   });
-  if (error) throw error;
-  if (data === "applied" || data === "ignored") return data;
-  throw new Error("Billing webhook returned an invalid result");
+  if (!error) return "applied";
+  if (error.code !== "23505") throw error;
+
+  if (await findBillingSubscriptionByPayPalId(update.subscriptionId)) return "ignored";
+
+  throw error;
 }
