@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { upsertBillingSubscription, findBillingSubscriptionByPayPalId } from "@/lib/billing/server";
-import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
-import { getPayPalSubscription } from "@/lib/paypal/server";
+import { findBillingSubscriptionByPayPalId } from "@/lib/billing/server";
+import { isMembershipTier, getPayPalPlanId } from "@/lib/paypal/config";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
 import { createClient } from "@/lib/supabase/server";
 
@@ -42,10 +41,6 @@ export async function POST(request: Request): Promise<Response> {
     return errorResponse(t("loginRequired"), 401);
   }
 
-  if (!data.user.email) {
-    return errorResponse(t("emailMissing"), 422);
-  }
-
   let payload: unknown;
   try {
     payload = await request.json();
@@ -57,9 +52,8 @@ export async function POST(request: Request): Promise<Response> {
     return errorResponse(t("invalidTier"), 400);
   }
 
-  const serverConfig = getPayPalServerConfig();
   const expectedPlanId = getPayPalPlanId(payload.tier);
-  if (!serverConfig || !expectedPlanId) {
+  if (!expectedPlanId) {
     return errorResponse(t("configurationMissing"), 503);
   }
 
@@ -69,41 +63,36 @@ export async function POST(request: Request): Promise<Response> {
       return errorResponse(t("subscriptionBelongsToAnotherAccount"), 409);
     }
 
-    const subscription = await getPayPalSubscription(payload.subscriptionId);
-    const status = subscription.status;
+    if (!existing) {
+      return NextResponse.json({ status: "PENDING" }, { status: 202 });
+    }
 
-    if (
-      subscription.id !== payload.subscriptionId ||
-      subscription.planId !== expectedPlanId ||
-      subscription.customId !== data.user.id ||
-      status !== "ACTIVE" ||
-      !subscription.startTime ||
-      !subscription.billingInfo?.nextBillingTime ||
-      new Date(subscription.startTime) >= new Date(subscription.billingInfo.nextBillingTime) ||
-      new Date(subscription.billingInfo.nextBillingTime) <= new Date()
-    ) {
+    if (existing.paypal_plan_id !== expectedPlanId || existing.tier !== payload.tier) {
       return errorResponse(t("verificationFailed"), 400);
     }
 
-    const billingSubscription = await upsertBillingSubscription({
-      user_id: data.user.id,
-      email: data.user.email,
-      tier: payload.tier,
-      paypal_subscription_id: payload.subscriptionId,
-      paypal_plan_id: expectedPlanId,
-      status,
-      payer_id: subscription.subscriber?.payerId ?? null,
-      subscriber_email: subscription.subscriber?.emailAddress ?? null,
-      current_period_start: subscription.startTime ?? null,
-      current_period_end: subscription.billingInfo?.nextBillingTime ?? null,
-      last_webhook_event_id: existing?.last_webhook_event_id ?? null,
-      last_event_at: existing?.last_event_at ?? null,
-    });
+    if (existing.status !== "ACTIVE") {
+      if (existing.status === "PAYMENT_FAILED" || existing.status === "CANCELLED" || existing.status === "EXPIRED") {
+        return errorResponse(t("verificationFailed"), 409);
+      }
+      return NextResponse.json({ status: "PENDING" }, { status: 202 });
+    }
+
+    const periodStart = existing.current_period_start ? Date.parse(existing.current_period_start) : NaN;
+    const periodEnd = existing.current_period_end ? Date.parse(existing.current_period_end) : NaN;
+    if (
+      !Number.isFinite(periodStart) ||
+      !Number.isFinite(periodEnd) ||
+      periodStart >= periodEnd ||
+      periodEnd <= Date.now()
+    ) {
+      return errorResponse(t("verificationFailed"), 409);
+    }
 
     return NextResponse.json({
-      tier: billingSubscription.tier,
-      status: billingSubscription.status,
-      subscriptionId: billingSubscription.paypal_subscription_id,
+      tier: existing.tier,
+      status: existing.status,
+      subscriptionId: existing.paypal_subscription_id,
     });
   } catch (error) {
     console.error("Failed to activate PayPal subscription", error);

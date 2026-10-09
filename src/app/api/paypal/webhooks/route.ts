@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 
 import { applyBillingWebhook } from "@/lib/billing/server";
-import { getPayPalSubscription, verifyPayPalWebhookSignature } from "@/lib/paypal/server";
+import { isSubscriptionStatus, type MembershipTier, type SubscriptionStatus } from "@/lib/billing/types";
+import { getPayPalPlans } from "@/lib/paypal/config";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
-import { isSubscriptionStatus, type SubscriptionStatus } from "@/lib/billing/types";
+import { getPayPalSubscription, verifyPayPalWebhookSignature } from "@/lib/paypal/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -56,6 +58,18 @@ function getWebhookStatus(eventType: string, resource: Record<string, unknown>):
   return eventStatuses[eventType] ?? null;
 }
 
+function hasCurrentPeriod(start: string | undefined, end: string | undefined): boolean {
+  if (!start || !end) return false;
+  const startTime = Date.parse(start);
+  const endTime = Date.parse(end);
+  return (
+    Number.isFinite(startTime) &&
+    Number.isFinite(endTime) &&
+    startTime < endTime &&
+    endTime > Date.now()
+  );
+}
+
 export async function POST(request: Request): Promise<Response> {
   const t = await getPayPalApiTranslations(request);
   const rawBody = await request.text();
@@ -92,23 +106,66 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     const eventAt = payload.create_time ?? new Date().toISOString();
-    const authoritative = await getPayPalSubscription(subscriptionId);
-    const billingInfo = authoritative.billingInfo;
-    const subscriber = authoritative.subscriber;
+    const terminalEvent = status === "PAYMENT_FAILED" || status === "CANCELLED" || status === "EXPIRED";
+    const authoritative = terminalEvent ? null : await getPayPalSubscription(subscriptionId);
+    if (authoritative && authoritative.id !== subscriptionId) {
+      throw new Error("PayPal returned a different subscription ID");
+    }
+
+    let userId: string | null = null;
+    let email: string | null = null;
+    let tier: MembershipTier | null = null;
+    let planId: string | null = null;
+
+    if (eventType === "PAYMENT.SALE.COMPLETED") {
+      if (
+        authoritative?.status !== "ACTIVE" ||
+        !hasCurrentPeriod(authoritative.startTime, authoritative.billingInfo?.nextBillingTime)
+      ) {
+        throw new Error("Paid PayPal subscription is not yet active with a current billing period");
+      }
+
+      const plan = getPayPalPlans().find((candidate) => candidate.planId === authoritative.planId);
+      const customId = authoritative.customId;
+      const isUserId = customId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(customId);
+      if (!plan || !isUserId) {
+        console.warn("PayPal webhook ignored", { eventId, eventType, reason: "unmatched_plan_or_account" });
+        return NextResponse.json({ received: true });
+      }
+
+      const admin = createAdminClient();
+      if (!admin) throw new Error("Supabase admin configuration is incomplete");
+      const { data: account, error: accountError } = await admin.auth.admin.getUserById(customId);
+      if (accountError) throw accountError;
+      if (!account.user?.email) {
+        console.warn("PayPal webhook ignored", { eventId, eventType, reason: "account_missing_email" });
+        return NextResponse.json({ received: true });
+      }
+
+      userId = customId;
+      email = account.user.email;
+      tier = plan.tier;
+      planId = plan.planId;
+    }
+
+    const billingInfo = authoritative?.billingInfo;
+    const subscriber = authoritative?.subscriber;
     const result = await applyBillingWebhook({
       eventId,
       eventAt,
+      eventType,
       subscriptionId,
-      status: authoritative.status && isSubscriptionStatus(authoritative.status) ? authoritative.status : status,
+      status,
       payerId: subscriber?.payerId ?? getString(getResourceObject(resource.subscriber).payer_id),
       subscriberEmail: subscriber?.emailAddress ?? getString(getResourceObject(resource.subscriber).email_address),
-      currentPeriodStart: authoritative.startTime ?? getString(resource.start_time),
-      currentPeriodEnd: billingInfo?.nextBillingTime ?? getString(getResourceObject(resource.billing_info).next_billing_time),
+      currentPeriodStart: authoritative?.startTime ?? getString(resource.start_time),
+      currentPeriodEnd: billingInfo?.nextBillingTime ??
+        getString(getResourceObject(resource.billing_info).next_billing_time),
+      userId,
+      email,
+      tier,
+      planId,
     });
-    if (result === "not_found") {
-      console.warn("PayPal webhook deferred", { eventId, eventType, reason: "subscription_not_found" });
-      return NextResponse.json({ received: false }, { status: 409 });
-    }
 
     console.info("PayPal webhook processed", { eventId, eventType, status, result });
     return NextResponse.json({ received: true });

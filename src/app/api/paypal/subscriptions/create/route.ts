@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
 import { createPayPalSubscription } from "@/lib/paypal/server";
 import {
-  completeBillingSubscriptionIntent,
+  bindBillingSubscriptionIntent,
   findOpenBillingSubscription,
   releaseBillingSubscriptionIntent,
   reserveBillingSubscriptionIntent,
@@ -25,6 +25,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const { data, error: userError } = await supabase.auth.getUser();
   if (userError || !data.user) return errorResponse(t("loginRequired"), 401);
+  if (!data.user.email) return errorResponse(t("emailMissing"), 422);
 
   let payload: unknown;
   try {
@@ -50,31 +51,16 @@ export async function POST(request: Request): Promise<Response> {
       return errorResponse(t("existingSubscription"), 409);
     }
 
-    let subscription;
     try {
-      subscription = await createPayPalSubscription(planId, data.user.id);
+      const subscription = await createPayPalSubscription(planId, data.user.id);
       if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
-      const status = subscription.status === "APPROVED" || subscription.status === "ACTIVE"
-        ? subscription.status
-        : "APPROVAL_PENDING";
-      const completed = await completeBillingSubscriptionIntent({
-        userId: data.user.id,
-        email: data.user.email ?? "",
-        tier,
-        planId,
-        subscriptionId: subscription.id,
-        status,
-        payerId: subscription.subscriber?.payerId ?? null,
-        subscriberEmail: subscription.subscriber?.emailAddress ?? null,
-        periodStart: subscription.startTime ?? null,
-        periodEnd: subscription.billingInfo?.nextBillingTime ?? null,
-      });
-      if (!completed) throw new Error("Billing subscription intent could not be completed");
+      const bound = await bindBillingSubscriptionIntent(data.user.id, subscription.id);
+      if (!bound) throw new Error("Billing subscription intent could not be bound");
+      return NextResponse.json({ subscriptionId: subscription.id });
     } catch (error) {
       await releaseBillingSubscriptionIntent(data.user.id);
       throw error;
     }
-    return NextResponse.json({ subscriptionId: subscription.id });
   } catch (error) {
     console.error("Failed to create PayPal subscription", error);
     return errorResponse(t("createFailed"), 502);

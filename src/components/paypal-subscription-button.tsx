@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { usePayPalSubscriptionPaymentSession } from "@paypal/react-paypal-js/sdk-v6";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
@@ -20,6 +20,7 @@ type PayPalSubscriptionButtonProps = {
 
 type ActivateResponse = {
   error?: string;
+  status?: string;
 };
 
 const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
@@ -34,6 +35,9 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const [releasing, setReleasing] = useState(false);
+  const subscriptionIdRef = useRef<string | null>(null);
 
   const { error: sessionError, isPending, handleClick, handleCancel } =
     usePayPalSubscriptionPaymentSession({
@@ -53,22 +57,41 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
           throw new Error(payload.error ?? t("paymentFailed"));
         }
 
+        subscriptionIdRef.current = payload.subscriptionId;
         return { subscriptionId: payload.subscriptionId };
       },
       onApprove: async (data) => {
+        setConfirming(true);
+        setMessage(t("confirming"));
         try {
-          await activateSubscription(data.subscriptionId);
+          for (let attempt = 0; attempt < 15; attempt += 1) {
+            if (await isSubscriptionActive(data.subscriptionId)) {
+              subscriptionIdRef.current = null;
+              setSuccess(true);
+              setMessage(t("activated"));
+              router.refresh();
+              return;
+            }
+            await new Promise((resolve) => setTimeout(resolve, 2_000));
+          }
+          setMessage(t("confirmationDelayed"));
         } catch {
           setMessage(t("activationFailed"));
+        } finally {
+          setConfirming(false);
         }
       },
       onCancel: () => {
         setMessage(t("cancelled"));
+        void releaseCurrentIntent();
       },
-      onError: () => setMessage(t("paymentFailed")),
+      onError: () => {
+        setMessage(t("paymentFailed"));
+        void releaseCurrentIntent();
+      },
     });
 
-  async function activateSubscription(subscriptionId: string): Promise<void> {
+  async function isSubscriptionActive(subscriptionId: string): Promise<boolean> {
     const response = await fetch("/api/paypal/subscriptions/activate", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-app-locale": locale },
@@ -76,13 +99,33 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
     });
     const payload = (await response.json()) as ActivateResponse;
 
+    if (response.status === 202 && payload.status === "PENDING") return false;
     if (!response.ok) {
       throw new Error(payload.error ?? t("activationFailed"));
     }
+    if (payload.status !== "ACTIVE") throw new Error("Unexpected subscription status");
 
-    setSuccess(true);
-    setMessage(t("activated"));
-    router.refresh();
+    return true;
+  }
+
+  async function releaseCurrentIntent(): Promise<void> {
+    const subscriptionId = subscriptionIdRef.current;
+    if (!subscriptionId) return;
+
+    setReleasing(true);
+    try {
+      const response = await fetch("/api/paypal/subscriptions/release", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-app-locale": locale },
+        body: JSON.stringify({ subscriptionId }),
+      });
+      if (!response.ok) throw new Error("Could not release subscription intent");
+      if (subscriptionIdRef.current === subscriptionId) subscriptionIdRef.current = null;
+    } catch (error) {
+      console.error("Failed to release PayPal subscription intent", error);
+    } finally {
+      setReleasing(false);
+    }
   }
 
   if (current) {
@@ -101,18 +144,25 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
     return <p className="text-sm font-medium text-primary">{message}</p>;
   }
 
+  let buttonLabel = t("subscribe");
+  if (confirming) buttonLabel = t("confirming");
+  else if (isPending || releasing) buttonLabel = t("processing");
+
   return (
     <div className="grid gap-2">
       <Button
         type="button"
         size="lg"
-        onClick={() => void handleClick()}
+        onClick={() => {
+          setMessage(null);
+          void handleClick();
+        }}
         onKeyDown={(event) => {
           if (event.key === "Escape") handleCancel();
         }}
-        disabled={isPending}
+        disabled={isPending || confirming || releasing}
       >
-        {isPending ? t("processing") : t("subscribe")}
+        {buttonLabel}
       </Button>
       {message && <p role="status" className="text-sm text-muted-foreground">{message}</p>}
       {sessionError && <p role="alert" className="text-sm text-destructive">{t("paymentFailed")}</p>}
