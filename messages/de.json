@@ -31,7 +31,9 @@
     "signOut": "Abmelden",
     "unavailable": "Die Anmeldung ist vorübergehend nicht möglich",
     "signInFailed": "Die Anmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
-    "signOutFailed": "Die Abmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal."
+    "signOutFailed": "Die Abmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+    "myAccount": "Mein Konto",
+    "avatar": "Profilbild"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
       "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
-      "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen."
+      "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen.",
+      "cancelInvalidOrigin": "Die Kündigung muss von dieser Website angefordert werden.",
+      "cancelSubscriptionNotFound": "Abonnement nicht gefunden.",
+      "cancelNotActive": "Nur aktive Abonnements können gekündigt werden.",
+      "cancelFailed": "Die Kündigung konnte nicht bestätigt werden. Bitte erneut versuchen."
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
     "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
     "PARSER_RESPONSE_TOO_LARGE": "Die Parserantwort ist zu groß, um sie sicher zurückzugeben."
+  },
+  "Account": {
+    "title": "Mein Konto",
+    "description": "Kontingent und Abonnements ansehen.",
+    "avatar": "Profilbild",
+    "freePlan": "Kostenloser Tarif",
+    "planUnavailable": "Tarif nicht verfügbar",
+    "currentPlan": "Aktueller Tarif: {plan}",
+    "notAvailable": "Nicht verfügbar",
+    "refresh": "Aktualisieren",
+    "refreshing": "Wird aktualisiert…",
+    "loading": "Konto wird geladen…",
+    "metadata": {
+      "title": "Mein Konto",
+      "description": "Kontingent und Abonnements ansehen."
+    },
+    "quota": {
+      "title": "Verbleibendes Kontingent",
+      "remaining": "{remaining} von {total} Seiten verbleibend",
+      "percentage": "{percent}% verbleibend",
+      "progressLabel": "Verbleibendes Seitenkontingent",
+      "dayEnds": "Das Tageskontingent wird am {date} UTC zurückgesetzt.",
+      "monthEnds": "Der aktuelle Abrechnungszeitraum endet am {date} UTC.",
+      "unavailable": "Das Kontingent ist vorübergehend nicht verfügbar. Bitte später aktualisieren."
+    },
+    "subscriptions": {
+      "title": "Abonnements",
+      "description": "Ein Eintrag pro Abonnement. Zeitangaben in UTC.",
+      "unavailable": "Abonnements sind vorübergehend nicht verfügbar.",
+      "empty": "Noch keine Abonnements.",
+      "plan": "Tarif",
+      "amount": "Abonnementbetrag",
+      "status": "Status",
+      "created": "Erstellt",
+      "period": "Abrechnungszeitraum",
+      "actions": "Aktionen",
+      "availableUntil": "Das Restkontingent ist bis {date} UTC verfügbar."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Genehmigung ausstehend",
+      "APPROVED": "Genehmigt",
+      "ACTIVE": "Aktiv",
+      "SUSPENDED": "Ausgesetzt",
+      "CANCELLED": "Gekündigt",
+      "EXPIRED": "Abgelaufen",
+      "PAYMENT_FAILED": "Zahlung fehlgeschlagen"
+    },
+    "cancel": {
+      "button": "Abonnement kündigen",
+      "title": "Dieses Abonnement kündigen?",
+      "description": "Künftige Verlängerungen werden gestoppt. Ihr bezahltes Restkontingent bleibt bis {date} UTC verfügbar.",
+      "descriptionWithoutDate": "Künftige Verlängerungen werden gestoppt. Ihr Restkontingent bleibt bis zum Ende des gespeicherten Abrechnungszeitraums verfügbar.",
+      "keep": "Abonnement behalten",
+      "confirm": "Kündigung bestätigen",
+      "submitting": "Wird gekündigt…",
+      "syncing": "Verlängerungen wurden gestoppt. Die Kontodaten werden nach der Kündigungsbenachrichtigung aktualisiert.",
+      "delayed": "Verlängerungen wurden gestoppt. Die Synchronisierung verzögert sich. Prüfen Sie den Status später erneut.",
+      "check": "Status prüfen",
+      "checking": "Wird geprüft…",
+      "failed": "Die Kündigung konnte nicht bestätigt werden. Bitte erneut versuchen.",
+      "checkFailed": "Der Status konnte nicht geprüft werden. Bitte erneut versuchen."
+    }
   }
 }

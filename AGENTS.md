@@ -9,6 +9,9 @@
 - 今后开发或修改功能和页面时，所有面向用户的文案都使用 `next-intl` 国际化，包括可见文字、提示、错误信息、无障碍标签和页面 metadata。
 - 中文文案统一写入 `messages/zh-CN.json`，组件和业务代码中不要硬编码面向用户的中文文案。
 
+# 其他说明
+- 服务都会启动在 3000 端口，Python 服务也会自动在 8000 端口，不需要启动新的服务。
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { PayPalSubscriptionButton } from "@/components/paypal-subscription-button";
 import { PayPalScriptProviderWrapper } from "@/components/paypal-script-provider";
 import { siteConfig } from "@/config/site";
-import { findActiveBillingSubscription } from "@/lib/billing/server";
+import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import {
   membershipTiers,
   getPayPalClientId,
@@ -17,7 +17,7 @@ export async function UsageTiers() {
   const t = await getTranslations("UsageTiers");
   const supabase = await createClient();
   const user = supabase ? (await supabase.auth.getUser()).data.user : null;
-  const activeSubscription = user ? await findActiveBillingSubscription(user.id) : null;
+  const activeSubscription = user ? await findEntitledBillingSubscription(user.id) : null;
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const planIds = new Map(getPayPalPlans().map((plan) => [plan.tier, plan.planId]));
   const clientId = getPayPalClientId();
@@ -91,7 +91,7 @@ export async function UsageTiers() {
                   {!isLowerTier && (
                     <PayPalSubscriptionButton
                       clientId={clientId}
-                      current={activeSubscription?.tier === tier}
+                      current={activeSubscription?.tier === tier && activeSubscription.status === "ACTIVE"}
                       planId={planIds.get(tier) ?? null}
                       signedIn={Boolean(user)}
                       tier={tier}

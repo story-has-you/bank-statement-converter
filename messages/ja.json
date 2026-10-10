@@ -31,7 +31,9 @@
     "signOut": "ログアウト",
     "unavailable": "ログインは一時的に利用できません",
     "signInFailed": "ログインが完了しませんでした。しばらくしてから再試行してください。",
-    "signOutFailed": "ログアウトが完了しませんでした。しばらくしてから再試行してください。"
+    "signOutFailed": "ログアウトが完了しませんでした。しばらくしてから再試行してください。",
+    "myAccount": "マイアカウント",
+    "avatar": "プロフィール画像"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "このアカウントには有効または保留中の購読があります。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
       "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
-      "webhookProcessingFailed": "Webhook処理に失敗しました。"
+      "webhookProcessingFailed": "Webhook処理に失敗しました。",
+      "cancelInvalidOrigin": "このサイトから解約を実行してください。",
+      "cancelSubscriptionNotFound": "契約が見つかりません。",
+      "cancelNotActive": "有効な契約のみ解約できます。",
+      "cancelFailed": "解約を確認できませんでした。再試行してください。"
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
     "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。",
     "PARSER_RESPONSE_TOO_LARGE": "解析結果が大きすぎるため、安全に返せません。"
+  },
+  "Account": {
+    "title": "マイアカウント",
+    "description": "アカウントの利用枠とサブスクリプション。",
+    "avatar": "プロフィール画像",
+    "freePlan": "無料プラン",
+    "planUnavailable": "プランを取得できません",
+    "currentPlan": "現在のプラン：{plan}",
+    "notAvailable": "情報なし",
+    "refresh": "更新",
+    "refreshing": "更新中…",
+    "loading": "アカウントを読み込み中…",
+    "metadata": {
+      "title": "マイアカウント",
+      "description": "アカウントの利用枠とサブスクリプション。"
+    },
+    "quota": {
+      "title": "残りの利用枠",
+      "remaining": "残り {remaining} / {total} ページ",
+      "percentage": "残り {percent}%",
+      "progressLabel": "残りのページ利用枠",
+      "dayEnds": "毎日の利用枠は {date} UTC にリセットされます。",
+      "monthEnds": "現在の請求期間は {date} UTC に終了します。",
+      "unavailable": "利用枠を取得できません。後で更新してください。"
+    },
+    "subscriptions": {
+      "title": "サブスクリプション履歴",
+      "description": "サブスクリプションごとに1件表示します。日時は UTC です。",
+      "unavailable": "履歴を取得できません。",
+      "empty": "サブスクリプション履歴はありません。",
+      "plan": "プラン",
+      "amount": "契約金額",
+      "status": "状態",
+      "created": "作成日時",
+      "period": "請求期間",
+      "actions": "操作",
+      "availableUntil": "残りの利用枠は {date} UTC まで利用できます。"
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "承認待ち",
+      "APPROVED": "承認済み",
+      "ACTIVE": "有効",
+      "SUSPENDED": "一時停止",
+      "CANCELLED": "解約済み",
+      "EXPIRED": "期限切れ",
+      "PAYMENT_FAILED": "支払い失敗"
+    },
+    "cancel": {
+      "button": "サブスクリプションを解約",
+      "title": "解約しますか？",
+      "description": "今後の自動更新を停止します。残りの有料利用枠は {date} UTC まで利用できます。",
+      "descriptionWithoutDate": "今後の自動更新を停止します。残りの有料利用枠は記録された請求期間の終了まで利用できます。",
+      "keep": "契約を継続",
+      "confirm": "解約を確定",
+      "submitting": "解約中…",
+      "syncing": "自動更新を停止しました。解約通知によるアカウントの更新を待っています。",
+      "delayed": "自動更新を停止しました。同期が遅れています。後で状態を確認してください。",
+      "check": "状態を確認",
+      "checking": "確認中…",
+      "failed": "解約を確認できませんでした。再試行してください。",
+      "checkFailed": "状態を確認できません。再試行してください。"
+    }
   }
 }

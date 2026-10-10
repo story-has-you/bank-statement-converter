@@ -31,7 +31,9 @@
     "signOut": "退出登录",
     "unavailable": "登录暂时不可用",
     "signInFailed": "登录没有完成，请稍后再试。",
-    "signOutFailed": "退出没有完成，请稍后再试。"
+    "signOutFailed": "退出没有完成，请稍后再试。",
+    "myAccount": "我的页面",
+    "avatar": "用户头像"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "当前账号已有生效或待确认的订阅。",
       "webhookInvalidRequest": "Webhook 请求格式无效。",
       "webhookSignatureFailed": "Webhook 签名验证失败。",
-      "webhookProcessingFailed": "Webhook 处理失败。"
+      "webhookProcessingFailed": "Webhook 处理失败。",
+      "cancelInvalidOrigin": "取消请求必须由当前网站发起。",
+      "cancelSubscriptionNotFound": "未找到该订阅。",
+      "cancelNotActive": "只能取消激活中的订阅。",
+      "cancelFailed": "暂时无法确认取消结果，请重试。"
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
     "UNKNOWN": "出了点问题，请稍后再试。",
     "PARSER_RESPONSE_TOO_LARGE": "解析结果过大，无法安全返回。"
+  },
+  "Account": {
+    "title": "我的页面",
+    "description": "查看账户额度与订阅记录。",
+    "avatar": "用户头像",
+    "freePlan": "免费套餐",
+    "planUnavailable": "套餐暂不可用",
+    "currentPlan": "当前套餐：{plan}",
+    "notAvailable": "暂无",
+    "refresh": "刷新",
+    "refreshing": "刷新中…",
+    "loading": "正在加载账户…",
+    "metadata": {
+      "title": "我的页面",
+      "description": "查看账户额度与订阅记录。"
+    },
+    "quota": {
+      "title": "剩余额度",
+      "remaining": "剩余 {remaining} / {total} 页",
+      "percentage": "剩余 {percent}%",
+      "progressLabel": "剩余页数额度",
+      "dayEnds": "每日额度于 {date} UTC 重置。",
+      "monthEnds": "当前订阅周期于 {date} UTC 结束。",
+      "unavailable": "额度暂不可用，请稍后刷新。"
+    },
+    "subscriptions": {
+      "title": "订阅记录",
+      "description": "每个订阅对应一条记录，时间均为 UTC。",
+      "unavailable": "订阅记录暂不可用，请稍后刷新。",
+      "empty": "暂无订阅记录。",
+      "plan": "套餐",
+      "amount": "订阅金额",
+      "status": "状态",
+      "created": "创建时间",
+      "period": "订阅周期",
+      "actions": "操作",
+      "availableUntil": "剩余额度可用至 {date} UTC。"
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "待确认",
+      "APPROVED": "已批准",
+      "ACTIVE": "已激活",
+      "SUSPENDED": "已暂停",
+      "CANCELLED": "已取消",
+      "EXPIRED": "已到期",
+      "PAYMENT_FAILED": "付款失败"
+    },
+    "cancel": {
+      "button": "取消订阅",
+      "title": "确认取消订阅？",
+      "description": "取消后将停止后续续费，当前已付费周期的剩余额度保留至 {date} UTC。",
+      "descriptionWithoutDate": "取消后将停止后续续费，剩余付费额度保留至已记录的订阅周期结束。",
+      "keep": "保留订阅",
+      "confirm": "确认取消",
+      "submitting": "正在取消…",
+      "syncing": "已停止续费，正在等待取消回调同步账户状态。",
+      "delayed": "已停止续费，账户状态同步延迟，请稍后重新检查。",
+      "check": "检查状态",
+      "checking": "正在检查…",
+      "failed": "暂时无法确认取消结果，请重试。",
+      "checkFailed": "无法检查状态，请重试。"
+    }
   }
 }

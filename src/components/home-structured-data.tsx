@@ -63,7 +63,15 @@ export async function HomeStructuredData() {
       inLanguage: locale,
     },
   ];
-  const jsonLd = JSON.stringify(schemas).replace(/</g, "\\u003c");
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />;
+  return (
+    <>
+      {schemas.map((schema) => (
+        <script
+          key={schema["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+        />
+      ))}
+    </>
+  );
 }

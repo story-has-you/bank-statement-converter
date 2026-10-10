@@ -4,6 +4,7 @@ import { applyBillingWebhook } from "@/lib/billing/server";
 import { getPayPalPlans } from "@/lib/paypal/config";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
 import { getPayPalSubscription, verifyPayPalWebhookSignature } from "@/lib/paypal/server";
+import { processSubscriptionLifecycleEvent } from "@/lib/paypal/subscription-events";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
@@ -57,13 +58,29 @@ export async function POST(request: Request): Promise<Response> {
       return NextResponse.json({ error: t("webhookSignatureFailed") }, { status: 400 });
     }
 
-    if (payload.event_type !== "BILLING.SUBSCRIPTION.ACTIVATED") {
+    if (
+      payload.event_type !== "BILLING.SUBSCRIPTION.ACTIVATED" &&
+      payload.event_type !== "BILLING.SUBSCRIPTION.CANCELLED" &&
+      payload.event_type !== "PAYMENT.SALE.COMPLETED"
+    ) {
       return NextResponse.json({ received: true });
     }
 
     const resource = getObject(payload.resource);
+    // 同一个 PayPal 应用还可能产生与订阅无关的销售事件。
+    if (payload.event_type === "PAYMENT.SALE.COMPLETED" && !getString(resource.billing_agreement_id)) {
+      return NextResponse.json({ received: true });
+    }
     const eventId = getString(payload.id);
     const eventAt = getString(payload.create_time);
+    if (!eventId || !eventAt || !Number.isFinite(Date.parse(eventAt))) {
+      throw new Error("PayPal webhook event identity is incomplete");
+    }
+    if (payload.event_type !== "BILLING.SUBSCRIPTION.ACTIVATED") {
+      const result = await processSubscriptionLifecycleEvent(payload.event_type, { id: eventId, at: eventAt }, resource);
+      console.info("PayPal subscription event processed", { eventId, eventType: payload.event_type, result });
+      return NextResponse.json({ received: true });
+    }
     const subscriptionId = getString(resource.id);
     const userId = getString(resource.custom_id);
     const planId = getString(resource.plan_id);
@@ -118,7 +135,11 @@ export async function POST(request: Request): Promise<Response> {
     console.info("PayPal activation processed", { eventId, subscriptionId, result });
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error("Failed to process PayPal activation", error);
+    console.error("Failed to process PayPal webhook", {
+      eventId: getString(payload.id),
+      eventType: getString(payload.event_type),
+      reason: error instanceof Error ? error.message : "Webhook processing failed",
+    });
     return NextResponse.json({ error: t("webhookProcessingFailed") }, { status: 502 });
   }
 }

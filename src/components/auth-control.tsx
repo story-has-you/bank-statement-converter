@@ -7,15 +7,18 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { UserAvatar } from "@/components/user-avatar";
+import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 
 type AuthControlProps = {
   configured: boolean;
   email: string | null;
   signedIn: boolean;
+  imageUrl: string | null;
 };
 
-export function AuthControl({ configured, email, signedIn }: AuthControlProps) {
+export function AuthControl({ configured, email, signedIn, imageUrl }: AuthControlProps) {
   const t = useTranslations("AuthControl");
   const locale = useLocale();
   const router = useRouter();
@@ -73,9 +76,10 @@ export function AuthControl({ configured, email, signedIn }: AuthControlProps) {
       <div className="flex min-w-0 items-center gap-2">
         {signedIn ? (
           <>
-            <span className="max-w-20 truncate text-xs text-muted-foreground sm:max-w-28 lg:max-w-40" title={email ?? t("account")}>
-              {email ?? t("account")}
-            </span>
+            <Link href="/account" aria-label={t("myAccount")} title={email ?? t("account")}
+              className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+              <UserAvatar imageUrl={imageUrl} alt={t("avatar")} />
+            </Link>
             <Tooltip>
               <TooltipTrigger
                 render={

@@ -31,7 +31,9 @@
     "signOut": "se déconnecter",
     "unavailable": "La connexion est temporairement indisponible",
     "signInFailed": "La connexion n’a pas abouti. Veuillez réessayer plus tard.",
-    "signOutFailed": "La déconnexion n’a pas été effectuée. Veuillez réessayer plus tard."
+    "signOutFailed": "La déconnexion n’a pas été effectuée. Veuillez réessayer plus tard.",
+    "myAccount": "Mon compte",
+    "avatar": "Photo de profil"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
       "webhookSignatureFailed": "La vérification de la signature du webhook a échoué.",
-      "webhookProcessingFailed": "Le traitement du webhook a échoué."
+      "webhookProcessingFailed": "Le traitement du webhook a échoué.",
+      "cancelInvalidOrigin": "La demande de résiliation doit provenir de ce site.",
+      "cancelSubscriptionNotFound": "Abonnement introuvable.",
+      "cancelNotActive": "Seul un abonnement actif peut être résilié.",
+      "cancelFailed": "La résiliation n’a pas pu être confirmée. Veuillez réessayer."
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "Le PDF n'a pas pu être analysé. Veuillez réessayer avec un autre fichier.",
     "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer.",
     "PARSER_RESPONSE_TOO_LARGE": "La réponse du parseur est trop volumineuse pour être renvoyée en toute sécurité."
+  },
+  "Account": {
+    "title": "Mon compte",
+    "description": "Consultez votre quota et vos abonnements.",
+    "avatar": "Photo de profil",
+    "freePlan": "Offre gratuite",
+    "planUnavailable": "Offre indisponible",
+    "currentPlan": "Offre actuelle : {plan}",
+    "notAvailable": "Indisponible",
+    "refresh": "Actualiser",
+    "refreshing": "Actualisation…",
+    "loading": "Chargement du compte…",
+    "metadata": {
+      "title": "Mon compte",
+      "description": "Consultez votre quota et vos abonnements."
+    },
+    "quota": {
+      "title": "Quota restant",
+      "remaining": "{remaining} pages restantes sur {total}",
+      "percentage": "{percent}% restant",
+      "progressLabel": "Quota de pages restant",
+      "dayEnds": "Le quota quotidien est réinitialisé le {date} UTC.",
+      "monthEnds": "La période de facturation actuelle se termine le {date} UTC.",
+      "unavailable": "Le quota est temporairement indisponible. Veuillez actualiser plus tard."
+    },
+    "subscriptions": {
+      "title": "Abonnements",
+      "description": "Une ligne par abonnement. Les dates sont en UTC.",
+      "unavailable": "Les abonnements sont temporairement indisponibles.",
+      "empty": "Aucun abonnement pour le moment.",
+      "plan": "Offre",
+      "amount": "Montant de l’abonnement",
+      "status": "État",
+      "created": "Création",
+      "period": "Période de facturation",
+      "actions": "Actions",
+      "availableUntil": "Le quota restant est disponible jusqu’au {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "En attente d’approbation",
+      "APPROVED": "Approuvé",
+      "ACTIVE": "Actif",
+      "SUSPENDED": "Suspendu",
+      "CANCELLED": "Résilié",
+      "EXPIRED": "Expiré",
+      "PAYMENT_FAILED": "Paiement échoué"
+    },
+    "cancel": {
+      "button": "Résilier l’abonnement",
+      "title": "Résilier cet abonnement ?",
+      "description": "Les prochains renouvellements seront arrêtés. Votre quota payé restant sera disponible jusqu’au {date} UTC.",
+      "descriptionWithoutDate": "Les prochains renouvellements seront arrêtés. Le quota payé restant sera disponible jusqu’à la fin de la période enregistrée.",
+      "keep": "Conserver l’abonnement",
+      "confirm": "Confirmer la résiliation",
+      "submitting": "Résiliation…",
+      "syncing": "Les renouvellements sont arrêtés. Votre compte attend la notification de résiliation.",
+      "delayed": "Les renouvellements sont arrêtés. La synchronisation est retardée ; vérifiez l’état plus tard.",
+      "check": "Vérifier l’état",
+      "checking": "Vérification…",
+      "failed": "La résiliation n’a pas pu être confirmée. Veuillez réessayer.",
+      "checkFailed": "Impossible de vérifier l’état. Veuillez réessayer."
+    }
   }
 }

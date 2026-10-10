@@ -31,7 +31,9 @@
     "signOut": "desconectar",
     "unavailable": "El inicio de sesión no está disponible temporalmente",
     "signInFailed": "El inicio de sesión no se completó. Inténtelo de nuevo más tarde.",
-    "signOutFailed": "El cierre de sesión no se completó. Inténtelo de nuevo más tarde."
+    "signOutFailed": "El cierre de sesión no se completó. Inténtelo de nuevo más tarde.",
+    "myAccount": "Mi cuenta",
+    "avatar": "Foto de perfil"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
       "webhookSignatureFailed": "Error en la verificación de la firma del webhook.",
-      "webhookProcessingFailed": "Error al procesar el webhook."
+      "webhookProcessingFailed": "Error al procesar el webhook.",
+      "cancelInvalidOrigin": "La solicitud de cancelación debe proceder de este sitio web.",
+      "cancelSubscriptionNotFound": "No se encontró la suscripción.",
+      "cancelNotActive": "Solo se puede cancelar una suscripción activa.",
+      "cancelFailed": "No se pudo confirmar la cancelación. Inténtalo de nuevo."
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "No se pudo analizar el PDF. Inténtelo de nuevo con otro archivo.",
     "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo.",
     "PARSER_RESPONSE_TOO_LARGE": "La respuesta del analizador es demasiado grande para devolverla de forma segura."
+  },
+  "Account": {
+    "title": "Mi cuenta",
+    "description": "Consulta tu cuota y tus suscripciones.",
+    "avatar": "Foto de perfil",
+    "freePlan": "Plan gratuito",
+    "planUnavailable": "Plan no disponible",
+    "currentPlan": "Plan actual: {plan}",
+    "notAvailable": "No disponible",
+    "refresh": "Actualizar",
+    "refreshing": "Actualizando…",
+    "loading": "Cargando cuenta…",
+    "metadata": {
+      "title": "Mi cuenta",
+      "description": "Consulta tu cuota y tus suscripciones."
+    },
+    "quota": {
+      "title": "Cuota restante",
+      "remaining": "Quedan {remaining} de {total} páginas",
+      "percentage": "{percent}% restante",
+      "progressLabel": "Cuota de páginas restante",
+      "dayEnds": "La cuota diaria se restablece el {date} UTC.",
+      "monthEnds": "El período de facturación actual termina el {date} UTC.",
+      "unavailable": "La cuota no está disponible temporalmente. Actualiza más tarde."
+    },
+    "subscriptions": {
+      "title": "Suscripciones",
+      "description": "Un registro por suscripción. Las fechas se muestran en UTC.",
+      "unavailable": "Las suscripciones no están disponibles temporalmente.",
+      "empty": "Todavía no hay suscripciones.",
+      "plan": "Plan",
+      "amount": "Importe de la suscripción",
+      "status": "Estado",
+      "created": "Creación",
+      "period": "Período de facturación",
+      "actions": "Acciones",
+      "availableUntil": "La cuota restante está disponible hasta el {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Pendiente de aprobación",
+      "APPROVED": "Aprobada",
+      "ACTIVE": "Activa",
+      "SUSPENDED": "Suspendida",
+      "CANCELLED": "Cancelada",
+      "EXPIRED": "Vencida",
+      "PAYMENT_FAILED": "Pago fallido"
+    },
+    "cancel": {
+      "button": "Cancelar suscripción",
+      "title": "¿Cancelar esta suscripción?",
+      "description": "Se detendrán las próximas renovaciones. Tu cuota pagada restante estará disponible hasta el {date} UTC.",
+      "descriptionWithoutDate": "Se detendrán las próximas renovaciones. La cuota pagada restante estará disponible hasta que termine el período registrado.",
+      "keep": "Mantener suscripción",
+      "confirm": "Confirmar cancelación",
+      "submitting": "Cancelando…",
+      "syncing": "Las renovaciones se han detenido. La cuenta espera la notificación de cancelación.",
+      "delayed": "Las renovaciones se han detenido. La sincronización se ha retrasado; vuelve a comprobar el estado más tarde.",
+      "check": "Comprobar estado",
+      "checking": "Comprobando…",
+      "failed": "No se pudo confirmar la cancelación. Inténtalo de nuevo.",
+      "checkFailed": "No se pudo comprobar el estado. Inténtalo de nuevo."
+    }
   }
 }

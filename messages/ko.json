@@ -31,7 +31,9 @@
     "signOut": "로그아웃",
     "unavailable": "일시적으로 로그인을 사용할 수 없습니다",
     "signInFailed": "로그인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
-    "signOutFailed": "로그아웃이 완료되지 않았습니다. 나중에 다시 시도해 주세요."
+    "signOutFailed": "로그아웃이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+    "myAccount": "내 계정",
+    "avatar": "프로필 사진"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "이 계정에는 활성 또는 대기 중인 구독이 이미 있습니다.",
       "webhookInvalidRequest": "웹훅 요청이 잘못되었습니다.",
       "webhookSignatureFailed": "웹훅 서명 확인에 실패했습니다.",
-      "webhookProcessingFailed": "웹훅 처리에 실패했습니다."
+      "webhookProcessingFailed": "웹훅 처리에 실패했습니다.",
+      "cancelInvalidOrigin": "이 사이트에서 취소 요청을 보내야 합니다.",
+      "cancelSubscriptionNotFound": "구독을 찾을 수 없습니다.",
+      "cancelNotActive": "활성 구독만 취소할 수 있습니다.",
+      "cancelFailed": "취소 결과를 확인할 수 없습니다. 다시 시도하세요."
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "PDF를 구문 분석할 수 없습니다. 다른 파일로 다시 시도해 주세요.",
     "UNKNOWN": "문제가 발생했습니다. 다시 시도해 주세요.",
     "PARSER_RESPONSE_TOO_LARGE": "파서 응답이 너무 커서 안전하게 반환할 수 없습니다."
+  },
+  "Account": {
+    "title": "내 계정",
+    "description": "계정 사용량과 구독 내역을 확인하세요.",
+    "avatar": "프로필 사진",
+    "freePlan": "무료 요금제",
+    "planUnavailable": "요금제를 불러올 수 없음",
+    "currentPlan": "현재 요금제: {plan}",
+    "notAvailable": "정보 없음",
+    "refresh": "새로고침",
+    "refreshing": "새로고침 중…",
+    "loading": "계정 불러오는 중…",
+    "metadata": {
+      "title": "내 계정",
+      "description": "계정 사용량과 구독 내역을 확인하세요."
+    },
+    "quota": {
+      "title": "남은 사용량",
+      "remaining": "{total}페이지 중 {remaining}페이지 남음",
+      "percentage": "{percent}% 남음",
+      "progressLabel": "남은 페이지 사용량",
+      "dayEnds": "일일 사용량은 {date} UTC에 초기화됩니다.",
+      "monthEnds": "현재 결제 주기는 {date} UTC에 종료됩니다.",
+      "unavailable": "사용량을 불러올 수 없습니다. 나중에 새로고침하세요."
+    },
+    "subscriptions": {
+      "title": "구독 내역",
+      "description": "구독별로 한 건씩 표시합니다. 시간은 UTC 기준입니다.",
+      "unavailable": "구독 내역을 불러올 수 없습니다.",
+      "empty": "구독 내역이 없습니다.",
+      "plan": "요금제",
+      "amount": "구독 금액",
+      "status": "상태",
+      "created": "생성 시간",
+      "period": "결제 주기",
+      "actions": "작업",
+      "availableUntil": "남은 사용량은 {date} UTC까지 사용할 수 있습니다."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "승인 대기",
+      "APPROVED": "승인됨",
+      "ACTIVE": "활성",
+      "SUSPENDED": "일시 중지",
+      "CANCELLED": "취소됨",
+      "EXPIRED": "만료됨",
+      "PAYMENT_FAILED": "결제 실패"
+    },
+    "cancel": {
+      "button": "구독 취소",
+      "title": "구독을 취소하시겠습니까?",
+      "description": "향후 자동 갱신이 중지됩니다. 남은 유료 사용량은 {date} UTC까지 사용할 수 있습니다.",
+      "descriptionWithoutDate": "향후 자동 갱신이 중지됩니다. 남은 유료 사용량은 기록된 결제 주기가 끝날 때까지 사용할 수 있습니다.",
+      "keep": "구독 유지",
+      "confirm": "취소 확인",
+      "submitting": "취소 중…",
+      "syncing": "자동 갱신이 중지되었습니다. 취소 알림에 따른 계정 동기화를 기다리는 중입니다.",
+      "delayed": "자동 갱신이 중지되었습니다. 계정 동기화가 지연되고 있습니다. 나중에 상태를 확인하세요.",
+      "check": "상태 확인",
+      "checking": "확인 중…",
+      "failed": "취소 결과를 확인할 수 없습니다. 다시 시도하세요.",
+      "checkFailed": "상태를 확인할 수 없습니다. 다시 시도하세요."
+    }
   }
 }

@@ -58,11 +58,13 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
-      <Script
-        src="https://app.pageview.app/js/script.js"
-        data-domain="bankstatementconverter.xyz"
-        strategy="afterInteractive"
-      />
+      {process.env.NODE_ENV === "production" && (
+        <Script
+          src="https://app.pageview.app/js/script.js"
+          data-domain="bankstatementconverter.xyz"
+          strategy="afterInteractive"
+        />
+      )}
       <GoogleAnalytics gaId="G-93LC8N8C85" />
     </html>
   );

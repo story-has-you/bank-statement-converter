@@ -5,7 +5,7 @@ import { isParseResponse } from "@/lib/conversion-types";
 import {
   consumeConversionQuota,
   createAnonymousId,
-  getActiveSubscription,
+  getEntitledSubscription,
   getQuotaContext,
   getUsageRecord,
   hashAnonymousId,
@@ -171,7 +171,7 @@ export async function POST(request: Request): Promise<Response> {
     const requestActor = await getRequestActor(request);
     actor = requestActor.actor;
     anonymousCookie = requestActor.cookieValue;
-    const subscription = actor.type === "user" ? await getActiveSubscription(actor.key) : null;
+    const subscription = actor.type === "user" ? await getEntitledSubscription(actor.key) : null;
     context = getQuotaContext(actor, subscription);
     const currentUsage = await getUsageRecord(actor);
     if (isCurrentUsageAtLimit(currentUsage, context)) {

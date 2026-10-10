@@ -1,6 +1,6 @@
 import { createHash, randomUUID } from "node:crypto";
 
-import { findActiveBillingSubscription, type BillingSubscription } from "@/lib/billing/server";
+import { findEntitledBillingSubscription, type BillingSubscription } from "@/lib/billing/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 import { usageQuotaConfig, type UsagePeriod } from "./config";
@@ -119,9 +119,9 @@ export function getQuotaContext(
   return { ...actor, limitPages: config.pages, window: createUtcWindow(config.period, now) };
 }
 
-export async function getActiveSubscription(userId: string): Promise<BillingSubscription | null> {
+export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {
   if (!createAdminClient()) throw new UsageUnavailableError();
-  return findActiveBillingSubscription(userId);
+  return findEntitledBillingSubscription(userId);
 }
 
 function requireAdminClient() {

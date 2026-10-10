@@ -5,6 +5,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Link } from "@/i18n/navigation";
+import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { createClient } from "@/lib/supabase/server";
 
 export async function HomeHeader() {
@@ -30,7 +31,12 @@ export async function HomeHeader() {
         <div className="flex shrink-0 items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
-          <AuthControl configured={Boolean(supabase)} email={user?.email ?? null} signedIn={Boolean(user)} />
+          <AuthControl
+            configured={Boolean(supabase)}
+            email={user?.email ?? null}
+            imageUrl={user ? getUserAvatarUrl(user.user_metadata) : null}
+            signedIn={Boolean(user)}
+          />
         </div>
       </div>
     </header>

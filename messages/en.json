@@ -31,7 +31,9 @@
     "signOut": "Sign out",
     "unavailable": "Sign-in is temporarily unavailable",
     "signInFailed": "Sign-in did not complete. Please try again later.",
-    "signOutFailed": "Sign-out did not complete. Please try again later."
+    "signOutFailed": "Sign-out did not complete. Please try again later.",
+    "myAccount": "My account",
+    "avatar": "Profile picture"
   },
   "AuthError": {
     "metadata": {
@@ -200,7 +202,11 @@
       "existingSubscription": "An active or pending subscription already exists for this account.",
       "webhookInvalidRequest": "The webhook request is invalid.",
       "webhookSignatureFailed": "Webhook signature verification failed.",
-      "webhookProcessingFailed": "Webhook processing failed."
+      "webhookProcessingFailed": "Webhook processing failed.",
+      "cancelInvalidOrigin": "The cancellation request must come from this website.",
+      "cancelSubscriptionNotFound": "Subscription not found.",
+      "cancelNotActive": "Only an active subscription can be cancelled.",
+      "cancelFailed": "Cancellation could not be confirmed. Please retry."
     }
   },
   "HomeFaq": {
@@ -379,5 +385,67 @@
     "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
     "UNKNOWN": "Something went wrong. Please try again.",
     "PARSER_RESPONSE_TOO_LARGE": "The parser response is too large to return safely."
+  },
+  "Account": {
+    "title": "My account",
+    "description": "Your profile and subscriptions.",
+    "avatar": "Profile picture",
+    "freePlan": "Free plan",
+    "planUnavailable": "Plan unavailable",
+    "currentPlan": "Current plan: {plan}",
+    "notAvailable": "Not available",
+    "refresh": "Refresh",
+    "refreshing": "Refreshing…",
+    "loading": "Loading account…",
+    "metadata": {
+      "title": "My account",
+      "description": "Your profile and subscriptions."
+    },
+    "quota": {
+      "title": "Remaining quota",
+      "remaining": "{remaining} / {total} pages remaining",
+      "percentage": "{percent}% remaining",
+      "progressLabel": "Remaining page quota",
+      "dayEnds": "Daily quota resets at {date} UTC.",
+      "monthEnds": "Current billing period ends at {date} UTC.",
+      "unavailable": "Quota is temporarily unavailable. Please refresh later."
+    },
+    "subscriptions": {
+      "title": "Subscription records",
+      "description": "One record per subscription. Dates are shown in UTC.",
+      "unavailable": "Subscription records are temporarily unavailable.",
+      "empty": "No subscription records yet.",
+      "plan": "Plan",
+      "amount": "Subscription amount",
+      "status": "Status",
+      "created": "Created",
+      "period": "Billing period",
+      "actions": "Actions",
+      "availableUntil": "Remaining quota is available until {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Awaiting approval",
+      "APPROVED": "Approved",
+      "ACTIVE": "Active",
+      "SUSPENDED": "Suspended",
+      "CANCELLED": "Cancelled",
+      "EXPIRED": "Expired",
+      "PAYMENT_FAILED": "Payment failed"
+    },
+    "cancel": {
+      "button": "Cancel subscription",
+      "title": "Cancel this subscription?",
+      "description": "Future renewals will stop. Your remaining paid quota stays available until {date} UTC.",
+      "descriptionWithoutDate": "Future renewals will stop. Remaining paid quota stays available until the recorded billing period ends.",
+      "keep": "Keep subscription",
+      "confirm": "Confirm cancellation",
+      "submitting": "Cancelling…",
+      "syncing": "Renewals have stopped. Waiting for the cancellation webhook to update your account.",
+      "delayed": "Renewals have stopped. Account synchronization is delayed; check the status again later.",
+      "check": "Check status",
+      "checking": "Checking…",
+      "failed": "Cancellation could not be confirmed. Please retry.",
+      "checkFailed": "Could not check the status. Please retry."
+    }
   }
 }

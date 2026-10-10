@@ -64,6 +64,15 @@ export async function createPayPalSubscription(
   return response.result;
 }
 
+export async function cancelPayPalSubscription(subscriptionId: string): Promise<void> {
+  const controller = new SubscriptionsController(createPayPalClient());
+  const response = await controller.cancelSubscription({
+    id: subscriptionId,
+    body: { reason: "Subscriber requested cancellation from account page" },
+  });
+  if (response.statusCode !== 204) throw new Error("PayPal did not confirm subscription cancellation");
+}
+
 async function getPayPalAccessToken(): Promise<string> {
   const config = getPayPalServerConfig();
   if (!config) {
