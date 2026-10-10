@@ -1,45 +1,24 @@
+import { updateBillingSubscriptionFromWebhook } from "@/lib/billing/server";
 import {
-  findBillingSubscriptionByPayPalId,
-  updateBillingSubscriptionFromWebhook,
-} from "@/lib/billing/server";
-import { getPayPalSubscription } from "@/lib/paypal/server";
+  getObject,
+  getString,
+  getWebhookEvent,
+  requireTime,
+  type WebhookPayload,
+  type WebhookResult,
+} from "@/lib/paypal/webhooks/shared";
+import { getVerifiedSubscription } from "@/lib/paypal/webhooks/subscription";
 
-function requireString(value: unknown): string {
-  if (typeof value !== "string" || !value) throw new Error("Subscription event is incomplete");
-  return value;
-}
+export async function handleSaleCompleted(payload: WebhookPayload): Promise<WebhookResult> {
+  const resource = getObject(payload.resource);
+  // 同一个 PayPal 应用还可能产生与订阅无关的销售事件。
+  if (!getString(resource.billing_agreement_id)) return "ignored";
 
-function requireTime(value: unknown): number {
-  const time = Date.parse(requireString(value));
-  if (!Number.isFinite(time)) throw new Error("Subscription event time is invalid");
-  return time;
-}
+  const event = getWebhookEvent(payload);
+  const verified = await getVerifiedSubscription(resource.billing_agreement_id, event);
+  if (!verified) return "ignored";
 
-export async function processSubscriptionLifecycleEvent(
-  eventType: "BILLING.SUBSCRIPTION.CANCELLED" | "PAYMENT.SALE.COMPLETED",
-  event: { id: string; at: string },
-  resource: Record<string, unknown>,
-): Promise<"applied" | "ignored"> {
-  const subscriptionId = requireString(
-    eventType === "PAYMENT.SALE.COMPLETED" ? resource.billing_agreement_id : resource.id,
-  );
-  const existing = await findBillingSubscriptionByPayPalId(subscriptionId);
-  if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
-  if (existing.last_webhook_event_id === event.id) return "ignored";
-
-  const subscription = await getPayPalSubscription(subscriptionId);
-  if (
-    subscription.id !== subscriptionId || subscription.customId !== existing.user_id ||
-    subscription.planId !== existing.paypal_plan_id
-  ) {
-    throw new Error("PayPal subscription identity mismatch");
-  }
-
-  if (eventType === "BILLING.SUBSCRIPTION.CANCELLED") {
-    if (subscription.status !== "CANCELLED") throw new Error("PayPal cancellation is not confirmed yet");
-    return updateBillingSubscriptionFromWebhook(existing, event, { status: "CANCELLED" });
-  }
-
+  const { existing, subscription } = verified;
   // 迟到的付款事件不能恢复已取消的订阅，也不能创建首条订阅记录。
   if (existing.status !== "ACTIVE" || subscription.status !== "ACTIVE") return "ignored";
   if (existing.last_event_at && Date.parse(event.at) < Date.parse(existing.last_event_at)) return "ignored";

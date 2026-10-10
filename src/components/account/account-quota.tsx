@@ -25,7 +25,7 @@ export async function AccountQuota({ quota }: { quota: Quota | null }) {
             </div>
             <Progress value={quota.remainingPercent} aria-label={t("progressLabel")}
               aria-valuetext={t("remaining", { remaining: quota.remainingPages, total: quota.limitPages })}
-              className="[&_[data-slot=progress-track]]:h-2" />
+              className="**:data-[slot=progress-track]:h-2" />
             <p className="text-sm text-muted-foreground">
               {t(quota.period === "day" ? "dayEnds" : "monthEnds", {
                 date: format.dateTime(new Date(quota.periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }),

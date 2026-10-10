@@ -39,7 +39,9 @@ export async function findBillingSubscriptionByPayPalId(
   return data as BillingSubscription | null;
 }
 
-export async function findActiveBillingSubscription(userId: string): Promise<BillingSubscription | null> {
+export async function findActiveBillingSubscription(
+  userId: string,
+): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
   if (!admin) return null;
 
@@ -56,7 +58,9 @@ export async function findActiveBillingSubscription(userId: string): Promise<Bil
   return data as BillingSubscription | null;
 }
 
-export async function listBillingSubscriptions(userId: string): Promise<BillingSubscription[]> {
+export async function listBillingSubscriptions(
+  userId: string,
+): Promise<BillingSubscription[]> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
@@ -73,28 +77,44 @@ export function selectEntitledSubscription(
   subscriptions: BillingSubscription[],
   now = new Date(),
 ): BillingSubscription | null {
-  const active = subscriptions.find((subscription) => subscription.status === "ACTIVE");
+  const active = subscriptions.find(
+    (subscription) => subscription.status === "ACTIVE",
+  );
   if (active) return active;
 
-  return subscriptions.find((subscription) => {
-    if (subscription.status !== "CANCELLED") return false;
-    const start = Date.parse(subscription.current_period_start ?? "");
-    const end = Date.parse(subscription.current_period_end ?? "");
-    return Number.isFinite(start) && Number.isFinite(end) && start < end && start <= now.valueOf() && now.valueOf() < end;
-  }) ?? null;
+  return (
+    subscriptions.find((subscription) => {
+      if (subscription.status !== "CANCELLED") return false;
+      const start = Date.parse(subscription.current_period_start ?? "");
+      const end = Date.parse(subscription.current_period_end ?? "");
+      return (
+        Number.isFinite(start) &&
+        Number.isFinite(end) &&
+        start < end &&
+        start <= now.valueOf() &&
+        now.valueOf() < end
+      );
+    }) ?? null
+  );
 }
 
-export async function findEntitledBillingSubscription(userId: string): Promise<BillingSubscription | null> {
+export async function findEntitledBillingSubscription(
+  userId: string,
+): Promise<BillingSubscription | null> {
   return selectEntitledSubscription(await listBillingSubscriptions(userId));
 }
 
 export async function updateBillingSubscriptionFromWebhook(
   subscription: BillingSubscription,
   event: { id: string; at: string },
-  changes: { status: "CANCELLED" } | { current_period_start: string; current_period_end: string },
+  changes:
+    | { status: "CANCELLED" }
+    | { current_period_start: string; current_period_end: string },
 ): Promise<"applied" | "ignored"> {
   if (subscription.last_webhook_event_id === event.id) return "ignored";
-  const olderEvent = subscription.last_event_at !== null && Date.parse(event.at) < Date.parse(subscription.last_event_at);
+  const olderEvent =
+    subscription.last_event_at !== null &&
+    Date.parse(event.at) < Date.parse(subscription.last_event_at);
   // 已向 PayPal 确认的取消是终态；付款事件即使晚生成也不能阻止取消落库。
   if (olderEvent && !("status" in changes)) return "ignored";
   if (subscription.status !== "ACTIVE") return "ignored";
@@ -103,24 +123,36 @@ export async function updateBillingSubscriptionFromWebhook(
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
   // 比较读取时的事件版本，避免并发回调覆盖取消状态或更新后的账期。
-  let query = admin.from("billing_subscriptions")
-    .update({ ...changes, last_webhook_event_id: event.id, last_event_at: olderEvent ? subscription.last_event_at : event.at })
+  let query = admin
+    .from("billing_subscriptions")
+    .update({
+      ...changes,
+      last_webhook_event_id: event.id,
+      last_event_at: olderEvent ? subscription.last_event_at : event.at,
+    })
     .eq("id", subscription.id)
     .eq("status", "ACTIVE");
-  query = subscription.last_event_at === null
-    ? query.is("last_event_at", null)
-    : query.eq("last_event_at", subscription.last_event_at);
-  query = subscription.last_webhook_event_id === null
-    ? query.is("last_webhook_event_id", null)
-    : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
+  query =
+    subscription.last_event_at === null
+      ? query.is("last_event_at", null)
+      : query.eq("last_event_at", subscription.last_event_at);
+  query =
+    subscription.last_webhook_event_id === null
+      ? query.is("last_webhook_event_id", null)
+      : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
 
   const { data, error } = await query.select("id");
   if (error) throw error;
-  if (!data.length) throw new Error("Subscription changed while processing webhook; retry required");
+  if (!data.length)
+    throw new Error(
+      "Subscription changed while processing webhook; retry required",
+    );
   return "applied";
 }
 
-export async function findOpenBillingSubscription(userId: string): Promise<BillingSubscription | null> {
+export async function findOpenBillingSubscription(
+  userId: string,
+): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
@@ -145,17 +177,20 @@ export async function updateBillingSubscriptionStatus(
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
   // 只更新读取时的版本；并发 Webhook 已改动状态或账期时，交由下一次同步重试。
-  let query = admin.from("billing_subscriptions")
+  let query = admin
+    .from("billing_subscriptions")
     .update({ status })
     .eq("id", subscription.id)
     .eq("user_id", subscription.user_id)
     .eq("status", subscription.status);
-  query = subscription.last_event_at === null
-    ? query.is("last_event_at", null)
-    : query.eq("last_event_at", subscription.last_event_at);
-  query = subscription.last_webhook_event_id === null
-    ? query.is("last_webhook_event_id", null)
-    : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
+  query =
+    subscription.last_event_at === null
+      ? query.is("last_event_at", null)
+      : query.eq("last_event_at", subscription.last_event_at);
+  query =
+    subscription.last_webhook_event_id === null
+      ? query.is("last_webhook_event_id", null)
+      : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
 
   const { data, error } = await query.select("id");
   if (error) throw error;
@@ -178,8 +213,11 @@ export type BillingWebhookUpdate = {
   currencyCode: string;
 };
 
-export async function applyBillingWebhook(update: BillingWebhookUpdate): Promise<"applied" | "ignored"> {
-  if (await findBillingSubscriptionByPayPalId(update.subscriptionId)) return "ignored";
+export async function applyBillingWebhook(
+  update: BillingWebhookUpdate,
+): Promise<"applied" | "ignored"> {
+  if (await findBillingSubscriptionByPayPalId(update.subscriptionId))
+    return "ignored";
 
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
@@ -203,7 +241,8 @@ export async function applyBillingWebhook(update: BillingWebhookUpdate): Promise
   if (!error) return "applied";
   if (error.code !== "23505") throw error;
 
-  if (await findBillingSubscriptionByPayPalId(update.subscriptionId)) return "ignored";
+  if (await findBillingSubscriptionByPayPalId(update.subscriptionId))
+    return "ignored";
 
   throw error;
 }
