@@ -34,19 +34,19 @@
     "account": "Compte",
     "signInWithGoogle": "Se connecter avec Google",
     "signOut": "Se déconnecter",
-    "unavailable": "La connexion est temporairement indisponible",
-    "signInFailed": "La connexion n’a pas abouti. Veuillez réessayer plus tard.",
-    "signOutFailed": "La déconnexion n’a pas été effectuée. Veuillez réessayer plus tard.",
+    "unavailable": "La connexion n’a pas été configurée.",
+    "signInFailed": "La connexion Google n’a pas pu être lancée.",
+    "signOutFailed": "La déconnexion n’a pas pu être terminée.",
     "myAccount": "Mon compte",
     "avatar": "Photo de profil"
   },
   "AuthError": {
     "metadata": {
       "title": "Connexion incomplète | Convertisseur de relevé bancaire",
-      "description": "La connexion à Google n'a pas abouti. Revenez à la page d'accueil et réessayez."
+      "description": "La connexion Google n’a pas pu être terminée."
     },
     "title": "Connexion incomplète",
-    "description": "La connexion à Google a été annulée ou n'a pas abouti. Revenez à la page d'accueil et réessayez.",
+    "description": "La connexion Google n’a pas pu être terminée.",
     "backHome": "Retour à la page d'accueil"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "Choisissez un PDF ou déposez-le ici",
     "dropzoneHint": "Importez un PDF qui s'ouvre normalement et dont le texte peut être sélectionné.",
     "help": "Le nom du fichier apparaît après la sélection. Vous pouvez retirer le fichier à tout moment.",
-    "errorTitle": "Ce fichier n'a pas pu être converti",
-    "invalidPdf": "Veuillez importer un fichier PDF.",
+    "errorTitle": "Cette opération n’a pas pu être terminée",
+    "invalidPdf": "Le fichier téléversé n’est pas un PDF.",
     "multipleFiles": "Un seul PDF peut être traité à la fois.",
-    "conversionFailed": "La conversion n'a pas été terminée. Essayez un autre fichier.",
-    "parserUnavailable": "Le service d'analyse n'a pas répondu. Veuillez réessayer plus tard.",
-    "quotaExceeded": "Votre quota est épuisé, ou le nombre de pages de ce PDF dépasse votre quota restant.",
-    "quotaUnavailable": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
+    "conversionFailed": "La cause précise de l’échec n’a pas pu être déterminée.",
+    "parserUnavailable": "Impossible de joindre le service de conversion.",
+    "quotaExceeded": "Ce PDF contient plus de pages que vous ne pouvez encore en convertir.",
+    "quotaUnavailable": "Votre quota de conversion disponible n’a pas pu être déterminé.",
     "removeFile": "Retirer le fichier",
     "quota": "Quota gratuit : {anonymousPages, plural, one {# page} other {# pages}} par jour sans connexion, {authenticatedPages, plural, one {# page} other {# pages}} par jour après connexion",
     "serviceReady": "Les fichiers sont utilisés uniquement pour cette conversion et ne sont pas enregistrés.",
     "status": "Prêt à importer",
     "converting": "Conversion en cours",
     "start": "Convertir et vérifier",
-    "fileTooLarge": "Ce PDF fait plus de 4 Mo.",
+    "fileTooLarge": "Ce PDF dépasse 4 Mo.",
     "fileSize": {
       "bytes": "{size} o",
       "kilobytes": "{size} Ko",
       "megabytes": "{size} Mo"
-    }
+    },
+    "requestFailed": "Aucune réponse à la demande de conversion n’a pu être reçue.",
+    "resultStorageFailed": "La conversion est terminée, mais le navigateur n’a pas pu enregistrer le résultat.",
+    "browserStorageUnavailable": "Le stockage du navigateur est indisponible.",
+    "emptyFile": "Le fichier PDF téléversé est vide.",
+    "quotaExhausted": "Vous avez utilisé toutes les pages disponibles pour cette période.",
+    "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "Il n'y a pas de données téléchargeables",
-      "description": "Aucune ligne de tableau exploitable n'a été trouvée dans ce PDF. Revenez à la page d'accueil et importez un autre fichier."
+      "description": "Aucune ligne de tableau exploitable n’a été trouvée dans ce PDF."
     },
     "missing": {
-      "title": "Ce résultat a expiré",
-      "description": "Le résultat est disponible uniquement pendant cette conversion. Revenez à la page d'accueil et importez à nouveau le PDF."
+      "title": "Aucun résultat de conversion",
+      "description": "Cette page ne contient aucun résultat de conversion lisible."
     },
     "issues": {
       "repeatedHeader": "La ligne {row} répète l'en-tête du tableau et a été ignorée.",
-      "summaryRow": "La ligne {row} ressemble à une ligne récapitulative et a été ignorée.",
+      "summaryRow": "La ligne {row} a été identifiée comme une ligne de total et ignorée.",
       "extraCells": "Cette ligne contient plus de cellules que l'en-tête. Les cellules supplémentaires ont été conservées.",
       "unknown": "Cet élément doit être vérifié.",
-      "missingDate": "La date de l'opération manque.",
+      "missingDate": "Aucune date de transaction n’a été identifiée.",
       "invalidDate": "La date de l'opération est invalide.",
-      "missingDescription": "La description de l'opération manque.",
-      "missingAmount": "Le montant de l'opération manque.",
+      "missingDescription": "Aucune description de transaction n’a été identifiée.",
+      "missingAmount": "Aucun montant de transaction n’a été identifié.",
       "invalidAmount": "Le montant de l'opération est invalide.",
       "amountColumnMismatch": "Un montant figure hors de la colonne des montants et ne peut pas être associé avec certitude."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Les lignes dont les éléments sont incomplets ou mal alignés sont marquées « DISCREPANCY » ou « UNVERIFIABLE » avant le téléchargement."
   },
   "UsageTiers": {
-    "title": "Commencez par une conversion gratuite",
+    "title": "Des pages de conversion gratuites chaque jour",
     "description": "Vous pouvez essayer le convertisseur sans compte. Connectez-vous pour un quota quotidien plus important ou choisissez un forfait mensuel pour une utilisation régulière.",
     "anonymous": "Sans vous connecter",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
@@ -175,7 +181,7 @@
     "perMonth": "/ mois",
     "planQuota": "{pages, plural, one {# page} other {# pages}} par mois",
     "current": "Forfait actuel",
-    "cancelledPeriodActive": "Votre abonnement est résilié, mais vos avantages restent disponibles pour la période de facturation en cours. Vous pourrez vous réabonner après le {date} (UTC).",
+    "cancelledPeriodActive": "L’abonnement est résilié. Les avantages restent disponibles jusqu’au {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standard",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Entreprise",
-        "description": "Pour les équipes qui traitent de nombreux relevés bancaires."
+        "description": "Pour les utilisateurs qui doivent convertir davantage de pages chaque mois."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Connectez-vous avant de démarrer un abonnement.",
-    "unavailable": "Le paiement est temporairement indisponible. Veuillez réessayer plus tard.",
+    "unavailable": "Le service de paiement n’a pas été configuré.",
     "subscribe": "S'abonner avec PayPal",
     "processing": "Ouverture de PayPal",
-    "confirming": "Confirmation du paiement en cours",
-    "confirmationDelayed": "La confirmation du paiement prend plus de temps que prévu. Actualisez cette page plus tard.",
-    "activationFailed": "Impossible de confirmer l'abonnement. Actualisez cette page ou contactez l'assistance.",
+    "confirming": "Vérification de l’activation de l’abonnement",
+    "confirmationDelayed": "L’activation de l’abonnement n’a pas encore été confirmée.",
+    "activationFailed": "Le statut d’activation de l’abonnement n’a pas pu être obtenu.",
     "activated": "Votre forfait est actif.",
     "cancelled": "Vous avez annulé la procédure d'abonnement.",
-    "paymentFailed": "Le paiement n'a pas été effectué. Veuillez réessayer plus tard.",
+    "paymentFailed": "Le résultat de cette opération d’abonnement n’a pas pu être confirmé.",
     "currentPlan": "Vous utilisez ce forfait.",
     "api": {
-      "loginUnavailable": "La connexion est temporairement indisponible.",
-      "loginRequired": "Veuillez vous connecter.",
-      "emailMissing": "Votre compte n'a pas d'adresse email, l'abonnement ne peut donc pas être activé.",
+      "loginUnavailable": "La connexion n’a pas été configurée.",
+      "loginRequired": "Vous n’êtes pas connecté.",
+      "emailMissing": "Ce compte n’a pas d’adresse e-mail, l’abonnement ne peut donc pas être activé.",
       "invalidRequest": "La demande d'abonnement est invalide.",
-      "invalidTier": "Choisissez un forfait d'abonnement valide.",
+      "invalidTier": "L’offre d’abonnement sélectionnée est invalide.",
       "configurationMissing": "Le paiement n'a pas encore été configuré.",
       "subscriptionBelongsToAnotherAccount": "Cet abonnement appartient à un autre compte.",
-      "verificationFailed": "L'abonnement PayPal n'a pas pu être vérifié.",
-      "activationFailed": "La vérification de l'abonnement n'a pas abouti. Veuillez réessayer plus tard.",
-      "createFailed": "L'abonnement PayPal n'a pas pu être démarré. Veuillez réessayer plus tard.",
+      "verificationFailed": "Les informations de l’abonnement PayPal n’ont pas pu être vérifiées.",
+      "activationFailed": "Le statut d’activation de l’abonnement n’a pas pu être obtenu.",
+      "createFailed": "L’abonnement PayPal n’a pas pu être créé.",
       "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
-      "cancelledPeriodActive": "Votre abonnement est résilié, mais la période de facturation en cours n’est pas terminée. Vous pourrez vous réabonner à la fin de cette période.",
+      "cancelledPeriodActive": "L’abonnement est résilié, mais la période de facturation actuelle n’est pas terminée.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
       "webhookSignatureFailed": "La vérification de la signature du webhook a échoué.",
       "webhookProcessingFailed": "Le traitement du webhook a échoué.",
       "cancelInvalidOrigin": "La demande de résiliation doit provenir de ce site.",
       "cancelSubscriptionNotFound": "Abonnement introuvable.",
       "cancelNotActive": "Seul un abonnement actif peut être résilié.",
-      "cancelFailed": "La résiliation n’a pas pu être confirmée. Veuillez réessayer."
-    }
+      "cancelFailed": "La résiliation de l’abonnement n’a pas pu être confirmée.",
+      "planMismatch": "L’offre de l’abonnement ne correspond pas à l’offre sélectionnée.",
+      "subscriptionPaymentFailed": "Le statut de paiement de cet abonnement indique un échec.",
+      "subscriptionCancelled": "Cet abonnement a été résilié.",
+      "subscriptionExpired": "Cet abonnement a expiré.",
+      "subscriptionSuspended": "Cet abonnement a été suspendu.",
+      "invalidBillingPeriod": "La période de facturation de l’abonnement est invalide.",
+      "subscriptionIdMismatch": "L’identifiant d’abonnement renvoyé par PayPal ne correspond pas à l’abonnement actuel.",
+      "existingActiveSubscription": "Ce compte possède déjà un abonnement actif.",
+      "existingPendingSubscription": "Ce compte possède déjà un abonnement en attente de confirmation.",
+      "existingSuspendedSubscription": "Ce compte possède déjà un abonnement suspendu.",
+      "billingPeriodEnded": "La période de facturation actuelle de cet abonnement est terminée."
+    },
+    "invalidStatusResponse": "Le service d’abonnement a renvoyé des informations de statut invalides."
   },
   "HomeFaq": {
     "title": "Questions fréquentes",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "Puis-je convertir des PDF numérisés ou cryptés ?",
-      "answer": "La première version se concentre sur les PDF électroniques avec du texte sélectionnable qui s'ouvrent normalement. Les fichiers numérisés, les fichiers protégés par mot de passe ou les PDF sans tableaux reconnaissables peuvent ne pas être convertis."
+      "answer": "Seuls les PDF électroniques contenant du texte extractible sont pris en charge. Les PDF numérisés ou protégés par mot de passe ne sont pas pris en charge."
     },
     "storage": {
       "question": "Mes fichiers PDF, Excel ou mes transactions sont-ils enregistrés ?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "Impossible de lire la demande d'importation.",
-    "INVALID_FILE": "Choisissez un fichier PDF valide.",
-    "PARSER_UNAVAILABLE": "Le service d'analyse est temporairement indisponible. Veuillez réessayer plus tard.",
-    "QUOTA_EXCEEDED": "Votre quota est épuisé.",
-    "QUOTA_UNAVAILABLE": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
-    "FILE_TOO_LARGE": "Ce PDF fait plus de 4 Mo.",
-    "INVALID_FILE_TYPE": "Seuls les fichiers PDF sont pris en charge.",
+    "INVALID_FILE": "Aucun fichier téléversé n’a été reçu.",
+    "PARSER_UNAVAILABLE": "Impossible de joindre le service de conversion.",
+    "QUOTA_EXCEEDED": "Ce PDF contient plus de pages que vous ne pouvez encore en convertir.",
+    "QUOTA_UNAVAILABLE": "Votre quota de conversion disponible n’a pas pu être déterminé.",
+    "FILE_TOO_LARGE": "Ce PDF dépasse 4 Mo.",
+    "INVALID_FILE_TYPE": "Le fichier téléversé n’est pas un PDF.",
     "INVALID_PDF": "Ce fichier n'est pas un PDF lisible.",
     "PASSWORD_PROTECTED_PDF": "Les PDF protégés par mot de passe ne peuvent pas être convertis.",
-    "TOO_MANY_PAGES": "Ce PDF compte plus de 50 pages.",
-    "UNSUPPORTED_SCANNED_PDF": "Cette version accepte les PDF électroniques avec du texte sélectionnable, pas les images numérisées.",
+    "TOO_MANY_PAGES": "Ce PDF contient plus de 50 pages.",
+    "UNSUPPORTED_SCANNED_PDF": "Aucun texte n’a pu être extrait de ce PDF, il ne peut donc pas être converti.",
     "TABLE_NOT_FOUND": "Aucun tableau de relevé bancaire utilisable n'a été trouvé.",
-    "NO_VERIFIABLE_TRANSACTIONS": "Aucune opération ne contient assez de données pour être vérifiée.",
-    "PARSE_FAILED": "Le PDF n'a pas pu être analysé. Veuillez réessayer avec un autre fichier.",
-    "UNKNOWN": "Quelque chose s'est mal passé. Veuillez réessayer.",
-    "PARSER_RESPONSE_TOO_LARGE": "La réponse du parseur est trop volumineuse pour être renvoyée en toute sécurité."
+    "NO_VERIFIABLE_TRANSACTIONS": "Aucune ligne de transaction dont la date, la description et le montant sont tous vérifiables n’a été trouvée.",
+    "PARSE_FAILED": "Le serveur n’a pas pu terminer l’analyse du PDF.",
+    "UNKNOWN": "La cause précise de l’échec n’a pas pu être déterminée.",
+    "PARSER_RESPONSE_TOO_LARGE": "Le résultat de conversion dépasse la taille maximale autorisée pour une réponse.",
+    "MISSING_FILE": "Aucun fichier téléversé n’a été reçu.",
+    "EMPTY_FILE": "Le fichier PDF téléversé est vide.",
+    "PARSER_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
+    "PARSER_TIMEOUT": "La demande de conversion a dépassé le délai imparti.",
+    "INVALID_PARSER_RESPONSE": "Le service de conversion a renvoyé des données dans un format invalide.",
+    "PARSER_RESPONSE_UNREADABLE": "La réponse du service de conversion n’a pas pu être lue intégralement.",
+    "UNAUTHORIZED": "Le service de conversion a refusé l’authentification.",
+    "QUOTA_EXHAUSTED": "Vous avez utilisé toutes les pages disponibles pour cette période.",
+    "QUOTA_RECORD_FAILED": "L’utilisation liée à cette conversion n’a pas pu être enregistrée.",
+    "QUOTA_PERIOD_UNAVAILABLE": "La période de facturation de l’abonnement est invalide, ce qui empêche de déterminer le quota.",
+    "PARSER_AUTH_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré."
   },
   "Account": {
     "title": "Mon compte",
     "description": "Consultez votre quota et vos abonnements.",
     "avatar": "Photo de profil",
     "freePlan": "Offre gratuite",
-    "planUnavailable": "Offre indisponible",
+    "planUnavailable": "Les informations sur l’offre actuelle n’ont pas pu être lues",
     "currentPlan": "Offre actuelle : {plan}",
     "notAvailable": "Indisponible",
     "refresh": "Actualiser",
@@ -424,12 +453,12 @@
       "progressLabel": "Quota de pages restant",
       "dayEnds": "Le quota quotidien est réinitialisé le {date} UTC.",
       "monthEnds": "La période de facturation actuelle se termine le {date} UTC.",
-      "unavailable": "Le quota est temporairement indisponible. Veuillez actualiser plus tard."
+      "unavailable": "Le nombre de pages restantes n’a pas pu être lu."
     },
     "subscriptions": {
       "title": "Abonnements",
       "description": "Une ligne par abonnement. Les dates sont en UTC.",
-      "unavailable": "Les abonnements sont temporairement indisponibles.",
+      "unavailable": "Les données d’abonnement n’ont pas pu être lues.",
       "empty": "Aucun abonnement pour le moment.",
       "plan": "Offre",
       "amount": "Montant de l’abonnement",
@@ -457,11 +486,11 @@
       "confirm": "Confirmer la résiliation",
       "submitting": "Résiliation…",
       "syncing": "Les renouvellements sont arrêtés. Le statut de votre abonnement est en cours de mise à jour.",
-      "delayed": "Les renouvellements sont arrêtés, mais le statut de votre abonnement tarde à se mettre à jour. Vérifiez à nouveau plus tard.",
+      "delayed": "Les renouvellements sont arrêtés. La mise à jour du statut de l’abonnement dans le compte n’a pas encore été confirmée.",
       "check": "Vérifier l’état",
       "checking": "Vérification…",
-      "failed": "La résiliation n’a pas pu être confirmée. Veuillez réessayer.",
-      "checkFailed": "Impossible de vérifier l’état. Veuillez réessayer."
+      "failed": "La résiliation de l’abonnement n’a pas pu être confirmée.",
+      "checkFailed": "Le statut de l’abonnement n’a pas pu être lu."
     }
   }
 }

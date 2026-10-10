@@ -34,6 +34,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
   const locale = useLocale();
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
+  const [failure, setFailure] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [confirming, setConfirming] = useState(false);
 
@@ -41,23 +42,30 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
     usePayPalSubscriptionPaymentSession({
       presentationMode: "popup",
       createSubscription: async () => {
-        const response = await fetch("/api/paypal/subscriptions/create", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-app-locale": locale },
-          body: JSON.stringify({ tier }),
-        });
-        const payload = (await response.json()) as {
-          error?: string;
-          subscriptionId?: string;
-        };
+        try {
+          const response = await fetch("/api/paypal/subscriptions/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-app-locale": locale },
+            body: JSON.stringify({ tier }),
+          });
+          const payload = (await response.json().catch(() => null)) as {
+            error?: string;
+            subscriptionId?: string;
+          } | null;
 
-        if (!response.ok || !payload.subscriptionId) {
-          throw new Error(payload.error ?? t("paymentFailed"));
+          if (!response.ok || !payload?.subscriptionId) {
+            setFailure(typeof payload?.error === "string" ? payload.error : t("api.createFailed"));
+            throw new Error("Subscription creation failed");
+          }
+
+          return { subscriptionId: payload.subscriptionId };
+        } catch (error) {
+          setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
+          throw error;
         }
-
-        return { subscriptionId: payload.subscriptionId };
       },
       onApprove: async (data) => {
+        setFailure(null);
         setConfirming(true);
         setMessage(t("confirming"));
         try {
@@ -72,16 +80,19 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
           }
           setMessage(t("confirmationDelayed"));
         } catch {
-          setMessage(t("activationFailed"));
+          setMessage(null);
+          setFailure((currentFailure) => currentFailure ?? t("activationFailed"));
         } finally {
           setConfirming(false);
         }
       },
       onCancel: () => {
+        setFailure(null);
         setMessage(t("cancelled"));
       },
       onError: () => {
-        setMessage(t("paymentFailed"));
+        setMessage(null);
+        setFailure((currentFailure) => currentFailure ?? t("paymentFailed"));
       },
     });
 
@@ -91,13 +102,17 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
       headers: { "Content-Type": "application/json", "x-app-locale": locale },
       body: JSON.stringify({ subscriptionId, tier }),
     });
-    const payload = (await response.json()) as ActivateResponse;
+    const payload = (await response.json().catch(() => null)) as ActivateResponse | null;
 
-    if (response.status === 202 && payload.status === "PENDING") return false;
+    if (response.status === 202 && payload?.status === "PENDING") return false;
     if (!response.ok) {
-      throw new Error(payload.error ?? t("activationFailed"));
+      setFailure(typeof payload?.error === "string" ? payload.error : t("activationFailed"));
+      throw new Error("Subscription activation check failed");
     }
-    if (payload.status !== "ACTIVE") throw new Error("Unexpected subscription status");
+    if (payload?.status !== "ACTIVE") {
+      setFailure(t("invalidStatusResponse"));
+      throw new Error("Unexpected subscription status");
+    }
 
     return true;
   }
@@ -129,6 +144,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
         size="lg"
         onClick={() => {
           setMessage(null);
+          setFailure(null);
           void handleClick();
         }}
         onKeyDown={(event) => {
@@ -139,7 +155,7 @@ const PayPalSubscriptionButton: FC<PayPalSubscriptionButtonProps> = ({
         {buttonLabel}
       </Button>
       {message && <p role="status" className="text-sm text-muted-foreground">{message}</p>}
-      {sessionError && <p role="alert" className="text-sm text-destructive">{t("paymentFailed")}</p>}
+      {(failure || sessionError) && <p role="alert" className="text-sm text-destructive">{failure ?? t("paymentFailed")}</p>}
     </div>
   );
 };

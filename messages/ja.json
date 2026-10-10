@@ -34,19 +34,19 @@
     "account": "アカウント",
     "signInWithGoogle": "Googleでログイン",
     "signOut": "ログアウト",
-    "unavailable": "ログインは一時的に利用できません",
-    "signInFailed": "ログインが完了しませんでした。しばらくしてから再試行してください。",
-    "signOutFailed": "ログアウトが完了しませんでした。しばらくしてから再試行してください。",
+    "unavailable": "ログインサービスの設定が完了していません。",
+    "signInFailed": "Googleログインを開始できませんでした。",
+    "signOutFailed": "ログアウトを完了できませんでした。",
     "myAccount": "マイアカウント",
     "avatar": "プロフィール画像"
   },
   "AuthError": {
     "metadata": {
       "title": "ログイン未完了 | 銀行明細変換",
-      "description": "Googleログインが完了しませんでした。トップページに戻ってもう一度お試しください。"
+      "description": "Googleログインを完了できませんでした。"
     },
     "title": "ログインが完了しませんでした",
-    "description": "Googleログインがキャンセルされたか、完了しませんでした。トップページに戻って再試行してください。",
+    "description": "Googleログインを完了できませんでした。",
     "backHome": "トップページへ"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "PDFを選ぶか、ここにドロップ",
     "dropzoneHint": "正常に開けて、文字を選択できるPDFをアップロードしてください。",
     "help": "ファイルを選ぶと名前が表示されます。選択はいつでも解除できます。",
-    "errorTitle": "このファイルを変換できませんでした",
-    "invalidPdf": "PDFファイルをアップロードしてください。",
+    "errorTitle": "今回の操作を完了できませんでした",
+    "invalidPdf": "アップロードされたファイルはPDFではありません。",
     "multipleFiles": "一度に処理できるPDFは1つです。",
-    "conversionFailed": "変換を完了できませんでした。別のファイルでお試しください。",
-    "parserUnavailable": "解析サービスから応答がありません。しばらくしてから再試行してください。",
-    "quotaExceeded": "利用枠を使い切ったか、このPDFのページ数が残りの利用枠を超えています。",
-    "quotaUnavailable": "利用枠を一時的に確認できません。しばらくしてから再試行してください。",
+    "conversionFailed": "具体的な失敗の原因を確認できませんでした。",
+    "parserUnavailable": "変換サービスに接続できませんでした。",
+    "quotaExceeded": "このPDFのページ数が、残りの変換可能ページ数を超えています。",
+    "quotaUnavailable": "現在利用できる変換枠を確認できませんでした。",
     "removeFile": "ファイルの選択を解除",
     "quota": "無料枠：匿名は1日{anonymousPages, number}ページ、ログイン後は1日{authenticatedPages, number}ページ",
     "serviceReady": "ファイルは今回の変換にだけ使い、保存しません。",
     "status": "アップロードできます",
     "converting": "変換中",
     "start": "変換して確認",
-    "fileTooLarge": "PDFは4MB以下にしてください。",
+    "fileTooLarge": "このPDFのファイルサイズは4 MBを超えています。",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "変換リクエストへの応答を受信できませんでした。",
+    "resultStorageFailed": "変換は完了しましたが、ブラウザーで結果を保存できませんでした。",
+    "browserStorageUnavailable": "ブラウザーのストレージを利用できません。",
+    "emptyFile": "アップロードされたPDFファイルは空です。",
+    "quotaExhausted": "今期の変換可能ページ数を使い切りました。",
+    "invalidResponse": "変換サービスから返されたデータの形式が無効です。"
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "ダウンロードできるデータがありません",
-      "description": "利用できる表の行を見つけられませんでした。トップページに戻って別のPDFをアップロードしてください。"
+      "description": "このPDFから利用できる表の行が見つかりませんでした。"
     },
     "missing": {
-      "title": "結果の有効期限が切れました",
-      "description": "結果は今回の変換中だけ一時的に保持されます。トップページに戻ってPDFをもう一度アップロードしてください。"
+      "title": "変換結果がありません",
+      "description": "このページには読み取れる変換結果がありません。"
     },
     "issues": {
       "repeatedHeader": "{row}行目は重複した見出しのためスキップしました。",
-      "summaryRow": "{row}行目は合計行と思われるためスキップしました。",
+      "summaryRow": "第{row}行は合計行と判定され、除外されました。",
       "extraCells": "この行には見出しより多いセルがあります。余分なセルも保持しました。",
       "unknown": "この項目は確認が必要です。",
-      "missingDate": "取引日がありません。",
+      "missingDate": "取引日付を識別できませんでした。",
       "invalidDate": "取引日が無効です。",
-      "missingDescription": "取引内容がありません。",
-      "missingAmount": "取引金額がありません。",
+      "missingDescription": "取引説明を識別できませんでした。",
+      "missingAmount": "取引金額を識別できませんでした。",
       "invalidAmount": "取引金額が無効です。",
       "amountColumnMismatch": "金額が取引金額の列以外にあり、対応関係を確認できません。"
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "根拠が足りない行や位置を合わせにくい行には“DISCREPANCY”または“UNVERIFIABLE”を付けます。"
   },
   "UsageTiers": {
-    "title": "まず無料で試す",
+    "title": "毎日使える無料の変換ページ枠",
     "description": "ログインせずに試せます。ログインすると1日に使えるページ数が増えます。定期的に使う方は月額プランを選べます。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages, number}ページ",
@@ -175,7 +181,7 @@
     "perMonth": "/ 月",
     "planQuota": "月{pages, number}ページ",
     "current": "現在のプラン",
-    "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、今期の特典は引き続き利用できます。{date}（UTC）以降に再度登録できます。",
+    "cancelledPeriodActive": "サブスクリプションはキャンセルされています。今期の特典は{date}（UTC）まで利用できます。",
     "plans": {
       "standard": {
         "name": "スタンダード",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "エンタープライズ",
-        "description": "チームや組織で大量に処理する場合に。"
+        "description": "毎月多くのページを変換するユーザー向け。"
       }
     }
   },
   "PayPal": {
     "signInRequired": "プランを申し込むには、まずログインしてください。",
-    "unavailable": "支払いを一時的に利用できません。しばらくしてから再試行してください。",
+    "unavailable": "支払いサービスの設定が完了していません。",
     "subscribe": "PayPalで申し込む",
     "processing": "PayPalを開いています",
-    "confirming": "お支払いを確認しています",
-    "confirmationDelayed": "お支払いの確認に時間がかかっています。しばらくしてからページを更新してください。",
-    "activationFailed": "サブスクリプションを確認できませんでした。ページを更新するか、サポートにお問い合わせください。",
+    "confirming": "サブスクリプションが有効か確認中",
+    "confirmationDelayed": "サブスクリプションの有効化はまだ確認されていません。",
+    "activationFailed": "サブスクリプションの有効化状態を取得できませんでした。",
     "activated": "プランが有効になりました。",
     "cancelled": "今回の申し込みをキャンセルしました。",
-    "paymentFailed": "支払いを完了できませんでした。しばらくしてから再試行してください。",
+    "paymentFailed": "今回のサブスクリプション操作の結果を確認できませんでした。",
     "currentPlan": "このプランを利用中です。",
     "api": {
-      "loginUnavailable": "ログインを一時的に利用できません。",
-      "loginRequired": "ログインしてください。",
-      "emailMissing": "アカウントにメールアドレスがないため、サブスクリプションを有効にできません。",
+      "loginUnavailable": "ログインサービスの設定が完了していません。",
+      "loginRequired": "ログインしていません。",
+      "emailMissing": "このアカウントにはメールアドレスがないため、サブスクリプションを有効にできません。",
       "invalidRequest": "サブスクリプションのリクエストが無効です。",
-      "invalidTier": "有効なプランを選択してください。",
+      "invalidTier": "選択されたプランは無効です。",
       "configurationMissing": "支払い設定がまだ完了していません。",
       "subscriptionBelongsToAnotherAccount": "このサブスクリプションは別のアカウントに紐付いています。",
-      "verificationFailed": "PayPalのサブスクリプションを確認できませんでした。",
-      "activationFailed": "サブスクリプションの確認を完了できませんでした。しばらくしてから再試行してください。",
-      "createFailed": "PayPalの申し込みを開始できませんでした。しばらくしてから再試行してください。",
+      "verificationFailed": "PayPalサブスクリプションの情報を検証できませんでした。",
+      "activationFailed": "サブスクリプションの有効化状態を取得できませんでした。",
+      "createFailed": "PayPalサブスクリプションを作成できませんでした。",
       "existingSubscription": "このアカウントには有効または確認待ちのサブスクリプションがあります。",
-      "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、現在の請求期間はまだ終了していません。期間終了後に再度登録できます。",
+      "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、現在の請求期間は終了していません。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
       "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
       "webhookProcessingFailed": "Webhook処理に失敗しました。",
       "cancelInvalidOrigin": "このサイトから解約を実行してください。",
       "cancelSubscriptionNotFound": "契約が見つかりません。",
       "cancelNotActive": "有効な契約のみ解約できます。",
-      "cancelFailed": "解約を確認できませんでした。再試行してください。"
-    }
+      "cancelFailed": "サブスクリプションのキャンセルを確認できませんでした。",
+      "planMismatch": "サブスクリプションのプランが選択したプランと一致しません。",
+      "subscriptionPaymentFailed": "このサブスクリプションの支払い状態は失敗です。",
+      "subscriptionCancelled": "このサブスクリプションはキャンセルされています。",
+      "subscriptionExpired": "このサブスクリプションは期限切れです。",
+      "subscriptionSuspended": "このサブスクリプションは一時停止されています。",
+      "invalidBillingPeriod": "サブスクリプションの請求期間が無効です。",
+      "subscriptionIdMismatch": "PayPalから返されたサブスクリプションIDが現在のものと一致しません。",
+      "existingActiveSubscription": "このアカウントにはすでに有効なサブスクリプションがあります。",
+      "existingPendingSubscription": "このアカウントにはすでに確認待ちのサブスクリプションがあります。",
+      "existingSuspendedSubscription": "このアカウントにはすでに一時停止中のサブスクリプションがあります。",
+      "billingPeriodEnded": "このサブスクリプションの現在の請求期間は終了しています。"
+    },
+    "invalidStatusResponse": "サブスクリプションサービスから無効な状態情報が返されました。"
   },
   "HomeFaq": {
     "title": "よくある質問",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "スキャンPDFや暗号化PDFは変換できますか？",
-      "answer": "最初のリリースでは、文字を選択できて正常に開く電子PDFを対象にしています。スキャン、パスワード保護、表を認識できないPDFは変換できない場合があります。"
+      "answer": "文字を抽出できる電子版PDFのみ対応しています。スキャンPDFとパスワードで保護されたPDFには対応していません。"
     },
     "storage": {
       "question": "PDF、Excel、取引内容は保存されますか？",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "アップロード要求を読み取れません。",
-    "INVALID_FILE": "有効なPDFファイルを選んでください。",
-    "PARSER_UNAVAILABLE": "解析サービスを一時的に利用できません。",
-    "QUOTA_EXCEEDED": "利用枠を使い切りました。",
-    "QUOTA_UNAVAILABLE": "利用枠を一時的に確認できません。",
-    "FILE_TOO_LARGE": "PDFは4MB以下にしてください。",
-    "INVALID_FILE_TYPE": "PDFファイルのみ対応しています。",
+    "INVALID_FILE": "アップロードされたファイルを受信できませんでした。",
+    "PARSER_UNAVAILABLE": "変換サービスに接続できませんでした。",
+    "QUOTA_EXCEEDED": "このPDFのページ数が、残りの変換可能ページ数を超えています。",
+    "QUOTA_UNAVAILABLE": "現在利用できる変換枠を確認できませんでした。",
+    "FILE_TOO_LARGE": "このPDFのファイルサイズは4 MBを超えています。",
+    "INVALID_FILE_TYPE": "アップロードされたファイルはPDFではありません。",
     "INVALID_PDF": "読み取れるPDFではありません。",
     "PASSWORD_PROTECTED_PDF": "パスワード付きPDFには対応していません。",
-    "TOO_MANY_PAGES": "PDFは50ページ以下にしてください。",
-    "UNSUPPORTED_SCANNED_PDF": "文字を選択できる電子PDFのみ対応しています。",
+    "TOO_MANY_PAGES": "このPDFは50ページを超えています。",
+    "UNSUPPORTED_SCANNED_PDF": "このPDFから文字を抽出できなかったため、変換できません。",
     "TABLE_NOT_FOUND": "利用できる銀行明細の表が見つかりません。",
-    "NO_VERIFIABLE_TRANSACTIONS": "照合できる取引行がありません。",
-    "PARSE_FAILED": "PDFを解析できませんでした。別のファイルでお試しください。",
-    "UNKNOWN": "問題が発生しました。しばらくしてから再試行してください。",
-    "PARSER_RESPONSE_TOO_LARGE": "解析結果が大きすぎるため、安全に返せません。"
+    "NO_VERIFIABLE_TRANSACTIONS": "日付、説明、金額をすべて確認できる取引行が見つかりませんでした。",
+    "PARSE_FAILED": "サーバーでPDFの解析を完了できませんでした。",
+    "UNKNOWN": "具体的な失敗の原因を確認できませんでした。",
+    "PARSER_RESPONSE_TOO_LARGE": "変換結果が応答データのサイズ上限を超えています。",
+    "MISSING_FILE": "アップロードされたファイルを受信できませんでした。",
+    "EMPTY_FILE": "アップロードされたPDFファイルは空です。",
+    "PARSER_NOT_CONFIGURED": "変換サービスの設定が完了していません。",
+    "PARSER_TIMEOUT": "変換リクエストがタイムアウトしました。",
+    "INVALID_PARSER_RESPONSE": "変換サービスから返されたデータの形式が無効です。",
+    "PARSER_RESPONSE_UNREADABLE": "変換サービスの応答を最後まで読み取れませんでした。",
+    "UNAUTHORIZED": "変換サービスで認証が拒否されました。",
+    "QUOTA_EXHAUSTED": "今期の変換可能ページ数を使い切りました。",
+    "QUOTA_RECORD_FAILED": "今回の変換の使用量を記録できませんでした。",
+    "QUOTA_PERIOD_UNAVAILABLE": "サブスクリプションの請求期間が無効なため、変換枠を確認できませんでした。",
+    "PARSER_AUTH_NOT_CONFIGURED": "変換サービスの設定が完了していません。"
   },
   "Account": {
     "title": "マイアカウント",
     "description": "残りの利用枠とサブスクリプションを確認できます。",
     "avatar": "プロフィール画像",
     "freePlan": "無料プラン",
-    "planUnavailable": "プランを取得できません",
+    "planUnavailable": "現在のプラン情報を読み取れませんでした",
     "currentPlan": "現在のプラン：{plan}",
     "notAvailable": "情報なし",
     "refresh": "更新",
@@ -424,12 +453,12 @@
       "progressLabel": "残りのページ利用枠",
       "dayEnds": "毎日の利用枠は {date} UTC にリセットされます。",
       "monthEnds": "現在の請求期間は {date} UTC に終了します。",
-      "unavailable": "利用枠を取得できません。後で更新してください。"
+      "unavailable": "残りの変換可能ページ数を読み取れませんでした。"
     },
     "subscriptions": {
       "title": "サブスクリプション履歴",
       "description": "サブスクリプションごとに1件表示します。日時は UTC です。",
-      "unavailable": "履歴を取得できません。",
+      "unavailable": "サブスクリプションの記録を読み取れませんでした。",
       "empty": "サブスクリプション履歴はありません。",
       "plan": "プラン",
       "amount": "契約金額",
@@ -457,11 +486,11 @@
       "confirm": "解約を確定",
       "submitting": "解約中…",
       "syncing": "自動更新を停止しました。アカウントの契約状況を更新しています。",
-      "delayed": "自動更新を停止しましたが、契約状況の更新に時間がかかっています。しばらくしてから状態を確認してください。",
+      "delayed": "自動更新は停止しています。アカウントのサブスクリプション状態の更新はまだ確認されていません。",
       "check": "状態を確認",
       "checking": "確認中…",
-      "failed": "解約を確認できませんでした。再試行してください。",
-      "checkFailed": "状態を確認できません。再試行してください。"
+      "failed": "サブスクリプションのキャンセルを確認できませんでした。",
+      "checkFailed": "サブスクリプションの状態を読み取れませんでした。"
     }
   }
 }

@@ -34,19 +34,19 @@
     "account": "Akun",
     "signInWithGoogle": "Masuk dengan Google",
     "signOut": "Keluar",
-    "unavailable": "Login sementara tidak tersedia",
-    "signInFailed": "Login belum selesai. Coba lagi nanti.",
-    "signOutFailed": "Logout belum selesai. Coba lagi nanti.",
+    "unavailable": "Layanan login belum dikonfigurasi.",
+    "signInFailed": "Login Google tidak dapat dimulai.",
+    "signOutFailed": "Proses keluar akun tidak dapat diselesaikan.",
     "myAccount": "Akun saya",
     "avatar": "Foto profil"
   },
   "AuthError": {
     "metadata": {
       "title": "Login belum selesai | Bank Statement Converter",
-      "description": "Login dengan Google belum selesai. Kembali ke beranda dan coba lagi."
+      "description": "Login Google tidak dapat diselesaikan."
     },
     "title": "Login belum selesai",
-    "description": "Login dengan Google dibatalkan atau belum selesai. Kembali ke beranda dan coba lagi.",
+    "description": "Login Google tidak dapat diselesaikan.",
     "backHome": "Kembali ke beranda"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "Pilih PDF atau seret ke sini",
     "dropzoneHint": "Unggah PDF yang dapat dibuka normal dan memiliki teks yang dapat dipilih.",
     "help": "Nama berkas muncul setelah dipilih. Anda dapat menghapusnya kapan saja.",
-    "errorTitle": "Berkas ini tidak dapat dikonversi",
-    "invalidPdf": "Unggah berkas PDF.",
+    "errorTitle": "Operasi ini tidak dapat diselesaikan",
+    "invalidPdf": "Berkas yang diunggah bukan PDF.",
     "multipleFiles": "Unggah satu PDF setiap kali.",
-    "conversionFailed": "Konversi belum selesai. Coba berkas lain.",
-    "parserUnavailable": "Layanan pengurai tidak merespons. Coba lagi nanti.",
-    "quotaExceeded": "Kuota Anda habis atau jumlah halaman PDF melebihi sisa kuota.",
-    "quotaUnavailable": "Layanan kuota sementara tidak tersedia. Coba lagi nanti.",
+    "conversionFailed": "Penyebab spesifik kegagalan tidak dapat ditentukan.",
+    "parserUnavailable": "Layanan konversi tidak dapat dihubungi.",
+    "quotaExceeded": "Jumlah halaman PDF ini melebihi sisa halaman yang dapat Anda konversi.",
+    "quotaUnavailable": "Kuota konversi yang tersedia tidak dapat ditentukan.",
     "removeFile": "Hapus berkas",
     "quota": "Kuota gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} halaman per hari setelah login",
     "serviceReady": "Berkas hanya digunakan untuk konversi ini dan tidak disimpan.",
     "status": "Siap diunggah",
     "converting": "Mengonversi",
     "start": "Konversi dan periksa",
-    "fileTooLarge": "PDF ini lebih besar dari 4 MB.",
+    "fileTooLarge": "Ukuran PDF ini melebihi 4 MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "Respons atas permintaan konversi tidak dapat diterima.",
+    "resultStorageFailed": "Konversi selesai, tetapi browser tidak dapat menyimpan hasilnya.",
+    "browserStorageUnavailable": "Penyimpanan browser tidak tersedia.",
+    "emptyFile": "Berkas PDF yang diunggah kosong.",
+    "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
+    "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "Tidak ada data untuk diunduh",
-      "description": "Tidak ditemukan baris tabel yang dapat digunakan pada PDF ini. Kembali ke beranda dan unggah berkas lain."
+      "description": "Tidak ditemukan baris tabel yang dapat digunakan dalam PDF ini."
     },
     "missing": {
-      "title": "Hasil ini sudah kedaluwarsa",
-      "description": "Hasil hanya tersedia selama konversi ini. Kembali ke beranda dan unggah PDF lagi."
+      "title": "Tidak ada hasil konversi",
+      "description": "Halaman ini tidak memiliki hasil konversi yang dapat dibaca."
     },
     "issues": {
       "repeatedHeader": "Baris {row} mengulang judul kolom dan dilewati.",
-      "summaryRow": "Baris {row} tampaknya merupakan ringkasan dan dilewati.",
+      "summaryRow": "Baris {row} diidentifikasi sebagai baris total dan dilewati.",
       "extraCells": "Baris ini memiliki lebih banyak sel daripada judul kolom. Sel tambahan tetap disertakan.",
       "unknown": "Item ini perlu diperiksa.",
-      "missingDate": "Tanggal transaksi tidak ada.",
+      "missingDate": "Tanggal transaksi tidak berhasil diidentifikasi.",
       "invalidDate": "Tanggal transaksi tidak valid.",
-      "missingDescription": "Deskripsi transaksi tidak ada.",
-      "missingAmount": "Jumlah transaksi tidak ada.",
+      "missingDescription": "Deskripsi transaksi tidak berhasil diidentifikasi.",
+      "missingAmount": "Jumlah transaksi tidak berhasil diidentifikasi.",
       "invalidAmount": "Jumlah transaksi tidak valid.",
       "amountColumnMismatch": "Ada nilai di luar kolom jumlah transaksi yang tidak dapat dicocokkan dengan yakin."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Baris dengan bukti tidak lengkap atau kolom yang tidak selaras diberi penanda DISCREPANCY atau UNVERIFIABLE sebelum diunduh."
   },
   "UsageTiers": {
-    "title": "Mulai dengan konversi gratis",
+    "title": "Halaman konversi gratis setiap hari",
     "description": "Coba konverter tanpa akun. Login untuk kuota harian lebih besar, atau pilih paket bulanan jika sering menggunakannya.",
     "anonymous": "Tanpa login",
     "anonymousAmount": "{pages, number} halaman",
@@ -175,7 +181,7 @@
     "perMonth": "/ bulan",
     "planQuota": "{pages, number} halaman per bulan",
     "current": "Paket saat ini",
-    "cancelledPeriodActive": "Langganan Anda dibatalkan, tetapi manfaat tetap tersedia selama periode tagihan ini. Anda dapat berlangganan lagi setelah {date} (UTC).",
+    "cancelledPeriodActive": "Langganan sudah dibatalkan. Manfaat tetap tersedia hingga {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standar",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Perusahaan",
-        "description": "Untuk tim dan perusahaan yang memproses banyak rekening koran."
+        "description": "Untuk pengguna yang perlu mengonversi lebih banyak halaman setiap bulan."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Login sebelum mulai berlangganan.",
-    "unavailable": "Pembayaran sementara tidak tersedia. Coba lagi nanti.",
+    "unavailable": "Layanan pembayaran belum dikonfigurasi.",
     "subscribe": "Berlangganan dengan PayPal",
     "processing": "Membuka PayPal",
-    "confirming": "Mengonfirmasi pembayaran",
-    "confirmationDelayed": "Konfirmasi pembayaran memerlukan waktu lebih lama. Muat ulang halaman ini nanti.",
-    "activationFailed": "Langganan Anda belum dapat dikonfirmasi. Muat ulang halaman atau hubungi dukungan.",
+    "confirming": "Memeriksa apakah langganan sudah aktif",
+    "confirmationDelayed": "Aktivasi langganan belum dikonfirmasi.",
+    "activationFailed": "Status aktivasi langganan tidak dapat diperoleh.",
     "activated": "Paket Anda aktif.",
     "cancelled": "Anda membatalkan proses berlangganan.",
-    "paymentFailed": "Pembayaran belum selesai. Coba lagi nanti.",
+    "paymentFailed": "Hasil operasi langganan ini tidak dapat dikonfirmasi.",
     "currentPlan": "Anda menggunakan paket ini.",
     "api": {
-      "loginUnavailable": "Login sementara tidak tersedia.",
-      "loginRequired": "Login ke akun Anda.",
-      "emailMissing": "Akun Anda tidak memiliki alamat email, sehingga langganan tidak dapat diaktifkan.",
+      "loginUnavailable": "Layanan login belum dikonfigurasi.",
+      "loginRequired": "Anda belum login.",
+      "emailMissing": "Akun ini tidak memiliki alamat email, sehingga langganan tidak dapat diaktifkan.",
       "invalidRequest": "Permintaan langganan tidak valid.",
-      "invalidTier": "Pilih paket langganan yang valid.",
+      "invalidTier": "Paket langganan yang dipilih tidak valid.",
       "configurationMissing": "Pembayaran belum dikonfigurasi.",
       "subscriptionBelongsToAnotherAccount": "Langganan ini milik akun lain.",
-      "verificationFailed": "Langganan PayPal tidak dapat diverifikasi.",
-      "activationFailed": "Verifikasi langganan belum selesai. Coba lagi nanti.",
-      "createFailed": "Langganan PayPal tidak dapat dimulai. Coba lagi nanti.",
+      "verificationFailed": "Informasi langganan PayPal tidak dapat diverifikasi.",
+      "activationFailed": "Status aktivasi langganan tidak dapat diperoleh.",
+      "createFailed": "Langganan PayPal tidak dapat dibuat.",
       "existingSubscription": "Akun ini sudah memiliki langganan aktif atau yang masih diproses.",
-      "cancelledPeriodActive": "Langganan Anda dibatalkan, tetapi periode tagihan saat ini belum berakhir. Anda dapat berlangganan lagi setelah periode tersebut berakhir.",
+      "cancelledPeriodActive": "Langganan sudah dibatalkan, tetapi periode penagihan saat ini belum berakhir.",
       "webhookInvalidRequest": "Permintaan webhook tidak valid.",
       "webhookSignatureFailed": "Verifikasi tanda tangan webhook gagal.",
       "webhookProcessingFailed": "Pemrosesan webhook gagal.",
       "cancelInvalidOrigin": "Permintaan pembatalan harus berasal dari situs ini.",
       "cancelSubscriptionNotFound": "Langganan tidak ditemukan.",
       "cancelNotActive": "Hanya langganan aktif yang dapat dibatalkan.",
-      "cancelFailed": "Pembatalan belum dapat dikonfirmasi. Coba lagi."
-    }
+      "cancelFailed": "Pembatalan langganan tidak dapat dikonfirmasi.",
+      "planMismatch": "Paket langganan tidak sesuai dengan paket yang dipilih.",
+      "subscriptionPaymentFailed": "Status pembayaran langganan ini menunjukkan kegagalan.",
+      "subscriptionCancelled": "Langganan ini telah dibatalkan.",
+      "subscriptionExpired": "Langganan ini telah kedaluwarsa.",
+      "subscriptionSuspended": "Langganan ini telah ditangguhkan.",
+      "invalidBillingPeriod": "Periode penagihan langganan tidak valid.",
+      "subscriptionIdMismatch": "ID langganan yang dikembalikan PayPal tidak sesuai dengan langganan saat ini.",
+      "existingActiveSubscription": "Akun ini sudah memiliki langganan aktif.",
+      "existingPendingSubscription": "Akun ini sudah memiliki langganan yang menunggu konfirmasi.",
+      "existingSuspendedSubscription": "Akun ini sudah memiliki langganan yang ditangguhkan.",
+      "billingPeriodEnded": "Periode penagihan saat ini untuk langganan ini telah berakhir."
+    },
+    "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid."
   },
   "HomeFaq": {
     "title": "Pertanyaan umum",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
-      "answer": "Versi pertama berfokus pada PDF elektronik yang dapat dibuka normal dan memiliki teks yang dapat dipilih. Berkas hasil pindai, terlindungi kata sandi, atau tanpa tabel yang dikenali mungkin tidak dapat dikonversi."
+      "answer": "Hanya PDF elektronik dengan teks yang dapat diekstrak yang didukung. PDF hasil pemindaian dan PDF yang dilindungi kata sandi tidak didukung."
     },
     "storage": {
       "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "Permintaan unggah tidak dapat dibaca.",
-    "INVALID_FILE": "Pilih berkas PDF yang valid.",
-    "PARSER_UNAVAILABLE": "Layanan pengurai sementara tidak tersedia. Coba lagi nanti.",
-    "QUOTA_EXCEEDED": "Anda telah mencapai kuota yang tersedia untuk konversi ini.",
-    "QUOTA_UNAVAILABLE": "Layanan kuota sementara tidak tersedia. Coba lagi nanti.",
-    "FILE_TOO_LARGE": "PDF ini lebih besar dari 4 MB.",
-    "INVALID_FILE_TYPE": "Hanya berkas PDF yang didukung.",
+    "INVALID_FILE": "Tidak ada berkas unggahan yang diterima.",
+    "PARSER_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
+    "QUOTA_EXCEEDED": "Jumlah halaman PDF ini melebihi sisa halaman yang dapat Anda konversi.",
+    "QUOTA_UNAVAILABLE": "Kuota konversi yang tersedia tidak dapat ditentukan.",
+    "FILE_TOO_LARGE": "Ukuran PDF ini melebihi 4 MB.",
+    "INVALID_FILE_TYPE": "Berkas yang diunggah bukan PDF.",
     "INVALID_PDF": "Berkas ini bukan PDF yang dapat dibaca.",
     "PASSWORD_PROTECTED_PDF": "PDF terlindungi kata sandi tidak dapat dikonversi.",
     "TOO_MANY_PAGES": "PDF ini memiliki lebih dari 50 halaman.",
-    "UNSUPPORTED_SCANNED_PDF": "Versi ini menerima PDF elektronik dengan teks yang dapat dipilih, bukan gambar hasil pindai.",
+    "UNSUPPORTED_SCANNED_PDF": "Teks tidak dapat diekstrak dari PDF ini, sehingga berkas tidak dapat dikonversi.",
     "TABLE_NOT_FOUND": "Tidak ditemukan tabel rekening koran yang dapat digunakan.",
-    "NO_VERIFIABLE_TRANSACTIONS": "Tidak ada transaksi dengan bukti yang cukup untuk diperiksa.",
-    "PARSE_FAILED": "PDF tidak dapat diurai. Coba berkas lain.",
-    "UNKNOWN": "Terjadi kesalahan. Coba lagi.",
-    "PARSER_RESPONSE_TOO_LARGE": "Respons pengurai terlalu besar untuk dikirim kembali dengan aman."
+    "NO_VERIFIABLE_TRANSACTIONS": "Tidak ditemukan baris transaksi dengan tanggal, deskripsi, dan jumlah yang semuanya dapat diperiksa.",
+    "PARSE_FAILED": "Server tidak dapat menyelesaikan penguraian PDF.",
+    "UNKNOWN": "Penyebab spesifik kegagalan tidak dapat ditentukan.",
+    "PARSER_RESPONSE_TOO_LARGE": "Hasil konversi melebihi batas ukuran respons.",
+    "MISSING_FILE": "Tidak ada berkas unggahan yang diterima.",
+    "EMPTY_FILE": "Berkas PDF yang diunggah kosong.",
+    "PARSER_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
+    "PARSER_TIMEOUT": "Permintaan konversi melewati batas waktu.",
+    "INVALID_PARSER_RESPONSE": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
+    "PARSER_RESPONSE_UNREADABLE": "Respons layanan konversi tidak dapat dibaca secara lengkap.",
+    "UNAUTHORIZED": "Layanan konversi menolak autentikasi.",
+    "QUOTA_EXHAUSTED": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
+    "QUOTA_RECORD_FAILED": "Penggunaan untuk konversi ini tidak dapat dicatat.",
+    "QUOTA_PERIOD_UNAVAILABLE": "Periode penagihan langganan tidak valid, sehingga kuota konversi tidak dapat ditentukan.",
+    "PARSER_AUTH_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi."
   },
   "Account": {
     "title": "Akun saya",
     "description": "Profil dan langganan Anda.",
     "avatar": "Foto profil",
     "freePlan": "Paket gratis",
-    "planUnavailable": "Paket tidak tersedia",
+    "planUnavailable": "Informasi paket saat ini tidak dapat dibaca",
     "currentPlan": "Paket saat ini: {plan}",
     "notAvailable": "Tidak tersedia",
     "refresh": "Muat ulang",
@@ -424,12 +453,12 @@
       "progressLabel": "Sisa kuota halaman",
       "dayEnds": "Kuota harian direset pada {date} UTC.",
       "monthEnds": "Periode tagihan saat ini berakhir pada {date} UTC.",
-      "unavailable": "Kuota sementara tidak tersedia. Muat ulang nanti."
+      "unavailable": "Jumlah halaman yang tersisa tidak dapat dibaca."
     },
     "subscriptions": {
       "title": "Catatan langganan",
       "description": "Satu catatan per langganan. Tanggal ditampilkan dalam UTC.",
-      "unavailable": "Catatan langganan sementara tidak tersedia.",
+      "unavailable": "Catatan langganan tidak dapat dibaca.",
       "empty": "Belum ada catatan langganan.",
       "plan": "Paket",
       "amount": "Jumlah pembayaran langganan",
@@ -457,11 +486,11 @@
       "confirm": "Konfirmasi pembatalan",
       "submitting": "Membatalkan…",
       "syncing": "Perpanjangan telah dihentikan. Status langganan sedang diperbarui.",
-      "delayed": "Perpanjangan telah dihentikan, tetapi pembaruan status memerlukan waktu lebih lama. Periksa lagi nanti.",
+      "delayed": "Perpanjangan sudah dihentikan. Pembaruan status langganan di akun belum dikonfirmasi.",
       "check": "Periksa status",
       "checking": "Memeriksa…",
-      "failed": "Pembatalan belum dapat dikonfirmasi. Coba lagi.",
-      "checkFailed": "Status tidak dapat diperiksa. Coba lagi."
+      "failed": "Pembatalan langganan tidak dapat dikonfirmasi.",
+      "checkFailed": "Status langganan tidak dapat dibaca."
     }
   }
 }

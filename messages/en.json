@@ -34,19 +34,19 @@
     "account": "Account",
     "signInWithGoogle": "Sign in with Google",
     "signOut": "Sign out",
-    "unavailable": "Sign-in is temporarily unavailable",
-    "signInFailed": "Sign-in did not complete. Please try again later.",
-    "signOutFailed": "Sign-out did not complete. Please try again later.",
+    "unavailable": "Sign-in has not been configured.",
+    "signInFailed": "Google sign-in could not be started.",
+    "signOutFailed": "Sign-out could not be completed.",
     "myAccount": "My account",
     "avatar": "Profile picture"
   },
   "AuthError": {
     "metadata": {
       "title": "Sign-in incomplete | Bank Statement Converter",
-      "description": "Google sign-in did not complete. Return to the homepage and try again."
+      "description": "Google sign-in could not be completed."
     },
     "title": "Sign-in incomplete",
-    "description": "Google sign-in was cancelled or did not complete. Return to the homepage and try again.",
+    "description": "Google sign-in could not be completed.",
     "backHome": "Back to homepage"
   },
   "HomeIntro": {
@@ -61,13 +61,13 @@
     "dropzone": "Choose a PDF or drop it here",
     "dropzoneHint": "Upload a PDF that opens normally and contains selectable text.",
     "help": "The filename appears here after you select a file. You can remove it at any time.",
-    "errorTitle": "This file could not be converted",
-    "invalidPdf": "Please upload a PDF file.",
+    "errorTitle": "This operation could not be completed",
+    "invalidPdf": "The uploaded file is not a PDF.",
     "multipleFiles": "Upload one PDF at a time.",
-    "conversionFailed": "The conversion did not complete. Try another file.",
-    "parserUnavailable": "The parsing service did not respond. Please try again later.",
-    "quotaExceeded": "Your quota is used up, or this PDF has more pages than your remaining quota allows.",
-    "quotaUnavailable": "The quota service is temporarily unavailable. Please try again later.",
+    "conversionFailed": "The specific reason for the failure could not be determined.",
+    "parserUnavailable": "The conversion service could not be reached.",
+    "quotaExceeded": "This PDF has more pages than you have left to convert.",
+    "quotaUnavailable": "Your available conversion quota could not be determined.",
     "removeFile": "Remove file",
     "quota": "Free quota: {anonymousPages, plural, one {# page} other {# pages}} per day without signing in, {authenticatedPages, plural, one {# page} other {# pages}} per day when signed in",
     "serviceReady": "Files are used for this conversion only and are not saved.",
@@ -79,7 +79,13 @@
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "No response to the conversion request could be received.",
+    "resultStorageFailed": "Conversion completed, but the browser could not save the result.",
+    "browserStorageUnavailable": "Browser storage is unavailable.",
+    "emptyFile": "The uploaded PDF file is empty.",
+    "quotaExhausted": "You have no pages left to convert in this period.",
+    "invalidResponse": "The conversion service returned data in an invalid format."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "No data to download",
-      "description": "No usable table rows were found in this PDF. Return to the homepage and upload another file."
+      "description": "No usable table rows were found in this PDF."
     },
     "missing": {
-      "title": "This result has expired",
-      "description": "Results are available only during this conversion. Return to the homepage and upload the PDF again."
+      "title": "No conversion result",
+      "description": "There is no readable conversion result on this page."
     },
     "issues": {
       "repeatedHeader": "Row {row} repeats the table header and was skipped.",
-      "summaryRow": "Row {row} looks like a summary row and was skipped.",
+      "summaryRow": "Row {row} was identified as a total row and skipped.",
       "extraCells": "This row has more cells than the header. The extra cells were kept.",
       "unknown": "This item needs review.",
-      "missingDate": "The transaction date is missing.",
+      "missingDate": "No transaction date was identified.",
       "invalidDate": "The transaction date is invalid.",
-      "missingDescription": "The transaction description is missing.",
-      "missingAmount": "The transaction amount is missing.",
+      "missingDescription": "No transaction description was identified.",
+      "missingAmount": "No transaction amount was identified.",
       "invalidAmount": "The transaction amount is invalid.",
       "amountColumnMismatch": "An amount appears outside the transaction amount column and cannot be matched reliably."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked \"DISCREPANCY\" or \"UNVERIFIABLE\" before download."
   },
   "UsageTiers": {
-    "title": "Start with a free conversion",
+    "title": "Free pages to convert every day",
     "description": "You can try the converter without an account. Sign in for a larger daily quota, or choose a monthly plan for regular use.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
@@ -175,7 +181,7 @@
     "perMonth": "/ month",
     "planQuota": "{pages, plural, one {# page} other {# pages}} per month",
     "current": "Current plan",
-    "cancelledPeriodActive": "Your subscription is cancelled, but your benefits remain available for this billing period. You can subscribe again after {date} (UTC).",
+    "cancelledPeriodActive": "The subscription is cancelled. Benefits remain available until {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standard",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Enterprise",
-        "description": "For teams processing large numbers of statements."
+        "description": "For users who need to convert more pages each month."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Sign in before starting a subscription.",
-    "unavailable": "Payment is temporarily unavailable. Please try again later.",
+    "unavailable": "Payment has not been configured.",
     "subscribe": "Subscribe with PayPal",
     "processing": "Opening PayPal",
-    "confirming": "Confirming your payment",
-    "confirmationDelayed": "Payment confirmation is taking longer than expected. Please refresh this page later.",
-    "activationFailed": "We couldn't confirm your subscription. Refresh this page or contact support.",
+    "confirming": "Checking whether the subscription is active",
+    "confirmationDelayed": "Subscription activation has not yet been confirmed.",
+    "activationFailed": "Subscription activation status could not be retrieved.",
     "activated": "Your plan is active.",
     "cancelled": "You cancelled the subscription process.",
-    "paymentFailed": "Payment did not complete. Please try again later.",
+    "paymentFailed": "The outcome of this subscription operation could not be confirmed.",
     "currentPlan": "You are using this plan.",
     "api": {
-      "loginUnavailable": "Sign-in is temporarily unavailable.",
-      "loginRequired": "Please sign in.",
-      "emailMissing": "Your account has no email address, so the subscription cannot be activated.",
+      "loginUnavailable": "Sign-in has not been configured.",
+      "loginRequired": "You are not signed in.",
+      "emailMissing": "This account has no email address, so the subscription cannot be activated.",
       "invalidRequest": "The subscription request is invalid.",
-      "invalidTier": "Choose a valid subscription plan.",
+      "invalidTier": "The selected subscription plan is invalid.",
       "configurationMissing": "Payment has not been configured yet.",
       "subscriptionBelongsToAnotherAccount": "This subscription belongs to another account.",
-      "verificationFailed": "The PayPal subscription could not be verified.",
-      "activationFailed": "Subscription verification did not complete. Please try again later.",
-      "createFailed": "The PayPal subscription could not be started. Please try again later.",
+      "verificationFailed": "PayPal subscription information could not be verified.",
+      "activationFailed": "Subscription activation status could not be retrieved.",
+      "createFailed": "The PayPal subscription could not be created.",
       "existingSubscription": "An active or pending subscription already exists for this account.",
-      "cancelledPeriodActive": "Your subscription is cancelled, but the current billing period has not ended. You can subscribe again once it ends.",
+      "cancelledPeriodActive": "The subscription is cancelled, but the current billing period has not ended.",
       "webhookInvalidRequest": "The webhook request is invalid.",
       "webhookSignatureFailed": "Webhook signature verification failed.",
       "webhookProcessingFailed": "Webhook processing failed.",
       "cancelInvalidOrigin": "The cancellation request must come from this website.",
       "cancelSubscriptionNotFound": "Subscription not found.",
       "cancelNotActive": "Only an active subscription can be cancelled.",
-      "cancelFailed": "Cancellation could not be confirmed. Please retry."
-    }
+      "cancelFailed": "Subscription cancellation could not be confirmed.",
+      "planMismatch": "The subscription plan does not match the selected plan.",
+      "subscriptionPaymentFailed": "This subscription has a failed payment status.",
+      "subscriptionCancelled": "This subscription has been cancelled.",
+      "subscriptionExpired": "This subscription has expired.",
+      "subscriptionSuspended": "This subscription has been suspended.",
+      "invalidBillingPeriod": "The subscription billing period is invalid.",
+      "subscriptionIdMismatch": "The subscription ID returned by PayPal does not match the current subscription.",
+      "existingActiveSubscription": "This account already has an active subscription.",
+      "existingPendingSubscription": "This account already has a subscription awaiting confirmation.",
+      "existingSuspendedSubscription": "This account already has a suspended subscription.",
+      "billingPeriodEnded": "The current billing period for this subscription has ended."
+    },
+    "invalidStatusResponse": "The subscription service returned invalid status information."
   },
   "HomeFaq": {
     "title": "Frequently asked questions",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "Can I convert scanned or encrypted PDFs?",
-      "answer": "The first release focuses on electronic PDFs with selectable text that open normally. Scanned files, password-protected files, or PDFs without recognizable tables may not convert."
+      "answer": "Only electronic PDFs with extractable text are supported. Scanned and password-protected PDFs are not supported."
     },
     "storage": {
       "question": "Are my PDF, Excel file, or transactions saved?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "The upload request could not be read.",
-    "INVALID_FILE": "Choose a valid PDF file.",
-    "PARSER_UNAVAILABLE": "The parsing service is temporarily unavailable. Please try again later.",
-    "QUOTA_EXCEEDED": "You have reached the available quota for this conversion.",
-    "QUOTA_UNAVAILABLE": "The quota service is temporarily unavailable. Please try again later.",
+    "INVALID_FILE": "No uploaded file was received.",
+    "PARSER_UNAVAILABLE": "The conversion service could not be reached.",
+    "QUOTA_EXCEEDED": "This PDF has more pages than you have left to convert.",
+    "QUOTA_UNAVAILABLE": "Your available conversion quota could not be determined.",
     "FILE_TOO_LARGE": "This PDF is larger than 4 MB.",
-    "INVALID_FILE_TYPE": "Only PDF files are supported.",
+    "INVALID_FILE_TYPE": "The uploaded file is not a PDF.",
     "INVALID_PDF": "This file is not a readable PDF.",
     "PASSWORD_PROTECTED_PDF": "Password-protected PDFs cannot be converted.",
     "TOO_MANY_PAGES": "This PDF has more than 50 pages.",
-    "UNSUPPORTED_SCANNED_PDF": "This version accepts electronic PDFs with selectable text, not scanned images.",
+    "UNSUPPORTED_SCANNED_PDF": "No text could be extracted from this PDF, so it cannot be converted.",
     "TABLE_NOT_FOUND": "No usable bank statement table was found.",
-    "NO_VERIFIABLE_TRANSACTIONS": "No transaction has enough evidence to review.",
-    "PARSE_FAILED": "The PDF could not be parsed. Please try again with another file.",
-    "UNKNOWN": "Something went wrong. Please try again.",
-    "PARSER_RESPONSE_TOO_LARGE": "The parser response is too large to return safely."
+    "NO_VERIFIABLE_TRANSACTIONS": "No transaction row was found with a date, description, and amount that can all be reviewed.",
+    "PARSE_FAILED": "The server could not complete PDF parsing.",
+    "UNKNOWN": "The specific reason for the failure could not be determined.",
+    "PARSER_RESPONSE_TOO_LARGE": "The conversion result exceeds the response size limit.",
+    "MISSING_FILE": "No uploaded file was received.",
+    "EMPTY_FILE": "The uploaded PDF file is empty.",
+    "PARSER_NOT_CONFIGURED": "The conversion service has not been configured.",
+    "PARSER_TIMEOUT": "The conversion request timed out.",
+    "INVALID_PARSER_RESPONSE": "The conversion service returned data in an invalid format.",
+    "PARSER_RESPONSE_UNREADABLE": "The conversion service response could not be read in full.",
+    "UNAUTHORIZED": "The conversion service rejected authentication.",
+    "QUOTA_EXHAUSTED": "You have no pages left to convert in this period.",
+    "QUOTA_RECORD_FAILED": "Usage for this conversion could not be recorded.",
+    "QUOTA_PERIOD_UNAVAILABLE": "The subscription billing period is invalid, so conversion quota could not be determined.",
+    "PARSER_AUTH_NOT_CONFIGURED": "The conversion service has not been configured."
   },
   "Account": {
     "title": "My account",
     "description": "Your profile and subscriptions.",
     "avatar": "Profile picture",
     "freePlan": "Free plan",
-    "planUnavailable": "Plan unavailable",
+    "planUnavailable": "Current plan information could not be read",
     "currentPlan": "Current plan: {plan}",
     "notAvailable": "Not available",
     "refresh": "Refresh",
@@ -424,12 +453,12 @@
       "progressLabel": "Remaining page quota",
       "dayEnds": "Daily quota resets at {date} UTC.",
       "monthEnds": "Current billing period ends at {date} UTC.",
-      "unavailable": "Quota is temporarily unavailable. Please refresh later."
+      "unavailable": "The remaining page quota could not be read."
     },
     "subscriptions": {
       "title": "Subscription records",
       "description": "One record per subscription. Dates are shown in UTC.",
-      "unavailable": "Subscription records are temporarily unavailable.",
+      "unavailable": "Subscription records could not be read.",
       "empty": "No subscription records yet.",
       "plan": "Plan",
       "amount": "Subscription amount",
@@ -457,11 +486,11 @@
       "confirm": "Confirm cancellation",
       "submitting": "Cancelling…",
       "syncing": "Renewals have stopped. Your subscription status is being updated.",
-      "delayed": "Renewals have stopped, but your subscription status is taking longer to update. Check again later.",
+      "delayed": "Renewals have stopped. The account subscription status update has not yet been confirmed.",
       "check": "Check status",
       "checking": "Checking…",
-      "failed": "Cancellation could not be confirmed. Please retry.",
-      "checkFailed": "Could not check the status. Please retry."
+      "failed": "Subscription cancellation could not be confirmed.",
+      "checkFailed": "Subscription status could not be read."
     }
   }
 }

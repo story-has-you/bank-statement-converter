@@ -34,19 +34,19 @@
     "account": "계정",
     "signInWithGoogle": "Google로 로그인",
     "signOut": "로그아웃",
-    "unavailable": "일시적으로 로그인을 사용할 수 없습니다",
-    "signInFailed": "로그인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
-    "signOutFailed": "로그아웃이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+    "unavailable": "로그인 서비스 설정이 완료되지 않았습니다.",
+    "signInFailed": "Google 로그인을 시작하지 못했습니다.",
+    "signOutFailed": "로그아웃을 완료하지 못했습니다.",
     "myAccount": "내 계정",
     "avatar": "프로필 사진"
   },
   "AuthError": {
     "metadata": {
       "title": "로그인이 완료되지 않았습니다 | 은행 명세서 변환기",
-      "description": "Google 로그인이 완료되지 않았습니다. 홈으로 돌아가 다시 시도해 주세요."
+      "description": "Google 로그인을 완료하지 못했습니다."
     },
     "title": "로그인이 완료되지 않았습니다.",
-    "description": "Google 로그인이 취소되었거나 완료되지 않았습니다. 홈페이지로 돌아가서 다시 시도해 보세요.",
+    "description": "Google 로그인을 완료하지 못했습니다.",
     "backHome": "홈페이지로 돌아가기"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "PDF를 선택하거나 여기로 끌어 놓으세요",
     "dropzoneHint": "정상적으로 열리고 텍스트를 선택할 수 있는 PDF를 업로드하세요.",
     "help": "파일을 선택하면 이름이 표시됩니다. 언제든 선택을 해제할 수 있습니다.",
-    "errorTitle": "이 파일을 변환할 수 없습니다.",
-    "invalidPdf": "PDF 파일을 업로드해주세요.",
+    "errorTitle": "이번 작업을 완료하지 못했습니다",
+    "invalidPdf": "업로드된 파일이 PDF가 아닙니다.",
     "multipleFiles": "한 번에 하나의 PDF만 처리할 수 있습니다.",
-    "conversionFailed": "변환이 완료되지 않았습니다. 다른 파일을 사용해 보세요.",
-    "parserUnavailable": "분석 서비스가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.",
-    "quotaExceeded": "사용 한도를 모두 썼거나, PDF의 페이지 수가 남은 한도를 초과합니다.",
-    "quotaUnavailable": "사용 한도를 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.",
+    "conversionFailed": "구체적인 실패 원인을 확인하지 못했습니다.",
+    "parserUnavailable": "변환 서비스에 연결할 수 없습니다.",
+    "quotaExceeded": "이 PDF의 페이지 수가 남은 변환 가능 페이지 수를 초과합니다.",
+    "quotaUnavailable": "현재 사용 가능한 변환 한도를 확인하지 못했습니다.",
     "removeFile": "파일 선택 해제",
     "quota": "무료 사용 한도: 로그인 없이 하루 {anonymousPages, number}페이지, 로그인 후 하루 {authenticatedPages, number}페이지",
     "serviceReady": "파일은 이 변환에만 사용되며 저장되지 않습니다.",
     "status": "업로드 준비 완료",
     "converting": "변환 중",
     "start": "변환 및 검토",
-    "fileTooLarge": "PDF는 4MB보다 클 수 없습니다.",
+    "fileTooLarge": "이 PDF의 파일 크기가 4 MB를 초과합니다.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "변환 요청에 대한 응답을 받지 못했습니다.",
+    "resultStorageFailed": "변환은 완료되었지만 브라우저가 결과를 저장하지 못했습니다.",
+    "browserStorageUnavailable": "브라우저 저장소를 사용할 수 없습니다.",
+    "emptyFile": "업로드된 PDF 파일이 비어 있습니다.",
+    "quotaExhausted": "이번 기간에 변환할 수 있는 페이지를 모두 사용했습니다.",
+    "invalidResponse": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "다운로드 가능한 데이터가 없습니다",
-      "description": "이 PDF에는 사용 가능한 테이블 행이 없습니다. 홈페이지로 돌아가서 다른 파일을 업로드하세요."
+      "description": "이 PDF에서 사용할 수 있는 표 행을 찾지 못했습니다."
     },
     "missing": {
-      "title": "이 결과는 만료되었습니다",
-      "description": "결과는 이번 변환 중에만 임시로 유지됩니다. 홈으로 돌아가 PDF를 다시 업로드하세요."
+      "title": "변환 결과 없음",
+      "description": "현재 페이지에 읽을 수 있는 변환 결과가 없습니다."
     },
     "issues": {
       "repeatedHeader": "{row} 행은 테이블 헤더를 반복하므로 건너뛰었습니다.",
-      "summaryRow": "{row} 행은 요약 행처럼 보이므로 건너뛰었습니다.",
+      "summaryRow": "{row}행은 합계 행으로 식별되어 제외되었습니다.",
       "extraCells": "이 행에는 머리글보다 더 많은 셀이 있습니다. 여분의 셀은 유지되었습니다.",
       "unknown": "이 항목은 검토가 필요합니다.",
-      "missingDate": "거래 날짜가 없습니다.",
+      "missingDate": "거래 날짜를 식별하지 못했습니다.",
       "invalidDate": "거래 날짜가 유효하지 않습니다.",
-      "missingDescription": "거래 설명이 없습니다.",
-      "missingAmount": "거래 금액이 없습니다.",
+      "missingDescription": "거래 설명을 식별하지 못했습니다.",
+      "missingAmount": "거래 금액을 식별하지 못했습니다.",
       "invalidAmount": "거래 금액이 유효하지 않습니다.",
       "amountColumnMismatch": "거래 금액 열 밖에 금액이 있어 대응 관계를 확인할 수 없습니다."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "근거가 불완전하거나 열을 맞추기 어려운 행에는 다운로드 전에 “DISCREPANCY” 또는 “UNVERIFIABLE”을 표시합니다."
   },
   "UsageTiers": {
-    "title": "무료 변환으로 시작하세요",
+    "title": "매일 제공되는 무료 변환 페이지",
     "description": "로그인 없이도 사용할 수 있습니다. 로그인하면 하루에 변환할 수 있는 페이지 수가 늘어납니다. 자주 사용한다면 월간 요금제를 선택하세요.",
     "anonymous": "로그인 없이",
     "anonymousAmount": "{pages, number}페이지",
@@ -175,7 +181,7 @@
     "perMonth": "/ 월",
     "planQuota": "월별 {pages, number} 페이지",
     "current": "현재 요금제",
-    "cancelledPeriodActive": "구독이 취소되었지만 현재 결제 기간의 혜택은 계속 이용할 수 있습니다. {date}(UTC) 이후에 다시 구독할 수 있습니다.",
+    "cancelledPeriodActive": "구독이 취소되었습니다. 이번 기간의 혜택은 {date}(UTC)까지 이용할 수 있습니다.",
     "plans": {
       "standard": {
         "name": "스탠다드",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "기업",
-        "description": "많은 은행 명세서를 처리하는 팀과 기업에 적합합니다."
+        "description": "매월 더 많은 페이지를 변환해야 하는 사용자를 위한 요금제입니다."
       }
     }
   },
   "PayPal": {
     "signInRequired": "구독을 시작하기 전에 로그인하세요.",
-    "unavailable": "일시적으로 결제가 불가능합니다. 나중에 다시 시도해 주세요.",
+    "unavailable": "결제 서비스 설정이 완료되지 않았습니다.",
     "subscribe": "PayPal로 구독",
     "processing": "PayPal 여는 중",
-    "confirming": "결제를 확인하고 있습니다",
-    "confirmationDelayed": "결제 확인이 예상보다 오래 걸립니다. 잠시 후 페이지를 새로고침해 주세요.",
-    "activationFailed": "구독을 확인할 수 없습니다. 페이지를 새로고침하거나 지원팀에 문의해 주세요.",
+    "confirming": "구독 활성화 여부 확인 중",
+    "confirmationDelayed": "구독 활성화가 아직 확인되지 않았습니다.",
+    "activationFailed": "구독 활성화 상태를 조회하지 못했습니다.",
     "activated": "요금제가 활성화되었습니다.",
     "cancelled": "이번 구독 신청을 취소했습니다.",
-    "paymentFailed": "결제가 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
+    "paymentFailed": "이번 구독 작업의 결과를 확인하지 못했습니다.",
     "currentPlan": "이 요금제를 사용하고 계십니다.",
     "api": {
-      "loginUnavailable": "일시적으로 로그인을 사용할 수 없습니다.",
-      "loginRequired": "로그인해 주세요.",
-      "emailMissing": "계정에 이메일 주소가 없어 구독을 활성화할 수 없습니다.",
+      "loginUnavailable": "로그인 서비스 설정이 완료되지 않았습니다.",
+      "loginRequired": "로그인되어 있지 않습니다.",
+      "emailMissing": "현재 계정에 이메일이 없어 구독을 활성화할 수 없습니다.",
       "invalidRequest": "구독 요청이 잘못되었습니다.",
-      "invalidTier": "유효한 구독 요금제를 선택하세요.",
+      "invalidTier": "선택한 구독 요금제가 유효하지 않습니다.",
       "configurationMissing": "결제가 아직 구성되지 않았습니다.",
       "subscriptionBelongsToAnotherAccount": "이 구독은 다른 계정에 속해 있습니다.",
-      "verificationFailed": "PayPal 구독을 확인할 수 없습니다.",
-      "activationFailed": "구독 확인이 완료되지 않았습니다. 나중에 다시 시도해 주세요.",
-      "createFailed": "PayPal 구독을 시작할 수 없습니다. 나중에 다시 시도해 주세요.",
+      "verificationFailed": "PayPal 구독 정보를 검증하지 못했습니다.",
+      "activationFailed": "구독 활성화 상태를 조회하지 못했습니다.",
+      "createFailed": "PayPal 구독을 생성하지 못했습니다.",
       "existingSubscription": "이 계정에는 활성 또는 대기 중인 구독이 이미 있습니다.",
-      "cancelledPeriodActive": "구독이 취소되었지만 현재 결제 기간이 아직 종료되지 않았습니다. 기간이 끝난 후 다시 구독할 수 있습니다.",
+      "cancelledPeriodActive": "구독은 취소되었지만 현재 결제 기간은 아직 끝나지 않았습니다.",
       "webhookInvalidRequest": "웹훅 요청이 잘못되었습니다.",
       "webhookSignatureFailed": "웹훅 서명 확인에 실패했습니다.",
       "webhookProcessingFailed": "웹훅 처리에 실패했습니다.",
       "cancelInvalidOrigin": "이 사이트에서 취소 요청을 보내야 합니다.",
       "cancelSubscriptionNotFound": "구독을 찾을 수 없습니다.",
       "cancelNotActive": "활성 구독만 취소할 수 있습니다.",
-      "cancelFailed": "취소 결과를 확인할 수 없습니다. 다시 시도하세요."
-    }
+      "cancelFailed": "구독 취소 결과를 확인하지 못했습니다.",
+      "planMismatch": "구독 요금제가 선택한 요금제와 일치하지 않습니다.",
+      "subscriptionPaymentFailed": "이 구독의 결제 상태는 실패입니다.",
+      "subscriptionCancelled": "이 구독은 취소되었습니다.",
+      "subscriptionExpired": "이 구독은 만료되었습니다.",
+      "subscriptionSuspended": "이 구독은 일시 중지되었습니다.",
+      "invalidBillingPeriod": "구독 결제 기간이 유효하지 않습니다.",
+      "subscriptionIdMismatch": "PayPal이 반환한 구독 ID가 현재 구독과 일치하지 않습니다.",
+      "existingActiveSubscription": "현재 계정에 이미 활성 구독이 있습니다.",
+      "existingPendingSubscription": "현재 계정에 이미 확인 대기 중인 구독이 있습니다.",
+      "existingSuspendedSubscription": "현재 계정에 이미 일시 중지된 구독이 있습니다.",
+      "billingPeriodEnded": "이 구독의 현재 결제 기간이 종료되었습니다."
+    },
+    "invalidStatusResponse": "구독 서비스가 잘못된 상태 정보를 반환했습니다."
   },
   "HomeFaq": {
     "title": "자주 묻는 질문",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "스캔했거나 암호화된 PDF를 변환할 수 있나요?",
-      "answer": "첫 번째 릴리스는 정상적으로 열리는 선택 가능한 텍스트가 포함된 전자 PDF에 중점을 둡니다. 스캔한 파일, 비밀번호로 보호된 파일 또는 인식할 수 있는 표가 없는 PDF는 변환되지 않을 수 있습니다."
+      "answer": "텍스트를 추출할 수 있는 전자 PDF만 지원합니다. 스캔 PDF와 비밀번호로 보호된 PDF는 지원하지 않습니다."
     },
     "storage": {
       "question": "내 PDF, Excel 파일 또는 거래가 저장됩니까?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "업로드 요청을 읽을 수 없습니다.",
-    "INVALID_FILE": "유효한 PDF 파일을 선택하세요.",
-    "PARSER_UNAVAILABLE": "분석 서비스를 일시적으로 사용할 수 없습니다. 잠시 후 다시 시도해 주세요.",
-    "QUOTA_EXCEEDED": "사용 한도를 모두 썼습니다.",
-    "QUOTA_UNAVAILABLE": "사용 한도를 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.",
-    "FILE_TOO_LARGE": "PDF는 4MB보다 클 수 없습니다.",
-    "INVALID_FILE_TYPE": "PDF 파일만 지원됩니다.",
+    "INVALID_FILE": "업로드된 파일을 받지 못했습니다.",
+    "PARSER_UNAVAILABLE": "변환 서비스에 연결할 수 없습니다.",
+    "QUOTA_EXCEEDED": "이 PDF의 페이지 수가 남은 변환 가능 페이지 수를 초과합니다.",
+    "QUOTA_UNAVAILABLE": "현재 사용 가능한 변환 한도를 확인하지 못했습니다.",
+    "FILE_TOO_LARGE": "이 PDF의 파일 크기가 4 MB를 초과합니다.",
+    "INVALID_FILE_TYPE": "업로드된 파일이 PDF가 아닙니다.",
     "INVALID_PDF": "이 파일은 읽을 수 있는 PDF가 아닙니다.",
     "PASSWORD_PROTECTED_PDF": "비밀번호로 보호된 PDF는 변환할 수 없습니다.",
-    "TOO_MANY_PAGES": "이 PDF는 50페이지를 초과합니다.",
-    "UNSUPPORTED_SCANNED_PDF": "이 버전은 스캔한 이미지가 아닌 선택 가능한 텍스트가 포함된 전자 PDF를 허용합니다.",
+    "TOO_MANY_PAGES": "이 PDF의 페이지 수가 50페이지를 초과합니다.",
+    "UNSUPPORTED_SCANNED_PDF": "이 PDF에서 텍스트를 추출하지 못해 변환할 수 없습니다.",
     "TABLE_NOT_FOUND": "사용 가능한 은행 명세서 테이블을 찾을 수 없습니다.",
-    "NO_VERIFIABLE_TRANSACTIONS": "확인할 수 있는 거래 행이 없습니다.",
-    "PARSE_FAILED": "PDF를 분석할 수 없습니다. 다른 파일로 다시 시도해 주세요.",
-    "UNKNOWN": "문제가 발생했습니다. 다시 시도해 주세요.",
-    "PARSER_RESPONSE_TOO_LARGE": "파서 응답이 너무 커서 안전하게 반환할 수 없습니다."
+    "NO_VERIFIABLE_TRANSACTIONS": "날짜, 설명, 금액을 모두 확인할 수 있는 거래 행을 찾지 못했습니다.",
+    "PARSE_FAILED": "서버가 PDF 분석을 완료하지 못했습니다.",
+    "UNKNOWN": "구체적인 실패 원인을 확인하지 못했습니다.",
+    "PARSER_RESPONSE_TOO_LARGE": "변환 결과가 응답 데이터 크기 제한을 초과합니다.",
+    "MISSING_FILE": "업로드된 파일을 받지 못했습니다.",
+    "EMPTY_FILE": "업로드된 PDF 파일이 비어 있습니다.",
+    "PARSER_NOT_CONFIGURED": "변환 서비스 설정이 완료되지 않았습니다.",
+    "PARSER_TIMEOUT": "변환 요청 시간이 초과되었습니다.",
+    "INVALID_PARSER_RESPONSE": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다.",
+    "PARSER_RESPONSE_UNREADABLE": "변환 서비스의 응답을 끝까지 읽지 못했습니다.",
+    "UNAUTHORIZED": "변환 서비스가 인증을 거부했습니다.",
+    "QUOTA_EXHAUSTED": "이번 기간에 변환할 수 있는 페이지를 모두 사용했습니다.",
+    "QUOTA_RECORD_FAILED": "이번 변환의 사용량을 기록하지 못했습니다.",
+    "QUOTA_PERIOD_UNAVAILABLE": "구독 결제 기간이 유효하지 않아 변환 한도를 확인하지 못했습니다.",
+    "PARSER_AUTH_NOT_CONFIGURED": "변환 서비스 설정이 완료되지 않았습니다."
   },
   "Account": {
     "title": "내 계정",
     "description": "계정 사용량과 구독 내역을 확인하세요.",
     "avatar": "프로필 사진",
     "freePlan": "무료 요금제",
-    "planUnavailable": "요금제를 불러올 수 없음",
+    "planUnavailable": "현재 요금제 정보를 읽지 못했습니다",
     "currentPlan": "현재 요금제: {plan}",
     "notAvailable": "정보 없음",
     "refresh": "새로고침",
@@ -424,12 +453,12 @@
       "progressLabel": "남은 페이지 사용량",
       "dayEnds": "일일 사용량은 {date} UTC에 초기화됩니다.",
       "monthEnds": "현재 결제 주기는 {date} UTC에 종료됩니다.",
-      "unavailable": "사용량을 불러올 수 없습니다. 나중에 새로고침하세요."
+      "unavailable": "남은 변환 가능 페이지 수를 읽지 못했습니다."
     },
     "subscriptions": {
       "title": "구독 내역",
       "description": "구독별로 한 건씩 표시합니다. 시간은 UTC 기준입니다.",
-      "unavailable": "구독 내역을 불러올 수 없습니다.",
+      "unavailable": "구독 기록을 읽지 못했습니다.",
       "empty": "구독 내역이 없습니다.",
       "plan": "요금제",
       "amount": "구독 금액",
@@ -457,11 +486,11 @@
       "confirm": "취소 확인",
       "submitting": "취소 중…",
       "syncing": "자동 갱신이 중지되었습니다. 계정의 구독 상태를 업데이트하고 있습니다.",
-      "delayed": "자동 갱신이 중지되었지만 구독 상태 업데이트가 지연되고 있습니다. 잠시 후 다시 확인해 주세요.",
+      "delayed": "자동 갱신이 중지되었습니다. 계정의 구독 상태 업데이트는 아직 확인되지 않았습니다.",
       "check": "상태 확인",
       "checking": "확인 중…",
-      "failed": "취소 결과를 확인할 수 없습니다. 다시 시도하세요.",
-      "checkFailed": "상태를 확인할 수 없습니다. 다시 시도하세요."
+      "failed": "구독 취소 결과를 확인하지 못했습니다.",
+      "checkFailed": "구독 상태를 읽지 못했습니다."
     }
   }
 }

@@ -34,19 +34,19 @@
     "account": "Cuenta",
     "signInWithGoogle": "Iniciar sesión con Google",
     "signOut": "Cerrar sesión",
-    "unavailable": "El inicio de sesión no está disponible temporalmente",
-    "signInFailed": "El inicio de sesión no se completó. Inténtalo de nuevo más tarde.",
-    "signOutFailed": "El cierre de sesión no se completó. Inténtalo de nuevo más tarde.",
+    "unavailable": "El inicio de sesión no está configurado.",
+    "signInFailed": "No se pudo iniciar el acceso con Google.",
+    "signOutFailed": "No se pudo cerrar la sesión.",
     "myAccount": "Mi cuenta",
     "avatar": "Foto de perfil"
   },
   "AuthError": {
     "metadata": {
       "title": "Inicio de sesión incompleto | Conversor de extractos bancarios",
-      "description": "El inicio de sesión con Google no se completó. Vuelve al inicio e inténtalo de nuevo."
+      "description": "No se pudo completar el acceso con Google."
     },
     "title": "No se completó el inicio de sesión",
-    "description": "El inicio de sesión con Google se canceló o no se completó. Vuelve al inicio e inténtalo de nuevo.",
+    "description": "No se pudo completar el acceso con Google.",
     "backHome": "Volver a la página de inicio"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "Elige un PDF o arrástralo aquí",
     "dropzoneHint": "Sube un PDF que se abra normalmente y cuyo texto puedas seleccionar.",
     "help": "El nombre del archivo aparece después de seleccionarlo. Puedes quitarlo cuando quieras.",
-    "errorTitle": "Este archivo no se pudo convertir",
-    "invalidPdf": "Sube un archivo PDF.",
+    "errorTitle": "No se pudo completar esta operación",
+    "invalidPdf": "El archivo subido no es un PDF.",
     "multipleFiles": "Solo puedes procesar un PDF a la vez.",
-    "conversionFailed": "La conversión no se completó. Prueba con otro archivo.",
-    "parserUnavailable": "El servicio de análisis no respondió. Inténtalo de nuevo más tarde.",
-    "quotaExceeded": "Tu cuota está agotada o el número de páginas del PDF supera tu cuota restante.",
-    "quotaUnavailable": "El servicio de cuotas no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+    "conversionFailed": "No se pudo determinar la causa concreta del fallo.",
+    "parserUnavailable": "No se pudo conectar con el servicio de conversión.",
+    "quotaExceeded": "Este PDF tiene más páginas de las que te quedan por convertir.",
+    "quotaUnavailable": "No se pudo determinar tu cuota de conversión disponible.",
     "removeFile": "Quitar archivo",
     "quota": "Cuota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} al día sin iniciar sesión, {authenticatedPages, plural, one {# página} other {# páginas}} al día al iniciar sesión",
     "serviceReady": "Los archivos se utilizan únicamente para esta conversión y no se guardan.",
     "status": "Listo para cargar",
     "converting": "Convirtiendo",
     "start": "Convertir y revisar",
-    "fileTooLarge": "Este PDF pesa más de 4 MB.",
+    "fileTooLarge": "Este PDF supera los 4 MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "No se pudo recibir una respuesta a la solicitud de conversión.",
+    "resultStorageFailed": "La conversión se completó, pero el navegador no pudo guardar el resultado.",
+    "browserStorageUnavailable": "El almacenamiento del navegador no está disponible.",
+    "emptyFile": "El archivo PDF subido está vacío.",
+    "quotaExhausted": "Has utilizado todas las páginas disponibles para este periodo.",
+    "invalidResponse": "El servicio de conversión devolvió datos en un formato no válido."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "No hay datos descargables.",
-      "description": "No se encontraron filas de tabla utilizables en este PDF. Vuelve al inicio y sube otro archivo."
+      "description": "No se encontraron filas de tabla utilizables en este PDF."
     },
     "missing": {
-      "title": "Este resultado ha caducado.",
-      "description": "El resultado solo está disponible durante esta conversión. Vuelve al inicio y sube el PDF de nuevo."
+      "title": "No hay resultado de conversión",
+      "description": "Esta página no contiene ningún resultado de conversión que se pueda leer."
     },
     "issues": {
       "repeatedHeader": "La fila {row} repite el encabezado de la tabla y se omitió.",
-      "summaryRow": "La fila {row} parece una fila de resumen y se omitió.",
+      "summaryRow": "La fila {row} se identificó como una fila de total y se omitió.",
       "extraCells": "Esta fila tiene más celdas que el encabezado. Se conservaron las celdas adicionales.",
       "unknown": "Este elemento necesita revisión.",
-      "missingDate": "Falta la fecha de la transacción.",
+      "missingDate": "No se identificó ninguna fecha de transacción.",
       "invalidDate": "La fecha de la transacción no es válida.",
-      "missingDescription": "Falta la descripción de la transacción.",
-      "missingAmount": "Falta el importe de la transacción.",
+      "missingDescription": "No se identificó ninguna descripción de transacción.",
+      "missingAmount": "No se identificó ningún importe de transacción.",
       "invalidAmount": "El importe de la transacción no es válido.",
       "amountColumnMismatch": "Hay un importe fuera de la columna de importes y no se puede asociar con seguridad."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Las filas con datos incompletos o problemas de alineación se marcan como \"DISCREPANCY\" o \"UNVERIFIABLE\" antes de la descarga."
   },
   "UsageTiers": {
-    "title": "Comience con una conversión gratuita",
+    "title": "Páginas gratuitas para convertir cada día",
     "description": "Puedes probar el convertidor sin una cuenta. Inicia sesión para obtener una cuota diaria mayor o elige un plan mensual si lo usas con frecuencia.",
     "anonymous": "Sin iniciar sesión",
     "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
@@ -175,7 +181,7 @@
     "perMonth": "/ mes",
     "planQuota": "{pages, plural, one {# página} other {# páginas}} por mes",
     "current": "Plan actual",
-    "cancelledPeriodActive": "Tu suscripción está cancelada, pero tus beneficios siguen disponibles durante este período de facturación. Puedes volver a suscribirte después del {date} (UTC).",
+    "cancelledPeriodActive": "La suscripción está cancelada. Los beneficios siguen disponibles hasta {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Estándar",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Empresa",
-        "description": "Para equipos que procesan muchos extractos bancarios."
+        "description": "Para usuarios que necesitan convertir más páginas cada mes."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Inicia sesión antes de suscribirte.",
-    "unavailable": "El pago no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+    "unavailable": "El servicio de pago no está configurado.",
     "subscribe": "Suscríbete con PayPal",
     "processing": "Abriendo PayPal",
-    "confirming": "Confirmando el pago",
-    "confirmationDelayed": "La confirmación del pago está tardando más de lo esperado. Actualiza esta página más tarde.",
-    "activationFailed": "No pudimos confirmar la suscripción. Actualiza esta página o contacta con soporte.",
+    "confirming": "Comprobando si la suscripción está activa",
+    "confirmationDelayed": "La activación de la suscripción aún no se ha confirmado.",
+    "activationFailed": "No se pudo consultar el estado de activación de la suscripción.",
     "activated": "Tu plan está activo.",
     "cancelled": "Has cancelado el proceso de suscripción.",
-    "paymentFailed": "El pago no se completó. Inténtalo de nuevo más tarde.",
+    "paymentFailed": "No se pudo confirmar el resultado de esta operación de suscripción.",
     "currentPlan": "Estás usando este plan.",
     "api": {
-      "loginUnavailable": "El inicio de sesión no está disponible temporalmente.",
-      "loginRequired": "Inicia sesión.",
-      "emailMissing": "Tu cuenta no tiene una dirección de correo electrónico, por lo que no podemos activar la suscripción.",
+      "loginUnavailable": "El inicio de sesión no está configurado.",
+      "loginRequired": "No has iniciado sesión.",
+      "emailMissing": "Esta cuenta no tiene dirección de correo electrónico, por lo que la suscripción no se puede activar.",
       "invalidRequest": "La solicitud de suscripción no es válida.",
-      "invalidTier": "Elige un plan de suscripción válido.",
+      "invalidTier": "El plan de suscripción seleccionado no es válido.",
       "configurationMissing": "El pago aún no se ha configurado.",
       "subscriptionBelongsToAnotherAccount": "Esta suscripción pertenece a otra cuenta.",
-      "verificationFailed": "No se pudo verificar la suscripción de PayPal.",
-      "activationFailed": "La verificación de la suscripción no se completó. Inténtalo de nuevo más tarde.",
-      "createFailed": "No se pudo iniciar la suscripción de PayPal. Inténtalo de nuevo más tarde.",
+      "verificationFailed": "No se pudo verificar la información de la suscripción de PayPal.",
+      "activationFailed": "No se pudo consultar el estado de activación de la suscripción.",
+      "createFailed": "No se pudo crear la suscripción de PayPal.",
       "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
-      "cancelledPeriodActive": "Tu suscripción está cancelada, pero el período de facturación actual no ha terminado. Puedes volver a suscribirte cuando termine.",
+      "cancelledPeriodActive": "La suscripción está cancelada, pero el periodo de facturación actual no ha terminado.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
       "webhookSignatureFailed": "Error en la verificación de la firma del webhook.",
       "webhookProcessingFailed": "Error al procesar el webhook.",
       "cancelInvalidOrigin": "La solicitud de cancelación debe proceder de este sitio web.",
       "cancelSubscriptionNotFound": "No se encontró la suscripción.",
       "cancelNotActive": "Solo se puede cancelar una suscripción activa.",
-      "cancelFailed": "No se pudo confirmar la cancelación. Inténtalo de nuevo."
-    }
+      "cancelFailed": "No se pudo confirmar la cancelación de la suscripción.",
+      "planMismatch": "El plan de la suscripción no coincide con el plan seleccionado.",
+      "subscriptionPaymentFailed": "El estado de pago de esta suscripción indica un fallo.",
+      "subscriptionCancelled": "Esta suscripción se ha cancelado.",
+      "subscriptionExpired": "Esta suscripción ha caducado.",
+      "subscriptionSuspended": "Esta suscripción se ha suspendido.",
+      "invalidBillingPeriod": "El periodo de facturación de la suscripción no es válido.",
+      "subscriptionIdMismatch": "El identificador de suscripción devuelto por PayPal no coincide con la suscripción actual.",
+      "existingActiveSubscription": "Esta cuenta ya tiene una suscripción activa.",
+      "existingPendingSubscription": "Esta cuenta ya tiene una suscripción pendiente de confirmación.",
+      "existingSuspendedSubscription": "Esta cuenta ya tiene una suscripción suspendida.",
+      "billingPeriodEnded": "El periodo de facturación actual de esta suscripción ha terminado."
+    },
+    "invalidStatusResponse": "El servicio de suscripción devolvió información de estado no válida."
   },
   "HomeFaq": {
     "title": "Preguntas frecuentes",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "¿Puedo convertir archivos PDF escaneados o cifrados?",
-      "answer": "La primera versión se centra en archivos PDF electrónicos con texto seleccionable que se abren normalmente. Es posible que los archivos escaneados, los archivos protegidos con contraseña o los archivos PDF sin tablas reconocibles no se conviertan."
+      "answer": "Solo se admiten PDF electrónicos con texto extraíble. No se admiten PDF escaneados ni protegidos con contraseña."
     },
     "storage": {
       "question": "¿Se guardan mis archivos PDF, Excel o transacciones?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "No se pudo leer la solicitud de carga.",
-    "INVALID_FILE": "Elige un archivo PDF válido.",
-    "PARSER_UNAVAILABLE": "El servicio de análisis no está disponible temporalmente. Inténtalo de nuevo más tarde.",
-    "QUOTA_EXCEEDED": "Tu cuota está agotada.",
-    "QUOTA_UNAVAILABLE": "El servicio de cuotas no está disponible temporalmente. Inténtalo de nuevo más tarde.",
-    "FILE_TOO_LARGE": "Este PDF pesa más de 4 MB.",
-    "INVALID_FILE_TYPE": "Sólo se admiten archivos PDF.",
+    "INVALID_FILE": "No se recibió ningún archivo subido.",
+    "PARSER_UNAVAILABLE": "No se pudo conectar con el servicio de conversión.",
+    "QUOTA_EXCEEDED": "Este PDF tiene más páginas de las que te quedan por convertir.",
+    "QUOTA_UNAVAILABLE": "No se pudo determinar tu cuota de conversión disponible.",
+    "FILE_TOO_LARGE": "Este PDF supera los 4 MB.",
+    "INVALID_FILE_TYPE": "El archivo subido no es un PDF.",
     "INVALID_PDF": "Este archivo no es un PDF legible.",
     "PASSWORD_PROTECTED_PDF": "Los archivos PDF protegidos con contraseña no se pueden convertir.",
     "TOO_MANY_PAGES": "Este PDF tiene más de 50 páginas.",
-    "UNSUPPORTED_SCANNED_PDF": "Esta versión acepta archivos PDF electrónicos con texto seleccionable, no imágenes escaneadas.",
+    "UNSUPPORTED_SCANNED_PDF": "No se pudo extraer texto de este PDF, por lo que no se puede convertir.",
     "TABLE_NOT_FOUND": "No se encontró ninguna tabla de extractos bancarios utilizable.",
-    "NO_VERIFIABLE_TRANSACTIONS": "Ninguna transacción tiene datos suficientes para revisarla.",
-    "PARSE_FAILED": "No se pudo analizar el PDF. Inténtalo de nuevo con otro archivo.",
-    "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo.",
-    "PARSER_RESPONSE_TOO_LARGE": "La respuesta del analizador es demasiado grande para devolverla de forma segura."
+    "NO_VERIFIABLE_TRANSACTIONS": "No se encontró ninguna fila de transacción cuya fecha, descripción e importe puedan verificarse.",
+    "PARSE_FAILED": "El servidor no pudo completar el análisis del PDF.",
+    "UNKNOWN": "No se pudo determinar la causa concreta del fallo.",
+    "PARSER_RESPONSE_TOO_LARGE": "El resultado de la conversión supera el límite de tamaño de la respuesta.",
+    "MISSING_FILE": "No se recibió ningún archivo subido.",
+    "EMPTY_FILE": "El archivo PDF subido está vacío.",
+    "PARSER_NOT_CONFIGURED": "El servicio de conversión no está configurado.",
+    "PARSER_TIMEOUT": "La solicitud de conversión agotó el tiempo de espera.",
+    "INVALID_PARSER_RESPONSE": "El servicio de conversión devolvió datos en un formato no válido.",
+    "PARSER_RESPONSE_UNREADABLE": "No se pudo leer por completo la respuesta del servicio de conversión.",
+    "UNAUTHORIZED": "El servicio de conversión rechazó la autenticación.",
+    "QUOTA_EXHAUSTED": "Has utilizado todas las páginas disponibles para este periodo.",
+    "QUOTA_RECORD_FAILED": "No se pudo registrar el uso de esta conversión.",
+    "QUOTA_PERIOD_UNAVAILABLE": "El periodo de facturación de la suscripción no es válido y no se pudo determinar la cuota.",
+    "PARSER_AUTH_NOT_CONFIGURED": "El servicio de conversión no está configurado."
   },
   "Account": {
     "title": "Mi cuenta",
     "description": "Consulta tu cuota y tus suscripciones.",
     "avatar": "Foto de perfil",
     "freePlan": "Plan gratuito",
-    "planUnavailable": "Plan no disponible",
+    "planUnavailable": "No se pudo leer la información del plan actual",
     "currentPlan": "Plan actual: {plan}",
     "notAvailable": "No disponible",
     "refresh": "Actualizar",
@@ -424,12 +453,12 @@
       "progressLabel": "Cuota de páginas restante",
       "dayEnds": "La cuota diaria se restablece el {date} UTC.",
       "monthEnds": "El período de facturación actual termina el {date} UTC.",
-      "unavailable": "La cuota no está disponible temporalmente. Actualiza más tarde."
+      "unavailable": "No se pudo leer el número de páginas restantes."
     },
     "subscriptions": {
       "title": "Suscripciones",
       "description": "Un registro por suscripción. Las fechas se muestran en UTC.",
-      "unavailable": "Las suscripciones no están disponibles temporalmente.",
+      "unavailable": "No se pudieron leer los registros de suscripción.",
       "empty": "Todavía no hay suscripciones.",
       "plan": "Plan",
       "amount": "Importe de la suscripción",
@@ -457,11 +486,11 @@
       "confirm": "Confirmar cancelación",
       "submitting": "Cancelando…",
       "syncing": "Las renovaciones se han detenido. Estamos actualizando el estado de tu suscripción.",
-      "delayed": "Las renovaciones se han detenido, pero el estado de tu suscripción tarda en actualizarse. Vuelve a comprobarlo más tarde.",
+      "delayed": "Las renovaciones se han detenido. La actualización del estado de la suscripción en la cuenta aún no se ha confirmado.",
       "check": "Comprobar estado",
       "checking": "Comprobando…",
-      "failed": "No se pudo confirmar la cancelación. Inténtalo de nuevo.",
-      "checkFailed": "No se pudo comprobar el estado. Inténtalo de nuevo."
+      "failed": "No se pudo confirmar la cancelación de la suscripción.",
+      "checkFailed": "No se pudo leer el estado de la suscripción."
     }
   }
 }

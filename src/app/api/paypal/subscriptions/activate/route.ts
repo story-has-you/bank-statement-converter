@@ -48,7 +48,10 @@ export async function POST(request: Request): Promise<Response> {
     return errorResponse(t("invalidRequest"), 400);
   }
 
-  if (!isActivateRequest(payload) || !isMembershipTier(payload.tier)) {
+  if (!isActivateRequest(payload)) {
+    return errorResponse(t("invalidRequest"), 400);
+  }
+  if (!isMembershipTier(payload.tier)) {
     return errorResponse(t("invalidTier"), 400);
   }
 
@@ -68,13 +71,14 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     if (existing.paypal_plan_id !== expectedPlanId || existing.tier !== payload.tier) {
-      return errorResponse(t("verificationFailed"), 400);
+      return errorResponse(t("planMismatch"), 400);
     }
 
     if (existing.status !== "ACTIVE") {
-      if (existing.status === "PAYMENT_FAILED" || existing.status === "CANCELLED" || existing.status === "EXPIRED") {
-        return errorResponse(t("verificationFailed"), 409);
-      }
+      if (existing.status === "PAYMENT_FAILED") return errorResponse(t("subscriptionPaymentFailed"), 409);
+      if (existing.status === "CANCELLED") return errorResponse(t("subscriptionCancelled"), 409);
+      if (existing.status === "EXPIRED") return errorResponse(t("subscriptionExpired"), 409);
+      if (existing.status === "SUSPENDED") return errorResponse(t("subscriptionSuspended"), 409);
       return NextResponse.json({ status: "PENDING" }, { status: 202 });
     }
 
@@ -83,11 +87,11 @@ export async function POST(request: Request): Promise<Response> {
     if (
       !Number.isFinite(periodStart) ||
       !Number.isFinite(periodEnd) ||
-      periodStart >= periodEnd ||
-      periodEnd <= Date.now()
+      periodStart >= periodEnd
     ) {
-      return errorResponse(t("verificationFailed"), 409);
+      return errorResponse(t("invalidBillingPeriod"), 409);
     }
+    if (periodEnd <= Date.now()) return errorResponse(t("billingPeriodEnded"), 409);
 
     return NextResponse.json({
       tier: existing.tier,

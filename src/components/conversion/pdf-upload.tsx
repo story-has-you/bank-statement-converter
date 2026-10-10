@@ -26,10 +26,17 @@ export function PdfUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<
     | "invalidPdf"
+    | "emptyFile"
+    | "fileTooLarge"
     | "multipleFiles"
     | "conversionFailed"
+    | "invalidResponse"
+    | "resultStorageFailed"
+    | "browserStorageUnavailable"
+    | "requestFailed"
     | "parserUnavailable"
     | "quotaExceeded"
+    | "quotaExhausted"
     | "quotaUnavailable"
     | null
   >(null);
@@ -38,7 +45,12 @@ export function PdfUpload() {
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
-    clearConversionPayload();
+    try {
+      clearConversionPayload();
+    } catch {
+      const timeout = window.setTimeout(() => setError("browserStorageUnavailable"), 0);
+      return () => window.clearTimeout(timeout);
+    }
   }, []);
 
   function formatFileSize(bytes: number): string {
@@ -65,10 +77,10 @@ export function PdfUpload() {
       return;
     }
 
-    if (candidate.size > MAX_UPLOAD_BYTES) {
+    if (candidate.size === 0 || candidate.size > MAX_UPLOAD_BYTES) {
       setFile(null);
-      setError("invalidPdf");
-      setServerError(t("fileTooLarge"));
+      setError(candidate.size === 0 ? "emptyFile" : "fileTooLarge");
+      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -122,6 +134,10 @@ export function PdfUpload() {
       const payload: unknown = await response.json().catch(() => null);
 
       if (!response.ok || !isParseResponse(payload)) {
+        if (response.ok) {
+          setError("invalidResponse");
+          return;
+        }
         const code =
           typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string"
             ? payload.code
@@ -130,6 +146,8 @@ export function PdfUpload() {
           setError("parserUnavailable");
         } else if (code === "QUOTA_EXCEEDED") {
           setError("quotaExceeded");
+        } else if (code === "QUOTA_EXHAUSTED") {
+          setError("quotaExhausted");
         } else if (code === "QUOTA_UNAVAILABLE") {
           setError("quotaUnavailable");
         } else {
@@ -143,15 +161,15 @@ export function PdfUpload() {
 
       try {
         saveConversionPayload(file.name, payload);
-    } catch {
-        setError("conversionFailed");
+      } catch {
+        setError("resultStorageFailed");
         setServerError(null);
         return;
       }
 
       router.push("/result");
     } catch {
-      setError("parserUnavailable");
+      setError("requestFailed");
       setServerError(null);
     } finally {
       setIsPending(false);

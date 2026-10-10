@@ -39,9 +39,20 @@ const ANONYMOUS_COOKIE = "bank-statement-converter-anonymous";
 const apiErrorCodes = [
   "INVALID_REQUEST",
   "INVALID_FILE",
+  "MISSING_FILE",
+  "EMPTY_FILE",
   "PARSER_UNAVAILABLE",
+  "PARSER_NOT_CONFIGURED",
+  "PARSER_TIMEOUT",
+  "INVALID_PARSER_RESPONSE",
+  "PARSER_RESPONSE_UNREADABLE",
+  "PARSER_AUTH_NOT_CONFIGURED",
+  "UNAUTHORIZED",
   "QUOTA_EXCEEDED",
+  "QUOTA_EXHAUSTED",
   "QUOTA_UNAVAILABLE",
+  "QUOTA_RECORD_FAILED",
+  "QUOTA_PERIOD_UNAVAILABLE",
   "FILE_TOO_LARGE",
   "PARSER_RESPONSE_TOO_LARGE",
   "INVALID_FILE_TYPE",
@@ -140,7 +151,7 @@ async function readErrorPayload(response: Response): Promise<Pick<ErrorPayload, 
     // The parser may return a non-JSON error when it is unavailable.
   }
 
-  return { code: "PARSER_UNAVAILABLE" };
+  return { code: "INVALID_PARSER_RESPONSE" };
 }
 
 export async function POST(request: Request): Promise<Response> {
@@ -154,11 +165,14 @@ export async function POST(request: Request): Promise<Response> {
 
   const entry = formData.get("file");
   if (!(entry instanceof File)) {
-    return errorResponse("INVALID_FILE", 400, locale);
+    return errorResponse("MISSING_FILE", 400, locale);
   }
 
-  if (!entry.name.toLowerCase().endsWith(".pdf") || entry.size === 0) {
-    return errorResponse("INVALID_FILE", 400, locale);
+  if (!entry.name.toLowerCase().endsWith(".pdf")) {
+    return errorResponse("INVALID_FILE_TYPE", 400, locale);
+  }
+  if (entry.size === 0) {
+    return errorResponse("EMPTY_FILE", 400, locale);
   }
   if (entry.size > MAX_UPLOAD_BYTES) {
     return errorResponse("FILE_TOO_LARGE", 413, locale);
@@ -176,7 +190,7 @@ export async function POST(request: Request): Promise<Response> {
     const currentUsage = await getUsageRecord(actor);
     if (isCurrentUsageAtLimit(currentUsage, context)) {
       return setAnonymousCookie(
-        errorResponse("QUOTA_EXCEEDED", 429, locale, {
+        errorResponse("QUOTA_EXHAUSTED", 429, locale, {
           period: context.window.period,
           usedPages: currentUsage?.used_pages,
           remainingPages: 0,
@@ -189,7 +203,10 @@ export async function POST(request: Request): Promise<Response> {
     if (!(error instanceof UsageUnavailableError) && !(error instanceof SubscriptionPeriodUnavailableError)) {
       console.error("Failed to resolve conversion quota", error);
     }
-    return errorResponse("QUOTA_UNAVAILABLE", 503, locale);
+    const code = error instanceof SubscriptionPeriodUnavailableError
+      ? "QUOTA_PERIOD_UNAVAILABLE"
+      : "QUOTA_UNAVAILABLE";
+    return errorResponse(code, 503, locale);
   }
 
   const upstreamData = new FormData();
@@ -203,7 +220,7 @@ export async function POST(request: Request): Promise<Response> {
   const parserSecret = process.env.PARSER_SHARED_SECRET?.trim();
   if (!parserSecret) {
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", 503, locale),
+      errorResponse("PARSER_NOT_CONFIGURED", 503, locale),
       anonymousCookie,
     );
   }
@@ -220,9 +237,12 @@ export async function POST(request: Request): Promise<Response> {
       },
       signal: AbortSignal.timeout(55_000),
     });
-  } catch {
+  } catch (error) {
+    const code = error instanceof Error && error.name === "TimeoutError"
+      ? "PARSER_TIMEOUT"
+      : "PARSER_UNAVAILABLE";
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", 502, locale),
+      errorResponse(code, 502, locale),
       anonymousCookie,
     );
   }
@@ -235,6 +255,7 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
+  let payload: unknown;
   try {
     const responseBytes = await parserResponse.arrayBuffer();
     if (responseBytes.byteLength > MAX_RESPONSE_BYTES) {
@@ -243,51 +264,60 @@ export async function POST(request: Request): Promise<Response> {
         anonymousCookie,
       );
     }
-    const payload: unknown = JSON.parse(new TextDecoder().decode(responseBytes));
-    if (!isParseResponse(payload) || !Number.isInteger(payload.pageCount) || payload.pageCount <= 0) {
-      return setAnonymousCookie(
-        errorResponse("PARSER_UNAVAILABLE", 502, locale),
-        anonymousCookie,
-      );
-    }
-    if (
-      payload.summary.status === "failed" ||
-      payload.summary.validRowCount + payload.summary.warningRowCount === 0
-    ) {
-      return setAnonymousCookie(
-        errorResponse("NO_VERIFIABLE_TRANSACTIONS", 422, locale),
-        anonymousCookie,
-      );
-    }
-
-    let quotaResult;
     try {
-      quotaResult = await consumeConversionQuota(context, payload.pageCount);
-    } catch (error) {
-      console.error("Failed to record conversion usage", error);
+      payload = JSON.parse(new TextDecoder().decode(responseBytes));
+    } catch {
       return setAnonymousCookie(
-        errorResponse("QUOTA_UNAVAILABLE", 503, locale),
+        errorResponse("INVALID_PARSER_RESPONSE", 502, locale),
         anonymousCookie,
       );
     }
+  } catch (error) {
+    const code = error instanceof Error && error.name === "TimeoutError"
+      ? "PARSER_TIMEOUT"
+      : "PARSER_RESPONSE_UNREADABLE";
+    return setAnonymousCookie(errorResponse(code, 502, locale), anonymousCookie);
+  }
 
-    if (!quotaResult.allowed) {
-      return setAnonymousCookie(
-        errorResponse("QUOTA_EXCEEDED", 429, locale, {
-          period: quotaResult.period,
-          usedPages: quotaResult.usedPages,
-          remainingPages: quotaResult.remainingPages,
-          limitPages: quotaResult.limitPages,
-        }),
-        anonymousCookie,
-      );
-    }
-
-    return setAnonymousCookie(NextResponse.json(payload, { status: 200 }), anonymousCookie);
-  } catch {
+  if (!isParseResponse(payload) || !Number.isInteger(payload.pageCount) || payload.pageCount <= 0) {
     return setAnonymousCookie(
-      errorResponse("PARSER_UNAVAILABLE", 502, locale),
+      errorResponse("INVALID_PARSER_RESPONSE", 502, locale),
       anonymousCookie,
     );
   }
+  if (
+    payload.summary.status === "failed" ||
+    payload.summary.validRowCount + payload.summary.warningRowCount === 0
+  ) {
+    return setAnonymousCookie(
+      errorResponse("NO_VERIFIABLE_TRANSACTIONS", 422, locale),
+      anonymousCookie,
+    );
+  }
+
+  let quotaResult;
+  try {
+    quotaResult = await consumeConversionQuota(context, payload.pageCount);
+  } catch (error) {
+    console.error("Failed to record conversion usage", error);
+    return setAnonymousCookie(
+      errorResponse("QUOTA_RECORD_FAILED", 503, locale),
+      anonymousCookie,
+    );
+  }
+
+  if (!quotaResult.allowed) {
+    const code = quotaResult.remainingPages === 0 ? "QUOTA_EXHAUSTED" : "QUOTA_EXCEEDED";
+    return setAnonymousCookie(
+      errorResponse(code, 429, locale, {
+        period: quotaResult.period,
+        usedPages: quotaResult.usedPages,
+        remainingPages: quotaResult.remainingPages,
+        limitPages: quotaResult.limitPages,
+      }),
+      anonymousCookie,
+    );
+  }
+
+  return setAnonymousCookie(NextResponse.json(payload, { status: 200 }), anonymousCookie);
 }

@@ -41,8 +41,11 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    if (await findOpenBillingSubscription(data.user.id)) {
-      return errorResponse(t("existingSubscription"), 409);
+    const openSubscription = await findOpenBillingSubscription(data.user.id);
+    if (openSubscription) {
+      if (openSubscription.status === "ACTIVE") return errorResponse(t("existingActiveSubscription"), 409);
+      if (openSubscription.status === "SUSPENDED") return errorResponse(t("existingSuspendedSubscription"), 409);
+      return errorResponse(t("existingPendingSubscription"), 409);
     }
 
     const entitledSubscription = await findEntitledBillingSubscription(data.user.id);

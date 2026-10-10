@@ -39,10 +39,9 @@ export async function POST(request: Request): Promise<Response> {
     if (existing.status !== "ACTIVE" && existing.status !== "CANCELLED") return errorResponse("cancelNotActive", 409);
 
     const subscription = await getPayPalSubscription(existing.paypal_subscription_id);
-    if (
-      subscription.id !== existing.paypal_subscription_id || subscription.customId !== data.user.id ||
-      subscription.planId !== existing.paypal_plan_id
-    ) return errorResponse("verificationFailed", 409);
+    if (subscription.id !== existing.paypal_subscription_id) return errorResponse("subscriptionIdMismatch", 409);
+    if (subscription.customId !== data.user.id) return errorResponse("subscriptionBelongsToAnotherAccount", 409);
+    if (subscription.planId !== existing.paypal_plan_id) return errorResponse("planMismatch", 409);
 
     if (subscription.status !== "CANCELLED") {
       if (existing.status !== "ACTIVE" || subscription.status !== "ACTIVE") return errorResponse("cancelNotActive", 409);

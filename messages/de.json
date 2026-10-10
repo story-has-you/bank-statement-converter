@@ -34,19 +34,19 @@
     "account": "Konto",
     "signInWithGoogle": "Mit Google anmelden",
     "signOut": "Abmelden",
-    "unavailable": "Die Anmeldung ist vorübergehend nicht möglich",
-    "signInFailed": "Die Anmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
-    "signOutFailed": "Die Abmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+    "unavailable": "Die Anmeldung ist noch nicht konfiguriert.",
+    "signInFailed": "Die Google-Anmeldung konnte nicht gestartet werden.",
+    "signOutFailed": "Die Abmeldung konnte nicht abgeschlossen werden.",
     "myAccount": "Mein Konto",
     "avatar": "Profilbild"
   },
   "AuthError": {
     "metadata": {
       "title": "Anmeldung unvollständig | Kontoauszugskonverter",
-      "description": "Die Google-Anmeldung wurde nicht abgeschlossen. Kehren Sie zur Startseite zurück und versuchen Sie es erneut."
+      "description": "Die Google-Anmeldung konnte nicht abgeschlossen werden."
     },
     "title": "Anmeldung unvollständig",
-    "description": "Die Google-Anmeldung wurde abgebrochen oder nicht abgeschlossen. Kehren Sie zur Startseite zurück und versuchen Sie es erneut.",
+    "description": "Die Google-Anmeldung konnte nicht abgeschlossen werden.",
     "backHome": "Zurück zur Homepage"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
     "dropzoneHint": "Laden Sie eine PDF-Datei hoch, die normal geöffnet wird und auswählbaren Text enthält.",
     "help": "Nach der Auswahl erscheint hier der Dateiname. Sie können die Datei jederzeit entfernen.",
-    "errorTitle": "Diese Datei konnte nicht konvertiert werden",
-    "invalidPdf": "Bitte laden Sie eine PDF-Datei hoch.",
+    "errorTitle": "Dieser Vorgang konnte nicht abgeschlossen werden",
+    "invalidPdf": "Die hochgeladene Datei ist keine PDF-Datei.",
     "multipleFiles": "Es kann jeweils nur ein PDF verarbeitet werden.",
-    "conversionFailed": "Die Konvertierung wurde nicht abgeschlossen. Versuchen Sie es mit einer anderen Datei.",
-    "parserUnavailable": "Der Analysedienst hat nicht geantwortet. Bitte versuchen Sie es später noch einmal.",
-    "quotaExceeded": "Ihr Kontingent ist aufgebraucht, oder die Seitenzahl dieser PDF-Datei überschreitet Ihr Restkontingent.",
-    "quotaUnavailable": "Das Kontingent ist vorübergehend nicht abrufbar. Bitte versuchen Sie es später erneut.",
+    "conversionFailed": "Die genaue Ursache des Fehlers konnte nicht ermittelt werden.",
+    "parserUnavailable": "Der Konvertierungsdienst konnte nicht erreicht werden.",
+    "quotaExceeded": "Diese PDF-Datei enthält mehr Seiten, als Sie noch konvertieren können.",
+    "quotaUnavailable": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
     "removeFile": "Datei entfernen",
     "quota": "Kostenloses Kontingent: {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag ohne Anmeldung, {authenticatedPages, plural, one {# Seite} other {# Seiten}} pro Tag nach Anmeldung",
     "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
     "status": "Bereit zum Hochladen",
     "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
-    "fileTooLarge": "Dieses PDF ist größer als 4 MB.",
+    "fileTooLarge": "Diese PDF-Datei ist größer als 4 MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden.",
+    "resultStorageFailed": "Die Konvertierung ist abgeschlossen, aber der Browser konnte das Ergebnis nicht speichern.",
+    "browserStorageUnavailable": "Der Browserspeicher ist nicht verfügbar.",
+    "emptyFile": "Die hochgeladene PDF-Datei ist leer.",
+    "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
+    "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "Es gibt keine herunterladbaren Daten",
-      "description": "In diesem PDF wurden keine verwendbaren Tabellenzeilen gefunden. Kehren Sie zur Startseite zurück und laden Sie eine weitere Datei hoch."
+      "description": "In dieser PDF-Datei wurden keine nutzbaren Tabellenzeilen gefunden."
     },
     "missing": {
-      "title": "Dieses Ergebnis ist abgelaufen",
-      "description": "Das Ergebnis ist nur während dieser Konvertierung verfügbar. Kehren Sie zur Startseite zurück und laden Sie das PDF erneut hoch."
+      "title": "Kein Konvertierungsergebnis",
+      "description": "Auf dieser Seite ist kein lesbares Konvertierungsergebnis vorhanden."
     },
     "issues": {
       "repeatedHeader": "Zeile {row} wiederholt den Tabellenkopf und wurde übersprungen.",
-      "summaryRow": "Zeile {row} sieht aus wie eine Zusammenfassungszeile und wurde übersprungen.",
+      "summaryRow": "Zeile {row} wurde als Summenzeile erkannt und übersprungen.",
       "extraCells": "Diese Zeile enthält mehr Zellen als die Kopfzeile. Die zusätzlichen Zellen wurden behalten.",
       "unknown": "Dieser Eintrag muss geprüft werden.",
-      "missingDate": "Das Transaktionsdatum fehlt.",
+      "missingDate": "Es wurde kein Transaktionsdatum erkannt.",
       "invalidDate": "Das Transaktionsdatum ist ungültig.",
-      "missingDescription": "Die Transaktionsbeschreibung fehlt.",
-      "missingAmount": "Der Transaktionsbetrag fehlt.",
+      "missingDescription": "Es wurde keine Transaktionsbeschreibung erkannt.",
+      "missingAmount": "Es wurde kein Transaktionsbetrag erkannt.",
       "invalidAmount": "Der Transaktionsbetrag ist ungültig.",
       "amountColumnMismatch": "Ein Betrag steht außerhalb der Transaktionsbetragsspalte und kann nicht sicher zugeordnet werden."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Zeilen mit unvollständigen Belegen oder Zuordnungsproblemen werden vor dem Download als „DISCREPANCY“ oder „UNVERIFIABLE“ markiert."
   },
   "UsageTiers": {
-    "title": "Beginnen Sie mit einer kostenlosen Konvertierung",
+    "title": "Kostenlose Konvertierungsseiten an jedem Tag",
     "description": "Sie können den Konverter ohne Konto ausprobieren. Melden Sie sich für ein größeres Tageskontingent an oder wählen Sie einen Monatsplan für die regelmäßige Nutzung.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
@@ -175,7 +181,7 @@
     "perMonth": "/ Monat",
     "planQuota": "{pages, plural, one {# Seite} other {# Seiten}} pro Monat",
     "current": "Aktueller Plan",
-    "cancelledPeriodActive": "Ihr Abonnement wurde gekündigt. Ihre Vorteile bleiben für den laufenden Abrechnungszeitraum verfügbar. Nach {date} (UTC) können Sie erneut abonnieren.",
+    "cancelledPeriodActive": "Das Abonnement ist gekündigt. Die Leistungen bleiben bis {date} (UTC) verfügbar.",
     "plans": {
       "standard": {
         "name": "Standard",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Unternehmen",
-        "description": "Für Teams und Unternehmen mit vielen Kontoauszügen."
+        "description": "Für Nutzer, die jeden Monat mehr Seiten konvertieren müssen."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
-    "unavailable": "Die Zahlung ist vorübergehend nicht möglich. Bitte versuchen Sie es später noch einmal.",
+    "unavailable": "Der Zahlungsdienst ist noch nicht konfiguriert.",
     "subscribe": "Mit PayPal abonnieren",
     "processing": "PayPal wird geöffnet",
-    "confirming": "Zahlung wird bestätigt",
-    "confirmationDelayed": "Die Zahlungsbestätigung dauert länger als erwartet. Bitte laden Sie die Seite später neu.",
-    "activationFailed": "Das Abonnement konnte nicht bestätigt werden. Bitte laden Sie die Seite neu oder kontaktieren Sie den Support.",
+    "confirming": "Aktivierung des Abonnements wird geprüft",
+    "confirmationDelayed": "Die Aktivierung des Abonnements wurde noch nicht bestätigt.",
+    "activationFailed": "Der Aktivierungsstatus des Abonnements konnte nicht abgefragt werden.",
     "activated": "Ihr Plan ist aktiv.",
     "cancelled": "Sie haben den Abonnementvorgang abgebrochen.",
-    "paymentFailed": "Die Zahlung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
+    "paymentFailed": "Das Ergebnis dieses Abonnementvorgangs konnte nicht bestätigt werden.",
     "currentPlan": "Sie verwenden diesen Plan.",
     "api": {
-      "loginUnavailable": "Die Anmeldung ist vorübergehend nicht möglich.",
-      "loginRequired": "Bitte melden Sie sich an.",
-      "emailMissing": "Ihr Konto hat keine E-Mail-Adresse, daher kann das Abonnement nicht aktiviert werden.",
+      "loginUnavailable": "Die Anmeldung ist noch nicht konfiguriert.",
+      "loginRequired": "Sie sind nicht angemeldet.",
+      "emailMissing": "Dieses Konto hat keine E-Mail-Adresse, daher kann das Abonnement nicht aktiviert werden.",
       "invalidRequest": "Die Abonnementanfrage ist ungültig.",
-      "invalidTier": "Wählen Sie ein gültiges Abonnement.",
+      "invalidTier": "Der ausgewählte Abonnementtarif ist ungültig.",
       "configurationMissing": "Die Zahlung wurde noch nicht konfiguriert.",
       "subscriptionBelongsToAnotherAccount": "Dieses Abonnement gehört zu einem anderen Konto.",
-      "verificationFailed": "Das PayPal-Abonnement konnte nicht verifiziert werden.",
-      "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
-      "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
+      "verificationFailed": "Die PayPal-Abonnementinformationen konnten nicht überprüft werden.",
+      "activationFailed": "Der Aktivierungsstatus des Abonnements konnte nicht abgefragt werden.",
+      "createFailed": "Das PayPal-Abonnement konnte nicht erstellt werden.",
       "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
-      "cancelledPeriodActive": "Ihr Abonnement wurde gekündigt, aber der laufende Abrechnungszeitraum ist noch nicht beendet. Danach können Sie erneut abonnieren.",
+      "cancelledPeriodActive": "Das Abonnement ist gekündigt, aber der aktuelle Abrechnungszeitraum ist noch nicht beendet.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
       "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
       "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen.",
       "cancelInvalidOrigin": "Die Kündigung muss von dieser Website angefordert werden.",
       "cancelSubscriptionNotFound": "Abonnement nicht gefunden.",
       "cancelNotActive": "Nur aktive Abonnements können gekündigt werden.",
-      "cancelFailed": "Die Kündigung konnte nicht bestätigt werden. Bitte erneut versuchen."
-    }
+      "cancelFailed": "Die Kündigung des Abonnements konnte nicht bestätigt werden.",
+      "planMismatch": "Der Abonnementtarif stimmt nicht mit dem ausgewählten Tarif überein.",
+      "subscriptionPaymentFailed": "Dieses Abonnement hat den Zahlungsstatus „fehlgeschlagen“.",
+      "subscriptionCancelled": "Dieses Abonnement wurde gekündigt.",
+      "subscriptionExpired": "Dieses Abonnement ist abgelaufen.",
+      "subscriptionSuspended": "Dieses Abonnement wurde ausgesetzt.",
+      "invalidBillingPeriod": "Der Abrechnungszeitraum des Abonnements ist ungültig.",
+      "subscriptionIdMismatch": "Die von PayPal zurückgegebene Abonnement-ID stimmt nicht mit dem aktuellen Abonnement überein.",
+      "existingActiveSubscription": "Dieses Konto hat bereits ein aktives Abonnement.",
+      "existingPendingSubscription": "Dieses Konto hat bereits ein Abonnement, das auf Bestätigung wartet.",
+      "existingSuspendedSubscription": "Dieses Konto hat bereits ein ausgesetztes Abonnement.",
+      "billingPeriodEnded": "Der aktuelle Abrechnungszeitraum dieses Abonnements ist beendet."
+    },
+    "invalidStatusResponse": "Der Abonnementdienst hat ungültige Statusinformationen zurückgegeben."
   },
   "HomeFaq": {
     "title": "Häufig gestellte Fragen",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
-      "answer": "Die erste Version konzentriert sich auf elektronische PDFs mit auswählbarem Text, die sich normal öffnen lassen. Gescannte Dateien, passwortgeschützte Dateien oder PDFs ohne erkennbare Tabellen werden möglicherweise nicht konvertiert."
+      "answer": "Es werden nur elektronische PDFs mit extrahierbarem Text unterstützt. Gescannte und passwortgeschützte PDFs werden nicht unterstützt."
     },
     "storage": {
       "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "Die Upload-Anfrage konnte nicht gelesen werden.",
-    "INVALID_FILE": "Wählen Sie eine gültige PDF-Datei.",
-    "PARSER_UNAVAILABLE": "Der Parsing-Dienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
-    "QUOTA_EXCEEDED": "Ihr Kontingent ist aufgebraucht.",
-    "QUOTA_UNAVAILABLE": "Das Kontingent ist vorübergehend nicht abrufbar. Bitte versuchen Sie es später erneut.",
-    "FILE_TOO_LARGE": "Dieses PDF ist größer als 4 MB.",
-    "INVALID_FILE_TYPE": "Es werden nur PDF-Dateien unterstützt.",
+    "INVALID_FILE": "Es wurde keine hochgeladene Datei empfangen.",
+    "PARSER_UNAVAILABLE": "Der Konvertierungsdienst konnte nicht erreicht werden.",
+    "QUOTA_EXCEEDED": "Diese PDF-Datei enthält mehr Seiten, als Sie noch konvertieren können.",
+    "QUOTA_UNAVAILABLE": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
+    "FILE_TOO_LARGE": "Diese PDF-Datei ist größer als 4 MB.",
+    "INVALID_FILE_TYPE": "Die hochgeladene Datei ist keine PDF-Datei.",
     "INVALID_PDF": "Diese Datei ist kein lesbares PDF.",
     "PASSWORD_PROTECTED_PDF": "Passwortgeschützte PDFs können nicht konvertiert werden.",
-    "TOO_MANY_PAGES": "Dieses PDF hat mehr als 50 Seiten.",
-    "UNSUPPORTED_SCANNED_PDF": "Diese Version akzeptiert elektronische PDFs mit auswählbarem Text, keine gescannten Bilder.",
+    "TOO_MANY_PAGES": "Diese PDF-Datei enthält mehr als 50 Seiten.",
+    "UNSUPPORTED_SCANNED_PDF": "Aus dieser PDF-Datei konnte kein Text extrahiert werden, daher kann sie nicht konvertiert werden.",
     "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
-    "NO_VERIFIABLE_TRANSACTIONS": "Keine Transaktion enthält genügend Angaben zur Prüfung.",
-    "PARSE_FAILED": "Das PDF konnte nicht analysiert werden. Bitte versuchen Sie es erneut mit einer anderen Datei.",
-    "UNKNOWN": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
-    "PARSER_RESPONSE_TOO_LARGE": "Die Parserantwort ist zu groß, um sie sicher zurückzugeben."
+    "NO_VERIFIABLE_TRANSACTIONS": "Es wurde keine Transaktionszeile gefunden, deren Datum, Beschreibung und Betrag überprüfbar sind.",
+    "PARSE_FAILED": "Der Server konnte die PDF-Analyse nicht abschließen.",
+    "UNKNOWN": "Die genaue Ursache des Fehlers konnte nicht ermittelt werden.",
+    "PARSER_RESPONSE_TOO_LARGE": "Das Konvertierungsergebnis überschreitet die Größenbegrenzung für Antworten.",
+    "MISSING_FILE": "Es wurde keine hochgeladene Datei empfangen.",
+    "EMPTY_FILE": "Die hochgeladene PDF-Datei ist leer.",
+    "PARSER_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
+    "PARSER_TIMEOUT": "Die Konvertierungsanfrage hat das Zeitlimit überschritten.",
+    "INVALID_PARSER_RESPONSE": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
+    "PARSER_RESPONSE_UNREADABLE": "Die Antwort des Konvertierungsdienstes konnte nicht vollständig gelesen werden.",
+    "UNAUTHORIZED": "Der Konvertierungsdienst hat die Authentifizierung abgelehnt.",
+    "QUOTA_EXHAUSTED": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
+    "QUOTA_RECORD_FAILED": "Die Nutzung für diese Konvertierung konnte nicht erfasst werden.",
+    "QUOTA_PERIOD_UNAVAILABLE": "Der Abrechnungszeitraum des Abonnements ist ungültig, daher konnte das Kontingent nicht ermittelt werden.",
+    "PARSER_AUTH_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert."
   },
   "Account": {
     "title": "Mein Konto",
     "description": "Kontingent und Abonnements ansehen.",
     "avatar": "Profilbild",
     "freePlan": "Kostenloser Tarif",
-    "planUnavailable": "Tarif nicht verfügbar",
+    "planUnavailable": "Die aktuellen Tarifinformationen konnten nicht gelesen werden",
     "currentPlan": "Aktueller Tarif: {plan}",
     "notAvailable": "Nicht verfügbar",
     "refresh": "Aktualisieren",
@@ -424,12 +453,12 @@
       "progressLabel": "Verbleibendes Seitenkontingent",
       "dayEnds": "Das Tageskontingent wird am {date} UTC zurückgesetzt.",
       "monthEnds": "Der aktuelle Abrechnungszeitraum endet am {date} UTC.",
-      "unavailable": "Das Kontingent ist vorübergehend nicht verfügbar. Bitte später aktualisieren."
+      "unavailable": "Das verbleibende Seitenkontingent konnte nicht gelesen werden."
     },
     "subscriptions": {
       "title": "Abonnements",
       "description": "Ein Eintrag pro Abonnement. Zeitangaben in UTC.",
-      "unavailable": "Abonnements sind vorübergehend nicht verfügbar.",
+      "unavailable": "Die Abonnementdaten konnten nicht gelesen werden.",
       "empty": "Noch keine Abonnements.",
       "plan": "Tarif",
       "amount": "Abonnementbetrag",
@@ -457,11 +486,11 @@
       "confirm": "Kündigung bestätigen",
       "submitting": "Wird gekündigt…",
       "syncing": "Automatische Verlängerungen sind gestoppt. Ihr Abonnementstatus wird aktualisiert.",
-      "delayed": "Automatische Verlängerungen sind gestoppt. Die Aktualisierung Ihres Abonnementstatus dauert länger. Prüfen Sie den Status später erneut.",
+      "delayed": "Die Verlängerungen wurden gestoppt. Die Aktualisierung des Abonnementstatus im Konto ist noch nicht bestätigt.",
       "check": "Status prüfen",
       "checking": "Wird geprüft…",
-      "failed": "Die Kündigung konnte nicht bestätigt werden. Bitte erneut versuchen.",
-      "checkFailed": "Der Status konnte nicht geprüft werden. Bitte erneut versuchen."
+      "failed": "Die Kündigung des Abonnements konnte nicht bestätigt werden.",
+      "checkFailed": "Der Abonnementstatus konnte nicht gelesen werden."
     }
   }
 }

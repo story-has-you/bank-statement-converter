@@ -34,19 +34,19 @@
     "account": "账号",
     "signInWithGoogle": "Google 登录",
     "signOut": "退出登录",
-    "unavailable": "登录暂时不可用",
-    "signInFailed": "登录未完成，请稍后再试。",
-    "signOutFailed": "退出登录未完成，请稍后再试。",
+    "unavailable": "登录服务尚未完成配置。",
+    "signInFailed": "未能发起 Google 登录。",
+    "signOutFailed": "未能完成退出登录。",
     "myAccount": "我的账户",
     "avatar": "用户头像"
   },
   "AuthError": {
     "metadata": {
       "title": "登录未完成 | 流水转换",
-      "description": "Google 登录未完成，请返回首页重试。"
+      "description": "未能完成 Google 登录。"
     },
     "title": "登录没有完成",
-    "description": "Google 登录已取消或未完成，请回到首页重试。",
+    "description": "未能完成 Google 登录。",
     "backHome": "回到首页"
   },
   "HomeIntro": {
@@ -61,25 +61,31 @@
     "dropzone": "选择 PDF，或拖放到这里",
     "dropzoneHint": "请上传能正常打开、文字可选中的 PDF。",
     "help": "选择后会显示文件名，可随时移除。",
-    "errorTitle": "这份文件没能转换",
-    "invalidPdf": "请上传 PDF 文件。",
+    "errorTitle": "本次操作未完成",
+    "invalidPdf": "上传的文件不是 PDF。",
     "multipleFiles": "一次只能处理一份 PDF。",
-    "conversionFailed": "转换未完成，请换一份文件再试。",
-    "parserUnavailable": "解析服务暂时未响应，请稍后再试。",
-    "quotaExceeded": "额度已用完，或这份 PDF 的页数超过了剩余额度。",
-    "quotaUnavailable": "额度服务暂时不可用，请稍后再试。",
+    "conversionFailed": "未能获取具体失败原因。",
+    "parserUnavailable": "无法连接转换服务。",
+    "quotaExceeded": "这份 PDF 的页数超过了剩余可转换页数。",
+    "quotaUnavailable": "未能确认当前可用的转换额度。",
     "removeFile": "移除文件",
     "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
     "serviceReady": "文件仅用于本次转换，不会保存。",
     "status": "可以上传",
     "converting": "正在处理",
     "start": "转换并查看结果",
-    "fileTooLarge": "PDF 不能超过 4 MB。",
+    "fileTooLarge": "这份 PDF 的大小超过了 4 MB。",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "未能收到转换请求的响应。",
+    "resultStorageFailed": "转换已完成，但浏览器未能保存本次结果。",
+    "browserStorageUnavailable": "浏览器存储不可用。",
+    "emptyFile": "上传的 PDF 文件为空。",
+    "quotaExhausted": "本期可转换页数已用完。",
+    "invalidResponse": "转换服务返回的数据格式异常。"
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "没有可下载的数据",
-      "description": "这份 PDF 没有识别出可用的表格行，请回到首页重新上传。"
+      "description": "这份 PDF 没有识别出可用的表格行。"
     },
     "missing": {
-      "title": "结果已失效",
-      "description": "结果仅在本次转换流程中临时保留，请回到首页重新上传 PDF。"
+      "title": "没有转换结果",
+      "description": "当前页面没有可读取的转换结果。"
     },
     "issues": {
       "repeatedHeader": "第 {row} 行重复了表头，已跳过。",
-      "summaryRow": "第 {row} 行看起来是合计行，已跳过。",
+      "summaryRow": "第 {row} 行被识别为合计行，已跳过。",
       "extraCells": "这一行的单元格数量多于表头，多出的内容已保留。",
       "unknown": "这项内容需要核对。",
-      "missingDate": "交易日期缺失。",
+      "missingDate": "未识别出交易日期。",
       "invalidDate": "交易日期无效。",
-      "missingDescription": "交易描述缺失。",
-      "missingAmount": "交易金额缺失。",
+      "missingDescription": "未识别出交易描述。",
+      "missingAmount": "未识别出交易金额。",
       "invalidAmount": "交易金额格式无效。",
       "amountColumnMismatch": "金额出现在非交易金额列，无法确认对应关系。"
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "识别不完整或未能对齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，可在下载前查看。"
   },
   "UsageTiers": {
-    "title": "先免费试一次",
+    "title": "每天都有免费转换页数",
     "description": "不登录也能试用。登录后每天可转换更多页，经常使用可选择按月套餐。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages, number} 页",
@@ -175,7 +181,7 @@
     "perMonth": "/ 月",
     "planQuota": "每月 {pages, number} 页",
     "current": "当前方案",
-    "cancelledPeriodActive": "订阅已取消，本期权益仍有效。请在 {date}（UTC）后再次订阅。",
+    "cancelledPeriodActive": "订阅已取消，本期权益有效至 {date}（UTC）。",
     "plans": {
       "standard": {
         "name": "标准",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "企业",
-        "description": "适合需要批量处理流水的团队和企业。"
+        "description": "适合每月需要转换较多页数的用户。"
       }
     }
   },
   "PayPal": {
     "signInRequired": "请先登录，再订阅套餐。",
-    "unavailable": "支付服务暂时不可用，请稍后再试。",
+    "unavailable": "支付服务尚未完成配置。",
     "subscribe": "使用 PayPal 订阅",
     "processing": "正在打开 PayPal",
-    "confirming": "正在确认付款",
-    "confirmationDelayed": "付款确认较慢，请稍后刷新页面查看。",
-    "activationFailed": "暂时无法确认订阅，请刷新页面重试，或联系客服。",
+    "confirming": "正在确认订阅是否已激活",
+    "confirmationDelayed": "尚未收到订阅激活确认。",
+    "activationFailed": "未能查询订阅激活状态。",
     "activated": "会员已激活。",
     "cancelled": "本次订阅操作已取消。",
-    "paymentFailed": "支付没有完成，请稍后再试。",
+    "paymentFailed": "未能确认本次订阅操作的结果。",
     "currentPlan": "你正在使用此套餐。",
     "api": {
-      "loginUnavailable": "登录服务暂时不可用。",
-      "loginRequired": "请先登录。",
-      "emailMissing": "当前账号缺少邮箱，暂时无法激活订阅。",
+      "loginUnavailable": "登录服务尚未完成配置。",
+      "loginRequired": "当前账号未登录。",
+      "emailMissing": "当前账号没有邮箱，无法激活订阅。",
       "invalidRequest": "订阅请求格式无效。",
-      "invalidTier": "请选择有效的会员套餐。",
+      "invalidTier": "所选会员套餐无效。",
       "configurationMissing": "支付服务尚未完成配置。",
       "subscriptionBelongsToAnotherAccount": "该订阅已绑定到其他账号。",
-      "verificationFailed": "PayPal 订阅尚未通过验证。",
-      "activationFailed": "订阅验证没有完成，请稍后再试。",
-      "createFailed": "无法开始 PayPal 订阅，请稍后再试。",
+      "verificationFailed": "未能验证 PayPal 订阅信息。",
+      "activationFailed": "未能查询订阅激活状态。",
+      "createFailed": "未能创建 PayPal 订阅。",
       "existingSubscription": "当前账号已有生效或待确认的订阅。",
-      "cancelledPeriodActive": "订阅已取消，本期尚未结束，请在当前订阅周期结束后再次订阅。",
+      "cancelledPeriodActive": "订阅已取消，本期尚未结束。",
       "webhookInvalidRequest": "Webhook 请求格式无效。",
       "webhookSignatureFailed": "Webhook 签名验证失败。",
       "webhookProcessingFailed": "Webhook 处理失败。",
       "cancelInvalidOrigin": "取消请求必须由当前网站发起。",
       "cancelSubscriptionNotFound": "未找到该订阅。",
       "cancelNotActive": "只能取消激活中的订阅。",
-      "cancelFailed": "暂时无法确认取消结果，请重试。"
-    }
+      "cancelFailed": "未能确认订阅取消结果。",
+      "planMismatch": "订阅套餐与所选套餐不一致。",
+      "subscriptionPaymentFailed": "该订阅的付款状态为失败。",
+      "subscriptionCancelled": "该订阅已取消。",
+      "subscriptionExpired": "该订阅已到期。",
+      "subscriptionSuspended": "该订阅已暂停。",
+      "invalidBillingPeriod": "订阅计费周期信息无效。",
+      "subscriptionIdMismatch": "PayPal 返回的订阅编号与当前订阅不一致。",
+      "existingActiveSubscription": "当前账号已有生效的订阅。",
+      "existingPendingSubscription": "当前账号已有待确认的订阅。",
+      "existingSuspendedSubscription": "当前账号已有暂停的订阅。",
+      "billingPeriodEnded": "该订阅的本期计费周期已结束。"
+    },
+    "invalidStatusResponse": "订阅服务返回的状态信息异常。"
   },
   "HomeFaq": {
     "title": "常见问题",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
-      "answer": "目前主要处理带文字内容、可以正常打开的电子版 PDF。扫描件、密码保护文件或没有可识别表格的 PDF 可能无法转换。"
+      "answer": "只支持带可提取文字的电子版 PDF，不支持扫描件或密码保护文件。"
     },
     "storage": {
       "question": "PDF、Excel 和流水明细会保存吗？",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "无法读取上传请求。",
-    "INVALID_FILE": "请选择有效的 PDF 文件。",
-    "PARSER_UNAVAILABLE": "解析服务暂时不可用，请稍后再试。",
-    "QUOTA_EXCEEDED": "当前转换额度已用完。",
-    "QUOTA_UNAVAILABLE": "额度服务暂时不可用，请稍后再试。",
-    "FILE_TOO_LARGE": "PDF 不能超过 4 MB。",
-    "INVALID_FILE_TYPE": "只支持 PDF 文件。",
+    "INVALID_FILE": "未收到上传文件。",
+    "PARSER_UNAVAILABLE": "无法连接转换服务。",
+    "QUOTA_EXCEEDED": "这份 PDF 的页数超过了剩余可转换页数。",
+    "QUOTA_UNAVAILABLE": "未能确认当前可用的转换额度。",
+    "FILE_TOO_LARGE": "这份 PDF 的大小超过了 4 MB。",
+    "INVALID_FILE_TYPE": "上传的文件不是 PDF。",
     "INVALID_PDF": "这不是可读取的有效 PDF。",
     "PASSWORD_PROTECTED_PDF": "不支持需要密码的 PDF。",
-    "TOO_MANY_PAGES": "PDF 不能超过 50 页。",
-    "UNSUPPORTED_SCANNED_PDF": "当前版本只支持带可选文字的电子版 PDF，不支持扫描图片。",
+    "TOO_MANY_PAGES": "这份 PDF 的页数超过了 50 页。",
+    "UNSUPPORTED_SCANNED_PDF": "未能从这份 PDF 中提取到文字，无法转换。",
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
-    "NO_VERIFIABLE_TRANSACTIONS": "没有可核对的交易行。",
-    "PARSE_FAILED": "PDF 解析失败，请换一份文件再试。",
-    "UNKNOWN": "出了点问题，请稍后再试。",
-    "PARSER_RESPONSE_TOO_LARGE": "解析结果过大，无法安全返回。"
+    "NO_VERIFIABLE_TRANSACTIONS": "没有识别出日期、描述和金额均可核对的交易行。",
+    "PARSE_FAILED": "服务端未能完成 PDF 解析。",
+    "UNKNOWN": "未能获取具体失败原因。",
+    "PARSER_RESPONSE_TOO_LARGE": "转换结果超过了可返回的数据大小上限。",
+    "MISSING_FILE": "未收到上传文件。",
+    "EMPTY_FILE": "上传的 PDF 文件为空。",
+    "PARSER_NOT_CONFIGURED": "转换服务尚未完成配置。",
+    "PARSER_TIMEOUT": "转换请求超时。",
+    "INVALID_PARSER_RESPONSE": "转换服务返回的数据格式异常。",
+    "PARSER_RESPONSE_UNREADABLE": "未能完整读取转换服务返回的数据。",
+    "UNAUTHORIZED": "转换服务拒绝了身份验证。",
+    "QUOTA_EXHAUSTED": "本期可转换页数已用完。",
+    "QUOTA_RECORD_FAILED": "未能记录本次转换用量。",
+    "QUOTA_PERIOD_UNAVAILABLE": "订阅计费周期信息无效，无法确认转换额度。",
+    "PARSER_AUTH_NOT_CONFIGURED": "转换服务尚未完成配置。"
   },
   "Account": {
     "title": "我的页面",
     "description": "查看剩余额度和订阅记录。",
     "avatar": "用户头像",
     "freePlan": "免费套餐",
-    "planUnavailable": "套餐暂不可用",
+    "planUnavailable": "未能读取当前套餐信息",
     "currentPlan": "当前套餐：{plan}",
     "notAvailable": "暂无",
     "refresh": "刷新",
@@ -424,12 +453,12 @@
       "progressLabel": "剩余可转换页数",
       "dayEnds": "每日额度将在 {date} UTC 重置。",
       "monthEnds": "本期计费周期将在 {date} UTC 结束。",
-      "unavailable": "额度暂不可用，请稍后刷新。"
+      "unavailable": "未能读取剩余可转换页数。"
     },
     "subscriptions": {
       "title": "订阅记录",
       "description": "每份订阅显示一条记录，所有时间均为 UTC。",
-      "unavailable": "订阅记录暂不可用，请稍后刷新。",
+      "unavailable": "未能读取订阅记录。",
       "empty": "暂无订阅记录。",
       "plan": "套餐",
       "amount": "订阅金额",
@@ -457,11 +486,11 @@
       "confirm": "确认取消",
       "submitting": "正在取消…",
       "syncing": "已停止续费，正在更新账户中的订阅状态。",
-      "delayed": "已停止续费，订阅状态更新较慢，请稍后重新检查。",
+      "delayed": "已停止续费，尚未确认账户中的订阅状态已更新。",
       "check": "检查状态",
       "checking": "正在检查…",
-      "failed": "暂时无法确认取消结果，请重试。",
-      "checkFailed": "无法检查状态，请重试。"
+      "failed": "未能确认订阅取消结果。",
+      "checkFailed": "未能读取订阅状态。"
     }
   }
 }

@@ -34,19 +34,19 @@
     "account": "Account",
     "signInWithGoogle": "Inloggen met Google",
     "signOut": "Uitloggen",
-    "unavailable": "Inloggen is tijdelijk niet beschikbaar",
-    "signInFailed": "Inloggen is niet gelukt. Probeer het later opnieuw.",
-    "signOutFailed": "Uitloggen is niet gelukt. Probeer het later opnieuw.",
+    "unavailable": "Het aanmelden is nog niet ingesteld.",
+    "signInFailed": "Het aanmelden met Google kon niet worden gestart.",
+    "signOutFailed": "Het afmelden kon niet worden voltooid.",
     "myAccount": "Mijn account",
     "avatar": "Profielfoto"
   },
   "AuthError": {
     "metadata": {
       "title": "Inloggen niet voltooid | Bank Statement Converter",
-      "description": "Inloggen met Google is niet voltooid. Ga terug naar de startpagina en probeer het opnieuw."
+      "description": "Het aanmelden met Google kon niet worden voltooid."
     },
     "title": "Inloggen niet voltooid",
-    "description": "Inloggen met Google is geannuleerd of niet voltooid. Ga terug naar de startpagina en probeer het opnieuw.",
+    "description": "Het aanmelden met Google kon niet worden voltooid.",
     "backHome": "Terug naar de startpagina"
   },
   "HomeIntro": {
@@ -61,13 +61,13 @@
     "dropzone": "Kies een PDF of sleep die hierheen",
     "dropzoneHint": "Upload een PDF die normaal opent en selecteerbare tekst bevat.",
     "help": "Na het kiezen verschijnt de bestandsnaam. Je kunt het bestand op elk moment verwijderen.",
-    "errorTitle": "Dit bestand kon niet worden geconverteerd",
-    "invalidPdf": "Upload een PDF-bestand.",
+    "errorTitle": "Deze handeling kon niet worden voltooid",
+    "invalidPdf": "Het geüploade bestand is geen PDF.",
     "multipleFiles": "Upload één PDF tegelijk.",
-    "conversionFailed": "De conversie is niet voltooid. Probeer een ander bestand.",
-    "parserUnavailable": "De uitleesservice reageerde niet. Probeer het later opnieuw.",
-    "quotaExceeded": "Je tegoed is op, of deze PDF bevat meer pagina's dan je resterende tegoed.",
-    "quotaUnavailable": "De tegoedservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "conversionFailed": "De specifieke oorzaak van de fout kon niet worden vastgesteld.",
+    "parserUnavailable": "De conversieservice kon niet worden bereikt.",
+    "quotaExceeded": "Deze PDF bevat meer pagina's dan je nog kunt converteren.",
+    "quotaUnavailable": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "removeFile": "Bestand verwijderen",
     "quota": "Gratis tegoed: {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag zonder inloggen, {authenticatedPages, plural, one {# pagina} other {# pagina's}} per dag na inloggen",
     "serviceReady": "We gebruiken de bestanden alleen voor deze conversie en slaan ze niet op.",
@@ -79,7 +79,13 @@
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
       "megabytes": "{size} MB"
-    }
+    },
+    "requestFailed": "Er kon geen antwoord op de conversieaanvraag worden ontvangen.",
+    "resultStorageFailed": "De conversie is voltooid, maar de browser kon het resultaat niet opslaan.",
+    "browserStorageUnavailable": "Browseropslag is niet beschikbaar.",
+    "emptyFile": "Het geüploade PDF-bestand is leeg.",
+    "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
+    "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd."
   },
   "ConversionResult": {
     "metadata": {
@@ -123,21 +129,21 @@
     },
     "empty": {
       "title": "Geen gegevens om te downloaden",
-      "description": "Deze PDF bevat geen bruikbare tabelregels. Ga terug naar de startpagina en upload een ander bestand."
+      "description": "Er zijn geen bruikbare tabelrijen in deze PDF gevonden."
     },
     "missing": {
-      "title": "Dit resultaat is verlopen",
-      "description": "Het resultaat is alleen tijdens deze conversie beschikbaar. Ga terug naar de startpagina en upload de PDF opnieuw."
+      "title": "Geen conversieresultaat",
+      "description": "Deze pagina bevat geen leesbaar conversieresultaat."
     },
     "issues": {
       "repeatedHeader": "Regel {row} herhaalt de tabelkop en is overgeslagen.",
-      "summaryRow": "Regel {row} lijkt een samenvatting en is overgeslagen.",
+      "summaryRow": "Rij {row} is als totaalrij herkend en overgeslagen.",
       "extraCells": "Deze regel heeft meer cellen dan de tabelkop. De extra cellen zijn behouden.",
       "unknown": "Dit onderdeel moet worden gecontroleerd.",
-      "missingDate": "De transactiedatum ontbreekt.",
+      "missingDate": "Er is geen transactiedatum herkend.",
       "invalidDate": "De transactiedatum is ongeldig.",
-      "missingDescription": "De transactieomschrijving ontbreekt.",
-      "missingAmount": "Het transactiebedrag ontbreekt.",
+      "missingDescription": "Er is geen transactieomschrijving herkend.",
+      "missingAmount": "Er is geen transactiebedrag herkend.",
       "invalidAmount": "Het transactiebedrag is ongeldig.",
       "amountColumnMismatch": "Er staat een bedrag buiten de bedragkolom dat niet betrouwbaar kan worden gekoppeld."
     },
@@ -163,7 +169,7 @@
     "accuracyDescription": "Regels met onvolledige gegevens of uitlijningsproblemen krijgen vóór het downloaden de markering DISCREPANCY of UNVERIFIABLE."
   },
   "UsageTiers": {
-    "title": "Begin met een gratis conversie",
+    "title": "Elke dag gratis pagina’s om te converteren",
     "description": "Je kunt de converter zonder account proberen. Log in voor meer pagina's per dag of kies een maandabonnement als je hem vaak gebruikt.",
     "anonymous": "Zonder inloggen",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
@@ -175,7 +181,7 @@
     "perMonth": "/ maand",
     "planQuota": "{pages, plural, one {# pagina} other {# pagina's}} per maand",
     "current": "Huidig abonnement",
-    "cancelledPeriodActive": "Je abonnement is opgezegd, maar je voordelen blijven beschikbaar in deze factuurperiode. Je kunt na {date} (UTC) opnieuw een abonnement afsluiten.",
+    "cancelledPeriodActive": "Het abonnement is opgezegd. De voordelen blijven beschikbaar tot {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standaard",
@@ -187,43 +193,55 @@
       },
       "enterprise": {
         "name": "Zakelijk",
-        "description": "Voor teams en bedrijven die veel bankafschriften verwerken."
+        "description": "Voor gebruikers die elke maand meer pagina’s moeten converteren."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Log in voordat je een abonnement afsluit.",
-    "unavailable": "Betalen is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "unavailable": "De betalingsservice is nog niet ingesteld.",
     "subscribe": "Abonneren met PayPal",
     "processing": "PayPal openen",
-    "confirming": "Betaling bevestigen",
-    "confirmationDelayed": "Het bevestigen van de betaling duurt langer dan verwacht. Vernieuw deze pagina later.",
-    "activationFailed": "We konden je abonnement niet bevestigen. Vernieuw de pagina of neem contact op met de ondersteuning.",
+    "confirming": "Controleren of het abonnement actief is",
+    "confirmationDelayed": "De activering van het abonnement is nog niet bevestigd.",
+    "activationFailed": "De activeringsstatus van het abonnement kon niet worden opgevraagd.",
     "activated": "Je abonnement is actief.",
     "cancelled": "Je hebt het afsluiten van het abonnement geannuleerd.",
-    "paymentFailed": "De betaling is niet voltooid. Probeer het later opnieuw.",
+    "paymentFailed": "De uitkomst van deze abonnementshandeling kon niet worden bevestigd.",
     "currentPlan": "Je gebruikt dit abonnement.",
     "api": {
-      "loginUnavailable": "Inloggen is tijdelijk niet beschikbaar.",
-      "loginRequired": "Log in op je account.",
-      "emailMissing": "Je account heeft geen e-mailadres, dus het abonnement kan niet worden geactiveerd.",
+      "loginUnavailable": "Het aanmelden is nog niet ingesteld.",
+      "loginRequired": "Je bent niet aangemeld.",
+      "emailMissing": "Dit account heeft geen e-mailadres, waardoor het abonnement niet kan worden geactiveerd.",
       "invalidRequest": "De abonnementsaanvraag is ongeldig.",
-      "invalidTier": "Kies een geldig abonnement.",
+      "invalidTier": "Het geselecteerde abonnementspakket is ongeldig.",
       "configurationMissing": "Betalen is nog niet ingesteld.",
       "subscriptionBelongsToAnotherAccount": "Dit abonnement hoort bij een ander account.",
-      "verificationFailed": "Het PayPal-abonnement kon niet worden gecontroleerd.",
-      "activationFailed": "De abonnementscontrole is niet voltooid. Probeer het later opnieuw.",
-      "createFailed": "Het PayPal-abonnement kon niet worden gestart. Probeer het later opnieuw.",
+      "verificationFailed": "De PayPal-abonnementsinformatie kon niet worden geverifieerd.",
+      "activationFailed": "De activeringsstatus van het abonnement kon niet worden opgevraagd.",
+      "createFailed": "Het PayPal-abonnement kon niet worden aangemaakt.",
       "existingSubscription": "Dit account heeft al een actief of nog niet afgerond abonnement.",
-      "cancelledPeriodActive": "Je abonnement is opgezegd, maar de huidige factuurperiode is nog niet afgelopen. Je kunt daarna opnieuw een abonnement afsluiten.",
+      "cancelledPeriodActive": "Het abonnement is opgezegd, maar de huidige factureringsperiode is nog niet afgelopen.",
       "webhookInvalidRequest": "Het webhookverzoek is ongeldig.",
       "webhookSignatureFailed": "De controle van de webhookhandtekening is mislukt.",
       "webhookProcessingFailed": "De verwerking van de webhook is mislukt.",
       "cancelInvalidOrigin": "Het opzeggingsverzoek moet van deze website komen.",
       "cancelSubscriptionNotFound": "Abonnement niet gevonden.",
       "cancelNotActive": "Alleen een actief abonnement kan worden opgezegd.",
-      "cancelFailed": "De opzegging kon niet worden bevestigd. Probeer het opnieuw."
-    }
+      "cancelFailed": "De opzegging van het abonnement kon niet worden bevestigd.",
+      "planMismatch": "Het abonnementspakket komt niet overeen met het geselecteerde pakket.",
+      "subscriptionPaymentFailed": "De betaalstatus van dit abonnement is mislukt.",
+      "subscriptionCancelled": "Dit abonnement is opgezegd.",
+      "subscriptionExpired": "Dit abonnement is verlopen.",
+      "subscriptionSuspended": "Dit abonnement is opgeschort.",
+      "invalidBillingPeriod": "De factureringsperiode van het abonnement is ongeldig.",
+      "subscriptionIdMismatch": "De abonnements-ID van PayPal komt niet overeen met het huidige abonnement.",
+      "existingActiveSubscription": "Dit account heeft al een actief abonnement.",
+      "existingPendingSubscription": "Dit account heeft al een abonnement dat op bevestiging wacht.",
+      "existingSuspendedSubscription": "Dit account heeft al een opgeschort abonnement.",
+      "billingPeriodEnded": "De huidige factureringsperiode van dit abonnement is afgelopen."
+    },
+    "invalidStatusResponse": "De abonnementsservice heeft ongeldige statusinformatie teruggestuurd."
   },
   "HomeFaq": {
     "title": "Veelgestelde vragen",
@@ -241,7 +259,7 @@
     },
     "scans": {
       "question": "Kan ik gescande of versleutelde PDF's converteren?",
-      "answer": "De eerste versie richt zich op elektronische PDF's met selecteerbare tekst die normaal openen. Gescande bestanden, bestanden met een wachtwoord of PDF's zonder herkenbare tabellen kunnen mogelijk niet worden geconverteerd."
+      "answer": "Alleen elektronische PDF’s met extraheerbare tekst worden ondersteund. Gescande en met een wachtwoord beveiligde PDF’s worden niet ondersteund."
     },
     "storage": {
       "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
@@ -386,28 +404,39 @@
   },
   "ApiErrors": {
     "INVALID_REQUEST": "Het uploadverzoek kon niet worden gelezen.",
-    "INVALID_FILE": "Kies een geldig PDF-bestand.",
-    "PARSER_UNAVAILABLE": "De uitleesservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
-    "QUOTA_EXCEEDED": "Je hebt het beschikbare tegoed voor deze conversie bereikt.",
-    "QUOTA_UNAVAILABLE": "De tegoedservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "INVALID_FILE": "Er is geen geüpload bestand ontvangen.",
+    "PARSER_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
+    "QUOTA_EXCEEDED": "Deze PDF bevat meer pagina's dan je nog kunt converteren.",
+    "QUOTA_UNAVAILABLE": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "FILE_TOO_LARGE": "Deze PDF is groter dan 4 MB.",
-    "INVALID_FILE_TYPE": "Alleen PDF-bestanden worden ondersteund.",
+    "INVALID_FILE_TYPE": "Het geüploade bestand is geen PDF.",
     "INVALID_PDF": "Dit bestand is geen leesbare PDF.",
     "PASSWORD_PROTECTED_PDF": "PDF's met een wachtwoord kunnen niet worden geconverteerd.",
-    "TOO_MANY_PAGES": "Deze PDF heeft meer dan 50 pagina's.",
-    "UNSUPPORTED_SCANNED_PDF": "Deze versie accepteert elektronische PDF's met selecteerbare tekst, geen gescande afbeeldingen.",
+    "TOO_MANY_PAGES": "Deze PDF bevat meer dan 50 pagina’s.",
+    "UNSUPPORTED_SCANNED_PDF": "Er kon geen tekst uit deze PDF worden gehaald, waardoor conversie niet mogelijk is.",
     "TABLE_NOT_FOUND": "Geen bruikbare bankafschrifttabel gevonden.",
-    "NO_VERIFIABLE_TRANSACTIONS": "Geen transactie bevat voldoende informatie voor controle.",
-    "PARSE_FAILED": "De PDF kon niet worden uitgelezen. Probeer een ander bestand.",
-    "UNKNOWN": "Er is iets misgegaan. Probeer het opnieuw.",
-    "PARSER_RESPONSE_TOO_LARGE": "Het antwoord van de uitleesservice is te groot om veilig terug te sturen."
+    "NO_VERIFIABLE_TRANSACTIONS": "Er is geen transactierij gevonden waarvan de datum, omschrijving en het bedrag allemaal controleerbaar zijn.",
+    "PARSE_FAILED": "De server kon de PDF-analyse niet voltooien.",
+    "UNKNOWN": "De specifieke oorzaak van de fout kon niet worden vastgesteld.",
+    "PARSER_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
+    "MISSING_FILE": "Er is geen geüpload bestand ontvangen.",
+    "EMPTY_FILE": "Het geüploade PDF-bestand is leeg.",
+    "PARSER_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
+    "PARSER_TIMEOUT": "De conversieaanvraag heeft de tijdslimiet overschreden.",
+    "INVALID_PARSER_RESPONSE": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
+    "PARSER_RESPONSE_UNREADABLE": "Het antwoord van de conversieservice kon niet volledig worden gelezen.",
+    "UNAUTHORIZED": "De conversieservice heeft de authenticatie geweigerd.",
+    "QUOTA_EXHAUSTED": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
+    "QUOTA_RECORD_FAILED": "Het gebruik voor deze conversie kon niet worden geregistreerd.",
+    "QUOTA_PERIOD_UNAVAILABLE": "De factureringsperiode van het abonnement is ongeldig, waardoor het tegoed niet kon worden bepaald.",
+    "PARSER_AUTH_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld."
   },
   "Account": {
     "title": "Mijn account",
     "description": "Je profiel en abonnementen.",
     "avatar": "Profielfoto",
     "freePlan": "Gratis abonnement",
-    "planUnavailable": "Abonnement niet beschikbaar",
+    "planUnavailable": "De informatie over het huidige pakket kon niet worden gelezen",
     "currentPlan": "Huidig abonnement: {plan}",
     "notAvailable": "Niet beschikbaar",
     "refresh": "Vernieuwen",
@@ -424,12 +453,12 @@
       "progressLabel": "Resterend paginategoed",
       "dayEnds": "Het dagtegoed wordt op {date} UTC vernieuwd.",
       "monthEnds": "De huidige factuurperiode eindigt op {date} UTC.",
-      "unavailable": "Het tegoed is tijdelijk niet beschikbaar. Vernieuw later."
+      "unavailable": "Het resterende paginategoed kon niet worden gelezen."
     },
     "subscriptions": {
       "title": "Abonnementsregistraties",
       "description": "Eén registratie per abonnement. Datums worden in UTC getoond.",
-      "unavailable": "Abonnementsregistraties zijn tijdelijk niet beschikbaar.",
+      "unavailable": "De abonnementsgegevens konden niet worden gelezen.",
       "empty": "Er zijn nog geen abonnementsregistraties.",
       "plan": "Abonnement",
       "amount": "Abonnementsbedrag",
@@ -457,11 +486,11 @@
       "confirm": "Opzegging bevestigen",
       "submitting": "Opzeggen…",
       "syncing": "Verlengingen zijn gestopt. Je abonnementsstatus wordt bijgewerkt.",
-      "delayed": "Verlengingen zijn gestopt, maar het bijwerken van de status duurt langer. Controleer later opnieuw.",
+      "delayed": "Verlengingen zijn gestopt. De update van de abonnementsstatus in het account is nog niet bevestigd.",
       "check": "Status controleren",
       "checking": "Controleren…",
-      "failed": "De opzegging kon niet worden bevestigd. Probeer het opnieuw.",
-      "checkFailed": "De status kon niet worden gecontroleerd. Probeer het opnieuw."
+      "failed": "De opzegging van het abonnement kon niet worden bevestigd.",
+      "checkFailed": "De abonnementsstatus kon niet worden gelezen."
     }
   }
 }
