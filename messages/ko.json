@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "계정",
@@ -64,12 +69,17 @@
     "quotaExceeded": "사용 한도를 모두 썼거나, PDF의 페이지 수가 남은 한도를 초과합니다.",
     "quotaUnavailable": "사용 한도를 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.",
     "removeFile": "파일 선택 해제",
-    "quota": "무료 사용 한도: 로그인 없이 하루 {anonymousPages}페이지, 로그인 후 하루 {authenticatedPages}페이지",
+    "quota": "무료 사용 한도: 로그인 없이 하루 {anonymousPages, number}페이지, 로그인 후 하루 {authenticatedPages, number}페이지",
     "serviceReady": "파일은 이 변환에만 사용되며 저장되지 않습니다.",
     "status": "업로드 준비 완료",
     "converting": "변환 중",
     "start": "변환 및 검토",
-    "fileTooLarge": "PDF는 4MB보다 클 수 없습니다."
+    "fileTooLarge": "PDF는 4MB보다 클 수 없습니다.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "표 {id}",
       "singleTitle": "은행 명세서 거래",
-      "pages": "페이지 {start} ~ {end}",
-      "rowCount": "{count} 행",
+      "pages": "페이지 {start, number} ~ {end, number}",
+      "rowCount": "{count, number} 행",
       "status": "상태",
       "warnings": "확인 사항",
       "sourcePage": "원본 페이지",
@@ -137,6 +147,10 @@
       "pageParseFailed": "{page}페이지를 읽을 수 없습니다.",
       "pageUnparsed": "{page}페이지에 거래 증거가 있지만 신뢰할 수 있는 표를 만들지 못했습니다.",
       "unknown": "{page}페이지를 확인하세요."
+    },
+    "excel": {
+      "defaultFilename": "은행 명세서",
+      "sheetName": "표 {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,24 +166,24 @@
     "title": "무료 변환으로 시작하세요",
     "description": "로그인 없이도 사용할 수 있습니다. 로그인하면 하루에 변환할 수 있는 페이지 수가 늘어납니다. 자주 사용한다면 월간 요금제를 선택하세요.",
     "anonymous": "로그인 없이",
-    "anonymousAmount": "{pages}페이지",
-    "anonymousDescription": "하루에 PDF를 최대 {pages}페이지까지 변환할 수 있습니다.",
+    "anonymousAmount": "{pages, number}페이지",
+    "anonymousDescription": "하루에 PDF를 최대 {pages, number}페이지까지 변환할 수 있습니다.",
     "signedIn": "로그인됨",
-    "signedInAmount": "{pages}페이지",
-    "signedInDescription": "하루에 PDF를 최대 {pages}페이지까지 변환할 수 있습니다.",
+    "signedInAmount": "{pages, number}페이지",
+    "signedInDescription": "하루에 PDF를 최대 {pages, number}페이지까지 변환할 수 있습니다.",
     "perDay": "/ 일",
     "perMonth": "/ 월",
-    "planQuota": "월별 {pages} 페이지",
+    "planQuota": "월별 {pages, number} 페이지",
     "current": "현재 요금제",
     "cancelledPeriodActive": "구독이 취소되었지만 현재 결제 기간의 혜택은 계속 이용할 수 있습니다. {date}(UTC) 이후에 다시 구독할 수 있습니다.",
     "plans": {
       "standard": {
         "name": "스탠다드",
-        "description": "은행 명세서를 안정적으로 처리하려는 개인 사용자에게 적합합니다."
+        "description": "개인 은행 명세서를 변환하는 분에게 적합합니다."
       },
       "professional": {
         "name": "프로페셔널",
-        "description": "여러 은행 명세서를 정기적으로 처리하는 전문가에게 적합합니다."
+        "description": "여러 은행 명세서를 정기적으로 처리하는 분에게 적합합니다."
       },
       "enterprise": {
         "name": "기업",
@@ -223,7 +237,7 @@
     },
     "quota": {
       "question": "하루에 몇 페이지까지 변환할 수 있나요?",
-      "answer": "로그인 없이 하루 {anonymousPages}페이지, 로그인 후 하루 {authenticatedPages}페이지까지 변환할 수 있습니다. 월간 요금제는 스탠다드 {standardPages}페이지, 프로페셔널 {professionalPages}페이지, 기업 {enterprisePages}페이지를 제공합니다."
+      "answer": "로그인 없이 하루 {anonymousPages, number}페이지, 로그인 후 하루 {authenticatedPages, number}페이지까지 변환할 수 있습니다. 월간 요금제는 스탠다드 {standardPages, number}페이지, 프로페셔널 {professionalPages, number}페이지, 기업 {enterprisePages, number}페이지를 제공합니다."
     },
     "scans": {
       "question": "스캔했거나 암호화된 PDF를 변환할 수 있나요?",
@@ -251,7 +265,7 @@
   },
   "Terms": {
     "metadata": {
-      "title": "Terms of service | Bank Statement Converter",
+      "title": "서비스 이용약관 | Bank Statement Converter",
       "description": "은행 명세서 변환기가 파일, 할당량, 구독 및 사용자 책임을 처리하는 방법을 알아보세요."
     },
     "title": "서비스 약관",
@@ -259,23 +273,23 @@
     "availability": "현재 페이지 상태에 따라 PDF를 Excel로 변환하고 PayPal 구독이 제공됩니다. 요금제 가격 및 가용성은 서비스 구성에 따라 변경될 수 있습니다.",
     "service": {
       "title": "서비스 범위",
-      "body": "이 서비스는 지원되는 은행 계좌 명세서 PDF의 거래 정보를 다운로드 및 검토를 위해 Excel 파일로 구성합니다. 지원되는 뱅크, 파일 형식, 처리 한도는 서비스 페이지에 설명되어 있습니다. 우리는 은행 계좌 연결, 은행 서비스 또는 금융, 세금 또는 법률 자문을 제공하지 않습니다."
+      "body": "이 서비스는 지원되는 은행 명세서 PDF의 거래 정보를 Excel로 정리해 다운로드하고 확인할 수 있게 합니다. 지원 은행, 파일 형식과 처리 한도는 서비스 페이지에 안내합니다. 은행 계좌 연결, 은행 업무나 금융·세무·법률 자문은 제공하지 않습니다."
     },
     "authorization": {
       "title": "파일 업로드 권한",
-      "body": "사용 및 처리 권한이 있는 명세서만 업로드하세요. 귀하의 개인 정보 또는 금융 정보의 업로드 및 처리가 해당 법률 및 타인에 대한 귀하의 의무를 준수하는지 확인하십시오. 허가 없이 얻은 파일을 업로드하지 마십시오."
+      "body": "사용하고 처리할 권한이 있는 명세서만 업로드하세요. 개인정보나 금융정보의 업로드와 처리는 적용 법률과 타인에 대한 의무를 준수해야 합니다. 허가 없이 얻은 파일은 업로드하지 마세요."
     },
     "accuracy": {
       "title": "변환 결과 검토",
-      "body": "명령문 레이아웃, 명확성 및 내용은 추출에 영향을 미칠 수 있습니다. 결과에는 누락, 중복 또는 잘못 식별된 필드가 포함될 수 있습니다. 부기, 파일링, 자료 제출 또는 다른 결정을 내리기 전에 Excel 파일을 원래 명세서와 비교하십시오."
+      "body": "명세서의 구성, 선명도와 내용은 추출 결과에 영향을 줄 수 있습니다. 필드가 누락되거나 중복되거나 잘못 인식될 수 있습니다. 장부 작성, 신고, 자료 제출이나 다른 결정을 내리기 전에 Excel을 원본 명세서와 비교하세요."
     },
     "quota": {
-      "title": "Free quota",
-      "body": "익명 사용자는 매일 {anonymousPages} PDF 페이지를 변환할 수 있으며, 로그인한 무료 사용자는 매일 {authenticatedPages} PDF 페이지를 변환할 수 있습니다. Standard에는 월별 {standardPages} 페이지가 포함되고, Professional에는 {professionalPages}가 포함되며, Enterprise에는 {enterprisePages}가 포함됩니다. 일일 할당량은 UTC로 재설정되며 계획 할당량은 현재 PayPal 청구 기간을 따릅니다. 실패한 변환에는 할당량이 사용되지 않습니다. 부분 결과는 PDF 페이지 수를 계산합니다."
+      "title": "변환 한도",
+      "body": "로그인 없이 하루 {anonymousPages, number}페이지, 무료 계정에 로그인하면 하루 {authenticatedPages, number}페이지까지 변환할 수 있습니다. 스탠다드는 월 {standardPages, number}페이지, 프로페셔널은 {professionalPages, number}페이지, 기업은 {enterprisePages, number}페이지를 제공합니다. 일일 한도는 UTC 기준으로 초기화되고 구독 한도는 현재 PayPal 결제 기간을 따릅니다. 변환에 실패하면 한도를 사용하지 않습니다. 부분 결과는 PDF 페이지 수로 계산합니다."
     },
     "subscription": {
       "title": "구독 및 결제",
-      "body": "Standard, Professional 및 Enterprise 요금제는 매월 갱신됩니다. 가격은 구매 전 표시됩니다. 결제는 PayPal을 통해 완료되며 구매를 확인한 후에만 요금이 청구됩니다. PayPal은 구독 상태, 갱신 및 결제 실패 정보를 이 서비스로 보낼 수 있습니다. PayPal 계정에서 구독 자동 갱신을 관리하세요."
+      "body": "스탠다드, 프로페셔널 및 기업 요금제는 매월 갱신됩니다. 가격은 구매 전 표시됩니다. 결제는 PayPal을 통해 완료되며 구매를 확인한 후에만 요금이 청구됩니다. PayPal은 구독 상태, 갱신 및 결제 실패 정보를 이 서비스로 보낼 수 있습니다. PayPal 계정에서 구독 자동 갱신을 관리하세요."
     },
     "files": {
       "title": "파일 및 다운로드",
@@ -287,15 +301,15 @@
     },
     "rights": {
       "title": "소유권",
-      "body": "귀하는 파일과 그 내용에 대해 귀하가 갖고 있는 권리를 보유합니다. 파일을 업로드하면 현재 변환을 위해 파일을 처리하는 데 필요한 권한만 부여됩니다. 소유권을 이전하지 않습니다. 웹사이트 소프트웨어, 인터페이스 및 브랜드에 대한 권리는 합법적인 소유자에게 있습니다."
+      "body": "파일과 그 내용에 대한 기존 권리는 그대로 유지됩니다. 업로드는 현재 변환에 필요한 처리만 허용하며 소유권을 이전하지 않습니다. 웹사이트 소프트웨어, 인터페이스, 브랜드의 권리는 정당한 권리자에게 있습니다."
     },
     "liability": {
       "title": "가용성 및 책임",
       "body": "우리는 서비스를 계속 사용할 수 있도록 노력하지만 모든 파일이 변환되거나 서비스가 항상 사용 가능하거나 결과가 완전히 정확할 것이라고 보장하지는 않습니다. 법률이 허용하는 한도 내에서 당사는 결과 검토 실패, 지원되지 않는 형식 또는 서비스 중단으로 인해 발생한 간접적인 손실에 대해 책임을 지지 않습니다. 이는 법률에 의해 배제될 수 없는 책임이나 사용자 권리를 배제하지 않습니다."
     },
     "privacy": {
-      "title": "개인 정보 보호 및 개인 정보",
-      "body": "파일 및 개인정보 처리 방법은 <link>개인정보취급방침</link>에 설명되어 있습니다."
+      "title": "개인정보 보호",
+      "body": "파일과 개인정보 처리 방법은 <link>개인정보 처리방침</link>에서 확인할 수 있습니다."
     },
     "changes": {
       "title": "본 약관의 변경",
@@ -331,13 +345,13 @@
       "body": "정보는 변환 및 다운로드 완료, 사이트 방문 측정 및 개선, 계정 및 할당량 관리, 구독 및 청구 제공, 요청 응답, 서비스 보안 유지 및 해당 법적 의무 이행을 위해서만 사용됩니다."
     },
     "retention": {
-      "title": "보유",
-      "documents": "PDF, 추출된 트랜잭션 및 생성된 Excel 파일은 현재 변환 및 다운로드에 필요한 처리 중에만 사용됩니다. 영구 데이터베이스, 객체 스토리지 또는 파일 기록에 기록되지 않으며 나중에 다운로드할 수 있도록 보관되지 않습니다.",
+      "title": "보관 기간",
+      "documents": "PDF, 추출한 거래 정보와 생성한 Excel은 현재 변환과 다운로드에 필요한 처리 중에만 사용합니다. 영구 데이터베이스, 객체 스토리지나 파일 기록에 저장하지 않으며 나중에 다운로드할 수 있도록 보관하지 않습니다.",
       "metadata": "계정, 할당량, 청구 메타데이터는 서비스를 제공하거나 관련 법적 의무를 이행하는 데 필요한 기간 동안만 보관됩니다. 실제 시스템 및 법적 요구 사항에 따라 더 이상 필요하지 않은 경우 삭제되거나 익명 처리됩니다. 구매 시 저장된 계정 이메일은 구독 기록의 일부입니다."
     },
     "providers": {
       "title": "공급자 및 국제 처리",
-      "body": "계정 로그인은 Google 및 Supabase를 사용합니다. 구독 결제 및 상태 동기화는 PayPal을 사용합니다. 사이트 방문 통계에는 Google Analytics와 Pageview를 사용하며, 이 서비스들은 해당 약관 및 개인정보 보호정책에 따라 방문 관련 기술 정보를 처리할 수 있습니다. PayPal은 결제 및 계정 정보를 처리할 수 있습니다. 처리가 국경을 넘어 이루어지는 경우, 당사는 해당 법률에서 요구하는 보호 조치를 적용하고 실제 조치를 설명합니다. 우리는 은행 명세서나 거래 정보를 판매하지 않습니다."
+      "body": "계정 로그인에는 Google과 Supabase, 구독 결제와 상태 동기화에는 PayPal을 사용합니다. 방문 통계에는 Google Analytics와 Pageview를 사용하며, 각 서비스의 약관과 개인정보 처리방침에 따라 방문 관련 기술 정보를 처리할 수 있습니다. PayPal도 해당 약관과 개인정보 처리방침에 따라 결제와 계정 정보를 처리할 수 있습니다. 국경을 넘어 정보를 처리하면 적용 법률이 요구하는 보호 조치를 취하고 실제 처리 방식을 설명합니다. 은행 명세서나 거래 정보는 판매하지 않습니다."
     },
     "storage": {
       "title": "브라우저 저장공간",
@@ -352,7 +366,7 @@
       "body": "귀하가 거주하는 지역에 적용되는 법률에 따라 귀하는 개인 정보에 접근, 수정, 삭제 또는 사본을 획득하거나 특정 처리에 반대하거나 제한할 권리가 있을 수 있습니다. 아래 이메일을 사용하여 문의해 주세요. 해당되는 경우 규제 기관에 불만을 제기할 수도 있습니다. 당사는 해당 법률에 따라 요청을 확인하고 처리합니다."
     },
     "terms": {
-      "title": "관련 용어",
+      "title": "관련 약관",
       "body": "서비스를 이용하려면 <link>서비스 약관</link>도 읽어야 합니다."
     },
     "changes": {
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "남은 사용량",
-      "remaining": "{total}페이지 중 {remaining}페이지 남음",
+      "remaining": "{total, number}페이지 중 {remaining, number}페이지 남음",
       "percentage": "{percent}% 남음",
       "progressLabel": "남은 페이지 사용량",
       "dayEnds": "일일 사용량은 {date} UTC에 초기화됩니다.",

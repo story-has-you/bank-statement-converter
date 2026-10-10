@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CircleAlertIcon, FileSpreadsheetIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 import { ConversionTable } from "@/components/conversion/conversion-table";
 import { ExcelDownload } from "@/components/conversion/excel-download";
@@ -16,6 +16,7 @@ import type { ConversionPayload, SummaryStatus } from "@/lib/conversion-types";
 
 export function ConversionResult() {
   const t = useTranslations("ConversionResult");
+  const format = useFormatter();
   const [payload, setPayload] = useState<ConversionPayload | null>(null);
 
   useEffect(() => {
@@ -102,19 +103,19 @@ export function ConversionResult() {
         </div>
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
           <dt className="text-xs text-muted-foreground">{t("summary.pages")}</dt>
-          <dd className="mt-1 text-lg font-semibold">{result.pageCount}</dd>
+          <dd className="mt-1 text-lg font-semibold">{format.number(result.pageCount)}</dd>
         </div>
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
           <dt className="text-xs text-muted-foreground">{t("summary.tables")}</dt>
-          <dd className="mt-1 text-lg font-semibold">{result.summary.tableCount}</dd>
+          <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.tableCount)}</dd>
         </div>
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
           <dt className="text-xs text-muted-foreground">{t("summary.rows")}</dt>
-          <dd className="mt-1 text-lg font-semibold">{result.summary.rowCount}</dd>
+          <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.rowCount)}</dd>
         </div>
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
           <dt className="text-xs text-muted-foreground">{t("summary.warnings")}</dt>
-          <dd className="mt-1 text-lg font-semibold">{result.summary.warningRowCount + result.summary.failedRowCount}</dd>
+          <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.warningRowCount + result.summary.failedRowCount)}</dd>
         </div>
       </dl>
 

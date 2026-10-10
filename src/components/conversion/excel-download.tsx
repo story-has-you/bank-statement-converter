@@ -13,9 +13,9 @@ type ExcelDownloadProps = {
   result: ParseResponse;
 };
 
-function getDownloadName(filename: string): string {
+function getDownloadName(filename: string, defaultFilename: string): string {
   const baseName = filename.replace(/\.pdf$/i, "").replace(/[\\/:*?"<>|]+/g, "_").trim();
-  return `${baseName || "bank-statement"}.xlsx`;
+  return `${baseName || defaultFilename}.xlsx`;
 }
 
 export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
@@ -79,10 +79,10 @@ export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
         { wch: 14 },
         { wch: 14 },
       ]);
-      XLSX.utils.book_append_sheet(workbook, worksheet, `table-${tableIndex + 1}`);
+      XLSX.utils.book_append_sheet(workbook, worksheet, t("excel.sheetName", { index: tableIndex + 1 }));
     });
 
-    XLSX.writeFile(workbook, getDownloadName(filename));
+    XLSX.writeFile(workbook, getDownloadName(filename, t("excel.defaultFilename")));
   }
 
   return (

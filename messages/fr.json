@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "Compte",
@@ -64,12 +69,17 @@
     "quotaExceeded": "Votre quota est épuisé, ou le nombre de pages de ce PDF dépasse votre quota restant.",
     "quotaUnavailable": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
     "removeFile": "Retirer le fichier",
-    "quota": "Quota gratuit : {anonymousPages} page par jour sans connexion, {authenticatedPages} pages par jour après connexion",
+    "quota": "Quota gratuit : {anonymousPages, plural, one {# page} other {# pages}} par jour sans connexion, {authenticatedPages, plural, one {# page} other {# pages}} par jour après connexion",
     "serviceReady": "Les fichiers sont utilisés uniquement pour cette conversion et ne sont pas enregistrés.",
     "status": "Prêt à importer",
     "converting": "Conversion en cours",
     "start": "Convertir et vérifier",
-    "fileTooLarge": "Ce PDF fait plus de 4 Mo."
+    "fileTooLarge": "Ce PDF fait plus de 4 Mo.",
+    "fileSize": {
+      "bytes": "{size} o",
+      "kilobytes": "{size} Ko",
+      "megabytes": "{size} Mo"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "Tableau {id}",
       "singleTitle": "Opérations sur relevé bancaire",
-      "pages": "Pages {start} à {end}",
-      "rowCount": "{count} lignes",
+      "pages": "Pages {start, number} à {end, number}",
+      "rowCount": "{count, plural, one {# ligne} other {# lignes}}",
       "status": "Statut",
       "warnings": "Points à vérifier",
       "sourcePage": "Page source",
@@ -137,6 +147,10 @@
       "pageParseFailed": "La page {page} n’a pas pu être lue.",
       "pageUnparsed": "La page {page} contient des indices de transaction, mais aucune table fiable n’a pu être reconstruite.",
       "unknown": "La page {page} doit être vérifiée."
+    },
+    "excel": {
+      "defaultFilename": "relevé bancaire",
+      "sheetName": "Tableau {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,28 +166,28 @@
     "title": "Commencez par une conversion gratuite",
     "description": "Vous pouvez essayer le convertisseur sans compte. Connectez-vous pour un quota quotidien plus important ou choisissez un forfait mensuel pour une utilisation régulière.",
     "anonymous": "Sans vous connecter",
-    "anonymousAmount": "{pages} page",
-    "anonymousDescription": "Convertissez jusqu'à {pages} page de PDF par jour.",
+    "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
+    "anonymousDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
     "signedIn": "Connecté",
-    "signedInAmount": "{pages} pages",
-    "signedInDescription": "Convertissez jusqu'à {pages} pages de PDF par jour.",
+    "signedInAmount": "{pages, plural, one {# page} other {# pages}}",
+    "signedInDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
     "perDay": "/ jour",
     "perMonth": "/ mois",
-    "planQuota": "{pages} pages par mois",
+    "planQuota": "{pages, plural, one {# page} other {# pages}} par mois",
     "current": "Forfait actuel",
     "cancelledPeriodActive": "Votre abonnement est résilié, mais vos avantages restent disponibles pour la période de facturation en cours. Vous pourrez vous réabonner après le {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Pour les particuliers qui souhaitent traiter leurs relevés bancaires de façon fiable."
+        "description": "Pour convertir vos propres relevés bancaires."
       },
       "professional": {
         "name": "Professionnel",
-        "description": "Pour les professionnels qui traitent régulièrement plusieurs relevés bancaires."
+        "description": "Pour traiter régulièrement plusieurs relevés bancaires."
       },
       "enterprise": {
         "name": "Entreprise",
-        "description": "Pour les équipes et les entreprises qui traitent de nombreux relevés bancaires."
+        "description": "Pour les équipes qui traitent de nombreux relevés bancaires."
       }
     }
   },
@@ -212,18 +226,18 @@
     }
   },
   "HomeFaq": {
-    "title": "Questions fréquemment posées",
+    "title": "Questions fréquentes",
     "banks": {
       "question": "Quels relevés bancaires sont pris en charge ?",
       "answer": "Nous testons le convertisseur avec plusieurs formats de relevés bancaires électroniques. Les banques et les variantes de mise en page seront indiquées à mesure de leur vérification."
     },
     "accuracy": {
-      "question": "Pourquoi devrais-je examiner le résultat de la conversion ?",
+      "question": "Pourquoi vérifier le résultat de la conversion ?",
       "answer": "Le convertisseur conserve les en-têtes et le texte des cellules lorsque c’est possible. Une mise en page complexe, un texte flou ou des colonnes décalées peuvent marquer des lignes « DISCREPANCY » ou « UNVERIFIABLE ». Comparez le fichier Excel au PDF original avant de l’utiliser."
     },
     "quota": {
       "question": "Combien de pages puis-je convertir chaque jour ?",
-      "answer": "Sans connexion, vous pouvez convertir {anonymousPages} page par jour. Après connexion, le quota est de {authenticatedPages} pages par jour. Les forfaits mensuels comprennent {standardPages} pages pour Standard, {professionalPages} pages pour Professionnel et {enterprisePages} pages pour Entreprise."
+      "answer": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} par jour. Après connexion, le quota est de {authenticatedPages, plural, one {# page} other {# pages}} par jour. Les forfaits mensuels comprennent {standardPages, plural, one {# page} other {# pages}} pour Standard, {professionalPages, plural, one {# page} other {# pages}} pour Professionnel et {enterprisePages, plural, one {# page} other {# pages}} pour Entreprise."
     },
     "scans": {
       "question": "Puis-je convertir des PDF numérisés ou cryptés ?",
@@ -252,26 +266,26 @@
   "Terms": {
     "metadata": {
       "title": "Conditions d'utilisation | Convertisseur de relevé bancaire",
-      "description": "Learn how Bank Statement Converter handles files, quotas, subscriptions, and user responsibilities."
+      "description": "Découvrez comment Bank Statement Converter gère les fichiers, les quotas, les abonnements et les responsabilités des utilisateurs."
     },
     "title": "Conditions d'utilisation",
     "intro": "Ce service est exploité par ReAvid Ltd et fourni via <site>{domain}</site>. Lisez ces conditions et la politique de confidentialité avant d'utiliser les services de conversion et d'abonnement.",
     "availability": "La conversion PDF vers Excel et les abonnements PayPal sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
     "service": {
       "title": "Portée du service",
-      "body": "Le service organise les informations sur les transactions à partir des PDF de relevés bancaires pris en charge dans des fichiers Excel pour téléchargement et révision. Les banques prises en charge, les types de fichiers et les limites de traitement sont décrits sur la page du service. Nous ne fournissons pas de connexions de comptes bancaires, de services bancaires ou de conseils financiers, fiscaux ou juridiques."
+      "body": "Le service organise les transactions des relevés bancaires PDF pris en charge dans des fichiers Excel à télécharger et à vérifier. Les banques, les types de fichiers et les limites de traitement sont indiqués sur la page du service. Nous ne proposons ni connexion aux comptes bancaires, ni services bancaires, ni conseils financiers, fiscaux ou juridiques."
     },
     "authorization": {
-      "title": "Autorisation de télécharger des fichiers",
-      "body": "Téléchargez uniquement les déclarations que vous êtes autorisé à utiliser et à traiter. Assurez-vous que votre téléchargement et votre traitement d'informations personnelles ou financières sont conformes à la loi applicable et à vos obligations envers les autres personnes. Ne téléchargez pas de fichiers obtenus sans autorisation."
+      "title": "Autorisation d’importer des fichiers",
+      "body": "Importez uniquement les relevés que vous êtes autorisé à utiliser et à traiter. L’importation et le traitement de données personnelles ou financières doivent respecter la loi applicable et vos obligations envers les autres personnes. N’importez pas de fichiers obtenus sans autorisation."
     },
     "accuracy": {
       "title": "Examiner les résultats de conversion",
-      "body": "La disposition, la clarté et le contenu des déclarations peuvent affecter l’extraction. Les résultats peuvent contenir des champs manquants, dupliqués ou mal identifiés. Comparez le fichier Excel avec le relevé original avant de tenir la comptabilité, de classer, de soumettre des documents ou de prendre une autre décision."
+      "body": "La mise en page, la lisibilité et le contenu du relevé peuvent affecter l’extraction. Le résultat peut contenir des champs manquants, dupliqués ou mal identifiés. Comparez Excel au relevé original avant de l’utiliser pour la comptabilité, des déclarations, l’envoi de documents ou toute autre décision."
     },
     "quota": {
-      "title": "Quota gratuit",
-      "body": "Les utilisateurs anonymes peuvent convertir une page PDF {anonymousPages} par jour, et les utilisateurs gratuits connectés peuvent convertir des pages PDF {authenticatedPages} par jour. Standard inclut les pages {standardPages} par mois, Professional inclut {professionalPages} et Enterprise inclut {enterprisePages}. Le quota quotidien est réinitialisé en UTC et le quota du plan suit la période de facturation PayPal actuelle. Les conversions ayant échoué n'utilisent pas de quota ; les résultats partiels comptent les pages PDF."
+      "title": "Quotas de conversion",
+      "body": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} PDF par jour ; avec un compte gratuit, {authenticatedPages, plural, one {# page} other {# pages}}. Standard inclut {standardPages, plural, one {# page} other {# pages}} par mois, Professionnel {professionalPages, number} et Entreprise {enterprisePages, number}. Le quota quotidien est réinitialisé selon UTC et celui de l’abonnement suit la période de facturation PayPal en cours. Les conversions échouées ne consomment pas de quota ; les résultats partiels sont comptés selon le nombre de pages du PDF."
     },
     "subscription": {
       "title": "Abonnements et paiement",
@@ -286,16 +300,16 @@
       "body": "N'utilisez pas le service pour falsifier ou déformer des documents financiers, enfreindre les droits d'autrui, commettre une fraude, distribuer des fichiers malveillants ou contourner les quotas, les mesures de sécurité ou les limites d'accès. Nous pouvons restreindre l'accès au service pour des activités illégales ou clairement abusives."
     },
     "rights": {
-      "title": "Possession",
-      "body": "Vous conservez les droits dont vous disposez sur les fichiers et leur contenu. Le téléchargement d'un fichier nous donne uniquement l'autorisation nécessaire pour le traiter pour la conversion en cours ; cela ne transfère pas la propriété. Les droits sur le logiciel, l'interface et la marque du site Web restent la propriété de leurs propriétaires légitimes."
+      "title": "Propriété",
+      "body": "Vous conservez vos droits sur les fichiers et leur contenu. L’importation nous autorise uniquement à les traiter pour la conversion en cours et ne transfère pas leur propriété. Les droits sur le logiciel, l’interface et la marque du site restent à leurs propriétaires légitimes."
     },
     "liability": {
       "title": "Disponibilité et responsabilité",
-      "body": "We work to keep the service available but do not guarantee that every file will convert, that the service will always be available, or that results will be completely accurate. To the extent allowed by law, we are not liable for indirect losses caused by failure to review results, unsupported formats, or service interruptions. This does not exclude liability or user rights that cannot be excluded by law."
+      "body": "Nous nous efforçons de maintenir le service disponible, sans garantir la conversion de chaque fichier, une disponibilité permanente ou des résultats entièrement exacts. Dans les limites permises par la loi, nous ne sommes pas responsables des pertes indirectes dues à des résultats non vérifiés, des formats non pris en charge ou des interruptions du service. Cela ne limite pas les responsabilités ou les droits que la loi interdit d’exclure."
     },
     "privacy": {
       "title": "Confidentialité et informations personnelles",
-      "body": "La manière dont les fichiers et les informations personnelles sont traitées est décrite dans la politique de confidentialité de <link></link>."
+      "body": "Le traitement des fichiers et des informations personnelles est décrit dans la <link>politique de confidentialité</link>."
     },
     "changes": {
       "title": "Modifications de ces termes",
@@ -316,7 +330,7 @@
     "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement PayPal actuellement disponibles.",
     "documents": {
       "title": "Relevés bancaires et contenu de conversion",
-      "body": "Les PDF téléchargés peuvent contenir des noms, des numéros de compte, des dates de transaction, des montants, des soldes et des descriptions de transactions. Lorsque la conversion est disponible, nous traitons le PDF, les transactions extraites et le fichier Excel généré uniquement pour terminer la conversion et le téléchargement demandés. Nous n'utilisons pas ce contenu à des fins publicitaires ou à des fins non liées."
+      "body": "Les PDF importés peuvent contenir des noms, des numéros de compte, des dates, des montants, des soldes et des descriptions de transactions. Lorsque la conversion est disponible, nous traitons le PDF, les transactions extraites et le fichier Excel uniquement pour la conversion et le téléchargement demandés. Nous n’utilisons pas ce contenu pour la publicité ou des finalités sans rapport."
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
@@ -331,9 +345,9 @@
       "body": "Les informations sont utilisées uniquement pour effectuer des conversions et des téléchargements, mesurer les visites et améliorer le site, gérer les comptes et les quotas, fournir les abonnements et la facturation, répondre aux demandes, maintenir la sécurité du service et respecter les obligations légales applicables."
     },
     "retention": {
-      "title": "Rétention",
+      "title": "Durée de conservation",
       "documents": "Les PDF, les transactions extraites et les fichiers Excel générés sont utilisés uniquement pendant le traitement requis pour la conversion et le téléchargement en cours. Ils ne sont pas écrits dans une base de données persistante, un stockage d'objets ou un historique de fichiers, et ne sont pas conservés pour un téléchargement ultérieur.",
-      "metadata": "Les métadonnées de compte, de quota et de facturation ne sont conservées que le temps nécessaire pour fournir le service ou répondre aux obligations légales applicables. Ils sont supprimés ou anonymisés lorsqu’ils ne sont plus nécessaires, conformément au système actuel et aux exigences légales. L'e-mail du compte stocké lors de l'achat fait partie du dossier d'abonnement."
+      "metadata": "Les métadonnées de compte, de quota et de facturation sont conservées uniquement le temps nécessaire au service ou aux obligations légales applicables. Lorsqu’elles ne sont plus nécessaires, elles sont supprimées ou anonymisées selon le système et les exigences légales. L’e-mail du compte enregistré lors de l’achat fait partie du dossier d’abonnement."
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
@@ -352,8 +366,8 @@
       "body": "Selon les lois applicables là où vous vivez, vous pouvez avoir le droit d'accéder, de corriger, de supprimer ou d'obtenir une copie des informations personnelles, ou de vous opposer ou de restreindre certains traitements. Contactez-nous en utilisant l'e-mail ci-dessous. Le cas échéant, vous pouvez également porter plainte auprès d’un organisme de réglementation. Nous vérifierons et traiterons les demandes conformément à la loi applicable."
     },
     "terms": {
-      "title": "Termes associés",
-      "body": "L'utilisation du service nécessite également la lecture des conditions de service <link></link>."
+      "title": "Conditions associées",
+      "body": "Pour utiliser le service, lisez aussi les <link>conditions de service</link>."
     },
     "changes": {
       "title": "Mises à jour des politiques",
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "Quota restant",
-      "remaining": "{remaining} pages restantes sur {total}",
+      "remaining": "{remaining, plural, one {# page restante} other {# pages restantes}} sur {total, number}",
       "percentage": "{percent}% restant",
       "progressLabel": "Quota de pages restant",
       "dayEnds": "Le quota quotidien est réinitialisé le {date} UTC.",

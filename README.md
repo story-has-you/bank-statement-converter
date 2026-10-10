@@ -4,23 +4,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-先启动 Python 解析服务，再启动 Next.js 服务。两个服务分别使用独立终端：
+首次开发先安装 Python 解析服务依赖：
 
 ```bash
 cd services/parser
 python3.14 -m venv .venv
 .venv/bin/python -m pip install -e .
-export PARSER_SHARED_SECRET=local-development-secret
-.venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+cd ../..
 ```
 
 ```bash
 pnpm install
-export PARSER_SHARED_SECRET=local-development-secret
 pnpm dev --port 3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+在仓库根目录 `.env.local` 配置 `PARSER_SHARED_SECRET`，本地 `PARSER_SERVICE_URL` 使用 `http://127.0.0.1:8000`。`pnpm dev` 会自动加载根目录开发环境配置，启动 8000 端口的 Python 解析服务，确认服务和认证就绪后启动 3000 端口的 Next.js。已有可用的解析服务会直接复用；退出开发命令会关闭本次启动的两个服务。配置远程解析地址时只启动 Next.js。
+
+打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
 
 浏览器只请求 Next.js 的同源 `/api/convert`，Next.js 服务端再调用 Python 的 `http://127.0.0.1:8000/parse`，因此不需要为 Python 服务开放浏览器 CORS。默认解析地址可以通过仅服务端使用的 `PARSER_SERVICE_URL` 覆盖。
 

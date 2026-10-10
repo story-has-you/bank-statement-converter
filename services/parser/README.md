@@ -2,13 +2,14 @@
 
 本目录是独立于仓库根目录 Next.js 应用的 Python 服务。当前只处理存在真实文字层的电子版 PDF，返回保留原始表头和单元格文本的 JSON，不使用 OCR、不生成 Excel，也不持久化 PDF 或解析结果。
 
-使用 Python 3.14 或更新版本，在本目录创建虚拟环境、安装依赖并启动：
+使用 Python 3.14 或更新版本，在本目录创建虚拟环境、安装依赖：
 
 ```bash
 python3.14 -m venv .venv
 .venv/bin/python -m pip install -e .
-.venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
+
+日常开发在仓库根目录运行 `pnpm dev`，会自动启动本服务并加载根目录 `.env.local` 中的 `PARSER_SHARED_SECRET`。如需单独启动，在本目录设置与 Next.js 相同的共享密钥后运行 `.venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000`。
 
 ## HTTP 接口
 
@@ -22,11 +23,12 @@ python3.14 -m venv .venv
 
 ```bash
 curl -s \
+  -H "Authorization: Bearer $PARSER_SHARED_SECRET" \
   -F "file=@/path/to/statement.pdf" \
   http://127.0.0.1:8000/parse
 ```
 
-生产环境的 `/parse` 要求 `Authorization: Bearer <PARSER_SHARED_SECRET>`。本地启动时可以设置：
+所有环境的 `/parse` 都要求 `Authorization: Bearer <PARSER_SHARED_SECRET>`。单独本地启动时可以设置：
 
 ```bash
 export PARSER_SHARED_SECRET=local-development-secret

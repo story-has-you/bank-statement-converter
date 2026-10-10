@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "Account",
@@ -46,7 +51,7 @@
   },
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
-    "title": "Bank Statement Converter for PDF to Excel",
+    "title": "Convert your bank statement PDF to Excel",
     "description": "Upload a text-based bank statement PDF, review the extracted rows, then download Excel. We use your file only for this conversion."
   },
   "PdfUpload": {
@@ -64,12 +69,17 @@
     "quotaExceeded": "Your quota is used up, or this PDF has more pages than your remaining quota allows.",
     "quotaUnavailable": "The quota service is temporarily unavailable. Please try again later.",
     "removeFile": "Remove file",
-    "quota": "Free quota: {anonymousPages} page per day without signing in, {authenticatedPages} pages per day when signed in",
+    "quota": "Free quota: {anonymousPages, plural, one {# page} other {# pages}} per day without signing in, {authenticatedPages, plural, one {# page} other {# pages}} per day when signed in",
     "serviceReady": "Files are used for this conversion only and are not saved.",
     "status": "Ready to upload",
     "converting": "Converting",
     "start": "Convert and review",
-    "fileTooLarge": "This PDF is larger than 4 MB."
+    "fileTooLarge": "This PDF is larger than 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "Table {id}",
       "singleTitle": "Bank statement transactions",
-      "pages": "Pages {start} to {end}",
-      "rowCount": "{count} rows",
+      "pages": "Pages {start, number} to {end, number}",
+      "rowCount": "{count, plural, one {# row} other {# rows}}",
       "status": "Status",
       "warnings": "Review notes",
       "sourcePage": "Source page",
@@ -137,6 +147,10 @@
       "pageParseFailed": "Page {page} could not be read.",
       "pageUnparsed": "Page {page} contains transaction evidence but no reliable table was reconstructed.",
       "unknown": "Page {page} needs review."
+    },
+    "excel": {
+      "defaultFilename": "bank-statement",
+      "sheetName": "Table {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,28 +166,28 @@
     "title": "Start with a free conversion",
     "description": "You can try the converter without an account. Sign in for a larger daily quota, or choose a monthly plan for regular use.",
     "anonymous": "Without signing in",
-    "anonymousAmount": "{pages} page",
-    "anonymousDescription": "Convert up to {pages} PDF page per day.",
+    "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
+    "anonymousDescription": "Convert up to {pages, plural, one {# PDF page} other {# PDF pages}} per day.",
     "signedIn": "Signed in",
-    "signedInAmount": "{pages} pages",
-    "signedInDescription": "Convert up to {pages} PDF pages per day.",
+    "signedInAmount": "{pages, plural, one {# page} other {# pages}}",
+    "signedInDescription": "Convert up to {pages, plural, one {# PDF page} other {# PDF pages}} per day.",
     "perDay": "/ day",
     "perMonth": "/ month",
-    "planQuota": "{pages} pages per month",
+    "planQuota": "{pages, plural, one {# page} other {# pages}} per month",
     "current": "Current plan",
     "cancelledPeriodActive": "Your subscription is cancelled, but your benefits remain available for this billing period. You can subscribe again after {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "For individuals who need a dependable way to process bank statements."
+        "description": "For people converting their own bank statements."
       },
       "professional": {
         "name": "Professional",
-        "description": "For professionals who process multiple bank statements regularly."
+        "description": "For people who regularly process multiple statements."
       },
       "enterprise": {
         "name": "Enterprise",
-        "description": "For teams and organizations that process large volumes of bank statements."
+        "description": "For teams processing large numbers of statements."
       }
     }
   },
@@ -223,7 +237,7 @@
     },
     "quota": {
       "question": "How many pages can I convert each day?",
-      "answer": "Anonymous users can convert {anonymousPages} page per day, and signed-in users can convert {authenticatedPages} pages per day. Monthly plans include {standardPages} pages for Standard, {professionalPages} pages for Professional, and {enterprisePages} pages for Enterprise."
+      "answer": "Anonymous users can convert {anonymousPages, plural, one {# page} other {# pages}} per day, and signed-in users can convert {authenticatedPages, plural, one {# page} other {# pages}} per day. Monthly plans include {standardPages, plural, one {# page} other {# pages}} for Standard, {professionalPages, plural, one {# page} other {# pages}} for Professional, and {enterprisePages, plural, one {# page} other {# pages}} for Enterprise."
     },
     "scans": {
       "question": "Can I convert scanned or encrypted PDFs?",
@@ -270,8 +284,8 @@
       "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision."
     },
     "quota": {
-      "title": "Free quota",
-      "body": "Anonymous users can convert {anonymousPages} PDF page per day, and signed-in free users can convert {authenticatedPages} PDF pages per day. Standard includes {standardPages} pages per month, Professional includes {professionalPages}, and Enterprise includes {enterprisePages}. Daily quota resets in UTC and plan quota follows the current PayPal billing period. Failed conversions do not use quota; partial results count PDF pages."
+      "title": "Conversion quotas",
+      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current PayPal billing period. Failed conversions do not use quota; partial results count PDF pages."
     },
     "subscription": {
       "title": "Subscriptions and payment",
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "Remaining quota",
-      "remaining": "{remaining} / {total} pages remaining",
+      "remaining": "{remaining, number} of {total, plural, one {# page} other {# pages}} remaining",
       "percentage": "{percent}% remaining",
       "progressLabel": "Remaining page quota",
       "dayEnds": "Daily quota resets at {date} UTC.",

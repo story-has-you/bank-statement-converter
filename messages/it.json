@@ -1,0 +1,467 @@
+{
+  "Metadata": {
+    "title": "Bank Statement Converter | Da PDF a Excel",
+    "description": "Converti un estratto conto PDF con testo selezionabile in un file Excel da controllare. I file vengono usati solo per questa conversione.",
+    "keywords": "Bank Statement Converter, estratto conto PDF in Excel, convertitore PDF Excel, estrazione movimenti bancari",
+    "brand": "Bank Statement Converter",
+    "alternateName": "Convertitore di estratti conto da PDF a Excel"
+  },
+  "HomeHeader": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navigazione principale",
+    "convert": "Converti",
+    "features": "Funzioni",
+    "plans": "Piani",
+    "faq": "Domande frequenti"
+  },
+  "LanguageSwitcher": {
+    "label": "Scegli la lingua",
+    "current": "Attuale",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
+  },
+  "AuthControl": {
+    "account": "Account",
+    "signInWithGoogle": "Accedi con Google",
+    "signOut": "Esci",
+    "unavailable": "L'accesso è temporaneamente non disponibile",
+    "signInFailed": "Accesso non completato. Riprova più tardi.",
+    "signOutFailed": "Uscita non completata. Riprova più tardi.",
+    "myAccount": "Il mio account",
+    "avatar": "Immagine del profilo"
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Accesso non completato | Bank Statement Converter",
+      "description": "L'accesso con Google non è stato completato. Torna alla pagina iniziale e riprova."
+    },
+    "title": "Accesso non completato",
+    "description": "L'accesso con Google è stato annullato o non è stato completato. Torna alla pagina iniziale e riprova.",
+    "backHome": "Torna alla pagina iniziale"
+  },
+  "HomeIntro": {
+    "eyebrow": "Conversione di estratti conto PDF",
+    "title": "Converti il tuo estratto conto da PDF a Excel",
+    "description": "Carica un estratto conto PDF con testo selezionabile, controlla le righe estratte e scarica Excel. Usiamo il file solo per questa conversione."
+  },
+  "PdfUpload": {
+    "title": "Carica un estratto conto",
+    "description": "Elabora un PDF alla volta",
+    "fileLabel": "Estratto conto PDF",
+    "dropzone": "Scegli un PDF o trascinalo qui",
+    "dropzoneHint": "Carica un PDF che si apra normalmente e contenga testo selezionabile.",
+    "help": "Il nome del file appare dopo la selezione. Puoi rimuoverlo in qualsiasi momento.",
+    "errorTitle": "Impossibile convertire questo file",
+    "invalidPdf": "Carica un file PDF.",
+    "multipleFiles": "Carica un PDF alla volta.",
+    "conversionFailed": "La conversione non è stata completata. Prova un altro file.",
+    "parserUnavailable": "Il servizio di analisi non ha risposto. Riprova più tardi.",
+    "quotaExceeded": "Hai esaurito le pagine disponibili oppure questo PDF supera il limite residuo.",
+    "quotaUnavailable": "Il servizio dei limiti di utilizzo è temporaneamente non disponibile. Riprova più tardi.",
+    "removeFile": "Rimuovi file",
+    "quota": "Pagine gratuite: {anonymousPages, number} al giorno senza accesso, {authenticatedPages, number} al giorno dopo l'accesso",
+    "serviceReady": "Usiamo i file solo per questa conversione e non li salviamo.",
+    "status": "Pronto per il caricamento",
+    "converting": "Conversione in corso",
+    "start": "Converti e controlla",
+    "fileTooLarge": "Questo PDF supera 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Risultato della conversione | Bank Statement Converter",
+      "description": "Controlla le righe estratte e le segnalazioni di rischio, poi scarica Excel."
+    },
+    "eyebrow": "Risultato della conversione",
+    "description": "Confronta le righe segnalate con il PDF originale prima di scaricare.",
+    "download": "Scarica Excel",
+    "backHome": "Converti un altro file",
+    "summary": {
+      "status": "Stato",
+      "pages": "Pagine PDF",
+      "tables": "Tabelle",
+      "rows": "Righe di dati",
+      "warnings": "Righe da controllare"
+    },
+    "summaryStatus": {
+      "success": "Completo",
+      "partial": "Risultato parziale",
+      "failed": "Incompleto"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Tabella {id}",
+      "singleTitle": "Movimenti dell'estratto conto",
+      "pages": "Pagine da {start, number} a {end, number}",
+      "rowCount": "{count, plural, one {# riga} other {# righe}}",
+      "status": "Stato",
+      "warnings": "Note per il controllo",
+      "sourcePage": "Pagina originale",
+      "sourceRow": "Riga nella pagina"
+    },
+    "partial": {
+      "title": "Alcuni dati vanno controllati",
+      "description": "Puoi comunque visualizzare e scaricare i dati estratti. Confronta le righe DISCREPANCY o UNVERIFIABLE con il PDF originale."
+    },
+    "empty": {
+      "title": "Nessun dato da scaricare",
+      "description": "Non sono state trovate righe utilizzabili in questo PDF. Torna alla pagina iniziale e carica un altro file."
+    },
+    "missing": {
+      "title": "Questo risultato è scaduto",
+      "description": "Il risultato è disponibile solo durante questa conversione. Torna alla pagina iniziale e carica di nuovo il PDF."
+    },
+    "issues": {
+      "repeatedHeader": "La riga {row} ripete l'intestazione della tabella ed è stata ignorata.",
+      "summaryRow": "La riga {row} sembra un riepilogo ed è stata ignorata.",
+      "extraCells": "Questa riga ha più celle dell'intestazione. Le celle aggiuntive sono state conservate.",
+      "unknown": "Questo elemento va controllato.",
+      "missingDate": "Manca la data del movimento.",
+      "invalidDate": "La data del movimento non è valida.",
+      "missingDescription": "Manca la descrizione del movimento.",
+      "missingAmount": "Manca l'importo del movimento.",
+      "invalidAmount": "L'importo del movimento non è valido.",
+      "amountColumnMismatch": "Un importo si trova fuori dalla colonna degli importi e non può essere associato con certezza."
+    },
+    "pageRisks": {
+      "title": "Problemi per pagina",
+      "item": "Pagina {page}: {code}",
+      "pageParseFailed": "Impossibile leggere la pagina {page}.",
+      "pageUnparsed": "La pagina {page} contiene tracce di movimenti, ma non è stato possibile ricostruire una tabella affidabile.",
+      "unknown": "La pagina {page} va controllata."
+    },
+    "excel": {
+      "defaultFilename": "estratto conto",
+      "sheetName": "Tabella {index, number}"
+    }
+  },
+  "HomeFeatures": {
+    "title": "Cosa ottieni dalla conversione",
+    "securityTitle": "Nessun archivio di file",
+    "securityDescription": "Usiamo il PDF, il file Excel generato e i movimenti solo per questa conversione. Non li aggiungiamo a un archivio.",
+    "banksTitle": "Mantiene la struttura originale",
+    "banksDescription": "Il convertitore legge intestazioni e testo delle celle dal PDF e li mostra in tabelle da confrontare con l'originale.",
+    "accuracyTitle": "Segnala le righe da controllare",
+    "accuracyDescription": "Le righe con dati incompleti o problemi di allineamento sono contrassegnate con DISCREPANCY o UNVERIFIABLE prima del download."
+  },
+  "UsageTiers": {
+    "title": "Inizia con una conversione gratuita",
+    "description": "Puoi provare il convertitore senza un account. Accedi per convertire più pagine al giorno o scegli un piano mensile se lo usi spesso.",
+    "anonymous": "Senza accesso",
+    "anonymousAmount": "{pages, plural, one {# pagina} other {# pagine}}",
+    "anonymousDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
+    "signedIn": "Con accesso",
+    "signedInAmount": "{pages, plural, one {# pagina} other {# pagine}}",
+    "signedInDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
+    "perDay": "/ giorno",
+    "perMonth": "/ mese",
+    "planQuota": "{pages, plural, one {# pagina} other {# pagine}} al mese",
+    "current": "Piano attuale",
+    "cancelledPeriodActive": "L'abbonamento è stato annullato, ma i vantaggi restano disponibili per questo periodo di fatturazione. Potrai abbonarti di nuovo dopo {date} (UTC).",
+    "plans": {
+      "standard": {
+        "name": "Standard",
+        "description": "Per chi converte estratti conto per uso personale."
+      },
+      "professional": {
+        "name": "Professionale",
+        "description": "Per chi elabora regolarmente più estratti conto."
+      },
+      "enterprise": {
+        "name": "Aziendale",
+        "description": "Per gruppi e aziende che elaborano molti estratti conto."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Accedi prima di avviare un abbonamento.",
+    "unavailable": "Il pagamento è temporaneamente non disponibile. Riprova più tardi.",
+    "subscribe": "Abbonati con PayPal",
+    "processing": "Apertura di PayPal",
+    "confirming": "Conferma del pagamento",
+    "confirmationDelayed": "La conferma del pagamento sta richiedendo più tempo del previsto. Aggiorna la pagina più tardi.",
+    "activationFailed": "Impossibile confermare l'abbonamento. Aggiorna la pagina o contatta l'assistenza.",
+    "activated": "Il tuo piano è attivo.",
+    "cancelled": "Hai annullato la procedura di abbonamento.",
+    "paymentFailed": "Il pagamento non è stato completato. Riprova più tardi.",
+    "currentPlan": "Stai usando questo piano.",
+    "api": {
+      "loginUnavailable": "L'accesso è temporaneamente non disponibile.",
+      "loginRequired": "Accedi al tuo account.",
+      "emailMissing": "Il tuo account non ha un indirizzo email, quindi non è possibile attivare l'abbonamento.",
+      "invalidRequest": "La richiesta di abbonamento non è valida.",
+      "invalidTier": "Scegli un piano di abbonamento valido.",
+      "configurationMissing": "Il pagamento non è ancora configurato.",
+      "subscriptionBelongsToAnotherAccount": "Questo abbonamento appartiene a un altro account.",
+      "verificationFailed": "Impossibile verificare l'abbonamento PayPal.",
+      "activationFailed": "La verifica dell'abbonamento non è stata completata. Riprova più tardi.",
+      "createFailed": "Impossibile avviare l'abbonamento PayPal. Riprova più tardi.",
+      "existingSubscription": "Esiste già un abbonamento attivo o in attesa per questo account.",
+      "cancelledPeriodActive": "L'abbonamento è stato annullato, ma il periodo di fatturazione attuale non è terminato. Potrai abbonarti di nuovo alla sua scadenza.",
+      "webhookInvalidRequest": "La richiesta webhook non è valida.",
+      "webhookSignatureFailed": "Verifica della firma del webhook non riuscita.",
+      "webhookProcessingFailed": "Elaborazione del webhook non riuscita.",
+      "cancelInvalidOrigin": "La richiesta di annullamento deve provenire da questo sito.",
+      "cancelSubscriptionNotFound": "Abbonamento non trovato.",
+      "cancelNotActive": "È possibile annullare solo un abbonamento attivo.",
+      "cancelFailed": "Impossibile confermare l'annullamento. Riprova."
+    }
+  },
+  "HomeFaq": {
+    "title": "Domande frequenti",
+    "banks": {
+      "question": "Quali estratti conto sono supportati?",
+      "answer": "Stiamo verificando il convertitore su diversi formati di estratti conto elettronici. Pubblicheremo banche e formati man mano che li avremo verificati."
+    },
+    "accuracy": {
+      "question": "Perché devo controllare il risultato?",
+      "answer": "Il convertitore mantiene intestazioni e testo delle celle quando possibile. Formati complessi, testo poco chiaro o colonne disallineate possono produrre righe DISCREPANCY o UNVERIFIABLE. Confronta il file Excel con il PDF originale prima di usarlo."
+    },
+    "quota": {
+      "question": "Quante pagine posso convertire al giorno?",
+      "answer": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} al giorno; dopo l'accesso, {authenticatedPages, plural, one {# pagina} other {# pagine}}. I piani mensili includono {standardPages, plural, one {# pagina} other {# pagine}} per Standard, {professionalPages, number} per Professionale e {enterprisePages, number} per Aziendale."
+    },
+    "scans": {
+      "question": "Posso convertire PDF scansionati o crittografati?",
+      "answer": "La prima versione si concentra sui PDF elettronici con testo selezionabile che si aprono normalmente. I file scansionati, protetti da password o senza tabelle riconoscibili potrebbero non essere convertiti."
+    },
+    "storage": {
+      "question": "Salvate il mio PDF, il file Excel o i movimenti?",
+      "answer": "No. Li usiamo solo per la conversione e il download attuali, senza aggiungerli a un archivio. Una volta usciti da questa procedura, non è possibile scaricare di nuovo il risultato."
+    },
+    "failure": {
+      "question": "Cosa succede se la conversione non riesce?",
+      "answer": "La pagina mostra un errore e non propone un file Excel non valido. Le conversioni non riuscite non consumano pagine disponibili. I risultati parziali vengono conteggiati in base al numero di pagine del PDF."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navigazione a piè di pagina",
+    "plans": "Piani",
+    "faq": "Domande frequenti",
+    "terms": "Termini di servizio",
+    "privacy": "Informativa sulla privacy"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Ultimo aggiornamento: 2 ottobre 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Termini di servizio | Bank Statement Converter",
+      "description": "Scopri come Bank Statement Converter gestisce file, limiti di utilizzo, abbonamenti e responsabilità degli utenti."
+    },
+    "title": "Termini di servizio",
+    "intro": "ReAvid Ltd gestisce questo servizio su <site>{domain}</site>. Leggi questi termini e l'informativa sulla privacy prima di usare la conversione e gli abbonamenti.",
+    "availability": "La conversione da PDF a Excel e gli abbonamenti PayPal sono offerti secondo lo stato attuale della pagina. Prezzi e disponibilità dei piani possono cambiare in base alla configurazione del servizio.",
+    "service": {
+      "title": "Ambito del servizio",
+      "body": "Il servizio organizza i movimenti degli estratti conto PDF supportati in file Excel da scaricare e controllare. Banche, tipi di file e limiti di elaborazione supportati sono descritti nella pagina del servizio. Non offriamo collegamenti a conti bancari, servizi bancari né consulenza finanziaria, fiscale o legale."
+    },
+    "authorization": {
+      "title": "Autorizzazione al caricamento",
+      "body": "Carica solo estratti conto che sei autorizzato a usare ed elaborare. Il caricamento e il trattamento di informazioni personali o finanziarie devono rispettare la legge applicabile e i tuoi obblighi verso altre persone. Non caricare file ottenuti senza autorizzazione."
+    },
+    "accuracy": {
+      "title": "Controllo dei risultati",
+      "body": "La struttura, la leggibilità e il contenuto dell'estratto conto possono influire sull'estrazione. I risultati possono contenere campi mancanti, duplicati o identificati in modo errato. Confronta Excel con l'estratto conto originale prima di usarlo per contabilità, dichiarazioni, invio di documenti o altre decisioni."
+    },
+    "quota": {
+      "title": "Limiti di conversione",
+      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione PayPal attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF."
+    },
+    "subscription": {
+      "title": "Abbonamenti e pagamenti",
+      "body": "I piani Standard, Professionale e Aziendale si rinnovano mensilmente. I prezzi sono mostrati prima dell'acquisto. Il pagamento avviene tramite PayPal e viene addebitato solo dopo la tua conferma. PayPal può inviare al servizio informazioni sullo stato dell'abbonamento, sui rinnovi e sui pagamenti non riusciti. Gestisci il rinnovo automatico nel tuo account PayPal."
+    },
+    "files": {
+      "title": "File e download",
+      "body": "I PDF caricati, i movimenti estratti e i file Excel generati servono solo alla conversione e al download attuali. Non vengono conservati in un archivio permanente. Conserva l'estratto conto originale e il risultato scaricato; il servizio non consente di scaricare di nuovo i risultati dopo la fine della procedura."
+    },
+    "prohibited": {
+      "title": "Usi vietati",
+      "body": "Non usare il servizio per falsificare o alterare documenti finanziari, violare diritti altrui, commettere frodi, distribuire file dannosi o aggirare limiti di utilizzo, misure di sicurezza e restrizioni di accesso. Possiamo limitare l'accesso per attività illegali o chiaramente abusive."
+    },
+    "rights": {
+      "title": "Titolarità",
+      "body": "Mantieni i diritti che possiedi sui file e sui loro contenuti. Il caricamento ci concede solo il permesso necessario alla conversione attuale, senza trasferire la titolarità. I diritti su software, interfaccia e marchio del sito restano ai legittimi titolari."
+    },
+    "liability": {
+      "title": "Disponibilità e responsabilità",
+      "body": "Ci impegniamo a mantenere il servizio disponibile, ma non garantiamo la conversione di ogni file, la disponibilità continua o la completa correttezza dei risultati. Nei limiti consentiti dalla legge, non rispondiamo di perdite indirette causate dal mancato controllo dei risultati, da formati non supportati o da interruzioni del servizio. Non sono escluse responsabilità o diritti che la legge non consente di escludere."
+    },
+    "privacy": {
+      "title": "Privacy e dati personali",
+      "body": "Il trattamento dei file e dei dati personali è descritto nella <link>informativa sulla privacy</link>."
+    },
+    "changes": {
+      "title": "Modifiche ai termini",
+      "body": "Possiamo aggiornare questi termini quando cambiano il servizio o i requisiti legali. La data di aggiornamento appare su questa pagina. Le modifiche importanti che riguardano un abbonamento esistente saranno comunicate come richiesto dalla legge e dalle regole indicate all'acquisto."
+    },
+    "contact": {
+      "title": "Contatti",
+      "body": "Per domande su questi termini, contatta ReAvid Ltd all'indirizzo <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Informativa sulla privacy | Bank Statement Converter",
+      "description": "Scopri come Bank Statement Converter gestisce estratti conto, account, limiti di utilizzo e dati di fatturazione."
+    },
+    "title": "Informativa sulla privacy",
+    "intro": "ReAvid Ltd gestisce <site>{domain}</site>. Questa informativa spiega come trattiamo le informazioni quando usi la conversione e gli abbonamenti PayPal.",
+    "availability": "L'informativa si applica alle funzioni attualmente disponibili di conversione da PDF a Excel, accesso all'account e abbonamenti PayPal.",
+    "documents": {
+      "title": "Estratti conto e contenuti della conversione",
+      "body": "I PDF caricati possono contenere nomi, numeri di conto, date, importi, saldi e descrizioni dei movimenti. Quando la conversione è disponibile, trattiamo il PDF, i movimenti estratti e il file Excel generato solo per completare la conversione e il download richiesti. Non usiamo questi contenuti per pubblicità o scopi estranei."
+    },
+    "accountData": {
+      "title": "Dati di account, utilizzo e fatturazione",
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo PayPal, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. PayPal gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel."
+    },
+    "technicalData": {
+      "title": "Informazioni tecniche necessarie",
+      "body": "Per gestire il sito, garantirne la sicurezza e indagare sui guasti, possiamo trattare orari di accesso, indirizzi IP, informazioni su browser o dispositivo e registri degli errori privi del contenuto degli estratti conto. Per misurare le visite, Google Analytics e Pageview possono ricevere orari di accesso, indirizzi IP e informazioni su browser o dispositivo. Non inviamo estratti conto, movimenti estratti o contenuti Excel a questi servizi di analisi."
+    },
+    "purposes": {
+      "title": "Finalità del trattamento",
+      "body": "Usiamo le informazioni solo per completare conversioni e download, misurare e migliorare le visite, gestire account e limiti di utilizzo, fornire abbonamenti e fatturazione, rispondere alle richieste, mantenere la sicurezza e adempiere agli obblighi di legge applicabili."
+    },
+    "retention": {
+      "title": "Conservazione",
+      "documents": "PDF, movimenti estratti e file Excel generati sono usati solo durante l'elaborazione necessaria alla conversione e al download attuali. Non vengono scritti in un database persistente, in un archivio di oggetti o nella cronologia dei file, né conservati per download successivi.",
+      "metadata": "I metadati di account, utilizzo e fatturazione sono conservati solo per il tempo necessario al servizio o agli obblighi legali applicabili. Quando non servono più, vengono eliminati o anonimizzati secondo il sistema e i requisiti di legge. L'email dell'account registrata all'acquisto fa parte del registro dell'abbonamento."
+    },
+    "providers": {
+      "title": "Fornitori e trattamento internazionale",
+      "body": "L'accesso usa Google e Supabase. Pagamenti e sincronizzazione degli abbonamenti usano PayPal. Le visite sono misurate tramite Google Analytics e Pageview, che possono trattare dati tecnici secondo i rispettivi termini e informative sulla privacy. PayPal può trattare dati di pagamento e account secondo i propri termini e informativa. In caso di trattamento transfrontaliero, applicheremo le garanzie richieste dalla legge e descriveremo le modalità effettive. Non vendiamo estratti conto o informazioni sui movimenti."
+    },
+    "storage": {
+      "title": "Archiviazione nel browser",
+      "body": "Il sito usa l'archiviazione locale del browser per ricordare le preferenze di aspetto e i cookie di sessione necessari a mantenere l'accesso. I servizi di analisi possono usare cookie o identificatori simili per misurare le visite. Puoi gestirli nelle impostazioni del browser."
+    },
+    "security": {
+      "title": "Sicurezza delle informazioni",
+      "body": "Adottiamo misure ragionevoli in base alla sensibilità delle informazioni, ma la trasmissione via internet e i sistemi software non garantiscono sicurezza assoluta. Proteggi gli estratti conto originali, i file Excel scaricati e i dati di accesso."
+    },
+    "rights": {
+      "title": "I tuoi diritti sulla privacy",
+      "body": "In base alle leggi del luogo in cui vivi, potresti avere il diritto di accedere ai dati personali, correggerli, eliminarli o ottenerne una copia, oppure di opporti a determinati trattamenti o limitarli. Contattaci all'email qui sotto. Ove previsto, puoi anche presentare reclamo a un'autorità di controllo. Verificheremo e gestiremo le richieste secondo la legge applicabile."
+    },
+    "terms": {
+      "title": "Termini correlati",
+      "body": "Per usare il servizio è necessario leggere anche i <link>termini di servizio</link>."
+    },
+    "changes": {
+      "title": "Aggiornamenti dell'informativa",
+      "body": "Possiamo aggiornare questa informativa quando cambiano le funzioni del servizio, i metodi di trattamento o i requisiti legali. La data di aggiornamento appare su questa pagina. Comunicheremo le modifiche rilevanti come richiesto dalla legge applicabile."
+    },
+    "contact": {
+      "title": "Contatti",
+      "body": "Per domande sul trattamento delle informazioni o per esercitare i diritti sulla privacy applicabili, contatta ReAvid Ltd all'indirizzo <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Cambia tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Sistema"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "Impossibile leggere la richiesta di caricamento.",
+    "INVALID_FILE": "Scegli un file PDF valido.",
+    "PARSER_UNAVAILABLE": "Il servizio di analisi è temporaneamente non disponibile. Riprova più tardi.",
+    "QUOTA_EXCEEDED": "Hai raggiunto il limite disponibile per questa conversione.",
+    "QUOTA_UNAVAILABLE": "Il servizio dei limiti di utilizzo è temporaneamente non disponibile. Riprova più tardi.",
+    "FILE_TOO_LARGE": "Questo PDF supera 4 MB.",
+    "INVALID_FILE_TYPE": "Sono supportati solo i file PDF.",
+    "INVALID_PDF": "Questo file non è un PDF leggibile.",
+    "PASSWORD_PROTECTED_PDF": "I PDF protetti da password non possono essere convertiti.",
+    "TOO_MANY_PAGES": "Questo PDF ha più di 50 pagine.",
+    "UNSUPPORTED_SCANNED_PDF": "Questa versione accetta PDF elettronici con testo selezionabile, non immagini scansionate.",
+    "TABLE_NOT_FOUND": "Nessuna tabella utilizzabile trovata nell'estratto conto.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Nessun movimento contiene elementi sufficienti per il controllo.",
+    "PARSE_FAILED": "Impossibile analizzare il PDF. Prova un altro file.",
+    "UNKNOWN": "Si è verificato un errore. Riprova.",
+    "PARSER_RESPONSE_TOO_LARGE": "La risposta del servizio di analisi è troppo grande per essere restituita in sicurezza."
+  },
+  "Account": {
+    "title": "Il mio account",
+    "description": "Il tuo profilo e i tuoi abbonamenti.",
+    "avatar": "Immagine del profilo",
+    "freePlan": "Piano gratuito",
+    "planUnavailable": "Piano non disponibile",
+    "currentPlan": "Piano attuale: {plan}",
+    "notAvailable": "Non disponibile",
+    "refresh": "Aggiorna",
+    "refreshing": "Aggiornamento…",
+    "loading": "Caricamento dell'account…",
+    "metadata": {
+      "title": "Il mio account",
+      "description": "Il tuo profilo e i tuoi abbonamenti."
+    },
+    "quota": {
+      "title": "Pagine rimanenti",
+      "remaining": "{remaining, plural, one {# pagina rimanente} other {# pagine rimanenti}} su {total, number}",
+      "percentage": "{percent}% rimanente",
+      "progressLabel": "Pagine ancora disponibili",
+      "dayEnds": "Il limite giornaliero si azzera il {date} UTC.",
+      "monthEnds": "Il periodo di fatturazione attuale termina il {date} UTC.",
+      "unavailable": "Le pagine disponibili non sono visibili al momento. Aggiorna più tardi."
+    },
+    "subscriptions": {
+      "title": "Registri degli abbonamenti",
+      "description": "Un registro per abbonamento. Le date sono in UTC.",
+      "unavailable": "I registri degli abbonamenti sono temporaneamente non disponibili.",
+      "empty": "Non ci sono ancora abbonamenti registrati.",
+      "plan": "Piano",
+      "amount": "Importo dell'abbonamento",
+      "status": "Stato",
+      "created": "Creato il",
+      "period": "Periodo di fatturazione",
+      "actions": "Azioni",
+      "availableUntil": "Le pagine rimanenti sono disponibili fino al {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "In attesa di approvazione",
+      "APPROVED": "Approvato",
+      "ACTIVE": "Attivo",
+      "SUSPENDED": "Sospeso",
+      "CANCELLED": "Annullato",
+      "EXPIRED": "Scaduto",
+      "PAYMENT_FAILED": "Pagamento non riuscito"
+    },
+    "cancel": {
+      "button": "Annulla abbonamento",
+      "title": "Vuoi annullare questo abbonamento?",
+      "description": "I rinnovi futuri saranno interrotti. Le pagine pagate rimanenti saranno disponibili fino al {date} UTC.",
+      "descriptionWithoutDate": "I rinnovi futuri saranno interrotti. Puoi usare le pagine pagate rimanenti fino alla fine del periodo di fatturazione indicato nel registro dell'abbonamento.",
+      "keep": "Mantieni abbonamento",
+      "confirm": "Conferma annullamento",
+      "submitting": "Annullamento…",
+      "syncing": "I rinnovi sono stati interrotti. Lo stato dell'abbonamento è in aggiornamento.",
+      "delayed": "I rinnovi sono stati interrotti, ma l'aggiornamento dello stato sta richiedendo più tempo. Controlla più tardi.",
+      "check": "Controlla stato",
+      "checking": "Controllo…",
+      "failed": "Impossibile confermare l'annullamento. Riprova.",
+      "checkFailed": "Impossibile controllare lo stato. Riprova."
+    }
+  }
+}

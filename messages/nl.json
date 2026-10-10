@@ -1,0 +1,467 @@
+{
+  "Metadata": {
+    "title": "Bank Statement Converter | PDF naar Excel",
+    "description": "Zet een bankafschrift in PDF met selecteerbare tekst om naar een Excel-bestand dat je kunt controleren. We gebruiken de bestanden alleen voor deze conversie.",
+    "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen",
+    "brand": "Bank Statement Converter",
+    "alternateName": "Converter voor bankafschriften van PDF naar Excel"
+  },
+  "HomeHeader": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Hoofdnavigatie",
+    "convert": "Converteren",
+    "features": "Functies",
+    "plans": "Abonnementen",
+    "faq": "Veelgestelde vragen"
+  },
+  "LanguageSwitcher": {
+    "label": "Taal kiezen",
+    "current": "Huidig",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
+  },
+  "AuthControl": {
+    "account": "Account",
+    "signInWithGoogle": "Inloggen met Google",
+    "signOut": "Uitloggen",
+    "unavailable": "Inloggen is tijdelijk niet beschikbaar",
+    "signInFailed": "Inloggen is niet gelukt. Probeer het later opnieuw.",
+    "signOutFailed": "Uitloggen is niet gelukt. Probeer het later opnieuw.",
+    "myAccount": "Mijn account",
+    "avatar": "Profielfoto"
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Inloggen niet voltooid | Bank Statement Converter",
+      "description": "Inloggen met Google is niet voltooid. Ga terug naar de startpagina en probeer het opnieuw."
+    },
+    "title": "Inloggen niet voltooid",
+    "description": "Inloggen met Google is geannuleerd of niet voltooid. Ga terug naar de startpagina en probeer het opnieuw.",
+    "backHome": "Terug naar de startpagina"
+  },
+  "HomeIntro": {
+    "eyebrow": "Bankafschriften in PDF converteren",
+    "title": "Zet je bankafschrift om van PDF naar Excel",
+    "description": "Upload een bankafschrift in PDF met selecteerbare tekst, controleer de uitgelezen regels en download Excel. We gebruiken je bestand alleen voor deze conversie."
+  },
+  "PdfUpload": {
+    "title": "Bankafschrift uploaden",
+    "description": "Verwerk één PDF tegelijk",
+    "fileLabel": "Bankafschrift in PDF",
+    "dropzone": "Kies een PDF of sleep die hierheen",
+    "dropzoneHint": "Upload een PDF die normaal opent en selecteerbare tekst bevat.",
+    "help": "Na het kiezen verschijnt de bestandsnaam. Je kunt het bestand op elk moment verwijderen.",
+    "errorTitle": "Dit bestand kon niet worden geconverteerd",
+    "invalidPdf": "Upload een PDF-bestand.",
+    "multipleFiles": "Upload één PDF tegelijk.",
+    "conversionFailed": "De conversie is niet voltooid. Probeer een ander bestand.",
+    "parserUnavailable": "De uitleesservice reageerde niet. Probeer het later opnieuw.",
+    "quotaExceeded": "Je tegoed is op, of deze PDF bevat meer pagina's dan je resterende tegoed.",
+    "quotaUnavailable": "De tegoedservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "removeFile": "Bestand verwijderen",
+    "quota": "Gratis tegoed: {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag zonder inloggen, {authenticatedPages, plural, one {# pagina} other {# pagina's}} per dag na inloggen",
+    "serviceReady": "We gebruiken de bestanden alleen voor deze conversie en slaan ze niet op.",
+    "status": "Klaar om te uploaden",
+    "converting": "Bezig met converteren",
+    "start": "Converteren en controleren",
+    "fileTooLarge": "Deze PDF is groter dan 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Conversieresultaat | Bank Statement Converter",
+      "description": "Controleer de uitgelezen regels en risicomarkeringen en download daarna Excel."
+    },
+    "eyebrow": "Conversieresultaat",
+    "description": "Vergelijk de gemarkeerde regels met de originele PDF voordat je downloadt.",
+    "download": "Excel downloaden",
+    "backHome": "Ander bestand converteren",
+    "summary": {
+      "status": "Status",
+      "pages": "PDF-pagina's",
+      "tables": "Tabellen",
+      "rows": "Gegevensregels",
+      "warnings": "Te controleren regels"
+    },
+    "summaryStatus": {
+      "success": "Voltooid",
+      "partial": "Gedeeltelijk resultaat",
+      "failed": "Onvolledig"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Tabel {id}",
+      "singleTitle": "Transacties op het bankafschrift",
+      "pages": "Pagina's {start, number} tot {end, number}",
+      "rowCount": "{count, plural, one {# regel} other {# regels}}",
+      "status": "Status",
+      "warnings": "Controleopmerkingen",
+      "sourcePage": "Bronpagina",
+      "sourceRow": "Regel op pagina"
+    },
+    "partial": {
+      "title": "Sommige gegevens moeten worden gecontroleerd",
+      "description": "Je kunt de uitgelezen gegevens nog bekijken en downloaden. Vergelijk regels met DISCREPANCY of UNVERIFIABLE met de originele PDF."
+    },
+    "empty": {
+      "title": "Geen gegevens om te downloaden",
+      "description": "Deze PDF bevat geen bruikbare tabelregels. Ga terug naar de startpagina en upload een ander bestand."
+    },
+    "missing": {
+      "title": "Dit resultaat is verlopen",
+      "description": "Het resultaat is alleen tijdens deze conversie beschikbaar. Ga terug naar de startpagina en upload de PDF opnieuw."
+    },
+    "issues": {
+      "repeatedHeader": "Regel {row} herhaalt de tabelkop en is overgeslagen.",
+      "summaryRow": "Regel {row} lijkt een samenvatting en is overgeslagen.",
+      "extraCells": "Deze regel heeft meer cellen dan de tabelkop. De extra cellen zijn behouden.",
+      "unknown": "Dit onderdeel moet worden gecontroleerd.",
+      "missingDate": "De transactiedatum ontbreekt.",
+      "invalidDate": "De transactiedatum is ongeldig.",
+      "missingDescription": "De transactieomschrijving ontbreekt.",
+      "missingAmount": "Het transactiebedrag ontbreekt.",
+      "invalidAmount": "Het transactiebedrag is ongeldig.",
+      "amountColumnMismatch": "Er staat een bedrag buiten de bedragkolom dat niet betrouwbaar kan worden gekoppeld."
+    },
+    "pageRisks": {
+      "title": "Problemen per pagina",
+      "item": "Pagina {page}: {code}",
+      "pageParseFailed": "Pagina {page} kon niet worden gelezen.",
+      "pageUnparsed": "Pagina {page} bevat aanwijzingen voor transacties, maar er kon geen betrouwbare tabel worden opgebouwd.",
+      "unknown": "Pagina {page} moet worden gecontroleerd."
+    },
+    "excel": {
+      "defaultFilename": "bankafschrift",
+      "sheetName": "Tabel {index, number}"
+    }
+  },
+  "HomeFeatures": {
+    "title": "Wat de conversie oplevert",
+    "securityTitle": "Geen bestandsarchief",
+    "securityDescription": "We gebruiken de PDF, het gegenereerde Excel-bestand en de transactiegegevens alleen voor deze conversie. We voegen ze niet toe aan een bestandsarchief.",
+    "banksTitle": "Behoudt de oorspronkelijke tabel",
+    "banksDescription": "De converter leest tabelkoppen en celtekst uit de PDF en toont ze in tabellen die je met het origineel kunt vergelijken.",
+    "accuracyTitle": "Markeert regels voor controle",
+    "accuracyDescription": "Regels met onvolledige gegevens of uitlijningsproblemen krijgen vóór het downloaden de markering DISCREPANCY of UNVERIFIABLE."
+  },
+  "UsageTiers": {
+    "title": "Begin met een gratis conversie",
+    "description": "Je kunt de converter zonder account proberen. Log in voor meer pagina's per dag of kies een maandabonnement als je hem vaak gebruikt.",
+    "anonymous": "Zonder inloggen",
+    "anonymousAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
+    "anonymousDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
+    "signedIn": "Ingelogd",
+    "signedInAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
+    "signedInDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
+    "perDay": "/ dag",
+    "perMonth": "/ maand",
+    "planQuota": "{pages, plural, one {# pagina} other {# pagina's}} per maand",
+    "current": "Huidig abonnement",
+    "cancelledPeriodActive": "Je abonnement is opgezegd, maar je voordelen blijven beschikbaar in deze factuurperiode. Je kunt na {date} (UTC) opnieuw een abonnement afsluiten.",
+    "plans": {
+      "standard": {
+        "name": "Standaard",
+        "description": "Voor wie bankafschriften voor persoonlijk gebruik verwerkt."
+      },
+      "professional": {
+        "name": "Professioneel",
+        "description": "Voor wie regelmatig meerdere bankafschriften verwerkt."
+      },
+      "enterprise": {
+        "name": "Zakelijk",
+        "description": "Voor teams en bedrijven die veel bankafschriften verwerken."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Log in voordat je een abonnement afsluit.",
+    "unavailable": "Betalen is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "subscribe": "Abonneren met PayPal",
+    "processing": "PayPal openen",
+    "confirming": "Betaling bevestigen",
+    "confirmationDelayed": "Het bevestigen van de betaling duurt langer dan verwacht. Vernieuw deze pagina later.",
+    "activationFailed": "We konden je abonnement niet bevestigen. Vernieuw de pagina of neem contact op met de ondersteuning.",
+    "activated": "Je abonnement is actief.",
+    "cancelled": "Je hebt het afsluiten van het abonnement geannuleerd.",
+    "paymentFailed": "De betaling is niet voltooid. Probeer het later opnieuw.",
+    "currentPlan": "Je gebruikt dit abonnement.",
+    "api": {
+      "loginUnavailable": "Inloggen is tijdelijk niet beschikbaar.",
+      "loginRequired": "Log in op je account.",
+      "emailMissing": "Je account heeft geen e-mailadres, dus het abonnement kan niet worden geactiveerd.",
+      "invalidRequest": "De abonnementsaanvraag is ongeldig.",
+      "invalidTier": "Kies een geldig abonnement.",
+      "configurationMissing": "Betalen is nog niet ingesteld.",
+      "subscriptionBelongsToAnotherAccount": "Dit abonnement hoort bij een ander account.",
+      "verificationFailed": "Het PayPal-abonnement kon niet worden gecontroleerd.",
+      "activationFailed": "De abonnementscontrole is niet voltooid. Probeer het later opnieuw.",
+      "createFailed": "Het PayPal-abonnement kon niet worden gestart. Probeer het later opnieuw.",
+      "existingSubscription": "Dit account heeft al een actief of nog niet afgerond abonnement.",
+      "cancelledPeriodActive": "Je abonnement is opgezegd, maar de huidige factuurperiode is nog niet afgelopen. Je kunt daarna opnieuw een abonnement afsluiten.",
+      "webhookInvalidRequest": "Het webhookverzoek is ongeldig.",
+      "webhookSignatureFailed": "De controle van de webhookhandtekening is mislukt.",
+      "webhookProcessingFailed": "De verwerking van de webhook is mislukt.",
+      "cancelInvalidOrigin": "Het opzeggingsverzoek moet van deze website komen.",
+      "cancelSubscriptionNotFound": "Abonnement niet gevonden.",
+      "cancelNotActive": "Alleen een actief abonnement kan worden opgezegd.",
+      "cancelFailed": "De opzegging kon niet worden bevestigd. Probeer het opnieuw."
+    }
+  },
+  "HomeFaq": {
+    "title": "Veelgestelde vragen",
+    "banks": {
+      "question": "Welke bankafschriften worden ondersteund?",
+      "answer": "We testen de converter met verschillende indelingen van elektronische bankafschriften. We publiceren banken en indelingen zodra we ze hebben gecontroleerd."
+    },
+    "accuracy": {
+      "question": "Waarom moet ik het resultaat controleren?",
+      "answer": "De converter behoudt tabelkoppen en celtekst waar mogelijk. Complexe indelingen, onduidelijke tekst of ongelijke kolommen kunnen regels met DISCREPANCY of UNVERIFIABLE opleveren. Vergelijk Excel met de originele PDF voordat je het gebruikt."
+    },
+    "quota": {
+      "question": "Hoeveel pagina's kan ik per dag converteren?",
+      "answer": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren, na inloggen {authenticatedPages, plural, one {# pagina} other {# pagina's}}. Maandabonnementen bevatten {standardPages, plural, one {# pagina} other {# pagina's}} voor Standaard, {professionalPages, number} voor Professioneel en {enterprisePages, number} voor Zakelijk."
+    },
+    "scans": {
+      "question": "Kan ik gescande of versleutelde PDF's converteren?",
+      "answer": "De eerste versie richt zich op elektronische PDF's met selecteerbare tekst die normaal openen. Gescande bestanden, bestanden met een wachtwoord of PDF's zonder herkenbare tabellen kunnen mogelijk niet worden geconverteerd."
+    },
+    "storage": {
+      "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
+      "answer": "Nee. We gebruiken ze alleen voor de huidige conversie en download, zonder bestandsarchief. Zodra je deze procedure verlaat, kun je het resultaat niet opnieuw downloaden."
+    },
+    "failure": {
+      "question": "Wat gebeurt er als de conversie mislukt?",
+      "answer": "De pagina toont een fout en biedt geen ongeldig Excel-bestand aan. Mislukte conversies kosten geen tegoed. Gedeeltelijke resultaten worden gerekend op basis van het aantal PDF-pagina's."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navigatie in voettekst",
+    "plans": "Abonnementen",
+    "faq": "Veelgestelde vragen",
+    "terms": "Gebruiksvoorwaarden",
+    "privacy": "Privacybeleid"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Laatst bijgewerkt: 2 oktober 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Gebruiksvoorwaarden | Bank Statement Converter",
+      "description": "Lees hoe Bank Statement Converter omgaat met bestanden, tegoed, abonnementen en verantwoordelijkheden van gebruikers."
+    },
+    "title": "Gebruiksvoorwaarden",
+    "intro": "ReAvid Ltd beheert deze dienst via <site>{domain}</site>. Lees deze voorwaarden en het privacybeleid voordat je de conversie en abonnementen gebruikt.",
+    "availability": "De conversie van PDF naar Excel en PayPal-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
+    "service": {
+      "title": "Omvang van de dienst",
+      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies."
+    },
+    "authorization": {
+      "title": "Toestemming om bestanden te uploaden",
+      "body": "Upload alleen afschriften die je mag gebruiken en verwerken. Zorg dat het uploaden en verwerken van persoonlijke of financiële informatie voldoet aan de toepasselijke wetgeving en je verplichtingen tegenover anderen. Upload geen bestanden die zonder toestemming zijn verkregen."
+    },
+    "accuracy": {
+      "title": "Resultaten controleren",
+      "body": "Indeling, leesbaarheid en inhoud van een afschrift kunnen het uitlezen beïnvloeden. Het resultaat kan ontbrekende, dubbele of verkeerd herkende velden bevatten. Vergelijk Excel met het originele afschrift voordat je het gebruikt voor boekhouding, aangiften, het indienen van stukken of andere beslissingen."
+    },
+    "quota": {
+      "title": "Conversietegoed",
+      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige PayPal-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's."
+    },
+    "subscription": {
+      "title": "Abonnementen en betaling",
+      "body": "Standaard, Professioneel en Zakelijk worden maandelijks verlengd. Prijzen worden vóór de aankoop getoond. Betaling verloopt via PayPal en wordt pas afgeschreven nadat je de aankoop bevestigt. PayPal kan gegevens over abonnementsstatus, verlenging en mislukte betalingen aan deze dienst sturen. Beheer automatische verlenging in je PayPal-account."
+    },
+    "files": {
+      "title": "Bestanden en downloads",
+      "body": "Geüploade PDF's, uitgelezen transacties en gegenereerde Excel-bestanden worden alleen voor de huidige conversie en download gebruikt. We bewaren ze niet in een permanent bestandsarchief. Bewaar zelf je originele afschrift en het gedownloade resultaat; na deze procedure biedt de dienst geen herhaalde downloads."
+    },
+    "prohibited": {
+      "title": "Verboden gebruik",
+      "body": "Gebruik de dienst niet om financiële documenten te vervalsen of verkeerd voor te stellen, rechten van anderen te schenden, fraude te plegen, schadelijke bestanden te verspreiden of tegoedlimieten, beveiliging en toegangsbeperkingen te omzeilen. We kunnen toegang beperken bij illegale of duidelijk misbruikende activiteiten."
+    },
+    "rights": {
+      "title": "Eigendom",
+      "body": "Je behoudt de rechten die je op bestanden en hun inhoud hebt. Het uploaden geeft ons alleen toestemming voor de huidige conversie en draagt geen eigendom over. Rechten op software, interface en merk blijven bij de rechtmatige eigenaren."
+    },
+    "liability": {
+      "title": "Beschikbaarheid en aansprakelijkheid",
+      "body": "We werken aan de beschikbaarheid van de dienst, maar garanderen niet dat elk bestand kan worden geconverteerd, dat de dienst altijd beschikbaar is of dat resultaten volledig juist zijn. Voor zover de wet dit toestaat, zijn we niet aansprakelijk voor indirecte verliezen door het niet controleren van resultaten, niet-ondersteunde formaten of onderbrekingen. Dit sluit geen aansprakelijkheid of gebruikersrechten uit die wettelijk niet kunnen worden uitgesloten."
+    },
+    "privacy": {
+      "title": "Privacy en persoonlijke informatie",
+      "body": "Hoe we bestanden en persoonlijke informatie behandelen, staat in het <link>privacybeleid</link>."
+    },
+    "changes": {
+      "title": "Wijzigingen in deze voorwaarden",
+      "body": "We kunnen deze voorwaarden aanpassen als de dienst of wettelijke eisen veranderen. De wijzigingsdatum staat op deze pagina. Belangrijke wijzigingen voor bestaande abonnementen worden meegedeeld volgens de wet en de regels die bij aankoop zijn getoond."
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "Neem voor vragen over deze voorwaarden contact op met ReAvid Ltd via <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Privacybeleid | Bank Statement Converter",
+      "description": "Lees hoe Bank Statement Converter omgaat met bankafschriften, accounts, tegoed en factuurgegevens."
+    },
+    "title": "Privacybeleid",
+    "intro": "ReAvid Ltd beheert <site>{domain}</site>. Dit beleid legt uit hoe we informatie behandelen wanneer je de conversie en PayPal-abonnementen gebruikt.",
+    "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en PayPal-abonnementen.",
+    "documents": {
+      "title": "Bankafschriften en conversiegegevens",
+      "body": "Geüploade PDF's kunnen namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. Wanneer conversie beschikbaar is, verwerken we de PDF, uitgelezen transacties en het gegenereerde Excel-bestand alleen voor de gevraagde conversie en download. We gebruiken deze inhoud niet voor reclame of andere doeleinden."
+    },
+    "accountData": {
+      "title": "Account-, tegoed- en factuurgegevens",
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, PayPal-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. PayPal verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud."
+    },
+    "technicalData": {
+      "title": "Noodzakelijke technische informatie",
+      "body": "Voor de werking en beveiliging van de website en onderzoek naar fouten kunnen we toegangstijden, IP-adressen, browser- of apparaatgegevens en foutregistraties zonder afschriftinhoud verwerken. Voor bezoekersstatistieken kunnen Google Analytics en Pageview toegangstijden, IP-adressen en browser- of apparaatgegevens ontvangen. We sturen geen bankafschriften, uitgelezen transacties of Excel-inhoud naar deze analysediensten."
+    },
+    "purposes": {
+      "title": "Doeleinden van verwerking",
+      "body": "We gebruiken informatie alleen voor conversies en downloads, het meten en verbeteren van bezoeken, beheer van accounts en tegoed, abonnementen en facturatie, beantwoording van verzoeken, beveiliging en toepasselijke wettelijke verplichtingen."
+    },
+    "retention": {
+      "title": "Bewaartermijnen",
+      "documents": "PDF's, uitgelezen transacties en gegenereerde Excel-bestanden worden alleen gebruikt tijdens de verwerking voor de huidige conversie en download. Ze worden niet opgeslagen in een permanente database, objectopslag of bestandsarchief en worden niet bewaard voor latere downloads.",
+      "metadata": "Account-, tegoed- en factuurmetadata worden alleen bewaard zolang dat nodig is voor de dienst of wettelijke verplichtingen. Wanneer ze niet meer nodig zijn, worden ze verwijderd of geanonimiseerd volgens het systeem en de wettelijke eisen. Het e-mailadres van het account bij aankoop maakt deel uit van de abonnementsregistratie."
+    },
+    "providers": {
+      "title": "Dienstverleners en internationale verwerking",
+      "body": "Inloggen gebruikt Google en Supabase. Abonnementsbetalingen en statussynchronisatie gebruiken PayPal. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. PayPal kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens."
+    },
+    "storage": {
+      "title": "Browseropslag",
+      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen."
+    },
+    "security": {
+      "title": "Informatiebeveiliging",
+      "body": "We nemen redelijke maatregelen passend bij de gevoeligheid van de gegevens, maar internetverkeer en software kunnen geen absolute veiligheid garanderen. Bescherm je originele afschriften, gedownloade Excel-bestanden en toegangsgegevens."
+    },
+    "rights": {
+      "title": "Je privacyrechten",
+      "body": "Afhankelijk van de wetgeving waar je woont, kun je recht hebben op inzage, correctie, verwijdering of een kopie van persoonlijke informatie, of op bezwaar tegen of beperking van bepaalde verwerking. Neem contact op via het onderstaande e-mailadres. Waar van toepassing kun je ook bij een toezichthouder klagen. We controleren en behandelen verzoeken volgens de toepasselijke wetgeving."
+    },
+    "terms": {
+      "title": "Bijbehorende voorwaarden",
+      "body": "Voor gebruik van de dienst moet je ook de <link>gebruiksvoorwaarden</link> lezen."
+    },
+    "changes": {
+      "title": "Wijzigingen in het beleid",
+      "body": "We kunnen dit beleid bijwerken als functies, verwerkingsmethoden of wettelijke eisen veranderen. De wijzigingsdatum staat op deze pagina. We informeren gebruikers over belangrijke wijzigingen zoals de toepasselijke wetgeving vereist."
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "Neem voor vragen over informatieverwerking of het uitoefenen van toepasselijke privacyrechten contact op met ReAvid Ltd via <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Thema wijzigen",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "Het uploadverzoek kon niet worden gelezen.",
+    "INVALID_FILE": "Kies een geldig PDF-bestand.",
+    "PARSER_UNAVAILABLE": "De uitleesservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "QUOTA_EXCEEDED": "Je hebt het beschikbare tegoed voor deze conversie bereikt.",
+    "QUOTA_UNAVAILABLE": "De tegoedservice is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+    "FILE_TOO_LARGE": "Deze PDF is groter dan 4 MB.",
+    "INVALID_FILE_TYPE": "Alleen PDF-bestanden worden ondersteund.",
+    "INVALID_PDF": "Dit bestand is geen leesbare PDF.",
+    "PASSWORD_PROTECTED_PDF": "PDF's met een wachtwoord kunnen niet worden geconverteerd.",
+    "TOO_MANY_PAGES": "Deze PDF heeft meer dan 50 pagina's.",
+    "UNSUPPORTED_SCANNED_PDF": "Deze versie accepteert elektronische PDF's met selecteerbare tekst, geen gescande afbeeldingen.",
+    "TABLE_NOT_FOUND": "Geen bruikbare bankafschrifttabel gevonden.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Geen transactie bevat voldoende informatie voor controle.",
+    "PARSE_FAILED": "De PDF kon niet worden uitgelezen. Probeer een ander bestand.",
+    "UNKNOWN": "Er is iets misgegaan. Probeer het opnieuw.",
+    "PARSER_RESPONSE_TOO_LARGE": "Het antwoord van de uitleesservice is te groot om veilig terug te sturen."
+  },
+  "Account": {
+    "title": "Mijn account",
+    "description": "Je profiel en abonnementen.",
+    "avatar": "Profielfoto",
+    "freePlan": "Gratis abonnement",
+    "planUnavailable": "Abonnement niet beschikbaar",
+    "currentPlan": "Huidig abonnement: {plan}",
+    "notAvailable": "Niet beschikbaar",
+    "refresh": "Vernieuwen",
+    "refreshing": "Vernieuwen…",
+    "loading": "Account laden…",
+    "metadata": {
+      "title": "Mijn account",
+      "description": "Je profiel en abonnementen."
+    },
+    "quota": {
+      "title": "Resterend tegoed",
+      "remaining": "{remaining, number} van {total, plural, one {# pagina} other {# pagina's}} over",
+      "percentage": "{percent}% over",
+      "progressLabel": "Resterend paginategoed",
+      "dayEnds": "Het dagtegoed wordt op {date} UTC vernieuwd.",
+      "monthEnds": "De huidige factuurperiode eindigt op {date} UTC.",
+      "unavailable": "Het tegoed is tijdelijk niet beschikbaar. Vernieuw later."
+    },
+    "subscriptions": {
+      "title": "Abonnementsregistraties",
+      "description": "Eén registratie per abonnement. Datums worden in UTC getoond.",
+      "unavailable": "Abonnementsregistraties zijn tijdelijk niet beschikbaar.",
+      "empty": "Er zijn nog geen abonnementsregistraties.",
+      "plan": "Abonnement",
+      "amount": "Abonnementsbedrag",
+      "status": "Status",
+      "created": "Aangemaakt",
+      "period": "Factuurperiode",
+      "actions": "Acties",
+      "availableUntil": "Het resterende tegoed is beschikbaar tot {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Wacht op goedkeuring",
+      "APPROVED": "Goedgekeurd",
+      "ACTIVE": "Actief",
+      "SUSPENDED": "Opgeschort",
+      "CANCELLED": "Opgezegd",
+      "EXPIRED": "Verlopen",
+      "PAYMENT_FAILED": "Betaling mislukt"
+    },
+    "cancel": {
+      "button": "Abonnement opzeggen",
+      "title": "Dit abonnement opzeggen?",
+      "description": "Toekomstige verlengingen stoppen. Je resterende betaalde tegoed is beschikbaar tot {date} UTC.",
+      "descriptionWithoutDate": "Toekomstige verlengingen stoppen. Je kunt het resterende betaalde tegoed gebruiken tot het einde van de factuurperiode in je abonnementsregistratie.",
+      "keep": "Abonnement behouden",
+      "confirm": "Opzegging bevestigen",
+      "submitting": "Opzeggen…",
+      "syncing": "Verlengingen zijn gestopt. Je abonnementsstatus wordt bijgewerkt.",
+      "delayed": "Verlengingen zijn gestopt, maar het bijwerken van de status duurt langer. Controleer later opnieuw.",
+      "check": "Status controleren",
+      "checking": "Controleren…",
+      "failed": "De opzegging kon niet worden bevestigd. Probeer het opnieuw.",
+      "checkFailed": "De status kon niet worden gecontroleerd. Probeer het opnieuw."
+    }
+  }
+}

@@ -1,0 +1,467 @@
+{
+  "Metadata": {
+    "title": "Bank Statement Converter | PDF para Excel",
+    "description": "Converta um extrato bancário em PDF com texto selecionável em um arquivo Excel para conferir. Usamos os arquivos apenas nesta conversão.",
+    "keywords": "Bank Statement Converter, extrato bancário PDF para Excel, conversor de PDF para Excel, extração de transações bancárias",
+    "brand": "Bank Statement Converter",
+    "alternateName": "Conversor de extratos bancários de PDF para Excel"
+  },
+  "HomeHeader": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navegação principal",
+    "convert": "Converter",
+    "features": "Recursos",
+    "plans": "Planos",
+    "faq": "Perguntas frequentes"
+  },
+  "LanguageSwitcher": {
+    "label": "Escolher idioma",
+    "current": "Atual",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
+  },
+  "AuthControl": {
+    "account": "Conta",
+    "signInWithGoogle": "Entrar com Google",
+    "signOut": "Sair",
+    "unavailable": "O login está temporariamente indisponível",
+    "signInFailed": "Não foi possível entrar. Tente novamente mais tarde.",
+    "signOutFailed": "Não foi possível sair. Tente novamente mais tarde.",
+    "myAccount": "Minha conta",
+    "avatar": "Foto do perfil"
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Login não concluído | Bank Statement Converter",
+      "description": "O login com Google não foi concluído. Volte à página inicial e tente novamente."
+    },
+    "title": "Login não concluído",
+    "description": "O login com Google foi cancelado ou não foi concluído. Volte à página inicial e tente novamente.",
+    "backHome": "Voltar à página inicial"
+  },
+  "HomeIntro": {
+    "eyebrow": "Conversão de extratos bancários em PDF",
+    "title": "Converta seu extrato bancário de PDF para Excel",
+    "description": "Envie um extrato bancário em PDF com texto selecionável, confira as linhas extraídas e baixe o Excel. Usamos o arquivo apenas nesta conversão."
+  },
+  "PdfUpload": {
+    "title": "Enviar um extrato bancário",
+    "description": "Processe um PDF por vez",
+    "fileLabel": "Extrato bancário em PDF",
+    "dropzone": "Escolha um PDF ou arraste-o para cá",
+    "dropzoneHint": "Envie um PDF que abra normalmente e tenha texto selecionável.",
+    "help": "O nome aparece após você escolher o arquivo. Você pode removê-lo a qualquer momento.",
+    "errorTitle": "Não foi possível converter este arquivo",
+    "invalidPdf": "Envie um arquivo PDF.",
+    "multipleFiles": "Envie um PDF por vez.",
+    "conversionFailed": "A conversão não foi concluída. Tente outro arquivo.",
+    "parserUnavailable": "O serviço de análise não respondeu. Tente novamente mais tarde.",
+    "quotaExceeded": "Sua cota acabou ou este PDF tem mais páginas do que a cota restante permite.",
+    "quotaUnavailable": "O serviço de cotas está temporariamente indisponível. Tente novamente mais tarde.",
+    "removeFile": "Remover arquivo",
+    "quota": "Cota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} por dia sem login e {authenticatedPages, plural, one {# página} other {# páginas}} por dia com login",
+    "serviceReady": "Usamos os arquivos apenas nesta conversão e não os salvamos.",
+    "status": "Pronto para enviar",
+    "converting": "Convertendo",
+    "start": "Converter e conferir",
+    "fileTooLarge": "Este PDF ultrapassa 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Resultado da conversão | Bank Statement Converter",
+      "description": "Confira as linhas extraídas e as indicações de risco antes de baixar o Excel."
+    },
+    "eyebrow": "Resultado da conversão",
+    "description": "Compare as linhas marcadas com o PDF original antes de baixar.",
+    "download": "Baixar Excel",
+    "backHome": "Converter outro arquivo",
+    "summary": {
+      "status": "Status",
+      "pages": "Páginas do PDF",
+      "tables": "Tabelas",
+      "rows": "Linhas de dados",
+      "warnings": "Linhas para conferir"
+    },
+    "summaryStatus": {
+      "success": "Concluído",
+      "partial": "Resultado parcial",
+      "failed": "Incompleto"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Tabela {id}",
+      "singleTitle": "Transações do extrato bancário",
+      "pages": "Páginas {start, number} a {end, number}",
+      "rowCount": "{count, plural, one {# linha} other {# linhas}}",
+      "status": "Status",
+      "warnings": "Observações para conferência",
+      "sourcePage": "Página de origem",
+      "sourceRow": "Linha na página"
+    },
+    "partial": {
+      "title": "Alguns dados precisam de conferência",
+      "description": "Você ainda pode visualizar e baixar os dados extraídos. Confira as linhas DISCREPANCY ou UNVERIFIABLE com o PDF original."
+    },
+    "empty": {
+      "title": "Não há dados para baixar",
+      "description": "Não encontramos linhas de tabela utilizáveis neste PDF. Volte à página inicial e envie outro arquivo."
+    },
+    "missing": {
+      "title": "Este resultado expirou",
+      "description": "O resultado fica disponível apenas durante esta conversão. Volte à página inicial e envie o PDF novamente."
+    },
+    "issues": {
+      "repeatedHeader": "A linha {row} repete o cabeçalho da tabela e foi ignorada.",
+      "summaryRow": "A linha {row} parece ser um resumo e foi ignorada.",
+      "extraCells": "Esta linha tem mais células que o cabeçalho. As células extras foram mantidas.",
+      "unknown": "Este item precisa de conferência.",
+      "missingDate": "A data da transação está ausente.",
+      "invalidDate": "A data da transação é inválida.",
+      "missingDescription": "A descrição da transação está ausente.",
+      "missingAmount": "O valor da transação está ausente.",
+      "invalidAmount": "O valor da transação é inválido.",
+      "amountColumnMismatch": "Há um valor fora da coluna de valores da transação que não pode ser associado com segurança."
+    },
+    "pageRisks": {
+      "title": "Problemas por página",
+      "item": "Página {page}: {code}",
+      "pageParseFailed": "Não foi possível ler a página {page}.",
+      "pageUnparsed": "A página {page} contém indícios de transações, mas não foi possível reconstruir uma tabela confiável.",
+      "unknown": "A página {page} precisa de conferência."
+    },
+    "excel": {
+      "defaultFilename": "extrato bancário",
+      "sheetName": "Tabela {index, number}"
+    }
+  },
+  "HomeFeatures": {
+    "title": "O que a conversão oferece",
+    "securityTitle": "Sem histórico de arquivos",
+    "securityDescription": "Usamos o PDF, o Excel gerado e os dados das transações apenas nesta conversão. Não os adicionamos a um histórico de arquivos.",
+    "banksTitle": "Preserva a estrutura original",
+    "banksDescription": "O conversor lê os cabeçalhos e o texto das células do PDF e os exibe em tabelas para você comparar com o original.",
+    "accuracyTitle": "Marca as linhas para conferir",
+    "accuracyDescription": "Linhas com informações incompletas ou problemas de alinhamento recebem a marca DISCREPANCY ou UNVERIFIABLE antes do download."
+  },
+  "UsageTiers": {
+    "title": "Comece com uma conversão gratuita",
+    "description": "Você pode experimentar sem criar uma conta. Entre para ter uma cota diária maior ou escolha um plano mensal se usar com frequência.",
+    "anonymous": "Sem login",
+    "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
+    "anonymousDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
+    "signedIn": "Com login",
+    "signedInAmount": "{pages, plural, one {# página} other {# páginas}}",
+    "signedInDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
+    "perDay": "/ dia",
+    "perMonth": "/ mês",
+    "planQuota": "{pages, plural, one {# página} other {# páginas}} por mês",
+    "current": "Plano atual",
+    "cancelledPeriodActive": "Sua assinatura foi cancelada, mas os benefícios continuam disponíveis neste período de cobrança. Você pode assinar novamente após {date} (UTC).",
+    "plans": {
+      "standard": {
+        "name": "Padrão",
+        "description": "Para quem precisa converter extratos bancários para uso pessoal."
+      },
+      "professional": {
+        "name": "Profissional",
+        "description": "Para quem converte vários extratos bancários regularmente."
+      },
+      "enterprise": {
+        "name": "Empresarial",
+        "description": "Para equipes e empresas que processam muitos extratos bancários."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Entre antes de iniciar uma assinatura.",
+    "unavailable": "O pagamento está temporariamente indisponível. Tente novamente mais tarde.",
+    "subscribe": "Assinar com PayPal",
+    "processing": "Abrindo o PayPal",
+    "confirming": "Confirmando seu pagamento",
+    "confirmationDelayed": "A confirmação do pagamento está demorando. Atualize esta página mais tarde.",
+    "activationFailed": "Não foi possível confirmar sua assinatura. Atualize a página ou entre em contato com o suporte.",
+    "activated": "Seu plano está ativo.",
+    "cancelled": "Você cancelou o processo de assinatura.",
+    "paymentFailed": "O pagamento não foi concluído. Tente novamente mais tarde.",
+    "currentPlan": "Você está usando este plano.",
+    "api": {
+      "loginUnavailable": "O login está temporariamente indisponível.",
+      "loginRequired": "Entre na sua conta.",
+      "emailMissing": "Sua conta não tem endereço de e-mail, então não é possível ativar a assinatura.",
+      "invalidRequest": "A solicitação de assinatura é inválida.",
+      "invalidTier": "Escolha um plano de assinatura válido.",
+      "configurationMissing": "O pagamento ainda não foi configurado.",
+      "subscriptionBelongsToAnotherAccount": "Esta assinatura pertence a outra conta.",
+      "verificationFailed": "Não foi possível verificar a assinatura no PayPal.",
+      "activationFailed": "A verificação da assinatura não foi concluída. Tente novamente mais tarde.",
+      "createFailed": "Não foi possível iniciar a assinatura no PayPal. Tente novamente mais tarde.",
+      "existingSubscription": "Esta conta já tem uma assinatura ativa ou pendente.",
+      "cancelledPeriodActive": "Sua assinatura foi cancelada, mas o período de cobrança atual ainda não terminou. Você pode assinar novamente quando ele terminar.",
+      "webhookInvalidRequest": "A solicitação do webhook é inválida.",
+      "webhookSignatureFailed": "A verificação da assinatura do webhook falhou.",
+      "webhookProcessingFailed": "O processamento do webhook falhou.",
+      "cancelInvalidOrigin": "A solicitação de cancelamento deve partir deste site.",
+      "cancelSubscriptionNotFound": "Assinatura não encontrada.",
+      "cancelNotActive": "Só é possível cancelar uma assinatura ativa.",
+      "cancelFailed": "Não foi possível confirmar o cancelamento. Tente novamente."
+    }
+  },
+  "HomeFaq": {
+    "title": "Perguntas frequentes",
+    "banks": {
+      "question": "Quais extratos são compatíveis?",
+      "answer": "Estamos testando o conversor com diferentes formatos de extratos bancários eletrônicos. Publicaremos os bancos e formatos à medida que forem verificados."
+    },
+    "accuracy": {
+      "question": "Por que preciso conferir o resultado?",
+      "answer": "O conversor preserva os cabeçalhos e o texto das células quando possível. Formatos complexos, texto pouco nítido ou colunas desalinhadas podem gerar linhas DISCREPANCY ou UNVERIFIABLE. Compare o Excel com o PDF original antes de usá-lo."
+    },
+    "quota": {
+      "question": "Quantas páginas posso converter por dia?",
+      "answer": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} por dia. Com login, são {authenticatedPages, plural, one {# página} other {# páginas}} por dia. Os planos mensais incluem {standardPages, plural, one {# página} other {# páginas}} no Padrão, {professionalPages, number} no Profissional e {enterprisePages, number} no Empresarial."
+    },
+    "scans": {
+      "question": "Posso converter PDFs digitalizados ou criptografados?",
+      "answer": "A primeira versão se concentra em PDFs eletrônicos que abrem normalmente e têm texto selecionável. Arquivos digitalizados, protegidos por senha ou sem tabelas reconhecíveis podem não ser convertidos."
+    },
+    "storage": {
+      "question": "Vocês salvam meu PDF, Excel ou as transações?",
+      "answer": "Não. Esses dados são usados apenas na conversão e no download atuais, sem histórico de arquivos. Depois que você sair deste fluxo, não poderá baixar o resultado novamente."
+    },
+    "failure": {
+      "question": "O que acontece se a conversão falhar?",
+      "answer": "A página mostra um erro e não oferece um Excel inválido. Conversões que falham não consomem cota. Resultados parciais consomem cota pelo número de páginas do PDF."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navegação do rodapé",
+    "plans": "Planos",
+    "faq": "Perguntas frequentes",
+    "terms": "Termos de serviço",
+    "privacy": "Política de privacidade"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Última atualização: 2 de outubro de 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Termos de serviço | Bank Statement Converter",
+      "description": "Saiba como o Bank Statement Converter trata arquivos, cotas, assinaturas e responsabilidades do usuário."
+    },
+    "title": "Termos de serviço",
+    "intro": "A ReAvid Ltd opera este serviço em <site>{domain}</site>. Leia estes termos e a política de privacidade antes de usar a conversão e as assinaturas.",
+    "availability": "A conversão de PDF para Excel e as assinaturas PayPal são oferecidas conforme o estado atual da página. Os preços e a disponibilidade dos planos podem mudar com a configuração do serviço.",
+    "service": {
+      "title": "Escopo do serviço",
+      "body": "O serviço organiza transações de extratos bancários em PDF compatíveis em arquivos Excel para download e conferência. Os bancos, tipos de arquivo e limites aceitos são descritos na página do serviço. Não oferecemos conexões com contas bancárias, serviços bancários nem orientação financeira, fiscal ou jurídica."
+    },
+    "authorization": {
+      "title": "Autorização para enviar arquivos",
+      "body": "Envie apenas extratos que você tenha autorização para usar e processar. O envio e o processamento de informações pessoais ou financeiras devem cumprir a legislação aplicável e suas obrigações com outras pessoas. Não envie arquivos obtidos sem autorização."
+    },
+    "accuracy": {
+      "title": "Conferência dos resultados",
+      "body": "O formato, a nitidez e o conteúdo do extrato podem afetar a extração. O resultado pode conter campos ausentes, duplicados ou identificados incorretamente. Compare o Excel com o extrato original antes de usá-lo na escrituração, em declarações, no envio de documentos ou em outras decisões."
+    },
+    "quota": {
+      "title": "Cotas de conversão",
+      "body": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} de PDF por dia. Usuários gratuitos com login podem converter {authenticatedPages, plural, one {# página} other {# páginas}} por dia. O Padrão inclui {standardPages, plural, one {# página} other {# páginas}} por mês, o Profissional {professionalPages, number} e o Empresarial {enterprisePages, number}. A cota diária é renovada em UTC e a cota do plano segue o período de cobrança atual do PayPal. Conversões que falham não consomem cota; resultados parciais contam as páginas do PDF."
+    },
+    "subscription": {
+      "title": "Assinaturas e pagamento",
+      "body": "Os planos Padrão, Profissional e Empresarial são renovados mensalmente. Os preços aparecem antes da compra. O pagamento é feito pelo PayPal e só é cobrado após sua confirmação. O PayPal pode enviar ao serviço dados sobre o status da assinatura, renovações e falhas de pagamento. Gerencie a renovação automática na sua conta PayPal."
+    },
+    "files": {
+      "title": "Arquivos e downloads",
+      "body": "PDFs enviados, transações extraídas e arquivos Excel gerados são usados apenas na conversão e no download atuais. Não são mantidos em um histórico permanente. Guarde seu extrato original e o resultado baixado; o serviço não oferece novos downloads depois que o fluxo atual termina."
+    },
+    "prohibited": {
+      "title": "Uso indevido",
+      "body": "Não use o serviço para falsificar ou deturpar registros financeiros, violar direitos de outras pessoas, cometer fraude, distribuir arquivos maliciosos ou contornar cotas, medidas de segurança e limites de acesso. Podemos restringir o acesso em caso de atividade ilegal ou claramente abusiva."
+    },
+    "rights": {
+      "title": "Titularidade",
+      "body": "Você mantém os direitos que possui sobre os arquivos e seu conteúdo. O envio nos concede apenas a permissão necessária para a conversão atual, sem transferir a titularidade. Os direitos sobre o software, a interface e a marca do site continuam com seus titulares legais."
+    },
+    "liability": {
+      "title": "Disponibilidade e responsabilidade",
+      "body": "Trabalhamos para manter o serviço disponível, mas não garantimos a conversão de todos os arquivos, disponibilidade contínua ou resultados totalmente corretos. Na medida permitida por lei, não respondemos por perdas indiretas causadas pela falta de conferência dos resultados, formatos incompatíveis ou interrupções do serviço. Isso não exclui responsabilidades ou direitos que a lei não permite excluir."
+    },
+    "privacy": {
+      "title": "Privacidade e informações pessoais",
+      "body": "O tratamento de arquivos e informações pessoais é descrito na <link>política de privacidade</link>."
+    },
+    "changes": {
+      "title": "Alterações destes termos",
+      "body": "Podemos atualizar estes termos quando o serviço ou os requisitos legais mudarem. A data da atualização aparece nesta página. Mudanças importantes que afetem uma assinatura existente serão comunicadas conforme a lei e as regras apresentadas na compra."
+    },
+    "contact": {
+      "title": "Contato",
+      "body": "Para dúvidas sobre estes termos, contate a ReAvid Ltd em <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Política de privacidade | Bank Statement Converter",
+      "description": "Saiba como o Bank Statement Converter trata extratos bancários, contas, cotas de uso e informações de cobrança."
+    },
+    "title": "Política de privacidade",
+    "intro": "A ReAvid Ltd opera <site>{domain}</site>. Esta política explica como tratamos informações quando você usa a conversão e as assinaturas PayPal.",
+    "availability": "Esta política se aplica às funções atualmente disponíveis de conversão de PDF para Excel, login e assinaturas PayPal.",
+    "documents": {
+      "title": "Extratos e conteúdo da conversão",
+      "body": "Os PDFs enviados podem conter nomes, números de conta, datas, valores, saldos e descrições de transações. Quando a conversão está disponível, processamos o PDF, as transações extraídas e o Excel gerado apenas para concluir a conversão e o download solicitados. Não usamos esse conteúdo para publicidade ou outras finalidades."
+    },
+    "accountData": {
+      "title": "Informações de conta, cota e cobrança",
+      "body": "Ao entrar com Google, o Supabase armazena os dados de identidade e conta necessários ao serviço. Após a ativação de uma assinatura, armazenamos o status, plano, identificador PayPal, período de cobrança, e-mail do pagador e uma cópia do e-mail da conta do site no momento da compra. O PayPal trata as informações de pagamento. Esses registros não contêm PDFs originais, transações extraídas ou conteúdo do Excel."
+    },
+    "technicalData": {
+      "title": "Informações técnicas necessárias",
+      "body": "Para operar o site, manter a segurança e investigar falhas, podemos processar horário de acesso, endereço IP, informações do navegador ou dispositivo e registros de erros sem conteúdo dos extratos. Para medir visitas, o Google Analytics e o Pageview podem receber horário de acesso, endereço IP e informações do navegador ou dispositivo. Não enviamos extratos, transações extraídas ou conteúdo do Excel a esses serviços de análise."
+    },
+    "purposes": {
+      "title": "Finalidades do tratamento",
+      "body": "Usamos informações apenas para concluir conversões e downloads, medir e melhorar as visitas ao site, gerenciar contas e cotas, fornecer assinaturas e cobrança, responder a solicitações, manter a segurança e cumprir obrigações legais aplicáveis."
+    },
+    "retention": {
+      "title": "Retenção",
+      "documents": "PDFs, transações extraídas e arquivos Excel gerados são usados apenas durante o processamento necessário à conversão e ao download atuais. Não são gravados em banco de dados persistente, armazenamento de objetos ou histórico de arquivos, nem guardados para download posterior.",
+      "metadata": "Metadados de conta, cota e cobrança são mantidos apenas pelo tempo necessário ao serviço ou às obrigações legais aplicáveis. Quando deixam de ser necessários, são excluídos ou anonimizados conforme o sistema e os requisitos legais. O e-mail da conta registrado na compra faz parte do registro da assinatura."
+    },
+    "providers": {
+      "title": "Provedores e processamento internacional",
+      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam PayPal. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O PayPal pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
+    },
+    "storage": {
+      "title": "Armazenamento no navegador",
+      "body": "O site usa armazenamento local do navegador para lembrar preferências de aparência e cookies de sessão necessários ao login. Os serviços de análise também podem usar cookies ou identificadores semelhantes para medir visitas. Você pode gerenciar esses dados nas configurações do navegador."
+    },
+    "security": {
+      "title": "Segurança da informação",
+      "body": "Adotamos medidas razoáveis de acordo com a sensibilidade das informações, mas a transmissão pela internet e os sistemas não garantem segurança absoluta. Proteja seus extratos originais, arquivos Excel baixados e dados de acesso."
+    },
+    "rights": {
+      "title": "Seus direitos de privacidade",
+      "body": "Conforme a legislação do seu local de residência, você pode ter direito de acessar, corrigir, excluir ou obter uma cópia de informações pessoais, além de se opor a certos tratamentos ou limitá-los. Entre em contato pelo e-mail abaixo. Quando aplicável, você também pode apresentar uma reclamação a um órgão regulador. Verificaremos e trataremos os pedidos conforme a lei aplicável."
+    },
+    "terms": {
+      "title": "Termos relacionados",
+      "body": "O uso do serviço também exige a leitura dos <link>termos de serviço</link>."
+    },
+    "changes": {
+      "title": "Atualizações da política",
+      "body": "Podemos atualizar esta política quando as funções do serviço, os métodos de tratamento ou os requisitos legais mudarem. A data da atualização aparece nesta página. Informaremos mudanças relevantes conforme a legislação aplicável."
+    },
+    "contact": {
+      "title": "Contato",
+      "body": "Para dúvidas sobre o tratamento de informações ou para exercer direitos de privacidade aplicáveis, contate a ReAvid Ltd em <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Mudar tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "Não foi possível ler a solicitação de envio.",
+    "INVALID_FILE": "Escolha um arquivo PDF válido.",
+    "PARSER_UNAVAILABLE": "O serviço de análise está temporariamente indisponível. Tente novamente mais tarde.",
+    "QUOTA_EXCEEDED": "Você atingiu a cota disponível para esta conversão.",
+    "QUOTA_UNAVAILABLE": "O serviço de cotas está temporariamente indisponível. Tente novamente mais tarde.",
+    "FILE_TOO_LARGE": "Este PDF ultrapassa 4 MB.",
+    "INVALID_FILE_TYPE": "Apenas arquivos PDF são aceitos.",
+    "INVALID_PDF": "Não é possível ler este PDF.",
+    "PASSWORD_PROTECTED_PDF": "Não é possível converter PDFs protegidos por senha.",
+    "TOO_MANY_PAGES": "Este PDF tem mais de 50 páginas.",
+    "UNSUPPORTED_SCANNED_PDF": "Esta versão aceita PDFs eletrônicos com texto selecionável, não imagens digitalizadas.",
+    "TABLE_NOT_FOUND": "Não encontramos uma tabela de extrato bancário utilizável.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Nenhuma transação tem informações suficientes para conferência.",
+    "PARSE_FAILED": "Não foi possível analisar o PDF. Tente outro arquivo.",
+    "UNKNOWN": "Ocorreu um erro. Tente novamente.",
+    "PARSER_RESPONSE_TOO_LARGE": "A resposta do serviço de análise é grande demais para ser retornada com segurança."
+  },
+  "Account": {
+    "title": "Minha conta",
+    "description": "Seu perfil e suas assinaturas.",
+    "avatar": "Foto do perfil",
+    "freePlan": "Plano gratuito",
+    "planUnavailable": "Plano indisponível",
+    "currentPlan": "Plano atual: {plan}",
+    "notAvailable": "Indisponível",
+    "refresh": "Atualizar",
+    "refreshing": "Atualizando…",
+    "loading": "Carregando conta…",
+    "metadata": {
+      "title": "Minha conta",
+      "description": "Seu perfil e suas assinaturas."
+    },
+    "quota": {
+      "title": "Cota restante",
+      "remaining": "Restam {remaining, number} de {total, plural, one {# página} other {# páginas}}",
+      "percentage": "{percent}% restante",
+      "progressLabel": "Cota de páginas restante",
+      "dayEnds": "A cota diária será renovada em {date} UTC.",
+      "monthEnds": "O período de cobrança atual termina em {date} UTC.",
+      "unavailable": "A cota está temporariamente indisponível. Atualize mais tarde."
+    },
+    "subscriptions": {
+      "title": "Registros de assinaturas",
+      "description": "Um registro por assinatura. As datas são exibidas em UTC.",
+      "unavailable": "Os registros de assinaturas estão temporariamente indisponíveis.",
+      "empty": "Você ainda não tem registros de assinaturas.",
+      "plan": "Plano",
+      "amount": "Valor da assinatura",
+      "status": "Status",
+      "created": "Criada em",
+      "period": "Período de cobrança",
+      "actions": "Ações",
+      "availableUntil": "A cota restante está disponível até {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Aguardando aprovação",
+      "APPROVED": "Aprovada",
+      "ACTIVE": "Ativa",
+      "SUSPENDED": "Suspensa",
+      "CANCELLED": "Cancelada",
+      "EXPIRED": "Expirada",
+      "PAYMENT_FAILED": "Falha no pagamento"
+    },
+    "cancel": {
+      "button": "Cancelar assinatura",
+      "title": "Cancelar esta assinatura?",
+      "description": "As próximas renovações serão interrompidas. Sua cota paga restante fica disponível até {date} UTC.",
+      "descriptionWithoutDate": "As próximas renovações serão interrompidas. Sua cota paga restante fica disponível até o fim do período de cobrança indicado no registro da assinatura.",
+      "keep": "Manter assinatura",
+      "confirm": "Confirmar cancelamento",
+      "submitting": "Cancelando…",
+      "syncing": "As renovações foram interrompidas. Estamos atualizando o status da assinatura.",
+      "delayed": "As renovações foram interrompidas, mas o status está demorando para atualizar. Confira mais tarde.",
+      "check": "Verificar status",
+      "checking": "Verificando…",
+      "failed": "Não foi possível confirmar o cancelamento. Tente novamente.",
+      "checkFailed": "Não foi possível verificar o status. Tente novamente."
+    }
+  }
+}

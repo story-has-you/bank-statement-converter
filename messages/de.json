@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "Konto",
@@ -64,12 +69,17 @@
     "quotaExceeded": "Ihr Kontingent ist aufgebraucht, oder die Seitenzahl dieser PDF-Datei überschreitet Ihr Restkontingent.",
     "quotaUnavailable": "Das Kontingent ist vorübergehend nicht abrufbar. Bitte versuchen Sie es später erneut.",
     "removeFile": "Datei entfernen",
-    "quota": "Kostenloses Kontingent: {anonymousPages} Seite pro Tag ohne Anmeldung, {authenticatedPages} Seiten pro Tag nach Anmeldung",
+    "quota": "Kostenloses Kontingent: {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag ohne Anmeldung, {authenticatedPages, plural, one {# Seite} other {# Seiten}} pro Tag nach Anmeldung",
     "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
     "status": "Bereit zum Hochladen",
     "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
-    "fileTooLarge": "Dieses PDF ist größer als 4 MB."
+    "fileTooLarge": "Dieses PDF ist größer als 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "Tabelle {id}",
       "singleTitle": "Kontoauszugstransaktionen",
-      "pages": "Seiten {start} bis {end}",
-      "rowCount": "{count} Zeilen",
+      "pages": "Seiten {start, number} bis {end, number}",
+      "rowCount": "{count, plural, one {# Zeile} other {# Zeilen}}",
       "status": "Status",
       "warnings": "Prüfhinweise",
       "sourcePage": "Originalseite",
@@ -137,6 +147,10 @@
       "pageParseFailed": "Seite {page} konnte nicht gelesen werden.",
       "pageUnparsed": "Seite {page} enthält Transaktionshinweise, aber es konnte keine zuverlässige Tabelle erstellt werden.",
       "unknown": "Seite {page} muss geprüft werden."
+    },
+    "excel": {
+      "defaultFilename": "Kontoauszug",
+      "sheetName": "Tabelle {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,28 +166,28 @@
     "title": "Beginnen Sie mit einer kostenlosen Konvertierung",
     "description": "Sie können den Konverter ohne Konto ausprobieren. Melden Sie sich für ein größeres Tageskontingent an oder wählen Sie einen Monatsplan für die regelmäßige Nutzung.",
     "anonymous": "Ohne Anmeldung",
-    "anonymousAmount": "{pages} Seite",
-    "anonymousDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
+    "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
+    "anonymousDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
     "signedIn": "Angemeldet",
-    "signedInAmount": "{pages} Seiten",
-    "signedInDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
+    "signedInAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
+    "signedInDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
     "perDay": "/ Tag",
     "perMonth": "/ Monat",
-    "planQuota": "{pages} Seiten pro Monat",
+    "planQuota": "{pages, plural, one {# Seite} other {# Seiten}} pro Monat",
     "current": "Aktueller Plan",
     "cancelledPeriodActive": "Ihr Abonnement wurde gekündigt. Ihre Vorteile bleiben für den laufenden Abrechnungszeitraum verfügbar. Nach {date} (UTC) können Sie erneut abonnieren.",
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Für Privatpersonen, die Kontoauszüge zuverlässig verarbeiten möchten."
+        "description": "Für die Verarbeitung eigener Kontoauszüge."
       },
       "professional": {
         "name": "Professional",
-        "description": "Für Profis, die regelmäßig mehrere Kontoauszüge verarbeiten."
+        "description": "Für die regelmäßige Verarbeitung mehrerer Kontoauszüge."
       },
       "enterprise": {
         "name": "Unternehmen",
-        "description": "Für Teams und Unternehmen, die viele Kontoauszüge verarbeiten."
+        "description": "Für Teams und Unternehmen mit vielen Kontoauszügen."
       }
     }
   },
@@ -223,7 +237,7 @@
     },
     "quota": {
       "question": "Wie viele Seiten kann ich pro Tag konvertieren?",
-      "answer": "Ohne Anmeldung können Sie {anonymousPages} Seite pro Tag konvertieren, nach der Anmeldung {authenticatedPages} Seiten. Die Monatstarife umfassen {standardPages} Seiten für Standard, {professionalPages} Seiten für Professional und {enterprisePages} Seiten für Unternehmen."
+      "answer": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, nach der Anmeldung {authenticatedPages, plural, one {# Seite} other {# Seiten}}. Die Monatstarife umfassen {standardPages, plural, one {# Seite} other {# Seiten}} für Standard, {professionalPages, plural, one {# Seite} other {# Seiten}} für Professional und {enterprisePages, plural, one {# Seite} other {# Seiten}} für Unternehmen."
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
@@ -270,12 +284,12 @@
       "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen."
     },
     "quota": {
-      "title": "Kostenloses Kontingent",
-      "body": "Anonyme Benutzer können {anonymousPages} PDF-Seiten pro Tag konvertieren, und angemeldete kostenlose Benutzer können {authenticatedPages} PDF-Seiten pro Tag konvertieren. Standard umfasst {standardPages} Seiten pro Monat, Professional umfasst {professionalPages} und Enterprise umfasst {enterprisePages}. Das tägliche Kontingent wird in UTC zurückgesetzt und das Plankontingent richtet sich nach dem aktuellen PayPal-Abrechnungszeitraum. Bei fehlgeschlagenen Konvertierungen wird kein Kontingent verwendet. Teilergebnisse zählen PDF-Seiten."
+      "title": "Konvertierungskontingente",
+      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen PayPal-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten."
     },
     "subscription": {
       "title": "Abonnements und Zahlung",
-      "body": "Standard-, Professional- und Enterprise-Pläne verlängern sich monatlich. Die Preise werden vor dem Kauf angezeigt. Die Zahlung erfolgt über PayPal und wird erst abgebucht, nachdem Sie den Kauf bestätigt haben. PayPal sendet möglicherweise Informationen zum Abonnementstatus, zur Verlängerung und zu Zahlungsfehlern an diesen Dienst. Verwalten Sie die automatische Verlängerung eines Abonnements in Ihrem PayPal-Konto."
+      "body": "Die Pläne Standard, Professional und Unternehmen verlängern sich monatlich. Die Preise werden vor dem Kauf angezeigt. Die Zahlung erfolgt über PayPal und wird erst nach Ihrer Kaufbestätigung abgebucht. PayPal kann Informationen zu Abonnementstatus, Verlängerung und fehlgeschlagenen Zahlungen an diesen Dienst senden. Verwalten Sie die automatische Verlängerung in Ihrem PayPal-Konto."
     },
     "files": {
       "title": "Dateien und Downloads",
@@ -291,7 +305,7 @@
     },
     "liability": {
       "title": "Verfügbarkeit und Haftung",
-      "body": "Wir arbeiten daran, den Dienst verfügbar zu halten, garantieren jedoch nicht, dass jede Datei konvertiert wird, dass der Dienst immer verfügbar ist oder dass die Ergebnisse völlig korrekt sind. Soweit gesetzlich zulässig, haften wir nicht für indirekte Verluste, die durch unterlassene Überprüfung der Ergebnisse, nicht unterstützte Formate oder Dienstunterbrechungen entstehen. Haftungs- und Nutzungsrechte, die gesetzlich nicht ausgeschlossen werden können, bleiben hiervon unberührt."
+      "body": "Wir bemühen uns, den Dienst verfügbar zu halten, garantieren aber weder die Konvertierung jeder Datei noch ständige Verfügbarkeit oder vollständig korrekte Ergebnisse. Soweit gesetzlich zulässig, haften wir nicht für indirekte Verluste durch ungeprüfte Ergebnisse, nicht unterstützte Formate oder Dienstunterbrechungen. Gesetzlich nicht ausschließbare Haftung und Rechte der Nutzer bleiben unberührt."
     },
     "privacy": {
       "title": "Datenschutz und persönliche Informationen",
@@ -323,7 +337,7 @@
       "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, PayPal-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. PayPal verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte."
     },
     "technicalData": {
-      "title": "Necessary technical information",
+      "title": "Notwendige technische Informationen",
       "body": "Für den Betrieb der Website, die Sicherheit und die Fehleranalyse können wir Zugriffszeit, IP-Adresse, Browser- oder Geräteinformationen sowie Fehleraufzeichnungen ohne Kontoauszugsinhalte verarbeiten. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können Zugriffszeit, IP-Adresse sowie Browser- oder Geräteinformationen erhalten. Kontoauszüge, extrahierte Transaktionen und erzeugte Excel-Inhalte werden nicht an diese Analysedienste übermittelt."
     },
     "purposes": {
@@ -352,7 +366,7 @@
       "body": "Abhängig von den Gesetzen, die an Ihrem Wohnort gelten, haben Sie möglicherweise das Recht, auf personenbezogene Daten zuzugreifen, diese zu korrigieren, zu löschen oder eine Kopie davon zu erhalten oder einer bestimmten Verarbeitung zu widersprechen oder diese einzuschränken. Kontaktieren Sie uns über die untenstehende E-Mail. Gegebenenfalls können Sie sich auch bei einer Aufsichtsbehörde beschweren. Wir prüfen und bearbeiten Anfragen gemäß geltendem Recht."
     },
     "terms": {
-      "title": "Verwandte Begriffe",
+      "title": "Zugehörige Nutzungsbedingungen",
       "body": "Für die Nutzung des Dienstes ist außerdem das Lesen der <link>Nutzungsbedingungen</link> erforderlich."
     },
     "changes": {
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "Verbleibendes Kontingent",
-      "remaining": "{remaining} von {total} Seiten verbleibend",
+      "remaining": "{remaining, number} von {total, plural, one {# Seite} other {# Seiten}} verbleibend",
       "percentage": "{percent}% verbleibend",
       "progressLabel": "Verbleibendes Seitenkontingent",
       "dayEnds": "Das Tageskontingent wird am {date} UTC zurückgesetzt.",

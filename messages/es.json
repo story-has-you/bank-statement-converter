@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "Cuenta",
@@ -64,12 +69,17 @@
     "quotaExceeded": "Tu cuota está agotada o el número de páginas del PDF supera tu cuota restante.",
     "quotaUnavailable": "El servicio de cuotas no está disponible temporalmente. Inténtalo de nuevo más tarde.",
     "removeFile": "Quitar archivo",
-    "quota": "Cuota gratuita: {anonymousPages} página al día sin iniciar sesión, {authenticatedPages} páginas al día al iniciar sesión",
+    "quota": "Cuota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} al día sin iniciar sesión, {authenticatedPages, plural, one {# página} other {# páginas}} al día al iniciar sesión",
     "serviceReady": "Los archivos se utilizan únicamente para esta conversión y no se guardan.",
     "status": "Listo para cargar",
     "converting": "Convirtiendo",
     "start": "Convertir y revisar",
-    "fileTooLarge": "Este PDF pesa más de 4 MB."
+    "fileTooLarge": "Este PDF pesa más de 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "Tabla {id}",
       "singleTitle": "Transacciones de extractos bancarios",
-      "pages": "Páginas {start} a {end}",
-      "rowCount": "{count} filas",
+      "pages": "Páginas {start, number} a {end, number}",
+      "rowCount": "{count, plural, one {# fila} other {# filas}}",
       "status": "Estado",
       "warnings": "Notas de revisión",
       "sourcePage": "Página de origen",
@@ -137,6 +147,10 @@
       "pageParseFailed": "No se pudo leer la página {page}.",
       "pageUnparsed": "La página {page} contiene indicios de transacciones, pero no se pudo reconstruir una tabla fiable.",
       "unknown": "La página {page} necesita revisión."
+    },
+    "excel": {
+      "defaultFilename": "extracto bancario",
+      "sheetName": "Tabla {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,28 +166,28 @@
     "title": "Comience con una conversión gratuita",
     "description": "Puedes probar el convertidor sin una cuenta. Inicia sesión para obtener una cuota diaria mayor o elige un plan mensual si lo usas con frecuencia.",
     "anonymous": "Sin iniciar sesión",
-    "anonymousAmount": "{pages} página",
-    "anonymousDescription": "Convierte hasta {pages} página de PDF al día.",
+    "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
+    "anonymousDescription": "Convierte hasta {pages, plural, one {# página} other {# páginas}} de PDF al día.",
     "signedIn": "Con sesión iniciada",
-    "signedInAmount": "{pages} páginas",
-    "signedInDescription": "Convierte hasta {pages} páginas de PDF al día.",
+    "signedInAmount": "{pages, plural, one {# página} other {# páginas}}",
+    "signedInDescription": "Convierte hasta {pages, plural, one {# página} other {# páginas}} de PDF al día.",
     "perDay": "/ día",
     "perMonth": "/ mes",
-    "planQuota": "{pages} páginas por mes",
+    "planQuota": "{pages, plural, one {# página} other {# páginas}} por mes",
     "current": "Plan actual",
     "cancelledPeriodActive": "Tu suscripción está cancelada, pero tus beneficios siguen disponibles durante este período de facturación. Puedes volver a suscribirte después del {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Estándar",
-        "description": "Para personas que necesitan una forma confiable de procesar extractos bancarios."
+        "description": "Para convertir tus propios extractos bancarios."
       },
       "professional": {
         "name": "Profesional",
-        "description": "Para profesionales que procesan varios extractos bancarios con regularidad."
+        "description": "Para procesar varios extractos bancarios con regularidad."
       },
       "enterprise": {
         "name": "Empresa",
-        "description": "Para equipos y organizaciones que procesan muchos extractos bancarios."
+        "description": "Para equipos que procesan muchos extractos bancarios."
       }
     }
   },
@@ -223,7 +237,7 @@
     },
     "quota": {
       "question": "¿Cuántas páginas puedo convertir cada día?",
-      "answer": "Sin iniciar sesión puedes convertir {anonymousPages} página al día; con sesión iniciada, {authenticatedPages} páginas. Los planes mensuales incluyen {standardPages} páginas en Estándar, {professionalPages} en Profesional y {enterprisePages} en Empresa."
+      "answer": "Sin iniciar sesión puedes convertir {anonymousPages, plural, one {# página} other {# páginas}} al día; con sesión iniciada, {authenticatedPages, plural, one {# página} other {# páginas}}. Los planes mensuales incluyen {standardPages, plural, one {# página} other {# páginas}} en Estándar, {professionalPages, number} en Profesional y {enterprisePages, number} en Empresa."
     },
     "scans": {
       "question": "¿Puedo convertir archivos PDF escaneados o cifrados?",
@@ -263,31 +277,31 @@
     },
     "authorization": {
       "title": "Autorización para subir archivos",
-      "body": "Cargue únicamente estados de cuenta que esté autorizado a usar y procesar. Asegúrese de que la carga y el procesamiento de información personal o financiera cumplan con la ley aplicable y sus obligaciones con otras personas. No cargue archivos obtenidos sin autorización."
+      "body": "Sube solo extractos que tengas autorización para usar y procesar. La subida y el tratamiento de información personal o financiera deben cumplir la ley aplicable y tus obligaciones con otras personas. No subas archivos obtenidos sin autorización."
     },
     "accuracy": {
       "title": "Revisar los resultados de la conversión",
-      "body": "El diseño, la claridad y el contenido de la declaración pueden afectar la extracción. Los resultados pueden contener campos faltantes, duplicados o identificados incorrectamente. Compare el archivo de Excel con el estado de cuenta original antes de llevar la contabilidad, archivar, enviar materiales o tomar otra decisión."
+      "body": "El formato, la claridad y el contenido del extracto pueden afectar a la extracción. El resultado puede contener campos ausentes, duplicados o mal identificados. Compara Excel con el extracto original antes de usarlo para la contabilidad, presentar declaraciones, enviar documentos o tomar otras decisiones."
     },
     "quota": {
-      "title": "Cuota libre",
-      "body": "Los usuarios anónimos pueden convertir páginas PDF {anonymousPages} por día, y los usuarios gratuitos registrados pueden convertir páginas PDF {authenticatedPages} por día. Standard incluye páginas {standardPages} por mes, Professional incluye {professionalPages} y Enterprise incluye {enterprisePages}. La cuota diaria se restablece en UTC y la cuota del plan sigue el período de facturación actual de PayPal. Las conversiones fallidas no utilizan cuota; Los resultados parciales cuentan las páginas PDF."
+      "title": "Cuotas de conversión",
+      "body": "Sin iniciar sesión puedes convertir {anonymousPages, plural, one {# página} other {# páginas}} PDF al día; con una cuenta gratuita, {authenticatedPages, plural, one {# página} other {# páginas}}. Estándar incluye {standardPages, plural, one {# página} other {# páginas}} al mes, Profesional {professionalPages, number} y Empresa {enterprisePages, number}. La cuota diaria se restablece según UTC y la del plan sigue el período de facturación actual de PayPal. Las conversiones fallidas no consumen cuota; los resultados parciales se cuentan por las páginas del PDF."
     },
     "subscription": {
       "title": "Suscripciones y pago",
-      "body": "Los planes Estándar, Profesional y Empresarial se renuevan mensualmente. Los precios se muestran antes de la compra. El pago se completa a través de PayPal y se cobra solo después de confirmar la compra. PayPal puede enviar información sobre el estado de la suscripción, la renovación y el error de pago a este servicio. Gestiona la renovación automática de una suscripción en tu cuenta PayPal."
+      "body": "Los planes Estándar, Profesional y Empresa se renuevan cada mes. Los precios se muestran antes de la compra. El pago se realiza mediante PayPal y solo se cobra tras confirmar la compra. PayPal puede enviar al servicio datos sobre el estado de la suscripción, renovaciones y pagos fallidos. Gestiona la renovación automática en tu cuenta PayPal."
     },
     "files": {
       "title": "Archivos y descargas",
-      "body": "Los archivos PDF cargados, las transacciones extraídas y los archivos Excel generados se utilizan para completar la conversión y descarga actual únicamente. No se mantienen como historial de archivos persistentes. Conserve usted mismo su estado de cuenta original y el resultado descargado; el servicio no proporciona descargas históricas una vez finalizado el flujo actual."
+      "body": "Los PDF subidos, las transacciones extraídas y los archivos Excel generados se usan solo para la conversión y la descarga actuales. No se guardan en un historial permanente. Conserva el extracto original y el resultado descargado; cuando termina este proceso, el servicio no permite volver a descargar resultados anteriores."
     },
     "prohibited": {
       "title": "Mal uso prohibido",
-      "body": "No utilice el servicio para falsificar o tergiversar registros financieros, infringir los derechos de otra persona, cometer fraude, distribuir archivos maliciosos o eludir cuotas, medidas de seguridad o límites de acceso. Podemos restringir el acceso al servicio por actividades ilegales o claramente abusivas."
+      "body": "No uses el servicio para falsificar o tergiversar registros financieros, vulnerar derechos de otras personas, cometer fraude, distribuir archivos maliciosos o eludir cuotas, medidas de seguridad o límites de acceso. Podemos restringir el acceso por actividades ilegales o claramente abusivas."
     },
     "rights": {
       "title": "Propiedad",
-      "body": "Usted conserva los derechos que tiene sobre los archivos y su contenido. Cargar un archivo nos otorga sólo el permiso necesario para procesarlo para la conversión actual; no transfiere la propiedad. Los derechos sobre el software, la interfaz y la marca del sitio web pertenecen a sus propietarios legales."
+      "body": "Conservas tus derechos sobre los archivos y su contenido. Subir un archivo solo nos autoriza a procesarlo para la conversión actual y no transfiere su propiedad. Los derechos del software, la interfaz y la marca siguen perteneciendo a sus titulares legítimos."
     },
     "liability": {
       "title": "Disponibilidad y responsabilidad",
@@ -295,15 +309,15 @@
     },
     "privacy": {
       "title": "Privacidad e información personal",
-      "body": "La forma en que se manejan los archivos y la información personal se describe en la política de privacidad <link></link>."
+      "body": "El tratamiento de los archivos y de la información personal se describe en la <link>política de privacidad</link>."
     },
     "changes": {
       "title": "Cambios a estos términos",
       "body": "Podemos actualizar estos términos cuando el servicio o los requisitos legales cambien y mostraremos la fecha de actualización en esta página. Los cambios importantes que afecten a una suscripción existente se comunicarán según lo exige la ley y las reglas que se muestran en el momento de la compra."
     },
     "contact": {
-      "title": "Contáctenos",
-      "body": "Si tiene preguntas sobre estos términos, comuníquese con ReAvid Ltd en <link>{email}</link>."
+      "title": "Contacto",
+      "body": "Si tienes preguntas sobre estos términos, contacta con ReAvid Ltd en <link>{email}</link>."
     }
   },
   "Privacy": {
@@ -333,35 +347,35 @@
     "retention": {
       "title": "Retención",
       "documents": "Los archivos PDF, las transacciones extraídas y los archivos Excel generados se utilizan únicamente durante el procesamiento necesario para la conversión y descarga actual. No se escriben en una base de datos persistente, almacenamiento de objetos o historial de archivos, y no se guardan para su descarga posterior.",
-      "metadata": "Los metadatos de cuenta, cuota y facturación se conservan solo durante el tiempo necesario para proporcionar el servicio o cumplir con las obligaciones legales aplicables. Se elimina o se anonimiza cuando ya no es necesario según el sistema actual y los requisitos legales. El correo electrónico de la cuenta almacenado en el momento de la compra forma parte del registro de suscripción."
+      "metadata": "Los metadatos de cuenta, cuota y facturación se conservan solo mientras sean necesarios para el servicio o las obligaciones legales aplicables. Cuando dejan de ser necesarios, se eliminan o anonimizan según el sistema y los requisitos legales. El correo de la cuenta guardado al comprar forma parte del registro de suscripción."
     },
     "providers": {
-      "title": "Proveedores y tramitación internacional",
+      "title": "Proveedores y tratamiento internacional",
       "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. El pago de la suscripción y la sincronización del estado utilizan PayPal. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. PayPal puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones."
     },
     "storage": {
       "title": "Almacenamiento del navegador",
-      "body": "El sitio web utiliza el almacenamiento local del navegador para recordar las preferencias de apariencia y las cookies de sesión necesarias para mantener el inicio de sesión. Los servicios de análisis también pueden usar cookies o identificadores similares del navegador para medir las visitas. Puede administrar el almacenamiento local y las cookies en la configuración de su navegador."
+      "body": "El sitio usa el almacenamiento local del navegador para recordar las preferencias de apariencia y las cookies de sesión necesarias para mantener la sesión iniciada. Los servicios de análisis también pueden usar cookies o identificadores similares para medir visitas. Puedes gestionarlos en la configuración del navegador."
     },
     "security": {
       "title": "Seguridad de la información",
-      "body": "Utilizamos medidas razonables y adecuadas a la sensibilidad de la información que se procesa, pero los sistemas de software y transmisión de Internet no pueden garantizar una seguridad absoluta. Proteja sus estados de cuenta originales, archivos Excel descargados y detalles de acceso a la cuenta."
+      "body": "Aplicamos medidas razonables según la sensibilidad de la información, pero la transmisión por internet y los sistemas no garantizan una seguridad absoluta. Protege tus extractos originales, los archivos Excel descargados y los datos de acceso a tu cuenta."
     },
     "rights": {
       "title": "Tus derechos de privacidad",
-      "body": "Dependiendo de las leyes que se aplican en el lugar donde vive, es posible que tenga derecho a acceder, corregir, eliminar u obtener una copia de información personal, o a oponerse o restringir cierto procesamiento. Contáctenos usando el correo electrónico a continuación. Cuando corresponda, también puede presentar una queja ante un regulador. Verificaremos y manejaremos las solicitudes según la ley aplicable."
+      "body": "Según las leyes de tu lugar de residencia, puedes tener derecho a acceder, corregir, eliminar u obtener una copia de la información personal, o a oponerte a ciertos tratamientos o limitarlos. Contacta con nosotros mediante el correo indicado abajo. Cuando corresponda, también puedes reclamar ante una autoridad de control. Verificaremos y tramitaremos las solicitudes conforme a la ley aplicable."
     },
     "terms": {
       "title": "Términos relacionados",
-      "body": "El uso del servicio también requiere leer los términos de servicio <link></link>."
+      "body": "Para usar el servicio, lee también los <link>términos de servicio</link>."
     },
     "changes": {
       "title": "Actualizaciones de políticas",
       "body": "Podemos actualizar esta política cuando las características del servicio, los métodos de procesamiento o los requisitos legales cambien y mostraremos la fecha de actualización en esta página. Notificaremos a los usuarios sobre cambios materiales según lo exige la ley aplicable."
     },
     "contact": {
-      "title": "Contáctenos",
-      "body": "Si tiene preguntas sobre el procesamiento de información o para ejercer los derechos de privacidad aplicables, comuníquese con ReAvid Ltd en <link>{email}</link>."
+      "title": "Contacto",
+      "body": "Para consultar el tratamiento de información o ejercer tus derechos de privacidad aplicables, contacta con ReAvid Ltd en <link>{email}</link>."
     }
   },
   "ThemeToggle": {
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "Cuota restante",
-      "remaining": "Quedan {remaining} de {total} páginas",
+      "remaining": "Quedan {remaining, number} de {total, plural, one {# página} other {# páginas}}",
       "percentage": "{percent}% restante",
       "progressLabel": "Cuota de páginas restante",
       "dayEnds": "La cuota diaria se restablece el {date} UTC.",

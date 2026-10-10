@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 
 import { useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -15,21 +15,12 @@ import { isParseResponse } from "@/lib/conversion-types";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
-function formatFileSize(bytes: number): string {
-  if (bytes < 1024) {
-    return bytes + " B";
-  }
-  if (bytes < 1024 * 1024) {
-    return Math.round(bytes / 1024) + " KB";
-  }
-  return (bytes / (1024 * 1024)).toFixed(1) + " MB";
-}
-
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
   const locale = useLocale();
+  const format = useFormatter();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -49,6 +40,16 @@ export function PdfUpload() {
   useEffect(() => {
     clearConversionPayload();
   }, []);
+
+  function formatFileSize(bytes: number): string {
+    if (bytes < 1024) return t("fileSize.bytes", { size: format.number(bytes) });
+    if (bytes < 1024 * 1024) {
+      return t("fileSize.kilobytes", { size: format.number(Math.round(bytes / 1024)) });
+    }
+    return t("fileSize.megabytes", {
+      size: format.number(bytes / (1024 * 1024), { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    });
+  }
 
   function selectFile(candidate: File | undefined) {
     if (!candidate) return;

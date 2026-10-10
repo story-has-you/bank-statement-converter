@@ -88,7 +88,7 @@ export async function UsageTiers() {
                     <div className="grid gap-1">
                       <h3 className="text-base font-semibold">{plan.name}</h3>
                       <p className="text-3xl font-semibold">
-                        {siteConfig.subscriptionPrices[tier]}
+                        {format.number(siteConfig.subscriptionPrices[tier], { style: "currency", currency: "USD" })}
                         <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
                       </p>
                     </div>

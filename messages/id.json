@@ -1,0 +1,467 @@
+{
+  "Metadata": {
+    "title": "Bank Statement Converter | PDF ke Excel",
+    "description": "Ubah rekening koran PDF dengan teks yang dapat dipilih menjadi Excel untuk diperiksa. Berkas hanya digunakan untuk konversi ini.",
+    "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank",
+    "brand": "Bank Statement Converter",
+    "alternateName": "Konverter rekening koran PDF ke Excel"
+  },
+  "HomeHeader": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navigasi utama",
+    "convert": "Konversi",
+    "features": "Fitur",
+    "plans": "Paket",
+    "faq": "Pertanyaan umum"
+  },
+  "LanguageSwitcher": {
+    "label": "Pilih bahasa",
+    "current": "Saat ini",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
+  },
+  "AuthControl": {
+    "account": "Akun",
+    "signInWithGoogle": "Masuk dengan Google",
+    "signOut": "Keluar",
+    "unavailable": "Login sementara tidak tersedia",
+    "signInFailed": "Login belum selesai. Coba lagi nanti.",
+    "signOutFailed": "Logout belum selesai. Coba lagi nanti.",
+    "myAccount": "Akun saya",
+    "avatar": "Foto profil"
+  },
+  "AuthError": {
+    "metadata": {
+      "title": "Login belum selesai | Bank Statement Converter",
+      "description": "Login dengan Google belum selesai. Kembali ke beranda dan coba lagi."
+    },
+    "title": "Login belum selesai",
+    "description": "Login dengan Google dibatalkan atau belum selesai. Kembali ke beranda dan coba lagi.",
+    "backHome": "Kembali ke beranda"
+  },
+  "HomeIntro": {
+    "eyebrow": "Konversi rekening koran PDF",
+    "title": "Ubah rekening koran PDF menjadi Excel",
+    "description": "Unggah rekening koran PDF dengan teks yang dapat dipilih, periksa baris hasil ekstraksi, lalu unduh Excel. Berkas hanya kami gunakan untuk konversi ini."
+  },
+  "PdfUpload": {
+    "title": "Unggah rekening koran",
+    "description": "Proses satu PDF setiap kali",
+    "fileLabel": "Rekening koran PDF",
+    "dropzone": "Pilih PDF atau seret ke sini",
+    "dropzoneHint": "Unggah PDF yang dapat dibuka normal dan memiliki teks yang dapat dipilih.",
+    "help": "Nama berkas muncul setelah dipilih. Anda dapat menghapusnya kapan saja.",
+    "errorTitle": "Berkas ini tidak dapat dikonversi",
+    "invalidPdf": "Unggah berkas PDF.",
+    "multipleFiles": "Unggah satu PDF setiap kali.",
+    "conversionFailed": "Konversi belum selesai. Coba berkas lain.",
+    "parserUnavailable": "Layanan pengurai tidak merespons. Coba lagi nanti.",
+    "quotaExceeded": "Kuota Anda habis atau jumlah halaman PDF melebihi sisa kuota.",
+    "quotaUnavailable": "Layanan kuota sementara tidak tersedia. Coba lagi nanti.",
+    "removeFile": "Hapus berkas",
+    "quota": "Kuota gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} halaman per hari setelah login",
+    "serviceReady": "Berkas hanya digunakan untuk konversi ini dan tidak disimpan.",
+    "status": "Siap diunggah",
+    "converting": "Mengonversi",
+    "start": "Konversi dan periksa",
+    "fileTooLarge": "PDF ini lebih besar dari 4 MB.",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
+  },
+  "ConversionResult": {
+    "metadata": {
+      "title": "Hasil konversi | Bank Statement Converter",
+      "description": "Periksa baris hasil ekstraksi dan penanda risiko, lalu unduh Excel."
+    },
+    "eyebrow": "Hasil konversi",
+    "description": "Bandingkan baris bertanda dengan PDF asli sebelum mengunduh.",
+    "download": "Unduh Excel",
+    "backHome": "Konversi berkas lain",
+    "summary": {
+      "status": "Status",
+      "pages": "Halaman PDF",
+      "tables": "Tabel",
+      "rows": "Baris data",
+      "warnings": "Baris yang perlu diperiksa"
+    },
+    "summaryStatus": {
+      "success": "Selesai",
+      "partial": "Hasil sebagian",
+      "failed": "Belum lengkap"
+    },
+    "rowStatus": {
+      "valid": "OK",
+      "warning": "DISCREPANCY",
+      "failed": "UNVERIFIABLE"
+    },
+    "table": {
+      "title": "Tabel {id}",
+      "singleTitle": "Transaksi rekening koran",
+      "pages": "Halaman {start, number} sampai {end, number}",
+      "rowCount": "{count, number} baris",
+      "status": "Status",
+      "warnings": "Catatan pemeriksaan",
+      "sourcePage": "Halaman sumber",
+      "sourceRow": "Baris pada halaman"
+    },
+    "partial": {
+      "title": "Sebagian data perlu diperiksa",
+      "description": "Anda masih dapat melihat dan mengunduh data yang diekstrak. Bandingkan baris DISCREPANCY atau UNVERIFIABLE dengan PDF asli."
+    },
+    "empty": {
+      "title": "Tidak ada data untuk diunduh",
+      "description": "Tidak ditemukan baris tabel yang dapat digunakan pada PDF ini. Kembali ke beranda dan unggah berkas lain."
+    },
+    "missing": {
+      "title": "Hasil ini sudah kedaluwarsa",
+      "description": "Hasil hanya tersedia selama konversi ini. Kembali ke beranda dan unggah PDF lagi."
+    },
+    "issues": {
+      "repeatedHeader": "Baris {row} mengulang judul kolom dan dilewati.",
+      "summaryRow": "Baris {row} tampaknya merupakan ringkasan dan dilewati.",
+      "extraCells": "Baris ini memiliki lebih banyak sel daripada judul kolom. Sel tambahan tetap disertakan.",
+      "unknown": "Item ini perlu diperiksa.",
+      "missingDate": "Tanggal transaksi tidak ada.",
+      "invalidDate": "Tanggal transaksi tidak valid.",
+      "missingDescription": "Deskripsi transaksi tidak ada.",
+      "missingAmount": "Jumlah transaksi tidak ada.",
+      "invalidAmount": "Jumlah transaksi tidak valid.",
+      "amountColumnMismatch": "Ada nilai di luar kolom jumlah transaksi yang tidak dapat dicocokkan dengan yakin."
+    },
+    "pageRisks": {
+      "title": "Masalah per halaman",
+      "item": "Halaman {page}: {code}",
+      "pageParseFailed": "Halaman {page} tidak dapat dibaca.",
+      "pageUnparsed": "Halaman {page} berisi bukti transaksi, tetapi tabel yang dapat dipercaya tidak berhasil disusun.",
+      "unknown": "Halaman {page} perlu diperiksa."
+    },
+    "excel": {
+      "defaultFilename": "rekening koran",
+      "sheetName": "Tabel {index, number}"
+    }
+  },
+  "HomeFeatures": {
+    "title": "Hasil yang Anda dapatkan",
+    "securityTitle": "Tanpa riwayat berkas",
+    "securityDescription": "PDF, Excel yang dihasilkan, dan data transaksi hanya digunakan untuk konversi ini. Kami tidak menambahkannya ke riwayat berkas.",
+    "banksTitle": "Mempertahankan tabel asli",
+    "banksDescription": "Konverter membaca judul kolom dan teks sel dari PDF, lalu menampilkannya sebagai tabel agar dapat dibandingkan dengan aslinya.",
+    "accuracyTitle": "Menandai baris yang perlu diperiksa",
+    "accuracyDescription": "Baris dengan bukti tidak lengkap atau kolom yang tidak selaras diberi penanda DISCREPANCY atau UNVERIFIABLE sebelum diunduh."
+  },
+  "UsageTiers": {
+    "title": "Mulai dengan konversi gratis",
+    "description": "Coba konverter tanpa akun. Login untuk kuota harian lebih besar, atau pilih paket bulanan jika sering menggunakannya.",
+    "anonymous": "Tanpa login",
+    "anonymousAmount": "{pages, number} halaman",
+    "anonymousDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
+    "signedIn": "Sudah login",
+    "signedInAmount": "{pages, number} halaman",
+    "signedInDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
+    "perDay": "/ hari",
+    "perMonth": "/ bulan",
+    "planQuota": "{pages, number} halaman per bulan",
+    "current": "Paket saat ini",
+    "cancelledPeriodActive": "Langganan Anda dibatalkan, tetapi manfaat tetap tersedia selama periode tagihan ini. Anda dapat berlangganan lagi setelah {date} (UTC).",
+    "plans": {
+      "standard": {
+        "name": "Standar",
+        "description": "Untuk mengonversi rekening koran pribadi."
+      },
+      "professional": {
+        "name": "Profesional",
+        "description": "Untuk yang rutin memproses beberapa rekening koran."
+      },
+      "enterprise": {
+        "name": "Perusahaan",
+        "description": "Untuk tim dan perusahaan yang memproses banyak rekening koran."
+      }
+    }
+  },
+  "PayPal": {
+    "signInRequired": "Login sebelum mulai berlangganan.",
+    "unavailable": "Pembayaran sementara tidak tersedia. Coba lagi nanti.",
+    "subscribe": "Berlangganan dengan PayPal",
+    "processing": "Membuka PayPal",
+    "confirming": "Mengonfirmasi pembayaran",
+    "confirmationDelayed": "Konfirmasi pembayaran memerlukan waktu lebih lama. Muat ulang halaman ini nanti.",
+    "activationFailed": "Langganan Anda belum dapat dikonfirmasi. Muat ulang halaman atau hubungi dukungan.",
+    "activated": "Paket Anda aktif.",
+    "cancelled": "Anda membatalkan proses berlangganan.",
+    "paymentFailed": "Pembayaran belum selesai. Coba lagi nanti.",
+    "currentPlan": "Anda menggunakan paket ini.",
+    "api": {
+      "loginUnavailable": "Login sementara tidak tersedia.",
+      "loginRequired": "Login ke akun Anda.",
+      "emailMissing": "Akun Anda tidak memiliki alamat email, sehingga langganan tidak dapat diaktifkan.",
+      "invalidRequest": "Permintaan langganan tidak valid.",
+      "invalidTier": "Pilih paket langganan yang valid.",
+      "configurationMissing": "Pembayaran belum dikonfigurasi.",
+      "subscriptionBelongsToAnotherAccount": "Langganan ini milik akun lain.",
+      "verificationFailed": "Langganan PayPal tidak dapat diverifikasi.",
+      "activationFailed": "Verifikasi langganan belum selesai. Coba lagi nanti.",
+      "createFailed": "Langganan PayPal tidak dapat dimulai. Coba lagi nanti.",
+      "existingSubscription": "Akun ini sudah memiliki langganan aktif atau yang masih diproses.",
+      "cancelledPeriodActive": "Langganan Anda dibatalkan, tetapi periode tagihan saat ini belum berakhir. Anda dapat berlangganan lagi setelah periode tersebut berakhir.",
+      "webhookInvalidRequest": "Permintaan webhook tidak valid.",
+      "webhookSignatureFailed": "Verifikasi tanda tangan webhook gagal.",
+      "webhookProcessingFailed": "Pemrosesan webhook gagal.",
+      "cancelInvalidOrigin": "Permintaan pembatalan harus berasal dari situs ini.",
+      "cancelSubscriptionNotFound": "Langganan tidak ditemukan.",
+      "cancelNotActive": "Hanya langganan aktif yang dapat dibatalkan.",
+      "cancelFailed": "Pembatalan belum dapat dikonfirmasi. Coba lagi."
+    }
+  },
+  "HomeFaq": {
+    "title": "Pertanyaan umum",
+    "banks": {
+      "question": "Rekening koran apa yang didukung?",
+      "answer": "Kami sedang memeriksa konverter dengan beberapa format rekening koran elektronik. Bank dan format akan kami cantumkan setelah diverifikasi."
+    },
+    "accuracy": {
+      "question": "Mengapa hasil perlu diperiksa?",
+      "answer": "Konverter mempertahankan judul kolom dan teks sel bila memungkinkan. Tata letak rumit, teks buram, atau kolom tidak rata dapat menghasilkan baris DISCREPANCY atau UNVERIFIABLE. Bandingkan Excel dengan PDF asli sebelum digunakan."
+    },
+    "quota": {
+      "question": "Berapa halaman yang dapat dikonversi per hari?",
+      "answer": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman per hari; setelah login, {authenticatedPages, number} halaman. Paket bulanan mencakup {standardPages, number} halaman untuk Standar, {professionalPages, number} untuk Profesional, dan {enterprisePages, number} untuk Perusahaan."
+    },
+    "scans": {
+      "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
+      "answer": "Versi pertama berfokus pada PDF elektronik yang dapat dibuka normal dan memiliki teks yang dapat dipilih. Berkas hasil pindai, terlindungi kata sandi, atau tanpa tabel yang dikenali mungkin tidak dapat dikonversi."
+    },
+    "storage": {
+      "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
+      "answer": "Tidak. Data hanya digunakan untuk konversi dan unduhan saat ini tanpa riwayat berkas. Setelah meninggalkan proses ini, Anda tidak dapat mengunduh hasilnya lagi."
+    },
+    "failure": {
+      "question": "Apa yang terjadi jika konversi gagal?",
+      "answer": "Halaman menampilkan kesalahan dan tidak menyediakan Excel yang tidak valid. Konversi gagal tidak memakai kuota. Hasil sebagian memakai kuota berdasarkan jumlah halaman PDF."
+    }
+  },
+  "HomeFooter": {
+    "brand": "Bank Statement Converter",
+    "navigation": "Navigasi footer",
+    "plans": "Paket",
+    "faq": "Pertanyaan umum",
+    "terms": "Ketentuan layanan",
+    "privacy": "Kebijakan privasi"
+  },
+  "LegalCommon": {
+    "lastUpdated": "Terakhir diperbarui: 2 Oktober 2026"
+  },
+  "Terms": {
+    "metadata": {
+      "title": "Ketentuan layanan | Bank Statement Converter",
+      "description": "Pelajari cara Bank Statement Converter menangani berkas, kuota, langganan, dan tanggung jawab pengguna."
+    },
+    "title": "Ketentuan layanan",
+    "intro": "Layanan ini dikelola ReAvid Ltd melalui <site>{domain}</site>. Baca ketentuan ini dan kebijakan privasi sebelum menggunakan konversi dan langganan.",
+    "availability": "Konversi PDF ke Excel dan langganan PayPal disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
+    "service": {
+      "title": "Cakupan layanan",
+      "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum."
+    },
+    "authorization": {
+      "title": "Izin mengunggah berkas",
+      "body": "Unggah hanya rekening koran yang boleh Anda gunakan dan proses. Pastikan pengunggahan dan pemrosesan informasi pribadi atau keuangan sesuai hukum yang berlaku dan kewajiban Anda kepada orang lain. Jangan unggah berkas yang diperoleh tanpa izin."
+    },
+    "accuracy": {
+      "title": "Memeriksa hasil konversi",
+      "body": "Tata letak, kejelasan, dan isi rekening koran dapat memengaruhi ekstraksi. Hasil dapat memuat kolom yang hilang, ganda, atau salah dikenali. Bandingkan Excel dengan rekening koran asli sebelum pembukuan, pelaporan, pengajuan dokumen, atau keputusan lain."
+    },
+    "quota": {
+      "title": "Kuota konversi",
+      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan PayPal saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
+    },
+    "subscription": {
+      "title": "Langganan dan pembayaran",
+      "body": "Paket Standar, Profesional, dan Perusahaan diperpanjang setiap bulan. Harga ditampilkan sebelum pembelian. Pembayaran dilakukan melalui PayPal dan ditagih hanya setelah Anda mengonfirmasi pembelian. PayPal dapat mengirim status langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Kelola perpanjangan otomatis di akun PayPal Anda."
+    },
+    "files": {
+      "title": "Berkas dan unduhan",
+      "body": "PDF yang diunggah, transaksi yang diekstrak, dan Excel yang dihasilkan hanya digunakan untuk konversi dan unduhan saat ini. Data tidak disimpan sebagai riwayat berkas permanen. Simpan sendiri rekening koran asli dan hasil unduhan; layanan tidak menyediakan unduhan ulang setelah proses berakhir."
+    },
+    "prohibited": {
+      "title": "Penyalahgunaan yang dilarang",
+      "body": "Jangan gunakan layanan untuk memalsukan atau menyalahgambarkan catatan keuangan, melanggar hak orang lain, melakukan penipuan, menyebarkan berkas berbahaya, atau melewati kuota, pengamanan, dan batas akses. Kami dapat membatasi akses untuk aktivitas ilegal atau penyalahgunaan yang jelas."
+    },
+    "rights": {
+      "title": "Kepemilikan",
+      "body": "Anda tetap memiliki hak atas berkas dan isinya. Pengunggahan hanya memberi kami izin untuk memproses konversi saat ini, bukan memindahkan kepemilikan. Hak atas perangkat lunak, antarmuka, dan merek situs tetap pada pemilik sahnya."
+    },
+    "liability": {
+      "title": "Ketersediaan dan tanggung jawab",
+      "body": "Kami berusaha menjaga layanan tersedia, tetapi tidak menjamin setiap berkas dapat dikonversi, layanan selalu tersedia, atau hasil sepenuhnya akurat. Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian tidak langsung akibat tidak memeriksa hasil, format yang tidak didukung, atau gangguan layanan. Ini tidak mengecualikan tanggung jawab atau hak pengguna yang tidak boleh dikecualikan oleh hukum."
+    },
+    "privacy": {
+      "title": "Privasi dan informasi pribadi",
+      "body": "Penanganan berkas dan informasi pribadi dijelaskan dalam <link>kebijakan privasi</link>."
+    },
+    "changes": {
+      "title": "Perubahan ketentuan",
+      "body": "Kami dapat memperbarui ketentuan saat layanan atau persyaratan hukum berubah dan akan menampilkan tanggal pembaruan di halaman ini. Perubahan penting yang memengaruhi langganan berjalan akan disampaikan sesuai hukum dan aturan saat pembelian."
+    },
+    "contact": {
+      "title": "Kontak",
+      "body": "Untuk pertanyaan tentang ketentuan ini, hubungi ReAvid Ltd di <link>{email}</link>."
+    }
+  },
+  "Privacy": {
+    "metadata": {
+      "title": "Kebijakan privasi | Bank Statement Converter",
+      "description": "Pelajari cara Bank Statement Converter menangani rekening koran, akun, kuota, dan informasi tagihan."
+    },
+    "title": "Kebijakan privasi",
+    "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan PayPal.",
+    "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan PayPal yang tersedia saat ini.",
+    "documents": {
+      "title": "Rekening koran dan isi konversi",
+      "body": "PDF yang diunggah dapat memuat nama, nomor rekening, tanggal, jumlah, saldo, dan deskripsi transaksi. Saat konversi tersedia, kami memproses PDF, transaksi hasil ekstraksi, dan Excel hanya untuk konversi dan unduhan yang diminta. Kami tidak menggunakannya untuk iklan atau tujuan lain yang tidak terkait."
+    },
+    "accountData": {
+      "title": "Informasi akun, kuota, dan tagihan",
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel."
+    },
+    "technicalData": {
+      "title": "Informasi teknis yang diperlukan",
+      "body": "Untuk menjalankan situs, menjaga keamanan, dan menyelidiki kegagalan, kami dapat memproses waktu akses, alamat IP, informasi browser atau perangkat, dan catatan kesalahan tanpa isi rekening koran. Untuk mengukur kunjungan, Google Analytics dan Pageview dapat menerima waktu akses, alamat IP, serta informasi browser atau perangkat. Kami tidak mengirim rekening koran, transaksi hasil ekstraksi, atau isi Excel ke layanan analitik tersebut."
+    },
+    "purposes": {
+      "title": "Tujuan pemrosesan",
+      "body": "Informasi hanya digunakan untuk menyelesaikan konversi dan unduhan, mengukur dan memperbaiki kunjungan situs, mengelola akun dan kuota, menyediakan langganan dan tagihan, merespons permintaan, menjaga keamanan, dan memenuhi kewajiban hukum yang berlaku."
+    },
+    "retention": {
+      "title": "Penyimpanan",
+      "documents": "PDF, transaksi hasil ekstraksi, dan Excel hanya digunakan selama pemrosesan yang diperlukan untuk konversi dan unduhan saat ini. Data tidak ditulis ke basis data permanen, penyimpanan objek, atau riwayat berkas, dan tidak disimpan untuk unduhan berikutnya.",
+      "metadata": "Metadata akun, kuota, dan tagihan disimpan hanya selama diperlukan untuk layanan atau kewajiban hukum. Saat tidak diperlukan lagi, data dihapus atau dianonimkan sesuai sistem dan persyaratan hukum. Email akun saat pembelian merupakan bagian dari catatan langganan."
+    },
+    "providers": {
+      "title": "Penyedia dan pemrosesan internasional",
+      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
+    },
+    "storage": {
+      "title": "Penyimpanan browser",
+      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser."
+    },
+    "security": {
+      "title": "Keamanan informasi",
+      "body": "Kami menggunakan langkah yang wajar sesuai sensitivitas informasi, tetapi transmisi internet dan sistem perangkat lunak tidak menjamin keamanan mutlak. Lindungi rekening koran asli, Excel yang diunduh, dan data akses akun Anda."
+    },
+    "rights": {
+      "title": "Hak privasi Anda",
+      "body": "Bergantung pada hukum tempat tinggal Anda, Anda mungkin berhak mengakses, memperbaiki, menghapus, atau memperoleh salinan informasi pribadi, serta menolak atau membatasi pemrosesan tertentu. Hubungi kami melalui email di bawah. Jika berlaku, Anda juga dapat mengadu kepada regulator. Kami akan memverifikasi dan menangani permintaan sesuai hukum yang berlaku."
+    },
+    "terms": {
+      "title": "Ketentuan terkait",
+      "body": "Penggunaan layanan juga memerlukan pembacaan <link>ketentuan layanan</link>."
+    },
+    "changes": {
+      "title": "Pembaruan kebijakan",
+      "body": "Kami dapat memperbarui kebijakan saat fitur layanan, metode pemrosesan, atau persyaratan hukum berubah dan akan menampilkan tanggalnya di halaman ini. Kami akan memberi tahu pengguna tentang perubahan penting sesuai hukum yang berlaku."
+    },
+    "contact": {
+      "title": "Kontak",
+      "body": "Untuk pertanyaan tentang pemrosesan informasi atau menjalankan hak privasi yang berlaku, hubungi ReAvid Ltd di <link>{email}</link>."
+    }
+  },
+  "ThemeToggle": {
+    "label": "Ubah tema",
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sistem"
+  },
+  "ApiErrors": {
+    "INVALID_REQUEST": "Permintaan unggah tidak dapat dibaca.",
+    "INVALID_FILE": "Pilih berkas PDF yang valid.",
+    "PARSER_UNAVAILABLE": "Layanan pengurai sementara tidak tersedia. Coba lagi nanti.",
+    "QUOTA_EXCEEDED": "Anda telah mencapai kuota yang tersedia untuk konversi ini.",
+    "QUOTA_UNAVAILABLE": "Layanan kuota sementara tidak tersedia. Coba lagi nanti.",
+    "FILE_TOO_LARGE": "PDF ini lebih besar dari 4 MB.",
+    "INVALID_FILE_TYPE": "Hanya berkas PDF yang didukung.",
+    "INVALID_PDF": "Berkas ini bukan PDF yang dapat dibaca.",
+    "PASSWORD_PROTECTED_PDF": "PDF terlindungi kata sandi tidak dapat dikonversi.",
+    "TOO_MANY_PAGES": "PDF ini memiliki lebih dari 50 halaman.",
+    "UNSUPPORTED_SCANNED_PDF": "Versi ini menerima PDF elektronik dengan teks yang dapat dipilih, bukan gambar hasil pindai.",
+    "TABLE_NOT_FOUND": "Tidak ditemukan tabel rekening koran yang dapat digunakan.",
+    "NO_VERIFIABLE_TRANSACTIONS": "Tidak ada transaksi dengan bukti yang cukup untuk diperiksa.",
+    "PARSE_FAILED": "PDF tidak dapat diurai. Coba berkas lain.",
+    "UNKNOWN": "Terjadi kesalahan. Coba lagi.",
+    "PARSER_RESPONSE_TOO_LARGE": "Respons pengurai terlalu besar untuk dikirim kembali dengan aman."
+  },
+  "Account": {
+    "title": "Akun saya",
+    "description": "Profil dan langganan Anda.",
+    "avatar": "Foto profil",
+    "freePlan": "Paket gratis",
+    "planUnavailable": "Paket tidak tersedia",
+    "currentPlan": "Paket saat ini: {plan}",
+    "notAvailable": "Tidak tersedia",
+    "refresh": "Muat ulang",
+    "refreshing": "Memuat ulang…",
+    "loading": "Memuat akun…",
+    "metadata": {
+      "title": "Akun saya",
+      "description": "Profil dan langganan Anda."
+    },
+    "quota": {
+      "title": "Sisa kuota",
+      "remaining": "Sisa {remaining, number} dari {total, number} halaman",
+      "percentage": "Sisa {percent}%",
+      "progressLabel": "Sisa kuota halaman",
+      "dayEnds": "Kuota harian direset pada {date} UTC.",
+      "monthEnds": "Periode tagihan saat ini berakhir pada {date} UTC.",
+      "unavailable": "Kuota sementara tidak tersedia. Muat ulang nanti."
+    },
+    "subscriptions": {
+      "title": "Catatan langganan",
+      "description": "Satu catatan per langganan. Tanggal ditampilkan dalam UTC.",
+      "unavailable": "Catatan langganan sementara tidak tersedia.",
+      "empty": "Belum ada catatan langganan.",
+      "plan": "Paket",
+      "amount": "Jumlah pembayaran langganan",
+      "status": "Status",
+      "created": "Dibuat",
+      "period": "Periode tagihan",
+      "actions": "Tindakan",
+      "availableUntil": "Sisa kuota tersedia hingga {date} UTC."
+    },
+    "statuses": {
+      "APPROVAL_PENDING": "Menunggu persetujuan",
+      "APPROVED": "Disetujui",
+      "ACTIVE": "Aktif",
+      "SUSPENDED": "Ditangguhkan",
+      "CANCELLED": "Dibatalkan",
+      "EXPIRED": "Kedaluwarsa",
+      "PAYMENT_FAILED": "Pembayaran gagal"
+    },
+    "cancel": {
+      "button": "Batalkan langganan",
+      "title": "Batalkan langganan ini?",
+      "description": "Perpanjangan berikutnya akan dihentikan. Sisa kuota berbayar tersedia hingga {date} UTC.",
+      "descriptionWithoutDate": "Perpanjangan berikutnya akan dihentikan. Sisa kuota berbayar dapat digunakan sampai periode tagihan pada catatan langganan berakhir.",
+      "keep": "Pertahankan langganan",
+      "confirm": "Konfirmasi pembatalan",
+      "submitting": "Membatalkan…",
+      "syncing": "Perpanjangan telah dihentikan. Status langganan sedang diperbarui.",
+      "delayed": "Perpanjangan telah dihentikan, tetapi pembaruan status memerlukan waktu lebih lama. Periksa lagi nanti.",
+      "check": "Periksa status",
+      "checking": "Memeriksa…",
+      "failed": "Pembatalan belum dapat dikonfirmasi. Coba lagi.",
+      "checkFailed": "Status tidak dapat diperiksa. Coba lagi."
+    }
+  }
+}

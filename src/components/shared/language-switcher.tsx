@@ -36,7 +36,7 @@ export function LanguageSwitcher() {
           <DropdownMenuTrigger render={<Button variant="ghost" size="icon" aria-label={t("label")} />}>
             <LanguagesIcon />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-36">
+          <DropdownMenuContent align="end" className="w-56 max-w-[calc(100vw-2rem)]">
             <DropdownMenuGroup>
               {routing.locales.map((option) => (
                 <DropdownMenuItem key={option} onClick={() => switchLocale(option)}>

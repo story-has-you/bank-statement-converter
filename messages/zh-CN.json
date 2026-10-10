@@ -7,7 +7,7 @@
     "alternateName": "银行流水 PDF 转 Excel"
   },
   "HomeHeader": {
-    "brand": "银行对账单转换",
+    "brand": "银行流水转换",
     "navigation": "主导航",
     "convert": "开始转换",
     "features": "功能",
@@ -23,7 +23,12 @@
     "ko": "한국어",
     "de": "Deutsch",
     "fr": "Français",
-    "es": "Español"
+    "es": "Español",
+    "pt-BR": "Português (Brasil)",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia"
   },
   "AuthControl": {
     "account": "账号",
@@ -32,7 +37,7 @@
     "unavailable": "登录暂时不可用",
     "signInFailed": "登录未完成，请稍后再试。",
     "signOutFailed": "退出登录未完成，请稍后再试。",
-    "myAccount": "我的页面",
+    "myAccount": "我的账户",
     "avatar": "用户头像"
   },
   "AuthError": {
@@ -64,12 +69,17 @@
     "quotaExceeded": "额度已用完，或这份 PDF 的页数超过了剩余额度。",
     "quotaUnavailable": "额度服务暂时不可用，请稍后再试。",
     "removeFile": "移除文件",
-    "quota": "免费额度：不登录每天 {anonymousPages} 页，登录后每天 {authenticatedPages} 页",
+    "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
     "serviceReady": "文件仅用于本次转换，不会保存。",
     "status": "可以上传",
     "converting": "正在处理",
     "start": "转换并查看结果",
-    "fileTooLarge": "PDF 不能超过 4 MB。"
+    "fileTooLarge": "PDF 不能超过 4 MB。",
+    "fileSize": {
+      "bytes": "{size} B",
+      "kilobytes": "{size} KB",
+      "megabytes": "{size} MB"
+    }
   },
   "ConversionResult": {
     "metadata": {
@@ -100,8 +110,8 @@
     "table": {
       "title": "表格 {id}",
       "singleTitle": "银行流水明细",
-      "pages": "第 {start} 至 {end} 页",
-      "rowCount": "{count} 行",
+      "pages": "第 {start, number} 至 {end, number} 页",
+      "rowCount": "{count, number} 行",
       "status": "状态",
       "warnings": "核对提示",
       "sourcePage": "原始页码",
@@ -137,6 +147,10 @@
       "pageParseFailed": "第 {page} 页读取失败。",
       "pageUnparsed": "第 {page} 页包含交易证据，但未能可靠还原表格。",
       "unknown": "第 {page} 页需要核对。"
+    },
+    "excel": {
+      "defaultFilename": "银行流水",
+      "sheetName": "表格 {index, number}"
     }
   },
   "HomeFeatures": {
@@ -152,28 +166,28 @@
     "title": "先免费试一次",
     "description": "不登录也能试用。登录后每天可转换更多页，经常使用可选择按月套餐。",
     "anonymous": "不登录",
-    "anonymousAmount": "{pages} 页",
-    "anonymousDescription": "每天累计可转换 {pages} 页 PDF。",
+    "anonymousAmount": "{pages, number} 页",
+    "anonymousDescription": "每天累计可转换 {pages, number} 页 PDF。",
     "signedIn": "登录后",
-    "signedInAmount": "{pages} 页",
-    "signedInDescription": "每天累计可转换 {pages} 页 PDF。",
+    "signedInAmount": "{pages, number} 页",
+    "signedInDescription": "每天累计可转换 {pages, number} 页 PDF。",
     "perDay": "/ 天",
     "perMonth": "/ 月",
-    "planQuota": "每月 {pages} 页",
+    "planQuota": "每月 {pages, number} 页",
     "current": "当前方案",
     "cancelledPeriodActive": "订阅已取消，本期权益仍有效。请在 {date}（UTC）后再次订阅。",
     "plans": {
       "standard": {
         "name": "标准",
-        "description": "适合需要稳定处理银行流水的个人用户。"
+        "description": "适合转换个人银行流水。"
       },
       "professional": {
         "name": "专业",
-        "description": "适合经常处理多份银行流水的专业用户。"
+        "description": "适合经常处理多份银行流水。"
       },
       "enterprise": {
         "name": "企业",
-        "description": "适合团队和企业处理银行流水。"
+        "description": "适合需要批量处理流水的团队和企业。"
       }
     }
   },
@@ -215,7 +229,7 @@
     "title": "常见问题",
     "banks": {
       "question": "支持哪些对账单？",
-      "answer": "目前适配多种银行的电子版对账单。具体银行和版式会在逐一验证后公布。"
+      "answer": "我们正在验证多种电子银行对账单版式，具体银行和版式会在验证后公布。"
     },
     "accuracy": {
       "question": "为什么还要核对转换结果？",
@@ -223,7 +237,7 @@
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "不登录每天可转换 {anonymousPages} 页，登录后每天可转换 {authenticatedPages} 页，按 PDF 页数累计。标准套餐每月 {standardPages} 页，专业套餐每月 {professionalPages} 页，企业套餐每月 {enterprisePages} 页。"
+      "answer": "不登录每天可转换 {anonymousPages, number} 页，登录后每天可转换 {authenticatedPages, number} 页，按 PDF 页数累计。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -239,7 +253,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "银行对账单转换",
+    "brand": "银行流水转换",
     "navigation": "页脚导航",
     "plans": "会员方案",
     "faq": "常见问题",
@@ -270,8 +284,8 @@
       "body": "银行对账单的版式、清晰度和内容可能影响提取结果。转换结果可能出现遗漏、重复或字段识别错误；在记账、申报、提交材料或作出其他决定前，您应将 Excel 与原始对账单逐项核对。"
     },
     "quota": {
-      "title": "免费使用额度",
-      "body": "匿名用户每天累计可转换 {anonymousPages} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages} 页 PDF。standard 每月 {standardPages} 页，professional 每月 {professionalPages} 页，enterprise 每月 {enterprisePages} 页。日额度按 UTC 重置，会员额度按 PayPal 当前计费周期计算；失败转换不会扣减额度，partial 结果会按 PDF 页数累计。"
+      "title": "转换额度",
+      "body": "不登录每天累计可转换 {anonymousPages, number} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages, number} 页 PDF。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。每日额度按 UTC 重置，订阅额度按 PayPal 当前计费周期计算。转换失败不扣额度；部分结果按 PDF 页数扣减额度。"
     },
     "subscription": {
       "title": "订阅与付款",
@@ -405,7 +419,7 @@
     },
     "quota": {
       "title": "剩余额度",
-      "remaining": "剩余 {remaining} / {total} 页",
+      "remaining": "剩余 {remaining, number} / {total, number} 页",
       "percentage": "剩余 {percent}%",
       "progressLabel": "剩余可转换页数",
       "dayEnds": "每日额度将在 {date} UTC 重置。",
