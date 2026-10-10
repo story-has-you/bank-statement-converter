@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
+import { syncPayPalSubscriptionStatus } from "@/lib/paypal/subscription-sync";
 import { createClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
@@ -16,6 +17,17 @@ export async function GET(request: Request) {
     if (supabase) {
       const { error } = await supabase.auth.exchangeCodeForSession(code);
       if (!error) {
+        try {
+          const { data, error: userError } = await supabase.auth.getUser();
+          if (userError || !data.user) {
+            console.error("Failed to verify login user for subscription synchronization");
+          } else {
+            await syncPayPalSubscriptionStatus(data.user.id);
+          }
+        } catch {
+          console.error("Failed to verify login user for subscription synchronization");
+        }
+
         const response = NextResponse.redirect(new URL(redirectPath, origin));
         response.headers.set("Cache-Control", "private, no-store");
         return response;

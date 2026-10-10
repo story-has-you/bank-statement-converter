@@ -137,6 +137,31 @@ export async function findOpenBillingSubscription(userId: string): Promise<Billi
   return data as BillingSubscription | null;
 }
 
+export async function updateBillingSubscriptionStatus(
+  subscription: BillingSubscription,
+  status: "CANCELLED" | "EXPIRED",
+): Promise<"applied" | "ignored"> {
+  const admin = createAdminClient();
+  if (!admin) throw new Error("Supabase admin configuration is incomplete");
+
+  // 只更新读取时的版本；并发 Webhook 已改动状态或账期时，交由下一次同步重试。
+  let query = admin.from("billing_subscriptions")
+    .update({ status })
+    .eq("id", subscription.id)
+    .eq("user_id", subscription.user_id)
+    .eq("status", subscription.status);
+  query = subscription.last_event_at === null
+    ? query.is("last_event_at", null)
+    : query.eq("last_event_at", subscription.last_event_at);
+  query = subscription.last_webhook_event_id === null
+    ? query.is("last_webhook_event_id", null)
+    : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
+
+  const { data, error } = await query.select("id");
+  if (error) throw error;
+  return data.length ? "applied" : "ignored";
+}
+
 export type BillingWebhookUpdate = {
   eventId: string;
   eventAt: string;
