@@ -6,7 +6,7 @@ if (environment === "preview") {
   url = "https://bankstatementconverter.xyz";
 }
 const domain = new URL(url).host;
-const contactEmail = "fangxi.inori@gmail.com";
+const contactEmail = "support@bankstatementconverter.xyz";
 const subscriptionPrices = {
   standard: 19.9,
   professional: 49.9,
