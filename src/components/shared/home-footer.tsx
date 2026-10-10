@@ -12,11 +12,11 @@ export function HomeFooter() {
       <div className="mx-auto w-full max-w-5xl">
         <AgentsFooter />
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-7">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mt-2">
             <BrandLogo className="size-6 shrink-0" />
             <span>{t("brand")}</span>
           </div>
-          <nav className="flex flex-wrap items-center gap-x-4 gap-y-2" aria-label={t("navigation")}>
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2" aria-label={t("navigation")}>
             <Link className="hover:text-foreground" href="/#plans">{t("plans")}</Link>
             <Link className="hover:text-foreground" href="/#faq">{t("faq")}</Link>
             <Link className="hover:text-foreground" href="/terms">{t("terms")}</Link>
