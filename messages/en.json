@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF to Excel",
-    "description": "Turn a text-based bank statement PDF into an Excel file you can review. Files are used for this conversion only.",
+    "description": "Upload a bank statement PDF, watch the tables appear, review the result, then download Excel. Your file is used only for this conversion.",
     "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction",
     "brand": "Bank Statement Converter",
     "alternateName": "Bank statement PDF to Excel converter"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Convert your bank statement PDF to Excel",
-    "description": "Upload a text-based bank statement PDF, review the extracted rows, then download Excel. We use your file only for this conversion."
+    "description": "Upload a bank statement PDF, watch the tables appear, review the result, then download Excel. Your file is used only for this conversion."
   },
   "PdfUpload": {
     "title": "Upload a bank statement",
     "description": "Process one PDF at a time",
     "fileLabel": "Bank statement PDF",
     "dropzone": "Choose a PDF or drop it here",
-    "dropzoneHint": "Upload a PDF that opens normally and contains selectable text.",
+    "dropzoneHint": "Upload a PDF that opens normally, up to 4 MB and 50 pages. Professional and Enterprise can attempt scanned PDFs.",
     "help": "The filename appears here after you select a file. You can remove it at any time.",
     "errorTitle": "This operation could not be completed",
     "invalidPdf": "The uploaded file is not a PDF.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "Browser storage is unavailable.",
     "emptyFile": "The uploaded PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
-    "invalidResponse": "The conversion service returned data in an invalid format."
+    "invalidResponse": "The conversion service returned data in an invalid format.",
+    "aiNotice": "For Professional and Enterprise, PDFs are sent to Qwen when regular parsing is unavailable. Qwen processing is subject to its terms and privacy policy; this website does not retain files or transactions as persistent history."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "bank-statement",
       "sheetName": "Table {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "Reading PDF",
+        "extracting": "Generating tables",
+        "finalizing": "Checking results and quota"
+      },
+      "previewNotice": "Tables are still being generated. Excel download is available after the final checks.",
+      "cancel": "Cancel conversion",
+      "failedTitle": "Conversion not completed",
+      "errors": {
+        "invalid": "The conversion service returned data in an invalid format.",
+        "interrupted": "The connection ended before the result was complete. Please convert again.",
+        "request": "No response to the conversion request could be received.",
+        "storage": "Conversion completed, but the browser could not save the result."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Enterprise",
         "description": "For users who need to convert more pages each month."
       }
-    }
+    },
+    "aiParsing": "Automatic AI fallback, including scanned PDFs",
+    "textParsing": "Text-based PDF parsing"
   },
   "PayPal": {
     "signInRequired": "Sign in before starting a subscription.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "Can I convert scanned or encrypted PDFs?",
-      "answer": "Only electronic PDFs with extractable text are supported. Scanned and password-protected PDFs are not supported."
+      "answer": "Professional and Enterprise can attempt scanned PDFs with AI. Other plans require a text layer. Password-protected files are not supported on any plan."
     },
     "storage": {
       "question": "Are my PDF, Excel file, or transactions saved?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
+      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. For Professional and Enterprise, PDFs are sent to Qwen when regular parsing is unavailable. Qwen processing is subject to its terms and privacy policy; this website does not retain files or transactions as persistent history."
     },
     "storage": {
       "title": "Browser storage",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "You have no pages left to convert in this period.",
     "QUOTA_RECORD_FAILED": "Usage for this conversion could not be recorded.",
     "QUOTA_PERIOD_UNAVAILABLE": "The subscription billing period is invalid, so conversion quota could not be determined.",
-    "PARSER_AUTH_NOT_CONFIGURED": "The conversion service has not been configured."
+    "PARSER_AUTH_NOT_CONFIGURED": "The conversion service has not been configured.",
+    "QWEN_NOT_CONFIGURED": "The conversion service has not been configured.",
+    "QWEN_UNAVAILABLE": "The conversion service could not be reached.",
+    "QWEN_TIMEOUT": "The conversion request timed out.",
+    "INVALID_QWEN_RESPONSE": "The conversion service returned data in an invalid format.",
+    "QWEN_RESPONSE_TOO_LARGE": "The conversion result exceeds the response size limit.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "A valid PDF page count was not returned. The conversion cannot be completed.",
+    "QWEN_INCOMPLETE_RESPONSE": "The AI output ended before the conversion was complete. No pages were deducted. Please try a shorter PDF."
   },
   "Account": {
     "title": "My account",

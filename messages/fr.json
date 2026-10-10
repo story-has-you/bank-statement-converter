@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Convertisseur de relevé bancaire | PDF vers Excel",
-    "description": "Transformez un relevé bancaire PDF sous forme de texte en un fichier Excel que vous pouvez consulter. Les fichiers sont utilisés uniquement pour cette conversion.",
+    "description": "Importez un relevé bancaire PDF, regardez les tableaux apparaître, vérifiez le résultat puis téléchargez Excel. Le fichier est utilisé uniquement pour cette conversion.",
     "keywords": "relevé bancaire PDF vers Excel, convertisseur PDF Excel, extraction de transactions bancaires",
     "brand": "Convertisseur de relevés bancaires",
     "alternateName": "Convertisseur de relevé bancaire PDF vers Excel"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversion de relevés bancaires PDF",
     "title": "Convertir un relevé bancaire PDF en Excel",
-    "description": "Importez un relevé bancaire PDF contenant du texte, vérifiez les lignes extraites, puis téléchargez le fichier Excel. Nous utilisons votre fichier uniquement pour cette conversion."
+    "description": "Importez un relevé bancaire PDF, regardez les tableaux apparaître, vérifiez le résultat puis téléchargez Excel. Le fichier est utilisé uniquement pour cette conversion."
   },
   "PdfUpload": {
     "title": "Importer un relevé bancaire",
     "description": "Traitez un PDF à la fois",
     "fileLabel": "Relevé bancaire PDF",
     "dropzone": "Choisissez un PDF ou déposez-le ici",
-    "dropzoneHint": "Importez un PDF qui s'ouvre normalement et dont le texte peut être sélectionné.",
+    "dropzoneHint": "Importez un PDF qui s’ouvre normalement, limité à 4 Mo et 50 pages. Professional et Enterprise peuvent aussi essayer les PDF numérisés.",
     "help": "Le nom du fichier apparaît après la sélection. Vous pouvez retirer le fichier à tout moment.",
     "errorTitle": "Cette opération n’a pas pu être terminée",
     "invalidPdf": "Le fichier téléversé n’est pas un PDF.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "Le stockage du navigateur est indisponible.",
     "emptyFile": "Le fichier PDF téléversé est vide.",
     "quotaExhausted": "Vous avez utilisé toutes les pages disponibles pour cette période.",
-    "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide."
+    "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide.",
+    "aiNotice": "Pour Professional et Enterprise, le PDF est envoyé à Qwen si l’analyse habituelle est indisponible. Ce traitement relève des conditions et de la politique de confidentialité de Qwen. Ce site ne conserve pas les fichiers ou transactions dans un historique permanent."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "relevé bancaire",
       "sheetName": "Tableau {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "Lecture du PDF",
+        "extracting": "Génération des tableaux",
+        "finalizing": "Vérification du résultat et du quota"
+      },
+      "previewNotice": "Les tableaux sont en cours de génération. Le téléchargement Excel sera disponible après les vérifications finales.",
+      "cancel": "Annuler la conversion",
+      "failedTitle": "Conversion non terminée",
+      "errors": {
+        "invalid": "Le service de conversion a renvoyé des données dans un format invalide.",
+        "interrupted": "La connexion a été interrompue avant la fin. Veuillez relancer la conversion.",
+        "request": "Aucune réponse à la demande de conversion n’a pu être reçue.",
+        "storage": "La conversion est terminée, mais le navigateur n’a pas pu enregistrer le résultat."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Entreprise",
         "description": "Pour les utilisateurs qui doivent convertir davantage de pages chaque mois."
       }
-    }
+    },
+    "aiParsing": "Recours automatique à l’IA, y compris pour les PDF numérisés",
+    "textParsing": "Analyse des PDF contenant du texte"
   },
   "PayPal": {
     "signInRequired": "Connectez-vous avant de démarrer un abonnement.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "Puis-je convertir des PDF numérisés ou cryptés ?",
-      "answer": "Seuls les PDF électroniques contenant du texte extractible sont pris en charge. Les PDF numérisés ou protégés par mot de passe ne sont pas pris en charge."
+      "answer": "Professional et Enterprise peuvent essayer les PDF numérisés avec l’IA. Les autres offres nécessitent une couche de texte. Les fichiers protégés par mot de passe ne sont acceptés par aucune offre."
     },
     "storage": {
       "question": "Mes fichiers PDF, Excel ou mes transactions sont-ils enregistrés ?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
-      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions."
+      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions. Pour Professional et Enterprise, le PDF est envoyé à Qwen si l’analyse habituelle est indisponible. Ce traitement relève des conditions et de la politique de confidentialité de Qwen. Ce site ne conserve pas les fichiers ou transactions dans un historique permanent."
     },
     "storage": {
       "title": "Stockage du navigateur",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "Vous avez utilisé toutes les pages disponibles pour cette période.",
     "QUOTA_RECORD_FAILED": "L’utilisation liée à cette conversion n’a pas pu être enregistrée.",
     "QUOTA_PERIOD_UNAVAILABLE": "La période de facturation de l’abonnement est invalide, ce qui empêche de déterminer le quota.",
-    "PARSER_AUTH_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré."
+    "PARSER_AUTH_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
+    "QWEN_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
+    "QWEN_UNAVAILABLE": "Impossible de joindre le service de conversion.",
+    "QWEN_TIMEOUT": "La demande de conversion a dépassé le délai imparti.",
+    "INVALID_QWEN_RESPONSE": "Le service de conversion a renvoyé des données dans un format invalide.",
+    "QWEN_RESPONSE_TOO_LARGE": "Le résultat de conversion dépasse la taille maximale autorisée pour une réponse.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "Le nombre de pages PDF renvoyé est invalide ou absent. La conversion ne peut pas être terminée.",
+    "QWEN_INCOMPLETE_RESPONSE": "La sortie de l’IA s’est arrêtée avant la fin. Aucune page n’a été déduite. Essayez un PDF plus court."
   },
   "Account": {
     "title": "Mon compte",

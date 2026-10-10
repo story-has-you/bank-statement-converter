@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "은행 명세서 변환기 | PDF를 엑셀로",
-    "description": "텍스트 기반 은행 명세서 PDF를 검토할 수 있는 Excel 파일로 변환하세요. 파일은 이 변환에만 사용됩니다.",
+    "description": "은행 거래 명세 PDF를 업로드하고 순차적으로 나타나는 표를 확인한 후 Excel을 다운로드하세요. 파일은 이번 변환에만 사용됩니다.",
     "keywords": "은행 명세서 PDF Excel, PDF Excel 변환기, 은행 거래 추출",
     "brand": "은행 명세서 변환기",
     "alternateName": "은행 명세서 PDF를 Excel로 변환"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "은행 명세서 PDF 변환",
     "title": "은행 명세서 PDF를 Excel로 변환",
-    "description": "텍스트가 있는 은행 명세서 PDF를 업로드하고, 추출된 내역을 확인한 뒤 Excel로 다운로드하세요. 파일은 이번 변환에만 사용합니다."
+    "description": "은행 거래 명세 PDF를 업로드하고 순차적으로 나타나는 표를 확인한 후 Excel을 다운로드하세요. 파일은 이번 변환에만 사용됩니다."
   },
   "PdfUpload": {
     "title": "은행 명세서 업로드",
     "description": "한 번에 하나의 PDF를 처리합니다.",
     "fileLabel": "은행 명세서 PDF",
     "dropzone": "PDF를 선택하거나 여기로 끌어 놓으세요",
-    "dropzoneHint": "정상적으로 열리고 텍스트를 선택할 수 있는 PDF를 업로드하세요.",
+    "dropzoneHint": "정상적으로 열리는 PDF를 업로드하세요. 최대 4 MB, 50페이지이며 Professional과 Enterprise는 스캔 PDF도 시도할 수 있습니다.",
     "help": "파일을 선택하면 이름이 표시됩니다. 언제든 선택을 해제할 수 있습니다.",
     "errorTitle": "이번 작업을 완료하지 못했습니다",
     "invalidPdf": "업로드된 파일이 PDF가 아닙니다.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "브라우저 저장소를 사용할 수 없습니다.",
     "emptyFile": "업로드된 PDF 파일이 비어 있습니다.",
     "quotaExhausted": "이번 기간에 변환할 수 있는 페이지를 모두 사용했습니다.",
-    "invalidResponse": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다."
+    "invalidResponse": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다.",
+    "aiNotice": "Professional과 Enterprise에서 일반 분석을 사용할 수 없으면 PDF를 Qwen으로 전송합니다. Qwen의 처리는 해당 서비스 약관과 개인정보처리방침을 따릅니다. 이 사이트는 파일이나 거래 내역을 영구 기록으로 저장하지 않습니다."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "은행 명세서",
       "sheetName": "표 {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "PDF 읽는 중",
+        "extracting": "표 생성 중",
+        "finalizing": "결과와 사용 한도 확인 중"
+      },
+      "previewNotice": "표를 생성하고 있습니다. 최종 확인이 끝나면 Excel을 다운로드할 수 있습니다.",
+      "cancel": "변환 취소",
+      "failedTitle": "변환이 완료되지 않았습니다",
+      "errors": {
+        "invalid": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다.",
+        "interrupted": "결과가 완성되기 전에 연결이 끊겼습니다. 다시 변환해 주세요.",
+        "request": "변환 요청에 대한 응답을 받지 못했습니다.",
+        "storage": "변환은 완료되었지만 브라우저가 결과를 저장하지 못했습니다."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "기업",
         "description": "매월 더 많은 페이지를 변환해야 하는 사용자를 위한 요금제입니다."
       }
-    }
+    },
+    "aiParsing": "스캔 PDF를 포함한 자동 AI 대체 분석",
+    "textParsing": "텍스트 PDF 분석"
   },
   "PayPal": {
     "signInRequired": "구독을 시작하기 전에 로그인하세요.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "스캔했거나 암호화된 PDF를 변환할 수 있나요?",
-      "answer": "텍스트를 추출할 수 있는 전자 PDF만 지원합니다. 스캔 PDF와 비밀번호로 보호된 PDF는 지원하지 않습니다."
+      "answer": "Professional과 Enterprise는 AI로 스캔 PDF 변환을 시도할 수 있습니다. 다른 요금제에는 텍스트 레이어가 필요합니다. 모든 요금제에서 암호 보호 파일은 지원하지 않습니다."
     },
     "storage": {
       "question": "내 PDF, Excel 파일 또는 거래가 저장됩니까?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "공급자 및 국제 처리",
-      "body": "계정 로그인에는 Google과 Supabase, 구독 결제와 상태 동기화에는 PayPal을 사용합니다. 방문 통계에는 Google Analytics와 Pageview를 사용하며, 각 서비스의 약관과 개인정보 처리방침에 따라 방문 관련 기술 정보를 처리할 수 있습니다. PayPal도 해당 약관과 개인정보 처리방침에 따라 결제와 계정 정보를 처리할 수 있습니다. 국경을 넘어 정보를 처리하면 적용 법률이 요구하는 보호 조치를 취하고 실제 처리 방식을 설명합니다. 은행 명세서나 거래 정보는 판매하지 않습니다."
+      "body": "계정 로그인에는 Google과 Supabase, 구독 결제와 상태 동기화에는 PayPal을 사용합니다. 방문 통계에는 Google Analytics와 Pageview를 사용하며, 각 서비스의 약관과 개인정보 처리방침에 따라 방문 관련 기술 정보를 처리할 수 있습니다. PayPal도 해당 약관과 개인정보 처리방침에 따라 결제와 계정 정보를 처리할 수 있습니다. 국경을 넘어 정보를 처리하면 적용 법률이 요구하는 보호 조치를 취하고 실제 처리 방식을 설명합니다. 은행 명세서나 거래 정보는 판매하지 않습니다. Professional과 Enterprise에서 일반 분석을 사용할 수 없으면 PDF를 Qwen으로 전송합니다. Qwen의 처리는 해당 서비스 약관과 개인정보처리방침을 따릅니다. 이 사이트는 파일이나 거래 내역을 영구 기록으로 저장하지 않습니다."
     },
     "storage": {
       "title": "브라우저 저장공간",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "이번 기간에 변환할 수 있는 페이지를 모두 사용했습니다.",
     "QUOTA_RECORD_FAILED": "이번 변환의 사용량을 기록하지 못했습니다.",
     "QUOTA_PERIOD_UNAVAILABLE": "구독 결제 기간이 유효하지 않아 변환 한도를 확인하지 못했습니다.",
-    "PARSER_AUTH_NOT_CONFIGURED": "변환 서비스 설정이 완료되지 않았습니다."
+    "PARSER_AUTH_NOT_CONFIGURED": "변환 서비스 설정이 완료되지 않았습니다.",
+    "QWEN_NOT_CONFIGURED": "변환 서비스 설정이 완료되지 않았습니다.",
+    "QWEN_UNAVAILABLE": "변환 서비스에 연결할 수 없습니다.",
+    "QWEN_TIMEOUT": "변환 요청 시간이 초과되었습니다.",
+    "INVALID_QWEN_RESPONSE": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다.",
+    "QWEN_RESPONSE_TOO_LARGE": "변환 결과가 응답 데이터 크기 제한을 초과합니다.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "유효한 PDF 페이지 수가 반환되지 않아 변환을 완료할 수 없습니다.",
+    "QWEN_INCOMPLETE_RESPONSE": "AI 출력이 완료되지 않았습니다. 사용 한도는 차감되지 않았습니다. 페이지 수가 적은 PDF로 다시 시도해 주세요."
   },
   "Account": {
     "title": "내 계정",

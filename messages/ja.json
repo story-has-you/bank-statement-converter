@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "銀行明細変換 | PDFをExcelへ",
-    "description": "文字を選択できる銀行明細PDFを、確認しやすいExcelに変換します。ファイルは今回の変換にだけ使い、保存しません。",
+    "description": "銀行明細PDFをアップロードし、順次表示される表を確認してExcelをダウンロードできます。ファイルは今回の変換にのみ使用します。",
     "keywords": "銀行明細変換, 銀行明細 PDF Excel, PDF Excel 変換, 銀行取引抽出",
     "brand": "銀行明細変換",
     "alternateName": "銀行明細PDFからExcelへの変換"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "銀行明細PDFの変換",
     "title": "銀行明細PDFをExcelに変換",
-    "description": "文字を選択できる銀行明細PDFをアップロードし、抽出された明細を確認してからExcelをダウンロードしてください。ファイルは今回の変換にのみ使用します。"
+    "description": "銀行明細PDFをアップロードし、順次表示される表を確認してExcelをダウンロードできます。ファイルは今回の変換にのみ使用します。"
   },
   "PdfUpload": {
     "title": "銀行明細をアップロード",
     "description": "一度に1つのPDFを処理します",
     "fileLabel": "銀行明細PDF",
     "dropzone": "PDFを選ぶか、ここにドロップ",
-    "dropzoneHint": "正常に開けて、文字を選択できるPDFをアップロードしてください。",
+    "dropzoneHint": "正常に開ける4 MB以下、50ページ以下のPDFをアップロードしてください。ProfessionalとEnterpriseではスキャンPDFも試せます。",
     "help": "ファイルを選ぶと名前が表示されます。選択はいつでも解除できます。",
     "errorTitle": "今回の操作を完了できませんでした",
     "invalidPdf": "アップロードされたファイルはPDFではありません。",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "ブラウザーのストレージを利用できません。",
     "emptyFile": "アップロードされたPDFファイルは空です。",
     "quotaExhausted": "今期の変換可能ページ数を使い切りました。",
-    "invalidResponse": "変換サービスから返されたデータの形式が無効です。"
+    "invalidResponse": "変換サービスから返されたデータの形式が無効です。",
+    "aiNotice": "ProfessionalとEnterpriseでは通常の解析が利用できない場合、PDFを千問（Qwen）に送信します。Qwenの処理には同社の利用規約とプライバシーポリシーが適用されます。本サイトはファイルや取引明細を永続的な履歴として保存しません。"
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "銀行明細",
       "sheetName": "表 {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "PDFを読み込み中",
+        "extracting": "表を生成中",
+        "finalizing": "結果と利用枠を確認中"
+      },
+      "previewNotice": "表を生成しています。最終確認が完了するとExcelをダウンロードできます。",
+      "cancel": "変換をキャンセル",
+      "failedTitle": "変換が完了しませんでした",
+      "errors": {
+        "invalid": "変換サービスから返されたデータの形式が無効です。",
+        "interrupted": "結果が完成する前に接続が切れました。もう一度変換してください。",
+        "request": "変換リクエストへの応答を受信できませんでした。",
+        "storage": "変換は完了しましたが、ブラウザーで結果を保存できませんでした。"
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "エンタープライズ",
         "description": "毎月多くのページを変換するユーザー向け。"
       }
-    }
+    },
+    "aiParsing": "AIによる自動補完解析・スキャンPDF対応",
+    "textParsing": "テキストPDFの解析"
   },
   "PayPal": {
     "signInRequired": "プランを申し込むには、まずログインしてください。",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "スキャンPDFや暗号化PDFは変換できますか？",
-      "answer": "文字を抽出できる電子版PDFのみ対応しています。スキャンPDFとパスワードで保護されたPDFには対応していません。"
+      "answer": "ProfessionalとEnterpriseではAIでスキャンPDFの変換を試せます。他のプランにはテキスト層が必要です。パスワード保護されたファイルは全プランで非対応です。"
     },
     "storage": {
       "question": "PDF、Excel、取引内容は保存されますか？",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "提供者と越境処理",
-      "body": "ログインにはGoogleとSupabase、支払いとサブスクリプションの状態同期にはPayPal、アクセス解析にはGoogle AnalyticsとPageviewを使います。分析サービスは、それぞれの利用規約とプライバシーポリシーに従って技術情報を処理する場合があります。PayPalも、その規約とポリシーに従って支払い情報とアカウント情報を処理する場合があります。越境処理がある場合は、適用法が求める保護措置を取り、実際の取り扱いを説明します。銀行明細や取引情報は販売しません。"
+      "body": "ログインにはGoogleとSupabase、支払いとサブスクリプションの状態同期にはPayPal、アクセス解析にはGoogle AnalyticsとPageviewを使います。分析サービスは、それぞれの利用規約とプライバシーポリシーに従って技術情報を処理する場合があります。PayPalも、その規約とポリシーに従って支払い情報とアカウント情報を処理する場合があります。越境処理がある場合は、適用法が求める保護措置を取り、実際の取り扱いを説明します。銀行明細や取引情報は販売しません。 ProfessionalとEnterpriseでは通常の解析が利用できない場合、PDFを千問（Qwen）に送信します。Qwenの処理には同社の利用規約とプライバシーポリシーが適用されます。本サイトはファイルや取引明細を永続的な履歴として保存しません。"
     },
     "storage": {
       "title": "ブラウザ保存",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "今期の変換可能ページ数を使い切りました。",
     "QUOTA_RECORD_FAILED": "今回の変換の使用量を記録できませんでした。",
     "QUOTA_PERIOD_UNAVAILABLE": "サブスクリプションの請求期間が無効なため、変換枠を確認できませんでした。",
-    "PARSER_AUTH_NOT_CONFIGURED": "変換サービスの設定が完了していません。"
+    "PARSER_AUTH_NOT_CONFIGURED": "変換サービスの設定が完了していません。",
+    "QWEN_NOT_CONFIGURED": "変換サービスの設定が完了していません。",
+    "QWEN_UNAVAILABLE": "変換サービスに接続できませんでした。",
+    "QWEN_TIMEOUT": "変換リクエストがタイムアウトしました。",
+    "INVALID_QWEN_RESPONSE": "変換サービスから返されたデータの形式が無効です。",
+    "QWEN_RESPONSE_TOO_LARGE": "変換結果が応答データのサイズ上限を超えています。",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "有効なPDFページ数が返されなかったため、変換を完了できません。",
+    "QWEN_INCOMPLETE_RESPONSE": "AIの出力が完了しませんでした。利用枠は減算されていません。ページ数の少ないPDFをお試しください。"
   },
   "Account": {
     "title": "マイアカウント",

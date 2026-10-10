@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF naar Excel",
-    "description": "Zet een bankafschrift in PDF met selecteerbare tekst om naar een Excel-bestand dat je kunt controleren. We gebruiken de bestanden alleen voor deze conversie.",
+    "description": "Upload een bankafschrift als PDF, bekijk hoe de tabellen verschijnen, controleer het resultaat en download Excel. Het bestand wordt alleen voor deze conversie gebruikt.",
     "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen",
     "brand": "Bank Statement Converter",
     "alternateName": "Converter voor bankafschriften van PDF naar Excel"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
     "title": "Zet je bankafschrift om van PDF naar Excel",
-    "description": "Upload een bankafschrift in PDF met selecteerbare tekst, controleer de uitgelezen regels en download Excel. We gebruiken je bestand alleen voor deze conversie."
+    "description": "Upload een bankafschrift als PDF, bekijk hoe de tabellen verschijnen, controleer het resultaat en download Excel. Het bestand wordt alleen voor deze conversie gebruikt."
   },
   "PdfUpload": {
     "title": "Bankafschrift uploaden",
     "description": "Verwerk één PDF tegelijk",
     "fileLabel": "Bankafschrift in PDF",
     "dropzone": "Kies een PDF of sleep die hierheen",
-    "dropzoneHint": "Upload een PDF die normaal opent en selecteerbare tekst bevat.",
+    "dropzoneHint": "Upload een PDF die normaal opent, maximaal 4 MB en 50 pagina’s. Professional en Enterprise kunnen ook gescande PDF’s proberen.",
     "help": "Na het kiezen verschijnt de bestandsnaam. Je kunt het bestand op elk moment verwijderen.",
     "errorTitle": "Deze handeling kon niet worden voltooid",
     "invalidPdf": "Het geüploade bestand is geen PDF.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "Browseropslag is niet beschikbaar.",
     "emptyFile": "Het geüploade PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
-    "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd."
+    "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
+    "aiNotice": "Bij Professional en Enterprise wordt de PDF naar Qwen gestuurd als de reguliere verwerking niet beschikbaar is. Hiervoor gelden de voorwaarden en het privacybeleid van Qwen. Deze website bewaart bestanden of transacties niet als permanente geschiedenis."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "bankafschrift",
       "sheetName": "Tabel {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "PDF wordt gelezen",
+        "extracting": "Tabellen worden opgebouwd",
+        "finalizing": "Resultaat en tegoed worden gecontroleerd"
+      },
+      "previewNotice": "De tabellen worden nog opgebouwd. Excel is beschikbaar na de laatste controles.",
+      "cancel": "Conversie annuleren",
+      "failedTitle": "Conversie niet voltooid",
+      "errors": {
+        "invalid": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
+        "interrupted": "De verbinding is verbroken voordat het resultaat klaar was. Converteer opnieuw.",
+        "request": "Er kon geen antwoord op de conversieaanvraag worden ontvangen.",
+        "storage": "De conversie is voltooid, maar de browser kon het resultaat niet opslaan."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Zakelijk",
         "description": "Voor gebruikers die elke maand meer pagina’s moeten converteren."
       }
-    }
+    },
+    "aiParsing": "Automatische AI-terugval, inclusief gescande PDF’s",
+    "textParsing": "Verwerking van PDF’s met tekst"
   },
   "PayPal": {
     "signInRequired": "Log in voordat je een abonnement afsluit.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "Kan ik gescande of versleutelde PDF's converteren?",
-      "answer": "Alleen elektronische PDF’s met extraheerbare tekst worden ondersteund. Gescande en met een wachtwoord beveiligde PDF’s worden niet ondersteund."
+      "answer": "Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren. Andere abonnementen vereisen een tekstlaag. Geen enkel abonnement ondersteunt bestanden met een wachtwoord."
     },
     "storage": {
       "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Dienstverleners en internationale verwerking",
-      "body": "Inloggen gebruikt Google en Supabase. Abonnementsbetalingen en statussynchronisatie gebruiken PayPal. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. PayPal kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens."
+      "body": "Inloggen gebruikt Google en Supabase. Abonnementsbetalingen en statussynchronisatie gebruiken PayPal. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. PayPal kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens. Bij Professional en Enterprise wordt de PDF naar Qwen gestuurd als de reguliere verwerking niet beschikbaar is. Hiervoor gelden de voorwaarden en het privacybeleid van Qwen. Deze website bewaart bestanden of transacties niet als permanente geschiedenis."
     },
     "storage": {
       "title": "Browseropslag",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "QUOTA_RECORD_FAILED": "Het gebruik voor deze conversie kon niet worden geregistreerd.",
     "QUOTA_PERIOD_UNAVAILABLE": "De factureringsperiode van het abonnement is ongeldig, waardoor het tegoed niet kon worden bepaald.",
-    "PARSER_AUTH_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld."
+    "PARSER_AUTH_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
+    "QWEN_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
+    "QWEN_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
+    "QWEN_TIMEOUT": "De conversieaanvraag heeft de tijdslimiet overschreden.",
+    "INVALID_QWEN_RESPONSE": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
+    "QWEN_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "Er is geen geldig aantal PDF-pagina’s ontvangen. De conversie kan niet worden voltooid.",
+    "QWEN_INCOMPLETE_RESPONSE": "De AI-uitvoer stopte voordat de conversie klaar was. Er zijn geen pagina’s afgetrokken. Probeer een kortere PDF."
   },
   "Account": {
     "title": "Mijn account",

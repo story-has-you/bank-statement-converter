@@ -99,6 +99,9 @@ export async function UsageTiers() {
                     )}
                   </div>
                   <p className="text-sm leading-6 text-muted-foreground">{plan.description}</p>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {tier === "standard" ? t("textParsing") : t("aiParsing")}
+                  </p>
                   <p className="text-sm font-medium">
                     {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}
                   </p>

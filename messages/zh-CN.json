@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "银行流水转换 | PDF 转 Excel",
-    "description": "把文字型银行流水 PDF 整理成可核对的 Excel。文件只用于这次转换，不会保存。",
+    "description": "上传银行流水 PDF，查看逐步生成的表格，核对后下载 Excel。文件仅用于本次转换。",
     "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取",
     "brand": "银行流水转换",
     "alternateName": "银行流水 PDF 转 Excel"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "把银行流水 PDF 整理成 Excel",
-    "description": "上传文字型银行流水 PDF，核对识别出的明细后下载 Excel。文件仅用于本次转换。"
+    "description": "上传银行流水 PDF，查看逐步生成的表格，核对后下载 Excel。文件仅用于本次转换。"
   },
   "PdfUpload": {
     "title": "上传对账单",
     "description": "一次处理一份 PDF",
     "fileLabel": "银行流水 PDF",
     "dropzone": "选择 PDF，或拖放到这里",
-    "dropzoneHint": "请上传能正常打开、文字可选中的 PDF。",
+    "dropzoneHint": "上传可正常打开的 PDF，最多 4 MB、50 页。专业和企业套餐可尝试转换扫描件。",
     "help": "选择后会显示文件名，可随时移除。",
     "errorTitle": "本次操作未完成",
     "invalidPdf": "上传的文件不是 PDF。",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "浏览器存储不可用。",
     "emptyFile": "上传的 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
-    "invalidResponse": "转换服务返回的数据格式异常。"
+    "invalidResponse": "转换服务返回的数据格式异常。",
+    "aiNotice": "专业和企业套餐在常规解析不可用时，会将 PDF 发送至千问进行解析。千问的处理适用其服务条款及隐私政策；本网站不保存文件或流水明细作为持久化历史。"
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "银行流水",
       "sheetName": "表格 {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "正在读取 PDF",
+        "extracting": "正在生成表格",
+        "finalizing": "正在检查结果和额度"
+      },
+      "previewNotice": "表格正在生成，最终检查完成后才能下载 Excel。",
+      "cancel": "取消转换",
+      "failedTitle": "转换未完成",
+      "errors": {
+        "invalid": "转换服务返回的数据格式异常。",
+        "interrupted": "连接已中断，未收到完整结果。请重新转换。",
+        "request": "未能收到转换请求的响应。",
+        "storage": "转换已完成，但浏览器未能保存本次结果。"
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "企业",
         "description": "适合每月需要转换较多页数的用户。"
       }
-    }
+    },
+    "aiParsing": "大模型自动回退解析，支持扫描件",
+    "textParsing": "文字型 PDF 解析"
   },
   "PayPal": {
     "signInRequired": "请先登录，再订阅套餐。",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
-      "answer": "只支持带可提取文字的电子版 PDF，不支持扫描件或密码保护文件。"
+      "answer": "专业和企业套餐可通过大模型尝试转换扫描件；其他套餐只支持带文字层的 PDF。所有套餐均不支持密码保护文件。"
     },
     "storage": {
       "question": "PDF、Excel 和流水明细会保存吗？",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "服务提供方与跨境处理",
-      "body": "账号登录使用 Google 和 Supabase，订阅付款和订阅状态同步使用 PayPal。网站访问统计使用 Google Analytics 和 Pageview，这些服务可能按其适用的服务条款和隐私政策处理访问相关的技术信息。PayPal 可能处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。"
+      "body": "账号登录使用 Google 和 Supabase，订阅付款和订阅状态同步使用 PayPal。网站访问统计使用 Google Analytics 和 Pageview，这些服务可能按其适用的服务条款和隐私政策处理访问相关的技术信息。PayPal 可能处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。 专业和企业套餐在常规解析不可用时，会将 PDF 发送至千问进行解析。千问的处理适用其服务条款及隐私政策；本网站不保存文件或流水明细作为持久化历史。"
     },
     "storage": {
       "title": "浏览器存储",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "本期可转换页数已用完。",
     "QUOTA_RECORD_FAILED": "未能记录本次转换用量。",
     "QUOTA_PERIOD_UNAVAILABLE": "订阅计费周期信息无效，无法确认转换额度。",
-    "PARSER_AUTH_NOT_CONFIGURED": "转换服务尚未完成配置。"
+    "PARSER_AUTH_NOT_CONFIGURED": "转换服务尚未完成配置。",
+    "QWEN_NOT_CONFIGURED": "转换服务尚未完成配置。",
+    "QWEN_UNAVAILABLE": "无法连接转换服务。",
+    "QWEN_TIMEOUT": "转换请求超时。",
+    "INVALID_QWEN_RESPONSE": "转换服务返回的数据格式异常。",
+    "QWEN_RESPONSE_TOO_LARGE": "转换结果超过了可返回的数据大小上限。",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "未收到有效的 PDF 解析页数，无法完成转换。",
+    "QWEN_INCOMPLETE_RESPONSE": "大模型输出未完成，本次未扣减额度。请尝试页数更少的 PDF。"
   },
   "Account": {
     "title": "我的页面",

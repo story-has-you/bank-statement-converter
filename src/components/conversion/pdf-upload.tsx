@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
-import { useFormatter, useLocale, useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 import { useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -11,15 +11,14 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { isParseResponse } from "@/lib/conversion-types";
-import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
+import { useConversion } from "@/components/conversion/conversion-provider";
+import { clearConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
-  const locale = useLocale();
   const format = useFormatter();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -29,20 +28,12 @@ export function PdfUpload() {
     | "emptyFile"
     | "fileTooLarge"
     | "multipleFiles"
-    | "conversionFailed"
-    | "invalidResponse"
-    | "resultStorageFailed"
     | "browserStorageUnavailable"
-    | "requestFailed"
-    | "parserUnavailable"
-    | "quotaExceeded"
-    | "quotaExhausted"
-    | "quotaUnavailable"
     | null
   >(null);
-  const [serverError, setServerError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [isPending, setIsPending] = useState(false);
+  const conversion = useConversion();
+  const isPending = conversion.state.phase === "pending";
 
   useEffect(() => {
     try {
@@ -72,7 +63,6 @@ export function PdfUpload() {
     ) {
       setFile(null);
       setError("invalidPdf");
-      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -80,14 +70,12 @@ export function PdfUpload() {
     if (candidate.size === 0 || candidate.size > MAX_UPLOAD_BYTES) {
       setFile(null);
       setError(candidate.size === 0 ? "emptyFile" : "fileTooLarge");
-      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
 
     setFile(candidate);
     setError(null);
-    setServerError(null);
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -101,7 +89,6 @@ export function PdfUpload() {
     if (event.dataTransfer.files.length > 1) {
       setFile(null);
       setError("multipleFiles");
-      setServerError(null);
       if (inputRef.current) inputRef.current.value = "";
       return;
     }
@@ -112,68 +99,13 @@ export function PdfUpload() {
   function removeFile() {
     setFile(null);
     setError(null);
-    setServerError(null);
     if (inputRef.current) inputRef.current.value = "";
   }
 
-  async function startConversion() {
+  function startConversion(): void {
     if (!file || isPending) return;
-
-    setError(null);
-    setServerError(null);
-    setIsPending(true);
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch("/api/convert", {
-        method: "POST",
-        body: formData,
-        headers: { "x-app-locale": locale },
-      });
-      const payload: unknown = await response.json().catch(() => null);
-
-      if (!response.ok || !isParseResponse(payload)) {
-        if (response.ok) {
-          setError("invalidResponse");
-          return;
-        }
-        const code =
-          typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string"
-            ? payload.code
-            : null;
-        if (code === "PARSER_UNAVAILABLE") {
-          setError("parserUnavailable");
-        } else if (code === "QUOTA_EXCEEDED") {
-          setError("quotaExceeded");
-        } else if (code === "QUOTA_EXHAUSTED") {
-          setError("quotaExhausted");
-        } else if (code === "QUOTA_UNAVAILABLE") {
-          setError("quotaUnavailable");
-        } else {
-          setError("conversionFailed");
-        }
-        if (typeof payload === "object" && payload !== null && "message" in payload && typeof payload.message === "string") {
-          setServerError(payload.message);
-        }
-        return;
-      }
-
-      try {
-        saveConversionPayload(file.name, payload);
-      } catch {
-        setError("resultStorageFailed");
-        setServerError(null);
-        return;
-      }
-
-      router.push("/result");
-    } catch {
-      setError("requestFailed");
-      setServerError(null);
-    } finally {
-      setIsPending(false);
-    }
+    conversion.start(file);
+    router.push("/result");
   }
 
   return (
@@ -232,6 +164,7 @@ export function PdfUpload() {
             onChange={handleInputChange}
           />
           <FieldDescription id="pdf-help">{t("help")}</FieldDescription>
+          <p className="text-xs leading-5 text-muted-foreground">{t("aiNotice")}</p>
         </Field>
       </FieldGroup>
 
@@ -239,7 +172,7 @@ export function PdfUpload() {
         <Alert variant="destructive" className="mt-4">
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("errorTitle")}</AlertTitle>
-          <AlertDescription>{serverError ?? t(error)}</AlertDescription>
+          <AlertDescription>{t(error)}</AlertDescription>
         </Alert>
       )}
 

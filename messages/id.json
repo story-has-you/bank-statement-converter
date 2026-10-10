@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF ke Excel",
-    "description": "Ubah rekening koran PDF dengan teks yang dapat dipilih menjadi Excel untuk diperiksa. Berkas hanya digunakan untuk konversi ini.",
+    "description": "Unggah laporan bank PDF, lihat tabel muncul secara bertahap, periksa hasilnya, lalu unduh Excel. Berkas hanya digunakan untuk konversi ini.",
     "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank",
     "brand": "Bank Statement Converter",
     "alternateName": "Konverter rekening koran PDF ke Excel"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
     "title": "Ubah rekening koran PDF menjadi Excel",
-    "description": "Unggah rekening koran PDF dengan teks yang dapat dipilih, periksa baris hasil ekstraksi, lalu unduh Excel. Berkas hanya kami gunakan untuk konversi ini."
+    "description": "Unggah laporan bank PDF, lihat tabel muncul secara bertahap, periksa hasilnya, lalu unduh Excel. Berkas hanya digunakan untuk konversi ini."
   },
   "PdfUpload": {
     "title": "Unggah rekening koran",
     "description": "Proses satu PDF setiap kali",
     "fileLabel": "Rekening koran PDF",
     "dropzone": "Pilih PDF atau seret ke sini",
-    "dropzoneHint": "Unggah PDF yang dapat dibuka normal dan memiliki teks yang dapat dipilih.",
+    "dropzoneHint": "Unggah PDF yang dapat dibuka, maksimal 4 MB dan 50 halaman. Professional dan Enterprise dapat mencoba PDF hasil pindai.",
     "help": "Nama berkas muncul setelah dipilih. Anda dapat menghapusnya kapan saja.",
     "errorTitle": "Operasi ini tidak dapat diselesaikan",
     "invalidPdf": "Berkas yang diunggah bukan PDF.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "Penyimpanan browser tidak tersedia.",
     "emptyFile": "Berkas PDF yang diunggah kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
-    "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid."
+    "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
+    "aiNotice": "Untuk Professional dan Enterprise, PDF dikirim ke Qwen jika penguraian biasa tidak tersedia. Pemrosesan tersebut tunduk pada ketentuan dan kebijakan privasi Qwen. Situs ini tidak menyimpan berkas atau transaksi sebagai riwayat permanen."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "rekening koran",
       "sheetName": "Tabel {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "Membaca PDF",
+        "extracting": "Membuat tabel",
+        "finalizing": "Memeriksa hasil dan kuota"
+      },
+      "previewNotice": "Tabel masih dibuat. Unduhan Excel tersedia setelah pemeriksaan akhir.",
+      "cancel": "Batalkan konversi",
+      "failedTitle": "Konversi belum selesai",
+      "errors": {
+        "invalid": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
+        "interrupted": "Koneksi terputus sebelum hasil selesai. Silakan konversi ulang.",
+        "request": "Respons atas permintaan konversi tidak dapat diterima.",
+        "storage": "Konversi selesai, tetapi browser tidak dapat menyimpan hasilnya."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Perusahaan",
         "description": "Untuk pengguna yang perlu mengonversi lebih banyak halaman setiap bulan."
       }
-    }
+    },
+    "aiParsing": "Alternatif AI otomatis, termasuk PDF hasil pindai",
+    "textParsing": "Penguraian PDF berbasis teks"
   },
   "PayPal": {
     "signInRequired": "Login sebelum mulai berlangganan.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
-      "answer": "Hanya PDF elektronik dengan teks yang dapat diekstrak yang didukung. PDF hasil pemindaian dan PDF yang dilindungi kata sandi tidak didukung."
+      "answer": "Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI. Paket lain memerlukan lapisan teks. Semua paket tidak mendukung berkas yang dilindungi kata sandi."
     },
     "storage": {
       "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
+      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Untuk Professional dan Enterprise, PDF dikirim ke Qwen jika penguraian biasa tidak tersedia. Pemrosesan tersebut tunduk pada ketentuan dan kebijakan privasi Qwen. Situs ini tidak menyimpan berkas atau transaksi sebagai riwayat permanen."
     },
     "storage": {
       "title": "Penyimpanan browser",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
     "QUOTA_RECORD_FAILED": "Penggunaan untuk konversi ini tidak dapat dicatat.",
     "QUOTA_PERIOD_UNAVAILABLE": "Periode penagihan langganan tidak valid, sehingga kuota konversi tidak dapat ditentukan.",
-    "PARSER_AUTH_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi."
+    "PARSER_AUTH_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
+    "QWEN_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
+    "QWEN_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
+    "QWEN_TIMEOUT": "Permintaan konversi melewati batas waktu.",
+    "INVALID_QWEN_RESPONSE": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
+    "QWEN_RESPONSE_TOO_LARGE": "Hasil konversi melebihi batas ukuran respons.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "Jumlah halaman PDF yang valid tidak diterima. Konversi tidak dapat diselesaikan.",
+    "QWEN_INCOMPLETE_RESPONSE": "Keluaran AI berakhir sebelum konversi selesai. Tidak ada halaman yang dikurangi. Coba PDF yang lebih pendek."
   },
   "Account": {
     "title": "Akun saya",

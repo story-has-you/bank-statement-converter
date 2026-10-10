@@ -64,7 +64,7 @@ export type ConversionPayload = {
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function isRowStatus(value: unknown): value is RowStatus {
@@ -109,7 +109,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
   const errorsAreValid = errors.every((error) =>
     isRecord(error) &&
     typeof error.code === "string" &&
-    (error.page === null || isPositiveInteger(error.page)),
+    (error.page === null || (isPositiveInteger(error.page) && error.page <= pageCount)),
   );
   if (!errorsAreValid) return false;
 
@@ -141,15 +141,19 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     const rows = table.rows as unknown[];
 
     const columnKeys = new Set<string>();
+    const columnIndexes = new Set<number>();
     const columnsAreValid = columns.every(
       (column) =>
         isRecord(column) &&
         typeof column.key === "string" &&
+        column.key.length > 0 &&
         typeof column.label === "string" &&
         isNonNegativeInteger(column.index) &&
         column.index < columns.length &&
         !columnKeys.has(column.key) &&
-        Boolean(columnKeys.add(column.key)),
+        !columnIndexes.has(column.index) &&
+        Boolean(columnKeys.add(column.key)) &&
+        Boolean(columnIndexes.add(column.index)),
     );
     const rowsAreValid = rows.every((rawRow) => {
       if (!isRecord(rawRow)) return false;

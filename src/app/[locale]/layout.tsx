@@ -7,6 +7,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { ConversionProvider } from "@/components/conversion/conversion-provider";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { routing } from "@/i18n/routing";
@@ -54,7 +55,9 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>
-            <TooltipProvider>{children}</TooltipProvider>
+            <TooltipProvider>
+              <ConversionProvider>{children}</ConversionProvider>
+            </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

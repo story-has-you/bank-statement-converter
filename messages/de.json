@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Kontoauszugskonverter | PDF nach Excel",
-    "description": "Wandeln Sie ein textbasiertes Kontoauszugs-PDF in eine Excel-Datei um, die Sie überprüfen können. Dateien werden nur für diese Konvertierung verwendet.",
+    "description": "Laden Sie einen Kontoauszug als PDF hoch, verfolgen Sie die entstehenden Tabellen, prüfen Sie das Ergebnis und laden Sie Excel herunter. Die Datei wird nur für diese Konvertierung verwendet.",
     "keywords": "Bankauszug PDF zu Excel, PDF-zu-Excel-Konverter, Banktransaktionen extrahieren",
     "brand": "Bankauszugs-Konverter",
     "alternateName": "Bankauszug-PDF-zu-Excel-Konverter"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge von PDF in Excel umwandeln",
-    "description": "Laden Sie einen Kontoauszug als PDF mit auswählbarem Text hoch. Prüfen Sie die extrahierten Zeilen und laden Sie anschließend die Excel-Datei herunter. Wir verwenden Ihre Datei nur für diese Konvertierung."
+    "description": "Laden Sie einen Kontoauszug als PDF hoch, verfolgen Sie die entstehenden Tabellen, prüfen Sie das Ergebnis und laden Sie Excel herunter. Die Datei wird nur für diese Konvertierung verwendet."
   },
   "PdfUpload": {
     "title": "Laden Sie einen Kontoauszug hoch",
     "description": "Verarbeiten Sie jeweils ein PDF",
     "fileLabel": "Kontoauszug PDF",
     "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
-    "dropzoneHint": "Laden Sie eine PDF-Datei hoch, die normal geöffnet wird und auswählbaren Text enthält.",
+    "dropzoneHint": "Laden Sie eine lesbare PDF mit höchstens 4 MB und 50 Seiten hoch. Professional und Enterprise können auch gescannte PDFs versuchen.",
     "help": "Nach der Auswahl erscheint hier der Dateiname. Sie können die Datei jederzeit entfernen.",
     "errorTitle": "Dieser Vorgang konnte nicht abgeschlossen werden",
     "invalidPdf": "Die hochgeladene Datei ist keine PDF-Datei.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "Der Browserspeicher ist nicht verfügbar.",
     "emptyFile": "Die hochgeladene PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
-    "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben."
+    "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
+    "aiNotice": "Bei Professional und Enterprise werden PDFs an Qwen gesendet, wenn die reguläre Verarbeitung nicht verfügbar ist. Dafür gelten die Bedingungen und Datenschutzrichtlinien von Qwen. Diese Website speichert Dateien oder Transaktionen nicht als dauerhafte Historie."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "Kontoauszug",
       "sheetName": "Tabelle {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "PDF wird gelesen",
+        "extracting": "Tabellen werden erstellt",
+        "finalizing": "Ergebnis und Kontingent werden geprüft"
+      },
+      "previewNotice": "Die Tabellen werden noch erstellt. Excel ist nach der abschließenden Prüfung verfügbar.",
+      "cancel": "Konvertierung abbrechen",
+      "failedTitle": "Konvertierung nicht abgeschlossen",
+      "errors": {
+        "invalid": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
+        "interrupted": "Die Verbindung wurde vor Abschluss getrennt. Bitte erneut konvertieren.",
+        "request": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden.",
+        "storage": "Die Konvertierung ist abgeschlossen, aber der Browser konnte das Ergebnis nicht speichern."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Unternehmen",
         "description": "Für Nutzer, die jeden Monat mehr Seiten konvertieren müssen."
       }
-    }
+    },
+    "aiParsing": "Automatischer KI-Fallback, auch für gescannte PDFs",
+    "textParsing": "Verarbeitung von Text-PDFs"
   },
   "PayPal": {
     "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
-      "answer": "Es werden nur elektronische PDFs mit extrahierbarem Text unterstützt. Gescannte und passwortgeschützte PDFs werden nicht unterstützt."
+      "answer": "Professional und Enterprise können gescannte PDFs mit KI verarbeiten. Andere Tarife benötigen eine Textebene. Passwortgeschützte Dateien werden in keinem Tarif unterstützt."
     },
     "storage": {
       "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
-      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Abonnementzahlung und Statussynchronisierung erfolgen über PayPal. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. PayPal kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen."
+      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Abonnementzahlung und Statussynchronisierung erfolgen über PayPal. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. PayPal kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Bei Professional und Enterprise werden PDFs an Qwen gesendet, wenn die reguläre Verarbeitung nicht verfügbar ist. Dafür gelten die Bedingungen und Datenschutzrichtlinien von Qwen. Diese Website speichert Dateien oder Transaktionen nicht als dauerhafte Historie."
     },
     "storage": {
       "title": "Browserspeicher",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "QUOTA_RECORD_FAILED": "Die Nutzung für diese Konvertierung konnte nicht erfasst werden.",
     "QUOTA_PERIOD_UNAVAILABLE": "Der Abrechnungszeitraum des Abonnements ist ungültig, daher konnte das Kontingent nicht ermittelt werden.",
-    "PARSER_AUTH_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert."
+    "PARSER_AUTH_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
+    "QWEN_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
+    "QWEN_UNAVAILABLE": "Der Konvertierungsdienst konnte nicht erreicht werden.",
+    "QWEN_TIMEOUT": "Die Konvertierungsanfrage hat das Zeitlimit überschritten.",
+    "INVALID_QWEN_RESPONSE": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
+    "QWEN_RESPONSE_TOO_LARGE": "Das Konvertierungsergebnis überschreitet die Größenbegrenzung für Antworten.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "Es wurde keine gültige PDF-Seitenzahl zurückgegeben. Die Konvertierung kann nicht abgeschlossen werden.",
+    "QWEN_INCOMPLETE_RESPONSE": "Die KI-Ausgabe wurde nicht abgeschlossen. Es wurden keine Seiten abgezogen. Bitte versuchen Sie eine kürzere PDF."
   },
   "Account": {
     "title": "Mein Konto",

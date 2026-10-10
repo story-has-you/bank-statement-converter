@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Conversor de extractos bancarios | PDF a Excel",
-    "description": "Convierta un PDF de extracto bancario basado en texto en un archivo de Excel que pueda revisar. Los archivos se utilizan únicamente para esta conversión.",
+    "description": "Sube un extracto bancario PDF, observa cómo aparecen las tablas, revisa el resultado y descarga Excel. El archivo solo se utiliza para esta conversión.",
     "keywords": "extracto bancario PDF a Excel, convertidor PDF Excel, extracción de transacciones bancarias",
     "brand": "Convertidor de extractos bancarios",
     "alternateName": "Convertidor de extractos bancarios PDF a Excel"
@@ -52,14 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversión de extractos bancarios en PDF",
     "title": "Convierte tu extracto bancario de PDF a Excel",
-    "description": "Sube un extracto bancario PDF con texto, revisa las filas extraídas y descarga el archivo Excel. Usamos tu archivo solo para esta conversión."
+    "description": "Sube un extracto bancario PDF, observa cómo aparecen las tablas, revisa el resultado y descarga Excel. El archivo solo se utiliza para esta conversión."
   },
   "PdfUpload": {
     "title": "Subir un extracto bancario",
     "description": "Un PDF a la vez",
     "fileLabel": "Extracto bancario PDF",
     "dropzone": "Elige un PDF o arrástralo aquí",
-    "dropzoneHint": "Sube un PDF que se abra normalmente y cuyo texto puedas seleccionar.",
+    "dropzoneHint": "Sube un PDF que se abra correctamente, de hasta 4 MB y 50 páginas. Professional y Enterprise pueden intentar convertir PDF escaneados.",
     "help": "El nombre del archivo aparece después de seleccionarlo. Puedes quitarlo cuando quieras.",
     "errorTitle": "No se pudo completar esta operación",
     "invalidPdf": "El archivo subido no es un PDF.",
@@ -85,7 +85,8 @@
     "browserStorageUnavailable": "El almacenamiento del navegador no está disponible.",
     "emptyFile": "El archivo PDF subido está vacío.",
     "quotaExhausted": "Has utilizado todas las páginas disponibles para este periodo.",
-    "invalidResponse": "El servicio de conversión devolvió datos en un formato no válido."
+    "invalidResponse": "El servicio de conversión devolvió datos en un formato no válido.",
+    "aiNotice": "En Professional y Enterprise, el PDF se envía a Qwen cuando el análisis habitual no está disponible. Este tratamiento está sujeto a sus condiciones y política de privacidad. Este sitio no guarda archivos ni transacciones como historial permanente."
   },
   "ConversionResult": {
     "metadata": {
@@ -157,6 +158,22 @@
     "excel": {
       "defaultFilename": "extracto bancario",
       "sheetName": "Tabla {index, number}"
+    },
+    "stream": {
+      "stages": {
+        "reading": "Leyendo el PDF",
+        "extracting": "Generando tablas",
+        "finalizing": "Comprobando el resultado y la cuota"
+      },
+      "previewNotice": "Las tablas se están generando. Excel estará disponible después de las comprobaciones finales.",
+      "cancel": "Cancelar conversión",
+      "failedTitle": "Conversión sin completar",
+      "errors": {
+        "invalid": "El servicio de conversión devolvió datos en un formato no válido.",
+        "interrupted": "La conexión se interrumpió antes de completar el resultado. Vuelve a convertir el archivo.",
+        "request": "No se pudo recibir una respuesta a la solicitud de conversión.",
+        "storage": "La conversión se completó, pero el navegador no pudo guardar el resultado."
+      }
     }
   },
   "HomeFeatures": {
@@ -195,7 +212,9 @@
         "name": "Empresa",
         "description": "Para usuarios que necesitan convertir más páginas cada mes."
       }
-    }
+    },
+    "aiParsing": "Alternativa automática con IA, incluidos PDF escaneados",
+    "textParsing": "Análisis de PDF con texto"
   },
   "PayPal": {
     "signInRequired": "Inicia sesión antes de suscribirte.",
@@ -259,7 +278,7 @@
     },
     "scans": {
       "question": "¿Puedo convertir archivos PDF escaneados o cifrados?",
-      "answer": "Solo se admiten PDF electrónicos con texto extraíble. No se admiten PDF escaneados ni protegidos con contraseña."
+      "answer": "Professional y Enterprise pueden intentar convertir PDF escaneados con IA. Los demás planes necesitan una capa de texto. Ningún plan admite archivos protegidos con contraseña."
     },
     "storage": {
       "question": "¿Se guardan mis archivos PDF, Excel o transacciones?",
@@ -369,7 +388,7 @@
     },
     "providers": {
       "title": "Proveedores y tratamiento internacional",
-      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. El pago de la suscripción y la sincronización del estado utilizan PayPal. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. PayPal puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones."
+      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. El pago de la suscripción y la sincronización del estado utilizan PayPal. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. PayPal puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones. En Professional y Enterprise, el PDF se envía a Qwen cuando el análisis habitual no está disponible. Este tratamiento está sujeto a sus condiciones y política de privacidad. Este sitio no guarda archivos ni transacciones como historial permanente."
     },
     "storage": {
       "title": "Almacenamiento del navegador",
@@ -429,7 +448,14 @@
     "QUOTA_EXHAUSTED": "Has utilizado todas las páginas disponibles para este periodo.",
     "QUOTA_RECORD_FAILED": "No se pudo registrar el uso de esta conversión.",
     "QUOTA_PERIOD_UNAVAILABLE": "El periodo de facturación de la suscripción no es válido y no se pudo determinar la cuota.",
-    "PARSER_AUTH_NOT_CONFIGURED": "El servicio de conversión no está configurado."
+    "PARSER_AUTH_NOT_CONFIGURED": "El servicio de conversión no está configurado.",
+    "QWEN_NOT_CONFIGURED": "El servicio de conversión no está configurado.",
+    "QWEN_UNAVAILABLE": "No se pudo conectar con el servicio de conversión.",
+    "QWEN_TIMEOUT": "La solicitud de conversión agotó el tiempo de espera.",
+    "INVALID_QWEN_RESPONSE": "El servicio de conversión devolvió datos en un formato no válido.",
+    "QWEN_RESPONSE_TOO_LARGE": "El resultado de la conversión supera el límite de tamaño de la respuesta.",
+    "QWEN_PAGE_COUNT_UNAVAILABLE": "No se recibió un número de páginas PDF válido. No se puede completar la conversión.",
+    "QWEN_INCOMPLETE_RESPONSE": "La salida de la IA terminó antes de completar la conversión. No se descontaron páginas. Prueba con un PDF más corto."
   },
   "Account": {
     "title": "Mi cuenta",

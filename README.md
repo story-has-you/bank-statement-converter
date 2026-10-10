@@ -126,3 +126,17 @@ https://bankstatementconverter.xyz/api/paypal/webhooks
 ```
 
 不要把 `SUPABASE_SERVICE_ROLE_KEY`、`PAYPAL_CLIENT_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
+
+### Qwen 自动回退与流式预览
+
+Professional 和 Enterprise 使用资格有效时，转换优先调用 Python；Python 服务不可用或无法产出可核对交易时，Next.js 使用 `openai` 官方 SDK 的 Chat Completions 调用 `qwen3.8-flash`。有效计费周期内已取消续费的高阶订阅也保留此能力。扫描件可进入大模型回退，匿名、免费和 Standard 仍只支持文字型 PDF。Python 的可用部分结果直接返回，不触发二次解析。
+
+在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响回退，不影响 Python 正常转换。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
+
+浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`，开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和额度扣减成功后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
+
+模型调用设置 `include_tool_usage: true` 和 `stream_options.include_usage: true`。Qwen 的权威扣减页数来自 `usage.x_tools.pdf_page_parser.count`，覆盖模型内容中的 `pageCount`；缺失或无效页数、超过 50 页、无可核对交易、截断或无效 JSON 都不进入扣减。文件仍限制 4 MB，解析内容限制 4 MB。接口时限为 300 秒，Python 为 55 秒，Qwen 为 230 秒，SDK 不自动重试。
+
+流式表格仅存在于当前页面内存，下载在最终校验和额度扣减成功后开放。完成后沿用浏览器会话结果交接，生成途中刷新、离开结果页或切换语言会中断，不恢复后台转换。成功扣减后若浏览器断开或无法保存结果，不增加自动回滚或重试机制。
+
+高阶套餐回退会将对账单发送至千问处理，适用千问的服务条款和隐私政策。本网站不持久化 PDF、Excel 或交易明细，也不对供应商的数据保存政策作额外承诺。真实千问效果及额度写入需要使用获准的脱敏样本单独验收。
