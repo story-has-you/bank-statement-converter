@@ -32,6 +32,9 @@ export async function getAgentDocumentResponse(
     .map((link) => `- [${link.name}](${link.href})`)
     .join("\n");
   const summary = `> ${c.glance}\n\n${c.summary.map((item) => `- ${item}`).join("\n")}`;
+  const officialPageLinks = c.site.officialPages
+    .map((link) => `- [${link.name}](${link.href})`)
+    .join("\n");
   const faq =
     `## ${c.faq.title}\n\n${c.faq.answer}\n\n` +
     c.faq.items
@@ -80,11 +83,12 @@ export async function getAgentDocumentResponse(
         .slice(1)
         .map((item) => `- ${item}`)
         .join("\n") +
+      `\n\n## ${c.site.title}\n\n${officialPageLinks}` +
       `\n\n## ${c.agentsTitle}\n\n${docLinks}\n` +
       `- [llms-full.txt](${getAgentDocumentUrl(locale, "llms-full.txt")}): ${c.agentsDescription}\n\n` +
       `## ${c.languagesLabel}\n\n${languageLinks}`;
   } else if (name === "llms-full.txt") {
-    body = `# ${c.brand}\n\n${summary}\n\n${Object.values(sections).join("\n\n")}\n\n${navigation}\n\n${faq}`;
+    body = `# ${c.brand}\n\n${summary}\n\n${officialPageLinks}\n\n${Object.values(sections).join("\n\n")}\n\n${navigation}\n\n${faq}`;
   } else if (name === "faq.md") {
     body = `# ${c.faq.title}\n\n${summary}\n\n${navigation}\n\n${faq}`;
   } else {

@@ -28,6 +28,10 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
   const limits = siteConfig.conversionLimits;
   const quota = usageQuotaConfig;
   const pageUrl = (path: string) => `${siteConfig.url}${getLocalizedPath(locale, path)}`;
+  const officialPages = [
+    { name: metadata("brand"), href: pageUrl("/") },
+    { name: footer("privacy"), href: pageUrl("/privacy") },
+  ];
   const plans = membershipTiers.map((tier) => ({
     tier,
     name: usage(`plans.${tier}.name`),
@@ -90,11 +94,11 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     },
     site: {
       title: t("siteTitle"), answer: t("siteAnswer"),
+      officialPages,
       links: [
-        { name: metadata("brand"), href: pageUrl("/") },
+        ...officialPages,
         { name: footer("plans"), href: pageUrl("/#plans") },
         { name: footer("faq"), href: pageUrl("/#faq") },
-        { name: footer("privacy"), href: pageUrl("/privacy") },
         { name: footer("terms"), href: pageUrl("/terms") },
         { name: pageT("Account.title"), href: pageUrl("/account") },
         { name: pageT("ConversionResult.eyebrow"), href: pageUrl("/result") },
