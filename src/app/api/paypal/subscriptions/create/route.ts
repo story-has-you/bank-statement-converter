@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { findOpenBillingSubscription } from "@/lib/billing/server";
+import { findEntitledBillingSubscription, findOpenBillingSubscription } from "@/lib/billing/server";
 import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
 import { getPayPalApiTranslations } from "@/lib/paypal/messages";
 import { createPayPalSubscription } from "@/lib/paypal/server";
@@ -43,6 +43,11 @@ export async function POST(request: Request): Promise<Response> {
   try {
     if (await findOpenBillingSubscription(data.user.id)) {
       return errorResponse(t("existingSubscription"), 409);
+    }
+
+    const entitledSubscription = await findEntitledBillingSubscription(data.user.id);
+    if (entitledSubscription?.status === "CANCELLED") {
+      return errorResponse(t("cancelledPeriodActive"), 409);
     }
 
     const subscription = await createPayPalSubscription(planId, data.user.id);

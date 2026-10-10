@@ -161,6 +161,7 @@
     "perMonth": "/ 月",
     "planQuota": "月{pages}ページ",
     "current": "現在のプラン",
+    "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、今期の特典は引き続き利用できます。{date}（UTC）以降に再度登録できます。",
     "plans": {
       "standard": {
         "name": "スタンダード",
@@ -200,6 +201,7 @@
       "activationFailed": "サブスクリプションの確認を完了できませんでした。しばらくしてから再試行してください。",
       "createFailed": "PayPalの申し込みを開始できませんでした。しばらくしてから再試行してください。",
       "existingSubscription": "このアカウントには有効または確認待ちのサブスクリプションがあります。",
+      "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、現在の請求期間はまだ終了していません。期間終了後に再度登録できます。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
       "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
       "webhookProcessingFailed": "Webhook処理に失敗しました。",

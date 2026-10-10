@@ -161,6 +161,7 @@
     "perMonth": "/ mois",
     "planQuota": "{pages} pages par mois",
     "current": "Forfait actuel",
+    "cancelledPeriodActive": "Votre abonnement est résilié, mais vos avantages restent disponibles pour la période de facturation en cours. Vous pourrez vous réabonner après le {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Standard",
@@ -200,6 +201,7 @@
       "activationFailed": "La vérification de l'abonnement n'a pas abouti. Veuillez réessayer plus tard.",
       "createFailed": "L'abonnement PayPal n'a pas pu être démarré. Veuillez réessayer plus tard.",
       "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
+      "cancelledPeriodActive": "Votre abonnement est résilié, mais la période de facturation en cours n’est pas terminée. Vous pourrez vous réabonner à la fin de cette période.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
       "webhookSignatureFailed": "La vérification de la signature du webhook a échoué.",
       "webhookProcessingFailed": "Le traitement du webhook a échoué.",

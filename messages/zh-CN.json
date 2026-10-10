@@ -161,6 +161,7 @@
     "perMonth": "/ 月",
     "planQuota": "每月 {pages} 页",
     "current": "当前方案",
+    "cancelledPeriodActive": "订阅已取消，本期权益仍有效。请在 {date}（UTC）后再次订阅。",
     "plans": {
       "standard": {
         "name": "标准",
@@ -200,6 +201,7 @@
       "activationFailed": "订阅验证没有完成，请稍后再试。",
       "createFailed": "无法开始 PayPal 订阅，请稍后再试。",
       "existingSubscription": "当前账号已有生效或待确认的订阅。",
+      "cancelledPeriodActive": "订阅已取消，本期尚未结束，请在当前订阅周期结束后再次订阅。",
       "webhookInvalidRequest": "Webhook 请求格式无效。",
       "webhookSignatureFailed": "Webhook 签名验证失败。",
       "webhookProcessingFailed": "Webhook 处理失败。",

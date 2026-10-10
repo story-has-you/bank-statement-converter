@@ -161,6 +161,7 @@
     "perMonth": "/ mes",
     "planQuota": "{pages} páginas por mes",
     "current": "Plan actual",
+    "cancelledPeriodActive": "Tu suscripción está cancelada, pero tus beneficios siguen disponibles durante este período de facturación. Puedes volver a suscribirte después del {date} (UTC).",
     "plans": {
       "standard": {
         "name": "Estándar",
@@ -200,6 +201,7 @@
       "activationFailed": "La verificación de la suscripción no se completó. Inténtalo de nuevo más tarde.",
       "createFailed": "No se pudo iniciar la suscripción de PayPal. Inténtalo de nuevo más tarde.",
       "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
+      "cancelledPeriodActive": "Tu suscripción está cancelada, pero el período de facturación actual no ha terminado. Puedes volver a suscribirte cuando termine.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
       "webhookSignatureFailed": "Error en la verificación de la firma del webhook.",
       "webhookProcessingFailed": "Error al procesar el webhook.",

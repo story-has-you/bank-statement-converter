@@ -161,6 +161,7 @@
     "perMonth": "/ Monat",
     "planQuota": "{pages} Seiten pro Monat",
     "current": "Aktueller Plan",
+    "cancelledPeriodActive": "Ihr Abonnement wurde gekündigt. Ihre Vorteile bleiben für den laufenden Abrechnungszeitraum verfügbar. Nach {date} (UTC) können Sie erneut abonnieren.",
     "plans": {
       "standard": {
         "name": "Standard",
@@ -200,6 +201,7 @@
       "activationFailed": "Die Abonnementüberprüfung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
       "createFailed": "Das PayPal-Abonnement konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal.",
       "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
+      "cancelledPeriodActive": "Ihr Abonnement wurde gekündigt, aber der laufende Abrechnungszeitraum ist noch nicht beendet. Danach können Sie erneut abonnieren.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
       "webhookSignatureFailed": "Die Überprüfung der Webhook-Signatur ist fehlgeschlagen.",
       "webhookProcessingFailed": "Die Webhook-Verarbeitung ist fehlgeschlagen.",
