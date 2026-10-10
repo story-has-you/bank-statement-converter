@@ -30,8 +30,8 @@
     "signInWithGoogle": "Google 登录",
     "signOut": "退出登录",
     "unavailable": "登录暂时不可用",
-    "signInFailed": "登录没有完成，请稍后再试。",
-    "signOutFailed": "退出没有完成，请稍后再试。",
+    "signInFailed": "登录未完成，请稍后再试。",
+    "signOutFailed": "退出登录未完成，请稍后再试。",
     "myAccount": "我的页面",
     "avatar": "用户头像"
   },
@@ -41,31 +41,31 @@
       "description": "Google 登录未完成，请返回首页重试。"
     },
     "title": "登录没有完成",
-    "description": "Google 登录已取消或未完成。请返回首页，再试一次。",
+    "description": "Google 登录已取消或未完成，请回到首页重试。",
     "backHome": "回到首页"
   },
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "把银行流水 PDF 整理成 Excel",
-    "description": "上传文字型银行流水 PDF，先检查识别出的明细，再下载 Excel。文件只用于这次转换。"
+    "description": "上传文字型银行流水 PDF，核对识别出的明细后下载 Excel。文件仅用于本次转换。"
   },
   "PdfUpload": {
     "title": "上传对账单",
     "description": "一次处理一份 PDF",
     "fileLabel": "银行流水 PDF",
-    "dropzone": "选择 PDF，或拖到这里",
-    "dropzoneHint": "请上传能正常打开、带文字内容的 PDF。",
-    "help": "选好后会显示文件名，你也可以随时移除。",
+    "dropzone": "选择 PDF，或拖放到这里",
+    "dropzoneHint": "请上传能正常打开、文字可选中的 PDF。",
+    "help": "选择后会显示文件名，可随时移除。",
     "errorTitle": "这份文件没能转换",
     "invalidPdf": "请上传 PDF 文件。",
-    "multipleFiles": "一次只能处理一个 PDF。",
-    "conversionFailed": "转换没有完成，请换一份文件再试。",
-    "parserUnavailable": "解析服务暂时没有响应，请稍后再试。",
-    "quotaExceeded": "当前额度已用完，或这份 PDF 超过剩余额度。",
+    "multipleFiles": "一次只能处理一份 PDF。",
+    "conversionFailed": "转换未完成，请换一份文件再试。",
+    "parserUnavailable": "解析服务暂时未响应，请稍后再试。",
+    "quotaExceeded": "额度已用完，或这份 PDF 的页数超过了剩余额度。",
     "quotaUnavailable": "额度服务暂时不可用，请稍后再试。",
     "removeFile": "移除文件",
-    "quota": "免费额度：匿名每天 {anonymousPages} 页，登录后每天 {authenticatedPages} 页",
-    "serviceReady": "文件只用于这次转换，不会保存。",
+    "quota": "免费额度：不登录每天 {anonymousPages} 页，登录后每天 {authenticatedPages} 页",
+    "serviceReady": "文件仅用于本次转换，不会保存。",
     "status": "可以上传",
     "converting": "正在处理",
     "start": "转换并查看结果",
@@ -77,7 +77,7 @@
       "description": "查看银行流水 PDF 的识别结果，核对后下载 Excel。"
     },
     "eyebrow": "转换结果",
-    "description": "先对照原 PDF 检查标记，再下载 Excel。",
+    "description": "下载 Excel 前，请对照原 PDF 核对标记内容。",
     "download": "下载 Excel",
     "backHome": "重新转换",
     "summary": {
@@ -109,7 +109,7 @@
     },
     "partial": {
       "title": "有些内容需要核对",
-      "description": "已识别的内容仍可预览和下载。带有 DISCREPANCY 或 UNVERIFIABLE 标记的行，请回看原 PDF。"
+      "description": "已识别的内容仍可预览和下载。请对照原 PDF 核对标为 DISCREPANCY 或 UNVERIFIABLE 的行。"
     },
     "empty": {
       "title": "没有可下载的数据",
@@ -117,12 +117,12 @@
     },
     "missing": {
       "title": "结果已失效",
-      "description": "结果只在当前转换流程中临时保留。请回到首页重新上传 PDF。"
+      "description": "结果仅在本次转换流程中临时保留，请回到首页重新上传 PDF。"
     },
     "issues": {
       "repeatedHeader": "第 {row} 行重复了表头，已跳过。",
       "summaryRow": "第 {row} 行看起来是合计行，已跳过。",
-      "extraCells": "这一行的单元格多于表头，额外内容已保留。",
+      "extraCells": "这一行的单元格数量多于表头，多出的内容已保留。",
       "unknown": "这项内容需要核对。",
       "missingDate": "交易日期缺失。",
       "invalidDate": "交易日期无效。",
@@ -142,15 +142,15 @@
   "HomeFeatures": {
     "title": "一次转换能得到什么",
     "securityTitle": "文件不留存",
-    "securityDescription": "PDF、生成的 Excel 和流水内容只用于这次转换，不写入文件历史。",
+    "securityDescription": "PDF、生成的 Excel 和流水内容仅用于本次转换，不会存入文件历史。",
     "banksTitle": "按原表整理",
-    "banksDescription": "读取 PDF 中的表头和单元格文字，按表格展示，方便回到原文件核对。",
+    "banksDescription": "读取 PDF 中的表头和单元格文字，以表格展示，方便对照原文件核对。",
     "accuracyTitle": "异常行有标记",
-    "accuracyDescription": "识别不完整或对不齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，下载前可以先查看。"
+    "accuracyDescription": "识别不完整或未能对齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，可在下载前查看。"
   },
   "UsageTiers": {
     "title": "先免费试一次",
-    "description": "不登录也能试用。登录后每天可处理更多页，需要经常使用时再选择按月套餐。",
+    "description": "不登录也能试用。登录后每天可转换更多页，经常使用可选择按月套餐。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages} 页",
     "anonymousDescription": "每天累计可转换 {pages} 页 PDF。",
@@ -172,25 +172,25 @@
       },
       "enterprise": {
         "name": "企业",
-        "description": "适合团队或企业级流水处理需求。"
+        "description": "适合团队和企业处理银行流水。"
       }
     }
   },
   "PayPal": {
-    "signInRequired": "请先登录，再开始订阅。",
+    "signInRequired": "请先登录，再订阅套餐。",
     "unavailable": "支付服务暂时不可用，请稍后再试。",
     "subscribe": "使用 PayPal 订阅",
     "processing": "正在打开 PayPal",
     "confirming": "正在确认付款",
-    "confirmationDelayed": "付款确认时间较长，请稍后刷新页面查看。",
-    "activationFailed": "暂时无法确认订阅，请刷新页面重试或联系客服。",
+    "confirmationDelayed": "付款确认较慢，请稍后刷新页面查看。",
+    "activationFailed": "暂时无法确认订阅，请刷新页面重试，或联系客服。",
     "activated": "会员已激活。",
-    "cancelled": "你已取消本次订阅。",
+    "cancelled": "本次订阅操作已取消。",
     "paymentFailed": "支付没有完成，请稍后再试。",
-    "currentPlan": "你正在使用此方案。",
+    "currentPlan": "你正在使用此套餐。",
     "api": {
       "loginUnavailable": "登录服务暂时不可用。",
-      "loginRequired": "请先登录后再订阅。",
+      "loginRequired": "请先登录。",
       "emailMissing": "当前账号缺少邮箱，暂时无法激活订阅。",
       "invalidRequest": "订阅请求格式无效。",
       "invalidTier": "请选择有效的会员套餐。",
@@ -221,7 +221,7 @@
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "不登录每天可转换 {anonymousPages} 页，登录后每天可转换 {authenticatedPages} 页，按 PDF 页数累计。standard 每月 {standardPages} 页，professional 每月 {professionalPages} 页，enterprise 每月 {enterprisePages} 页。"
+      "answer": "不登录每天可转换 {anonymousPages} 页，登录后每天可转换 {authenticatedPages} 页，按 PDF 页数累计。标准套餐每月 {standardPages} 页，专业套餐每月 {professionalPages} 页，企业套餐每月 {enterprisePages} 页。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -233,7 +233,7 @@
     },
     "failure": {
       "question": "转换失败会怎样？",
-      "answer": "页面会提示失败，也不会提供无效的 Excel 文件。失败转换不会扣减额度；partial 结果会按 PDF 页数累计。"
+      "answer": "转换失败时，页面会提示错误，不会提供无效的 Excel 文件，也不会扣减额度。部分结果仍按 PDF 页数计入用量。"
     }
   },
   "HomeFooter": {
@@ -388,7 +388,7 @@
   },
   "Account": {
     "title": "我的页面",
-    "description": "查看账户额度与订阅记录。",
+    "description": "查看剩余额度和订阅记录。",
     "avatar": "用户头像",
     "freePlan": "免费套餐",
     "planUnavailable": "套餐暂不可用",
@@ -399,20 +399,20 @@
     "loading": "正在加载账户…",
     "metadata": {
       "title": "我的页面",
-      "description": "查看账户额度与订阅记录。"
+      "description": "查看剩余额度和订阅记录。"
     },
     "quota": {
       "title": "剩余额度",
       "remaining": "剩余 {remaining} / {total} 页",
       "percentage": "剩余 {percent}%",
-      "progressLabel": "剩余页数额度",
-      "dayEnds": "每日额度于 {date} UTC 重置。",
-      "monthEnds": "当前订阅周期于 {date} UTC 结束。",
+      "progressLabel": "剩余可转换页数",
+      "dayEnds": "每日额度将在 {date} UTC 重置。",
+      "monthEnds": "本期计费周期将在 {date} UTC 结束。",
       "unavailable": "额度暂不可用，请稍后刷新。"
     },
     "subscriptions": {
       "title": "订阅记录",
-      "description": "每个订阅对应一条记录，时间均为 UTC。",
+      "description": "每份订阅显示一条记录，所有时间均为 UTC。",
       "unavailable": "订阅记录暂不可用，请稍后刷新。",
       "empty": "暂无订阅记录。",
       "plan": "套餐",
@@ -435,13 +435,13 @@
     "cancel": {
       "button": "取消订阅",
       "title": "确认取消订阅？",
-      "description": "取消后将停止后续续费，当前已付费周期的剩余额度保留至 {date} UTC。",
-      "descriptionWithoutDate": "取消后将停止后续续费，剩余付费额度保留至已记录的订阅周期结束。",
+      "description": "取消后不再自动续费，本期剩余额度仍可使用至 {date} UTC。",
+      "descriptionWithoutDate": "取消后不再自动续费，本期剩余额度仍可使用至订阅记录中的周期结束时间。",
       "keep": "保留订阅",
       "confirm": "确认取消",
       "submitting": "正在取消…",
-      "syncing": "已停止续费，正在等待取消回调同步账户状态。",
-      "delayed": "已停止续费，账户状态同步延迟，请稍后重新检查。",
+      "syncing": "已停止续费，正在更新账户中的订阅状态。",
+      "delayed": "已停止续费，订阅状态更新较慢，请稍后重新检查。",
       "check": "检查状态",
       "checking": "正在检查…",
       "failed": "暂时无法确认取消结果，请重试。",

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { ConversionResult } from "@/components/conversion-result";
-import { HomeFooter } from "@/components/home-footer";
-import { HomeHeader } from "@/components/home-header";
+import { ConversionResult } from "@/components/conversion/conversion-result";
+import { HomeFooter } from "@/components/shared/home-footer";
+import { HomeHeader } from "@/components/shared/home-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("ConversionResult.metadata");

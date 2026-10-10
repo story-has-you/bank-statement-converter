@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { CircleAlertIcon, FileSpreadsheetIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { ConversionTable } from "@/components/conversion-table";
-import { ExcelDownload } from "@/components/excel-download";
+import { ConversionTable } from "@/components/conversion/conversion-table";
+import { ExcelDownload } from "@/components/conversion/excel-download";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";

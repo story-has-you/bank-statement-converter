@@ -3,14 +3,14 @@ import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import { HomeFaq } from "@/components/home-faq";
-import { HomeFeatures } from "@/components/home-features";
-import { HomeFooter } from "@/components/home-footer";
-import { HomeHeader } from "@/components/home-header";
-import { HomeIntro } from "@/components/home-intro";
-import { HomeStructuredData } from "@/components/home-structured-data";
-import { PdfUpload } from "@/components/pdf-upload";
-import { UsageTiers } from "@/components/usage-tiers";
+import { HomeFaq } from "@/components/home/home-faq";
+import { HomeFeatures } from "@/components/home/home-features";
+import { HomeFooter } from "@/components/shared/home-footer";
+import { HomeHeader } from "@/components/shared/home-header";
+import { HomeIntro } from "@/components/home/home-intro";
+import { HomeStructuredData } from "@/components/home/home-structured-data";
+import { PdfUpload } from "@/components/conversion/pdf-upload";
+import { UsageTiers } from "@/components/home/usage-tiers";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 

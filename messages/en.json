@@ -47,7 +47,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter for PDF to Excel",
-    "description": "Upload a text-based bank statement PDF, check the extracted rows, then download the Excel file. We use your file for this conversion only."
+    "description": "Upload a text-based bank statement PDF, review the extracted rows, then download Excel. We use your file only for this conversion."
   },
   "PdfUpload": {
     "title": "Upload a bank statement",
@@ -55,16 +55,16 @@
     "fileLabel": "Bank statement PDF",
     "dropzone": "Choose a PDF or drop it here",
     "dropzoneHint": "Upload a PDF that opens normally and contains selectable text.",
-    "help": "Your filename will appear here. Remove the file whenever you need to.",
+    "help": "The filename appears here after you select a file. You can remove it at any time.",
     "errorTitle": "This file could not be converted",
     "invalidPdf": "Please upload a PDF file.",
-    "multipleFiles": "Only one PDF can be processed at a time.",
+    "multipleFiles": "Upload one PDF at a time.",
     "conversionFailed": "The conversion did not complete. Try another file.",
     "parserUnavailable": "The parsing service did not respond. Please try again later.",
-    "quotaExceeded": "Your current quota is used up, or this PDF is larger than your remaining quota.",
+    "quotaExceeded": "Your quota is used up, or this PDF has more pages than your remaining quota allows.",
     "quotaUnavailable": "The quota service is temporarily unavailable. Please try again later.",
     "removeFile": "Remove file",
-    "quota": "Free quota: {anonymousPages} page per day anonymously, {authenticatedPages} pages per day when signed in",
+    "quota": "Free quota: {anonymousPages} page per day without signing in, {authenticatedPages} pages per day when signed in",
     "serviceReady": "Files are used for this conversion only and are not saved.",
     "status": "Ready to upload",
     "converting": "Converting",
@@ -74,7 +74,7 @@
   "ConversionResult": {
     "metadata": {
       "title": "Conversion result | Bank Statement Converter",
-      "description": "Review extracted bank statement rows, check risk labels, and download the Excel result."
+      "description": "Review the extracted bank statement rows and risk labels, then download Excel."
     },
     "eyebrow": "Conversion result",
     "description": "Compare the marked rows with the original PDF before downloading.",
@@ -109,15 +109,15 @@
     },
     "partial": {
       "title": "Some content needs review",
-      "description": "Recognized content can still be previewed and downloaded. Check rows marked \"DISCREPANCY\" or \"UNVERIFIABLE\" against the original PDF."
+      "description": "You can still preview and download the extracted content. Check rows marked DISCREPANCY or UNVERIFIABLE against the original PDF."
     },
     "empty": {
-      "title": "There is no downloadable data",
+      "title": "No data to download",
       "description": "No usable table rows were found in this PDF. Return to the homepage and upload another file."
     },
     "missing": {
       "title": "This result has expired",
-      "description": "Results are kept temporarily for the current conversion flow. Return to the homepage and upload the PDF again."
+      "description": "Results are available only during this conversion. Return to the homepage and upload the PDF again."
     },
     "issues": {
       "repeatedHeader": "Row {row} repeats the table header and was skipped.",
@@ -142,9 +142,9 @@
   "HomeFeatures": {
     "title": "What you get from a conversion",
     "securityTitle": "No file history",
-    "securityDescription": "The PDF, generated Excel file, and transaction content are used for this conversion only and are not added to file history.",
+    "securityDescription": "We use the PDF, generated Excel file, and transaction content only for this conversion. We do not add them to file history.",
     "banksTitle": "Keeps the source layout",
-    "banksDescription": "The converter reads table headers and cell text from the PDF and presents the result in tables for comparison with the source file.",
+    "banksDescription": "The converter reads table headers and cell text from the PDF and displays them in tables so you can compare them with the original.",
     "accuracyTitle": "Marks rows to review",
     "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked \"DISCREPANCY\" or \"UNVERIFIABLE\" before download."
   },
@@ -172,7 +172,7 @@
       },
       "enterprise": {
         "name": "Enterprise",
-        "description": "For teams and organizations with higher-volume statement workflows."
+        "description": "For teams and organizations that process large volumes of bank statements."
       }
     }
   },
@@ -183,14 +183,14 @@
     "processing": "Opening PayPal",
     "confirming": "Confirming your payment",
     "confirmationDelayed": "Payment confirmation is taking longer than expected. Please refresh this page later.",
-    "activationFailed": "We couldn't confirm your subscription. Please refresh this page or contact support.",
+    "activationFailed": "We couldn't confirm your subscription. Refresh this page or contact support.",
     "activated": "Your plan is active.",
-    "cancelled": "You cancelled this subscription.",
+    "cancelled": "You cancelled the subscription process.",
     "paymentFailed": "Payment did not complete. Please try again later.",
     "currentPlan": "You are using this plan.",
     "api": {
       "loginUnavailable": "Sign-in is temporarily unavailable.",
-      "loginRequired": "Sign in before subscribing.",
+      "loginRequired": "Please sign in.",
       "emailMissing": "Your account has no email address, so the subscription cannot be activated.",
       "invalidRequest": "The subscription request is invalid.",
       "invalidTier": "Choose a valid subscription plan.",
@@ -213,7 +213,7 @@
     "title": "Frequently asked questions",
     "banks": {
       "question": "Which statements are supported?",
-      "answer": "The converter is being validated against multiple electronic bank statement layouts. Specific banks and layout variants will be listed as they are verified."
+      "answer": "We are checking the converter against several electronic bank statement layouts. We will list banks and layout variants as we verify them."
     },
     "accuracy": {
       "question": "Why should I review the conversion result?",
@@ -233,7 +233,7 @@
     },
     "failure": {
       "question": "What happens if conversion fails?",
-      "answer": "The page reports the failure and does not provide an invalid Excel file. Failed conversions do not use quota; partial results count PDF pages."
+      "answer": "If conversion fails, the page shows an error and does not offer an invalid Excel file. Failed conversions do not use quota. Partial results use quota based on the PDF page count."
     }
   },
   "HomeFooter": {
@@ -436,12 +436,12 @@
       "button": "Cancel subscription",
       "title": "Cancel this subscription?",
       "description": "Future renewals will stop. Your remaining paid quota stays available until {date} UTC.",
-      "descriptionWithoutDate": "Future renewals will stop. Remaining paid quota stays available until the recorded billing period ends.",
+      "descriptionWithoutDate": "Future renewals will stop. You can use your remaining paid quota until the billing period shown in your subscription record ends.",
       "keep": "Keep subscription",
       "confirm": "Confirm cancellation",
       "submitting": "Cancelling…",
-      "syncing": "Renewals have stopped. Waiting for the cancellation webhook to update your account.",
-      "delayed": "Renewals have stopped. Account synchronization is delayed; check the status again later.",
+      "syncing": "Renewals have stopped. Your subscription status is being updated.",
+      "delayed": "Renewals have stopped, but your subscription status is taking longer to update. Check again later.",
       "check": "Check status",
       "checking": "Checking…",
       "failed": "Cancellation could not be confirmed. Please retry.",

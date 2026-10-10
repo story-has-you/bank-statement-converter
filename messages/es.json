@@ -28,62 +28,62 @@
   "AuthControl": {
     "account": "Cuenta",
     "signInWithGoogle": "Iniciar sesión con Google",
-    "signOut": "desconectar",
+    "signOut": "Cerrar sesión",
     "unavailable": "El inicio de sesión no está disponible temporalmente",
-    "signInFailed": "El inicio de sesión no se completó. Inténtelo de nuevo más tarde.",
-    "signOutFailed": "El cierre de sesión no se completó. Inténtelo de nuevo más tarde.",
+    "signInFailed": "El inicio de sesión no se completó. Inténtalo de nuevo más tarde.",
+    "signOutFailed": "El cierre de sesión no se completó. Inténtalo de nuevo más tarde.",
     "myAccount": "Mi cuenta",
     "avatar": "Foto de perfil"
   },
   "AuthError": {
     "metadata": {
       "title": "Inicio de sesión incompleto | Conversor de extractos bancarios",
-      "description": "El inicio de sesión de Google no se completó. Regrese a la página de inicio e inténtelo nuevamente."
+      "description": "El inicio de sesión con Google no se completó. Vuelve al inicio e inténtalo de nuevo."
     },
-    "title": "Iniciar sesión incompleto",
-    "description": "El inicio de sesión de Google se canceló o no se completó. Regrese a la página de inicio e inténtelo nuevamente.",
+    "title": "No se completó el inicio de sesión",
+    "description": "El inicio de sesión con Google se canceló o no se completó. Vuelve al inicio e inténtalo de nuevo.",
     "backHome": "Volver a la página de inicio"
   },
   "HomeIntro": {
-    "eyebrow": "Conversión de extractos bancarios a PDF",
-    "title": "Convertidor de extractos bancarios de PDF a Excel",
-    "description": "Cargue un extracto bancario en formato PDF, verifique las filas extraídas y luego descargue el archivo de Excel. Usamos su archivo solo para esta conversión."
+    "eyebrow": "Conversión de extractos bancarios en PDF",
+    "title": "Convierte tu extracto bancario de PDF a Excel",
+    "description": "Sube un extracto bancario PDF con texto, revisa las filas extraídas y descarga el archivo Excel. Usamos tu archivo solo para esta conversión."
   },
   "PdfUpload": {
-    "title": "Cargar un extracto bancario",
-    "description": "Procese un PDF a la vez",
+    "title": "Subir un extracto bancario",
+    "description": "Un PDF a la vez",
     "fileLabel": "Extracto bancario PDF",
-    "dropzone": "Elija un PDF o suéltelo aquí",
-    "dropzoneHint": "Cargue un PDF que se abra normalmente y contenga texto seleccionable.",
-    "help": "Su nombre de archivo aparecerá aquí. Elimine el archivo cuando lo necesite.",
+    "dropzone": "Elige un PDF o arrástralo aquí",
+    "dropzoneHint": "Sube un PDF que se abra normalmente y cuyo texto puedas seleccionar.",
+    "help": "El nombre del archivo aparece después de seleccionarlo. Puedes quitarlo cuando quieras.",
     "errorTitle": "Este archivo no se pudo convertir",
-    "invalidPdf": "Cargue un archivo PDF.",
-    "multipleFiles": "Sólo se puede procesar un PDF a la vez.",
-    "conversionFailed": "La conversión no se completó. Pruebe con otro archivo.",
-    "parserUnavailable": "El servicio de análisis no respondió. Inténtelo de nuevo más tarde.",
-    "quotaExceeded": "Su cuota actual está agotada o este PDF es mayor que su cuota restante.",
-    "quotaUnavailable": "El servicio de cuotas no está disponible temporalmente. Inténtelo de nuevo más tarde.",
-    "removeFile": "Eliminar archivo",
-    "quota": "Cuota gratuita: páginas {anonymousPages} por día de forma anónima, páginas {authenticatedPages} por día al iniciar sesión",
+    "invalidPdf": "Sube un archivo PDF.",
+    "multipleFiles": "Solo puedes procesar un PDF a la vez.",
+    "conversionFailed": "La conversión no se completó. Prueba con otro archivo.",
+    "parserUnavailable": "El servicio de análisis no respondió. Inténtalo de nuevo más tarde.",
+    "quotaExceeded": "Tu cuota está agotada o el número de páginas del PDF supera tu cuota restante.",
+    "quotaUnavailable": "El servicio de cuotas no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+    "removeFile": "Quitar archivo",
+    "quota": "Cuota gratuita: {anonymousPages} página al día sin iniciar sesión, {authenticatedPages} páginas al día al iniciar sesión",
     "serviceReady": "Los archivos se utilizan únicamente para esta conversión y no se guardan.",
     "status": "Listo para cargar",
-    "converting": "Mudado",
+    "converting": "Convirtiendo",
     "start": "Convertir y revisar",
     "fileTooLarge": "Este PDF pesa más de 4 MB."
   },
   "ConversionResult": {
     "metadata": {
       "title": "Resultado de la conversión | Conversor de extractos bancarios",
-      "description": "Revise las filas extraídas de los extractos bancarios, verifique las etiquetas de riesgo y descargue el resultado de Excel."
+      "description": "Revisa las filas extraídas y las etiquetas de riesgo del extracto bancario, y descarga el archivo Excel."
     },
     "eyebrow": "Resultado de la conversión",
-    "description": "Compare las filas marcadas con el PDF original antes de descargarlo.",
+    "description": "Compara las filas marcadas con el PDF original antes de descargar el resultado.",
     "download": "Descargar Excel",
     "backHome": "Convertir otro archivo",
     "summary": {
       "status": "Estado",
-      "pages": "páginas PDF",
-      "tables": "Mesas",
+      "pages": "Páginas PDF",
+      "tables": "Tablas",
       "rows": "Filas de datos",
       "warnings": "Filas para revisar"
     },
@@ -101,7 +101,7 @@
       "title": "Tabla {id}",
       "singleTitle": "Transacciones de extractos bancarios",
       "pages": "Páginas {start} a {end}",
-      "rowCount": "filas {count}",
+      "rowCount": "{count} filas",
       "status": "Estado",
       "warnings": "Notas de revisión",
       "sourcePage": "Página de origen",
@@ -113,17 +113,17 @@
     },
     "empty": {
       "title": "No hay datos descargables.",
-      "description": "No se encontraron filas de tabla utilizables en este PDF. Regrese a la página de inicio y cargue otro archivo."
+      "description": "No se encontraron filas de tabla utilizables en este PDF. Vuelve al inicio y sube otro archivo."
     },
     "missing": {
       "title": "Este resultado ha caducado.",
-      "description": "Los resultados se conservan temporalmente para el flujo de conversión actual. Regrese a la página de inicio y cargue el PDF nuevamente."
+      "description": "El resultado solo está disponible durante esta conversión. Vuelve al inicio y sube el PDF de nuevo."
     },
     "issues": {
       "repeatedHeader": "La fila {row} repite el encabezado de la tabla y se omitió.",
       "summaryRow": "La fila {row} parece una fila de resumen y se omitió.",
       "extraCells": "Esta fila tiene más celdas que el encabezado. Se conservaron las celdas adicionales.",
-      "unknown": "Este artículo necesita revisión.",
+      "unknown": "Este elemento necesita revisión.",
       "missingDate": "Falta la fecha de la transacción.",
       "invalidDate": "La fecha de la transacción no es válida.",
       "missingDescription": "Falta la descripción de la transacción.",
@@ -142,25 +142,25 @@
   "HomeFeatures": {
     "title": "Lo que obtienes de una conversión",
     "securityTitle": "Sin historial de archivos",
-    "securityDescription": "El PDF, el archivo Excel generado y el contenido de la transacción se utilizan únicamente para esta conversión y no se agregan al historial del archivo.",
+    "securityDescription": "Usamos el PDF, el archivo Excel generado y los datos de las transacciones solo para esta conversión. No los añadimos a un historial de archivos.",
     "banksTitle": "Mantiene el diseño de origen",
-    "banksDescription": "El convertidor lee los encabezados de las tablas y el texto de las celdas del PDF y presenta el resultado en tablas para compararlo con el archivo fuente.",
+    "banksDescription": "El convertidor lee los encabezados y el texto de las celdas del PDF y los muestra en tablas para que puedas compararlos con el original.",
     "accuracyTitle": "Marca filas para revisar",
     "accuracyDescription": "Las filas con datos incompletos o problemas de alineación se marcan como \"DISCREPANCY\" o \"UNVERIFIABLE\" antes de la descarga."
   },
   "UsageTiers": {
     "title": "Comience con una conversión gratuita",
-    "description": "Puedes probar el convertidor sin una cuenta. Regístrese para obtener una cuota diaria mayor o elija un plan mensual para uso regular.",
+    "description": "Puedes probar el convertidor sin una cuenta. Inicia sesión para obtener una cuota diaria mayor o elige un plan mensual si lo usas con frecuencia.",
     "anonymous": "Sin iniciar sesión",
-    "anonymousAmount": "Página {pages}",
-    "anonymousDescription": "Convierta hasta una página PDF {pages} por día.",
-    "signedIn": "Iniciado sesión",
-    "signedInAmount": "Páginas {pages}",
-    "signedInDescription": "Convierta hasta páginas PDF {pages} por día.",
-    "perDay": "/ day",
-    "perMonth": "/ month",
+    "anonymousAmount": "{pages} página",
+    "anonymousDescription": "Convierte hasta {pages} página de PDF al día.",
+    "signedIn": "Con sesión iniciada",
+    "signedInAmount": "{pages} páginas",
+    "signedInDescription": "Convierte hasta {pages} páginas de PDF al día.",
+    "perDay": "/ día",
+    "perMonth": "/ mes",
     "planQuota": "{pages} páginas por mes",
-    "current": "plan actual",
+    "current": "Plan actual",
     "plans": {
       "standard": {
         "name": "Estándar",
@@ -172,33 +172,33 @@
       },
       "enterprise": {
         "name": "Empresa",
-        "description": "Para equipos y organizaciones con flujos de trabajo de estados de cuenta de mayor volumen."
+        "description": "Para equipos y organizaciones que procesan muchos extractos bancarios."
       }
     }
   },
   "PayPal": {
-    "signInRequired": "Inicie sesión antes de iniciar una suscripción.",
-    "unavailable": "El pago no está disponible temporalmente. Inténtelo de nuevo más tarde.",
+    "signInRequired": "Inicia sesión antes de suscribirte.",
+    "unavailable": "El pago no está disponible temporalmente. Inténtalo de nuevo más tarde.",
     "subscribe": "Suscríbete con PayPal",
-    "processing": "Abrir PayPal",
+    "processing": "Abriendo PayPal",
     "confirming": "Confirmando el pago",
     "confirmationDelayed": "La confirmación del pago está tardando más de lo esperado. Actualiza esta página más tarde.",
     "activationFailed": "No pudimos confirmar la suscripción. Actualiza esta página o contacta con soporte.",
     "activated": "Tu plan está activo.",
-    "cancelled": "Cancelaste esta suscripción.",
-    "paymentFailed": "El pago no se completó. Inténtelo de nuevo más tarde.",
+    "cancelled": "Has cancelado el proceso de suscripción.",
+    "paymentFailed": "El pago no se completó. Inténtalo de nuevo más tarde.",
     "currentPlan": "Estás usando este plan.",
     "api": {
       "loginUnavailable": "El inicio de sesión no está disponible temporalmente.",
-      "loginRequired": "Inicia sesión antes de suscribirte.",
-      "emailMissing": "Su cuenta no tiene dirección de correo electrónico, por lo que no se puede activar la suscripción.",
+      "loginRequired": "Inicia sesión.",
+      "emailMissing": "Tu cuenta no tiene una dirección de correo electrónico, por lo que no podemos activar la suscripción.",
       "invalidRequest": "La solicitud de suscripción no es válida.",
-      "invalidTier": "Elija un plan de suscripción válido.",
+      "invalidTier": "Elige un plan de suscripción válido.",
       "configurationMissing": "El pago aún no se ha configurado.",
       "subscriptionBelongsToAnotherAccount": "Esta suscripción pertenece a otra cuenta.",
       "verificationFailed": "No se pudo verificar la suscripción de PayPal.",
-      "activationFailed": "La verificación de la suscripción no se completó. Inténtelo de nuevo más tarde.",
-      "createFailed": "No se pudo iniciar la suscripción de PayPal. Inténtelo de nuevo más tarde.",
+      "activationFailed": "La verificación de la suscripción no se completó. Inténtalo de nuevo más tarde.",
+      "createFailed": "No se pudo iniciar la suscripción de PayPal. Inténtalo de nuevo más tarde.",
       "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
       "webhookSignatureFailed": "Error en la verificación de la firma del webhook.",
@@ -212,16 +212,16 @@
   "HomeFaq": {
     "title": "Preguntas frecuentes",
     "banks": {
-      "question": "¿Qué afirmaciones se apoyan?",
-      "answer": "El convertidor se está validando con múltiples diseños de extractos bancarios electrónicos. Los bancos específicos y las variantes de diseño se enumerarán a medida que se verifiquen."
+      "question": "¿Qué extractos bancarios se admiten?",
+      "answer": "Estamos probando el convertidor con varios formatos de extractos bancarios electrónicos. Publicaremos los bancos y las variantes de formato a medida que los verifiquemos."
     },
     "accuracy": {
-      "question": "¿Por qué debería revisar el resultado de la conversión?",
+      "question": "¿Por qué debo revisar el resultado de la conversión?",
       "answer": "El convertidor conserva los encabezados y el texto de las celdas cuando puede. Los diseños complejos, el texto borroso o las columnas desalineadas pueden marcar filas como \"DISCREPANCY\" o \"UNVERIFIABLE\". Compara el archivo Excel con el PDF original antes de usarlo."
     },
     "quota": {
       "question": "¿Cuántas páginas puedo convertir cada día?",
-      "answer": "Los usuarios anónimos pueden convertir páginas {anonymousPages} por día y los usuarios que hayan iniciado sesión pueden convertir páginas {authenticatedPages} por día. Los planes mensuales incluyen páginas {standardPages} para Standard, páginas {professionalPages} para Professional y páginas {enterprisePages} para Enterprise."
+      "answer": "Sin iniciar sesión puedes convertir {anonymousPages} página al día; con sesión iniciada, {authenticatedPages} páginas. Los planes mensuales incluyen {standardPages} páginas en Estándar, {professionalPages} en Profesional y {enterprisePages} en Empresa."
     },
     "scans": {
       "question": "¿Puedo convertir archivos PDF escaneados o cifrados?",
@@ -229,11 +229,11 @@
     },
     "storage": {
       "question": "¿Se guardan mis archivos PDF, Excel o transacciones?",
-      "answer": "No. Se utilizan únicamente para la conversión y descarga actual y no se agregan al historial de archivos. Una vez que abandone el flujo actual, el resultado no se podrá volver a descargar."
+      "answer": "No. Solo se usan para la conversión y la descarga actuales, sin historial de archivos. Cuando sales de este proceso, ya no puedes volver a descargar el resultado."
     },
     "failure": {
       "question": "¿Qué sucede si la conversión falla?",
-      "answer": "La página informa el error y no proporciona un archivo Excel no válido. Las conversiones fallidas no utilizan cuota; Los resultados parciales cuentan las páginas PDF."
+      "answer": "Si la conversión falla, la página muestra un error y no ofrece un archivo Excel no válido. Las conversiones fallidas no consumen cuota. Los resultados parciales consumen cuota según el número de páginas del PDF."
     }
   },
   "HomeFooter": {
@@ -242,7 +242,7 @@
     "plans": "Planes",
     "faq": "Preguntas frecuentes",
     "terms": "Términos de servicio",
-    "privacy": "Privacy policy"
+    "privacy": "Política de privacidad"
   },
   "LegalCommon": {
     "lastUpdated": "Última actualización: 2 de octubre de 2026"
@@ -364,16 +364,16 @@
   },
   "ThemeToggle": {
     "label": "Cambiar tema",
-    "light": "Luz",
+    "light": "Claro",
     "dark": "Oscuro",
     "system": "Sistema"
   },
   "ApiErrors": {
     "INVALID_REQUEST": "No se pudo leer la solicitud de carga.",
-    "INVALID_FILE": "Elija un archivo PDF válido.",
-    "PARSER_UNAVAILABLE": "El servicio de análisis no está disponible temporalmente. Inténtelo de nuevo más tarde.",
-    "QUOTA_EXCEEDED": "Ha alcanzado la cuota disponible para esta conversión.",
-    "QUOTA_UNAVAILABLE": "El servicio de cuotas no está disponible temporalmente. Inténtelo de nuevo más tarde.",
+    "INVALID_FILE": "Elige un archivo PDF válido.",
+    "PARSER_UNAVAILABLE": "El servicio de análisis no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+    "QUOTA_EXCEEDED": "Tu cuota está agotada.",
+    "QUOTA_UNAVAILABLE": "El servicio de cuotas no está disponible temporalmente. Inténtalo de nuevo más tarde.",
     "FILE_TOO_LARGE": "Este PDF pesa más de 4 MB.",
     "INVALID_FILE_TYPE": "Sólo se admiten archivos PDF.",
     "INVALID_PDF": "Este archivo no es un PDF legible.",
@@ -382,7 +382,7 @@
     "UNSUPPORTED_SCANNED_PDF": "Esta versión acepta archivos PDF electrónicos con texto seleccionable, no imágenes escaneadas.",
     "TABLE_NOT_FOUND": "No se encontró ninguna tabla de extractos bancarios utilizable.",
     "NO_VERIFIABLE_TRANSACTIONS": "Ninguna transacción tiene datos suficientes para revisarla.",
-    "PARSE_FAILED": "No se pudo analizar el PDF. Inténtelo de nuevo con otro archivo.",
+    "PARSE_FAILED": "No se pudo analizar el PDF. Inténtalo de nuevo con otro archivo.",
     "UNKNOWN": "Algo salió mal. Por favor inténtalo de nuevo.",
     "PARSER_RESPONSE_TOO_LARGE": "La respuesta del analizador es demasiado grande para devolverla de forma segura."
   },
@@ -440,8 +440,8 @@
       "keep": "Mantener suscripción",
       "confirm": "Confirmar cancelación",
       "submitting": "Cancelando…",
-      "syncing": "Las renovaciones se han detenido. La cuenta espera la notificación de cancelación.",
-      "delayed": "Las renovaciones se han detenido. La sincronización se ha retrasado; vuelve a comprobar el estado más tarde.",
+      "syncing": "Las renovaciones se han detenido. Estamos actualizando el estado de tu suscripción.",
+      "delayed": "Las renovaciones se han detenido, pero el estado de tu suscripción tarda en actualizarse. Vuelve a comprobarlo más tarde.",
       "check": "Comprobar estado",
       "checking": "Comprobando…",
       "failed": "No se pudo confirmar la cancelación. Inténtalo de nuevo.",

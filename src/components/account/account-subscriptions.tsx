@@ -1,6 +1,6 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 
-import { CancelSubscriptionButton } from "@/components/cancel-subscription-button";
+import { CancelSubscriptionButton } from "@/components/billing/cancel-subscription-button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

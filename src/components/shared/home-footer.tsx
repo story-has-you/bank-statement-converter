@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { BrandLogo } from "@/components/brand-logo";
+import { BrandLogo } from "@/components/shared/brand-logo";
 import { Link } from "@/i18n/navigation";
 
 export function HomeFooter() {

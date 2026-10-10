@@ -47,7 +47,7 @@
   "HomeIntro": {
     "eyebrow": "銀行明細PDFの変換",
     "title": "銀行明細PDFをExcelに変換",
-    "description": "文字を選択できる銀行明細PDFをアップロードし、抽出結果を確認してからExcelをダウンロードします。ファイルは今回の変換にだけ使います。"
+    "description": "文字を選択できる銀行明細PDFをアップロードし、抽出された明細を確認してからExcelをダウンロードしてください。ファイルは今回の変換にのみ使用します。"
   },
   "PdfUpload": {
     "title": "銀行明細をアップロード",
@@ -55,15 +55,15 @@
     "fileLabel": "銀行明細PDF",
     "dropzone": "PDFを選ぶか、ここにドロップ",
     "dropzoneHint": "正常に開けて、文字を選択できるPDFをアップロードしてください。",
-    "help": "選んだファイル名がここに表示されます。いつでも削除できます。",
+    "help": "ファイルを選ぶと名前が表示されます。選択はいつでも解除できます。",
     "errorTitle": "このファイルを変換できませんでした",
     "invalidPdf": "PDFファイルをアップロードしてください。",
     "multipleFiles": "一度に処理できるPDFは1つです。",
     "conversionFailed": "変換を完了できませんでした。別のファイルでお試しください。",
     "parserUnavailable": "解析サービスから応答がありません。しばらくしてから再試行してください。",
-    "quotaExceeded": "利用できる上限に達したか、このPDFが残りの上限を超えています。",
-    "quotaUnavailable": "上限サービスを一時的に利用できません。しばらくしてから再試行してください。",
-    "removeFile": "ファイルを削除",
+    "quotaExceeded": "利用枠を使い切ったか、このPDFのページ数が残りの利用枠を超えています。",
+    "quotaUnavailable": "利用枠を一時的に確認できません。しばらくしてから再試行してください。",
+    "removeFile": "ファイルの選択を解除",
     "quota": "無料枠：匿名は1日{anonymousPages}ページ、ログイン後は1日{authenticatedPages}ページ",
     "serviceReady": "ファイルは今回の変換にだけ使い、保存しません。",
     "status": "アップロードできます",
@@ -89,7 +89,7 @@
     },
     "summaryStatus": {
       "success": "完了",
-      "partial": "一部結果",
+      "partial": "一部のみ変換",
       "failed": "未完了"
     },
     "rowStatus": {
@@ -109,7 +109,7 @@
     },
     "partial": {
       "title": "確認が必要な内容があります",
-      "description": "認識できた内容は確認・ダウンロードできます。“DISCREPANCY”または“UNVERIFIABLE”の行は元のPDFと照合してください。"
+      "description": "読み取れた内容はプレビューとダウンロードができます。DISCREPANCYまたはUNVERIFIABLEと表示された行は、元のPDFと照合してください。"
     },
     "empty": {
       "title": "ダウンロードできるデータがありません",
@@ -135,7 +135,7 @@
       "title": "ページのリスク",
       "item": "ページ {page}: {code}",
       "pageParseFailed": "ページ {page} を読み取れませんでした。",
-      "pageUnparsed": "ページ {page} に取引の証拠がありますが、表を確実に再構成できませんでした。",
+      "pageUnparsed": "{page}ページには取引を示す情報がありますが、表を正確に再構成できませんでした。",
       "unknown": "ページ {page} を確認してください。"
     }
   },
@@ -144,13 +144,13 @@
     "securityTitle": "ファイル履歴なし",
     "securityDescription": "PDF、生成したExcel、取引内容は今回の変換だけに使い、ファイル履歴には追加しません。",
     "banksTitle": "元の表を保つ",
-    "banksDescription": "PDFの見出しとセルの文字を読み取り、元ファイルと照合できる表で表示します。",
+    "banksDescription": "PDFの表見出しとセルの文字を読み取り、元のファイルと照合できるように表で表示します。",
     "accuracyTitle": "確認が必要な行を表示",
     "accuracyDescription": "根拠が足りない行や位置を合わせにくい行には“DISCREPANCY”または“UNVERIFIABLE”を付けます。"
   },
   "UsageTiers": {
     "title": "まず無料で試す",
-    "description": "アカウントなしで試せます。ログインすると1日の上限が増え、定期的に使う場合は月額プランを選べます。",
+    "description": "ログインせずに試せます。ログインすると1日に使えるページ数が増えます。定期的に使う方は月額プランを選べます。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages}ページ",
     "anonymousDescription": "1日に{pages}ページまで変換できます。",
@@ -177,29 +177,29 @@
     }
   },
   "PayPal": {
-    "signInRequired": "サブスクリプションを始める前にログインしてください。",
+    "signInRequired": "プランを申し込むには、まずログインしてください。",
     "unavailable": "支払いを一時的に利用できません。しばらくしてから再試行してください。",
-    "subscribe": "PayPalで購読",
+    "subscribe": "PayPalで申し込む",
     "processing": "PayPalを開いています",
     "confirming": "お支払いを確認しています",
     "confirmationDelayed": "お支払いの確認に時間がかかっています。しばらくしてからページを更新してください。",
     "activationFailed": "サブスクリプションを確認できませんでした。ページを更新するか、サポートにお問い合わせください。",
     "activated": "プランが有効になりました。",
-    "cancelled": "この購読をキャンセルしました。",
+    "cancelled": "今回の申し込みをキャンセルしました。",
     "paymentFailed": "支払いを完了できませんでした。しばらくしてから再試行してください。",
     "currentPlan": "このプランを利用中です。",
     "api": {
       "loginUnavailable": "ログインを一時的に利用できません。",
-      "loginRequired": "購読する前にログインしてください。",
-      "emailMissing": "アカウントにメールアドレスがないため、購読を有効にできません。",
-      "invalidRequest": "購読リクエストが無効です。",
+      "loginRequired": "ログインしてください。",
+      "emailMissing": "アカウントにメールアドレスがないため、サブスクリプションを有効にできません。",
+      "invalidRequest": "サブスクリプションのリクエストが無効です。",
       "invalidTier": "有効なプランを選択してください。",
       "configurationMissing": "支払い設定がまだ完了していません。",
-      "subscriptionBelongsToAnotherAccount": "この購読は別のアカウントに紐付いています。",
-      "verificationFailed": "PayPalの購読を確認できませんでした。",
-      "activationFailed": "購読の確認を完了できませんでした。しばらくしてから再試行してください。",
-      "createFailed": "PayPal購読を開始できませんでした。しばらくしてから再試行してください。",
-      "existingSubscription": "このアカウントには有効または保留中の購読があります。",
+      "subscriptionBelongsToAnotherAccount": "このサブスクリプションは別のアカウントに紐付いています。",
+      "verificationFailed": "PayPalのサブスクリプションを確認できませんでした。",
+      "activationFailed": "サブスクリプションの確認を完了できませんでした。しばらくしてから再試行してください。",
+      "createFailed": "PayPalの申し込みを開始できませんでした。しばらくしてから再試行してください。",
+      "existingSubscription": "このアカウントには有効または確認待ちのサブスクリプションがあります。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
       "webhookSignatureFailed": "Webhook署名の確認に失敗しました。",
       "webhookProcessingFailed": "Webhook処理に失敗しました。",
@@ -221,7 +221,7 @@
     },
     "quota": {
       "question": "1日に何ページ変換できますか？",
-      "answer": "匿名は1日{anonymousPages}ページ、ログイン後は{authenticatedPages}ページまでです。月額プランはStandardが{standardPages}ページ、Professionalが{professionalPages}ページ、Enterpriseが{enterprisePages}ページです。"
+      "answer": "ログインなしでは1日{anonymousPages}ページ、ログイン後は1日{authenticatedPages}ページまで変換できます。月額プランは、スタンダードが{standardPages}ページ、プロフェッショナルが{professionalPages}ページ、エンタープライズが{enterprisePages}ページです。"
     },
     "scans": {
       "question": "スキャンPDFや暗号化PDFは変換できますか？",
@@ -229,11 +229,11 @@
     },
     "storage": {
       "question": "PDF、Excel、取引内容は保存されますか？",
-      "answer": "保存しません。今回の変換とダウンロードにだけ使い、ファイル履歴には追加しません。現在のフローを離れると再ダウンロードできません。"
+      "answer": "保存しません。今回の変換とダウンロードにのみ使用し、ファイル履歴には追加しません。今回の変換を終了すると、結果を再ダウンロードできなくなります。"
     },
     "failure": {
       "question": "変換に失敗するとどうなりますか？",
-      "answer": "失敗を表示し、使えないExcelは提供しません。失敗した変換は上限を消費せず、一部結果はPDFページ数で計算します。"
+      "answer": "変換に失敗するとエラーを表示し、無効なExcelファイルは提供しません。失敗した変換は利用枠を消費しません。一部の結果を提供できる場合は、PDFのページ数を利用枠から差し引きます。"
     }
   },
   "HomeFooter": {
@@ -372,8 +372,8 @@
     "INVALID_REQUEST": "アップロード要求を読み取れません。",
     "INVALID_FILE": "有効なPDFファイルを選んでください。",
     "PARSER_UNAVAILABLE": "解析サービスを一時的に利用できません。",
-    "QUOTA_EXCEEDED": "この変換で利用できる上限に達しました。",
-    "QUOTA_UNAVAILABLE": "上限サービスを一時的に利用できません。",
+    "QUOTA_EXCEEDED": "利用枠を使い切りました。",
+    "QUOTA_UNAVAILABLE": "利用枠を一時的に確認できません。",
     "FILE_TOO_LARGE": "PDFは4MB以下にしてください。",
     "INVALID_FILE_TYPE": "PDFファイルのみ対応しています。",
     "INVALID_PDF": "読み取れるPDFではありません。",
@@ -388,7 +388,7 @@
   },
   "Account": {
     "title": "マイアカウント",
-    "description": "アカウントの利用枠とサブスクリプション。",
+    "description": "残りの利用枠とサブスクリプションを確認できます。",
     "avatar": "プロフィール画像",
     "freePlan": "無料プラン",
     "planUnavailable": "プランを取得できません",
@@ -399,7 +399,7 @@
     "loading": "アカウントを読み込み中…",
     "metadata": {
       "title": "マイアカウント",
-      "description": "アカウントの利用枠とサブスクリプション。"
+      "description": "残りの利用枠とサブスクリプションを確認できます。"
     },
     "quota": {
       "title": "残りの利用枠",
@@ -440,8 +440,8 @@
       "keep": "契約を継続",
       "confirm": "解約を確定",
       "submitting": "解約中…",
-      "syncing": "自動更新を停止しました。解約通知によるアカウントの更新を待っています。",
-      "delayed": "自動更新を停止しました。同期が遅れています。後で状態を確認してください。",
+      "syncing": "自動更新を停止しました。アカウントの契約状況を更新しています。",
+      "delayed": "自動更新を停止しましたが、契約状況の更新に時間がかかっています。しばらくしてから状態を確認してください。",
       "check": "状態を確認",
       "checking": "確認中…",
       "failed": "解約を確認できませんでした。再試行してください。",

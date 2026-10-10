@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { UserAvatar } from "@/components/user-avatar";
+import { UserAvatar } from "@/components/shared/user-avatar";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 

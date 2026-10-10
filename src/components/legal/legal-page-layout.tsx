@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { HomeFooter } from "@/components/home-footer";
-import { HomeHeader } from "@/components/home-header";
+import { HomeFooter } from "@/components/shared/home-footer";
+import { HomeHeader } from "@/components/shared/home-header";
 
 export function LegalPageLayout({ children }: { children: ReactNode }) {
   return (

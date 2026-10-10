@@ -3,8 +3,8 @@ import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import { LegalPageLayout } from "@/components/legal-page-layout";
-import { TermsContent } from "@/components/terms-content";
+import { LegalPageLayout } from "@/components/legal/legal-page-layout";
+import { TermsContent } from "@/components/legal/terms-content";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 

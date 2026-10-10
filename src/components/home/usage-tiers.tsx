@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
-import { PayPalSubscriptionButton } from "@/components/paypal-subscription-button";
-import { PayPalScriptProviderWrapper } from "@/components/paypal-script-provider";
+import { PayPalSubscriptionButton } from "@/components/billing/paypal-subscription-button";
+import { PayPalScriptProviderWrapper } from "@/components/billing/paypal-script-provider";
 import { siteConfig } from "@/config/site";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import {

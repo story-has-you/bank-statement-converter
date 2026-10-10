@@ -1,8 +1,8 @@
 import { getLocale } from "next-intl/server";
 
-import { AccountProfile } from "@/components/account-profile";
-import { AccountQuota } from "@/components/account-quota";
-import { AccountSubscriptions } from "@/components/account-subscriptions";
+import { AccountProfile } from "@/components/account/account-profile";
+import { AccountQuota } from "@/components/account/account-quota";
+import { AccountSubscriptions } from "@/components/account/account-subscriptions";
 import { redirect } from "@/i18n/navigation";
 import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { getAccountSnapshot } from "@/lib/account/server";

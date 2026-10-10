@@ -10,7 +10,7 @@
     "brand": "Convertisseur de relevé bancaire",
     "navigation": "Navigation principale",
     "convert": "Convertir",
-    "features": "Caractéristiques",
+    "features": "Fonctionnalités",
     "plans": "Forfaits",
     "faq": "FAQ"
   },
@@ -27,8 +27,8 @@
   },
   "AuthControl": {
     "account": "Compte",
-    "signInWithGoogle": "Connectez-vous avec Google",
-    "signOut": "se déconnecter",
+    "signInWithGoogle": "Se connecter avec Google",
+    "signOut": "Se déconnecter",
     "unavailable": "La connexion est temporairement indisponible",
     "signInFailed": "La connexion n’a pas abouti. Veuillez réessayer plus tard.",
     "signOutFailed": "La déconnexion n’a pas été effectuée. Veuillez réessayer plus tard.",
@@ -45,30 +45,30 @@
     "backHome": "Retour à la page d'accueil"
   },
   "HomeIntro": {
-    "eyebrow": "Conversion PDF du relevé bancaire",
-    "title": "Convertisseur de relevé bancaire pour PDF vers Excel",
-    "description": "Téléchargez un relevé bancaire au format PDF, vérifiez les lignes extraites, puis téléchargez le fichier Excel. Nous utilisons votre fichier uniquement pour cette conversion."
+    "eyebrow": "Conversion de relevés bancaires PDF",
+    "title": "Convertir un relevé bancaire PDF en Excel",
+    "description": "Importez un relevé bancaire PDF contenant du texte, vérifiez les lignes extraites, puis téléchargez le fichier Excel. Nous utilisons votre fichier uniquement pour cette conversion."
   },
   "PdfUpload": {
-    "title": "Télécharger un relevé bancaire",
+    "title": "Importer un relevé bancaire",
     "description": "Traitez un PDF à la fois",
     "fileLabel": "Relevé bancaire PDF",
     "dropzone": "Choisissez un PDF ou déposez-le ici",
-    "dropzoneHint": "Téléchargez un PDF qui s'ouvre normalement et contient du texte sélectionnable.",
-    "help": "Votre nom de fichier apparaîtra ici. Supprimez le fichier chaque fois que vous en avez besoin.",
+    "dropzoneHint": "Importez un PDF qui s'ouvre normalement et dont le texte peut être sélectionné.",
+    "help": "Le nom du fichier apparaît après la sélection. Vous pouvez retirer le fichier à tout moment.",
     "errorTitle": "Ce fichier n'a pas pu être converti",
-    "invalidPdf": "Veuillez télécharger un fichier PDF.",
+    "invalidPdf": "Veuillez importer un fichier PDF.",
     "multipleFiles": "Un seul PDF peut être traité à la fois.",
     "conversionFailed": "La conversion n'a pas été terminée. Essayez un autre fichier.",
     "parserUnavailable": "Le service d'analyse n'a pas répondu. Veuillez réessayer plus tard.",
-    "quotaExceeded": "Your current quota is used up, or this PDF is larger than your remaining quota.",
+    "quotaExceeded": "Votre quota est épuisé, ou le nombre de pages de ce PDF dépasse votre quota restant.",
     "quotaUnavailable": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
-    "removeFile": "Supprimer le fichier",
-    "quota": "Quota gratuit : page {anonymousPages} par jour de manière anonyme, pages {authenticatedPages} par jour lorsque vous êtes connecté",
+    "removeFile": "Retirer le fichier",
+    "quota": "Quota gratuit : {anonymousPages} page par jour sans connexion, {authenticatedPages} pages par jour après connexion",
     "serviceReady": "Les fichiers sont utilisés uniquement pour cette conversion et ne sont pas enregistrés.",
-    "status": "Prêt à télécharger",
-    "converting": "Conversion",
-    "start": "Convertir et réviser",
+    "status": "Prêt à importer",
+    "converting": "Conversion en cours",
+    "start": "Convertir et vérifier",
     "fileTooLarge": "Ce PDF fait plus de 4 Mo."
   },
   "ConversionResult": {
@@ -83,7 +83,7 @@
     "summary": {
       "status": "Statut",
       "pages": "Pages PDF",
-      "tables": "Tables",
+      "tables": "Tableaux",
       "rows": "Lignes de données",
       "warnings": "Lignes à revoir"
     },
@@ -101,29 +101,29 @@
       "title": "Tableau {id}",
       "singleTitle": "Opérations sur relevé bancaire",
       "pages": "Pages {start} à {end}",
-      "rowCount": "Lignes {count}",
+      "rowCount": "{count} lignes",
       "status": "Statut",
-      "warnings": "Notes de révision",
+      "warnings": "Points à vérifier",
       "sourcePage": "Page source",
       "sourceRow": "Ligne dans la page"
     },
     "partial": {
-      "title": "Certains contenus doivent être révisés",
+      "title": "Certains éléments doivent être vérifiés",
       "description": "Le contenu reconnu peut être vérifié et téléchargé. Comparez les lignes marquées « DISCREPANCY » ou « UNVERIFIABLE » avec le PDF original."
     },
     "empty": {
       "title": "Il n'y a pas de données téléchargeables",
-      "description": "Aucune ligne de tableau utilisable n'a été trouvée dans ce PDF. Revenez à la page d'accueil et téléchargez un autre fichier."
+      "description": "Aucune ligne de tableau exploitable n'a été trouvée dans ce PDF. Revenez à la page d'accueil et importez un autre fichier."
     },
     "missing": {
       "title": "Ce résultat a expiré",
-      "description": "Les résultats sont conservés temporairement pour le flux de conversion en cours. Revenez à la page d'accueil et téléchargez à nouveau le PDF."
+      "description": "Le résultat est disponible uniquement pendant cette conversion. Revenez à la page d'accueil et importez à nouveau le PDF."
     },
     "issues": {
       "repeatedHeader": "La ligne {row} répète l'en-tête du tableau et a été ignorée.",
       "summaryRow": "La ligne {row} ressemble à une ligne récapitulative et a été ignorée.",
       "extraCells": "Cette ligne contient plus de cellules que l'en-tête. Les cellules supplémentaires ont été conservées.",
-      "unknown": "Cet article doit être révisé.",
+      "unknown": "Cet élément doit être vérifié.",
       "missingDate": "La date de l'opération manque.",
       "invalidDate": "La date de l'opération est invalide.",
       "missingDescription": "La description de l'opération manque.",
@@ -142,9 +142,9 @@
   "HomeFeatures": {
     "title": "Ce que vous obtenez d'une conversion",
     "securityTitle": "Pas d'historique de fichiers",
-    "securityDescription": "Le PDF, le fichier Excel généré et le contenu de la transaction sont utilisés uniquement pour cette conversion et ne sont pas ajoutés à l'historique du fichier.",
+    "securityDescription": "Le PDF, le fichier Excel généré et les données de transaction servent uniquement à cette conversion. Nous ne les ajoutons pas à un historique de fichiers.",
     "banksTitle": "Conserve la mise en page source",
-    "banksDescription": "Le convertisseur lit les en-têtes de tableau et le texte des cellules du PDF et présente le résultat dans des tableaux pour comparaison avec le fichier source.",
+    "banksDescription": "Le convertisseur lit les en-têtes et le texte des cellules du PDF et les affiche sous forme de tableaux pour faciliter la comparaison avec le fichier original.",
     "accuracyTitle": "Marque les lignes à examiner",
     "accuracyDescription": "Les lignes dont les éléments sont incomplets ou mal alignés sont marquées « DISCREPANCY » ou « UNVERIFIABLE » avant le téléchargement."
   },
@@ -152,19 +152,19 @@
     "title": "Commencez par une conversion gratuite",
     "description": "Vous pouvez essayer le convertisseur sans compte. Connectez-vous pour un quota quotidien plus important ou choisissez un forfait mensuel pour une utilisation régulière.",
     "anonymous": "Sans vous connecter",
-    "anonymousAmount": "Page {pages}",
-    "anonymousDescription": "Convertissez jusqu'à une page PDF {pages} par jour.",
+    "anonymousAmount": "{pages} page",
+    "anonymousDescription": "Convertissez jusqu'à {pages} page de PDF par jour.",
     "signedIn": "Connecté",
-    "signedInAmount": "Pages {pages}",
-    "signedInDescription": "Convertissez jusqu'à pages PDF {pages} par jour.",
-    "perDay": "/ day",
-    "perMonth": "/ month",
-    "planQuota": "Pages {pages} par mois",
+    "signedInAmount": "{pages} pages",
+    "signedInDescription": "Convertissez jusqu'à {pages} pages de PDF par jour.",
+    "perDay": "/ jour",
+    "perMonth": "/ mois",
+    "planQuota": "{pages} pages par mois",
     "current": "Forfait actuel",
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Pour les personnes qui ont besoin d’un moyen fiable pour traiter les relevés bancaires."
+        "description": "Pour les particuliers qui souhaitent traiter leurs relevés bancaires de façon fiable."
       },
       "professional": {
         "name": "Professionnel",
@@ -172,28 +172,28 @@
       },
       "enterprise": {
         "name": "Entreprise",
-        "description": "Pour les équipes et les organisations avec des workflows de relevés à volume plus élevé."
+        "description": "Pour les équipes et les entreprises qui traitent de nombreux relevés bancaires."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Connectez-vous avant de démarrer un abonnement.",
     "unavailable": "Le paiement est temporairement indisponible. Veuillez réessayer plus tard.",
-    "subscribe": "Abonnez-vous avec PayPal",
+    "subscribe": "S'abonner avec PayPal",
     "processing": "Ouverture de PayPal",
     "confirming": "Confirmation du paiement en cours",
     "confirmationDelayed": "La confirmation du paiement prend plus de temps que prévu. Actualisez cette page plus tard.",
     "activationFailed": "Impossible de confirmer l'abonnement. Actualisez cette page ou contactez l'assistance.",
     "activated": "Votre forfait est actif.",
-    "cancelled": "Vous avez annulé cet abonnement.",
+    "cancelled": "Vous avez annulé la procédure d'abonnement.",
     "paymentFailed": "Le paiement n'a pas été effectué. Veuillez réessayer plus tard.",
-    "currentPlan": "Vous utilisez ce plan.",
+    "currentPlan": "Vous utilisez ce forfait.",
     "api": {
       "loginUnavailable": "La connexion est temporairement indisponible.",
-      "loginRequired": "Connectez-vous avant de vous abonner.",
+      "loginRequired": "Veuillez vous connecter.",
       "emailMissing": "Votre compte n'a pas d'adresse email, l'abonnement ne peut donc pas être activé.",
       "invalidRequest": "La demande d'abonnement est invalide.",
-      "invalidTier": "Choisissez un plan d'abonnement valide.",
+      "invalidTier": "Choisissez un forfait d'abonnement valide.",
       "configurationMissing": "Le paiement n'a pas encore été configuré.",
       "subscriptionBelongsToAnotherAccount": "Cet abonnement appartient à un autre compte.",
       "verificationFailed": "L'abonnement PayPal n'a pas pu être vérifié.",
@@ -212,8 +212,8 @@
   "HomeFaq": {
     "title": "Questions fréquemment posées",
     "banks": {
-      "question": "Quelles déclarations sont prises en charge ?",
-      "answer": "Le convertisseur est en cours de validation par rapport à plusieurs présentations de relevés bancaires électroniques. Les banques spécifiques et les variantes de mise en page seront répertoriées au fur et à mesure de leur vérification."
+      "question": "Quels relevés bancaires sont pris en charge ?",
+      "answer": "Nous testons le convertisseur avec plusieurs formats de relevés bancaires électroniques. Les banques et les variantes de mise en page seront indiquées à mesure de leur vérification."
     },
     "accuracy": {
       "question": "Pourquoi devrais-je examiner le résultat de la conversion ?",
@@ -221,7 +221,7 @@
     },
     "quota": {
       "question": "Combien de pages puis-je convertir chaque jour ?",
-      "answer": "Les utilisateurs anonymes peuvent convertir la page {anonymousPages} par jour et les utilisateurs connectés peuvent convertir les pages {authenticatedPages} par jour. Les forfaits mensuels incluent les pages {standardPages} pour Standard, les pages {professionalPages} pour Professionnel et les pages {enterprisePages} pour Entreprise."
+      "answer": "Sans connexion, vous pouvez convertir {anonymousPages} page par jour. Après connexion, le quota est de {authenticatedPages} pages par jour. Les forfaits mensuels comprennent {standardPages} pages pour Standard, {professionalPages} pages pour Professionnel et {enterprisePages} pages pour Entreprise."
     },
     "scans": {
       "question": "Puis-je convertir des PDF numérisés ou cryptés ?",
@@ -229,11 +229,11 @@
     },
     "storage": {
       "question": "Mes fichiers PDF, Excel ou mes transactions sont-ils enregistrés ?",
-      "answer": "Non. Ils sont utilisés uniquement pour la conversion et le téléchargement en cours et ne sont pas ajoutés à l’historique des fichiers. Une fois que vous quittez le flux actuel, le résultat ne peut plus être téléchargé."
+      "answer": "Non. Ils servent uniquement à la conversion et au téléchargement en cours, sans historique de fichiers. Si vous quittez ce processus, vous ne pouvez plus télécharger le résultat."
     },
     "failure": {
       "question": "Que se passe-t-il si la conversion échoue ?",
-      "answer": "La page signale l'échec et ne fournit pas de fichier Excel invalide. Les conversions ayant échoué n'utilisent pas de quota ; les résultats partiels comptent les pages PDF."
+      "answer": "En cas d'échec, la page affiche une erreur et ne propose pas de fichier Excel invalide. Les conversions échouées ne consomment pas de quota. Pour les résultats partiels, le quota consommé correspond au nombre de pages du PDF."
     }
   },
   "HomeFooter": {
@@ -364,15 +364,15 @@
   },
   "ThemeToggle": {
     "label": "Changer de thème",
-    "light": "Lumière",
+    "light": "Clair",
     "dark": "Sombre",
     "system": "Système"
   },
   "ApiErrors": {
-    "INVALID_REQUEST": "La demande de téléchargement n'a pas pu être lue.",
+    "INVALID_REQUEST": "Impossible de lire la demande d'importation.",
     "INVALID_FILE": "Choisissez un fichier PDF valide.",
     "PARSER_UNAVAILABLE": "Le service d'analyse est temporairement indisponible. Veuillez réessayer plus tard.",
-    "QUOTA_EXCEEDED": "Vous avez atteint le quota disponible pour cette conversion.",
+    "QUOTA_EXCEEDED": "Votre quota est épuisé.",
     "QUOTA_UNAVAILABLE": "Le service de quotas est temporairement indisponible. Veuillez réessayer plus tard.",
     "FILE_TOO_LARGE": "Ce PDF fait plus de 4 Mo.",
     "INVALID_FILE_TYPE": "Seuls les fichiers PDF sont pris en charge.",
@@ -440,8 +440,8 @@
       "keep": "Conserver l’abonnement",
       "confirm": "Confirmer la résiliation",
       "submitting": "Résiliation…",
-      "syncing": "Les renouvellements sont arrêtés. Votre compte attend la notification de résiliation.",
-      "delayed": "Les renouvellements sont arrêtés. La synchronisation est retardée ; vérifiez l’état plus tard.",
+      "syncing": "Les renouvellements sont arrêtés. Le statut de votre abonnement est en cours de mise à jour.",
+      "delayed": "Les renouvellements sont arrêtés, mais le statut de votre abonnement tarde à se mettre à jour. Vérifiez à nouveau plus tard.",
       "check": "Vérifier l’état",
       "checking": "Vérification…",
       "failed": "La résiliation n’a pas pu être confirmée. Veuillez réessayer.",

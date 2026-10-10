@@ -1,12 +1,11 @@
 import { useTranslations } from "next-intl";
 
-import { LegalSection } from "@/components/legal-section";
+import { LegalSection } from "@/components/legal/legal-section";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
-import { usageQuotaConfig } from "@/lib/usage/config";
 
-export function TermsContent() {
-  const t = useTranslations("Terms");
+export function PrivacyContent() {
+  const t = useTranslations("Privacy");
   const common = useTranslations("LegalCommon");
 
   return (
@@ -27,55 +26,48 @@ export function TermsContent() {
         <p className="text-sm leading-7 text-muted-foreground sm:text-base">{t("availability")}</p>
       </header>
 
-      <LegalSection id="service" title={t("service.title")}>
-        <p>{t("service.body")}</p>
+      <LegalSection id="documents" title={t("documents.title")}>
+        <p>{t("documents.body")}</p>
       </LegalSection>
 
-      <LegalSection id="authorization" title={t("authorization.title")}>
-        <p>{t("authorization.body")}</p>
+      <LegalSection id="account-data" title={t("accountData.title")}>
+        <p>{t("accountData.body")}</p>
       </LegalSection>
 
-      <LegalSection id="accuracy" title={t("accuracy.title")}>
-        <p>{t("accuracy.body")}</p>
+      <LegalSection id="technical-data" title={t("technicalData.title")}>
+        <p>{t("technicalData.body")}</p>
       </LegalSection>
 
-      <LegalSection id="quota" title={t("quota.title")}>
-        <p>
-          {t("quota.body", {
-            anonymousPages: usageQuotaConfig.anonymous.pages,
-            authenticatedPages: usageQuotaConfig.authenticated.pages,
-            standardPages: usageQuotaConfig.subscriptions.standard.pages,
-            professionalPages: usageQuotaConfig.subscriptions.professional.pages,
-            enterprisePages: usageQuotaConfig.subscriptions.enterprise.pages,
-          })}
-        </p>
+      <LegalSection id="purposes" title={t("purposes.title")}>
+        <p>{t("purposes.body")}</p>
       </LegalSection>
 
-      <LegalSection id="subscription" title={t("subscription.title")}>
-        <p>{t("subscription.body")}</p>
+      <LegalSection id="retention" title={t("retention.title")}>
+        <p>{t("retention.documents")}</p>
+        <p>{t("retention.metadata")}</p>
       </LegalSection>
 
-      <LegalSection id="files" title={t("files.title")}>
-        <p>{t("files.body")}</p>
+      <LegalSection id="providers" title={t("providers.title")}>
+        <p>{t("providers.body")}</p>
       </LegalSection>
 
-      <LegalSection id="prohibited" title={t("prohibited.title")}>
-        <p>{t("prohibited.body")}</p>
+      <LegalSection id="storage" title={t("storage.title")}>
+        <p>{t("storage.body")}</p>
+      </LegalSection>
+
+      <LegalSection id="security" title={t("security.title")}>
+        <p>{t("security.body")}</p>
       </LegalSection>
 
       <LegalSection id="rights" title={t("rights.title")}>
         <p>{t("rights.body")}</p>
       </LegalSection>
 
-      <LegalSection id="liability" title={t("liability.title")}>
-        <p>{t("liability.body")}</p>
-      </LegalSection>
-
-      <LegalSection id="privacy" title={t("privacy.title")}>
+      <LegalSection id="terms" title={t("terms.title")}>
         <p>
-          {t.rich("privacy.body", {
+          {t.rich("terms.body", {
             link: (chunks) => (
-              <Link className="text-primary underline underline-offset-4" href="/privacy">
+              <Link className="text-primary underline underline-offset-4" href="/terms">
                 {chunks}
               </Link>
             ),

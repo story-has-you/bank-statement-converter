@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 
-import { AccountContent } from "@/components/account-content";
-import { AccountLoading } from "@/components/account-loading";
-import { HomeFooter } from "@/components/home-footer";
-import { HomeHeader } from "@/components/home-header";
+import { AccountContent } from "@/components/account/account-content";
+import { AccountLoading } from "@/components/account/account-loading";
+import { HomeFooter } from "@/components/shared/home-footer";
+import { HomeHeader } from "@/components/shared/home-header";
 
 export { generateMetadata } from "@/lib/account/metadata";
 

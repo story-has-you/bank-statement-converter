@@ -10,8 +10,8 @@
     "brand": "Kontoauszugskonverter",
     "navigation": "Hauptnavigation",
     "convert": "Konvertieren",
-    "features": "Merkmale",
-    "plans": "Pläne",
+    "features": "Funktionen",
+    "plans": "Tarife",
     "faq": "FAQ"
   },
   "LanguageSwitcher": {
@@ -27,7 +27,7 @@
   },
   "AuthControl": {
     "account": "Konto",
-    "signInWithGoogle": "Melden Sie sich mit Google an",
+    "signInWithGoogle": "Mit Google anmelden",
     "signOut": "Abmelden",
     "unavailable": "Die Anmeldung ist vorübergehend nicht möglich",
     "signInFailed": "Die Anmeldung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
@@ -45,9 +45,9 @@
     "backHome": "Zurück zur Homepage"
   },
   "HomeIntro": {
-    "eyebrow": "Konvertierung von Kontoauszügen in PDF",
-    "title": "Kontoauszugskonverter für PDF in Excel",
-    "description": "Laden Sie ein textbasiertes Kontoauszugs-PDF hoch, überprüfen Sie die extrahierten Zeilen und laden Sie dann die Excel-Datei herunter. Wir verwenden Ihre Datei nur für diese Konvertierung."
+    "eyebrow": "Kontoauszüge als PDF konvertieren",
+    "title": "Kontoauszüge von PDF in Excel umwandeln",
+    "description": "Laden Sie einen Kontoauszug als PDF mit auswählbarem Text hoch. Prüfen Sie die extrahierten Zeilen und laden Sie anschließend die Excel-Datei herunter. Wir verwenden Ihre Datei nur für diese Konvertierung."
   },
   "PdfUpload": {
     "title": "Laden Sie einen Kontoauszug hoch",
@@ -55,35 +55,35 @@
     "fileLabel": "Kontoauszug PDF",
     "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
     "dropzoneHint": "Laden Sie eine PDF-Datei hoch, die normal geöffnet wird und auswählbaren Text enthält.",
-    "help": "Ihr Dateiname wird hier angezeigt. Entfernen Sie die Datei bei Bedarf.",
+    "help": "Nach der Auswahl erscheint hier der Dateiname. Sie können die Datei jederzeit entfernen.",
     "errorTitle": "Diese Datei konnte nicht konvertiert werden",
     "invalidPdf": "Bitte laden Sie eine PDF-Datei hoch.",
     "multipleFiles": "Es kann jeweils nur ein PDF verarbeitet werden.",
     "conversionFailed": "Die Konvertierung wurde nicht abgeschlossen. Versuchen Sie es mit einer anderen Datei.",
     "parserUnavailable": "Der Analysedienst hat nicht geantwortet. Bitte versuchen Sie es später noch einmal.",
-    "quotaExceeded": "Ihr aktuelles Kontingent ist aufgebraucht oder dieses PDF ist größer als Ihr verbleibendes Kontingent.",
-    "quotaUnavailable": "Der Quotendienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+    "quotaExceeded": "Ihr Kontingent ist aufgebraucht, oder die Seitenzahl dieser PDF-Datei überschreitet Ihr Restkontingent.",
+    "quotaUnavailable": "Das Kontingent ist vorübergehend nicht abrufbar. Bitte versuchen Sie es später erneut.",
     "removeFile": "Datei entfernen",
-    "quota": "Kostenloses Kontingent: {anonymousPages} Seite pro Tag anonym, {authenticatedPages} Seiten pro Tag bei Anmeldung",
+    "quota": "Kostenloses Kontingent: {anonymousPages} Seite pro Tag ohne Anmeldung, {authenticatedPages} Seiten pro Tag nach Anmeldung",
     "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
     "status": "Bereit zum Hochladen",
-    "converting": "Konvertieren",
+    "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
     "fileTooLarge": "Dieses PDF ist größer als 4 MB."
   },
   "ConversionResult": {
     "metadata": {
       "title": "Konvertierungsergebnis | Kontoauszugskonverter",
-      "description": "Überprüfen Sie extrahierte Kontoauszugszeilen, überprüfen Sie Risikobezeichnungen und laden Sie das Excel-Ergebnis herunter."
+      "description": "Prüfen Sie die extrahierten Kontoauszugszeilen und Risikomarkierungen und laden Sie die Excel-Datei herunter."
     },
     "eyebrow": "Konvertierungsergebnis",
     "description": "Vergleichen Sie vor dem Herunterladen die markierten Zeilen mit dem Original-PDF.",
-    "download": "Laden Sie Excel herunter",
-    "backHome": "Konvertieren Sie eine andere Datei",
+    "download": "Excel herunterladen",
+    "backHome": "Weitere Datei konvertieren",
     "summary": {
       "status": "Status",
       "pages": "PDF-Seiten",
-      "tables": "Tische",
+      "tables": "Tabellen",
       "rows": "Datenzeilen",
       "warnings": "Zu überprüfende Zeilen"
     },
@@ -101,9 +101,9 @@
       "title": "Tabelle {id}",
       "singleTitle": "Kontoauszugstransaktionen",
       "pages": "Seiten {start} bis {end}",
-      "rowCount": "{count}-Zeilen",
+      "rowCount": "{count} Zeilen",
       "status": "Status",
-      "warnings": "Überprüfen Sie die Notizen",
+      "warnings": "Prüfhinweise",
       "sourcePage": "Originalseite",
       "sourceRow": "Zeile auf der Seite"
     },
@@ -117,13 +117,13 @@
     },
     "missing": {
       "title": "Dieses Ergebnis ist abgelaufen",
-      "description": "Die Ergebnisse werden vorübergehend für den aktuellen Konvertierungsfluss gespeichert. Kehren Sie zur Startseite zurück und laden Sie das PDF erneut hoch."
+      "description": "Das Ergebnis ist nur während dieser Konvertierung verfügbar. Kehren Sie zur Startseite zurück und laden Sie das PDF erneut hoch."
     },
     "issues": {
       "repeatedHeader": "Zeile {row} wiederholt den Tabellenkopf und wurde übersprungen.",
       "summaryRow": "Zeile {row} sieht aus wie eine Zusammenfassungszeile und wurde übersprungen.",
       "extraCells": "Diese Zeile enthält mehr Zellen als die Kopfzeile. Die zusätzlichen Zellen wurden behalten.",
-      "unknown": "Dieser Artikel muss überprüft werden.",
+      "unknown": "Dieser Eintrag muss geprüft werden.",
       "missingDate": "Das Transaktionsdatum fehlt.",
       "invalidDate": "Das Transaktionsdatum ist ungültig.",
       "missingDescription": "Die Transaktionsbeschreibung fehlt.",
@@ -142,9 +142,9 @@
   "HomeFeatures": {
     "title": "Was Sie von einer Konvertierung erhalten",
     "securityTitle": "Kein Dateiverlauf",
-    "securityDescription": "Die PDF-Datei, die generierte Excel-Datei und der Transaktionsinhalt werden nur für diese Konvertierung verwendet und nicht zum Dateiverlauf hinzugefügt.",
+    "securityDescription": "PDF, Excel-Datei und Transaktionsdaten werden nur für diese Konvertierung verwendet. Sie werden nicht in einem Dateiverlauf gespeichert.",
     "banksTitle": "Behält das Quelllayout bei",
-    "banksDescription": "Der Konverter liest Tabellenüberschriften und Zellentexte aus dem PDF und stellt das Ergebnis in Tabellen zum Vergleich mit der Quelldatei dar.",
+    "banksDescription": "Der Konverter liest Tabellenüberschriften und Zelltexte aus dem PDF und zeigt sie als Tabellen an. So können Sie das Ergebnis mit dem Original vergleichen.",
     "accuracyTitle": "Markiert Zeilen zur Überprüfung",
     "accuracyDescription": "Zeilen mit unvollständigen Belegen oder Zuordnungsproblemen werden vor dem Download als „DISCREPANCY“ oder „UNVERIFIABLE“ markiert."
   },
@@ -152,19 +152,19 @@
     "title": "Beginnen Sie mit einer kostenlosen Konvertierung",
     "description": "Sie können den Konverter ohne Konto ausprobieren. Melden Sie sich für ein größeres Tageskontingent an oder wählen Sie einen Monatsplan für die regelmäßige Nutzung.",
     "anonymous": "Ohne Anmeldung",
-    "anonymousAmount": "{pages}-Seite",
+    "anonymousAmount": "{pages} Seite",
     "anonymousDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
     "signedIn": "Angemeldet",
-    "signedInAmount": "{pages}-Seiten",
+    "signedInAmount": "{pages} Seiten",
     "signedInDescription": "Konvertieren Sie bis zu {pages} PDF-Seiten pro Tag.",
-    "perDay": "/ day",
-    "perMonth": "/ month",
+    "perDay": "/ Tag",
+    "perMonth": "/ Monat",
     "planQuota": "{pages} Seiten pro Monat",
     "current": "Aktueller Plan",
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Für Personen, die eine zuverlässige Möglichkeit zur Verarbeitung von Kontoauszügen benötigen."
+        "description": "Für Privatpersonen, die Kontoauszüge zuverlässig verarbeiten möchten."
       },
       "professional": {
         "name": "Professional",
@@ -172,25 +172,25 @@
       },
       "enterprise": {
         "name": "Unternehmen",
-        "description": "Für Teams und Organisationen mit umfangreicheren Kontoauszugs-Workflows."
+        "description": "Für Teams und Unternehmen, die viele Kontoauszüge verarbeiten."
       }
     }
   },
   "PayPal": {
     "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
     "unavailable": "Die Zahlung ist vorübergehend nicht möglich. Bitte versuchen Sie es später noch einmal.",
-    "subscribe": "Abonnieren Sie mit PayPal",
-    "processing": "PayPal öffnen",
+    "subscribe": "Mit PayPal abonnieren",
+    "processing": "PayPal wird geöffnet",
     "confirming": "Zahlung wird bestätigt",
     "confirmationDelayed": "Die Zahlungsbestätigung dauert länger als erwartet. Bitte laden Sie die Seite später neu.",
     "activationFailed": "Das Abonnement konnte nicht bestätigt werden. Bitte laden Sie die Seite neu oder kontaktieren Sie den Support.",
     "activated": "Ihr Plan ist aktiv.",
-    "cancelled": "Sie haben dieses Abonnement gekündigt.",
+    "cancelled": "Sie haben den Abonnementvorgang abgebrochen.",
     "paymentFailed": "Die Zahlung wurde nicht abgeschlossen. Bitte versuchen Sie es später noch einmal.",
     "currentPlan": "Sie verwenden diesen Plan.",
     "api": {
       "loginUnavailable": "Die Anmeldung ist vorübergehend nicht möglich.",
-      "loginRequired": "Melden Sie sich an, bevor Sie ein Abonnement abschließen.",
+      "loginRequired": "Bitte melden Sie sich an.",
       "emailMissing": "Ihr Konto hat keine E-Mail-Adresse, daher kann das Abonnement nicht aktiviert werden.",
       "invalidRequest": "Die Abonnementanfrage ist ungültig.",
       "invalidTier": "Wählen Sie ein gültiges Abonnement.",
@@ -212,8 +212,8 @@
   "HomeFaq": {
     "title": "Häufig gestellte Fragen",
     "banks": {
-      "question": "Welche Aussagen werden unterstützt?",
-      "answer": "Der Konverter wird anhand mehrerer elektronischer Kontoauszugslayouts validiert. Bestimmte Bänke und Layoutvarianten werden nach der Überprüfung aufgelistet."
+      "question": "Welche Kontoauszüge werden unterstützt?",
+      "answer": "Wir prüfen den Konverter mit verschiedenen Formaten elektronischer Kontoauszüge. Banken und geprüfte Layoutvarianten werden nach der Prüfung aufgelistet."
     },
     "accuracy": {
       "question": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
@@ -221,25 +221,25 @@
     },
     "quota": {
       "question": "Wie viele Seiten kann ich pro Tag konvertieren?",
-      "answer": "Anonyme Benutzer können {anonymousPages}-Seiten pro Tag konvertieren, und angemeldete Benutzer können {authenticatedPages}-Seiten pro Tag konvertieren. Zu den Monatsplänen gehören {standardPages}-Seiten für Standard, {professionalPages}-Seiten für Professional und {enterprisePages}-Seiten für Enterprise."
+      "answer": "Ohne Anmeldung können Sie {anonymousPages} Seite pro Tag konvertieren, nach der Anmeldung {authenticatedPages} Seiten. Die Monatstarife umfassen {standardPages} Seiten für Standard, {professionalPages} Seiten für Professional und {enterprisePages} Seiten für Unternehmen."
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
       "answer": "Die erste Version konzentriert sich auf elektronische PDFs mit auswählbarem Text, die sich normal öffnen lassen. Gescannte Dateien, passwortgeschützte Dateien oder PDFs ohne erkennbare Tabellen werden möglicherweise nicht konvertiert."
     },
     "storage": {
-      "question": "Werden meine PDF-, Excel-Datei oder Transaktionen gespeichert?",
-      "answer": "Nein. Sie werden nur für die aktuelle Konvertierung und den aktuellen Download verwendet und nicht zum Dateiverlauf hinzugefügt. Sobald Sie den aktuellen Ablauf verlassen, kann das Ergebnis nicht erneut heruntergeladen werden."
+      "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
+      "answer": "Nein. Sie werden nur für die aktuelle Konvertierung und den Download verwendet und nicht in einem Dateiverlauf gespeichert. Wenn Sie den Vorgang verlassen, können Sie das Ergebnis nicht erneut herunterladen."
     },
     "failure": {
       "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
-      "answer": "Die Seite meldet den Fehler und stellt keine ungültige Excel-Datei bereit. Bei fehlgeschlagenen Konvertierungen wird kein Kontingent verwendet. Teilergebnisse zählen PDF-Seiten."
+      "answer": "Bei einem Fehler zeigt die Seite eine Meldung und bietet keine ungültige Excel-Datei an. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse werden nach der Seitenzahl des PDFs berechnet."
     }
   },
   "HomeFooter": {
     "brand": "Kontoauszugskonverter",
     "navigation": "Fußzeilennavigation",
-    "plans": "Pläne",
+    "plans": "Tarife",
     "faq": "FAQ",
     "terms": "Nutzungsbedingungen",
     "privacy": "Datenschutzrichtlinie"
@@ -363,8 +363,8 @@
     }
   },
   "ThemeToggle": {
-    "label": "Thema ändern",
-    "light": "Licht",
+    "label": "Darstellung ändern",
+    "light": "Hell",
     "dark": "Dunkel",
     "system": "System"
   },
@@ -372,8 +372,8 @@
     "INVALID_REQUEST": "Die Upload-Anfrage konnte nicht gelesen werden.",
     "INVALID_FILE": "Wählen Sie eine gültige PDF-Datei.",
     "PARSER_UNAVAILABLE": "Der Parsing-Dienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
-    "QUOTA_EXCEEDED": "Sie haben das verfügbare Kontingent für diese Konvertierung erreicht.",
-    "QUOTA_UNAVAILABLE": "Der Quotendienst ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+    "QUOTA_EXCEEDED": "Ihr Kontingent ist aufgebraucht.",
+    "QUOTA_UNAVAILABLE": "Das Kontingent ist vorübergehend nicht abrufbar. Bitte versuchen Sie es später erneut.",
     "FILE_TOO_LARGE": "Dieses PDF ist größer als 4 MB.",
     "INVALID_FILE_TYPE": "Es werden nur PDF-Dateien unterstützt.",
     "INVALID_PDF": "Diese Datei ist kein lesbares PDF.",
@@ -440,8 +440,8 @@
       "keep": "Abonnement behalten",
       "confirm": "Kündigung bestätigen",
       "submitting": "Wird gekündigt…",
-      "syncing": "Verlängerungen wurden gestoppt. Die Kontodaten werden nach der Kündigungsbenachrichtigung aktualisiert.",
-      "delayed": "Verlängerungen wurden gestoppt. Die Synchronisierung verzögert sich. Prüfen Sie den Status später erneut.",
+      "syncing": "Automatische Verlängerungen sind gestoppt. Ihr Abonnementstatus wird aktualisiert.",
+      "delayed": "Automatische Verlängerungen sind gestoppt. Die Aktualisierung Ihres Abonnementstatus dauert länger. Prüfen Sie den Status später erneut.",
       "check": "Status prüfen",
       "checking": "Wird geprüft…",
       "failed": "Die Kündigung konnte nicht bestätigt werden. Bitte erneut versuchen.",

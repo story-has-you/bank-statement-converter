@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
-import { AccountRefreshButton } from "@/components/account-refresh-button";
+import { AccountRefreshButton } from "@/components/account/account-refresh-button";
 import { Badge } from "@/components/ui/badge";
-import { UserAvatar } from "@/components/user-avatar";
+import { UserAvatar } from "@/components/shared/user-avatar";
 import type { MembershipTier } from "@/lib/billing/types";
 
 type AccountProfileProps = {
