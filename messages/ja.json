@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "変換でできること",
-    "securityTitle": "ファイル履歴なし",
-    "securityDescription": "PDF、生成したExcel、取引内容は今回の変換だけに使い、ファイル履歴には追加しません。",
-    "banksTitle": "元の表を保つ",
+    "title": "この変換ツールで何ができますか？",
+    "securityTitle": "PDF、Excel、取引内容は保存されますか？",
+    "securityDescription": "サーバーは明細ファイルや取引を永続的な履歴として保存しません。元の PDF と結果を照合してください。",
+    "banksTitle": "Excel は元の表構造を保ちますか？",
     "banksDescription": "PDFの表見出しとセルの文字を読み取り、元のファイルと照合できるように表で表示します。",
-    "accuracyTitle": "確認が必要な行を表示",
+    "accuracyTitle": "なぜ変換結果を確認する必要がありますか？",
     "accuracyDescription": "根拠が足りない行や位置を合わせにくい行には“DISCREPANCY”または“UNVERIFIABLE”を付けます。"
   },
   "UsageTiers": {
-    "title": "毎日使える無料の変換ページ枠",
-    "description": "ログインせずに試せます。ログインすると1日に使えるページ数が増えます。定期的に使う方は月額プランを選べます。",
+    "title": "プランの料金と利用枠は？",
+    "description": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして PayPal で申し込んでください。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages, number}ページ",
     "anonymousDescription": "1日に{pages, number}ページまで変換できます。",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "サブスクリプションサービスから無効な状態情報が返されました。"
   },
   "HomeFaq": {
-    "title": "よくある質問",
+    "title": "変換前に知っておくべきことは？",
     "banks": {
       "question": "どの明細に対応していますか？",
       "answer": "複数の電子銀行明細レイアウトで検証を進めています。確認済みの銀行とレイアウトは順次掲載します。"
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "PDF、Excel、取引内容は保存されますか？",
-      "answer": "保存しません。今回の変換とダウンロードにのみ使用し、ファイル履歴には追加しません。今回の変換を終了すると、結果を再ダウンロードできなくなります。"
+      "answer": "サーバーは PDF、Excel、取引を永続的な履歴として保存しません。抽出結果は現在の操作のためにブラウザーのセッションストレージに一時保存されます。元の PDF と Excel はご自身で保管してください。"
     },
     "failure": {
       "question": "変換に失敗するとどうなりますか？",
@@ -492,5 +492,50 @@
       "failed": "サブスクリプションのキャンセルを確認できませんでした。",
       "checkFailed": "サブスクリプションの状態を読み取れませんでした。"
     }
+  },
+  "Geo": {
+    "glance": "要点",
+    "conversionSummary": "Bank Statement Converter はテキスト付きの銀行明細 PDF を確認用の Excel に変換します。",
+    "limitsSummary": "一度に {megabytes} MB、{pages} ページ以内のテキスト PDF をアップロードできます。スキャンやパスワード付き PDF は非対応です。",
+    "quotaSummary": "匿名では毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページを変換できます。月額プランは {price} 米ドルからです。",
+    "privacySummary": "サーバーは明細ファイルや取引を永続的な履歴として保存しません。元の PDF と結果を照合してください。",
+    "featuresAnswer": "このツールは銀行明細の表を Excel に整理します。テキスト PDF をアップロードし、抽出された行を確認してから使用してください。",
+    "riskTitle": "リスク表示の意味は？",
+    "riskAnswer": "リスク表示は抽出行の根拠の状態を示します。結果を使う前に、注意のある行を元の PDF と照合してください。",
+    "okDefinition": "問題は検出されていませんが、正確さや完全性を保証するものではありません。",
+    "discrepancyDefinition": "根拠の矛盾または確認が必要な問題が検出されています。",
+    "unverifiableDefinition": "重要な根拠が不足しているか、行を確実に検証できません。",
+    "limitsTitle": "どの PDF をアップロードできますか？",
+    "limitsAnswer": "{megabytes} MB、{pages} ページ以内のテキスト付き銀行明細 PDF のみ受け付けます。文字を選択できる暗号化されていない PDF を出力してください。",
+    "pricingAnswer": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして PayPal で申し込んでください。",
+    "faqAnswer": "ファイル要件、利用枠、変換リスクについて説明します。該当する回答を読み、変換前に PDF を確認してください。",
+    "planHeader": "プラン",
+    "priceHeader": "価格（米ドル）",
+    "quotaHeader": "PDF ページ数",
+    "periodHeader": "利用枠の期間",
+    "freePrice": "無料",
+    "dailyPeriod": "毎日（UTC）",
+    "billingPeriod": "PayPal 請求期間",
+    "billingNote": "PayPal で毎月自動更新されます。失敗した変換は枠を消費せず、部分的な結果は元の PDF のページ数で計上されます。",
+    "privacyTitle": "データはどう扱われますか？",
+    "privacyAnswer": "明細の内容は今回の変換とダウンロードにのみ使われます。履歴機能がないため、元の PDF と Excel を保管してください。",
+    "browserTitle": "ブラウザーに何が一時保存されますか？",
+    "browserAnswer": "抽出結果は現在の操作のためにブラウザーのセッションストレージに一時保存されます。サーバーのファイル履歴とは別です。",
+    "metadataTitle": "どのアカウント・請求データが保存されますか？",
+    "siteTitle": "サイト情報はどこにありますか？",
+    "siteAnswer": "ホームには変換、プラン、よくある質問があります。公開情報は以下のリンクを参照し、アカウントと結果のページは操作に使用してください。",
+    "agentsTitle": "Agents",
+    "agentsDescription": "公式製品情報を Markdown で読む。",
+    "indexLabel": "製品概要",
+    "pricingLabel": "価格と利用枠",
+    "privacyLabel": "データの扱い",
+    "faqLabel": "よくある質問",
+    "siteLabel": "サイト案内",
+    "languagesLabel": "他の言語",
+    "chatDescription": "公式資料をもとに AI アシスタントに Bank Statement Converter について質問できます。",
+    "prompt": "Bank Statement Converter の公式資料 {fullUrl} にアクセスしてください。詳細が必要なら {indexUrl} を読み、関連文書を参照してください。{language}で機能、手順、ファイル制限、データの扱い、無料枠、購読料金を説明し、出典リンクを示してください。資料にアクセスできない場合や記載がない場合は明示し、推測しないでください。",
+    "showPrompt": "既定のプロンプトを見る",
+    "metadataAnswer": "サービス運営に必要なアカウント、利用枠、請求のメタデータは保持されます。アカウントと PayPal で購読情報を確認・管理してください。",
+    "analyticsAnswer": "Google Analytics と Pageview はアクセスに関する技術情報を処理する場合があります。銀行明細、抽出された取引、Excel の内容はこれらの分析サービスに送信しません。"
   }
 }

@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "Cosa ottieni dalla conversione",
-    "securityTitle": "Nessun archivio di file",
-    "securityDescription": "Usiamo il PDF, il file Excel generato e i movimenti solo per questa conversione. Non li aggiungiamo a un archivio.",
-    "banksTitle": "Mantiene la struttura originale",
+    "title": "Cosa può fare questo convertitore?",
+    "securityTitle": "Salvate il mio PDF, il file Excel o i movimenti?",
+    "securityDescription": "Il server non conserva file o transazioni in una cronologia permanente; confronta il risultato con il PDF originale.",
+    "banksTitle": "Excel conserva la struttura delle tabelle?",
     "banksDescription": "Il convertitore legge intestazioni e testo delle celle dal PDF e li mostra in tabelle da confrontare con l'originale.",
-    "accuracyTitle": "Segnala le righe da controllare",
+    "accuracyTitle": "Perché devo controllare il risultato?",
     "accuracyDescription": "Le righe con dati incompleti o problemi di allineamento sono contrassegnate con DISCREPANCY o UNVERIFIABLE prima del download."
   },
   "UsageTiers": {
-    "title": "Pagine gratuite da convertire ogni giorno",
-    "description": "Puoi provare il convertitore senza un account. Accedi per convertire più pagine al giorno o scegli un piano mensile se lo usi spesso.",
+    "title": "Quanto costano i piani e cosa includono?",
+    "description": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con PayPal.",
     "anonymous": "Senza accesso",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagine}}",
     "anonymousDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "Il servizio di abbonamento ha restituito informazioni di stato non valide."
   },
   "HomeFaq": {
-    "title": "Domande frequenti",
+    "title": "Cosa sapere prima della conversione?",
     "banks": {
       "question": "Quali estratti conto sono supportati?",
       "answer": "Stiamo verificando il convertitore su diversi formati di estratti conto elettronici. Pubblicheremo banche e formati man mano che li avremo verificati."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "Salvate il mio PDF, il file Excel o i movimenti?",
-      "answer": "No. Li usiamo solo per la conversione e il download attuali, senza aggiungerli a un archivio. Una volta usciti da questa procedura, non è possibile scaricare di nuovo il risultato."
+      "answer": "Il server non conserva PDF, Excel o transazioni in una cronologia permanente. Il browser salva temporaneamente i risultati nella sessione per il flusso attuale. Conserva personalmente il PDF originale ed Excel."
     },
     "failure": {
       "question": "Cosa succede se la conversione non riesce?",
@@ -492,5 +492,50 @@
       "failed": "Non è stato possibile confermare l’annullamento dell’abbonamento.",
       "checkFailed": "Non è stato possibile leggere lo stato dell’abbonamento."
     }
+  },
+  "Geo": {
+    "glance": "In breve",
+    "conversionSummary": "Bank Statement Converter trasforma gli estratti conto PDF con testo in file Excel da verificare.",
+    "limitsSummary": "Carica un PDF con testo fino a {megabytes} MB e {pages} pagine alla volta; scansioni e PDF protetti da password non sono supportati.",
+    "quotaSummary": "Converti {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine con accesso; i piani mensili partono da {price} USD.",
+    "privacySummary": "Il server non conserva file o transazioni in una cronologia permanente; confronta il risultato con il PDF originale.",
+    "featuresAnswer": "Questo strumento organizza le tabelle degli estratti in Excel. Carica un PDF con testo e verifica le righe estratte prima di usarle.",
+    "riskTitle": "Cosa significano le etichette di rischio?",
+    "riskAnswer": "Le etichette descrivono le prove disponibili per ogni riga estratta. Confronta le righe segnalate con il PDF originale prima dell’uso.",
+    "okDefinition": "Nessun problema rilevato; non garantisce accuratezza o completezza.",
+    "discrepancyDefinition": "Sono state rilevate prove contrastanti o la necessità di verifica.",
+    "unverifiableDefinition": "Mancano prove essenziali o la riga non è verificabile in modo affidabile.",
+    "limitsTitle": "Quali PDF posso caricare?",
+    "limitsAnswer": "Sono accettati solo estratti PDF con testo fino a {megabytes} MB e {pages} pagine. Esporta un PDF senza password con testo selezionabile.",
+    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con PayPal.",
+    "faqAnswer": "Queste risposte spiegano requisiti, quote e rischi. Leggi la risposta pertinente e controlla il PDF prima della conversione.",
+    "planHeader": "Piano",
+    "priceHeader": "Prezzo (USD)",
+    "quotaHeader": "Pagine PDF",
+    "periodHeader": "Periodo della quota",
+    "freePrice": "Gratis",
+    "dailyPeriod": "Giornaliero (UTC)",
+    "billingPeriod": "Periodo di fatturazione PayPal",
+    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite PayPal. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale.",
+    "privacyTitle": "Come vengono trattati i miei dati?",
+    "privacyAnswer": "Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
+    "browserTitle": "Cosa viene salvato temporaneamente nel browser?",
+    "browserAnswer": "I risultati estratti sono salvati temporaneamente nella memoria di sessione del browser per il flusso attuale. Non è una cronologia sul server.",
+    "metadataTitle": "Quali dati di account e fatturazione vengono conservati?",
+    "siteTitle": "Dove trovo le informazioni sul sito?",
+    "siteAnswer": "La home include conversione, piani e FAQ. Segui i link per le informazioni pubbliche; account e risultati sono schermate del flusso operativo.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "Leggi le informazioni ufficiali del prodotto in Markdown.",
+    "indexLabel": "Panoramica del prodotto",
+    "pricingLabel": "Prezzi e quote",
+    "privacyLabel": "Trattamento dei dati",
+    "faqLabel": "Domande e risposte",
+    "siteLabel": "Navigazione del sito",
+    "languagesLabel": "Altre lingue",
+    "chatDescription": "Chiedi a un assistente IA informazioni su Bank Statement Converter usando le nostre fonti ufficiali.",
+    "prompt": "Visita le informazioni ufficiali di Bank Statement Converter: {fullUrl}. Per dettagli leggi {indexUrl} e segui i link pertinenti. Rispondi in {language}: spiega funzioni, passaggi, limiti dei file, trattamento dei dati, quote gratuite e prezzi degli abbonamenti, citando le fonti. Se una fonte non è accessibile o manca una risposta, dichiaralo senza indovinare.",
+    "showPrompt": "Visualizza il prompt predefinito",
+    "metadataAnswer": "Vengono conservati i metadati di account, quota e fatturazione necessari al servizio. Consulta e gestisci l’abbonamento nel tuo account e in PayPal.",
+    "analyticsAnswer": "Google Analytics e Pageview possono elaborare informazioni tecniche sulle visite. Estratti conto, transazioni estratte e contenuti Excel non vengono inviati a questi servizi."
   }
 }

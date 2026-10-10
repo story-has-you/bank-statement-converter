@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "一次转换能得到什么",
-    "securityTitle": "文件不留存",
-    "securityDescription": "PDF、生成的 Excel 和流水内容仅用于本次转换，不会存入文件历史。",
-    "banksTitle": "按原表整理",
+    "title": "这个转换器能做什么？",
+    "securityTitle": "PDF、Excel 和流水明细会保存吗？",
+    "securityDescription": "服务端不将文件和流水明细保存为持久化历史；使用结果前请对照原始 PDF 核对。",
+    "banksTitle": "Excel 会保留原始表格结构吗？",
     "banksDescription": "读取 PDF 中的表头和单元格文字，以表格展示，方便对照原文件核对。",
-    "accuracyTitle": "异常行有标记",
+    "accuracyTitle": "为什么还要核对转换结果？",
     "accuracyDescription": "识别不完整或未能对齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，可在下载前查看。"
   },
   "UsageTiers": {
-    "title": "每天都有免费转换页数",
-    "description": "不登录也能试用。登录后每天可转换更多页，经常使用可选择按月套餐。",
+    "title": "套餐价格和转换额度是多少？",
+    "description": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 PayPal 订阅所需档位。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages, number} 页",
     "anonymousDescription": "每天累计可转换 {pages, number} 页 PDF。",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "订阅服务返回的状态信息异常。"
   },
   "HomeFaq": {
-    "title": "常见问题",
+    "title": "转换前需要了解哪些问题？",
     "banks": {
       "question": "支持哪些对账单？",
       "answer": "我们正在验证多种电子银行对账单版式，具体银行和版式会在验证后公布。"
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "PDF、Excel 和流水明细会保存吗？",
-      "answer": "不会。它们只用于本次转换和下载，不写入文件历史；离开当前流程后，不能重新下载结果。"
+      "answer": "服务端不将 PDF、Excel 或流水明细保存为持久化文件历史。浏览器会话存储会临时保存当前流程的提取结果。请自行保管原始 PDF 和下载的 Excel。"
     },
     "failure": {
       "question": "转换失败会怎样？",
@@ -492,5 +492,50 @@
       "failed": "未能确认订阅取消结果。",
       "checkFailed": "未能读取订阅状态。"
     }
+  },
+  "Geo": {
+    "glance": "关键结论",
+    "conversionSummary": "Bank Statement Converter 将有文字层的银行流水 PDF 转为可核对的 Excel。",
+    "limitsSummary": "每次上传一个不超过 {megabytes} MB、{pages} 页的文字型 PDF，不支持扫描件和密码保护文件。",
+    "quotaSummary": "匿名用户每日可转换 {anonymousPages} 页，登录用户每日 {authenticatedPages} 页，月订阅从 {price} 美元起。",
+    "privacySummary": "服务端不将文件和流水明细保存为持久化历史；使用结果前请对照原始 PDF 核对。",
+    "featuresAnswer": "这是将银行流水表格整理为 Excel 的工具。上传有文字层的 PDF 后，请核对提取的交易行再使用结果。",
+    "riskTitle": "转换结果的风险标记是什么意思？",
+    "riskAnswer": "风险标记说明提取交易行的证据情况。使用结果前，请对照原始银行流水 PDF 核对所有标记为有风险的行。",
+    "okDefinition": "未检测到问题，但不保证完全准确或没有遗漏。",
+    "discrepancyDefinition": "证据存在冲突，或检测到需要核对的问题。",
+    "unverifiableDefinition": "缺少关键证据，或无法可靠核对该行。",
+    "limitsTitle": "可以上传哪些银行流水 PDF？",
+    "limitsAnswer": "仅接受不超过 {megabytes} MB、{pages} 页的文字型银行流水 PDF。请从银行导出没有密码保护、能够选择文字的文件。",
+    "pricingAnswer": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 PayPal 订阅所需档位。",
+    "faqAnswer": "这些答案说明文件要求、转换额度和结果风险。转换前，请阅读与你的问题相关的答案，并检查银行流水 PDF。",
+    "planHeader": "套餐",
+    "priceHeader": "价格（美元）",
+    "quotaHeader": "PDF 页数",
+    "periodHeader": "额度周期",
+    "freePrice": "免费",
+    "dailyPeriod": "每日（UTC）",
+    "billingPeriod": "PayPal 计费周期",
+    "billingNote": "订阅通过 PayPal 按月自动续费。失败转换不扣额度，部分结果按原始 PDF 页数扣减额度。",
+    "privacyTitle": "网站如何处理我的数据？",
+    "privacyAnswer": "银行流水内容仅用于本次转换和下载。请自行保管原始 PDF 和下载的 Excel，因为网站不提供文件历史。",
+    "browserTitle": "浏览器会临时保存什么？",
+    "browserAnswer": "提取结果会临时放在浏览器会话存储中，用于完成当前流程。这与服务端保存文件历史不同。",
+    "metadataTitle": "哪些账户和计费数据会保留？",
+    "siteTitle": "在哪里了解网站的功能和结构？",
+    "siteAnswer": "首页提供转换、套餐和常见问题。请通过下方链接查阅公开资料，账户页和结果页用于完成具体操作流程。",
+    "agentsTitle": "Agents",
+    "agentsDescription": "通过 Markdown 阅读官方产品资料。",
+    "indexLabel": "产品概览",
+    "pricingLabel": "价格与额度",
+    "privacyLabel": "数据处理",
+    "faqLabel": "常见问题",
+    "siteLabel": "网站导航",
+    "languagesLabel": "其他语言",
+    "chatDescription": "根据官方资料，向 AI 助手了解 Bank Statement Converter。",
+    "prompt": "请访问 Bank Statement Converter 的官方资料：{fullUrl}。需要补充信息时，读取 {indexUrl} 并跟随相关文档链接。请用{language}说明产品功能、使用步骤、文件限制、数据处理方式、免费额度及订阅价格，并引用来源链接。无法访问资料或资料未说明的内容，请明确指出，不要猜测。",
+    "showPrompt": "查看默认提示词",
+    "metadataAnswer": "网站会保留提供服务所需的账户、额度和计费元数据。请在个人账户及 PayPal 中查看和管理订阅信息。",
+    "analyticsAnswer": "Google Analytics 和 Pageview 可能处理访问相关的技术信息。银行流水、提取的交易和 Excel 内容不会发送到这些统计服务。"
   }
 }

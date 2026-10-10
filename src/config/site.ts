@@ -1,4 +1,11 @@
-const domain = "bankstatementconverter.xyz";
+const environment = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_VERCEL_ENV : "development";
+let url = "http://localhost:3000";
+if (environment === "preview") {
+  url = "https://preview.bankstatementconverter.xyz";
+} else if (environment === "production") {
+  url = "https://bankstatementconverter.xyz";
+}
+const domain = new URL(url).host;
 const contactEmail = "fangxi.inori@gmail.com";
 const subscriptionPrices = {
   standard: 19.9,
@@ -10,6 +17,7 @@ export const siteConfig = {
   domain,
   contactEmail,
   subscriptionPrices,
-  url: `https://${domain}`,
+  conversionLimits: { megabytes: 4, pages: 50 },
+  url,
   contactHref: `mailto:${contactEmail}`,
 } as const;

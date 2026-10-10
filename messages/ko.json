@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "변환 기능",
-    "securityTitle": "파일 기록 없음",
-    "securityDescription": "PDF, 생성된 Excel 파일 및 거래 내용은 이 변환에만 사용되며 파일 기록에 추가되지 않습니다.",
-    "banksTitle": "원본 표 형식 유지",
+    "title": "이 변환기로 무엇을 할 수 있나요?",
+    "securityTitle": "내 PDF, Excel 파일 또는 거래가 저장됩니까?",
+    "securityDescription": "서버는 명세서 파일이나 거래 내역을 영구 기록으로 보관하지 않습니다. 결과를 원본 PDF와 대조하세요.",
+    "banksTitle": "Excel에 원본 표 구조가 유지되나요?",
     "banksDescription": "PDF의 표 머리글과 셀 텍스트를 읽어 원본과 비교할 수 있도록 표로 보여 줍니다.",
-    "accuracyTitle": "확인이 필요한 행 표시",
+    "accuracyTitle": "변환 결과를 검토해야 하는 이유는 무엇입니까?",
     "accuracyDescription": "근거가 불완전하거나 열을 맞추기 어려운 행에는 다운로드 전에 “DISCREPANCY” 또는 “UNVERIFIABLE”을 표시합니다."
   },
   "UsageTiers": {
-    "title": "매일 제공되는 무료 변환 페이지",
-    "description": "로그인 없이도 사용할 수 있습니다. 로그인하면 하루에 변환할 수 있는 페이지 수가 늘어납니다. 자주 사용한다면 월간 요금제를 선택하세요.",
+    "title": "요금과 변환 한도는 얼마인가요?",
+    "description": "무료 한도는 매일 초기화되고 구독 한도는 결제 기간마다 제공됩니다. 아래 요금제를 비교하고 로그인한 뒤 PayPal로 구독하세요.",
     "anonymous": "로그인 없이",
     "anonymousAmount": "{pages, number}페이지",
     "anonymousDescription": "하루에 PDF를 최대 {pages, number}페이지까지 변환할 수 있습니다.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "구독 서비스가 잘못된 상태 정보를 반환했습니다."
   },
   "HomeFaq": {
-    "title": "자주 묻는 질문",
+    "title": "변환 전에 무엇을 알아야 하나요?",
     "banks": {
       "question": "어떤 은행 명세서를 지원하나요?",
       "answer": "여러 전자 은행 명세서 형식으로 변환 기능을 검증하고 있습니다. 검증을 마친 은행과 명세서 형식은 순차적으로 공개합니다."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "내 PDF, Excel 파일 또는 거래가 저장됩니까?",
-      "answer": "저장하지 않습니다. 이번 변환과 다운로드에만 사용하며 파일 기록에 추가하지 않습니다. 변환 과정을 종료하면 결과를 다시 다운로드할 수 없습니다."
+      "answer": "서버는 PDF, Excel, 거래 내역을 영구 파일 기록으로 보관하지 않습니다. 브라우저 세션 저장소에는 현재 작업의 추출 결과가 임시 저장됩니다. 원본 PDF와 다운로드한 Excel은 직접 보관하세요."
     },
     "failure": {
       "question": "변환에 실패하면 어떻게 되나요?",
@@ -492,5 +492,50 @@
       "failed": "구독 취소 결과를 확인하지 못했습니다.",
       "checkFailed": "구독 상태를 읽지 못했습니다."
     }
+  },
+  "Geo": {
+    "glance": "핵심 요약",
+    "conversionSummary": "Bank Statement Converter는 텍스트가 있는 은행 명세서 PDF를 검토용 Excel로 변환합니다.",
+    "limitsSummary": "한 번에 {megabytes} MB, {pages}페이지 이하의 텍스트 PDF 하나를 올릴 수 있습니다. 스캔 및 암호 보호 PDF는 지원하지 않습니다.",
+    "quotaSummary": "익명 사용자는 하루 {anonymousPages}페이지, 로그인 사용자는 {authenticatedPages}페이지를 변환할 수 있습니다. 월 구독은 {price} USD부터입니다.",
+    "privacySummary": "서버는 명세서 파일이나 거래 내역을 영구 기록으로 보관하지 않습니다. 결과를 원본 PDF와 대조하세요.",
+    "featuresAnswer": "이 도구는 은행 명세서 표를 Excel로 정리합니다. 텍스트 PDF를 올리고 추출된 행을 검토한 뒤 사용하세요.",
+    "riskTitle": "위험 표시는 무엇을 뜻하나요?",
+    "riskAnswer": "위험 표시는 각 추출 행의 근거 상태를 설명합니다. 결과를 사용하기 전에 표시된 행을 원본 PDF와 대조하세요.",
+    "okDefinition": "문제가 감지되지 않았지만 정확성이나 완전성을 보장하지 않습니다.",
+    "discrepancyDefinition": "근거 충돌이나 검토가 필요한 문제가 감지되었습니다.",
+    "unverifiableDefinition": "핵심 근거가 없거나 해당 행을 신뢰할 수 있게 확인할 수 없습니다.",
+    "limitsTitle": "어떤 PDF를 올릴 수 있나요?",
+    "limitsAnswer": "{megabytes} MB, {pages}페이지 이하의 텍스트 은행 명세서 PDF만 허용됩니다. 은행에서 텍스트를 선택할 수 있는 암호 없는 PDF를 내보내세요.",
+    "pricingAnswer": "무료 한도는 매일 초기화되고 구독 한도는 결제 기간마다 제공됩니다. 아래 요금제를 비교하고 로그인한 뒤 PayPal로 구독하세요.",
+    "faqAnswer": "파일 요건, 한도, 변환 위험을 설명합니다. 관련 답변을 읽고 변환 전에 PDF를 확인하세요.",
+    "planHeader": "요금제",
+    "priceHeader": "가격 (USD)",
+    "quotaHeader": "PDF 페이지",
+    "periodHeader": "한도 기간",
+    "freePrice": "무료",
+    "dailyPeriod": "매일 (UTC)",
+    "billingPeriod": "PayPal 결제 기간",
+    "billingNote": "PayPal을 통해 매월 자동 갱신됩니다. 실패한 변환은 한도를 사용하지 않으며 부분 결과는 원본 PDF 페이지 수로 계산합니다.",
+    "privacyTitle": "데이터는 어떻게 처리하나요?",
+    "privacyAnswer": "명세서 내용은 현재 변환과 다운로드에만 사용됩니다. 파일 기록이 없으므로 원본 PDF와 Excel을 직접 보관하세요.",
+    "browserTitle": "브라우저에 무엇이 임시 저장되나요?",
+    "browserAnswer": "추출 결과는 현재 작업을 위해 브라우저 세션 저장소에 임시 저장됩니다. 서버 파일 기록과는 별개입니다.",
+    "metadataTitle": "어떤 계정 및 결제 데이터를 보관하나요?",
+    "siteTitle": "웹사이트 정보는 어디에서 찾나요?",
+    "siteAnswer": "홈페이지에는 변환, 요금제, 자주 묻는 질문이 있습니다. 공개 정보는 아래 링크를 이용하고 계정 및 결과 페이지는 작업 화면으로 사용하세요.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "공식 제품 정보를 Markdown으로 읽으세요.",
+    "indexLabel": "제품 개요",
+    "pricingLabel": "가격과 한도",
+    "privacyLabel": "데이터 처리",
+    "faqLabel": "질문과 답변",
+    "siteLabel": "사이트 안내",
+    "languagesLabel": "다른 언어",
+    "chatDescription": "공식 자료를 사용하여 AI 도우미에게 Bank Statement Converter에 대해 물어보세요.",
+    "prompt": "Bank Statement Converter 공식 자료 {fullUrl}에 방문하세요. 자세한 정보가 필요하면 {indexUrl}을 읽고 관련 문서 링크를 따라가세요. {language}로 기능, 사용 단계, 파일 제한, 데이터 처리, 무료 한도, 구독 가격을 설명하고 출처 링크를 제시하세요. 자료에 접근할 수 없거나 답이 없으면 명시하고 추측하지 마세요.",
+    "showPrompt": "기본 프롬프트 보기",
+    "metadataAnswer": "서비스 운영에 필요한 계정, 한도, 결제 메타데이터를 보관합니다. 계정과 PayPal에서 구독 정보를 확인하고 관리하세요.",
+    "analyticsAnswer": "Google Analytics와 Pageview는 방문 관련 기술 정보를 처리할 수 있습니다. 은행 명세서, 추출 거래, Excel 내용은 이 분석 서비스에 보내지 않습니다."
   }
 }

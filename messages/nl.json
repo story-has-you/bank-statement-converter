@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "Wat de conversie oplevert",
-    "securityTitle": "Geen bestandsarchief",
-    "securityDescription": "We gebruiken de PDF, het gegenereerde Excel-bestand en de transactiegegevens alleen voor deze conversie. We voegen ze niet toe aan een bestandsarchief.",
-    "banksTitle": "Behoudt de oorspronkelijke tabel",
+    "title": "Wat kan deze converter?",
+    "securityTitle": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
+    "securityDescription": "De server bewaart afschriften en transacties niet als blijvende geschiedenis; vergelijk het resultaat met de oorspronkelijke PDF.",
+    "banksTitle": "Behoudt Excel de tabelstructuur?",
     "banksDescription": "De converter leest tabelkoppen en celtekst uit de PDF en toont ze in tabellen die je met het origineel kunt vergelijken.",
-    "accuracyTitle": "Markeert regels voor controle",
+    "accuracyTitle": "Waarom moet ik het resultaat controleren?",
     "accuracyDescription": "Regels met onvolledige gegevens of uitlijningsproblemen krijgen vóór het downloaden de markering DISCREPANCY of UNVERIFIABLE."
   },
   "UsageTiers": {
-    "title": "Elke dag gratis pagina’s om te converteren",
-    "description": "Je kunt de converter zonder account proberen. Log in voor meer pagina's per dag of kies een maandabonnement als je hem vaak gebruikt.",
+    "title": "Wat kosten de plannen en wat bieden ze?",
+    "description": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via PayPal abonneert.",
     "anonymous": "Zonder inloggen",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
     "anonymousDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "De abonnementsservice heeft ongeldige statusinformatie teruggestuurd."
   },
   "HomeFaq": {
-    "title": "Veelgestelde vragen",
+    "title": "Wat moet ik weten vóór de conversie?",
     "banks": {
       "question": "Welke bankafschriften worden ondersteund?",
       "answer": "We testen de converter met verschillende indelingen van elektronische bankafschriften. We publiceren banken en indelingen zodra we ze hebben gecontroleerd."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
-      "answer": "Nee. We gebruiken ze alleen voor de huidige conversie en download, zonder bestandsarchief. Zodra je deze procedure verlaat, kun je het resultaat niet opnieuw downloaden."
+      "answer": "De server bewaart PDF’s, Excel-bestanden en transacties niet als blijvende geschiedenis. De browser bewaart resultaten tijdelijk in de sessie voor het huidige proces. Bewaar de oorspronkelijke PDF en Excel zelf."
     },
     "failure": {
       "question": "Wat gebeurt er als de conversie mislukt?",
@@ -492,5 +492,50 @@
       "failed": "De opzegging van het abonnement kon niet worden bevestigd.",
       "checkFailed": "De abonnementsstatus kon niet worden gelezen."
     }
+  },
+  "Geo": {
+    "glance": "In één oogopslag",
+    "conversionSummary": "Bank Statement Converter zet bankafschriften met tekst in PDF om naar Excel-bestanden ter controle.",
+    "limitsSummary": "Upload één tekst-PDF van maximaal {megabytes} MB en {pages} pagina’s tegelijk; scans en met wachtwoord beveiligde PDF’s worden niet ondersteund.",
+    "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
+    "privacySummary": "De server bewaart afschriften en transacties niet als blijvende geschiedenis; vergelijk het resultaat met de oorspronkelijke PDF.",
+    "featuresAnswer": "Dit hulpmiddel zet afschrifttabellen om naar Excel. Upload een tekst-PDF en controleer de uitgelezen rijen voordat u ze gebruikt.",
+    "riskTitle": "Wat betekenen de risicolabels?",
+    "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt.",
+    "okDefinition": "Geen probleem gedetecteerd; dit garandeert geen juistheid of volledigheid.",
+    "discrepancyDefinition": "Tegenstrijdig bewijs of een punt ter controle is gedetecteerd.",
+    "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
+    "limitsTitle": "Welke PDF’s kan ik uploaden?",
+    "limitsAnswer": "Alleen bankafschriften met tekst tot {megabytes} MB en {pages} pagina’s worden geaccepteerd. Exporteer een onbeveiligde PDF met selecteerbare tekst.",
+    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via PayPal abonneert.",
+    "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
+    "planHeader": "Plan",
+    "priceHeader": "Prijs (USD)",
+    "quotaHeader": "PDF-pagina’s",
+    "periodHeader": "Quotaperiode",
+    "freePrice": "Gratis",
+    "dailyPeriod": "Dagelijks (UTC)",
+    "billingPeriod": "PayPal-factuurperiode",
+    "billingNote": "Abonnementen verlengen maandelijks via PayPal. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s.",
+    "privacyTitle": "Hoe worden mijn gegevens verwerkt?",
+    "privacyAnswer": "Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
+    "browserTitle": "Wat wordt tijdelijk in mijn browser bewaard?",
+    "browserAnswer": "Uitgelezen resultaten worden tijdelijk in de browsersessie bewaard voor het huidige proces. Dit staat los van bestandsgeschiedenis op de server.",
+    "metadataTitle": "Welke account- en factuurgegevens worden bewaard?",
+    "siteTitle": "Waar vind ik informatie over de website?",
+    "siteAnswer": "De homepage bevat conversie, plannen en veelgestelde vragen. Volg de links voor openbare informatie; account- en resultaatpagina’s zijn processchermen.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "Lees officiële productinformatie in Markdown.",
+    "indexLabel": "Productoverzicht",
+    "pricingLabel": "Prijzen en quota",
+    "privacyLabel": "Gegevensverwerking",
+    "faqLabel": "Vragen en antwoorden",
+    "siteLabel": "Websitenavigatie",
+    "languagesLabel": "Andere talen",
+    "chatDescription": "Vraag een AI-assistent naar Bank Statement Converter met onze officiële bronnen.",
+    "prompt": "Bezoek de officiële informatie van Bank Statement Converter: {fullUrl}. Lees zo nodig {indexUrl} en volg relevante documentlinks. Antwoord in {language}: leg functies, stappen, bestandslimieten, gegevensverwerking, gratis quota en abonnementsprijzen uit met bronlinks. Als een bron niet bereikbaar is of geen antwoord bevat, zeg dit duidelijk en gok niet.",
+    "showPrompt": "Standaardprompt bekijken",
+    "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en PayPal.",
+    "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden."
   }
 }

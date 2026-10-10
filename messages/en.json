@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "What you get from a conversion",
-    "securityTitle": "No file history",
-    "securityDescription": "We use the PDF, generated Excel file, and transaction content only for this conversion. We do not add them to file history.",
-    "banksTitle": "Keeps the source layout",
+    "title": "What can this converter do?",
+    "securityTitle": "Are my PDF, Excel file, or transactions saved?",
+    "securityDescription": "The server does not keep statement files or transactions as persistent history; check the result against your original PDF.",
+    "banksTitle": "Does Excel keep the statement layout?",
     "banksDescription": "The converter reads table headers and cell text from the PDF and displays them in tables so you can compare them with the original.",
-    "accuracyTitle": "Marks rows to review",
+    "accuracyTitle": "Why should I review the conversion result?",
     "accuracyDescription": "Rows with incomplete evidence or alignment issues are marked \"DISCREPANCY\" or \"UNVERIFIABLE\" before download."
   },
   "UsageTiers": {
-    "title": "Free pages to convert every day",
-    "description": "You can try the converter without an account. Sign in for a larger daily quota, or choose a monthly plan for regular use.",
+    "title": "What do the plans cost and include?",
+    "description": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through PayPal.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "anonymousDescription": "Convert up to {pages, plural, one {# PDF page} other {# PDF pages}} per day.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "The subscription service returned invalid status information."
   },
   "HomeFaq": {
-    "title": "Frequently asked questions",
+    "title": "What should I know before converting?",
     "banks": {
       "question": "Which statements are supported?",
       "answer": "We are checking the converter against several electronic bank statement layouts. We will list banks and layout variants as we verify them."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "Are my PDF, Excel file, or transactions saved?",
-      "answer": "No. They are used for the current conversion and download only and are not added to file history. Once you leave the current flow, the result cannot be downloaded again."
+      "answer": "The server does not keep PDFs, Excel files or transactions as persistent file history. The browser temporarily stores extracted results in session storage for the current workflow. Keep your original PDF and downloaded Excel yourself."
     },
     "failure": {
       "question": "What happens if conversion fails?",
@@ -492,5 +492,50 @@
       "failed": "Subscription cancellation could not be confirmed.",
       "checkFailed": "Subscription status could not be read."
     }
+  },
+  "Geo": {
+    "glance": "At a glance",
+    "conversionSummary": "Bank Statement Converter turns text-based bank statement PDFs into Excel files for review.",
+    "limitsSummary": "Upload one text-based PDF of up to {megabytes} MB and {pages} pages; scanned and password-protected PDFs are not supported.",
+    "quotaSummary": "Convert {anonymousPages} page per day anonymously or {authenticatedPages} pages when signed in; monthly plans start at {price} USD.",
+    "privacySummary": "The server does not keep statement files or transactions as persistent history; check the result against your original PDF.",
+    "featuresAnswer": "This converter organizes statement tables into Excel. Upload a text-based PDF and review the extracted rows before using them.",
+    "riskTitle": "What do the risk labels mean?",
+    "riskAnswer": "Risk labels describe the evidence available for each extracted row. Compare flagged rows with the original PDF before using the result.",
+    "okDefinition": "No issue was detected; this does not guarantee accuracy or completeness.",
+    "discrepancyDefinition": "Evidence conflicts or a review issue was detected.",
+    "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
+    "limitsTitle": "Which PDFs can I upload?",
+    "limitsAnswer": "Only text-based bank statement PDFs of up to {megabytes} MB and {pages} pages are accepted. Export an unencrypted PDF with selectable text.",
+    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through PayPal.",
+    "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
+    "planHeader": "Plan",
+    "priceHeader": "Price (USD)",
+    "quotaHeader": "PDF pages",
+    "periodHeader": "Quota period",
+    "freePrice": "Free",
+    "dailyPeriod": "Daily (UTC)",
+    "billingPeriod": "PayPal billing period",
+    "billingNote": "Subscriptions renew monthly through PayPal. Failed conversions do not use quota; partial results use the original PDF page count.",
+    "privacyTitle": "How is my data handled?",
+    "privacyAnswer": "Statement content is used for the current conversion and download only. Keep your original PDF and downloaded Excel because the service has no file history.",
+    "browserTitle": "What is temporarily stored in my browser?",
+    "browserAnswer": "Extracted results are temporarily stored in browser session storage for the current workflow. This is separate from server-side file history.",
+    "metadataTitle": "Which account and billing data is retained?",
+    "siteTitle": "Where can I find the website information?",
+    "siteAnswer": "The homepage contains conversion, plans and FAQs. Follow the links below for public information; account and result pages are workflow screens.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "Read the official product information in Markdown.",
+    "indexLabel": "Product overview",
+    "pricingLabel": "Pricing and quotas",
+    "privacyLabel": "Data handling",
+    "faqLabel": "Questions and answers",
+    "siteLabel": "Website navigation",
+    "languagesLabel": "Other languages",
+    "chatDescription": "Ask an AI assistant about Bank Statement Converter using our official sources.",
+    "prompt": "Visit the official Bank Statement Converter information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
+    "showPrompt": "View the default prompt",
+    "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and PayPal.",
+    "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services."
   }
 }

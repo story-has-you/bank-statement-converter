@@ -42,7 +42,7 @@ export async function UsageTiers() {
 
         <div className="mt-7 grid border-y border-border sm:grid-cols-2 sm:divide-x sm:divide-border">
           <div className="flex flex-col gap-3 py-5 sm:pr-6">
-            <h3 className="text-sm font-medium text-muted-foreground">{t("anonymous")}</h3>
+            <p className="text-sm font-medium text-muted-foreground">{t("anonymous")}</p>
             <p className="text-3xl font-semibold">
               {t("anonymousAmount", { pages: usageQuotaConfig.anonymous.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
@@ -52,7 +52,7 @@ export async function UsageTiers() {
             </p>
           </div>
           <div className="flex flex-col gap-3 border-t border-border py-5 sm:border-t-0 sm:pl-6">
-            <h3 className="text-sm font-medium text-muted-foreground">{t("signedIn")}</h3>
+            <p className="text-sm font-medium text-muted-foreground">{t("signedIn")}</p>
             <p className="text-3xl font-semibold">
               {t("signedInAmount", { pages: usageQuotaConfig.authenticated.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>

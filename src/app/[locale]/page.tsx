@@ -13,6 +13,7 @@ import { PdfUpload } from "@/components/conversion/pdf-upload";
 import { UsageTiers } from "@/components/home/usage-tiers";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
+import { getAgentDocumentUrl } from "@/lib/geo/links";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -27,7 +28,10 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     title: t("title"),
     description: t("description"),
     keywords: t("keywords").split(", "),
-    alternates: getLocalizedAlternates("/", locale),
+    alternates: {
+      ...getLocalizedAlternates("/", locale),
+      types: { "text/markdown": getAgentDocumentUrl(locale, "index.md") },
+    },
     openGraph: {
       type: "website",
       siteName: t("brand"),

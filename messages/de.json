@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "Was Sie von einer Konvertierung erhalten",
-    "securityTitle": "Kein Dateiverlauf",
-    "securityDescription": "PDF, Excel-Datei und Transaktionsdaten werden nur für diese Konvertierung verwendet. Sie werden nicht in einem Dateiverlauf gespeichert.",
-    "banksTitle": "Behält das Quelllayout bei",
+    "title": "Was kann dieser Konverter?",
+    "securityTitle": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
+    "securityDescription": "Der Server speichert Auszüge und Transaktionen nicht als dauerhaften Verlauf; gleichen Sie das Ergebnis mit dem Original-PDF ab.",
+    "banksTitle": "Behält Excel die Tabellenstruktur bei?",
     "banksDescription": "Der Konverter liest Tabellenüberschriften und Zelltexte aus dem PDF und zeigt sie als Tabellen an. So können Sie das Ergebnis mit dem Original vergleichen.",
-    "accuracyTitle": "Markiert Zeilen zur Überprüfung",
+    "accuracyTitle": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
     "accuracyDescription": "Zeilen mit unvollständigen Belegen oder Zuordnungsproblemen werden vor dem Download als „DISCREPANCY“ oder „UNVERIFIABLE“ markiert."
   },
   "UsageTiers": {
-    "title": "Kostenlose Konvertierungsseiten an jedem Tag",
-    "description": "Sie können den Konverter ohne Konto ausprobieren. Melden Sie sich für ein größeres Tageskontingent an oder wählen Sie einen Monatsplan für die regelmäßige Nutzung.",
+    "title": "Was kosten die Tarife und was enthalten sie?",
+    "description": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem PayPal-Abo an.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
     "anonymousDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "Der Abonnementdienst hat ungültige Statusinformationen zurückgegeben."
   },
   "HomeFaq": {
-    "title": "Häufig gestellte Fragen",
+    "title": "Was sollte ich vor der Konvertierung wissen?",
     "banks": {
       "question": "Welche Kontoauszüge werden unterstützt?",
       "answer": "Wir prüfen den Konverter mit verschiedenen Formaten elektronischer Kontoauszüge. Banken und geprüfte Layoutvarianten werden nach der Prüfung aufgelistet."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
-      "answer": "Nein. Sie werden nur für die aktuelle Konvertierung und den Download verwendet und nicht in einem Dateiverlauf gespeichert. Wenn Sie den Vorgang verlassen, können Sie das Ergebnis nicht erneut herunterladen."
+      "answer": "Der Server speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhaften Dateiverlauf. Der Browser hält extrahierte Ergebnisse vorübergehend im Sitzungsspeicher für den aktuellen Ablauf. Bewahren Sie Original-PDF und Excel selbst auf."
     },
     "failure": {
       "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
@@ -492,5 +492,50 @@
       "failed": "Die Kündigung des Abonnements konnte nicht bestätigt werden.",
       "checkFailed": "Der Abonnementstatus konnte nicht gelesen werden."
     }
+  },
+  "Geo": {
+    "glance": "Auf einen Blick",
+    "conversionSummary": "Bank Statement Converter wandelt textbasierte Kontoauszug-PDFs in Excel-Dateien zur Prüfung um.",
+    "limitsSummary": "Laden Sie jeweils ein Text-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch; Scans und passwortgeschützte PDFs werden nicht unterstützt.",
+    "quotaSummary": "Ohne Anmeldung sind täglich {anonymousPages} Seite, nach Anmeldung {authenticatedPages} Seiten möglich; Monatsabos beginnen bei {price} USD.",
+    "privacySummary": "Der Server speichert Auszüge und Transaktionen nicht als dauerhaften Verlauf; gleichen Sie das Ergebnis mit dem Original-PDF ab.",
+    "featuresAnswer": "Dieses Werkzeug überträgt Kontoauszugtabellen nach Excel. Laden Sie ein Text-PDF hoch und prüfen Sie die extrahierten Zeilen vor der Nutzung.",
+    "riskTitle": "Was bedeuten die Risikomarkierungen?",
+    "riskAnswer": "Die Markierungen beschreiben die Belege jeder extrahierten Zeile. Prüfen Sie markierte Zeilen anhand des Original-PDFs vor der Nutzung.",
+    "okDefinition": "Kein Problem erkannt; Genauigkeit und Vollständigkeit sind damit nicht garantiert.",
+    "discrepancyDefinition": "Widersprüchliche Belege oder ein Prüfbedarf wurden erkannt.",
+    "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
+    "limitsTitle": "Welche PDFs kann ich hochladen?",
+    "limitsAnswer": "Akzeptiert werden nur textbasierte Kontoauszug-PDFs mit höchstens {megabytes} MB und {pages} Seiten. Exportieren Sie ein unverschlüsseltes PDF mit auswählbarem Text.",
+    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem PayPal-Abo an.",
+    "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
+    "planHeader": "Tarif",
+    "priceHeader": "Preis (USD)",
+    "quotaHeader": "PDF-Seiten",
+    "periodHeader": "Kontingentzeitraum",
+    "freePrice": "Kostenlos",
+    "dailyPeriod": "Täglich (UTC)",
+    "billingPeriod": "PayPal-Abrechnungszeitraum",
+    "billingNote": "Abos verlängern sich monatlich über PayPal. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt.",
+    "privacyTitle": "Wie werden meine Daten verarbeitet?",
+    "privacyAnswer": "Auszugsinhalte dienen nur der aktuellen Konvertierung und dem Download. Bewahren Sie PDF und Excel selbst auf, da es keinen Dateiverlauf gibt.",
+    "browserTitle": "Was wird vorübergehend im Browser gespeichert?",
+    "browserAnswer": "Extrahierte Ergebnisse werden für den aktuellen Ablauf vorübergehend im Sitzungsspeicher des Browsers gespeichert. Das ist kein serverseitiger Dateiverlauf.",
+    "metadataTitle": "Welche Konto- und Abrechnungsdaten werden gespeichert?",
+    "siteTitle": "Wo finde ich die Website-Informationen?",
+    "siteAnswer": "Die Startseite enthält Konvertierung, Tarife und FAQs. Folgen Sie den Links zu öffentlichen Informationen; Konto- und Ergebnisseiten dienen dem Arbeitsablauf.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "Offizielle Produktinformationen als Markdown lesen.",
+    "indexLabel": "Produktübersicht",
+    "pricingLabel": "Preise und Kontingente",
+    "privacyLabel": "Datenverarbeitung",
+    "faqLabel": "Fragen und Antworten",
+    "siteLabel": "Website-Navigation",
+    "languagesLabel": "Weitere Sprachen",
+    "chatDescription": "Fragen Sie einen KI-Assistenten anhand unserer offiziellen Quellen nach Bank Statement Converter.",
+    "prompt": "Besuche die offiziellen Informationen zu Bank Statement Converter: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
+    "showPrompt": "Standardprompt ansehen",
+    "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei PayPal.",
+    "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet."
   }
 }

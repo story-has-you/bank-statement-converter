@@ -160,17 +160,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "Hasil yang Anda dapatkan",
-    "securityTitle": "Tanpa riwayat berkas",
-    "securityDescription": "PDF, Excel yang dihasilkan, dan data transaksi hanya digunakan untuk konversi ini. Kami tidak menambahkannya ke riwayat berkas.",
-    "banksTitle": "Mempertahankan tabel asli",
+    "title": "Apa yang dapat dilakukan konverter ini?",
+    "securityTitle": "Apakah PDF, Excel, atau transaksi saya disimpan?",
+    "securityDescription": "Server tidak menyimpan berkas atau transaksi sebagai riwayat permanen; cocokkan hasil dengan PDF asli.",
+    "banksTitle": "Apakah Excel mempertahankan struktur tabel?",
     "banksDescription": "Konverter membaca judul kolom dan teks sel dari PDF, lalu menampilkannya sebagai tabel agar dapat dibandingkan dengan aslinya.",
-    "accuracyTitle": "Menandai baris yang perlu diperiksa",
+    "accuracyTitle": "Mengapa hasil perlu diperiksa?",
     "accuracyDescription": "Baris dengan bukti tidak lengkap atau kolom yang tidak selaras diberi penanda DISCREPANCY atau UNVERIFIABLE sebelum diunduh."
   },
   "UsageTiers": {
-    "title": "Halaman konversi gratis setiap hari",
-    "description": "Coba konverter tanpa akun. Login untuk kuota harian lebih besar, atau pilih paket bulanan jika sering menggunakannya.",
+    "title": "Berapa harga paket dan apa yang termasuk?",
+    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui PayPal.",
     "anonymous": "Tanpa login",
     "anonymousAmount": "{pages, number} halaman",
     "anonymousDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
@@ -244,7 +244,7 @@
     "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid."
   },
   "HomeFaq": {
-    "title": "Pertanyaan umum",
+    "title": "Apa yang perlu diketahui sebelum konversi?",
     "banks": {
       "question": "Rekening koran apa yang didukung?",
       "answer": "Kami sedang memeriksa konverter dengan beberapa format rekening koran elektronik. Bank dan format akan kami cantumkan setelah diverifikasi."
@@ -263,7 +263,7 @@
     },
     "storage": {
       "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
-      "answer": "Tidak. Data hanya digunakan untuk konversi dan unduhan saat ini tanpa riwayat berkas. Setelah meninggalkan proses ini, Anda tidak dapat mengunduh hasilnya lagi."
+      "answer": "Server tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Browser menyimpan hasil sementara di sesi untuk alur saat ini. Simpan sendiri PDF asli dan Excel yang diunduh."
     },
     "failure": {
       "question": "Apa yang terjadi jika konversi gagal?",
@@ -492,5 +492,50 @@
       "failed": "Pembatalan langganan tidak dapat dikonfirmasi.",
       "checkFailed": "Status langganan tidak dapat dibaca."
     }
+  },
+  "Geo": {
+    "glance": "Ringkasan utama",
+    "conversionSummary": "Bank Statement Converter mengubah PDF rekening koran berbasis teks menjadi Excel untuk ditinjau.",
+    "limitsSummary": "Unggah satu PDF teks hingga {megabytes} MB dan {pages} halaman; PDF hasil pindai dan berpassword tidak didukung.",
+    "quotaSummary": "Konversikan {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk; paket bulanan mulai {price} USD.",
+    "privacySummary": "Server tidak menyimpan berkas atau transaksi sebagai riwayat permanen; cocokkan hasil dengan PDF asli.",
+    "featuresAnswer": "Alat ini menyusun tabel rekening koran dalam Excel. Unggah PDF teks dan tinjau baris yang diekstrak sebelum menggunakannya.",
+    "riskTitle": "Apa arti label risiko?",
+    "riskAnswer": "Label menjelaskan bukti yang tersedia pada setiap baris hasil ekstraksi. Cocokkan baris bertanda dengan PDF asli sebelum menggunakan hasil.",
+    "okDefinition": "Tidak ada masalah terdeteksi; ini tidak menjamin ketepatan atau kelengkapan.",
+    "discrepancyDefinition": "Bukti yang bertentangan atau masalah yang perlu ditinjau terdeteksi.",
+    "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
+    "limitsTitle": "PDF apa yang dapat diunggah?",
+    "limitsAnswer": "Hanya PDF rekening koran berbasis teks hingga {megabytes} MB dan {pages} halaman yang diterima. Ekspor PDF tanpa password dengan teks yang dapat dipilih.",
+    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui PayPal.",
+    "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
+    "planHeader": "Paket",
+    "priceHeader": "Harga (USD)",
+    "quotaHeader": "Halaman PDF",
+    "periodHeader": "Periode kuota",
+    "freePrice": "Gratis",
+    "dailyPeriod": "Harian (UTC)",
+    "billingPeriod": "Periode tagihan PayPal",
+    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui PayPal. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
+    "privacyTitle": "Bagaimana data saya diproses?",
+    "privacyAnswer": "Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
+    "browserTitle": "Apa yang disimpan sementara di browser?",
+    "browserAnswer": "Hasil ekstraksi disimpan sementara di penyimpanan sesi browser untuk alur saat ini. Ini berbeda dari riwayat berkas di server.",
+    "metadataTitle": "Data akun dan tagihan apa yang disimpan?",
+    "siteTitle": "Di mana informasi situs dapat ditemukan?",
+    "siteAnswer": "Beranda memuat konversi, paket, dan pertanyaan umum. Ikuti tautan untuk informasi publik; halaman akun dan hasil adalah layar alur penggunaan.",
+    "agentsTitle": "Agents",
+    "agentsDescription": "Baca informasi produk resmi dalam Markdown.",
+    "indexLabel": "Ikhtisar produk",
+    "pricingLabel": "Harga dan kuota",
+    "privacyLabel": "Pemrosesan data",
+    "faqLabel": "Pertanyaan dan jawaban",
+    "siteLabel": "Navigasi situs",
+    "languagesLabel": "Bahasa lainnya",
+    "chatDescription": "Tanyakan Bank Statement Converter kepada asisten AI menggunakan sumber resmi kami.",
+    "prompt": "Kunjungi informasi resmi Bank Statement Converter: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
+    "showPrompt": "Lihat prompt bawaan",
+    "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan PayPal.",
+    "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini."
   }
 }

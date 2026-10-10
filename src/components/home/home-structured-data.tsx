@@ -1,31 +1,25 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { siteConfig } from "@/config/site";
 import { getLocalizedAlternates } from "@/i18n/metadata";
-import { routing } from "@/i18n/routing";
-import { usageQuotaConfig } from "@/lib/usage/config";
-
-const questionIds = ["banks", "accuracy", "quota", "scans", "storage", "failure"] as const;
+import { routing, type AppLocale } from "@/i18n/routing";
+import { getHomeFaq } from "@/lib/geo/faq";
+import { membershipTiers } from "@/lib/paypal/config";
 
 export async function HomeStructuredData() {
-  const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "HomeFaq" });
-  const metadataT = await getTranslations({ locale, namespace: "Metadata" });
-  const usageT = await getTranslations({ locale, namespace: "UsageTiers" });
-  const questions = questionIds.map((id) => ({
+  const locale = (await getLocale()) as AppLocale;
+  const [metadataT, usageT, geo, faq] = await Promise.all([
+    getTranslations({ locale, namespace: "Metadata" }),
+    getTranslations({ locale, namespace: "UsageTiers" }),
+    getTranslations({ locale, namespace: "Geo" }),
+    getHomeFaq(locale),
+  ]);
+  const questions = faq.map((item) => ({
     "@type": "Question",
-    name: t(`${id}.question`),
+    name: item.question,
     acceptedAnswer: {
       "@type": "Answer",
-      text:
-        id === "quota"
-          ? t("quota.answer", {
-              anonymousPages: usageQuotaConfig.anonymous.pages,
-              authenticatedPages: usageQuotaConfig.authenticated.pages,
-              standardPages: usageQuotaConfig.subscriptions.standard.pages,
-              professionalPages: usageQuotaConfig.subscriptions.professional.pages,
-              enterprisePages: usageQuotaConfig.subscriptions.enterprise.pages,
-            })
-          : t(`${id}.answer`),
+      text: item.answer,
     },
   }));
   const schemas = [
@@ -35,20 +29,20 @@ export async function HomeStructuredData() {
       name: metadataT("brand"),
       alternateName: metadataT("alternateName"),
       url: getLocalizedAlternates("/", locale).canonical,
-      description: (await getTranslations({ locale, namespace: "Metadata" }))("description"),
+      description: metadataT("description"),
       applicationCategory: "FinanceApplication",
       operatingSystem: "Web",
       inLanguage: locale,
       availableLanguage: routing.locales,
-      offers: {
-        "@type": "OfferCatalog",
-        name: usageT("title"),
-        itemListElement: ["standard", "professional", "enterprise"].map((name) => ({
-          "@type": "Offer",
-          name,
-          category: "Subscription",
-        })),
-      },
+      offers: membershipTiers.map((tier) => ({
+        "@type": "Offer",
+        name: usageT(`plans.${tier}.name`),
+        price: siteConfig.subscriptionPrices[tier],
+        priceCurrency: "USD",
+        description: `${usageT("perMonth")}. ${geo("billingNote")}`,
+        url: `${getLocalizedAlternates("/", locale).canonical}#plans`,
+        category: "Subscription",
+      })),
     },
     {
       "@context": "https://schema.org",
