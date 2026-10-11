@@ -1,3 +1,5 @@
+import { conversionLimits } from "@/config/conversion";
+
 import OpenAI from "openai";
 import type { ChatCompletionCreateParamsStreaming } from "openai/resources/chat/completions";
 
@@ -83,7 +85,7 @@ export async function parseWithQwen(
       upstreamSignal.throwIfAborted();
       if (chunk.usage) {
         pageCount = getPdfPageCount(chunk.usage);
-        if (pageCount !== null && pageCount > 50)
+        if (pageCount !== null && pageCount > conversionLimits.pages)
           throw new ConversionError("TOO_MANY_PAGES", 413);
       }
       for (const choice of chunk.choices) {

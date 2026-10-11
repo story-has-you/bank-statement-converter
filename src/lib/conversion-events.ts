@@ -1,3 +1,5 @@
+import { conversionLimits } from "@/config/conversion";
+
 import { isParseResponse, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 import type { ConversionErrorPayload } from "@/lib/conversion-errors";
 
@@ -24,7 +26,7 @@ export function emitParsedTables(result: ParseResponse, emit: EmitConversionEven
 // Validate preview fragments through the same contract as completed conversions.
 export function isPreviewTable(value: unknown): value is ParsedTable {
   return isParseResponse({
-    schemaVersion: "1", filename: "", pageCount: 50, tables: [value], errors: [],
+    schemaVersion: "1", filename: "", pageCount: conversionLimits.pages, tables: [value], errors: [],
     summary: getPreviewSummary(value),
   });
 }

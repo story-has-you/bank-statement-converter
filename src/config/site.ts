@@ -1,3 +1,5 @@
+import { conversionLimits } from "@/config/conversion";
+
 const environment = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_VERCEL_ENV : "development";
 let url = "http://localhost:3000";
 if (environment === "preview") {
@@ -11,7 +13,7 @@ const contactEmail = "support@bankstatementconverter.xyz";
 export const siteConfig = {
   domain,
   contactEmail,
-  conversionLimits: { megabytes: 4, pages: 50 },
+  conversionLimits,
   url,
   contactHref: `mailto:${contactEmail}`,
 } as const;

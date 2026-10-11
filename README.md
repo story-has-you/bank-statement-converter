@@ -48,6 +48,12 @@ pnpm dev --port 3000
 
 这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 只调整网站展示，不会修改 PayPal 的实际扣款金额；若今后改价，需要同步调整 PayPal 计划及其环境变量映射。仅修改页数额度不需要调整 PayPal 价格或计划 ID。
 
+## 单文件转换限制
+
+在 [`services/parser/app/conversion-limits.json`](services/parser/app/conversion-limits.json) 统一调整 `megabytes`（单文件大小，按 1 MB = 1024 × 1024 字节校验）和 `pages`（原始 PDF 最大页数），当前为 4 MB、50 页。
+
+Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包和 Docker 的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
+
 ## PayPal Sandbox 订阅配置
 
 会员方案使用 PayPal Sandbox 自动续费订阅。环境变量模板见

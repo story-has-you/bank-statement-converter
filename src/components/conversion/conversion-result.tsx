@@ -95,6 +95,8 @@ export function ConversionResult() {
 
   const { result } = payload;
   const hasRows = result.tables.some((table) => table.rows.length > 0);
+  const hasRiskRows =
+    result.summary.warningRowCount + result.summary.failedRowCount > 0;
 
   function getStatusLabel(status: SummaryStatus): string {
     if (status === "partial") return t("summaryStatus.partial");
@@ -127,7 +129,7 @@ export function ConversionResult() {
         <ConversionDownloads filename={payload.filename} result={result} />
       </div>
 
-      {result.summary.status === "partial" && (
+      {hasRiskRows && (
         <Alert>
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("partial.title")}</AlertTitle>

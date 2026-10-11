@@ -59,7 +59,7 @@
     "description": "Un PDF a la vez",
     "fileLabel": "Extracto bancario PDF",
     "dropzone": "Elige un PDF o arrástralo aquí",
-    "dropzoneHint": "Sube un PDF que se abra correctamente, de hasta 4 MB y 50 páginas. Professional y Enterprise pueden intentar convertir PDF escaneados.",
+    "dropzoneHint": "Sube un PDF que se abra correctamente, de hasta {megabytes, number} MB y {pages, number} páginas. Professional y Enterprise pueden intentar convertir PDF escaneados.",
     "help": "El nombre del archivo aparece después de seleccionarlo. Puedes quitarlo cuando quieras.",
     "errorTitle": "No se pudo completar esta operación",
     "invalidPdf": "El archivo subido no es un PDF.",
@@ -74,7 +74,7 @@
     "status": "Listo para cargar",
     "converting": "Convirtiendo",
     "start": "Convertir y revisar",
-    "fileTooLarge": "Este PDF supera los 4 MB.",
+    "fileTooLarge": "Este PDF supera los {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Información de cuenta, cuota y facturación",
-      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de PayPal, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. PayPal maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel."
+      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de PayPal, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. PayPal maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel. Para los usuarios que han iniciado sesión, también guardamos, en cada intento de análisis, el ID de la cuenta, una copia del correo electrónico, el momento del registro, el último método de análisis seleccionado, el estado de la conversión y los motivos de los fallos de análisis y del recurso a un modelo de IA, para investigar problemas. Estos registros no contienen nombres ni contenidos de archivos, detalles de transacciones ni respuestas del modelo."
     },
     "technicalData": {
       "title": "Información técnica necesaria",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Retención",
       "documents": "Los archivos PDF, las transacciones extraídas y los archivos Excel generados se utilizan únicamente durante el procesamiento necesario para la conversión y descarga actual. No se escriben en una base de datos persistente, almacenamiento de objetos o historial de archivos, y no se guardan para su descarga posterior.",
-      "metadata": "Los metadatos de cuenta, cuota y facturación se conservan solo mientras sean necesarios para el servicio o las obligaciones legales aplicables. Cuando dejan de ser necesarios, se eliminan o anonimizan según el sistema y los requisitos legales. El correo de la cuenta guardado al comprar forma parte del registro de suscripción."
+      "metadata": "Los metadatos de cuenta, cuota y facturación se conservan solo mientras sean necesarios para el servicio o las obligaciones legales aplicables. Cuando dejan de ser necesarios, se eliminan o anonimizan según el sistema y los requisitos legales. El correo de la cuenta guardado al comprar forma parte del registro de suscripción. Los metadatos operativos de análisis siguen los mismos principios de conservación; al eliminar la cuenta, también se eliminan sus registros de análisis asociados."
     },
     "providers": {
       "title": "Proveedores y tratamiento internacional",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "No se pudo conectar con el servicio de conversión.",
     "QUOTA_EXCEEDED": "Este PDF tiene más páginas de las que te quedan por convertir.",
     "QUOTA_UNAVAILABLE": "No se pudo determinar tu cuota de conversión disponible.",
-    "FILE_TOO_LARGE": "Este PDF supera los 4 MB.",
+    "FILE_TOO_LARGE": "Este PDF supera los {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "El archivo subido no es un PDF.",
     "INVALID_PDF": "Este archivo no es un PDF legible.",
     "PASSWORD_PROTECTED_PDF": "Los archivos PDF protegidos con contraseña no se pueden convertir.",
-    "TOO_MANY_PAGES": "Este PDF tiene más de 50 páginas.",
+    "TOO_MANY_PAGES": "Este PDF tiene más de {pages, number} páginas.",
     "UNSUPPORTED_SCANNED_PDF": "No se pudo extraer texto de este PDF, por lo que no se puede convertir.",
     "TABLE_NOT_FOUND": "No se encontró ninguna tabla de extractos bancarios utilizable.",
     "NO_VERIFIABLE_TRANSACTIONS": "No se encontró ninguna fila de transacción cuya fecha, descripción e importe puedan verificarse.",

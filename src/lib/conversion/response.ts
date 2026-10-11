@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
 import type { AppConfig } from "next-intl";
 
+import { conversionLimits } from "@/config/conversion";
 import type { AppLocale } from "@/i18n/routing";
 import { ConversionError, type ConversionErrorPayload } from "@/lib/conversion-errors";
 import type { ConversionEvent } from "@/lib/conversion-events";
@@ -17,7 +18,7 @@ async function errorPayload(
 ): Promise<ConversionErrorPayload> {
   const t = await getTranslations({ locale, namespace: "ApiErrors" });
   const key: ApiErrorCode = t.has(code as ApiErrorCode) ? code as ApiErrorCode : "UNKNOWN";
-  return { code, message: t(key), ...quota };
+  return { code, message: t(key, conversionLimits), ...quota };
 }
 
 export async function errorResponse(

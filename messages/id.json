@@ -59,7 +59,7 @@
     "description": "Proses satu PDF setiap kali",
     "fileLabel": "Rekening koran PDF",
     "dropzone": "Pilih PDF atau seret ke sini",
-    "dropzoneHint": "Unggah PDF yang dapat dibuka, maksimal 4 MB dan 50 halaman. Professional dan Enterprise dapat mencoba PDF hasil pindai.",
+    "dropzoneHint": "Unggah PDF yang dapat dibuka, maksimal {megabytes, number} MB dan {pages, number} halaman. Professional dan Enterprise dapat mencoba PDF hasil pindai.",
     "help": "Nama berkas muncul setelah dipilih. Anda dapat menghapusnya kapan saja.",
     "errorTitle": "Operasi ini tidak dapat diselesaikan",
     "invalidPdf": "Berkas yang diunggah bukan PDF.",
@@ -74,7 +74,7 @@
     "status": "Siap diunggah",
     "converting": "Mengonversi",
     "start": "Konversi dan periksa",
-    "fileTooLarge": "Ukuran PDF ini melebihi 4 MB.",
+    "fileTooLarge": "Ukuran PDF ini melebihi {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Penyimpanan",
       "documents": "PDF, transaksi hasil ekstraksi, dan Excel hanya digunakan selama pemrosesan yang diperlukan untuk konversi dan unduhan saat ini. Data tidak ditulis ke basis data permanen, penyimpanan objek, atau riwayat berkas, dan tidak disimpan untuk unduhan berikutnya.",
-      "metadata": "Metadata akun, kuota, dan tagihan disimpan hanya selama diperlukan untuk layanan atau kewajiban hukum. Saat tidak diperlukan lagi, data dihapus atau dianonimkan sesuai sistem dan persyaratan hukum. Email akun saat pembelian merupakan bagian dari catatan langganan."
+      "metadata": "Metadata akun, kuota, dan tagihan disimpan hanya selama diperlukan untuk layanan atau kewajiban hukum. Saat tidak diperlukan lagi, data dihapus atau dianonimkan sesuai sistem dan persyaratan hukum. Email akun saat pembelian merupakan bagian dari catatan langganan. Metadata operasional parsing mengikuti prinsip penyimpanan yang sama; catatan parsing terkait dihapus saat akun dihapus."
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
     "QUOTA_EXCEEDED": "Jumlah halaman PDF ini melebihi sisa halaman yang dapat Anda konversi.",
     "QUOTA_UNAVAILABLE": "Kuota konversi yang tersedia tidak dapat ditentukan.",
-    "FILE_TOO_LARGE": "Ukuran PDF ini melebihi 4 MB.",
+    "FILE_TOO_LARGE": "Ukuran PDF ini melebihi {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Berkas yang diunggah bukan PDF.",
     "INVALID_PDF": "Berkas ini bukan PDF yang dapat dibaca.",
     "PASSWORD_PROTECTED_PDF": "PDF terlindungi kata sandi tidak dapat dikonversi.",
-    "TOO_MANY_PAGES": "PDF ini memiliki lebih dari 50 halaman.",
+    "TOO_MANY_PAGES": "PDF ini memiliki lebih dari {pages, number} halaman.",
     "UNSUPPORTED_SCANNED_PDF": "Teks tidak dapat diekstrak dari PDF ini, sehingga berkas tidak dapat dikonversi.",
     "TABLE_NOT_FOUND": "Tidak ditemukan tabel rekening koran yang dapat digunakan.",
     "NO_VERIFIABLE_TRANSACTIONS": "Tidak ditemukan baris transaksi dengan tanggal, deskripsi, dan jumlah yang semuanya dapat diperiksa.",

@@ -59,7 +59,7 @@
     "description": "Elabora un PDF alla volta",
     "fileLabel": "Estratto conto PDF",
     "dropzone": "Scegli un PDF o trascinalo qui",
-    "dropzoneHint": "Carica un PDF che si apra normalmente, fino a 4 MB e 50 pagine. Professional ed Enterprise possono provare anche i PDF scansionati.",
+    "dropzoneHint": "Carica un PDF che si apra normalmente, fino a {megabytes, number} MB e {pages, number} pagine. Professional ed Enterprise possono provare anche i PDF scansionati.",
     "help": "Il nome del file appare dopo la selezione. Puoi rimuoverlo in qualsiasi momento.",
     "errorTitle": "Non è stato possibile completare questa operazione",
     "invalidPdf": "Il file caricato non è un PDF.",
@@ -74,7 +74,7 @@
     "status": "Pronto per il caricamento",
     "converting": "Conversione in corso",
     "start": "Converti e controlla",
-    "fileTooLarge": "Questo PDF supera i 4 MB.",
+    "fileTooLarge": "Questo PDF supera i {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Dati di account, utilizzo e fatturazione",
-      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo PayPal, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. PayPal gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel."
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo PayPal, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. PayPal gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti che hanno effettuato l’accesso, conserviamo inoltre, per ogni tentativo di analisi, l’ID dell’account, una copia dell’indirizzo e-mail, l’ora di registrazione, l’ultimo metodo di analisi selezionato, lo stato della conversione e i motivi degli errori di analisi e del ricorso a un modello di IA, per indagare sui problemi. Questi record non contengono nomi o contenuti dei file, dettagli delle transazioni o output del modello."
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Conservazione",
       "documents": "PDF, movimenti estratti e file Excel generati sono usati solo durante l'elaborazione necessaria alla conversione e al download attuali. Non vengono scritti in un database persistente, in un archivio di oggetti o nella cronologia dei file, né conservati per download successivi.",
-      "metadata": "I metadati di account, utilizzo e fatturazione sono conservati solo per il tempo necessario al servizio o agli obblighi legali applicabili. Quando non servono più, vengono eliminati o anonimizzati secondo il sistema e i requisiti di legge. L'email dell'account registrata all'acquisto fa parte del registro dell'abbonamento."
+      "metadata": "I metadati di account, utilizzo e fatturazione sono conservati solo per il tempo necessario al servizio o agli obblighi legali applicabili. Quando non servono più, vengono eliminati o anonimizzati secondo il sistema e i requisiti di legge. L'email dell'account registrata all'acquisto fa parte del registro dell'abbonamento. I metadati operativi di analisi seguono gli stessi principi di conservazione; i record di analisi associati vengono eliminati quando l’account viene eliminato."
     },
     "providers": {
       "title": "Fornitori e trattamento internazionale",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "Non è stato possibile raggiungere il servizio di conversione.",
     "QUOTA_EXCEEDED": "Questo PDF contiene più pagine di quante ne puoi ancora convertire.",
     "QUOTA_UNAVAILABLE": "Non è stato possibile determinare la quota di conversione disponibile.",
-    "FILE_TOO_LARGE": "Questo PDF supera i 4 MB.",
+    "FILE_TOO_LARGE": "Questo PDF supera i {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Il file caricato non è un PDF.",
     "INVALID_PDF": "Questo file non è un PDF leggibile.",
     "PASSWORD_PROTECTED_PDF": "I PDF protetti da password non possono essere convertiti.",
-    "TOO_MANY_PAGES": "Questo PDF contiene più di 50 pagine.",
+    "TOO_MANY_PAGES": "Questo PDF contiene più di {pages, number} pagine.",
     "UNSUPPORTED_SCANNED_PDF": "Non è stato possibile estrarre testo da questo PDF, quindi non può essere convertito.",
     "TABLE_NOT_FOUND": "Nessuna tabella utilizzabile trovata nell'estratto conto.",
     "NO_VERIFIABLE_TRANSACTIONS": "Non è stata trovata alcuna riga di transazione con data, descrizione e importo tutti verificabili.",

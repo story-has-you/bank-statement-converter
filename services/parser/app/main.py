@@ -11,7 +11,8 @@ from fastapi.responses import JSONResponse
 
 from .convert import parse_statement
 from .models import ErrorResponse, ParseResponse
-from .pdf_reader import MAX_FILE_BYTES, ParserError
+from .config import MAX_FILE_BYTES
+from .pdf_reader import ParserError
 
 app = FastAPI(title="Bank Statement Parser")
 logger = logging.getLogger(__name__)

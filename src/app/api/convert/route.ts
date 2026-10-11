@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+import { maxUploadBytes } from "@/config/conversion";
 import { createConversionResponse, errorResponse } from "@/lib/conversion/response";
 import { canUseQwen } from "@/lib/conversion/parser";
 import {
@@ -21,7 +22,6 @@ import { getRequestLocale } from "@/i18n/locale";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
-const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 const ANONYMOUS_COOKIE = "bank-statement-converter-anonymous";
 async function setAnonymousCookie(
@@ -94,7 +94,7 @@ export async function POST(request: Request): Promise<Response> {
   if (entry.size === 0) {
     return errorResponse("EMPTY_FILE", 400, locale);
   }
-  if (entry.size > MAX_UPLOAD_BYTES) {
+  if (entry.size > maxUploadBytes) {
     return errorResponse("FILE_TOO_LARGE", 413, locale);
   }
 

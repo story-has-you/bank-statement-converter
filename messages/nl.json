@@ -59,7 +59,7 @@
     "description": "Verwerk één PDF tegelijk",
     "fileLabel": "Bankafschrift in PDF",
     "dropzone": "Kies een PDF of sleep die hierheen",
-    "dropzoneHint": "Upload een PDF die normaal opent, maximaal 4 MB en 50 pagina’s. Professional en Enterprise kunnen ook gescande PDF’s proberen.",
+    "dropzoneHint": "Upload een PDF die normaal opent, maximaal {megabytes, number} MB en {pages, number} pagina’s. Professional en Enterprise kunnen ook gescande PDF’s proberen.",
     "help": "Na het kiezen verschijnt de bestandsnaam. Je kunt het bestand op elk moment verwijderen.",
     "errorTitle": "Deze handeling kon niet worden voltooid",
     "invalidPdf": "Het geüploade bestand is geen PDF.",
@@ -74,7 +74,7 @@
     "status": "Klaar om te uploaden",
     "converting": "Bezig met converteren",
     "start": "Converteren en controleren",
-    "fileTooLarge": "Deze PDF is groter dan 4 MB.",
+    "fileTooLarge": "Deze PDF is groter dan {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, PayPal-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. PayPal verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, PayPal-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. PayPal verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Bewaartermijnen",
       "documents": "PDF's, uitgelezen transacties en gegenereerde Excel-bestanden worden alleen gebruikt tijdens de verwerking voor de huidige conversie en download. Ze worden niet opgeslagen in een permanente database, objectopslag of bestandsarchief en worden niet bewaard voor latere downloads.",
-      "metadata": "Account-, tegoed- en factuurmetadata worden alleen bewaard zolang dat nodig is voor de dienst of wettelijke verplichtingen. Wanneer ze niet meer nodig zijn, worden ze verwijderd of geanonimiseerd volgens het systeem en de wettelijke eisen. Het e-mailadres van het account bij aankoop maakt deel uit van de abonnementsregistratie."
+      "metadata": "Account-, tegoed- en factuurmetadata worden alleen bewaard zolang dat nodig is voor de dienst of wettelijke verplichtingen. Wanneer ze niet meer nodig zijn, worden ze verwijderd of geanonimiseerd volgens het systeem en de wettelijke eisen. Het e-mailadres van het account bij aankoop maakt deel uit van de abonnementsregistratie. Voor operationele parsemetadata gelden dezelfde bewaarbeginselen; bij het verwijderen van het account worden ook de bijbehorende parserecords verwijderd."
     },
     "providers": {
       "title": "Dienstverleners en internationale verwerking",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
     "QUOTA_EXCEEDED": "Deze PDF bevat meer pagina's dan je nog kunt converteren.",
     "QUOTA_UNAVAILABLE": "Je beschikbare conversietegoed kon niet worden bepaald.",
-    "FILE_TOO_LARGE": "Deze PDF is groter dan 4 MB.",
+    "FILE_TOO_LARGE": "Deze PDF is groter dan {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Het geüploade bestand is geen PDF.",
     "INVALID_PDF": "Dit bestand is geen leesbare PDF.",
     "PASSWORD_PROTECTED_PDF": "PDF's met een wachtwoord kunnen niet worden geconverteerd.",
-    "TOO_MANY_PAGES": "Deze PDF bevat meer dan 50 pagina’s.",
+    "TOO_MANY_PAGES": "Deze PDF bevat meer dan {pages, number} pagina’s.",
     "UNSUPPORTED_SCANNED_PDF": "Er kon geen tekst uit deze PDF worden gehaald, waardoor conversie niet mogelijk is.",
     "TABLE_NOT_FOUND": "Geen bruikbare bankafschrifttabel gevonden.",
     "NO_VERIFIABLE_TRANSACTIONS": "Er is geen transactierij gevonden waarvan de datum, omschrijving en het bedrag allemaal controleerbaar zijn.",

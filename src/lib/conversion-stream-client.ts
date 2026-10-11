@@ -1,3 +1,5 @@
+import { conversionLimits } from "@/config/conversion";
+
 import { isPreviewTable, type ConversionStage } from "@/lib/conversion-events";
 import {
   isParseResponse,
@@ -142,7 +144,7 @@ export async function readConversionStream(
       if (
         !isParseResponse(candidate) ||
         candidate.pageCount < 1 ||
-        candidate.pageCount > 50 ||
+        candidate.pageCount > conversionLimits.pages ||
         candidate.summary.status === "failed" ||
         candidate.summary.validRowCount + candidate.summary.warningRowCount ===
           0

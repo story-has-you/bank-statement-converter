@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "r
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 
+import { conversionLimits, maxUploadBytes } from "@/config/conversion";
 import { useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -15,7 +16,6 @@ import { useConversion } from "@/components/conversion/conversion-provider";
 import { clearConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
-const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
@@ -67,7 +67,7 @@ export function PdfUpload() {
       return;
     }
 
-    if (candidate.size === 0 || candidate.size > MAX_UPLOAD_BYTES) {
+    if (candidate.size === 0 || candidate.size > maxUploadBytes) {
       setFile(null);
       setError(candidate.size === 0 ? "emptyFile" : "fileTooLarge");
       if (inputRef.current) inputRef.current.value = "";
@@ -151,7 +151,7 @@ export function PdfUpload() {
               <UploadIcon className="size-5" aria-hidden="true" />
             </span>
             <span className="text-sm font-medium">{t("dropzone")}</span>
-            <span className="text-xs font-normal text-muted-foreground">{t("dropzoneHint")}</span>
+            <span className="text-xs font-normal text-muted-foreground">{t("dropzoneHint", conversionLimits)}</span>
           </button>
           <Input
             ref={inputRef}
@@ -172,7 +172,7 @@ export function PdfUpload() {
         <Alert variant="destructive" className="mt-4">
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("errorTitle")}</AlertTitle>
-          <AlertDescription>{t(error)}</AlertDescription>
+          <AlertDescription>{t(error, conversionLimits)}</AlertDescription>
         </Alert>
       )}
 

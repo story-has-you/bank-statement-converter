@@ -59,7 +59,7 @@
     "description": "一次处理一份 PDF",
     "fileLabel": "银行流水 PDF",
     "dropzone": "选择 PDF，或拖放到这里",
-    "dropzoneHint": "上传可正常打开的 PDF，最多 4 MB、50 页。专业和企业套餐可尝试转换扫描件。",
+    "dropzoneHint": "上传可正常打开的 PDF，最多 {megabytes, number} MB、{pages, number} 页。专业和企业套餐可尝试转换扫描件。",
     "help": "选择后会显示文件名，可随时移除。",
     "errorTitle": "本次操作未完成",
     "invalidPdf": "上传的文件不是 PDF。",
@@ -74,7 +74,7 @@
     "status": "可以上传",
     "converting": "正在处理",
     "start": "转换并查看结果",
-    "fileTooLarge": "这份 PDF 的大小超过了 4 MB。",
+    "fileTooLarge": "这份 PDF 的大小超过了 {megabytes, number} MB。",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "账号、额度与计费信息",
-      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、PayPal 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。PayPal 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。"
+      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、PayPal 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。PayPal 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。 对已登录用户，我们还会保存每次解析尝试的账号 ID、邮箱快照、记录时间、最后选择的解析方式、转换状态，以及解析失败和大模型回退的原因，用于排查故障。这些记录不包含文件名、文件内容、流水明细或模型输出。"
     },
     "technicalData": {
       "title": "必要的技术信息",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "保存期限",
       "documents": "PDF、提取的流水明细和生成的 Excel 只在本次转换及下载所需的处理过程中使用，不写入持久化数据库、对象存储或文件历史。处理结束后，不保留可供再次下载的文件。",
-      "metadata": "账号、额度及计费元数据只在提供相关服务或履行适用法律义务所需的期限内保留；达到目的后按实际系统和法律要求删除或匿名化。购买时保存的账号邮箱属于订阅记录的一部分。"
+      "metadata": "账号、额度及计费元数据只在提供相关服务或履行适用法律义务所需的期限内保留；达到目的后按实际系统和法律要求删除或匿名化。购买时保存的账号邮箱属于订阅记录的一部分。 解析运维元数据也按上述原则保留；删除账号时，关联的解析记录会一并删除。"
     },
     "providers": {
       "title": "服务提供方与跨境处理",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "无法连接转换服务。",
     "QUOTA_EXCEEDED": "这份 PDF 的页数超过了剩余可转换页数。",
     "QUOTA_UNAVAILABLE": "未能确认当前可用的转换额度。",
-    "FILE_TOO_LARGE": "这份 PDF 的大小超过了 4 MB。",
+    "FILE_TOO_LARGE": "这份 PDF 的大小超过了 {megabytes, number} MB。",
     "INVALID_FILE_TYPE": "上传的文件不是 PDF。",
     "INVALID_PDF": "这不是可读取的有效 PDF。",
     "PASSWORD_PROTECTED_PDF": "不支持需要密码的 PDF。",
-    "TOO_MANY_PAGES": "这份 PDF 的页数超过了 50 页。",
+    "TOO_MANY_PAGES": "这份 PDF 的页数超过了 {pages, number} 页。",
     "UNSUPPORTED_SCANNED_PDF": "未能从这份 PDF 中提取到文字，无法转换。",
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
     "NO_VERIFIABLE_TRANSACTIONS": "没有识别出日期、描述和金额均可核对的交易行。",

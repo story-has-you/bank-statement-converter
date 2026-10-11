@@ -9,6 +9,7 @@ from typing import Literal
 import pypdfium2 as pdfium
 from pydantic import Field
 
+from .config import MAX_PAGE_COUNT
 from .models import ParserModel
 from .pdf_reader import ParserError, filter_watermark_page, open_text_pdf, validate_pdf_input
 
@@ -30,7 +31,7 @@ class ImagePage(ParserModel):
 
 class ModelInputResponse(ParserModel):
     schema_version: Literal["1"] = Field(default="1", alias="schemaVersion")
-    page_count: int = Field(alias="pageCount", ge=1, le=50)
+    page_count: int = Field(alias="pageCount", ge=1, le=MAX_PAGE_COUNT)
     pages: list[TextPage | ImagePage]
 
 

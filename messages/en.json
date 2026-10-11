@@ -59,7 +59,7 @@
     "description": "Process one PDF at a time",
     "fileLabel": "Bank statement PDF",
     "dropzone": "Choose a PDF or drop it here",
-    "dropzoneHint": "Upload a PDF that opens normally, up to 4 MB and 50 pages. Professional and Enterprise can attempt scanned PDFs.",
+    "dropzoneHint": "Upload a PDF that opens normally, up to {megabytes, number} MB and {pages, number} pages. Professional and Enterprise can attempt scanned PDFs.",
     "help": "The filename appears here after you select a file. You can remove it at any time.",
     "errorTitle": "This operation could not be completed",
     "invalidPdf": "The uploaded file is not a PDF.",
@@ -74,7 +74,7 @@
     "status": "Ready to upload",
     "converting": "Converting",
     "start": "Convert and review",
-    "fileTooLarge": "This PDF is larger than 4 MB.",
+    "fileTooLarge": "This PDF is larger than {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, PayPal subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. PayPal handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content."
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, PayPal subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. PayPal handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we also store the account ID, email snapshot, record time, last selected parsing method, conversion status, and reasons for parsing failures and AI fallback for each parsing attempt to investigate failures. These records contain no file names, file contents, transactions, or model output."
     },
     "technicalData": {
       "title": "Necessary technical information",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Retention",
       "documents": "PDFs, extracted transactions, and generated Excel files are used during the processing required for the current conversion and download only. They are not written to a persistent database, object storage, or file history, and are not kept for later download.",
-      "metadata": "Account, quota, and billing metadata is retained only as long as needed to provide the service or meet applicable legal obligations. It is deleted or anonymized when no longer needed according to the actual system and legal requirements. The account email stored at purchase is part of the subscription record."
+      "metadata": "Account, quota, and billing metadata is retained only as long as needed to provide the service or meet applicable legal obligations. It is deleted or anonymized when no longer needed according to the actual system and legal requirements. The account email stored at purchase is part of the subscription record. Parsing operational metadata follows the same retention principles; associated parsing records are deleted when the account is deleted."
     },
     "providers": {
       "title": "Providers and international processing",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "The conversion service could not be reached.",
     "QUOTA_EXCEEDED": "This PDF has more pages than you have left to convert.",
     "QUOTA_UNAVAILABLE": "Your available conversion quota could not be determined.",
-    "FILE_TOO_LARGE": "This PDF is larger than 4 MB.",
+    "FILE_TOO_LARGE": "This PDF is larger than {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "The uploaded file is not a PDF.",
     "INVALID_PDF": "This file is not a readable PDF.",
     "PASSWORD_PROTECTED_PDF": "Password-protected PDFs cannot be converted.",
-    "TOO_MANY_PAGES": "This PDF has more than 50 pages.",
+    "TOO_MANY_PAGES": "This PDF has more than {pages, number} pages.",
     "UNSUPPORTED_SCANNED_PDF": "No text could be extracted from this PDF, so it cannot be converted.",
     "TABLE_NOT_FOUND": "No usable bank statement table was found.",
     "NO_VERIFIABLE_TRANSACTIONS": "No transaction row was found with a date, description, and amount that can all be reviewed.",

@@ -9,9 +9,7 @@ from typing import Any
 
 import pdfplumber
 
-
-MAX_FILE_BYTES = 4 * 1024 * 1024
-MAX_PAGE_COUNT = 50
+from .config import MAX_FILE_BYTES, MAX_PAGE_COUNT
 
 
 class ParserError(Exception):

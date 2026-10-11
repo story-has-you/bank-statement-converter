@@ -59,7 +59,7 @@
     "description": "Traitez un PDF à la fois",
     "fileLabel": "Relevé bancaire PDF",
     "dropzone": "Choisissez un PDF ou déposez-le ici",
-    "dropzoneHint": "Importez un PDF qui s’ouvre normalement, limité à 4 Mo et 50 pages. Professional et Enterprise peuvent aussi essayer les PDF numérisés.",
+    "dropzoneHint": "Importez un PDF qui s’ouvre normalement, limité à {megabytes, number} Mo et {pages, number} pages. Professional et Enterprise peuvent aussi essayer les PDF numérisés.",
     "help": "Le nom du fichier apparaît après la sélection. Vous pouvez retirer le fichier à tout moment.",
     "errorTitle": "Cette opération n’a pas pu être terminée",
     "invalidPdf": "Le fichier téléversé n’est pas un PDF.",
@@ -74,7 +74,7 @@
     "status": "Prêt à importer",
     "converting": "Conversion en cours",
     "start": "Convertir et vérifier",
-    "fileTooLarge": "Ce PDF dépasse 4 Mo.",
+    "fileTooLarge": "Ce PDF dépasse {megabytes, number} Mo.",
     "fileSize": {
       "bytes": "{size} o",
       "kilobytes": "{size} Ko",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
-      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement PayPal, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. PayPal gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel."
+      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement PayPal, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. PayPal gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons également, à chaque tentative d’analyse, l’identifiant du compte, un instantané de l’adresse e-mail, la date et l’heure d’enregistrement, la dernière méthode d’analyse choisie, l’état de la conversion et les raisons des échecs d’analyse ou du recours à un modèle d’IA, afin de diagnostiquer les problèmes. Ces enregistrements ne contiennent aucun nom de fichier, contenu de fichier, détail de transaction ni sortie du modèle."
     },
     "technicalData": {
       "title": "Informations techniques nécessaires",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Durée de conservation",
       "documents": "Les PDF, les transactions extraites et les fichiers Excel générés sont utilisés uniquement pendant le traitement requis pour la conversion et le téléchargement en cours. Ils ne sont pas écrits dans une base de données persistante, un stockage d'objets ou un historique de fichiers, et ne sont pas conservés pour un téléchargement ultérieur.",
-      "metadata": "Les métadonnées de compte, de quota et de facturation sont conservées uniquement le temps nécessaire au service ou aux obligations légales applicables. Lorsqu’elles ne sont plus nécessaires, elles sont supprimées ou anonymisées selon le système et les exigences légales. L’e-mail du compte enregistré lors de l’achat fait partie du dossier d’abonnement."
+      "metadata": "Les métadonnées de compte, de quota et de facturation sont conservées uniquement le temps nécessaire au service ou aux obligations légales applicables. Lorsqu’elles ne sont plus nécessaires, elles sont supprimées ou anonymisées selon le système et les exigences légales. L’e-mail du compte enregistré lors de l’achat fait partie du dossier d’abonnement. Les métadonnées opérationnelles d’analyse suivent les mêmes principes de conservation ; les enregistrements d’analyse associés sont supprimés lors de la suppression du compte."
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "Impossible de joindre le service de conversion.",
     "QUOTA_EXCEEDED": "Ce PDF contient plus de pages que vous ne pouvez encore en convertir.",
     "QUOTA_UNAVAILABLE": "Votre quota de conversion disponible n’a pas pu être déterminé.",
-    "FILE_TOO_LARGE": "Ce PDF dépasse 4 Mo.",
+    "FILE_TOO_LARGE": "Ce PDF dépasse {megabytes, number} Mo.",
     "INVALID_FILE_TYPE": "Le fichier téléversé n’est pas un PDF.",
     "INVALID_PDF": "Ce fichier n'est pas un PDF lisible.",
     "PASSWORD_PROTECTED_PDF": "Les PDF protégés par mot de passe ne peuvent pas être convertis.",
-    "TOO_MANY_PAGES": "Ce PDF contient plus de 50 pages.",
+    "TOO_MANY_PAGES": "Ce PDF contient plus de {pages, number} pages.",
     "UNSUPPORTED_SCANNED_PDF": "Aucun texte n’a pu être extrait de ce PDF, il ne peut donc pas être converti.",
     "TABLE_NOT_FOUND": "Aucun tableau de relevé bancaire utilisable n'a été trouvé.",
     "NO_VERIFIABLE_TRANSACTIONS": "Aucune ligne de transaction dont la date, la description et le montant sont tous vérifiables n’a été trouvée.",

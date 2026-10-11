@@ -59,7 +59,7 @@
     "description": "Verarbeiten Sie jeweils ein PDF",
     "fileLabel": "Kontoauszug PDF",
     "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
-    "dropzoneHint": "Laden Sie eine lesbare PDF mit höchstens 4 MB und 50 Seiten hoch. Professional und Enterprise können auch gescannte PDFs versuchen.",
+    "dropzoneHint": "Laden Sie eine lesbare PDF mit höchstens {megabytes, number} MB und {pages, number} Seiten hoch. Professional und Enterprise können auch gescannte PDFs versuchen.",
     "help": "Nach der Auswahl erscheint hier der Dateiname. Sie können die Datei jederzeit entfernen.",
     "errorTitle": "Dieser Vorgang konnte nicht abgeschlossen werden",
     "invalidPdf": "Die hochgeladene Datei ist keine PDF-Datei.",
@@ -74,7 +74,7 @@
     "status": "Bereit zum Hochladen",
     "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
-    "fileTooLarge": "Diese PDF-Datei ist größer als 4 MB.",
+    "fileTooLarge": "Diese PDF-Datei ist größer als {megabytes, number} MB.",
     "fileSize": {
       "bytes": "{size} B",
       "kilobytes": "{size} KB",
@@ -385,7 +385,7 @@
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, PayPal-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. PayPal verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte."
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, PayPal-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. PayPal verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer speichern wir zur Fehleranalyse außerdem bei jedem Parsing-Versuch die Konto-ID, einen Snapshot der E-Mail-Adresse, den Zeitpunkt der Aufzeichnung, die zuletzt gewählte Parsing-Methode, den Konvertierungsstatus sowie die Gründe für Parsing-Fehler und den Wechsel zu einem KI-Modell. Diese Datensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben."
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
@@ -398,7 +398,7 @@
     "retention": {
       "title": "Zurückbehaltung",
       "documents": "PDFs, extrahierte Transaktionen und generierte Excel-Dateien werden nur während der Verarbeitung verwendet, die für die aktuelle Konvertierung und den Download erforderlich ist. Sie werden nicht in eine persistente Datenbank, einen Objektspeicher oder einen Dateiverlauf geschrieben und nicht für einen späteren Download aufbewahrt.",
-      "metadata": "Konto-, Kontingent- und Abrechnungsmetadaten werden nur so lange aufbewahrt, wie es für die Bereitstellung des Dienstes oder die Erfüllung geltender gesetzlicher Verpflichtungen erforderlich ist. Die Löschung bzw. Anonymisierung erfolgt, wenn sie entsprechend der aktuellen Systematik und den gesetzlichen Vorgaben nicht mehr benötigt wird. Die beim Kauf gespeicherte Konto-E-Mail-Adresse ist Teil des Abonnementdatensatzes."
+      "metadata": "Konto-, Kontingent- und Abrechnungsmetadaten werden nur so lange aufbewahrt, wie es für die Bereitstellung des Dienstes oder die Erfüllung geltender gesetzlicher Verpflichtungen erforderlich ist. Die Löschung bzw. Anonymisierung erfolgt, wenn sie entsprechend der aktuellen Systematik und den gesetzlichen Vorgaben nicht mehr benötigt wird. Die beim Kauf gespeicherte Konto-E-Mail-Adresse ist Teil des Abonnementdatensatzes. Für betriebliche Parsing-Metadaten gelten dieselben Aufbewahrungsgrundsätze; zugehörige Parsing-Datensätze werden beim Löschen des Kontos ebenfalls gelöscht."
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
@@ -441,11 +441,11 @@
     "PARSER_UNAVAILABLE": "Der Konvertierungsdienst konnte nicht erreicht werden.",
     "QUOTA_EXCEEDED": "Diese PDF-Datei enthält mehr Seiten, als Sie noch konvertieren können.",
     "QUOTA_UNAVAILABLE": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
-    "FILE_TOO_LARGE": "Diese PDF-Datei ist größer als 4 MB.",
+    "FILE_TOO_LARGE": "Diese PDF-Datei ist größer als {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Die hochgeladene Datei ist keine PDF-Datei.",
     "INVALID_PDF": "Diese Datei ist kein lesbares PDF.",
     "PASSWORD_PROTECTED_PDF": "Passwortgeschützte PDFs können nicht konvertiert werden.",
-    "TOO_MANY_PAGES": "Diese PDF-Datei enthält mehr als 50 Seiten.",
+    "TOO_MANY_PAGES": "Diese PDF-Datei enthält mehr als {pages, number} Seiten.",
     "UNSUPPORTED_SCANNED_PDF": "Aus dieser PDF-Datei konnte kein Text extrahiert werden, daher kann sie nicht konvertiert werden.",
     "TABLE_NOT_FOUND": "Es wurde keine verwendbare Kontoauszugstabelle gefunden.",
     "NO_VERIFIABLE_TRANSACTIONS": "Es wurde keine Transaktionszeile gefunden, deren Datum, Beschreibung und Betrag überprüfbar sind.",
