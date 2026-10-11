@@ -7,7 +7,7 @@ import { usageQuotaConfig } from "@/lib/usage/config";
 export const getHomeFaq = cache(async (locale: AppLocale) => {
   const t = await getTranslations({ locale, namespace: "HomeFaq" });
   const quota = usageQuotaConfig;
-  return (["banks", "accuracy", "quota", "scans", "storage", "failure"] as const).map((id) => ({
+  return (["banks", "accuracy", "quota", "scans", "ai", "storage", "failure"] as const).map((id) => ({
     id,
     question: t(`${id}.question`),
     answer: id === "quota" ? t("quota.answer", {

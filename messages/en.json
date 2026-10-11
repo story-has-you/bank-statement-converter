@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF to Excel",
-    "description": "Upload a bank statement PDF, watch the tables appear, review the result, then download Excel. Your file is used only for this conversion.",
-    "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction",
+    "description": "Convert bank statement PDFs to Excel with previews and risk flags. Professional and Enterprise can attempt scans with AI fallback. No persistent file history.",
+    "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction, AI bank statement parsing, scanned bank statement PDF to Excel",
     "brand": "Bank Statement Converter",
     "alternateName": "Bank statement PDF to Excel converter"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Convert your bank statement PDF to Excel",
-    "description": "Upload a bank statement PDF, watch the tables appear, review the result, then download Excel. Your file is used only for this conversion."
+    "description": "Convert bank statement PDFs to Excel with previews and risk flags. Professional and Enterprise can attempt scans with AI fallback. No persistent file history."
   },
   "PdfUpload": {
     "title": "Upload a bank statement",
@@ -86,7 +86,7 @@
     "emptyFile": "The uploaded PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "For Professional and Enterprise, PDFs are sent to Qwen when regular parsing is unavailable. Qwen processing is subject to its terms and privacy policy; this website does not retain files or transactions as persistent history."
+    "aiNotice": "For Professional and Enterprise, if regular parsing fails, is unavailable or yields no reviewable transactions, the complete PDF and its filename are sent to the AI parsing provider under its terms and privacy policy. This website does not persist conversion content; provider retention and use follow its policies."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "What can this converter do?",
     "securityTitle": "Are my PDF, Excel file, or transactions saved?",
-    "securityDescription": "The server does not keep statement files or transactions as persistent history; check the result against your original PDF.",
+    "securityDescription": "This website keeps no persistent history of PDFs, Excel files or transactions. Higher-tier fallback sends the PDF to the AI parsing provider. Check results against the original PDF.",
     "banksTitle": "Does Excel keep the statement layout?",
     "banksDescription": "The converter reads table headers and cell text from the PDF and displays them in tables so you can compare them with the original.",
     "accuracyTitle": "Why should I review the conversion result?",
@@ -227,7 +227,7 @@
         "description": "For users who need to convert more pages each month."
       }
     },
-    "aiParsing": "Automatic AI fallback, including scanned PDFs",
+    "aiParsing": "Automatic AI fallback; can attempt scanned PDFs",
     "textParsing": "Text-based PDF parsing"
   },
   "PayPal": {
@@ -301,6 +301,10 @@
     "failure": {
       "question": "What happens if conversion fails?",
       "answer": "If conversion fails, the page shows an error and does not offer an invalid Excel file. Failed conversions do not use quota. Partial results use quota based on the PDF page count."
+    },
+    "ai": {
+      "question": "When is AI parsing used?",
+      "answer": "Every conversion starts with regular parsing. Only Professional and Enterprise with a valid entitlement fall back to AI parsing when regular parsing fails, is unavailable or yields no reviewable transactions. Usable partial results do not trigger fallback. Fallback sends the complete PDF and its filename to the AI parsing provider; see the privacy policy for processing details. Scans and AI results still require checking against the original."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Privacy policy"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 2, 2026"
+    "lastUpdated": "Last updated: October 11, 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "PDF to Excel conversion and PayPal subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
     "service": {
       "title": "Service scope",
-      "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice."
+      "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice. Regular parsing runs first. Professional and Enterprise with a valid entitlement can fall back automatically to the AI parsing provider when regular parsing fails, is unavailable or yields no reviewable transactions, including attempts to convert scans. Usable partial results do not trigger fallback."
     },
     "authorization": {
       "title": "Authorization to upload files",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Reviewing conversion results",
-      "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision."
+      "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision. AI parsing and scan conversion may also produce errors or omissions. Tables shown during generation are temporary previews; passing final validation does not guarantee complete accuracy."
     },
     "quota": {
       "title": "Conversion quotas",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Privacy policy | Bank Statement Converter",
-      "description": "Learn how Bank Statement Converter handles bank statements, accounts, usage quotas, and billing information."
+      "description": "How bank statements, AI parsing, temporary browser results, and account, parsing operations, quota and billing data are processed."
     },
     "title": "Privacy policy",
     "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and PayPal subscription services.",
     "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and PayPal subscription features.",
     "documents": {
       "title": "Bank statements and conversion content",
-      "body": "Uploaded PDFs may contain names, account numbers, transaction dates, amounts, balances, and transaction descriptions. When conversion is available, we process the PDF, extracted transactions, and generated Excel file only to complete your requested conversion and download. We do not use this content for advertising or unrelated purposes."
+      "body": "Your PDF may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. We process PDFs, extracted transactions and export content only to complete your requested conversion and download, not for advertising or unrelated purposes. Third-party processing during AI fallback is explained below."
     },
     "accountData": {
       "title": "Account, quota, and billing information",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Retention",
-      "documents": "PDFs, extracted transactions, and generated Excel files are used during the processing required for the current conversion and download only. They are not written to a persistent database, object storage, or file history, and are not kept for later download.",
+      "documents": "This website uses PDFs, extracted transactions and generated export content only for the current conversion and download, without writing them to a persistent database, object storage or file history. No files are kept for later downloads after processing. Data received by the AI parsing provider is subject to its own retention and processing rules.",
       "metadata": "Account, quota, and billing metadata is retained only as long as needed to provide the service or meet applicable legal obligations. It is deleted or anonymized when no longer needed according to the actual system and legal requirements. The account email stored at purchase is part of the subscription record. Parsing operational metadata follows the same retention principles; associated parsing records are deleted when the account is deleted."
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. For Professional and Enterprise, PDFs are sent to Qwen when regular parsing is unavailable. Qwen processing is subject to its terms and privacy policy; this website does not retain files or transactions as persistent history."
+      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use PayPal. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. PayPal may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
     },
     "storage": {
       "title": "Browser storage",
-      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings."
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history."
     },
     "security": {
       "title": "Information security",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Contact us",
       "body": "For questions about information processing or to exercise applicable privacy rights, contact ReAvid Ltd at <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "AI parsing and third-party processing",
+      "body": "Professional and Enterprise with a valid entitlement start with regular parsing. If it fails, is unavailable or yields no reviewable transactions, the system automatically sends the complete PDF and its filename to the AI parsing provider to extract transactions for this conversion, including attempts to process scans. Usable partial results do not trigger fallback. Files may contain sensitive names, account numbers and transactions. Processing by the AI parsing provider is governed by its terms and privacy policy. This website does not retain PDFs, extracted transactions, model output or export content as persistent history. This boundary does not mean the AI parsing provider retains no data; we make no additional guarantee about its retention periods or use of data for model training."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "Usage for this conversion could not be recorded.",
     "QUOTA_PERIOD_UNAVAILABLE": "The subscription billing period is invalid, so conversion quota could not be determined.",
     "PARSER_AUTH_NOT_CONFIGURED": "The conversion service has not been configured.",
-    "QWEN_NOT_CONFIGURED": "The conversion service has not been configured.",
-    "QWEN_UNAVAILABLE": "The conversion service could not be reached.",
-    "QWEN_TIMEOUT": "The conversion request timed out.",
-    "INVALID_QWEN_RESPONSE": "The conversion service returned data in an invalid format.",
-    "QWEN_RESPONSE_TOO_LARGE": "The conversion result exceeds the response size limit.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "A valid PDF page count was not returned. The conversion cannot be completed.",
-    "QWEN_INCOMPLETE_RESPONSE": "The AI output ended before the conversion was complete. No pages were deducted. Please try a shorter PDF."
+    "LLM_NOT_CONFIGURED": "The conversion service has not been configured.",
+    "LLM_UNAVAILABLE": "The conversion service could not be reached.",
+    "LLM_TIMEOUT": "The conversion request timed out.",
+    "INVALID_LLM_RESPONSE": "The conversion service returned data in an invalid format.",
+    "LLM_RESPONSE_TOO_LARGE": "The conversion result exceeds the response size limit.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "A valid PDF page count was not returned. The conversion cannot be completed.",
+    "LLM_INCOMPLETE_RESPONSE": "The AI output ended before the conversion was complete. No pages were deducted. Please try a shorter PDF."
   },
   "Account": {
     "title": "My account",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "At a glance",
-    "conversionSummary": "Bank Statement Converter turns text-based bank statement PDFs into Excel files for review.",
-    "limitsSummary": "Upload one text-based PDF of up to {megabytes} MB and {pages} pages; scanned and password-protected PDFs are not supported.",
+    "conversionSummary": "Bank Statement Converter turns bank statement PDFs into Excel for review; Professional and Enterprise can attempt scanned PDFs with AI fallback.",
+    "limitsSummary": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
     "quotaSummary": "Convert {anonymousPages} page per day anonymously or {authenticatedPages} pages when signed in; monthly plans start at {price} USD.",
-    "privacySummary": "The server does not keep statement files or transactions as persistent history; check the result against your original PDF.",
-    "featuresAnswer": "This converter organizes statement tables into Excel. Upload a text-based PDF and review the extracted rows before using them.",
+    "privacySummary": "This website keeps no persistent history of PDFs, Excel files or transactions. Higher-tier fallback sends the PDF to the AI parsing provider. Check results against the original PDF.",
+    "featuresAnswer": "Regular parsing runs first. Professional and Enterprise fall back to AI parsing if regular parsing fails, is unavailable or produces no reviewable transactions. Usable partial results are kept without fallback. AI tables can be previewed as they appear; downloads require final validation, and results still need checking against the PDF.",
     "riskTitle": "What do the risk labels mean?",
     "riskAnswer": "Risk labels describe the evidence available for each extracted row. Compare flagged rows with the original PDF before using the result.",
     "okDefinition": "No issue was detected; this does not guarantee accuracy or completeness.",
     "discrepancyDefinition": "Evidence conflicts or a review issue was detected.",
     "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
     "limitsTitle": "Which PDFs can I upload?",
-    "limitsAnswer": "Only text-based bank statement PDFs of up to {megabytes} MB and {pages} pages are accepted. Export an unencrypted PDF with selectable text.",
+    "limitsAnswer": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
     "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through PayPal.",
     "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
     "planHeader": "Plan",
@@ -576,6 +584,7 @@
     "prompt": "Visit the official Bank Statement Converter information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
     "showPrompt": "View the default prompt",
     "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and PayPal.",
-    "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services."
+    "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
+    "parsingHeader": "Parsing capability"
   }
 }

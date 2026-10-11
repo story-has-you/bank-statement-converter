@@ -30,6 +30,10 @@ export function PrivacyContent() {
         <p>{t("documents.body")}</p>
       </LegalSection>
 
+      <LegalSection id="ai-parsing" title={t("aiParsing.title")}>
+        <p>{t("aiParsing.body")}</p>
+      </LegalSection>
+
       <LegalSection id="account-data" title={t("accountData.title")}>
         <p>{t("accountData.body")}</p>
       </LegalSection>

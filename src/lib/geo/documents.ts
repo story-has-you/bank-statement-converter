@@ -58,18 +58,19 @@ export async function getAgentDocumentResponse(
         .join("\n\n"),
     "pricing.md":
       `## ${c.pricing.title}\n\n${c.pricing.answer}\n\n` +
-      `| ${c.pricing.headers.map(tableCell).join(" | ")} |\n| --- | --- | --- | --- |\n` +
+      `| ${c.pricing.headers.map(tableCell).join(" | ")} |\n| ${c.pricing.headers.map(() => "---").join(" | ")} |\n` +
       c.pricing.rows
         .map(
           (row) =>
-            `| ${[row.name, row.formattedPrice, row.pages, row.period].map(tableCell).join(" | ")} |`,
+            `| ${[row.name, row.formattedPrice, row.pages, row.period, row.parsing].map(tableCell).join(" | ")} |`,
         )
         .join("\n") +
       `\n\n${c.pricing.note}`,
     "privacy.md":
       `## ${c.privacy.title}\n\n${c.privacy.answer}\n\n${c.privacy.documents}\n\n` +
+      `## ${c.privacy.aiTitle}\n\n${c.privacy.aiAnswer}\n\n` +
       `## ${c.privacy.browserTitle}\n\n${c.privacy.browserAnswer}\n\n` +
-      `## ${c.privacy.metadataTitle}\n\n${c.privacy.metadataAnswer}\n\n${c.privacy.technicalData}`,
+      `## ${c.privacy.metadataTitle}\n\n${c.privacy.metadataAnswer}\n\n${c.privacy.metadataRetention}\n\n${c.privacy.technicalData}`,
     "site.md":
       `## ${c.site.title}\n\n${c.site.answer}\n\n` +
       c.site.links.map((link) => `- [${link.name}](${link.href})`).join("\n") +

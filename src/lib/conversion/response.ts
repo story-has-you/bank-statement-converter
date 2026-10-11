@@ -17,8 +17,9 @@ async function errorPayload(
   quota?: Omit<ConversionErrorPayload, "code" | "message">,
 ): Promise<ConversionErrorPayload> {
   const t = await getTranslations({ locale, namespace: "ApiErrors" });
-  const key: ApiErrorCode = t.has(code as ApiErrorCode) ? code as ApiErrorCode : "UNKNOWN";
-  return { code, message: t(key, conversionLimits), ...quota };
+  const publicCode = code.replaceAll("QWEN", "LLM");
+  const key: ApiErrorCode = t.has(publicCode as ApiErrorCode) ? publicCode as ApiErrorCode : "UNKNOWN";
+  return { code: publicCode, message: t(key, conversionLimits), ...quota };
 }
 
 export async function errorResponse(

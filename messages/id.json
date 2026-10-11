@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF ke Excel",
-    "description": "Unggah laporan bank PDF, lihat tabel muncul secara bertahap, periksa hasilnya, lalu unduh Excel. Berkas hanya digunakan untuk konversi ini.",
-    "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank",
+    "description": "Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI cadangan. Tanpa riwayat berkas permanen.",
+    "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank, analisis AI rekening koran, PDF rekening koran hasil pindai ke Excel",
     "brand": "Bank Statement Converter",
     "alternateName": "Konverter rekening koran PDF ke Excel"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
     "title": "Ubah rekening koran PDF menjadi Excel",
-    "description": "Unggah laporan bank PDF, lihat tabel muncul secara bertahap, periksa hasilnya, lalu unduh Excel. Berkas hanya digunakan untuk konversi ini."
+    "description": "Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI cadangan. Tanpa riwayat berkas permanen."
   },
   "PdfUpload": {
     "title": "Unggah rekening koran",
@@ -86,7 +86,7 @@
     "emptyFile": "Berkas PDF yang diunggah kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
     "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
-    "aiNotice": "Untuk Professional dan Enterprise, PDF dikirim ke Qwen jika penguraian biasa tidak tersedia. Pemrosesan tersebut tunduk pada ketentuan dan kebijakan privasi Qwen. Situs ini tidak menyimpan berkas atau transaksi sebagai riwayat permanen."
+    "aiNotice": "Untuk Professional dan Enterprise, jika penguraian biasa gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, PDF lengkap dan nama berkas dikirim ke penyedia penguraian AI berdasarkan ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan isi konversi secara permanen; retensi dan penggunaan oleh penyedia mengikuti kebijakannya."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "Apa yang dapat dilakukan konverter ini?",
     "securityTitle": "Apakah PDF, Excel, atau transaksi saya disimpan?",
-    "securityDescription": "Server tidak menyimpan berkas atau transaksi sebagai riwayat permanen; cocokkan hasil dengan PDF asli.",
+    "securityDescription": "Situs ini tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Saat paket tingkat atas beralih ke AI, PDF dikirim ke penyedia penguraian AI. Periksa hasil dengan PDF asli.",
     "banksTitle": "Apakah Excel mempertahankan struktur tabel?",
     "banksDescription": "Konverter membaca judul kolom dan teks sel dari PDF, lalu menampilkannya sebagai tabel agar dapat dibandingkan dengan aslinya.",
     "accuracyTitle": "Mengapa hasil perlu diperiksa?",
@@ -227,7 +227,7 @@
         "description": "Untuk pengguna yang perlu mengonversi lebih banyak halaman setiap bulan."
       }
     },
-    "aiParsing": "Alternatif AI otomatis, termasuk PDF hasil pindai",
+    "aiParsing": "AI cadangan otomatis; dapat mencoba PDF hasil pindai",
     "textParsing": "Penguraian PDF berbasis teks"
   },
   "PayPal": {
@@ -301,6 +301,10 @@
     "failure": {
       "question": "Apa yang terjadi jika konversi gagal?",
       "answer": "Halaman menampilkan kesalahan dan tidak menyediakan Excel yang tidak valid. Konversi gagal tidak memakai kuota. Hasil sebagian memakai kuota berdasarkan jumlah halaman PDF."
+    },
+    "ai": {
+      "question": "Kapan penguraian AI digunakan?",
+      "answer": "Setiap konversi dimulai dengan penguraian biasa. Hanya Professional dan Enterprise dengan hak penggunaan yang masih berlaku beralih otomatis ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa. Hasil sebagian yang berguna tidak memicu peralihan. PDF lengkap dan nama berkas dikirim ke penyedia penguraian AI; lihat kebijakan privasi. Hasil pindai dan AI tetap perlu diperiksa dengan berkas asli."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Kebijakan privasi"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 2 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 11 Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "Konversi PDF ke Excel dan langganan PayPal disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
     "service": {
       "title": "Cakupan layanan",
-      "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum."
+      "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum. Penguraian biasa dijalankan terlebih dahulu. Professional dan Enterprise dengan hak penggunaan yang masih berlaku dapat beralih otomatis ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, termasuk mencoba mengonversi hasil pindai. Hasil sebagian yang berguna tidak memicu peralihan."
     },
     "authorization": {
       "title": "Izin mengunggah berkas",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Memeriksa hasil konversi",
-      "body": "Tata letak, kejelasan, dan isi rekening koran dapat memengaruhi ekstraksi. Hasil dapat memuat kolom yang hilang, ganda, atau salah dikenali. Bandingkan Excel dengan rekening koran asli sebelum pembukuan, pelaporan, pengajuan dokumen, atau keputusan lain."
+      "body": "Tata letak, kejelasan, dan isi rekening koran dapat memengaruhi ekstraksi. Hasil dapat memuat kolom yang hilang, ganda, atau salah dikenali. Bandingkan Excel dengan rekening koran asli sebelum pembukuan, pelaporan, pengajuan dokumen, atau keputusan lain. Penguraian AI dan konversi hasil pindai juga dapat menghasilkan kesalahan atau kelalaian. Tabel yang ditampilkan saat dibuat adalah pratinjau sementara; lolos validasi akhir tidak menjamin ketepatan penuh."
     },
     "quota": {
       "title": "Kuota konversi",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Kebijakan privasi | Bank Statement Converter",
-      "description": "Pelajari cara Bank Statement Converter menangani rekening koran, akun, kuota, dan informasi tagihan."
+      "description": "Pemrosesan rekening koran, penguraian AI, hasil sementara di browser, serta data akun, operasional penguraian, kuota, dan penagihan."
     },
     "title": "Kebijakan privasi",
     "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan PayPal.",
     "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan PayPal yang tersedia saat ini.",
     "documents": {
       "title": "Rekening koran dan isi konversi",
-      "body": "PDF yang diunggah dapat memuat nama, nomor rekening, tanggal, jumlah, saldo, dan deskripsi transaksi. Saat konversi tersedia, kami memproses PDF, transaksi hasil ekstraksi, dan Excel hanya untuk konversi dan unduhan yang diminta. Kami tidak menggunakannya untuk iklan atau tujuan lain yang tidak terkait."
+      "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Pemrosesan pihak ketiga saat beralih ke AI dijelaskan di bawah."
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Penyimpanan",
-      "documents": "PDF, transaksi hasil ekstraksi, dan Excel hanya digunakan selama pemrosesan yang diperlukan untuk konversi dan unduhan saat ini. Data tidak ditulis ke basis data permanen, penyimpanan objek, atau riwayat berkas, dan tidak disimpan untuk unduhan berikutnya.",
+      "documents": "Situs ini menggunakan PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan saat ini, tanpa menuliskannya ke basis data permanen, penyimpanan objek, atau riwayat berkas. Setelah pemrosesan, tidak ada berkas yang disimpan untuk unduhan berikutnya. Data yang diterima penyedia penguraian AI tunduk pada aturan retensi dan pemrosesannya sendiri.",
       "metadata": "Metadata akun, kuota, dan tagihan disimpan hanya selama diperlukan untuk layanan atau kewajiban hukum. Saat tidak diperlukan lagi, data dihapus atau dianonimkan sesuai sistem dan persyaratan hukum. Email akun saat pembelian merupakan bagian dari catatan langganan. Metadata operasional parsing mengikuti prinsip penyimpanan yang sama; catatan parsing terkait dihapus saat akun dihapus."
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Untuk Professional dan Enterprise, PDF dikirim ke Qwen jika penguraian biasa tidak tersedia. Pemrosesan tersebut tunduk pada ketentuan dan kebijakan privasi Qwen. Situs ini tidak menyimpan berkas atau transaksi sebagai riwayat permanen."
+      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
     },
     "storage": {
       "title": "Penyimpanan browser",
-      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser."
+      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser. Alur konversi saat ini juga menyimpan sementara nama berkas dan hasil ekstraksi dalam penyimpanan sesi browser untuk pratinjau dan unduhan. Ini bukan riwayat berkas permanen di server."
     },
     "security": {
       "title": "Keamanan informasi",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Kontak",
       "body": "Untuk pertanyaan tentang pemrosesan informasi atau menjalankan hak privasi yang berlaku, hubungi ReAvid Ltd di <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "Penguraian AI dan pemrosesan pihak ketiga",
+      "body": "Professional dan Enterprise dengan hak penggunaan yang masih berlaku memulai dengan penguraian biasa. Jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, sistem otomatis mengirim PDF lengkap dan nama berkas ke penyedia penguraian AI untuk mengekstrak transaksi pada konversi ini, termasuk mencoba memproses hasil pindai. Hasil sebagian yang berguna tidak memicu peralihan. Berkas dapat berisi nama, nomor rekening, dan transaksi yang sensitif. Pemrosesan penyedia penguraian AI tunduk pada ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan PDF, transaksi yang diekstrak, keluaran model, atau isi ekspor sebagai riwayat permanen. Ini tidak berarti penyedia penguraian AI tidak menyimpan data; kami tidak memberi jaminan tambahan tentang masa retensi atau penggunaan data untuk pelatihan model oleh penyedia penguraian AI."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "Penggunaan untuk konversi ini tidak dapat dicatat.",
     "QUOTA_PERIOD_UNAVAILABLE": "Periode penagihan langganan tidak valid, sehingga kuota konversi tidak dapat ditentukan.",
     "PARSER_AUTH_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
-    "QWEN_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
-    "QWEN_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
-    "QWEN_TIMEOUT": "Permintaan konversi melewati batas waktu.",
-    "INVALID_QWEN_RESPONSE": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
-    "QWEN_RESPONSE_TOO_LARGE": "Hasil konversi melebihi batas ukuran respons.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "Jumlah halaman PDF yang valid tidak diterima. Konversi tidak dapat diselesaikan.",
-    "QWEN_INCOMPLETE_RESPONSE": "Keluaran AI berakhir sebelum konversi selesai. Tidak ada halaman yang dikurangi. Coba PDF yang lebih pendek."
+    "LLM_NOT_CONFIGURED": "Layanan konversi belum dikonfigurasi.",
+    "LLM_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
+    "LLM_TIMEOUT": "Permintaan konversi melewati batas waktu.",
+    "INVALID_LLM_RESPONSE": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
+    "LLM_RESPONSE_TOO_LARGE": "Hasil konversi melebihi batas ukuran respons.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "Jumlah halaman PDF yang valid tidak diterima. Konversi tidak dapat diselesaikan.",
+    "LLM_INCOMPLETE_RESPONSE": "Keluaran AI berakhir sebelum konversi selesai. Tidak ada halaman yang dikurangi. Coba PDF yang lebih pendek."
   },
   "Account": {
     "title": "Akun saya",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "Ringkasan utama",
-    "conversionSummary": "Bank Statement Converter mengubah PDF rekening koran berbasis teks menjadi Excel untuk ditinjau.",
-    "limitsSummary": "Unggah satu PDF teks hingga {megabytes} MB dan {pages} halaman; PDF hasil pindai dan berpassword tidak didukung.",
+    "conversionSummary": "Bank Statement Converter mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI cadangan.",
+    "limitsSummary": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "quotaSummary": "Konversikan {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk; paket bulanan mulai {price} USD.",
-    "privacySummary": "Server tidak menyimpan berkas atau transaksi sebagai riwayat permanen; cocokkan hasil dengan PDF asli.",
-    "featuresAnswer": "Alat ini menyusun tabel rekening koran dalam Excel. Unggah PDF teks dan tinjau baris yang diekstrak sebelum menggunakannya.",
+    "privacySummary": "Situs ini tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Saat paket tingkat atas beralih ke AI, PDF dikirim ke penyedia penguraian AI. Periksa hasil dengan PDF asli.",
+    "featuresAnswer": "Penguraian biasa dijalankan terlebih dahulu. Professional dan Enterprise beralih ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa. Hasil sebagian yang berguna dipertahankan tanpa beralih ke AI. Tabel AI dapat dilihat saat dibuat; unduhan memerlukan validasi akhir. Periksa hasil dengan PDF asli.",
     "riskTitle": "Apa arti label risiko?",
     "riskAnswer": "Label menjelaskan bukti yang tersedia pada setiap baris hasil ekstraksi. Cocokkan baris bertanda dengan PDF asli sebelum menggunakan hasil.",
     "okDefinition": "Tidak ada masalah terdeteksi; ini tidak menjamin ketepatan atau kelengkapan.",
     "discrepancyDefinition": "Bukti yang bertentangan atau masalah yang perlu ditinjau terdeteksi.",
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
     "limitsTitle": "PDF apa yang dapat diunggah?",
-    "limitsAnswer": "Hanya PDF rekening koran berbasis teks hingga {megabytes} MB dan {pages} halaman yang diterima. Ekspor PDF tanpa password dengan teks yang dapat dipilih.",
+    "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui PayPal.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
@@ -576,6 +584,7 @@
     "prompt": "Kunjungi informasi resmi Bank Statement Converter: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
     "showPrompt": "Lihat prompt bawaan",
     "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan PayPal.",
-    "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini."
+    "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
+    "parsingHeader": "Kemampuan penguraian"
   }
 }

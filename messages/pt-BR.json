@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF para Excel",
-    "description": "Envie um extrato bancário PDF, acompanhe a criação das tabelas, confira o resultado e baixe o Excel. O arquivo é usado apenas nesta conversão.",
-    "keywords": "Bank Statement Converter, extrato bancário PDF para Excel, conversor de PDF para Excel, extração de transações bancárias",
+    "description": "Converta extratos PDF em Excel com prévia e alertas de risco. Professional e Enterprise podem tentar converter digitalizações com IA. Sem histórico permanente de arquivos.",
+    "keywords": "Bank Statement Converter, extrato bancário PDF para Excel, conversor de PDF para Excel, extração de transações bancárias, análise IA extratos bancários, extrato bancário PDF digitalizado para Excel",
     "brand": "Bank Statement Converter",
     "alternateName": "Conversor de extratos bancários de PDF para Excel"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Conversão de extratos bancários em PDF",
     "title": "Converta seu extrato bancário de PDF para Excel",
-    "description": "Envie um extrato bancário PDF, acompanhe a criação das tabelas, confira o resultado e baixe o Excel. O arquivo é usado apenas nesta conversão."
+    "description": "Converta extratos PDF em Excel com prévia e alertas de risco. Professional e Enterprise podem tentar converter digitalizações com IA. Sem histórico permanente de arquivos."
   },
   "PdfUpload": {
     "title": "Enviar um extrato bancário",
@@ -86,7 +86,7 @@
     "emptyFile": "O arquivo PDF enviado está vazio.",
     "quotaExhausted": "Você usou todas as páginas disponíveis neste período.",
     "invalidResponse": "O serviço de conversão retornou dados em um formato inválido.",
-    "aiNotice": "Nos planos Professional e Enterprise, o PDF é enviado à Qwen quando a análise habitual está indisponível. O processamento segue os termos e a política de privacidade da Qwen. Este site não mantém arquivos ou transações como histórico permanente."
+    "aiNotice": "Nos planos Professional e Enterprise, se a análise habitual falhar, estiver indisponível ou não gerar transações verificáveis, o PDF completo e seu nome são enviados ao provedor de análise com IA conforme seus termos e sua política de privacidade. Este site não armazena permanentemente o conteúdo convertido; a retenção e o uso pelo fornecedor seguem suas políticas."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "O que este conversor faz?",
     "securityTitle": "Vocês salvam meu PDF, Excel ou as transações?",
-    "securityDescription": "O servidor não guarda arquivos ou transações como histórico permanente; compare o resultado com o PDF original.",
+    "securityDescription": "Este site não mantém um histórico permanente de PDFs, Excel ou transações. O recurso de IA dos planos superiores envia o PDF ao provedor de análise com IA. Confira os resultados com o original.",
     "banksTitle": "O Excel mantém a estrutura das tabelas?",
     "banksDescription": "O conversor lê os cabeçalhos e o texto das células do PDF e os exibe em tabelas para você comparar com o original.",
     "accuracyTitle": "Por que preciso conferir o resultado?",
@@ -227,7 +227,7 @@
         "description": "Para usuários que precisam converter mais páginas por mês."
       }
     },
-    "aiParsing": "Alternativa automática com IA, incluindo PDFs digitalizados",
+    "aiParsing": "Recurso automático de IA; pode tentar converter PDFs digitalizados",
     "textParsing": "Análise de PDFs com texto"
   },
   "PayPal": {
@@ -301,6 +301,10 @@
     "failure": {
       "question": "O que acontece se a conversão falhar?",
       "answer": "A página mostra um erro e não oferece um Excel inválido. Conversões que falham não consomem cota. Resultados parciais consomem cota pelo número de páginas do PDF."
+    },
+    "ai": {
+      "question": "Quando a análise com IA é usada?",
+      "answer": "Toda conversão começa com a análise habitual. Somente Professional e Enterprise com direito de uso válido recorrem automaticamente à análise com IA se ela falhar, estiver indisponível ou não gerar transações verificáveis. Resultados parciais úteis não acionam a IA. O PDF completo e seu nome são enviados ao provedor de análise com IA; consulte a política de privacidade. Digitalizações e resultados de IA também devem ser conferidos com o original."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Política de privacidade"
   },
   "LegalCommon": {
-    "lastUpdated": "Última atualização: 2 de outubro de 2026"
+    "lastUpdated": "Última atualização: 11 de outubro de 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "A conversão de PDF para Excel e as assinaturas PayPal são oferecidas conforme o estado atual da página. Os preços e a disponibilidade dos planos podem mudar com a configuração do serviço.",
     "service": {
       "title": "Escopo do serviço",
-      "body": "O serviço organiza transações de extratos bancários em PDF compatíveis em arquivos Excel para download e conferência. Os bancos, tipos de arquivo e limites aceitos são descritos na página do serviço. Não oferecemos conexões com contas bancárias, serviços bancários nem orientação financeira, fiscal ou jurídica."
+      "body": "O serviço organiza transações de extratos bancários em PDF compatíveis em arquivos Excel para download e conferência. Os bancos, tipos de arquivo e limites aceitos são descritos na página do serviço. Não oferecemos conexões com contas bancárias, serviços bancários nem orientação financeira, fiscal ou jurídica. A análise habitual é feita primeiro. Professional e Enterprise com direito de uso válido podem recorrer automaticamente à análise com IA se ela falhar, estiver indisponível ou não gerar transações verificáveis, incluindo tentativas de converter digitalizações. Resultados parciais úteis não acionam a IA."
     },
     "authorization": {
       "title": "Autorização para enviar arquivos",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Conferência dos resultados",
-      "body": "O formato, a nitidez e o conteúdo do extrato podem afetar a extração. O resultado pode conter campos ausentes, duplicados ou identificados incorretamente. Compare o Excel com o extrato original antes de usá-lo na escrituração, em declarações, no envio de documentos ou em outras decisões."
+      "body": "O formato, a nitidez e o conteúdo do extrato podem afetar a extração. O resultado pode conter campos ausentes, duplicados ou identificados incorretamente. Compare o Excel com o extrato original antes de usá-lo na escrituração, em declarações, no envio de documentos ou em outras decisões. A análise com IA e a conversão de digitalizações também podem conter erros ou omissões. As tabelas exibidas durante a geração são prévias temporárias; passar na validação final não garante precisão total."
     },
     "quota": {
       "title": "Cotas de conversão",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Política de privacidade | Bank Statement Converter",
-      "description": "Saiba como o Bank Statement Converter trata extratos bancários, contas, cotas de uso e informações de cobrança."
+      "description": "Tratamento de extratos, análise com IA, resultados temporários no navegador e dados de conta, operação da análise, cota e cobrança."
     },
     "title": "Política de privacidade",
     "intro": "A ReAvid Ltd opera <site>{domain}</site>. Esta política explica como tratamos informações quando você usa a conversão e as assinaturas PayPal.",
     "availability": "Esta política se aplica às funções atualmente disponíveis de conversão de PDF para Excel, login e assinaturas PayPal.",
     "documents": {
       "title": "Extratos e conteúdo da conversão",
-      "body": "Os PDFs enviados podem conter nomes, números de conta, datas, valores, saldos e descrições de transações. Quando a conversão está disponível, processamos o PDF, as transações extraídas e o Excel gerado apenas para concluir a conversão e o download solicitados. Não usamos esse conteúdo para publicidade ou outras finalidades."
+      "body": "Seu PDF pode conter nomes, números de conta, datas, valores, saldos e descrições de transações sensíveis. Processamos PDFs, transações extraídas e conteúdos exportados apenas para a conversão e o download solicitados, sem publicidade ou finalidades alheias. O processamento por terceiros durante o recurso de IA é explicado abaixo."
     },
     "accountData": {
       "title": "Informações de conta, cota e cobrança",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Retenção",
-      "documents": "PDFs, transações extraídas e arquivos Excel gerados são usados apenas durante o processamento necessário à conversão e ao download atuais. Não são gravados em banco de dados persistente, armazenamento de objetos ou histórico de arquivos, nem guardados para download posterior.",
+      "documents": "Este site usa PDFs, transações extraídas e conteúdos exportados apenas na conversão e no download atuais, sem gravá-los em banco persistente, armazenamento de objetos ou histórico de arquivos. Após o processamento, nenhum arquivo fica disponível para download posterior. Os dados recebidos pelo provedor de análise com IA seguem suas próprias regras de retenção e processamento.",
       "metadata": "Metadados de conta, cota e cobrança são mantidos apenas pelo tempo necessário ao serviço ou às obrigações legais aplicáveis. Quando deixam de ser necessários, são excluídos ou anonimizados conforme o sistema e os requisitos legais. O e-mail da conta registrado na compra faz parte do registro da assinatura. Os metadados operacionais de análise seguem os mesmos princípios de retenção; os registros de análise associados são excluídos quando a conta é excluída."
     },
     "providers": {
       "title": "Provedores e processamento internacional",
-      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam PayPal. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O PayPal pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações. Nos planos Professional e Enterprise, o PDF é enviado à Qwen quando a análise habitual está indisponível. O processamento segue os termos e a política de privacidade da Qwen. Este site não mantém arquivos ou transações como histórico permanente."
+      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam PayPal. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O PayPal pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
     },
     "storage": {
       "title": "Armazenamento no navegador",
-      "body": "O site usa armazenamento local do navegador para lembrar preferências de aparência e cookies de sessão necessários ao login. Os serviços de análise também podem usar cookies ou identificadores semelhantes para medir visitas. Você pode gerenciar esses dados nas configurações do navegador."
+      "body": "O site usa armazenamento local do navegador para lembrar preferências de aparência e cookies de sessão necessários ao login. Os serviços de análise também podem usar cookies ou identificadores semelhantes para medir visitas. Você pode gerenciar esses dados nas configurações do navegador. O fluxo atual também guarda temporariamente o nome do arquivo e os resultados extraídos no armazenamento de sessão do navegador para prévia e download. Isso não é um histórico permanente no servidor."
     },
     "security": {
       "title": "Segurança da informação",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Contato",
       "body": "Para dúvidas sobre o tratamento de informações ou para exercer direitos de privacidade aplicáveis, contate a ReAvid Ltd em <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "Análise com IA e processamento por terceiros",
+      "body": "Professional e Enterprise com direito de uso válido começam com a análise habitual. Se ela falhar, estiver indisponível ou não gerar transações verificáveis, o sistema envia automaticamente o PDF completo e seu nome ao provedor de análise com IA para extrair as transações desta conversão, incluindo tentativas com digitalizações. Resultados parciais úteis não acionam a IA. Os arquivos podem conter nomes, números de conta e transações sensíveis. O processamento do provedor de análise com IA segue seus termos e sua política de privacidade. Este site não mantém PDFs, transações extraídas, saídas do modelo ou conteúdos exportados como histórico permanente. Isso não significa que o provedor de análise com IA não retenha dados; não oferecemos garantias adicionais sobre seus prazos de retenção ou uso de dados para treinamento de modelos."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "Não foi possível registrar o uso desta conversão.",
     "QUOTA_PERIOD_UNAVAILABLE": "O período de cobrança da assinatura é inválido, por isso não foi possível determinar a cota.",
     "PARSER_AUTH_NOT_CONFIGURED": "O serviço de conversão não foi configurado.",
-    "QWEN_NOT_CONFIGURED": "O serviço de conversão não foi configurado.",
-    "QWEN_UNAVAILABLE": "Não foi possível conectar ao serviço de conversão.",
-    "QWEN_TIMEOUT": "A solicitação de conversão excedeu o tempo limite.",
-    "INVALID_QWEN_RESPONSE": "O serviço de conversão retornou dados em um formato inválido.",
-    "QWEN_RESPONSE_TOO_LARGE": "O resultado da conversão excede o limite de tamanho da resposta.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "Não foi retornado um número de páginas PDF válido. A conversão não pode ser concluída.",
-    "QWEN_INCOMPLETE_RESPONSE": "A saída da IA terminou antes de concluir a conversão. Nenhuma página foi descontada. Tente um PDF mais curto."
+    "LLM_NOT_CONFIGURED": "O serviço de conversão não foi configurado.",
+    "LLM_UNAVAILABLE": "Não foi possível conectar ao serviço de conversão.",
+    "LLM_TIMEOUT": "A solicitação de conversão excedeu o tempo limite.",
+    "INVALID_LLM_RESPONSE": "O serviço de conversão retornou dados em um formato inválido.",
+    "LLM_RESPONSE_TOO_LARGE": "O resultado da conversão excede o limite de tamanho da resposta.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "Não foi retornado um número de páginas PDF válido. A conversão não pode ser concluída.",
+    "LLM_INCOMPLETE_RESPONSE": "A saída da IA terminou antes de concluir a conversão. Nenhuma página foi descontada. Tente um PDF mais curto."
   },
   "Account": {
     "title": "Minha conta",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "Informações principais",
-    "conversionSummary": "Bank Statement Converter transforma extratos bancários PDF com texto em arquivos Excel para revisão.",
-    "limitsSummary": "Envie um PDF com texto de até {megabytes} MB e {pages} páginas por vez; PDFs digitalizados ou protegidos por senha não são aceitos.",
+    "conversionSummary": "Bank Statement Converter transforma extratos bancários PDF em Excel para revisão. Professional e Enterprise podem tentar converter PDFs digitalizados com o recurso de IA.",
+    "limitsSummary": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
     "quotaSummary": "Converta {anonymousPages} página por dia sem entrar ou {authenticatedPages} páginas com login; os planos mensais começam em {price} USD.",
-    "privacySummary": "O servidor não guarda arquivos ou transações como histórico permanente; compare o resultado com o PDF original.",
-    "featuresAnswer": "Esta ferramenta organiza tabelas de extratos no Excel. Envie um PDF com texto e revise as linhas extraídas antes de usá-las.",
+    "privacySummary": "Este site não mantém um histórico permanente de PDFs, Excel ou transações. O recurso de IA dos planos superiores envia o PDF ao provedor de análise com IA. Confira os resultados com o original.",
+    "featuresAnswer": "A análise habitual é feita primeiro. Professional e Enterprise recorrem à análise com IA se ela falhar, estiver indisponível ou não gerar transações verificáveis. Resultados parciais úteis são mantidos sem acionar a IA. As tabelas podem ser visualizadas durante a geração; o download exige a validação final. Confira os resultados com o PDF original.",
     "riskTitle": "O que significam os indicadores de risco?",
     "riskAnswer": "Os indicadores descrevem as evidências de cada linha extraída. Compare as linhas sinalizadas com o PDF original antes de usar o resultado.",
     "okDefinition": "Nenhum problema foi detectado; isso não garante precisão ou integridade.",
     "discrepancyDefinition": "Foram detectadas evidências conflitantes ou necessidade de revisão.",
     "unverifiableDefinition": "Faltam evidências essenciais ou a linha não pode ser verificada com segurança.",
     "limitsTitle": "Quais PDFs posso enviar?",
-    "limitsAnswer": "São aceitos apenas extratos PDF com texto de até {megabytes} MB e {pages} páginas. Exporte um PDF sem senha com texto selecionável.",
+    "limitsAnswer": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
     "pricingAnswer": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo PayPal.",
     "faqAnswer": "Estas respostas explicam requisitos, cotas e riscos. Leia a resposta relevante e confira seu PDF antes da conversão.",
     "planHeader": "Plano",
@@ -576,6 +584,7 @@
     "prompt": "Visite as informações oficiais de Bank Statement Converter: {fullUrl}. Se precisar de detalhes, leia {indexUrl} e siga os links relevantes. Responda em {language}: explique funções, etapas, limites de arquivos, tratamento de dados, cotas gratuitas e preços de assinatura, citando fontes. Se não conseguir acessar uma fonte ou ela não responder, diga isso e não adivinhe.",
     "showPrompt": "Ver o prompt padrão",
     "metadataAnswer": "Os metadados de conta, cota e cobrança necessários ao serviço são mantidos. Consulte e gerencie a assinatura na sua conta e no PayPal.",
-    "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços."
+    "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços.",
+    "parsingHeader": "Capacidade de análise"
   }
 }

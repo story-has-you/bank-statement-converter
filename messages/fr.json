@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Convertisseur de relevé bancaire | PDF vers Excel",
-    "description": "Importez un relevé bancaire PDF, regardez les tableaux apparaître, vérifiez le résultat puis téléchargez Excel. Le fichier est utilisé uniquement pour cette conversion.",
-    "keywords": "relevé bancaire PDF vers Excel, convertisseur PDF Excel, extraction de transactions bancaires",
+    "description": "Convertissez vos relevés PDF en Excel avec aperçu et alertes. Professional et Enterprise peuvent essayer les scans avec un relais IA. Aucun historique permanent de fichiers.",
+    "keywords": "relevé bancaire PDF vers Excel, convertisseur PDF Excel, extraction de transactions bancaires, analyse IA relevés bancaires, relevé bancaire PDF scanné vers Excel",
     "brand": "Convertisseur de relevés bancaires",
     "alternateName": "Convertisseur de relevé bancaire PDF vers Excel"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Conversion de relevés bancaires PDF",
     "title": "Convertir un relevé bancaire PDF en Excel",
-    "description": "Importez un relevé bancaire PDF, regardez les tableaux apparaître, vérifiez le résultat puis téléchargez Excel. Le fichier est utilisé uniquement pour cette conversion."
+    "description": "Convertissez vos relevés PDF en Excel avec aperçu et alertes. Professional et Enterprise peuvent essayer les scans avec un relais IA. Aucun historique permanent de fichiers."
   },
   "PdfUpload": {
     "title": "Importer un relevé bancaire",
@@ -86,7 +86,7 @@
     "emptyFile": "Le fichier PDF téléversé est vide.",
     "quotaExhausted": "Vous avez utilisé toutes les pages disponibles pour cette période.",
     "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide.",
-    "aiNotice": "Pour Professional et Enterprise, le PDF est envoyé à Qwen si l’analyse habituelle est indisponible. Ce traitement relève des conditions et de la politique de confidentialité de Qwen. Ce site ne conserve pas les fichiers ou transactions dans un historique permanent."
+    "aiNotice": "Pour Professional et Enterprise, si l’analyse habituelle échoue, est indisponible ou ne fournit aucune transaction vérifiable, le PDF complet et son nom sont envoyés au fournisseur d’analyse IA selon ses conditions et sa politique de confidentialité. Ce site ne conserve pas durablement le contenu des conversions ; la conservation et l’utilisation par le fournisseur suivent ses politiques."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "Que permet ce convertisseur ?",
     "securityTitle": "Mes fichiers PDF, Excel ou mes transactions sont-ils enregistrés ?",
-    "securityDescription": "Le serveur ne conserve pas les relevés ou transactions dans un historique permanent ; comparez le résultat au PDF original.",
+    "securityDescription": "Ce site ne conserve aucun historique permanent des PDF, fichiers Excel ou transactions. Le relais des forfaits supérieurs envoie le PDF au fournisseur d’analyse IA. Vérifiez les résultats avec le PDF original.",
     "banksTitle": "Excel conserve-t-il la structure des tableaux ?",
     "banksDescription": "Le convertisseur lit les en-têtes et le texte des cellules du PDF et les affiche sous forme de tableaux pour faciliter la comparaison avec le fichier original.",
     "accuracyTitle": "Pourquoi vérifier le résultat de la conversion ?",
@@ -227,7 +227,7 @@
         "description": "Pour les utilisateurs qui doivent convertir davantage de pages chaque mois."
       }
     },
-    "aiParsing": "Recours automatique à l’IA, y compris pour les PDF numérisés",
+    "aiParsing": "Relais IA automatique ; possibilité d’essayer les PDF scannés",
     "textParsing": "Analyse des PDF contenant du texte"
   },
   "PayPal": {
@@ -301,6 +301,10 @@
     "failure": {
       "question": "Que se passe-t-il si la conversion échoue ?",
       "answer": "En cas d'échec, la page affiche une erreur et ne propose pas de fichier Excel invalide. Les conversions échouées ne consomment pas de quota. Pour les résultats partiels, le quota consommé correspond au nombre de pages du PDF."
+    },
+    "ai": {
+      "question": "Quand l’analyse IA est-elle utilisée ?",
+      "answer": "Chaque conversion commence par l’analyse habituelle. Seuls Professional et Enterprise avec des droits valides passent automatiquement à l’analyse IA en cas d’échec, d’indisponibilité ou d’absence de transactions vérifiables. Les résultats partiels utilisables ne déclenchent pas ce relais. Le PDF complet et son nom sont envoyés au fournisseur d’analyse IA ; consultez la politique de confidentialité. Les scans et résultats IA doivent être vérifiés avec l’original."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Politique de confidentialité"
   },
   "LegalCommon": {
-    "lastUpdated": "Dernière mise à jour : 2 octobre 2026"
+    "lastUpdated": "Dernière mise à jour : 11 octobre 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "La conversion PDF vers Excel et les abonnements PayPal sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
     "service": {
       "title": "Portée du service",
-      "body": "Le service organise les transactions des relevés bancaires PDF pris en charge dans des fichiers Excel à télécharger et à vérifier. Les banques, les types de fichiers et les limites de traitement sont indiqués sur la page du service. Nous ne proposons ni connexion aux comptes bancaires, ni services bancaires, ni conseils financiers, fiscaux ou juridiques."
+      "body": "Le service organise les transactions des relevés bancaires PDF pris en charge dans des fichiers Excel à télécharger et à vérifier. Les banques, les types de fichiers et les limites de traitement sont indiqués sur la page du service. Nous ne proposons ni connexion aux comptes bancaires, ni services bancaires, ni conseils financiers, fiscaux ou juridiques. L’analyse habituelle est utilisée en premier. Professional et Enterprise avec des droits valides peuvent passer automatiquement à l’analyse IA si elle échoue, est indisponible ou ne fournit aucune transaction vérifiable, et essayer les scans. Les résultats partiels utilisables ne déclenchent pas ce relais."
     },
     "authorization": {
       "title": "Autorisation d’importer des fichiers",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Examiner les résultats de conversion",
-      "body": "La mise en page, la lisibilité et le contenu du relevé peuvent affecter l’extraction. Le résultat peut contenir des champs manquants, dupliqués ou mal identifiés. Comparez Excel au relevé original avant de l’utiliser pour la comptabilité, des déclarations, l’envoi de documents ou toute autre décision."
+      "body": "La mise en page, la lisibilité et le contenu du relevé peuvent affecter l’extraction. Le résultat peut contenir des champs manquants, dupliqués ou mal identifiés. Comparez Excel au relevé original avant de l’utiliser pour la comptabilité, des déclarations, l’envoi de documents ou toute autre décision. L’analyse IA et la conversion de scans peuvent aussi comporter des erreurs ou omissions. Les tableaux affichés pendant la génération sont des aperçus provisoires ; la validation finale ne garantit pas une exactitude complète."
     },
     "quota": {
       "title": "Quotas de conversion",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Politique de confidentialité | Convertisseur de relevé bancaire",
-      "description": "Découvrez comment Bank Statement Converter gère les relevés bancaires, les comptes, les quotas d'utilisation et les informations de facturation."
+      "description": "Traitement des relevés, de l’analyse IA, des résultats temporaires du navigateur et des données de compte, d’exploitation de l’analyse, de quota et de facturation."
     },
     "title": "Politique de confidentialité",
     "intro": "ReAvid Ltd exploite <site>{domain}</site>. Cette politique explique comment nous traitons les informations lorsque vous utilisez les services de conversion et d'abonnement PayPal.",
     "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement PayPal actuellement disponibles.",
     "documents": {
       "title": "Relevés bancaires et contenu de conversion",
-      "body": "Les PDF importés peuvent contenir des noms, des numéros de compte, des dates, des montants, des soldes et des descriptions de transactions. Lorsque la conversion est disponible, nous traitons le PDF, les transactions extraites et le fichier Excel uniquement pour la conversion et le téléchargement demandés. Nous n’utilisons pas ce contenu pour la publicité ou des finalités sans rapport."
+      "body": "Votre PDF peut contenir des noms, numéros de compte, dates, montants, soldes et descriptions de transactions sensibles. Nous traitons les PDF, transactions extraites et contenus exportés uniquement pour votre conversion et téléchargement, sans publicité ni finalité sans rapport. Le traitement par des tiers lors du relais IA est expliqué ci-dessous."
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Durée de conservation",
-      "documents": "Les PDF, les transactions extraites et les fichiers Excel générés sont utilisés uniquement pendant le traitement requis pour la conversion et le téléchargement en cours. Ils ne sont pas écrits dans une base de données persistante, un stockage d'objets ou un historique de fichiers, et ne sont pas conservés pour un téléchargement ultérieur.",
+      "documents": "Ce site utilise les PDF, transactions extraites et contenus exportés uniquement pour la conversion et le téléchargement en cours, sans les enregistrer dans une base persistante, un stockage objet ou un historique de fichiers. Aucun fichier n’est conservé pour un téléchargement ultérieur. Les données reçues par le fournisseur d’analyse IA sont soumises à ses propres règles de conservation et de traitement.",
       "metadata": "Les métadonnées de compte, de quota et de facturation sont conservées uniquement le temps nécessaire au service ou aux obligations légales applicables. Lorsqu’elles ne sont plus nécessaires, elles sont supprimées ou anonymisées selon le système et les exigences légales. L’e-mail du compte enregistré lors de l’achat fait partie du dossier d’abonnement. Les métadonnées opérationnelles d’analyse suivent les mêmes principes de conservation ; les enregistrements d’analyse associés sont supprimés lors de la suppression du compte."
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
-      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions. Pour Professional et Enterprise, le PDF est envoyé à Qwen si l’analyse habituelle est indisponible. Ce traitement relève des conditions et de la politique de confidentialité de Qwen. Ce site ne conserve pas les fichiers ou transactions dans un historique permanent."
+      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions."
     },
     "storage": {
       "title": "Stockage du navigateur",
-      "body": "Le site utilise le stockage local du navigateur pour mémoriser les préférences d'apparence et les cookies de session nécessaires pour maintenir la connexion. Les services d'analyse peuvent aussi utiliser des cookies ou des identifiants de navigateur similaires pour mesurer les visites. Vous pouvez gérer le stockage local et les cookies dans les paramètres de votre navigateur."
+      "body": "Le site utilise le stockage local du navigateur pour mémoriser les préférences d'apparence et les cookies de session nécessaires pour maintenir la connexion. Les services d'analyse peuvent aussi utiliser des cookies ou des identifiants de navigateur similaires pour mesurer les visites. Vous pouvez gérer le stockage local et les cookies dans les paramètres de votre navigateur. Le parcours de conversion conserve aussi temporairement le nom du fichier et les résultats extraits dans le stockage de session du navigateur pour l’aperçu et le téléchargement. Il ne s’agit pas d’un historique permanent côté serveur."
     },
     "security": {
       "title": "Sécurité des informations",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Contactez-nous",
       "body": "Pour toute question sur le traitement des informations ou pour exercer les droits de confidentialité applicables, contactez ReAvid Ltd à <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "Analyse IA et traitement par des tiers",
+      "body": "Professional et Enterprise avec des droits valides commencent par l’analyse habituelle. En cas d’échec, d’indisponibilité ou d’absence de transactions vérifiables, le système envoie automatiquement le PDF complet et son nom au fournisseur d’analyse IA pour extraire les transactions de cette conversion, y compris pour tenter de traiter les scans. Les résultats partiels utilisables ne déclenchent pas ce relais. Les fichiers peuvent contenir des noms, numéros de compte et transactions sensibles. Le traitement du fournisseur d’analyse IA est régi par ses conditions et sa politique de confidentialité. Ce site ne conserve pas les PDF, transactions extraites, sorties du modèle ou contenus exportés comme historique permanent. Cela ne signifie pas que le fournisseur d’analyse IA ne conserve aucune donnée ; nous n’apportons aucune garantie supplémentaire sur ses durées de conservation ou l’utilisation des données pour entraîner ses modèles."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "L’utilisation liée à cette conversion n’a pas pu être enregistrée.",
     "QUOTA_PERIOD_UNAVAILABLE": "La période de facturation de l’abonnement est invalide, ce qui empêche de déterminer le quota.",
     "PARSER_AUTH_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
-    "QWEN_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
-    "QWEN_UNAVAILABLE": "Impossible de joindre le service de conversion.",
-    "QWEN_TIMEOUT": "La demande de conversion a dépassé le délai imparti.",
-    "INVALID_QWEN_RESPONSE": "Le service de conversion a renvoyé des données dans un format invalide.",
-    "QWEN_RESPONSE_TOO_LARGE": "Le résultat de conversion dépasse la taille maximale autorisée pour une réponse.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "Le nombre de pages PDF renvoyé est invalide ou absent. La conversion ne peut pas être terminée.",
-    "QWEN_INCOMPLETE_RESPONSE": "La sortie de l’IA s’est arrêtée avant la fin. Aucune page n’a été déduite. Essayez un PDF plus court."
+    "LLM_NOT_CONFIGURED": "Le service de conversion n’a pas été configuré.",
+    "LLM_UNAVAILABLE": "Impossible de joindre le service de conversion.",
+    "LLM_TIMEOUT": "La demande de conversion a dépassé le délai imparti.",
+    "INVALID_LLM_RESPONSE": "Le service de conversion a renvoyé des données dans un format invalide.",
+    "LLM_RESPONSE_TOO_LARGE": "Le résultat de conversion dépasse la taille maximale autorisée pour une réponse.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "Le nombre de pages PDF renvoyé est invalide ou absent. La conversion ne peut pas être terminée.",
+    "LLM_INCOMPLETE_RESPONSE": "La sortie de l’IA s’est arrêtée avant la fin. Aucune page n’a été déduite. Essayez un PDF plus court."
   },
   "Account": {
     "title": "Mon compte",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "En bref",
-    "conversionSummary": "Bank Statement Converter transforme les relevés bancaires PDF contenant du texte en fichiers Excel à vérifier.",
-    "limitsSummary": "Importez un PDF texte de {megabytes} Mo et {pages} pages maximum à la fois ; les scans et PDF protégés par mot de passe ne sont pas pris en charge.",
+    "conversionSummary": "Bank Statement Converter transforme les relevés bancaires PDF en Excel à vérifier. Professional et Enterprise peuvent essayer les PDF scannés avec un relais IA.",
+    "limitsSummary": "Importez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Enterprise peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
     "quotaSummary": "Convertissez {anonymousPages} page par jour sans connexion ou {authenticatedPages} pages avec connexion ; les abonnements commencent à {price} USD par mois.",
-    "privacySummary": "Le serveur ne conserve pas les relevés ou transactions dans un historique permanent ; comparez le résultat au PDF original.",
-    "featuresAnswer": "Cet outil organise les tableaux de relevés dans Excel. Importez un PDF texte et vérifiez les lignes extraites avant de les utiliser.",
+    "privacySummary": "Ce site ne conserve aucun historique permanent des PDF, fichiers Excel ou transactions. Le relais des forfaits supérieurs envoie le PDF au fournisseur d’analyse IA. Vérifiez les résultats avec le PDF original.",
+    "featuresAnswer": "L’analyse habituelle est utilisée en premier. Professional et Enterprise passent à l’analyse IA si elle échoue, est indisponible ou ne fournit aucune transaction vérifiable. Les résultats partiels utilisables sont conservés sans relais. Les tableaux IA sont visibles pendant leur génération ; le téléchargement exige la validation finale. Vérifiez les résultats avec le PDF original.",
     "riskTitle": "Que signifient les indicateurs de risque ?",
     "riskAnswer": "Ils décrivent les preuves disponibles pour chaque ligne extraite. Comparez les lignes signalées au PDF original avant utilisation.",
     "okDefinition": "Aucun problème détecté ; cela ne garantit ni exactitude ni exhaustivité.",
     "discrepancyDefinition": "Des preuves contradictoires ou un besoin de vérification ont été détectés.",
     "unverifiableDefinition": "Des preuves essentielles manquent ou la ligne ne peut pas être vérifiée de façon fiable.",
     "limitsTitle": "Quels PDF puis-je importer ?",
-    "limitsAnswer": "Seuls les relevés PDF texte de {megabytes} Mo et {pages} pages maximum sont acceptés. Exportez un PDF non chiffré dont le texte est sélectionnable.",
+    "limitsAnswer": "Importez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Enterprise peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
     "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via PayPal.",
     "faqAnswer": "Ces réponses expliquent les exigences, quotas et risques. Lisez la réponse pertinente et vérifiez votre PDF avant la conversion.",
     "planHeader": "Offre",
@@ -576,6 +584,7 @@
     "prompt": "Consulte les informations officielles de Bank Statement Converter : {fullUrl}. Pour plus de détails, lis {indexUrl} et suis les liens pertinents. Réponds en {language} : explique les fonctions, étapes, limites de fichiers, traitement des données, quotas gratuits et tarifs des abonnements, avec les liens sources. Si une source est inaccessible ou ne répond pas, indique-le sans deviner.",
     "showPrompt": "Voir la consigne par défaut",
     "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et PayPal.",
-    "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services."
+    "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services.",
+    "parsingHeader": "Capacité d’analyse"
   }
 }

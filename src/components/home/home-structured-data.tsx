@@ -34,15 +34,18 @@ export async function HomeStructuredData() {
       operatingSystem: "Web",
       inLanguage: locale,
       availableLanguage: routing.locales,
-      offers: membershipTiers.map((tier) => ({
-        "@type": "Offer",
-        name: usageT(`plans.${tier}.name`),
-        price: subscriptionConfig[tier].monthlyPrice,
-        priceCurrency: "USD",
-        description: `${usageT("perMonth")}. ${geo("billingNote")}`,
-        url: `${getLocalizedAlternates("/", locale).canonical}#plans`,
-        category: "Subscription",
-      })),
+      offers: membershipTiers.map((tier) => {
+        const parsing = usageT(subscriptionConfig[tier].qwenFallback ? "aiParsing" : "textParsing");
+        return {
+          "@type": "Offer",
+          name: usageT(`plans.${tier}.name`),
+          price: subscriptionConfig[tier].monthlyPrice,
+          priceCurrency: "USD",
+          description: `${usageT("perMonth")}. ${parsing}. ${geo("billingNote")}`,
+          url: `${getLocalizedAlternates("/", locale).canonical}#plans`,
+          category: "Subscription",
+        };
+      }),
     },
     {
       "@context": "https://schema.org",

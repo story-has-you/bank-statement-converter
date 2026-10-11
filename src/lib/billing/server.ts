@@ -129,6 +129,7 @@ export async function updateBillingSubscriptionFromWebhook(
       ...changes,
       last_webhook_event_id: event.id,
       last_event_at: olderEvent ? subscription.last_event_at : event.at,
+      updated_at: new Date().toISOString(),
     })
     .eq("id", subscription.id)
     .eq("status", "ACTIVE");
@@ -179,7 +180,7 @@ export async function updateBillingSubscriptionStatus(
   // 只更新读取时的版本；并发 Webhook 已改动状态或账期时，交由下一次同步重试。
   let query = admin
     .from("billing_subscriptions")
-    .update({ status })
+    .update({ status, updated_at: new Date().toISOString() })
     .eq("id", subscription.id)
     .eq("user_id", subscription.user_id)
     .eq("status", subscription.status);

@@ -42,6 +42,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       style: "currency", currency: "USD",
     }),
     period: t("billingPeriod"),
+    parsing: subscriptionConfig[tier].qwenFallback ? usage("aiParsing") : usage("textParsing"),
   }));
   return {
     locale,
@@ -77,10 +78,16 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     limits: { title: t("limitsTitle"), answer: t("limitsAnswer", limits) },
     pricing: {
       title: usage("title"), answer: t("pricingAnswer"), note: t("billingNote"),
-      headers: [t("planHeader"), t("priceHeader"), t("quotaHeader"), t("periodHeader")],
+      headers: [t("planHeader"), t("priceHeader"), t("quotaHeader"), t("periodHeader"), t("parsingHeader")],
       rows: [
-        { name: usage("anonymous"), formattedPrice: t("freePrice"), pages: quota.anonymous.pages, period: t("dailyPeriod") },
-        { name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages, period: t("dailyPeriod") },
+        {
+          name: usage("anonymous"), formattedPrice: t("freePrice"), pages: quota.anonymous.pages,
+          period: t("dailyPeriod"), parsing: usage("textParsing"),
+        },
+        {
+          name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages,
+          period: t("dailyPeriod"), parsing: usage("textParsing"),
+        },
         ...plans,
       ],
       plans,
@@ -89,8 +96,10 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     privacy: {
       title: t("privacyTitle"), answer: t("privacyAnswer"),
       documents: privacy("retention.documents"),
-      browserTitle: t("browserTitle"), browserAnswer: t("browserAnswer"),
-      metadataTitle: t("metadataTitle"), metadataAnswer: t("metadataAnswer"),
+      aiTitle: privacy("aiParsing.title"), aiAnswer: privacy("aiParsing.body"),
+      browserTitle: t("browserTitle"), browserAnswer: privacy("storage.body"),
+      metadataTitle: t("metadataTitle"), metadataAnswer: privacy("accountData.body"),
+      metadataRetention: privacy("retention.metadata"),
       technicalData: t("analyticsAnswer"),
     },
     site: {

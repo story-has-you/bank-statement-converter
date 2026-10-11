@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Kontoauszugskonverter | PDF nach Excel",
-    "description": "Laden Sie einen Kontoauszug als PDF hoch, verfolgen Sie die entstehenden Tabellen, prüfen Sie das Ergebnis und laden Sie Excel herunter. Die Datei wird nur für diese Konvertierung verwendet.",
-    "keywords": "Bankauszug PDF zu Excel, PDF-zu-Excel-Konverter, Banktransaktionen extrahieren",
+    "description": "Kontoauszug-PDFs in Excel umwandeln, mit Vorschau und Risikohinweisen. Professional und Enterprise können Scans per KI-Ausweichverfahren versuchen. Keine dauerhafte Dateihistorie.",
+    "keywords": "Bankauszug PDF zu Excel, PDF-zu-Excel-Konverter, Banktransaktionen extrahieren, KI Kontoauszug Analyse, gescannte Kontoauszug PDF in Excel",
     "brand": "Bankauszugs-Konverter",
     "alternateName": "Bankauszug-PDF-zu-Excel-Konverter"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge von PDF in Excel umwandeln",
-    "description": "Laden Sie einen Kontoauszug als PDF hoch, verfolgen Sie die entstehenden Tabellen, prüfen Sie das Ergebnis und laden Sie Excel herunter. Die Datei wird nur für diese Konvertierung verwendet."
+    "description": "Kontoauszug-PDFs in Excel umwandeln, mit Vorschau und Risikohinweisen. Professional und Enterprise können Scans per KI-Ausweichverfahren versuchen. Keine dauerhafte Dateihistorie."
   },
   "PdfUpload": {
     "title": "Laden Sie einen Kontoauszug hoch",
@@ -86,7 +86,7 @@
     "emptyFile": "Die hochgeladene PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "aiNotice": "Bei Professional und Enterprise werden PDFs an Qwen gesendet, wenn die reguläre Verarbeitung nicht verfügbar ist. Dafür gelten die Bedingungen und Datenschutzrichtlinien von Qwen. Diese Website speichert Dateien oder Transaktionen nicht als dauerhafte Historie."
+    "aiNotice": "Wenn die reguläre Analyse bei Professional und Enterprise fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, werden die vollständige PDF und ihr Dateiname gemäß den Bedingungen und der Datenschutzrichtlinie an den KI-Analyseanbieter gesendet. Diese Website speichert Umwandlungsinhalte nicht dauerhaft; für Aufbewahrung und Nutzung beim Anbieter gelten dessen Richtlinien."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "Was kann dieser Konverter?",
     "securityTitle": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
-    "securityDescription": "Der Server speichert Auszüge und Transaktionen nicht als dauerhaften Verlauf; gleichen Sie das Ergebnis mit dem Original-PDF ab.",
+    "securityDescription": "Diese Website speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhafte Historie. Beim KI-Wechsel in höheren Tarifen wird die PDF an den KI-Analyseanbieter gesendet. Prüfen Sie Ergebnisse am Original.",
     "banksTitle": "Behält Excel die Tabellenstruktur bei?",
     "banksDescription": "Der Konverter liest Tabellenüberschriften und Zelltexte aus dem PDF und zeigt sie als Tabellen an. So können Sie das Ergebnis mit dem Original vergleichen.",
     "accuracyTitle": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
@@ -227,7 +227,7 @@
         "description": "Für Nutzer, die jeden Monat mehr Seiten konvertieren müssen."
       }
     },
-    "aiParsing": "Automatischer KI-Fallback, auch für gescannte PDFs",
+    "aiParsing": "Automatischer KI-Wechsel; Scans können versucht werden",
     "textParsing": "Verarbeitung von Text-PDFs"
   },
   "PayPal": {
@@ -292,7 +292,7 @@
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
-      "answer": "Professional und Enterprise können gescannte PDFs mit KI verarbeiten. Andere Tarife benötigen eine Textebene. Passwortgeschützte Dateien werden in keinem Tarif unterstützt."
+      "answer": "Professional und Enterprise können versuchen, gescannte PDFs mit KI zu verarbeiten. Andere Tarife benötigen eine Textebene. Passwortgeschützte Dateien werden in keinem Tarif unterstützt."
     },
     "storage": {
       "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
@@ -301,6 +301,10 @@
     "failure": {
       "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
       "answer": "Bei einem Fehler zeigt die Seite eine Meldung und bietet keine ungültige Excel-Datei an. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse werden nach der Seitenzahl des PDFs berechnet."
+    },
+    "ai": {
+      "question": "Wann wird KI zur Analyse verwendet?",
+      "answer": "Jede Umwandlung beginnt mit der regulären Analyse. Nur Professional und Enterprise mit gültiger Berechtigung wechseln automatisch zur KI-Analyse, wenn diese fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert. Nutzbare Teilergebnisse lösen keinen Wechsel aus. Die vollständige PDF und ihr Dateiname werden an den KI-Analyseanbieter gesendet; Details stehen in der Datenschutzerklärung. Scans und KI-Ergebnisse müssen am Original geprüft werden."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Datenschutzrichtlinie"
   },
   "LegalCommon": {
-    "lastUpdated": "Letzte Aktualisierung: 2. Oktober 2026"
+    "lastUpdated": "Letzte Aktualisierung: 11. Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "Die Konvertierung von PDF in Excel und PayPal-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
     "service": {
       "title": "Leistungsumfang",
-      "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an."
+      "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an. Die reguläre Analyse erfolgt zuerst. Professional und Enterprise mit gültiger Berechtigung können automatisch zur KI-Analyse wechseln, wenn diese fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, und dabei auch Scans versuchen. Nutzbare Teilergebnisse lösen keinen Wechsel aus."
     },
     "authorization": {
       "title": "Berechtigung zum Hochladen von Dateien",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Überprüfung der Konvertierungsergebnisse",
-      "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen."
+      "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen. Auch KI-Analyse und Scan-Umwandlung können Fehler oder Auslassungen enthalten. Während der Erstellung angezeigte Tabellen sind vorläufige Vorschauen; die abschließende Validierung garantiert keine vollständige Genauigkeit."
     },
     "quota": {
       "title": "Konvertierungskontingente",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Datenschutzrichtlinie | Kontoauszugskonverter",
-      "description": "Erfahren Sie, wie der Bank Statement Converter Kontoauszüge, Konten, Nutzungskontingente und Rechnungsinformationen verarbeitet."
+      "description": "Verarbeitung von Kontoauszügen, KI-Analyse, temporären Browserergebnissen sowie Konto-, Analysebetriebs-, Kontingent- und Abrechnungsdaten."
     },
     "title": "Datenschutzrichtlinie",
     "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und PayPal-Abonnementdienste nutzen.",
     "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und PayPal-Abonnementfunktionen.",
     "documents": {
       "title": "Kontoauszüge und Umrechnungsinhalte",
-      "body": "Hochgeladene PDFs können Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Transaktionsbeschreibungen enthalten. Wenn eine Konvertierung verfügbar ist, verarbeiten wir das PDF, die extrahierten Transaktionen und die generierte Excel-Datei nur, um die gewünschte Konvertierung und den Download abzuschließen. Wir nutzen diese Inhalte nicht für Werbe- oder sonstige Zwecke."
+      "body": "Ihre PDF kann sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Wir verarbeiten PDFs, extrahierte Transaktionen und Exportinhalte nur für die angeforderte Umwandlung und den Download, nicht für Werbung oder andere Zwecke. Die Verarbeitung durch Dritte beim KI-Wechsel wird unten erläutert."
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Zurückbehaltung",
-      "documents": "PDFs, extrahierte Transaktionen und generierte Excel-Dateien werden nur während der Verarbeitung verwendet, die für die aktuelle Konvertierung und den Download erforderlich ist. Sie werden nicht in eine persistente Datenbank, einen Objektspeicher oder einen Dateiverlauf geschrieben und nicht für einen späteren Download aufbewahrt.",
+      "documents": "Diese Website nutzt PDFs, extrahierte Transaktionen und Exportinhalte nur für die aktuelle Umwandlung und den Download, ohne sie in eine dauerhafte Datenbank, einen Objektspeicher oder eine Dateihistorie zu schreiben. Nach der Verarbeitung bleiben keine Dateien für spätere Downloads. Für vom KI-Analyseanbieter empfangene Daten gelten dessen eigene Aufbewahrungs- und Verarbeitungsregeln.",
       "metadata": "Konto-, Kontingent- und Abrechnungsmetadaten werden nur so lange aufbewahrt, wie es für die Bereitstellung des Dienstes oder die Erfüllung geltender gesetzlicher Verpflichtungen erforderlich ist. Die Löschung bzw. Anonymisierung erfolgt, wenn sie entsprechend der aktuellen Systematik und den gesetzlichen Vorgaben nicht mehr benötigt wird. Die beim Kauf gespeicherte Konto-E-Mail-Adresse ist Teil des Abonnementdatensatzes. Für betriebliche Parsing-Metadaten gelten dieselben Aufbewahrungsgrundsätze; zugehörige Parsing-Datensätze werden beim Löschen des Kontos ebenfalls gelöscht."
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
-      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Abonnementzahlung und Statussynchronisierung erfolgen über PayPal. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. PayPal kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Bei Professional und Enterprise werden PDFs an Qwen gesendet, wenn die reguläre Verarbeitung nicht verfügbar ist. Dafür gelten die Bedingungen und Datenschutzrichtlinien von Qwen. Diese Website speichert Dateien oder Transaktionen nicht als dauerhafte Historie."
+      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Abonnementzahlung und Statussynchronisierung erfolgen über PayPal. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. PayPal kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen."
     },
     "storage": {
       "title": "Browserspeicher",
-      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten."
+      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten. Im aktuellen Ablauf werden Dateiname und extrahierte Ergebnisse vorübergehend im Sitzungsspeicher des Browsers für Vorschau und Download gespeichert. Dies ist keine dauerhafte Dateihistorie auf dem Server."
     },
     "security": {
       "title": "Informationssicherheit",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Kontaktieren Sie uns",
       "body": "Bei Fragen zur Informationsverarbeitung oder zur Ausübung geltender Datenschutzrechte wenden Sie sich an ReAvid Ltd unter <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "KI-Analyse und Verarbeitung durch Dritte",
+      "body": "Professional und Enterprise mit gültiger Berechtigung beginnen mit der regulären Analyse. Wenn diese fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, sendet das System die vollständige PDF und ihren Dateinamen automatisch an den KI-Analyseanbieter, um für diese Umwandlung Transaktionen zu extrahieren, einschließlich Versuchen mit Scans. Nutzbare Teilergebnisse lösen keinen Wechsel aus. Dateien können sensible Namen, Kontonummern und Transaktionen enthalten. Für den KI-Analyseanbieter gelten dessen Bedingungen und Datenschutzrichtlinie. Diese Website speichert PDFs, extrahierte Transaktionen, Modellausgaben und Exportinhalte nicht als dauerhafte Historie. Das bedeutet nicht, dass der KI-Analyseanbieter keine Daten aufbewahrt; wir geben keine zusätzliche Zusicherung zu dessen Aufbewahrungsfristen oder Datennutzung für das Modelltraining."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "Die Nutzung für diese Konvertierung konnte nicht erfasst werden.",
     "QUOTA_PERIOD_UNAVAILABLE": "Der Abrechnungszeitraum des Abonnements ist ungültig, daher konnte das Kontingent nicht ermittelt werden.",
     "PARSER_AUTH_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
-    "QWEN_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
-    "QWEN_UNAVAILABLE": "Der Konvertierungsdienst konnte nicht erreicht werden.",
-    "QWEN_TIMEOUT": "Die Konvertierungsanfrage hat das Zeitlimit überschritten.",
-    "INVALID_QWEN_RESPONSE": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "QWEN_RESPONSE_TOO_LARGE": "Das Konvertierungsergebnis überschreitet die Größenbegrenzung für Antworten.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "Es wurde keine gültige PDF-Seitenzahl zurückgegeben. Die Konvertierung kann nicht abgeschlossen werden.",
-    "QWEN_INCOMPLETE_RESPONSE": "Die KI-Ausgabe wurde nicht abgeschlossen. Es wurden keine Seiten abgezogen. Bitte versuchen Sie eine kürzere PDF."
+    "LLM_NOT_CONFIGURED": "Der Konvertierungsdienst ist noch nicht konfiguriert.",
+    "LLM_UNAVAILABLE": "Der Konvertierungsdienst konnte nicht erreicht werden.",
+    "LLM_TIMEOUT": "Die Konvertierungsanfrage hat das Zeitlimit überschritten.",
+    "INVALID_LLM_RESPONSE": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
+    "LLM_RESPONSE_TOO_LARGE": "Das Konvertierungsergebnis überschreitet die Größenbegrenzung für Antworten.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "Es wurde keine gültige PDF-Seitenzahl zurückgegeben. Die Konvertierung kann nicht abgeschlossen werden.",
+    "LLM_INCOMPLETE_RESPONSE": "Die KI-Ausgabe wurde nicht abgeschlossen. Es wurden keine Seiten abgezogen. Bitte versuchen Sie eine kürzere PDF."
   },
   "Account": {
     "title": "Mein Konto",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "Auf einen Blick",
-    "conversionSummary": "Bank Statement Converter wandelt textbasierte Kontoauszug-PDFs in Excel-Dateien zur Prüfung um.",
-    "limitsSummary": "Laden Sie jeweils ein Text-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch; Scans und passwortgeschützte PDFs werden nicht unterstützt.",
+    "conversionSummary": "Bank Statement Converter wandelt Kontoauszug-PDFs in Excel zur Prüfung um. Professional und Enterprise können gescannte PDFs mit KI-Unterstützung versuchen.",
+    "limitsSummary": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
     "quotaSummary": "Ohne Anmeldung sind täglich {anonymousPages} Seite, nach Anmeldung {authenticatedPages} Seiten möglich; Monatsabos beginnen bei {price} USD.",
-    "privacySummary": "Der Server speichert Auszüge und Transaktionen nicht als dauerhaften Verlauf; gleichen Sie das Ergebnis mit dem Original-PDF ab.",
-    "featuresAnswer": "Dieses Werkzeug überträgt Kontoauszugtabellen nach Excel. Laden Sie ein Text-PDF hoch und prüfen Sie die extrahierten Zeilen vor der Nutzung.",
+    "privacySummary": "Diese Website speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhafte Historie. Beim KI-Wechsel in höheren Tarifen wird die PDF an den KI-Analyseanbieter gesendet. Prüfen Sie Ergebnisse am Original.",
+    "featuresAnswer": "Zuerst erfolgt die reguläre Analyse. Bei Professional und Enterprise wird zur KI-Analyse gewechselt, wenn sie fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert. Nutzbare Teilergebnisse bleiben ohne Wechsel erhalten. KI-Tabellen sind während der Erstellung sichtbar; Downloads erfordern die abschließende Validierung. Prüfen Sie Ergebnisse am Original-PDF.",
     "riskTitle": "Was bedeuten die Risikomarkierungen?",
     "riskAnswer": "Die Markierungen beschreiben die Belege jeder extrahierten Zeile. Prüfen Sie markierte Zeilen anhand des Original-PDFs vor der Nutzung.",
     "okDefinition": "Kein Problem erkannt; Genauigkeit und Vollständigkeit sind damit nicht garantiert.",
     "discrepancyDefinition": "Widersprüchliche Belege oder ein Prüfbedarf wurden erkannt.",
     "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
     "limitsTitle": "Welche PDFs kann ich hochladen?",
-    "limitsAnswer": "Akzeptiert werden nur textbasierte Kontoauszug-PDFs mit höchstens {megabytes} MB und {pages} Seiten. Exportieren Sie ein unverschlüsseltes PDF mit auswählbarem Text.",
+    "limitsAnswer": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
     "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem PayPal-Abo an.",
     "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
     "planHeader": "Tarif",
@@ -576,6 +584,7 @@
     "prompt": "Besuche die offiziellen Informationen zu Bank Statement Converter: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
     "showPrompt": "Standardprompt ansehen",
     "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei PayPal.",
-    "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet."
+    "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
+    "parsingHeader": "Analysefunktionen"
   }
 }

@@ -5,6 +5,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 import { usageQuotaConfig, type UsagePeriod } from "./config";
 
+const MAX_QUOTA_ATTEMPTS = 5;
+
 export type UsageActorType = "anonymous" | "user";
 
 export type UsageActor = {
@@ -143,39 +145,91 @@ export async function getUsageRecord(actor: UsageActor): Promise<UsageRecord | n
   return data as UsageRecord | null;
 }
 
-function isQuotaResult(value: unknown): value is QuotaResult {
-  if (typeof value !== "object" || value === null) return false;
-  if (!("allowed" in value) || !("period" in value) || !("usedPages" in value)) return false;
-  if (!("remainingPages" in value) || !("limitPages" in value)) return false;
+function validateQuotaInput(context: QuotaContext, pageCount: number): void {
+  if (context.type !== "anonymous" && context.type !== "user") {
+    throw new Error("Invalid usage actor type");
+  }
+  if (context.window.period !== "day" && context.window.period !== "month") {
+    throw new Error("Invalid usage period");
+  }
+  if (typeof context.key !== "string" || !context.key.trim()) {
+    throw new Error("Usage actor key is required");
+  }
 
-  return (
-    typeof value.allowed === "boolean" &&
-    (value.period === "day" || value.period === "month") &&
-    typeof value.usedPages === "number" &&
-    typeof value.remainingPages === "number" &&
-    typeof value.limitPages === "number"
-  );
+  const start = context.window.start.valueOf();
+  const end = context.window.end.valueOf();
+  if (!Number.isFinite(start) || !Number.isFinite(end) || start >= end) {
+    throw new Error("Usage period is invalid");
+  }
+  if (
+    !Number.isSafeInteger(pageCount) || pageCount <= 0 ||
+    !Number.isSafeInteger(context.limitPages) || context.limitPages <= 0
+  ) {
+    throw new Error("Usage page values are invalid");
+  }
 }
 
 export async function consumeConversionQuota(
   context: QuotaContext,
   pageCount: number,
 ): Promise<QuotaResult> {
+  validateQuotaInput(context, pageCount);
   const admin = requireAdminClient();
-  const { data, error } = await admin.rpc("consume_conversion_quota", {
-    p_actor_type: context.type,
-    p_actor_key: context.key,
-    p_email: context.email,
-    p_period: context.window.period,
-    p_period_start: context.window.start.toISOString(),
-    p_period_end: context.window.end.toISOString(),
-    p_page_count: pageCount,
-    p_limit_pages: context.limitPages,
-  });
+  const periodStart = context.window.start.toISOString();
+  const periodEnd = context.window.end.toISOString();
 
-  if (error) throw error;
-  if (!isQuotaResult(data)) throw new Error("Usage service returned an invalid quota result");
-  return data;
+  for (let attempt = 0; attempt < MAX_QUOTA_ATTEMPTS; attempt += 1) {
+    const record = await getUsageRecord(context);
+    const currentUsedPages = record && isUsageRecordCurrent(record, context) ? record.used_pages : 0;
+    const nextUsedPages = currentUsedPages + pageCount;
+    const allowed = nextUsedPages <= context.limitPages;
+    const usedPages = allowed ? nextUsedPages : currentUsedPages;
+    const quota: QuotaResult = {
+      allowed,
+      period: context.window.period,
+      usedPages,
+      remainingPages: Math.max(context.limitPages - usedPages, 0),
+      limitPages: context.limitPages,
+    };
+    if (!allowed) return quota;
+
+    const changes = {
+      email: context.email,
+      period: context.window.period,
+      period_start: periodStart,
+      period_end: periodEnd,
+      used_pages: nextUsedPages,
+      updated_at: new Date().toISOString(),
+    };
+    if (!record) {
+      const { error } = await admin.from("conversion_usage").insert({
+        actor_type: context.type,
+        actor_key: context.key,
+        ...changes,
+      });
+      if (error?.code === "23505") continue;
+      if (error) throw error;
+    } else {
+      // 仅更新读取时的版本；其他请求已扣减或切换周期时，重读后重新计算。
+      const { data, error } = await admin
+        .from("conversion_usage")
+        .update(changes)
+        .eq("actor_type", context.type)
+        .eq("actor_key", context.key)
+        .eq("period", record.period)
+        .eq("period_start", record.period_start)
+        .eq("period_end", record.period_end)
+        .eq("used_pages", record.used_pages)
+        .eq("updated_at", record.updated_at)
+        .select("actor_key");
+      if (error) throw error;
+      if (!data.length) continue;
+    }
+
+    return quota;
+  }
+
+  throw new UsageUnavailableError();
 }
 
 export function isUsageRecordCurrent(record: UsageRecord, context: QuotaContext): boolean {

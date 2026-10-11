@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter | PDF naar Excel",
-    "description": "Upload een bankafschrift als PDF, bekijk hoe de tabellen verschijnen, controleer het resultaat en download Excel. Het bestand wordt alleen voor deze conversie gebruikt.",
-    "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen",
+    "description": "Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis.",
+    "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen, AI bankafschriften analyseren, gescande bankafschrift PDF naar Excel",
     "brand": "Bank Statement Converter",
     "alternateName": "Converter voor bankafschriften van PDF naar Excel"
   },
@@ -52,7 +52,7 @@
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
     "title": "Zet je bankafschrift om van PDF naar Excel",
-    "description": "Upload een bankafschrift als PDF, bekijk hoe de tabellen verschijnen, controleer het resultaat en download Excel. Het bestand wordt alleen voor deze conversie gebruikt."
+    "description": "Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis."
   },
   "PdfUpload": {
     "title": "Bankafschrift uploaden",
@@ -86,7 +86,7 @@
     "emptyFile": "Het geüploade PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "aiNotice": "Bij Professional en Enterprise wordt de PDF naar Qwen gestuurd als de reguliere verwerking niet beschikbaar is. Hiervoor gelden de voorwaarden en het privacybeleid van Qwen. Deze website bewaart bestanden of transacties niet als permanente geschiedenis."
+    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar de aanbieder van AI-analyse gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid."
   },
   "ConversionResult": {
     "metadata": {
@@ -193,7 +193,7 @@
   "HomeFeatures": {
     "title": "Wat kan deze converter?",
     "securityTitle": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
-    "securityDescription": "De server bewaart afschriften en transacties niet als blijvende geschiedenis; vergelijk het resultaat met de oorspronkelijke PDF.",
+    "securityDescription": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
     "banksTitle": "Behoudt Excel de tabelstructuur?",
     "banksDescription": "De converter leest tabelkoppen en celtekst uit de PDF en toont ze in tabellen die je met het origineel kunt vergelijken.",
     "accuracyTitle": "Waarom moet ik het resultaat controleren?",
@@ -227,7 +227,7 @@
         "description": "Voor gebruikers die elke maand meer pagina’s moeten converteren."
       }
     },
-    "aiParsing": "Automatische AI-terugval, inclusief gescande PDF’s",
+    "aiParsing": "Automatisch overschakelen naar AI; gescande PDF’s proberen",
     "textParsing": "Verwerking van PDF’s met tekst"
   },
   "PayPal": {
@@ -301,6 +301,10 @@
     "failure": {
       "question": "Wat gebeurt er als de conversie mislukt?",
       "answer": "De pagina toont een fout en biedt geen ongeldig Excel-bestand aan. Mislukte conversies kosten geen tegoed. Gedeeltelijke resultaten worden gerekend op basis van het aantal PDF-pagina's."
+    },
+    "ai": {
+      "question": "Wanneer wordt AI-analyse gebruikt?",
+      "answer": "Elke conversie begint met de reguliere analyse. Alleen Professional en Enterprise met een geldig gebruiksrecht schakelen automatisch over naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling. De volledige PDF en bestandsnaam worden naar de aanbieder van AI-analyse gestuurd; zie het privacybeleid. Scans en AI-resultaten moeten met het origineel worden gecontroleerd."
     }
   },
   "HomeFooter": {
@@ -312,7 +316,7 @@
     "privacy": "Privacybeleid"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 2 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 11 oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -324,7 +328,7 @@
     "availability": "De conversie van PDF naar Excel en PayPal-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
     "service": {
       "title": "Omvang van de dienst",
-      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies."
+      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise met een geldig gebruiksrecht kunnen automatisch overschakelen naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, inclusief pogingen om scans te converteren. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling."
     },
     "authorization": {
       "title": "Toestemming om bestanden te uploaden",
@@ -332,7 +336,7 @@
     },
     "accuracy": {
       "title": "Resultaten controleren",
-      "body": "Indeling, leesbaarheid en inhoud van een afschrift kunnen het uitlezen beïnvloeden. Het resultaat kan ontbrekende, dubbele of verkeerd herkende velden bevatten. Vergelijk Excel met het originele afschrift voordat je het gebruikt voor boekhouding, aangiften, het indienen van stukken of andere beslissingen."
+      "body": "Indeling, leesbaarheid en inhoud van een afschrift kunnen het uitlezen beïnvloeden. Het resultaat kan ontbrekende, dubbele of verkeerd herkende velden bevatten. Vergelijk Excel met het originele afschrift voordat je het gebruikt voor boekhouding, aangiften, het indienen van stukken of andere beslissingen. AI-analyse en scanconversie kunnen ook fouten of ontbrekende gegevens opleveren. Tabellen tijdens het genereren zijn tijdelijke voorvertoningen; definitieve validatie garandeert geen volledige nauwkeurigheid."
     },
     "quota": {
       "title": "Conversietegoed",
@@ -374,14 +378,14 @@
   "Privacy": {
     "metadata": {
       "title": "Privacybeleid | Bank Statement Converter",
-      "description": "Lees hoe Bank Statement Converter omgaat met bankafschriften, accounts, tegoed en factuurgegevens."
+      "description": "Verwerking van bankafschriften, AI-analyse, tijdelijke browserresultaten en gegevens over accounts, analysebeheer, quota en facturering."
     },
     "title": "Privacybeleid",
     "intro": "ReAvid Ltd beheert <site>{domain}</site>. Dit beleid legt uit hoe we informatie behandelen wanneer je de conversie en PayPal-abonnementen gebruikt.",
     "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en PayPal-abonnementen.",
     "documents": {
       "title": "Bankafschriften en conversiegegevens",
-      "body": "Geüploade PDF's kunnen namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. Wanneer conversie beschikbaar is, verwerken we de PDF, uitgelezen transacties en het gegenereerde Excel-bestand alleen voor de gevraagde conversie en download. We gebruiken deze inhoud niet voor reclame of andere doeleinden."
+      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. Verwerking door derden bij overschakeling naar AI wordt hieronder uitgelegd."
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
@@ -397,16 +401,16 @@
     },
     "retention": {
       "title": "Bewaartermijnen",
-      "documents": "PDF's, uitgelezen transacties en gegenereerde Excel-bestanden worden alleen gebruikt tijdens de verwerking voor de huidige conversie en download. Ze worden niet opgeslagen in een permanente database, objectopslag of bestandsarchief en worden niet bewaard voor latere downloads.",
+      "documents": "Deze website gebruikt PDF’s, geëxtraheerde transacties en exportinhoud alleen voor de huidige conversie en download, zonder ze in een permanente database, objectopslag of bestandsgeschiedenis vast te leggen. Na verwerking blijven geen bestanden beschikbaar voor latere downloads. Voor gegevens die de aanbieder van AI-analyse ontvangt gelden zijn eigen bewaar- en verwerkingsregels.",
       "metadata": "Account-, tegoed- en factuurmetadata worden alleen bewaard zolang dat nodig is voor de dienst of wettelijke verplichtingen. Wanneer ze niet meer nodig zijn, worden ze verwijderd of geanonimiseerd volgens het systeem en de wettelijke eisen. Het e-mailadres van het account bij aankoop maakt deel uit van de abonnementsregistratie. Voor operationele parsemetadata gelden dezelfde bewaarbeginselen; bij het verwijderen van het account worden ook de bijbehorende parserecords verwijderd."
     },
     "providers": {
       "title": "Dienstverleners en internationale verwerking",
-      "body": "Inloggen gebruikt Google en Supabase. Abonnementsbetalingen en statussynchronisatie gebruiken PayPal. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. PayPal kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens. Bij Professional en Enterprise wordt de PDF naar Qwen gestuurd als de reguliere verwerking niet beschikbaar is. Hiervoor gelden de voorwaarden en het privacybeleid van Qwen. Deze website bewaart bestanden of transacties niet als permanente geschiedenis."
+      "body": "Inloggen gebruikt Google en Supabase. Abonnementsbetalingen en statussynchronisatie gebruiken PayPal. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. PayPal kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens."
     },
     "storage": {
       "title": "Browseropslag",
-      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen."
+      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen. De huidige conversie slaat ook de bestandsnaam en geëxtraheerde resultaten tijdelijk op in de sessieopslag van de browser voor voorvertoning en download. Dit is geen permanente bestandsgeschiedenis op de server."
     },
     "security": {
       "title": "Informatiebeveiliging",
@@ -427,6 +431,10 @@
     "contact": {
       "title": "Contact",
       "body": "Neem voor vragen over informatieverwerking of het uitoefenen van toepasselijke privacyrechten contact op met ReAvid Ltd via <link>{email}</link>."
+    },
+    "aiParsing": {
+      "title": "AI-analyse en verwerking door derden",
+      "body": "Professional en Enterprise met een geldig gebruiksrecht beginnen met de reguliere analyse. Als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, stuurt het systeem de volledige PDF en bestandsnaam automatisch naar de aanbieder van AI-analyse om transacties voor deze conversie te extraheren, inclusief pogingen om scans te verwerken. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling. Bestanden kunnen gevoelige namen, rekeningnummers en transacties bevatten. Voor de aanbieder van AI-analyse gelden zijn voorwaarden en privacybeleid. Deze website bewaart PDF’s, geëxtraheerde transacties, modeluitvoer en exportinhoud niet als permanente geschiedenis. Dit betekent niet dat de aanbieder van AI-analyse geen gegevens bewaart; wij geven geen aanvullende garantie over zijn bewaartermijnen of gebruik van gegevens voor modeltraining."
     }
   },
   "ThemeToggle": {
@@ -463,13 +471,13 @@
     "QUOTA_RECORD_FAILED": "Het gebruik voor deze conversie kon niet worden geregistreerd.",
     "QUOTA_PERIOD_UNAVAILABLE": "De factureringsperiode van het abonnement is ongeldig, waardoor het tegoed niet kon worden bepaald.",
     "PARSER_AUTH_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
-    "QWEN_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
-    "QWEN_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
-    "QWEN_TIMEOUT": "De conversieaanvraag heeft de tijdslimiet overschreden.",
-    "INVALID_QWEN_RESPONSE": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "QWEN_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
-    "QWEN_PAGE_COUNT_UNAVAILABLE": "Er is geen geldig aantal PDF-pagina’s ontvangen. De conversie kan niet worden voltooid.",
-    "QWEN_INCOMPLETE_RESPONSE": "De AI-uitvoer stopte voordat de conversie klaar was. Er zijn geen pagina’s afgetrokken. Probeer een kortere PDF."
+    "LLM_NOT_CONFIGURED": "De conversieservice is nog niet ingesteld.",
+    "LLM_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
+    "LLM_TIMEOUT": "De conversieaanvraag heeft de tijdslimiet overschreden.",
+    "INVALID_LLM_RESPONSE": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
+    "LLM_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
+    "LLM_PAGE_COUNT_UNAVAILABLE": "Er is geen geldig aantal PDF-pagina’s ontvangen. De conversie kan niet worden voltooid.",
+    "LLM_INCOMPLETE_RESPONSE": "De AI-uitvoer stopte voordat de conversie klaar was. Er zijn geen pagina’s afgetrokken. Probeer een kortere PDF."
   },
   "Account": {
     "title": "Mijn account",
@@ -535,18 +543,18 @@
   },
   "Geo": {
     "glance": "In één oogopslag",
-    "conversionSummary": "Bank Statement Converter zet bankafschriften met tekst in PDF om naar Excel-bestanden ter controle.",
-    "limitsSummary": "Upload één tekst-PDF van maximaal {megabytes} MB en {pages} pagina’s tegelijk; scans en met wachtwoord beveiligde PDF’s worden niet ondersteund.",
+    "conversionSummary": "Bank Statement Converter zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren.",
+    "limitsSummary": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
-    "privacySummary": "De server bewaart afschriften en transacties niet als blijvende geschiedenis; vergelijk het resultaat met de oorspronkelijke PDF.",
-    "featuresAnswer": "Dit hulpmiddel zet afschrifttabellen om naar Excel. Upload een tekst-PDF en controleer de uitgelezen rijen voordat u ze gebruikt.",
+    "privacySummary": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
+    "featuresAnswer": "Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise schakelen over naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert. Bruikbare gedeeltelijke resultaten blijven behouden zonder overschakeling. AI-tabellen zijn tijdens het genereren zichtbaar; downloaden vereist de definitieve validatie. Controleer resultaten aan de hand van de originele PDF.",
     "riskTitle": "Wat betekenen de risicolabels?",
     "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt.",
     "okDefinition": "Geen probleem gedetecteerd; dit garandeert geen juistheid of volledigheid.",
     "discrepancyDefinition": "Tegenstrijdig bewijs of een punt ter controle is gedetecteerd.",
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
     "limitsTitle": "Welke PDF’s kan ik uploaden?",
-    "limitsAnswer": "Alleen bankafschriften met tekst tot {megabytes} MB en {pages} pagina’s worden geaccepteerd. Exporteer een onbeveiligde PDF met selecteerbare tekst.",
+    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via PayPal abonneert.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
@@ -576,6 +584,7 @@
     "prompt": "Bezoek de officiële informatie van Bank Statement Converter: {fullUrl}. Lees zo nodig {indexUrl} en volg relevante documentlinks. Antwoord in {language}: leg functies, stappen, bestandslimieten, gegevensverwerking, gratis quota en abonnementsprijzen uit met bronlinks. Als een bron niet bereikbaar is of geen antwoord bevat, zeg dit duidelijk en gok niet.",
     "showPrompt": "Standaardprompt bekijken",
     "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en PayPal.",
-    "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden."
+    "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden.",
+    "parsingHeader": "Analysemogelijkheden"
   }
 }
