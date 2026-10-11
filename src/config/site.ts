@@ -7,16 +7,10 @@ if (environment === "preview") {
 }
 const domain = new URL(url).host;
 const contactEmail = "support@bankstatementconverter.xyz";
-const subscriptionPrices = {
-  standard: 19.9,
-  professional: 49.9,
-  enterprise: 79.9,
-} as const;
 
 export const siteConfig = {
   domain,
   contactEmail,
-  subscriptionPrices,
   conversionLimits: { megabytes: 4, pages: 50 },
   url,
   contactHref: `mailto:${contactEmail}`,

@@ -43,13 +43,6 @@ async function setAnonymousCookie(
   return resolvedResponse;
 }
 
-function isCurrentUsageAtLimit(
-  record: Awaited<ReturnType<typeof getUsageRecord>>,
-  context: QuotaContext,
-): boolean {
-  return Boolean(record && isUsageRecordCurrent(record, context) && record.used_pages >= context.limitPages);
-}
-
 function getClientAddress(request: Request): string | null {
   const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
   return forwarded || request.headers.get("x-real-ip")?.trim() || null;
@@ -114,6 +107,7 @@ export async function POST(request: Request): Promise<Response> {
   let anonymousCookie: string | null;
   let context: QuotaContext;
   let allowQwen = false;
+  let availablePages: number;
   try {
     const requestActor = await getRequestActor(request);
     actor = requestActor.actor;
@@ -122,7 +116,9 @@ export async function POST(request: Request): Promise<Response> {
     context = getQuotaContext(actor, subscription);
     allowQwen = canUseQwen(subscription?.tier);
     const currentUsage = await getUsageRecord(actor);
-    if (isCurrentUsageAtLimit(currentUsage, context)) {
+    const usedPages = currentUsage && isUsageRecordCurrent(currentUsage, context) ? currentUsage.used_pages : 0;
+    availablePages = Math.max(0, context.limitPages - usedPages);
+    if (availablePages === 0) {
       return setAnonymousCookie(
         errorResponse("QUOTA_EXHAUSTED", 429, locale, {
           period: context.window.period,
@@ -142,6 +138,6 @@ export async function POST(request: Request): Promise<Response> {
       : "QUOTA_UNAVAILABLE";
     return errorResponse(code, 503, locale);
   }
-  const response = await createConversionResponse(request, entry, context, allowQwen, locale);
+  const response = await createConversionResponse(request, entry, context, allowQwen, locale, availablePages);
   return setAnonymousCookie(response, anonymousCookie);
 }

@@ -5,23 +5,21 @@ import { useTranslations } from "next-intl";
 import * as XLSX from "@e965/xlsx";
 
 import { Button } from "@/components/ui/button";
+import { canDownloadResult, getExportFilename } from "@/lib/conversion-export";
 import { getRowRiskCode, type ParseResponse } from "@/lib/conversion-types";
 import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
 type ExcelDownloadProps = {
   filename: string;
   result: ParseResponse;
+  className?: string;
+  onStart?: () => void;
+  onError?: () => void;
 };
 
-function getDownloadName(filename: string, defaultFilename: string): string {
-  const baseName = filename.replace(/\.pdf$/i, "").replace(/[\\/:*?"<>|]+/g, "_").trim();
-  return `${baseName || defaultFilename}.xlsx`;
-}
-
-export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
+export function ExcelDownload({ filename, result, className, onStart, onError }: ExcelDownloadProps) {
   const t = useTranslations("ConversionResult");
-  const canDownload = result.summary.status !== "failed" &&
-    result.summary.validRowCount + result.summary.warningRowCount > 0;
+  const canDownload = canDownloadResult(result);
 
   function downloadWorkbook() {
     if (!canDownload) return;
@@ -82,11 +80,15 @@ export function ExcelDownload({ filename, result }: ExcelDownloadProps) {
       XLSX.utils.book_append_sheet(workbook, worksheet, t("excel.sheetName", { index: tableIndex + 1 }));
     });
 
-    XLSX.writeFile(workbook, getDownloadName(filename, t("excel.defaultFilename")));
+    XLSX.writeFile(workbook, getExportFilename(filename, t("excel.defaultFilename"), "xlsx"));
   }
 
   return (
-    <Button type="button" size="lg" onClick={downloadWorkbook} disabled={!canDownload}>
+    <Button type="button" size="lg" className={className} onClick={() => {
+      onStart?.();
+      try { downloadWorkbook(); }
+      catch { onError?.(); }
+    }} disabled={!canDownload}>
       <DownloadIcon data-icon="inline-start" />
       {t("download")}
     </Button>

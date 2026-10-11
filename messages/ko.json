@@ -91,10 +91,10 @@
   "ConversionResult": {
     "metadata": {
       "title": "변환 결과 | 은행 명세서 변환기",
-      "description": "추출된 은행 명세서 내역과 위험 표시를 확인한 뒤 Excel을 다운로드하세요."
+      "description": "은행 명세서 PDF의 추출 결과와 위험 표시를 확인한 후 Excel, CSV, JSON, Markdown, TSV 또는 HTML로 다운로드하세요."
     },
     "eyebrow": "변환 결과",
-    "description": "다운로드하기 전에 표시된 행을 원본 PDF와 비교해 주세요.",
+    "description": "다운로드하기 전에 표시된 내용을 원본 PDF와 대조하세요.",
     "download": "엑셀 다운로드",
     "backHome": "다른 파일 변환",
     "summary": {
@@ -165,7 +165,7 @@
         "extracting": "표 생성 중",
         "finalizing": "결과와 사용 한도 확인 중"
       },
-      "previewNotice": "표를 생성하고 있습니다. 최종 확인이 끝나면 Excel을 다운로드할 수 있습니다.",
+      "previewNotice": "표를 생성하고 있습니다. 최종 확인이 완료되면 다운로드할 수 있습니다.",
       "cancel": "변환 취소",
       "failedTitle": "변환이 완료되지 않았습니다",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "변환 요청에 대한 응답을 받지 못했습니다.",
         "storage": "변환은 완료되었지만 브라우저가 결과를 저장하지 못했습니다."
       }
+    },
+    "export": {
+      "moreFormats": "다른 형식",
+      "failed": "다운로드 파일을 생성하지 못했습니다. 다시 시도해 주세요.",
+      "tableWarnings": "표 참고 사항",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "여러 파일을 다운로드하려면 브라우저 권한이 필요할 수 있습니다. 각 표를 개별적으로 다운로드할 수도 있습니다.",
+      "downloadTable": "표 {index} 다운로드 · {format}"
     }
   },
   "HomeFeatures": {

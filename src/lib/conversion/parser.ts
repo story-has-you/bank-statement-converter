@@ -1,10 +1,12 @@
+import { subscriptionConfig } from "@/config/plans";
+import type { MembershipTier } from "@/lib/billing/types";
 import { isParseResponse, type ParseResponse } from "@/lib/conversion-types";
 import { ConversionError } from "@/lib/conversion-errors";
 
 export const MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 
-export function canUseQwen(tier: string | undefined): boolean {
-  return tier === "professional" || tier === "enterprise";
+export function canUseQwen(tier: MembershipTier | undefined): boolean {
+  return tier !== undefined && subscriptionConfig[tier].qwenFallback;
 }
 
 export function shouldFallback(error: ConversionError): boolean {

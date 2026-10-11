@@ -44,12 +44,14 @@ export async function parseWithQwen(
   });
   const body: ChatCompletionCreateParamsStreaming & {
     include_tool_usage: boolean;
+    enable_thinking: boolean;
   } = {
     model: "qwen3.8-flash",
     stream: true,
     response_format: { type: "json_object" },
     stream_options: { include_usage: true },
     include_tool_usage: true,
+    enable_thinking: false,
     messages: [
       { role: "system", content: statementPrompt },
       {

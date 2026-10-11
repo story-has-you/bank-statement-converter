@@ -1,5 +1,3 @@
-"use client";
-
 import { LoaderCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 

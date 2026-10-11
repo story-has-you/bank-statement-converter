@@ -1,6 +1,7 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 import { cache } from "react";
 
+import { subscriptionConfig } from "@/config/plans";
 import { siteConfig } from "@/config/site";
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -35,9 +36,9 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
   const plans = membershipTiers.map((tier) => ({
     tier,
     name: usage(`plans.${tier}.name`),
-    price: siteConfig.subscriptionPrices[tier],
+    price: subscriptionConfig[tier].monthlyPrice,
     pages: quota.subscriptions[tier].pages,
-    formattedPrice: format.number(siteConfig.subscriptionPrices[tier], {
+    formattedPrice: format.number(subscriptionConfig[tier].monthlyPrice, {
       style: "currency", currency: "USD",
     }),
     period: t("billingPeriod"),
@@ -53,7 +54,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       t("quotaSummary", {
         anonymousPages: quota.anonymous.pages,
         authenticatedPages: quota.authenticated.pages,
-        price: format.number(siteConfig.subscriptionPrices.standard, {
+        price: format.number(subscriptionConfig.standard.monthlyPrice, {
           minimumFractionDigits: 2, maximumFractionDigits: 2,
         }),
       }),

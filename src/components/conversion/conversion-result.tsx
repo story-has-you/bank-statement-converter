@@ -7,7 +7,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { ConversionProgress } from "@/components/conversion/conversion-progress";
 import { useConversion } from "@/components/conversion/conversion-provider";
 import { ConversionTable } from "@/components/conversion/conversion-table";
-import { ExcelDownload } from "@/components/conversion/excel-download";
+import { ConversionDownloads } from "@/components/conversion/conversion-downloads";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -124,7 +124,7 @@ export function ConversionResult() {
             </p>
           </div>
         </div>
-        <ExcelDownload filename={payload.filename} result={result} />
+        <ConversionDownloads filename={payload.filename} result={result} />
       </div>
 
       {result.summary.status === "partial" && (
@@ -224,7 +224,7 @@ export function ConversionResult() {
         <Link
           href="/"
           onClick={conversion.reset}
-          className={buttonVariants({ variant: "outline" })}
+          className={buttonVariants()}
         >
           {t("backHome")}
         </Link>

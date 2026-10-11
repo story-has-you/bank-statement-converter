@@ -2,7 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 
 import { PayPalSubscriptionButton } from "@/components/billing/paypal-subscription-button";
 import { PayPalScriptProviderWrapper } from "@/components/billing/paypal-script-provider";
-import { siteConfig } from "@/config/site";
+import { subscriptionConfig } from "@/config/plans";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import {
   membershipTiers,
@@ -88,7 +88,7 @@ export async function UsageTiers() {
                     <div className="grid gap-1">
                       <h3 className="text-base font-semibold">{plan.name}</h3>
                       <p className="text-3xl font-semibold">
-                        {format.number(siteConfig.subscriptionPrices[tier], { style: "currency", currency: "USD" })}
+                        {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
                         <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
                       </p>
                     </div>
@@ -100,7 +100,7 @@ export async function UsageTiers() {
                   </div>
                   <p className="text-sm leading-6 text-muted-foreground">{plan.description}</p>
                   <p className="text-sm leading-6 text-muted-foreground">
-                    {tier === "standard" ? t("textParsing") : t("aiParsing")}
+                    {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
                   </p>
                   <p className="text-sm font-medium">
                     {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}

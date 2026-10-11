@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { siteConfig } from "@/config/site";
+import { subscriptionConfig } from "@/config/plans";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { getHomeFaq } from "@/lib/geo/faq";
@@ -37,7 +37,7 @@ export async function HomeStructuredData() {
       offers: membershipTiers.map((tier) => ({
         "@type": "Offer",
         name: usageT(`plans.${tier}.name`),
-        price: siteConfig.subscriptionPrices[tier],
+        price: subscriptionConfig[tier].monthlyPrice,
         priceCurrency: "USD",
         description: `${usageT("perMonth")}. ${geo("billingNote")}`,
         url: `${getLocalizedAlternates("/", locale).canonical}#plans`,

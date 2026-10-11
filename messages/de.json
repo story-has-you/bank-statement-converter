@@ -91,10 +91,10 @@
   "ConversionResult": {
     "metadata": {
       "title": "Konvertierungsergebnis | Kontoauszugskonverter",
-      "description": "Prüfen Sie die extrahierten Kontoauszugszeilen und Risikomarkierungen und laden Sie die Excel-Datei herunter."
+      "description": "Prüfen Sie die extrahierten Kontoauszugszeilen und Risikohinweise und laden Sie Excel, CSV, JSON, Markdown, TSV oder HTML herunter."
     },
     "eyebrow": "Konvertierungsergebnis",
-    "description": "Vergleichen Sie vor dem Herunterladen die markierten Zeilen mit dem Original-PDF.",
+    "description": "Vergleichen Sie die markierten Zeilen vor dem Download mit der Original-PDF.",
     "download": "Excel herunterladen",
     "backHome": "Weitere Datei konvertieren",
     "summary": {
@@ -165,7 +165,7 @@
         "extracting": "Tabellen werden erstellt",
         "finalizing": "Ergebnis und Kontingent werden geprüft"
       },
-      "previewNotice": "Die Tabellen werden noch erstellt. Excel ist nach der abschließenden Prüfung verfügbar.",
+      "previewNotice": "Die Tabellen werden noch erstellt. Downloads sind nach den abschließenden Prüfungen verfügbar.",
       "cancel": "Konvertierung abbrechen",
       "failedTitle": "Konvertierung nicht abgeschlossen",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden.",
         "storage": "Die Konvertierung ist abgeschlossen, aber der Browser konnte das Ergebnis nicht speichern."
       }
+    },
+    "export": {
+      "moreFormats": "Weitere Formate",
+      "failed": "Die Download-Datei konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
+      "tableWarnings": "Tabellenhinweise",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "Ihr Browser benötigt möglicherweise eine Erlaubnis für mehrere Downloads. Sie können jede Tabelle auch einzeln herunterladen.",
+      "downloadTable": "Tabelle {index} herunterladen · {format}"
     }
   },
   "HomeFeatures": {

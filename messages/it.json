@@ -91,10 +91,10 @@
   "ConversionResult": {
     "metadata": {
       "title": "Risultato della conversione | Bank Statement Converter",
-      "description": "Controlla le righe estratte e le segnalazioni di rischio, poi scarica Excel."
+      "description": "Controlla le righe estratte dall’estratto conto e i rischi, poi scarica il risultato in Excel, CSV, JSON, Markdown, TSV o HTML."
     },
     "eyebrow": "Risultato della conversione",
-    "description": "Confronta le righe segnalate con il PDF originale prima di scaricare.",
+    "description": "Confronta le righe contrassegnate con il PDF originale prima di scaricare.",
     "download": "Scarica Excel",
     "backHome": "Converti un altro file",
     "summary": {
@@ -165,7 +165,7 @@
         "extracting": "Generazione delle tabelle",
         "finalizing": "Verifica del risultato e della quota"
       },
-      "previewNotice": "Le tabelle sono in fase di generazione. Excel sarà disponibile dopo le verifiche finali.",
+      "previewNotice": "Le tabelle sono ancora in fase di generazione. Il download sarà disponibile dopo i controlli finali.",
       "cancel": "Annulla conversione",
       "failedTitle": "Conversione non completata",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "Non è stato possibile ricevere una risposta alla richiesta di conversione.",
         "storage": "La conversione è completata, ma il browser non ha potuto salvare il risultato."
       }
+    },
+    "export": {
+      "moreFormats": "Altri formati",
+      "failed": "Non è stato possibile generare il file da scaricare. Riprova.",
+      "tableWarnings": "Note della tabella",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "Il browser potrebbe richiedere il permesso per scaricare più file. Puoi anche scaricare ogni tabella separatamente.",
+      "downloadTable": "Scarica tabella {index} · {format}"
     }
   },
   "HomeFeatures": {

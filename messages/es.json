@@ -91,10 +91,10 @@
   "ConversionResult": {
     "metadata": {
       "title": "Resultado de la conversión | Conversor de extractos bancarios",
-      "description": "Revisa las filas extraídas y las etiquetas de riesgo del extracto bancario, y descarga el archivo Excel."
+      "description": "Revisa las filas extraídas del extracto bancario y los riesgos, y descarga el resultado en Excel, CSV, JSON, Markdown, TSV o HTML."
     },
     "eyebrow": "Resultado de la conversión",
-    "description": "Compara las filas marcadas con el PDF original antes de descargar el resultado.",
+    "description": "Compara las filas marcadas con el PDF original antes de descargar.",
     "download": "Descargar Excel",
     "backHome": "Convertir otro archivo",
     "summary": {
@@ -165,7 +165,7 @@
         "extracting": "Generando tablas",
         "finalizing": "Comprobando el resultado y la cuota"
       },
-      "previewNotice": "Las tablas se están generando. Excel estará disponible después de las comprobaciones finales.",
+      "previewNotice": "Las tablas se están generando. La descarga estará disponible después de las comprobaciones finales.",
       "cancel": "Cancelar conversión",
       "failedTitle": "Conversión sin completar",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "No se pudo recibir una respuesta a la solicitud de conversión.",
         "storage": "La conversión se completó, pero el navegador no pudo guardar el resultado."
       }
+    },
+    "export": {
+      "moreFormats": "Más formatos",
+      "failed": "No se pudo generar el archivo de descarga. Inténtalo de nuevo.",
+      "tableWarnings": "Notas de la tabla",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "El navegador puede requerir permiso para descargar varios archivos. También puedes descargar cada tabla por separado.",
+      "downloadTable": "Descargar tabla {index} · {format}"
     }
   },
   "HomeFeatures": {

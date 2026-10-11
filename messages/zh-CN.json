@@ -91,10 +91,10 @@
   "ConversionResult": {
     "metadata": {
       "title": "转换结果 | 流水转换",
-      "description": "查看银行流水 PDF 的识别结果，核对后下载 Excel。"
+      "description": "查看银行流水 PDF 的识别结果，核对后下载 Excel、CSV、JSON、Markdown、TSV 或 HTML。"
     },
     "eyebrow": "转换结果",
-    "description": "下载 Excel 前，请对照原 PDF 核对标记内容。",
+    "description": "下载前，请对照原 PDF 核对标记内容。",
     "download": "下载 Excel",
     "backHome": "重新转换",
     "summary": {
@@ -165,7 +165,7 @@
         "extracting": "正在生成表格",
         "finalizing": "正在检查结果和额度"
       },
-      "previewNotice": "表格正在生成，最终检查完成后才能下载 Excel。",
+      "previewNotice": "表格正在生成，最终检查完成后才能下载。",
       "cancel": "取消转换",
       "failedTitle": "转换未完成",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "未能收到转换请求的响应。",
         "storage": "转换已完成，但浏览器未能保存本次结果。"
       }
+    },
+    "export": {
+      "moreFormats": "更多格式",
+      "failed": "未能生成下载文件，请重试。",
+      "tableWarnings": "表格提示",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "下载多个文件可能需要浏览器许可，也可分别下载各表。",
+      "downloadTable": "下载表格 {index} · {format}"
     }
   },
   "HomeFeatures": {

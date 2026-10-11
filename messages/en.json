@@ -91,7 +91,7 @@
   "ConversionResult": {
     "metadata": {
       "title": "Conversion result | Bank Statement Converter",
-      "description": "Review the extracted bank statement rows and risk labels, then download Excel."
+      "description": "Review the extracted bank statement rows and risk labels, then download Excel, CSV, JSON, Markdown, TSV, or HTML."
     },
     "eyebrow": "Conversion result",
     "description": "Compare the marked rows with the original PDF before downloading.",
@@ -165,7 +165,7 @@
         "extracting": "Generating tables",
         "finalizing": "Checking results and quota"
       },
-      "previewNotice": "Tables are still being generated. Excel download is available after the final checks.",
+      "previewNotice": "Tables are still being generated. Downloads are available after the final checks.",
       "cancel": "Cancel conversion",
       "failedTitle": "Conversion not completed",
       "errors": {
@@ -174,6 +174,20 @@
         "request": "No response to the conversion request could be received.",
         "storage": "Conversion completed, but the browser could not save the result."
       }
+    },
+    "export": {
+      "moreFormats": "More formats",
+      "failed": "The download file could not be generated. Please try again.",
+      "tableWarnings": "Table notes",
+      "formats": {
+        "csv": "CSV",
+        "json": "JSON",
+        "markdown": "Markdown",
+        "tsv": "TSV",
+        "html": "HTML"
+      },
+      "multipleFiles": "Your browser may require permission to download multiple files. You can also download each table separately.",
+      "downloadTable": "Download table {index} · {format}"
     }
   },
   "HomeFeatures": {

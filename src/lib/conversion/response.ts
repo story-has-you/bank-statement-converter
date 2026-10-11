@@ -39,12 +39,13 @@ export async function createConversionResponse(
   context: QuotaContext,
   allowQwen: boolean,
   locale: AppLocale,
+  availablePages: number,
 ): Promise<NextResponse> {
   if (request.headers.get("accept")?.includes("text/event-stream")) {
-    return streamResponse(request, file, context, allowQwen, locale);
+    return streamResponse(request, file, context, allowQwen, locale, availablePages);
   }
   try {
-    const result = await convertStatement(file, context, allowQwen, request.signal, () => {});
+    const result = await convertStatement(file, context, allowQwen, request.signal, () => {}, availablePages);
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store", Vary: "Accept" } });
   } catch (error) {
     const failure = asConversionError(error);
@@ -58,6 +59,7 @@ function streamResponse(
   context: QuotaContext,
   allowQwen: boolean,
   locale: AppLocale,
+  availablePages: number,
 ): NextResponse {
   const abort = new AbortController();
   const signal = AbortSignal.any([request.signal, abort.signal]);
@@ -74,7 +76,7 @@ function streamResponse(
         if (!closed && !signal.aborted) controller.enqueue(encoder.encode(": heartbeat\n\n"));
       }, 15_000);
       try {
-        await convertStatement(file, context, allowQwen, signal, send);
+        await convertStatement(file, context, allowQwen, signal, send, availablePages);
       } catch (error) {
         if (!signal.aborted) {
           const failure = asConversionError(error);

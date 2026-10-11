@@ -54,7 +54,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
       )}
 
       <div className="overflow-x-auto">
-        <table className="w-max min-w-[1280px] border-collapse text-left text-sm">
+        <table className="w-max min-w-7xl border-collapse text-left text-sm">
           <thead className="bg-muted/60 text-xs text-muted-foreground">
             <tr>
               {table.columns.map((column) => (
@@ -86,7 +86,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
                 {table.columns.map((column) => (
                   <td
                     key={column.key}
-                    className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 break-words whitespace-pre-wrap`}
+                    className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap`}
                   >
                     {row.values[column.key] ?? "-"}
                   </td>

@@ -24,7 +24,29 @@ pnpm dev --port 3000
 
 浏览器只请求 Next.js 的同源 `/api/convert`，Next.js 服务端再调用 Python 的 `http://127.0.0.1:8000/parse`，因此不需要为 Python 服务开放浏览器 CORS。默认解析地址可以通过仅服务端使用的 `PARSER_SERVICE_URL` 覆盖。
 
-转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和 Excel 不写入数据库、对象存储或持久化文件历史。multipart 请求解析可能短暂使用内存或系统临时文件，处理结束后关闭并清理，不提供再次下载的文件。
+转换结果只在当前标签页完成一次临时交接，并在结果页内存中预览；PDF、解析结果和所有导出文件不写入数据库、对象存储或持久化文件历史。multipart 请求解析可能短暂使用内存或系统临时文件，处理结束后关闭并清理，不提供再次下载的文件。
+
+## 结果下载格式
+
+结果页保留“下载 Excel”按钮，按钮右侧的下拉箭头支持 CSV、JSON、Markdown、TSV 和 HTML。所有文件由浏览器根据本次最终解析结果生成，不增加解析请求或转换用量。
+
+- Excel 沿用每个逻辑表一个工作表；CSV、TSV 每表一个文件，多表时文件名增加表序号，浏览器可能需要允许多个文件下载；页面同时提供逐表下载入口。
+- CSV、TSV 采用 UTF-8 BOM，保留原始列、状态、核对提示、来源页码和行号，并附页面风险及表格提示列。空表若有风险，仅输出一行流水字段为空的提示记录。
+- JSON 包含完整 `ParseResponse`，保留原始状态、风险代码及参数、表结构、摘要和来源信息；JSON 的键和代码不随界面语言变化。
+- Markdown、HTML 各用一个文件包含全部逻辑表、页面风险及表格提示；HTML 可离线打开。
+
+至少存在一行有效或带警告的交易且结果未失败时才开放下载。导出保留原始单元格文本；用电子表格软件打开 CSV、TSV 时，软件可能自行将文本识别为数字或日期。
+
+## 套餐与额度配置
+
+在 [`src/config/plans.ts`](src/config/plans.ts) 统一调整套餐规则：
+
+- `freeQuotaConfig`：匿名与登录免费用户的每日页数，当前分别为 1 页和 5 页，按 UTC 日重置。
+- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个 PayPal 计费周期的额度）和 `qwenFallback`（是否允许 Python 失败后回退到 Qwen）。当前 Standard 为 $19.90 / 400 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
+
+首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，后台原子扣减 RPC 使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
+
+这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 只调整网站展示，不会修改 PayPal 的实际扣款金额；若今后改价，需要同步调整 PayPal 计划及其环境变量映射。仅修改页数额度不需要调整 PayPal 价格或计划 ID。
 
 ## PayPal Sandbox 订阅配置
 
@@ -133,10 +155,10 @@ Professional 和 Enterprise 使用资格有效时，转换优先调用 Python；
 
 在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响回退，不影响 Python 正常转换。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
 
-浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`，开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和额度扣减成功后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
+浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`，开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和请求开始时的剩余额度检查通过后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
 
-模型调用设置 `include_tool_usage: true` 和 `stream_options.include_usage: true`。Qwen 的权威扣减页数来自 `usage.x_tools.pdf_page_parser.count`，覆盖模型内容中的 `pageCount`；缺失或无效页数、超过 50 页、无可核对交易、截断或无效 JSON 都不进入扣减。文件仍限制 4 MB，解析内容限制 4 MB。接口时限为 300 秒，Python 为 55 秒，Qwen 为 230 秒，SDK 不自动重试。
+模型调用设置 `enable_thinking: false`、`include_tool_usage: true` 和 `stream_options.include_usage: true`。Qwen 的权威扣减页数来自 `usage.x_tools.pdf_page_parser.count`，覆盖模型内容中的 `pageCount`；缺失或无效页数、超过 50 页、无可核对交易、截断或无效 JSON 都不进入扣减。文件仍限制 4 MB，解析内容限制 4 MB。接口时限为 300 秒，Python 为 55 秒，Qwen 为 230 秒，SDK 不自动重试。
 
-流式表格仅存在于当前页面内存，下载在最终校验和额度扣减成功后开放。完成后沿用浏览器会话结果交接，生成途中刷新、离开结果页或切换语言会中断，不恢复后台转换。成功扣减后若浏览器断开或无法保存结果，不增加自动回滚或重试机制。
+流式表格仅存在于当前页面内存，下载在最终校验和已知剩余额度检查通过后开放。额度通过 Next.js `after()` 在响应结束后异步扣减，只调用一次原子 RPC；仅保留后台扣额拒绝和失败的错误码日志。并发快照可能过期，后台拒绝或失败不撤回已返回结果、不自动重试，且受接口最大时长与进程生命周期限制。完成后沿用浏览器会话结果交接，生成途中刷新、离开结果页或切换语言会中断，不恢复后台转换。成功扣减后若浏览器断开或无法保存结果，不增加自动回滚或重试机制。
 
 高阶套餐回退会将对账单发送至千问处理，适用千问的服务条款和隐私政策。本网站不持久化 PDF、Excel 或交易明细，也不对供应商的数据保存政策作额外承诺。真实千问效果及额度写入需要使用获准的脱敏样本单独验收。
