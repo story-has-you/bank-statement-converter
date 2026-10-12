@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { PaymentProviderIcon } from "@/components/billing/payment-provider-icon";
 import type { MembershipTier } from "@/lib/billing/types";
 
 type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
@@ -18,6 +19,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
   const t = useTranslations("Billing");
   const locale = useLocale();
   const router = useRouter();
+  const providerName = checkout.provider === "creem" ? "Creem" : "PayPal";
   const [message, setMessage] = useState<string | null>(null);
   const [failure, setFailure] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -114,10 +116,13 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
         if (confirming) label = t("confirming");
         else if (pending) label = labels.processing;
         return (
-          <div className="grid gap-2">
+          <div className="grid min-w-0 gap-2">
             <Button
               type="button"
               size="lg"
+              className="w-full min-w-0"
+              aria-label={label}
+              title={label}
               onClick={() => {
                 setMessage(null);
                 setFailure(null);
@@ -128,7 +133,8 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
               }}
               disabled={pending || confirming}
             >
-              {label}
+              <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+              <span className="truncate">{pending || confirming ? label : providerName}</span>
             </Button>
             {message && (
               <p role="status" className="text-sm text-muted-foreground">
