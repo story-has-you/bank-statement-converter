@@ -2,6 +2,7 @@ import "server-only";
 
 import { NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
+import { siteConfig } from "@/config/site";
 import { resolveLocale } from "@/i18n/locale";
 import { createClient } from "@/lib/supabase/server";
 
@@ -9,7 +10,7 @@ import { isMembershipTier } from "./config";
 import { BillingError } from "./errors";
 import { getPaymentProvider } from "./providers";
 import type { PaymentProviderId } from "./provider";
-import { cancelSubscription, confirmSubscription, createSubscription } from "./subscriptions";
+import { cancelSubscription, confirmSubscription, createSubscription, requireConfiguredProvider } from "./subscriptions";
 import { applyBillingEvent } from "./events";
 
 type SubscriptionAction = "create" | "activate" | "cancel";
@@ -24,7 +25,7 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
   const headers = action === "cancel" ? { "Cache-Control": "no-store" } : undefined;
   const errorResponse = (code: Parameters<typeof t>[0], status: number) => NextResponse.json({ error: t(code) }, { status, headers });
   try {
-    if (action === "cancel" && request.headers.get("origin") !== new URL(request.url).origin) {
+    if ((action === "cancel" || action === "create") && request.headers.get("origin") !== new URL(request.url).origin) {
       throw new BillingError("cancelInvalidOrigin", 403);
     }
     const supabase = await createClient();
@@ -39,8 +40,24 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
     const provider = getPaymentProvider(legacyProvider ?? input.provider);
     if (action === "create") {
       if (!isMembershipTier(input.tier)) throw new BillingError("invalidTier", 400);
-      const result = await createSubscription(provider, input.tier, data.user.id);
-      return NextResponse.json(legacyProvider ? { subscriptionId: result.subscriptionId } : result);
+      const locale = resolveLocale(request.headers.get("x-app-locale"));
+      const prefix = locale === "en" ? "" : `/${locale}`;
+      const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);
+      returnUrl.searchParams.set("tier", input.tier);
+      const result = await createSubscription(provider, input.tier, { id: data.user.id, email: data.user.email! }, returnUrl.href);
+      return NextResponse.json(legacyProvider && result.provider === "paypal" ? { subscriptionId: result.subscriptionId } : result);
+    }
+    if (action === "activate" && provider.id === "creem") {
+      if (request.headers.get("origin") !== new URL(request.url).origin) throw new BillingError("cancelInvalidOrigin", 403);
+      if (!isMembershipTier(input.tier) || typeof input.checkoutId !== "string") throw new BillingError("invalidRequest", 400);
+      requireConfiguredProvider(provider, input.tier);
+      const subscriptionId = await provider.resolveCheckout!(input.checkoutId, input.tier, data.user.id);
+      if (!subscriptionId) return NextResponse.json({ status: "PENDING" }, { status: 202, headers: { "Cache-Control": "no-store" } });
+      const remote = await provider.getSubscription(subscriptionId);
+      if (remote.userId !== data.user.id) throw new BillingError("subscriptionBelongsToAnotherAccount", 409);
+      if (remote.tier !== input.tier || remote.planId !== provider.getPlanId(input.tier)) throw new BillingError("planMismatch", 409);
+      const result = await confirmSubscription(provider, subscriptionId, input.tier, data.user.id);
+      return NextResponse.json(result, { status: result.status === "PENDING" ? 202 : 200, headers: { "Cache-Control": "no-store" } });
     }
     if (!provider.isSubscriptionId(input.subscriptionId)) throw new BillingError("invalidRequest", 400);
     if (action === "cancel") {

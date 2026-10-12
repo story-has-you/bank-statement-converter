@@ -6,11 +6,15 @@ import { usePayPalSubscriptionPaymentSession } from "@paypal/react-paypal-js/sdk
 import type { PaymentSessionProps } from "@/components/billing/payment-session";
 
 /** 将 PayPal SDK 会话转换为通用交互状态和事件。 */
-const PayPalSubscriptionSession: FC<PaymentSessionProps> = ({ createSubscription, onApprove, onCancel, onError, children }) => {
+const PayPalSubscriptionSession: FC<PaymentSessionProps> = ({ createCheckout, onApprove, onCancel, onError, children }) => {
   const t = useTranslations("PayPal");
   const { error, isPending, handleClick, handleCancel } = usePayPalSubscriptionPaymentSession({
     presentationMode: "popup",
-    createSubscription: async () => ({ subscriptionId: await createSubscription() }),
+    createSubscription: async () => {
+      const checkout = await createCheckout();
+      if (checkout.provider !== "paypal") throw new Error("Unexpected checkout provider");
+      return { subscriptionId: checkout.subscriptionId };
+    },
     onApprove: (data) => onApprove(data.subscriptionId),
     onCancel,
     onError,

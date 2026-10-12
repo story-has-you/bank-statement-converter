@@ -201,7 +201,7 @@
   },
   "UsageTiers": {
     "title": "Quels sont les prix et quotas des offres ?",
-    "description": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via PayPal.",
+    "description": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem / PayPal.",
     "anonymous": "Sans vous connecter",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "anonymousDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
@@ -271,9 +271,11 @@
       "existingPendingSubscription": "Ce compte possède déjà un abonnement en attente de confirmation.",
       "existingSuspendedSubscription": "Ce compte possède déjà un abonnement suspendu.",
       "billingPeriodEnded": "La période de facturation actuelle de cet abonnement est terminée.",
-      "invalidProvider": "Le prestataire de paiement sélectionné est invalide."
+      "invalidProvider": "Le prestataire de paiement sélectionné est invalide.",
+      "existingFailedSubscription": "Un paiement reste en attente. Régularisez-le ou résiliez votre abonnement."
     },
-    "invalidStatusResponse": "Le service d’abonnement a renvoyé des informations de statut invalides."
+    "invalidStatusResponse": "Le service d’abonnement a renvoyé des informations de statut invalides.",
+    "providerUnavailable": "Les paiements {provider} ne sont pas configurés."
   },
   "PayPal": {
     "subscribe": "S'abonner avec PayPal",
@@ -328,7 +330,7 @@
     },
     "title": "Conditions d'utilisation",
     "intro": "Ce service est exploité par ReAvid Ltd et fourni via <site>{domain}</site>. Lisez ces conditions et la politique de confidentialité avant d'utiliser les services de conversion et d'abonnement.",
-    "availability": "La conversion PDF vers Excel et les abonnements PayPal sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
+    "availability": "La conversion PDF vers Excel et les abonnements Creem / PayPal sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
     "service": {
       "title": "Portée du service",
       "body": "Le service organise les transactions des relevés bancaires PDF pris en charge dans des fichiers Excel à télécharger et à vérifier. Les banques, les types de fichiers et les limites de traitement sont indiqués sur la page du service. Nous ne proposons ni connexion aux comptes bancaires, ni services bancaires, ni conseils financiers, fiscaux ou juridiques. L’analyse habituelle est utilisée en premier. Professional et Enterprise avec des droits valides peuvent passer automatiquement à l’analyse IA si elle échoue, est indisponible ou ne fournit aucune transaction vérifiable, et essayer les scans. Les résultats partiels utilisables ne déclenchent pas ce relais."
@@ -343,11 +345,11 @@
     },
     "quota": {
       "title": "Quotas de conversion",
-      "body": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} PDF par jour ; avec un compte gratuit, {authenticatedPages, plural, one {# page} other {# pages}}. Standard inclut {standardPages, plural, one {# page} other {# pages}} par mois, Professionnel {professionalPages, number} et Entreprise {enterprisePages, number}. Le quota quotidien est réinitialisé selon UTC et celui de l’abonnement suit la période de facturation PayPal en cours. Les conversions échouées ne consomment pas de quota ; les résultats partiels sont comptés selon le nombre de pages du PDF."
+      "body": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} PDF par jour ; avec un compte gratuit, {authenticatedPages, plural, one {# page} other {# pages}}. Standard inclut {standardPages, plural, one {# page} other {# pages}} par mois, Professionnel {professionalPages, number} et Entreprise {enterprisePages, number}. Le quota quotidien est réinitialisé selon UTC et celui de l’abonnement suit la période de facturation Creem / PayPal en cours. Les conversions échouées ne consomment pas de quota ; les résultats partiels sont comptés selon le nombre de pages du PDF."
     },
     "subscription": {
       "title": "Abonnements et paiement",
-      "body": "Les forfaits Standard, Professionnel et Entreprise se renouvellent mensuellement. Les prix sont affichés avant l'achat. Le paiement est effectué via PayPal et n'est facturé qu'après confirmation de l'achat. PayPal peut envoyer des informations sur l'état de l'abonnement, le renouvellement et les échecs de paiement à ce service. Gérez le renouvellement automatique d'un abonnement dans votre compte PayPal."
+      "body": "Standard, Professional et Enterprise se renouvellent chaque mois au prix affiché avant l’achat. Creem ou PayPal traite le paiement après votre confirmation et transmet les informations d’abonnement, de renouvellement et d’échec de paiement. Vous pouvez résilier le renouvellement automatique depuis votre compte sur le site. L’accès payé reste valable jusqu’à la fin de la période de facturation confirmée."
     },
     "files": {
       "title": "Fichiers et téléchargements",
@@ -384,15 +386,15 @@
       "description": "Traitement des relevés, de l’analyse IA, des résultats temporaires du navigateur et des données de compte, d’exploitation de l’analyse, de quota et de facturation."
     },
     "title": "Politique de confidentialité",
-    "intro": "ReAvid Ltd exploite <site>{domain}</site>. Cette politique explique comment nous traitons les informations lorsque vous utilisez les services de conversion et d'abonnement PayPal.",
-    "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement PayPal actuellement disponibles.",
+    "intro": "ReAvid Ltd exploite <site>{domain}</site>. Cette politique explique comment nous traitons les informations lorsque vous utilisez les services de conversion et d'abonnement Creem / PayPal.",
+    "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement Creem / PayPal actuellement disponibles.",
     "documents": {
       "title": "Relevés bancaires et contenu de conversion",
       "body": "Votre PDF peut contenir des noms, numéros de compte, dates, montants, soldes et descriptions de transactions sensibles. Nous traitons les PDF, transactions extraites et contenus exportés uniquement pour votre conversion et téléchargement, sans publicité ni finalité sans rapport. Le traitement par des tiers lors du relais IA est expliqué ci-dessous."
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
-      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement PayPal, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. PayPal gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons également, à chaque tentative d’analyse, l’identifiant du compte, un instantané de l’adresse e-mail, la date et l’heure d’enregistrement, la dernière méthode d’analyse choisie, l’état de la conversion et les raisons des échecs d’analyse ou du recours à un modèle d’IA, afin de diagnostiquer les problèmes. Ces enregistrements ne contiennent aucun nom de fichier, contenu de fichier, détail de transaction ni sortie du modèle."
+      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Creem / PayPal, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Creem / PayPal gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons également, à chaque tentative d’analyse, l’identifiant du compte, un instantané de l’adresse e-mail, la date et l’heure d’enregistrement, la dernière méthode d’analyse choisie, l’état de la conversion et les raisons des échecs d’analyse ou du recours à un modèle d’IA, afin de diagnostiquer les problèmes. Ces enregistrements ne contiennent aucun nom de fichier, contenu de fichier, détail de transaction ni sortie du modèle."
     },
     "technicalData": {
       "title": "Informations techniques nécessaires",
@@ -409,7 +411,7 @@
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
-      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions."
+      "body": "La connexion au compte utilise Google et Supabase. Le paiement de l'abonnement et la synchronisation du statut utilisent Creem / PayPal. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. Creem / PayPal peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions."
     },
     "storage": {
       "title": "Stockage du navigateur",
@@ -558,7 +560,7 @@
     "unverifiableDefinition": "Des preuves essentielles manquent ou la ligne ne peut pas être vérifiée de façon fiable.",
     "limitsTitle": "Quels PDF puis-je importer ?",
     "limitsAnswer": "Importez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Enterprise peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
-    "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via PayPal.",
+    "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem / PayPal.",
     "faqAnswer": "Ces réponses expliquent les exigences, quotas et risques. Lisez la réponse pertinente et vérifiez votre PDF avant la conversion.",
     "planHeader": "Offre",
     "priceHeader": "Prix (USD)",
@@ -566,8 +568,8 @@
     "periodHeader": "Période du quota",
     "freePrice": "Gratuit",
     "dailyPeriod": "Chaque jour (UTC)",
-    "billingPeriod": "Période de facturation PayPal",
-    "billingNote": "Les abonnements sont renouvelés chaque mois via PayPal. Un échec ne consomme pas de quota ; un résultat partiel compte les pages du PDF original.",
+    "billingPeriod": "Période de facturation Creem / PayPal",
+    "billingNote": "Les abonnements sont renouvelés chaque mois via Creem / PayPal. Un échec ne consomme pas de quota ; un résultat partiel compte les pages du PDF original.",
     "privacyTitle": "Comment mes données sont-elles traitées ?",
     "privacyAnswer": "Le contenu sert uniquement à la conversion et au téléchargement en cours. Conservez PDF et Excel, car le service ne propose aucun historique de fichiers.",
     "browserTitle": "Que conserve temporairement mon navigateur ?",
@@ -586,8 +588,24 @@
     "chatDescription": "Interrogez un assistant IA sur Bank Statement Converter à partir de nos sources officielles.",
     "prompt": "Consulte les informations officielles de Bank Statement Converter : {fullUrl}. Pour plus de détails, lis {indexUrl} et suis les liens pertinents. Réponds en {language} : explique les fonctions, étapes, limites de fichiers, traitement des données, quotas gratuits et tarifs des abonnements, avec les liens sources. Si une source est inaccessible ou ne répond pas, indique-le sans deviner.",
     "showPrompt": "Voir la consigne par défaut",
-    "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et PayPal.",
+    "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et Creem / PayPal.",
     "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services.",
     "parsingHeader": "Capacité d’analyse"
+  },
+  "Creem": {
+    "subscribe": "S’abonner avec Creem",
+    "processing": "Ouverture de Creem"
+  },
+  "BillingReturn": {
+    "title": "Confirmation de l’abonnement",
+    "description": "Nous vérifions le paiement et votre accès.",
+    "pending": "En attente de confirmation du paiement…",
+    "active": "Votre abonnement est actif.",
+    "delayed": "La confirmation du paiement n’est pas encore arrivée. Réessayez dans un instant.",
+    "failed": "Impossible de confirmer votre abonnement.",
+    "signInRequired": "Connectez-vous au compte utilisé pour cet achat, puis réessayez.",
+    "invalidReturn": "Ce lien de retour de paiement est invalide.",
+    "retry": "Vérifier à nouveau",
+    "account": "Ouvrir votre compte"
   }
 }

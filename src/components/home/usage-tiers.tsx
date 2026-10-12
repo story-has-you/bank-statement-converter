@@ -1,11 +1,11 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 
-import { SubscriptionButton } from "@/components/billing/subscription-button";
+import { SubscriptionOptions } from "@/components/billing/subscription-options";
 import { CheckoutProvider } from "@/components/billing/checkout-provider";
 import { subscriptionConfig } from "@/config/plans";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import { membershipTiers } from "@/lib/billing/config";
-import { getCheckoutConfig } from "@/lib/billing/providers";
+import { getCheckoutConfigs } from "@/lib/billing/providers";
 import { createClient } from "@/lib/supabase/server";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
@@ -17,7 +17,7 @@ export async function UsageTiers() {
   const activeSubscription = user ? await findEntitledBillingSubscription(user.id) : null;
   const cancelledPeriodEnd = activeSubscription?.status === "CANCELLED" ? activeSubscription.current_period_end : null;
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
-  const checkout = getCheckoutConfig();
+  const checkouts = getCheckoutConfigs();
   const readRawTranslation = t.raw as (key: string) => unknown;
   const plans = readRawTranslation("plans") as Record<
     (typeof membershipTiers)[number],
@@ -69,7 +69,7 @@ export async function UsageTiers() {
           </p>
         )}
 
-        <CheckoutProvider checkout={checkout}>
+        <CheckoutProvider checkouts={checkouts}>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {membershipTiers.map((tier) => {
               const plan = plans[tier];
@@ -100,9 +100,9 @@ export async function UsageTiers() {
                     {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}
                   </p>
                   {!cancelledPeriodEnd && !isLowerTier && (
-                    <SubscriptionButton
-                      checkout={checkout}
-                      current={activeSubscription?.tier === tier && activeSubscription.status === "ACTIVE"}
+                    <SubscriptionOptions
+                      checkouts={checkouts}
+                      current={activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)}
                       signedIn={Boolean(user)}
                       tier={tier}
                     />

@@ -201,7 +201,7 @@
   },
   "UsageTiers": {
     "title": "Berapa harga paket dan apa yang termasuk?",
-    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui PayPal.",
+    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem / PayPal.",
     "anonymous": "Tanpa login",
     "anonymousAmount": "{pages, number} halaman",
     "anonymousDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
@@ -271,9 +271,11 @@
       "existingPendingSubscription": "Akun ini sudah memiliki langganan yang menunggu konfirmasi.",
       "existingSuspendedSubscription": "Akun ini sudah memiliki langganan yang ditangguhkan.",
       "billingPeriodEnded": "Periode penagihan saat ini untuk langganan ini telah berakhir.",
-      "invalidProvider": "Penyedia pembayaran yang dipilih tidak valid."
+      "invalidProvider": "Penyedia pembayaran yang dipilih tidak valid.",
+      "existingFailedSubscription": "Ada pembayaran yang belum selesai. Selesaikan pembayaran atau batalkan langganan Anda."
     },
-    "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid."
+    "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid.",
+    "providerUnavailable": "Pembayaran {provider} belum dikonfigurasi."
   },
   "PayPal": {
     "subscribe": "Berlangganan dengan PayPal",
@@ -328,7 +330,7 @@
     },
     "title": "Ketentuan layanan",
     "intro": "Layanan ini dikelola ReAvid Ltd melalui <site>{domain}</site>. Baca ketentuan ini dan kebijakan privasi sebelum menggunakan konversi dan langganan.",
-    "availability": "Konversi PDF ke Excel dan langganan PayPal disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
+    "availability": "Konversi PDF ke Excel dan langganan Creem / PayPal disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
     "service": {
       "title": "Cakupan layanan",
       "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum. Penguraian biasa dijalankan terlebih dahulu. Professional dan Enterprise dengan hak penggunaan yang masih berlaku dapat beralih otomatis ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, termasuk mencoba mengonversi hasil pindai. Hasil sebagian yang berguna tidak memicu peralihan."
@@ -343,11 +345,11 @@
     },
     "quota": {
       "title": "Kuota konversi",
-      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan PayPal saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
+      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem / PayPal saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
-      "body": "Paket Standar, Profesional, dan Perusahaan diperpanjang setiap bulan. Harga ditampilkan sebelum pembelian. Pembayaran dilakukan melalui PayPal dan ditagih hanya setelah Anda mengonfirmasi pembelian. PayPal dapat mengirim status langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Kelola perpanjangan otomatis di akun PayPal Anda."
+      "body": "Standard, Professional, dan Enterprise diperpanjang bulanan dengan harga yang ditampilkan sebelum pembelian. Creem atau PayPal memproses pembayaran setelah konfirmasi dan mengirim informasi langganan, perpanjangan, serta kegagalan pembayaran. Batalkan perpanjangan otomatis dari akun situs Anda. Akses berbayar tetap berlaku sampai periode tagihan yang dikonfirmasi berakhir."
     },
     "files": {
       "title": "Berkas dan unduhan",
@@ -384,15 +386,15 @@
       "description": "Pemrosesan rekening koran, penguraian AI, hasil sementara di browser, serta data akun, operasional penguraian, kuota, dan penagihan."
     },
     "title": "Kebijakan privasi",
-    "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan PayPal.",
-    "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan PayPal yang tersedia saat ini.",
+    "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan Creem / PayPal.",
+    "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan Creem / PayPal yang tersedia saat ini.",
     "documents": {
       "title": "Rekening koran dan isi konversi",
       "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Pemrosesan pihak ketiga saat beralih ke AI dijelaskan di bawah."
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem / PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem / PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -409,7 +411,7 @@
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
+      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan Creem / PayPal. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Creem / PayPal dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
     },
     "storage": {
       "title": "Penyimpanan browser",
@@ -558,7 +560,7 @@
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
     "limitsTitle": "PDF apa yang dapat diunggah?",
     "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
-    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui PayPal.",
+    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem / PayPal.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
     "priceHeader": "Harga (USD)",
@@ -566,8 +568,8 @@
     "periodHeader": "Periode kuota",
     "freePrice": "Gratis",
     "dailyPeriod": "Harian (UTC)",
-    "billingPeriod": "Periode tagihan PayPal",
-    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui PayPal. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
+    "billingPeriod": "Periode tagihan Creem / PayPal",
+    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem / PayPal. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
     "privacyTitle": "Bagaimana data saya diproses?",
     "privacyAnswer": "Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
     "browserTitle": "Apa yang disimpan sementara di browser?",
@@ -586,8 +588,24 @@
     "chatDescription": "Tanyakan Bank Statement Converter kepada asisten AI menggunakan sumber resmi kami.",
     "prompt": "Kunjungi informasi resmi Bank Statement Converter: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
     "showPrompt": "Lihat prompt bawaan",
-    "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan PayPal.",
+    "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan Creem / PayPal.",
     "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
     "parsingHeader": "Kemampuan penguraian"
+  },
+  "Creem": {
+    "subscribe": "Berlangganan dengan Creem",
+    "processing": "Membuka Creem"
+  },
+  "BillingReturn": {
+    "title": "Konfirmasi langganan",
+    "description": "Kami sedang memeriksa pembayaran dan akses langganan Anda.",
+    "pending": "Menunggu konfirmasi pembayaran…",
+    "active": "Langganan Anda aktif.",
+    "delayed": "Konfirmasi pembayaran belum diterima. Periksa lagi sebentar lagi.",
+    "failed": "Langganan tidak dapat dikonfirmasi.",
+    "signInRequired": "Masuk ke akun yang digunakan untuk pembelian, lalu periksa lagi.",
+    "invalidReturn": "Tautan kembali pembayaran ini tidak valid.",
+    "retry": "Periksa lagi",
+    "account": "Buka akun Anda"
   }
 }

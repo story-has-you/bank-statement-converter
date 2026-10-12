@@ -7,7 +7,7 @@ import type { CheckoutConfig } from "@/lib/billing/provider";
 
 type PayPalScriptProviderWrapperProps = {
   clientId: string | null;
-  environment: CheckoutConfig["settings"]["environment"];
+  environment: Extract<CheckoutConfig, { provider: "paypal" }>["settings"]["environment"];
   children: ReactNode;
 };
 

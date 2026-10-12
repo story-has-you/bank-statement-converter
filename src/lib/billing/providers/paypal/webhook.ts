@@ -53,7 +53,7 @@ export async function parsePayPalWebhook(headers: Headers, body: string): Promis
 }
 
 async function resolvePayPalEvent(
-  type: BillingEvent["type"], id: string, at: string,
+  type: "subscription-activated" | "subscription-cancelled" | "subscription-renewed", id: string, at: string,
   subscriptionId: string, resource: Record<string, unknown>,
 ): Promise<BillingEvent> {
   const remote = await getPayPalSubscription(subscriptionId);

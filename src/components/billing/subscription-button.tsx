@@ -3,7 +3,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { PaymentSession } from "./payment-session";
-import type { CheckoutConfig } from "@/lib/billing/provider";
+import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
@@ -13,8 +13,6 @@ import type { MembershipTier } from "@/lib/billing/types";
 type SubscriptionButtonProps = {
   checkout: CheckoutConfig;
   tier: MembershipTier;
-  signedIn: boolean;
-  current: boolean;
 };
 
 type ActivateResponse = {
@@ -25,8 +23,6 @@ type ActivateResponse = {
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({
   checkout,
   tier,
-  signedIn,
-  current,
 }) => {
   const t = useTranslations("Billing");
   const locale = useLocale();
@@ -36,19 +32,22 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
   const [success, setSuccess] = useState(false);
   const [confirming, setConfirming] = useState(false);
 
-  async function createSubscription(): Promise<string> {
+  async function createCheckout(): Promise<CheckoutResult> {
     try {
       const response = await fetch("/api/billing/subscriptions/create", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
         body: JSON.stringify({ provider: checkout.provider, tier }),
       });
-      const payload = await response.json().catch(() => null) as { error?: string; subscriptionId?: string } | null;
-      if (!response.ok || !payload?.subscriptionId) {
+      const payload = await response.json().catch(() => null) as (CheckoutResult & { error?: string }) | null;
+      const validCheckout = payload?.provider === "paypal"
+        ? Boolean(payload.subscriptionId)
+        : Boolean(payload?.checkoutId && payload?.checkoutUrl);
+      if (!response.ok || !payload || payload.provider !== checkout.provider || !validCheckout) {
         setFailure(payload?.error ?? t("api.createFailed"));
         throw new Error("Subscription creation failed");
       }
-      return payload.subscriptionId;
+      return payload;
     } catch (error) {
       setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
       throw error;
@@ -99,16 +98,8 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
     return true;
   }
 
-  if (current) {
-    return <p className="text-sm font-medium text-primary">{t("currentPlan")}</p>;
-  }
-
-  if (!signedIn) {
-    return <p className="text-sm text-muted-foreground">{t("signInRequired")}</p>;
-  }
-
   if (!checkout.available || !checkout.availableTiers.includes(tier)) {
-    return <p className="text-sm text-muted-foreground">{t("unavailable")}</p>;
+    return <p className="text-sm text-muted-foreground">{t("providerUnavailable", { provider: checkout.provider === "creem" ? "Creem" : "PayPal" })}</p>;
   }
 
   if (success) {
@@ -118,7 +109,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
   return (
     <PaymentSession
       provider={checkout.provider}
-      createSubscription={createSubscription}
+      createCheckout={createCheckout}
       onApprove={onApprove}
       onCancel={() => { setFailure(null); setMessage(t("cancelled")); }}
       onError={() => { setMessage(null); setFailure((value) => value ?? t("paymentFailed")); }}

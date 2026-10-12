@@ -52,7 +52,7 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
                   <div>{date(subscription.periodEnd)}</div>
                 </TableCell>
                 <TableCell className="max-w-64 text-right whitespace-normal">
-                  {subscription.status === "ACTIVE" && <CancelSubscriptionButton
+                  {(subscription.status === "ACTIVE" || (subscription.provider === "creem" && subscription.status === "PAYMENT_FAILED")) && <CancelSubscriptionButton
                     provider={subscription.provider} subscriptionId={subscription.subscriptionId} periodEnd={subscription.periodEnd} />}
                   {subscription.status === "CANCELLED" && subscription.entitlementActive && (
                     <p className="text-xs text-muted-foreground">{t("subscriptions.availableUntil", { date: date(subscription.periodEnd) })}</p>

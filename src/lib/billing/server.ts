@@ -79,27 +79,26 @@ export async function listBillingSubscriptions(
   return data as BillingSubscription[];
 }
 
+function isPaidPeriodCurrent(subscription: BillingSubscription, now: Date): boolean {
+  const start = Date.parse(subscription.current_period_start ?? "");
+  const end = Date.parse(subscription.current_period_end ?? "");
+  return Number.isFinite(start) && Number.isFinite(end) && start < end && start <= now.valueOf() && now.valueOf() < end;
+}
+
 export function selectEntitledSubscription(
   subscriptions: BillingSubscription[],
   now = new Date(),
 ): BillingSubscription | null {
   const active = subscriptions.find(
-    (subscription) => subscription.status === "ACTIVE",
+    (subscription) => subscription.status === "ACTIVE" && (subscription.provider !== "creem" || isPaidPeriodCurrent(subscription, now)),
   );
   if (active) return active;
 
   return (
     subscriptions.find((subscription) => {
-      if (subscription.status !== "CANCELLED") return false;
-      const start = Date.parse(subscription.current_period_start ?? "");
-      const end = Date.parse(subscription.current_period_end ?? "");
-      return (
-        Number.isFinite(start) &&
-        Number.isFinite(end) &&
-        start < end &&
-        start <= now.valueOf() &&
-        now.valueOf() < end
-      );
+      const paidStatus = subscription.status === "CANCELLED" ||
+        (subscription.provider === "creem" && subscription.status === "PAYMENT_FAILED");
+      return paidStatus && isPaidPeriodCurrent(subscription, now);
     }) ?? null
   );
 }
@@ -114,16 +113,17 @@ export async function updateBillingSubscriptionFromWebhook(
   subscription: BillingSubscription,
   event: { id: string; at: string },
   changes:
-    | { status: "CANCELLED" }
-    | { current_period_start: string; current_period_end: string },
+    | { status: SubscriptionStatus }
+    | { status?: "ACTIVE"; current_period_start: string; current_period_end: string },
 ): Promise<"applied" | "ignored"> {
   if (subscription.last_webhook_event_id === event.id) return "ignored";
   const olderEvent =
     subscription.last_event_at !== null &&
     Date.parse(event.at) < Date.parse(subscription.last_event_at);
   // 已向支付渠道确认的取消是终态；付款事件即使晚生成也不能阻止取消落库。
-  if (olderEvent && !("status" in changes)) return "ignored";
-  if (subscription.status !== "ACTIVE") return "ignored";
+  if (olderEvent && changes.status !== "CANCELLED") return "ignored";
+  if (subscription.provider === "paypal" && subscription.status !== "ACTIVE") return "ignored";
+  if (subscription.provider === "creem" && ["CANCELLED", "EXPIRED"].includes(subscription.status)) return "ignored";
 
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
@@ -138,7 +138,7 @@ export async function updateBillingSubscriptionFromWebhook(
       updated_at: new Date().toISOString(),
     })
     .eq("id", subscription.id)
-    .eq("status", "ACTIVE");
+    .eq("status", subscription.status);
   query =
     subscription.last_event_at === null
       ? query.is("last_event_at", null)
@@ -167,7 +167,7 @@ export async function findOpenBillingSubscription(
     .from("billing_subscriptions")
     .select("*")
     .eq("user_id", userId)
-    .in("status", ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "SUSPENDED"])
+    .in("status", ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "SUSPENDED", "PAYMENT_FAILED"])
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
@@ -205,6 +205,7 @@ export async function updateBillingSubscriptionStatus(
 }
 
 export type BillingActivation = {
+  status?: "ACTIVE" | "CANCELLED";
   provider: PaymentProviderId;
   eventId: string;
   eventAt: string;
@@ -230,6 +231,12 @@ export async function insertActivatedBillingSubscription(
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
+  if (update.provider === "creem") {
+    const open = await findOpenBillingSubscription(update.userId);
+    if (open?.provider === update.provider && open.provider_subscription_id === update.subscriptionId) return "ignored";
+    const entitled = await findEntitledBillingSubscription(update.userId);
+    if (open || entitled?.status === "CANCELLED") throw new Error("Account already has an open or paid cancelled subscription");
+  }
   const { error } = await admin.from("billing_subscriptions").insert({
     provider: update.provider,
     user_id: update.userId,
@@ -237,7 +244,7 @@ export async function insertActivatedBillingSubscription(
     tier: update.tier,
     provider_subscription_id: update.subscriptionId,
     provider_plan_id: update.planId,
-    status: "ACTIVE",
+    status: update.status ?? "ACTIVE",
     amount: update.amount,
     currency_code: update.currencyCode,
     payer_id: update.payerId,

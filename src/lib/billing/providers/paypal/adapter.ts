@@ -23,12 +23,12 @@ export const paypalProvider: PaymentProvider = {
   isSubscriptionId(value): value is string {
     return typeof value === "string" && /^[A-Za-z0-9-]{1,64}$/.test(value);
   },
-  async createSubscription(tier, userId) {
+  async createCheckout(tier, user) {
     const planId = getPayPalPlanId(tier);
     if (!planId) throw new BillingError("configurationMissing", 503);
-    const subscription = await createPayPalSubscription(planId, userId);
+    const subscription = await createPayPalSubscription(planId, user.id);
     if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
-    return subscription.id;
+    return { provider: "paypal", subscriptionId: subscription.id };
   },
   async getSubscription(subscriptionId) {
     return normalizeSubscription(await getPayPalSubscription(subscriptionId));

@@ -1,17 +1,17 @@
 # 计费渠道改造的切换与验收
 
-当前实际支付渠道仍为 PayPal，保留原有环境变量、Sandbox／Production 配置和弹窗购买方式。本次交付通用接口与迁移文件，不代表真实数据库已迁移或 PayPal 已完成验收。
+网站同时支持 Creem 与 PayPal。PayPal 保留原有环境变量、Sandbox／Production 配置和弹窗购买方式；Creem 使用托管结账跳转。Creem 接入与测试验收结果见 [Creem 支付接入](creem-billing.md)。历史 PayPal 验收状态不因新增渠道而改变。
 
 ## 接口和扩展位置
 
-- `POST /api/billing/subscriptions/create`：`{ provider, tier }`，返回 `{ provider, subscriptionId }`。
-- `POST /api/billing/subscriptions/activate`：`{ provider, subscriptionId, tier }`，等待回调时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。
+- `POST /api/billing/subscriptions/create`：`{ provider, tier }`，PayPal 返回 `{ provider, subscriptionId }`，Creem 返回 `{ provider, checkoutId, checkoutUrl }`。
+- `POST /api/billing/subscriptions/activate`：PayPal 接受 `{ provider, subscriptionId, tier }`，Creem 接受 `{ provider, checkoutId, tier }`；等待回调时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。
 - `POST /api/billing/subscriptions/cancel`：`{ provider, subscriptionId }`，接受同站点、已认证的请求，返回 `CANCELLATION_PENDING` 或 `CANCELLED`。
 - `POST /api/billing/webhooks/[provider]`：消费渠道原始请求；无效格式或签名返回 400，处理失败返回 502，以触发重试。
 - 旧 `/api/paypal/subscriptions/*` 和 `/api/paypal/webhooks` 继续有效。旧请求不需要 `provider`，旧创建响应仍仅包含 `subscriptionId`。同一回调投递至两个入口时仍按渠道订阅及事件版本处理。
 - 账户响应的每条订阅新增 `provider`；`subscriptionId` 仍为渠道 ID，调用和列表标识使用二者组合。
 
-新增渠道时实现 `PaymentProvider` 并加入服务端注册表，扩展公开配置的判别联合类型，在前端注册结账容器及会话组件。通用订阅按钮只消费会话状态和渠道提供的标签，不接触 SDK。仅当第二家渠道需要不同结账数据时扩展其配置类型；当前不预设重定向、一次性订单、退款等接口。
+渠道实现 `PaymentProvider` 并加入服务端注册表，公开配置和创建结果使用判别联合类型。PayPal 会话消费订阅 ID，Creem 会话消费 checkout ID 和跳转地址；通用按钮不接触支付 SDK。付款返回只查询 Webhook 已写入的订阅，不授予权益。
 
 ## 一次协调切换
 

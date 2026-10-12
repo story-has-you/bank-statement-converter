@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { PaymentProviderId } from "@/lib/billing/provider";
+import type { CheckoutResult, PaymentProviderId } from "@/lib/billing/provider";
+import { CreemCheckoutSession } from "./providers/creem/checkout-session";
 import { PayPalSubscriptionSession } from "./providers/paypal/subscription-session";
 
 export type PaymentSessionState = {
@@ -14,14 +15,14 @@ export type PaymentSessionState = {
 
 export type PaymentSessionProps = {
   provider: PaymentProviderId;
-  createSubscription: () => Promise<string>;
+  createCheckout: () => Promise<CheckoutResult>;
   onApprove: (subscriptionId: string) => Promise<void>;
   onCancel: () => void;
   onError: () => void;
   children: (session: PaymentSessionState) => ReactNode;
 };
 
-const sessions = { paypal: PayPalSubscriptionSession };
+const sessions = { paypal: PayPalSubscriptionSession, creem: CreemCheckoutSession };
 
 export function PaymentSession(props: PaymentSessionProps) {
   const Session = sessions[props.provider];
