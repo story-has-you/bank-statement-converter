@@ -251,6 +251,7 @@
       "invalidRequest": "The subscription request is invalid.",
       "invalidTier": "The selected subscription plan is invalid.",
       "configurationMissing": "Payment has not been configured yet.",
+      "paymentDisabled": "This payment method is disabled. Please choose another payment method.",
       "subscriptionBelongsToAnotherAccount": "This subscription belongs to another account.",
       "verificationFailed": "Could not verify subscription information.",
       "activationFailed": "Subscription activation status could not be retrieved.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Your subscription has an unresolved payment. Cancel it or resolve the payment before subscribing again."
     },
     "invalidStatusResponse": "The subscription service returned invalid status information.",
-    "providerUnavailable": "{provider} payments are not configured."
+    "providerUnavailable": "{provider} payments are currently unavailable."
   },
   "PayPal": {
     "subscribe": "Subscribe with PayPal",

@@ -251,6 +251,7 @@
       "invalidRequest": "De abonnementsaanvraag is ongeldig.",
       "invalidTier": "Het geselecteerde abonnementspakket is ongeldig.",
       "configurationMissing": "Betalen is nog niet ingesteld.",
+      "paymentDisabled": "Deze betaalmethode is uitgeschakeld. Kies een andere betaalmethode.",
       "subscriptionBelongsToAnotherAccount": "Dit abonnement hoort bij een ander account.",
       "verificationFailed": "De abonnementsinformatie kon niet worden geverifieerd.",
       "activationFailed": "De activeringsstatus van het abonnement kon niet worden opgevraagd.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Er is een onopgeloste betaling. Los deze op of zeg uw abonnement op."
     },
     "invalidStatusResponse": "De abonnementsservice heeft ongeldige statusinformatie teruggestuurd.",
-    "providerUnavailable": "Betalingen via {provider} zijn niet ingesteld."
+    "providerUnavailable": "Betalingen via {provider} zijn momenteel niet beschikbaar."
   },
   "PayPal": {
     "subscribe": "Abonneren met PayPal",

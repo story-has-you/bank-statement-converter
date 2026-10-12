@@ -251,6 +251,7 @@
       "invalidRequest": "구독 요청이 잘못되었습니다.",
       "invalidTier": "선택한 구독 요금제가 유효하지 않습니다.",
       "configurationMissing": "결제가 아직 구성되지 않았습니다.",
+      "paymentDisabled": "이 결제 수단은 비활성화되어 있습니다. 다른 결제 수단을 선택해 주세요.",
       "subscriptionBelongsToAnotherAccount": "이 구독은 다른 계정에 속해 있습니다.",
       "verificationFailed": "구독 정보를 검증하지 못했습니다.",
       "activationFailed": "구독 활성화 상태를 조회하지 못했습니다.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "미해결 결제가 있습니다. 결제를 해결하거나 구독을 취소하세요."
     },
     "invalidStatusResponse": "구독 서비스가 잘못된 상태 정보를 반환했습니다.",
-    "providerUnavailable": "{provider} 결제가 설정되지 않았습니다."
+    "providerUnavailable": "{provider} 결제는 현재 이용할 수 없습니다."
   },
   "PayPal": {
     "subscribe": "PayPal로 구독",

@@ -251,6 +251,7 @@
       "invalidRequest": "La richiesta di abbonamento non è valida.",
       "invalidTier": "Il piano di abbonamento selezionato non è valido.",
       "configurationMissing": "Il pagamento non è ancora configurato.",
+      "paymentDisabled": "Questo metodo di pagamento è disattivato. Scegli un altro metodo di pagamento.",
       "subscriptionBelongsToAnotherAccount": "Questo abbonamento appartiene a un altro account.",
       "verificationFailed": "Impossibile verificare le informazioni dell’abbonamento.",
       "activationFailed": "Non è stato possibile consultare lo stato di attivazione dell’abbonamento.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Un pagamento è irrisolto. Risolvilo o annulla il tuo abbonamento."
     },
     "invalidStatusResponse": "Il servizio di abbonamento ha restituito informazioni di stato non valide.",
-    "providerUnavailable": "I pagamenti {provider} non sono configurati."
+    "providerUnavailable": "I pagamenti tramite {provider} non sono al momento disponibili."
   },
   "PayPal": {
     "subscribe": "Abbonati con PayPal",

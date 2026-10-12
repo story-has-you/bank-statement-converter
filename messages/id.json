@@ -251,6 +251,7 @@
       "invalidRequest": "Permintaan langganan tidak valid.",
       "invalidTier": "Paket langganan yang dipilih tidak valid.",
       "configurationMissing": "Pembayaran belum dikonfigurasi.",
+      "paymentDisabled": "Metode pembayaran ini dinonaktifkan. Silakan pilih metode pembayaran lain.",
       "subscriptionBelongsToAnotherAccount": "Langganan ini milik akun lain.",
       "verificationFailed": "Informasi langganan tidak dapat diverifikasi.",
       "activationFailed": "Status aktivasi langganan tidak dapat diperoleh.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Ada pembayaran yang belum selesai. Selesaikan pembayaran atau batalkan langganan Anda."
     },
     "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid.",
-    "providerUnavailable": "Pembayaran {provider} belum dikonfigurasi."
+    "providerUnavailable": "Pembayaran melalui {provider} saat ini tidak tersedia."
   },
   "PayPal": {
     "subscribe": "Berlangganan dengan PayPal",

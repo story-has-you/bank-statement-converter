@@ -11,6 +11,7 @@
 
 # 其他说明
 - 服务都会启动在 3000 端口，Python 服务也会自动在 8000 端口，不需要启动新的服务。
+- Supabase 操作使用 CLI：优先使用 `supabase`，未全局安装时使用 `npx supabase`；执行前通过 `--help` 确认命令和参数。
 
 <!-- BEGIN:nextjs-agent-rules -->
 

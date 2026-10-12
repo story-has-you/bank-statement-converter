@@ -4,7 +4,7 @@ import { BillingError } from "./errors";
 import type { MembershipTier } from "./types";
 import type { CheckoutUser, PaymentProvider, ProviderSubscription } from "./provider";
 import { findBillingSubscriptionByProviderId, findEntitledBillingSubscription, findOpenBillingSubscription, updateBillingSubscriptionStatus, type BillingSubscription } from "./server";
-import { getPaymentProvider } from "./providers";
+import { getPaymentProvider, isPaymentProviderEnabled } from "./providers";
 
 export function requireConfiguredProvider(provider: PaymentProvider, tier?: MembershipTier): void {
   if (!provider.isConfigured() || (tier && !provider.getPlanId(tier))) {
@@ -19,6 +19,7 @@ export function checkSubscriptionIdentity(existing: BillingSubscription, remote:
 }
 
 export async function createSubscription(provider: PaymentProvider, tier: MembershipTier, user: CheckoutUser, returnUrl: string) {
+  if (!isPaymentProviderEnabled(provider.id)) throw new BillingError("paymentDisabled", 503);
   const userId = user.id;
   requireConfiguredProvider(provider, tier);
   const open = await findOpenBillingSubscription(userId);

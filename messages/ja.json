@@ -251,6 +251,7 @@
       "invalidRequest": "サブスクリプションのリクエストが無効です。",
       "invalidTier": "選択されたプランは無効です。",
       "configurationMissing": "支払い設定がまだ完了していません。",
+      "paymentDisabled": "この支払い方法は無効になっています。別の支払い方法を選択してください。",
       "subscriptionBelongsToAnotherAccount": "このサブスクリプションは別のアカウントに紐付いています。",
       "verificationFailed": "サブスクリプション情報を検証できませんでした。",
       "activationFailed": "サブスクリプションの有効化状態を取得できませんでした。",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "未解決の支払いがあります。支払いを解決するか購読を解約してください。"
     },
     "invalidStatusResponse": "サブスクリプションサービスから無効な状態情報が返されました。",
-    "providerUnavailable": "{provider} の決済は未設定です。"
+    "providerUnavailable": "{provider} での支払いは現在利用できません。"
   },
   "PayPal": {
     "subscribe": "PayPalで申し込む",

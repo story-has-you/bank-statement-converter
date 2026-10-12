@@ -251,6 +251,7 @@
       "invalidRequest": "Die Abonnementanfrage ist ungültig.",
       "invalidTier": "Der ausgewählte Abonnementtarif ist ungültig.",
       "configurationMissing": "Die Zahlung wurde noch nicht konfiguriert.",
+      "paymentDisabled": "Diese Zahlungsmethode ist deaktiviert. Bitte wählen Sie eine andere Zahlungsmethode.",
       "subscriptionBelongsToAnotherAccount": "Dieses Abonnement gehört zu einem anderen Konto.",
       "verificationFailed": "Die Abonnementinformationen konnten nicht überprüft werden.",
       "activationFailed": "Der Aktivierungsstatus des Abonnements konnte nicht abgefragt werden.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Für Ihr Abonnement ist eine Zahlung offen. Klären Sie diese oder kündigen Sie das Abonnement."
     },
     "invalidStatusResponse": "Der Abonnementdienst hat ungültige Statusinformationen zurückgegeben.",
-    "providerUnavailable": "Zahlungen über {provider} sind nicht konfiguriert."
+    "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar."
   },
   "PayPal": {
     "subscribe": "Mit PayPal abonnieren",

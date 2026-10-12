@@ -251,6 +251,7 @@
       "invalidRequest": "A solicitação de assinatura é inválida.",
       "invalidTier": "O plano de assinatura selecionado é inválido.",
       "configurationMissing": "O pagamento ainda não foi configurado.",
+      "paymentDisabled": "Este método de pagamento está desativado. Escolha outro método de pagamento.",
       "subscriptionBelongsToAnotherAccount": "Esta assinatura pertence a outra conta.",
       "verificationFailed": "Não foi possível verificar as informações da assinatura.",
       "activationFailed": "Não foi possível consultar o status de ativação da assinatura.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Há um pagamento pendente. Resolva-o ou cancele sua assinatura."
     },
     "invalidStatusResponse": "O serviço de assinatura retornou informações de status inválidas.",
-    "providerUnavailable": "Os pagamentos via {provider} não estão configurados."
+    "providerUnavailable": "Os pagamentos via {provider} estão indisponíveis no momento."
   },
   "PayPal": {
     "subscribe": "Assinar com PayPal",

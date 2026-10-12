@@ -251,6 +251,7 @@
       "invalidRequest": "订阅请求格式无效。",
       "invalidTier": "所选会员套餐无效。",
       "configurationMissing": "支付服务尚未完成配置。",
+      "paymentDisabled": "该支付方式已关闭，请选择其他支付方式。",
       "subscriptionBelongsToAnotherAccount": "该订阅已绑定到其他账号。",
       "verificationFailed": "未能验证订阅信息。",
       "activationFailed": "未能查询订阅激活状态。",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "当前订阅有待处理的付款，请先解决付款问题或取消订阅。"
     },
     "invalidStatusResponse": "订阅服务返回的状态信息异常。",
-    "providerUnavailable": "{provider} 支付尚未完成配置。"
+    "providerUnavailable": "{provider} 支付暂不可用。"
   },
   "PayPal": {
     "subscribe": "使用 PayPal 订阅",

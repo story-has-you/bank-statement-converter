@@ -251,6 +251,7 @@
       "invalidRequest": "सदस्यता अनुरोध मान्य नहीं है।",
       "invalidTier": "चुना गया सदस्यता प्लान अमान्य है।",
       "configurationMissing": "भुगतान अभी कॉन्फ़िगर नहीं हुआ है।",
+      "paymentDisabled": "यह भुगतान तरीका बंद है। कृपया कोई दूसरा भुगतान तरीका चुनें।",
       "subscriptionBelongsToAnotherAccount": "यह सदस्यता दूसरे खाते की है।",
       "verificationFailed": "सदस्यता की जानकारी सत्यापित नहीं की जा सकी।",
       "activationFailed": "सदस्यता की सक्रियण स्थिति प्राप्त नहीं की जा सकी।",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "आपकी सदस्यता का भुगतान लंबित है। भुगतान पूरा करें या सदस्यता रद्द करें।"
     },
     "invalidStatusResponse": "सदस्यता सेवा ने अमान्य स्थिति जानकारी लौटाई।",
-    "providerUnavailable": "{provider} भुगतान कॉन्फ़िगर नहीं है।"
+    "providerUnavailable": "{provider} से भुगतान फ़िलहाल उपलब्ध नहीं है।"
   },
   "PayPal": {
     "subscribe": "PayPal से सदस्यता लें",

@@ -251,6 +251,7 @@
       "invalidRequest": "La demande d'abonnement est invalide.",
       "invalidTier": "L’offre d’abonnement sélectionnée est invalide.",
       "configurationMissing": "Le paiement n'a pas encore été configuré.",
+      "paymentDisabled": "Ce moyen de paiement est désactivé. Veuillez en choisir un autre.",
       "subscriptionBelongsToAnotherAccount": "Cet abonnement appartient à un autre compte.",
       "verificationFailed": "Impossible de vérifier les informations de l’abonnement.",
       "activationFailed": "Le statut d’activation de l’abonnement n’a pas pu être obtenu.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Un paiement reste en attente. Régularisez-le ou résiliez votre abonnement."
     },
     "invalidStatusResponse": "Le service d’abonnement a renvoyé des informations de statut invalides.",
-    "providerUnavailable": "Les paiements {provider} ne sont pas configurés."
+    "providerUnavailable": "Les paiements via {provider} sont actuellement indisponibles."
   },
   "PayPal": {
     "subscribe": "S'abonner avec PayPal",

@@ -54,6 +54,21 @@ pnpm dev --port 3000
 
 Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包和 Docker 的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
 
+## 支付渠道开关
+
+PayPal 和 Creem 使用独立的服务端环境变量控制是否接受新建支付：
+
+```dotenv
+PAYPAL_PAYMENT_ENABLED=true
+CREEM_PAYMENT_ENABLED=true
+```
+
+`true` 开启，`false` 关闭；未设置时默认开启，以兼容现有环境。已设置时仅 `true` 表示开启（忽略首尾空白和大小写），其他值均关闭。开启后仍需渠道凭据和套餐配置完整。
+
+关闭后，对应支付按钮隐藏，也不会初始化该渠道的支付会话。支付按钮在同一行排列：两个渠道开启时平分宽度，只开启一个时占满整行，全部关闭时不显示支付按钮区域。开启但配置不完整的渠道仍显示禁用按钮，通过无障碍标签和 title 提示不可用原因。新建订阅接口（包括旧 PayPal 入口）会拒绝关闭渠道的请求并返回 HTTP 503。已有订阅的确认、回调、自动续费和取消继续按原流程处理；关闭入口不会取消已创建的结账或已有订阅。
+
+配置示例见 [`docs/paypal-sandbox.env.example`](docs/paypal-sandbox.env.example) 和 [`docs/creem-test.env.example`](docs/creem-test.env.example)。本地修改环境变量后需重启现有 Next.js 进程；Vercel 修改对应环境变量后需重新部署，刷新页面后查看按钮状态。
+
 ## PayPal Sandbox 订阅配置
 
 会员方案使用 PayPal Sandbox 自动续费订阅。环境变量模板见

@@ -251,6 +251,7 @@
       "invalidRequest": "La solicitud de suscripción no es válida.",
       "invalidTier": "El plan de suscripción seleccionado no es válido.",
       "configurationMissing": "El pago aún no se ha configurado.",
+      "paymentDisabled": "Este método de pago está desactivado. Elige otro método de pago.",
       "subscriptionBelongsToAnotherAccount": "Esta suscripción pertenece a otra cuenta.",
       "verificationFailed": "No se pudo verificar la información de la suscripción.",
       "activationFailed": "No se pudo consultar el estado de activación de la suscripción.",
@@ -279,7 +280,7 @@
       "existingFailedSubscription": "Hay un pago sin resolver. Resuélvalo o cancele su suscripción."
     },
     "invalidStatusResponse": "El servicio de suscripción devolvió información de estado no válida.",
-    "providerUnavailable": "Los pagos de {provider} no están configurados."
+    "providerUnavailable": "Los pagos con {provider} no están disponibles en este momento."
   },
   "PayPal": {
     "subscribe": "Suscríbete con PayPal",

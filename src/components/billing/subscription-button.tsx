@@ -125,7 +125,13 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
   }
 
   if (!checkout.available || !checkout.availableTiers.includes(tier)) {
-    return <p className="text-sm text-muted-foreground">{t("providerUnavailable", { provider: providerName })}</p>;
+    const unavailable = t("providerUnavailable", { provider: providerName });
+    return (
+      <Button type="button" size="lg" className="w-full min-w-0" disabled aria-label={unavailable} title={unavailable}>
+        <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+        <span className="truncate">{providerName}</span>
+      </Button>
+    );
   }
 
   if (success) {
