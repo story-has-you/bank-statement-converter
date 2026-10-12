@@ -29,7 +29,7 @@ export async function parsePayPalWebhook(headers: Headers, body: string): Promis
   if (typeof payload !== "object" || payload === null || Array.isArray(payload)) {
     throw new BillingError("webhookInvalidRequest", 400);
   }
-  if (!await verifyPayPalWebhookSignature(headers, payload)) {
+  if (!await verifyPayPalWebhookSignature(headers, body)) {
     throw new BillingError("webhookSignatureFailed", 400);
   }
   const envelope = object(payload);

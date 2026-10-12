@@ -110,9 +110,12 @@ async function getPayPalAccessToken(): Promise<string> {
 
 export async function verifyPayPalWebhookSignature(
   headers: Headers,
-  webhookEvent: unknown,
+  rawWebhookEvent: string,
 ): Promise<boolean> {
   const webhookId = getPayPalWebhookId();
+  if (!webhookId) {
+    throw new Error("PayPal webhook configuration is incomplete");
+  }
   const transmissionId = headers.get("paypal-transmission-id");
   const transmissionTime = headers.get("paypal-transmission-time");
   const certUrl = headers.get("paypal-cert-url");
@@ -120,17 +123,25 @@ export async function verifyPayPalWebhookSignature(
   const transmissionSig = headers.get("paypal-transmission-sig");
 
   if (
-    !webhookId ||
     !transmissionId ||
     !transmissionTime ||
     !certUrl ||
     !authAlgo ||
     !transmissionSig
   ) {
+    console.warn("PayPal webhook signature headers are incomplete");
     return false;
   }
 
   const accessToken = await getPayPalAccessToken();
+  const verificationMetadata = JSON.stringify({
+    auth_algo: authAlgo,
+    cert_url: certUrl,
+    transmission_id: transmissionId,
+    transmission_sig: transmissionSig,
+    transmission_time: transmissionTime,
+    webhook_id: webhookId,
+  });
   const response = await fetch(
     `${getPayPalApiBaseUrl()}/v1/notifications/verify-webhook-signature`,
     {
@@ -139,28 +150,25 @@ export async function verifyPayPalWebhookSignature(
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        auth_algo: authAlgo,
-        cert_url: certUrl,
-        transmission_id: transmissionId,
-        transmission_sig: transmissionSig,
-        transmission_time: transmissionTime,
-        webhook_id: webhookId,
-        webhook_event: webhookEvent,
-      }),
+      // 调用方已验证 JSON；保留原始事件，避免重新序列化改变签名所对应的内容。
+      body: `${verificationMetadata.slice(0, -1)},"webhook_event":${rawWebhookEvent}}`,
       cache: "no-store",
     },
   );
 
   if (!response.ok) {
-    return false;
+    throw new Error(`PayPal webhook verification request failed with status ${response.status}`);
   }
 
   const payload: unknown = await response.json();
-  return (
+  const verified = (
     typeof payload === "object" &&
     payload !== null &&
     "verification_status" in payload &&
     payload.verification_status === "SUCCESS"
   );
+  if (!verified) {
+    console.warn("PayPal webhook signature verification failed; check the webhook ID for this listener and environment");
+  }
+  return verified;
 }
