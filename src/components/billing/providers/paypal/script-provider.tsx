@@ -5,24 +5,11 @@ import { PayPalProvider } from "@paypal/react-paypal-js/sdk-v6";
 
 import type { CheckoutConfig } from "@/lib/billing/provider";
 
-type PayPalScriptProviderWrapperProps = {
-  clientId: string | null;
-  environment: Extract<CheckoutConfig, { provider: "paypal" }>["settings"]["environment"];
-  children: ReactNode;
-};
+type PayPalScriptProviderWrapperProps = { clientId: string | null; environment: Extract<CheckoutConfig, { provider: "paypal" }>["settings"]["environment"]; children: ReactNode };
 
-const PayPalScriptProviderWrapper: FC<PayPalScriptProviderWrapperProps> = ({
-  clientId,
-  environment,
-  children,
-}) => {
+const PayPalScriptProviderWrapper: FC<PayPalScriptProviderWrapperProps> = ({ clientId, environment, children }) => {
   return (
-    <PayPalProvider
-      clientId={clientId ?? undefined}
-      components={["paypal-subscriptions"]}
-      environment={environment}
-      pageType="checkout"
-    >
+    <PayPalProvider clientId={clientId ?? undefined} components={["paypal-subscriptions"]} environment={environment} pageType="checkout">
       {children}
     </PayPalProvider>
   );

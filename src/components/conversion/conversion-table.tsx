@@ -6,10 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { getRowRiskCode, type ParsedTable, type RowStatus } from "@/lib/conversion-types";
 import { getParseIssueKey } from "@/lib/parse-issues";
 
-type ConversionTableProps = {
-  table: ParsedTable;
-  title?: string;
-};
+type ConversionTableProps = { table: ParsedTable; title?: string };
 
 function statusVariant(status: RowStatus): "default" | "secondary" | "destructive" {
   if (status === "failed") return "destructive";
@@ -36,9 +33,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
           <h2 id={`${table.id}-title`} className="text-sm font-semibold">
             {title ?? t("table.title", { id: table.id })}
           </h2>
-          <p className="text-xs text-muted-foreground">
-            {t("table.pages", { start: table.pageStart, end: table.pageEnd })}
-          </p>
+          <p className="text-xs text-muted-foreground">{t("table.pages", { start: table.pageStart, end: table.pageEnd })}</p>
         </div>
         <span className="text-xs text-muted-foreground">{t("table.rowCount", { count: table.rows.length })}</span>
       </div>
@@ -46,9 +41,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
       {table.warnings.length > 0 && (
         <div className="border-b border-border bg-secondary/40 px-4 py-3 text-xs text-secondary-foreground">
           {table.warnings.map((warning) => (
-            <p key={`${warning.code}-${JSON.stringify(warning.params)}`}>
-              {t(getParseIssueKey(warning), warning.params)}
-            </p>
+            <p key={`${warning.code}-${JSON.stringify(warning.params)}`}>{t(getParseIssueKey(warning), warning.params)}</p>
           ))}
         </div>
       )}
@@ -58,11 +51,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
           <thead className="bg-muted/60 text-xs text-muted-foreground">
             <tr>
               {table.columns.map((column) => (
-                <th
-                  key={column.key}
-                  scope="col"
-                  className={`${columnWidthClass(column.index)} whitespace-nowrap border-b border-border px-3 py-2 font-medium`}
-                >
+                <th key={column.key} scope="col" className={`${columnWidthClass(column.index)} whitespace-nowrap border-b border-border px-3 py-2 font-medium`}>
                   {column.label}
                 </th>
               ))}
@@ -84,10 +73,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
             {table.rows.map((row) => (
               <tr key={`${table.id}-${row.source.page}-${row.source.row}`} className="align-top even:bg-muted/20">
                 {table.columns.map((column) => (
-                  <td
-                    key={column.key}
-                    className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap`}
-                  >
+                  <td key={column.key} className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap`}>
                     {row.values[column.key] ?? "-"}
                   </td>
                 ))}
@@ -95,9 +81,7 @@ export function ConversionTable({ table, title }: ConversionTableProps) {
                   <Badge variant={statusVariant(row.status)}>{getRowRiskCode(row.status)}</Badge>
                 </td>
                 <td className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
-                  {row.warnings.length > 0
-                    ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ")
-                    : "-"}
+                  {row.warnings.length > 0 ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ") : "-"}
                 </td>
                 <td className="border-b border-border px-3 py-2">{row.source.page}</td>
                 <td className="border-b border-border px-3 py-2">{row.source.row}</td>

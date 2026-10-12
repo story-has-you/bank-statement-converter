@@ -16,21 +16,13 @@ import { useConversion } from "@/components/conversion/conversion-provider";
 import { clearConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
-
 export function PdfUpload() {
   const t = useTranslations("PdfUpload");
   const format = useFormatter();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState<
-    | "invalidPdf"
-    | "emptyFile"
-    | "fileTooLarge"
-    | "multipleFiles"
-    | "browserStorageUnavailable"
-    | null
-  >(null);
+  const [error, setError] = useState<"invalidPdf" | "emptyFile" | "fileTooLarge" | "multipleFiles" | "browserStorageUnavailable" | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const conversion = useConversion();
   const isPending = conversion.state.phase === "pending";
@@ -49,18 +41,13 @@ export function PdfUpload() {
     if (bytes < 1024 * 1024) {
       return t("fileSize.kilobytes", { size: format.number(Math.round(bytes / 1024)) });
     }
-    return t("fileSize.megabytes", {
-      size: format.number(bytes / (1024 * 1024), { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
-    });
+    return t("fileSize.megabytes", { size: format.number(bytes / (1024 * 1024), { minimumFractionDigits: 1, maximumFractionDigits: 1 }) });
   }
 
   function selectFile(candidate: File | undefined) {
     if (!candidate) return;
 
-    if (
-      !candidate.name.toLowerCase().endsWith(".pdf") ||
-      (candidate.type && candidate.type !== "application/pdf")
-    ) {
+    if (!candidate.name.toLowerCase().endsWith(".pdf") || (candidate.type && candidate.type !== "application/pdf")) {
       setFile(null);
       setError("invalidPdf");
       if (inputRef.current) inputRef.current.value = "";
@@ -109,14 +96,12 @@ export function PdfUpload() {
   }
 
   return (
-    <section
-      id="workspace"
-      className="rounded-md border border-border bg-card p-4 shadow-xs sm:p-5"
-      aria-labelledby="workspace-title"
-    >
+    <section id="workspace" className="rounded-md border border-border bg-card p-4 shadow-xs sm:p-5" aria-labelledby="workspace-title">
       <div className="mb-5 flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h2 id="workspace-title" className="text-base font-semibold">{t("title")}</h2>
+          <h2 id="workspace-title" className="text-base font-semibold">
+            {t("title")}
+          </h2>
           <p className="text-sm text-muted-foreground">{t("description")}</p>
         </div>
         <Badge variant="secondary">{isPending ? t("converting") : t("status")}</Badge>
@@ -124,7 +109,9 @@ export function PdfUpload() {
 
       <FieldGroup>
         <Field data-invalid={Boolean(error)}>
-          <FieldLabel htmlFor="statement-pdf" className="sr-only">{t("fileLabel")}</FieldLabel>
+          <FieldLabel htmlFor="statement-pdf" className="sr-only">
+            {t("fileLabel")}
+          </FieldLabel>
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
@@ -177,23 +164,15 @@ export function PdfUpload() {
       )}
 
       {file && (
-        <div
-          className="mt-4 flex min-w-0 items-center gap-3 rounded-md border border-border bg-background px-3 py-2.5"
-          aria-live="polite"
-        >
+        <div className="mt-4 flex min-w-0 items-center gap-3 rounded-md border border-border bg-background px-3 py-2.5" aria-live="polite">
           <FileTextIcon className="size-5 shrink-0 text-primary" aria-hidden="true" />
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium" title={file.name}>{file.name}</p>
+            <p className="truncate text-sm font-medium" title={file.name}>
+              {file.name}
+            </p>
             <p className="text-xs text-muted-foreground">{formatFileSize(file.size)}</p>
           </div>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            onClick={removeFile}
-            aria-label={t("removeFile")}
-            title={t("removeFile")}
-          >
+          <Button type="button" variant="ghost" size="icon" onClick={removeFile} aria-label={t("removeFile")} title={t("removeFile")}>
             <XIcon data-icon="inline-start" />
           </Button>
         </div>
@@ -203,26 +182,11 @@ export function PdfUpload() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">
-            {t("quota", {
-              anonymousPages: usageQuotaConfig.anonymous.pages,
-              authenticatedPages: usageQuotaConfig.authenticated.pages,
-            })}
-          </p>
+          <p className="text-sm font-medium">{t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}</p>
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
-        <Button
-          type="button"
-          size="lg"
-          disabled={!file || isPending}
-          onClick={startConversion}
-          className="w-full sm:w-auto"
-        >
-          {isPending ? (
-            <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />
-          ) : (
-            <ArrowRightIcon data-icon="inline-start" />
-          )}
+        <Button type="button" size="lg" disabled={!file || isPending} onClick={startConversion} className="w-full sm:w-auto">
+          {isPending ? <LoaderCircleIcon className="animate-spin" data-icon="inline-start" /> : <ArrowRightIcon data-icon="inline-start" />}
           {isPending ? t("converting") : t("start")}
         </Button>
       </div>

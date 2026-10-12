@@ -1,31 +1,14 @@
 import { after } from "next/server";
 
 import { ConversionError } from "@/lib/conversion-errors";
-import {
-  emitParsedTables,
-  type EmitConversionEvent,
-} from "@/lib/conversion-events";
+import { emitParsedTables, type EmitConversionEvent } from "@/lib/conversion-events";
 import type { ParseResponse } from "@/lib/conversion-types";
 import { parseWithQwen } from "@/lib/qwen/parser";
 import { consumeConversionQuota, type QuotaContext } from "@/lib/usage/server";
 import { MAX_RESPONSE_BYTES, parseWithPython, shouldFallback } from "./parser";
-import {
-  createParseRecord,
-  getParseErrorCode,
-  recordLlmFallback,
-  recordPythonFailure,
-  scheduleParseRecord,
-  type ConversionParseRecord,
-} from "./records";
+import { createParseRecord, getParseErrorCode, recordLlmFallback, recordPythonFailure, scheduleParseRecord, type ConversionParseRecord } from "./records";
 
-export async function convertStatement(
-  file: File,
-  context: QuotaContext,
-  allowQwen: boolean,
-  signal: AbortSignal,
-  emit: EmitConversionEvent,
-  availablePages: number,
-): Promise<ParseResponse> {
+export async function convertStatement(file: File, context: QuotaContext, allowQwen: boolean, signal: AbortSignal, emit: EmitConversionEvent, availablePages: number): Promise<ParseResponse> {
   signal.throwIfAborted();
   emit({ type: "status", data: { stage: "reading" } });
   const record = createParseRecord(context);
@@ -38,16 +21,12 @@ export async function convertStatement(
     signal.throwIfAborted();
     emit({ type: "status", data: { stage: "finalizing" } });
     if (result.pageCount > availablePages) {
-      throw new ConversionError(
-        availablePages === 0 ? "QUOTA_EXHAUSTED" : "QUOTA_EXCEEDED",
-        429,
-        {
-          period: context.window.period,
-          usedPages: context.limitPages - availablePages,
-          remainingPages: availablePages,
-          limitPages: context.limitPages,
-        },
-      );
+      throw new ConversionError(availablePages === 0 ? "QUOTA_EXHAUSTED" : "QUOTA_EXCEEDED", 429, {
+        period: context.window.period,
+        usedPages: context.limitPages - availablePages,
+        remainingPages: availablePages,
+        limitPages: context.limitPages,
+      });
     }
     scheduleQuotaConsumption(context, result.pageCount);
     const { schemaVersion, filename, pageCount, summary, errors } = result;
@@ -80,13 +59,7 @@ function scheduleQuotaConsumption(context: QuotaContext, pageCount: number): voi
   });
 }
 
-async function parseStatement(
-  file: File,
-  allowQwen: boolean,
-  signal: AbortSignal,
-  emit: EmitConversionEvent,
-  record: ConversionParseRecord | null,
-): Promise<ParseResponse> {
+async function parseStatement(file: File, allowQwen: boolean, signal: AbortSignal, emit: EmitConversionEvent, record: ConversionParseRecord | null): Promise<ParseResponse> {
   let result: ParseResponse;
   try {
     result = await parseWithPython(file, signal);

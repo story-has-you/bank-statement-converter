@@ -5,8 +5,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import {
-  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
-  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import type { AccountSnapshot } from "@/lib/account/types";
@@ -24,9 +31,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<CancellationState>("idle");
   const [error, setError] = useState<string | null>(null);
-  const date = periodEnd && Number.isFinite(Date.parse(periodEnd))
-    ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" })
-    : null;
+  const date = periodEnd && Number.isFinite(Date.parse(periodEnd)) ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) : null;
 
   useEffect(() => {
     if (state !== "syncing") return;
@@ -37,11 +42,9 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
     async function poll() {
       attempts += 1;
       try {
-        const response = await fetch("/api/account", {
-          headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal,
-        });
+        const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
         if (response.ok) {
-          const snapshot = await response.json() as AccountSnapshot;
+          const snapshot = (await response.json()) as AccountSnapshot;
           if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
             router.refresh();
             return;
@@ -56,7 +59,10 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
     }
 
     timer = setTimeout(poll, 2_000);
-    return () => { clearTimeout(timer); controller.abort(); };
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, [state, provider, subscriptionId, locale, router]);
 
   async function cancel() {
@@ -69,7 +75,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
         body: JSON.stringify({ provider, subscriptionId }),
       });
-      const payload = await response.json() as { status?: string; error?: string };
+      const payload = (await response.json()) as { status?: string; error?: string };
       if (!response.ok) {
         setError(payload.error ?? t("failed"));
         setState("idle");
@@ -91,7 +97,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
     try {
       const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store" });
       if (!response.ok) throw new Error(t("checkFailed"));
-      const snapshot = await response.json() as AccountSnapshot;
+      const snapshot = (await response.json()) as AccountSnapshot;
       if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
         router.refresh();
       }
@@ -104,16 +110,23 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
 
   return (
     <div className="grid justify-items-end gap-2">
-      <AlertDialog open={open} onOpenChange={(value) => { if (state !== "submitting") setOpen(value); }}>
-        <AlertDialogTrigger render={<Button variant="outline" size="sm" disabled={state !== "idle"} />}>
-          {t(state === "submitting" ? "submitting" : "button")}
-        </AlertDialogTrigger>
+      <AlertDialog
+        open={open}
+        onOpenChange={(value) => {
+          if (state !== "submitting") setOpen(value);
+        }}
+      >
+        <AlertDialogTrigger render={<Button variant="outline" size="sm" disabled={state !== "idle"} />}>{t(state === "submitting" ? "submitting" : "button")}</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{t("title")}</AlertDialogTitle>
             <AlertDialogDescription>{date ? t("description", { date }) : t("descriptionWithoutDate")}</AlertDialogDescription>
           </AlertDialogHeader>
-          {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+          )}
           <AlertDialogFooter>
             <AlertDialogCancel disabled={state === "submitting"}>{t("keep")}</AlertDialogCancel>
             <AlertDialogAction variant="destructive" disabled={state !== "idle"} onClick={cancel}>
@@ -122,13 +135,21 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      {state !== "idle" && state !== "submitting" && <p role="status" className="text-xs text-muted-foreground">
-        {t(state === "syncing" ? "syncing" : "delayed")}
-      </p>}
-      {(state === "delayed" || state === "checking") && <Button variant="ghost" size="sm" disabled={state === "checking"} onClick={checkStatus}>
-        {t(state === "checking" ? "checking" : "check")}
-      </Button>}
-      {error && !open && <p role="alert" className="text-xs text-destructive">{error}</p>}
+      {state !== "idle" && state !== "submitting" && (
+        <p role="status" className="text-xs text-muted-foreground">
+          {t(state === "syncing" ? "syncing" : "delayed")}
+        </p>
+      )}
+      {(state === "delayed" || state === "checking") && (
+        <Button variant="ghost" size="sm" disabled={state === "checking"} onClick={checkStatus}>
+          {t(state === "checking" ? "checking" : "check")}
+        </Button>
+      )}
+      {error && !open && (
+        <p role="alert" className="text-xs text-destructive">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

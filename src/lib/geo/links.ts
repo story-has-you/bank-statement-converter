@@ -1,9 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { routing, type AppLocale } from "@/i18n/routing";
 
-export const agentDocuments = [
-  "llms.txt", "llms-full.txt", "index.md", "pricing.md", "privacy.md", "faq.md", "site.md",
-] as const;
+export const agentDocuments = ["llms.txt", "llms-full.txt", "index.md", "pricing.md", "privacy.md", "faq.md", "site.md"] as const;
 
 export type AgentDocument = (typeof agentDocuments)[number];
 

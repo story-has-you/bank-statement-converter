@@ -7,20 +7,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { ExcelDownload } from "@/components/conversion/excel-download";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  buildTextExportFiles,
-  canDownloadResult,
-  downloadExportFiles,
-  type ExportFile,
-  type TextExportFormat,
-} from "@/lib/conversion-export";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { buildTextExportFiles, canDownloadResult, downloadExportFiles, type ExportFile, type TextExportFormat } from "@/lib/conversion-export";
 import type { ParseResponse } from "@/lib/conversion-types";
 import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
@@ -58,12 +46,9 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
   return (
     <div className="flex flex-col gap-3 sm:items-end">
       <div className="flex w-fit">
-        <ExcelDownload filename={filename} result={result}
-          className="rounded-e-none"
-          onStart={() => setFailed(false)} onError={() => setFailed(true)} />
+        <ExcelDownload filename={filename} result={result} className="rounded-e-none" onStart={() => setFailed(false)} onError={() => setFailed(true)} />
         <DropdownMenu>
-          <DropdownMenuTrigger disabled={!canDownload}
-            render={<Button type="button" size="icon-lg" className="rounded-s-none" aria-label={t("export.moreFormats")} />}>
+          <DropdownMenuTrigger disabled={!canDownload} render={<Button type="button" size="icon-lg" className="rounded-s-none" aria-label={t("export.moreFormats")} />}>
             <ChevronDownIcon aria-hidden="true" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -82,11 +67,20 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
           <p className="text-sm text-muted-foreground">{t("export.multipleFiles")}</p>
           <div className="flex flex-wrap gap-2">
             {tableDownloads.files.map((file, index) => (
-              <Button key={file.name} type="button" variant="outline" size="sm" onClick={() => {
-                setFailed(false);
-                try { downloadExportFiles([file]); }
-                catch { setFailed(true); }
-              }}>
+              <Button
+                key={file.name}
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setFailed(false);
+                  try {
+                    downloadExportFiles([file]);
+                  } catch {
+                    setFailed(true);
+                  }
+                }}
+              >
                 {t("export.downloadTable", { index: index + 1, format: t(`export.formats.${tableDownloads.format}`) })}
               </Button>
             ))}

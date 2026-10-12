@@ -10,7 +10,8 @@ import { parseCreemWebhook } from "./webhook";
 export const creemProvider: PaymentProvider = {
   id: "creem",
   getCheckoutConfig: () => ({
-    provider: "creem", available: Boolean(getCreemConfig()),
+    provider: "creem",
+    available: Boolean(getCreemConfig()),
     availableTiers: membershipTiers.filter((tier) => getCreemProductId(tier)),
     settings: { environment: getCreemEnvironment() },
   }),

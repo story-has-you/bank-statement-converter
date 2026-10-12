@@ -4,11 +4,11 @@
 
 ## 产品与配置
 
-| 档位 | USD/月，含税 | 每周期页数 | 测试产品 |
-| --- | --- | --- | --- |
-| standard | 19.90 | 500 | prod_5IYIEWGuZmWrhe618cqmxW |
-| professional | 49.90 | 1000 | prod_2G18Th0d0xoBwwm7soANf6 |
-| enterprise | 79.90 | 2000 | prod_5mKP5unObaD3P2rkjLa7gN |
+| 档位         | USD/月，含税 | 每周期页数 | 测试产品                    |
+| ------------ | ------------ | ---------- | --------------------------- |
+| standard     | 19.90        | 500        | prod_5IYIEWGuZmWrhe618cqmxW |
+| professional | 49.90        | 1000       | prod_2G18Th0d0xoBwwm7soANf6 |
+| enterprise   | 79.90        | 2000       | prod_5mKP5unObaD3P2rkjLa7gN |
 
 Professional、Enterprise 支持配置中的 AI 解析回退。价格与权益由 `src/config/plans.ts` 决定，Creem 产品说明不执行网站额度限制。
 

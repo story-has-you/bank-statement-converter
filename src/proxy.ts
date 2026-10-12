@@ -54,6 +54,4 @@ export default async function proxy(request: NextRequest) {
   return withAgentLinks(response, request);
 }
 
-export const config = {
-  matcher: "/((?!api|ai/|ai$|trpc|_next|_vercel|.*\\..*).*)",
-};
+export const config = { matcher: "/((?!api|ai/|ai$|trpc|_next|_vercel|.*\\..*).*)" };

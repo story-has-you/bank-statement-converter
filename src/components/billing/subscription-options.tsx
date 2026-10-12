@@ -7,5 +7,11 @@ export async function SubscriptionOptions({ checkouts, tier, signedIn, current }
   const t = await getTranslations("Billing");
   if (current) return <p className="text-sm font-medium text-primary">{t("currentPlan")}</p>;
   if (!signedIn) return <p className="text-sm text-muted-foreground">{t("signInRequired")}</p>;
-  return <div className="grid gap-3">{checkouts.map((checkout) => <SubscriptionButton key={checkout.provider} checkout={checkout} tier={tier} />)}</div>;
+  return (
+    <div className="grid gap-3">
+      {checkouts.map((checkout) => (
+        <SubscriptionButton key={checkout.provider} checkout={checkout} tier={tier} />
+      ))}
+    </div>
+  );
 }

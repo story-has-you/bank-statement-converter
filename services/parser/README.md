@@ -16,7 +16,7 @@ python3.14 -m venv .venv
 `GET /health` 返回服务状态：
 
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 `POST /parse` 接收一个名为 `file` 的 `multipart/form-data` PDF：

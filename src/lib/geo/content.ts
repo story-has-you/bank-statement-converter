@@ -38,9 +38,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     name: usage(`plans.${tier}.name`),
     price: subscriptionConfig[tier].monthlyPrice,
     pages: quota.subscriptions[tier].pages,
-    formattedPrice: format.number(subscriptionConfig[tier].monthlyPrice, {
-      style: "currency", currency: "USD",
-    }),
+    formattedPrice: format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" }),
     period: t("billingPeriod"),
     parsing: subscriptionConfig[tier].qwenFallback ? usage("aiParsing") : usage("textParsing"),
   }));
@@ -55,20 +53,18 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       t("quotaSummary", {
         anonymousPages: quota.anonymous.pages,
         authenticatedPages: quota.authenticated.pages,
-        price: format.number(subscriptionConfig.standard.monthlyPrice, {
-          minimumFractionDigits: 2, maximumFractionDigits: 2,
-        }),
+        price: format.number(subscriptionConfig.standard.monthlyPrice, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
       }),
       t("privacySummary"),
     ],
     features: {
-      title: features("title"), answer: t("featuresAnswer"),
-      items: (["security", "banks", "accuracy"] as const).map((id) => ({
-        id, title: features(`${id}Title`), answer: features(`${id}Description`),
-      })),
+      title: features("title"),
+      answer: t("featuresAnswer"),
+      items: (["security", "banks", "accuracy"] as const).map((id) => ({ id, title: features(`${id}Title`), answer: features(`${id}Description`) })),
     },
     risks: {
-      title: t("riskTitle"), answer: t("riskAnswer"),
+      title: t("riskTitle"),
+      answer: t("riskAnswer"),
       items: [
         { code: "OK", definition: t("okDefinition") },
         { code: "DISCREPANCY", definition: t("discrepancyDefinition") },
@@ -77,33 +73,34 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     },
     limits: { title: t("limitsTitle"), answer: t("limitsAnswer", limits) },
     pricing: {
-      title: usage("title"), answer: t("pricingAnswer"), note: t("billingNote"),
+      title: usage("title"),
+      answer: t("pricingAnswer"),
+      note: t("billingNote"),
       headers: [t("planHeader"), t("priceHeader"), t("quotaHeader"), t("periodHeader"), t("parsingHeader")],
       rows: [
-        {
-          name: usage("anonymous"), formattedPrice: t("freePrice"), pages: quota.anonymous.pages,
-          period: t("dailyPeriod"), parsing: usage("textParsing"),
-        },
-        {
-          name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages,
-          period: t("dailyPeriod"), parsing: usage("textParsing"),
-        },
+        { name: usage("anonymous"), formattedPrice: t("freePrice"), pages: quota.anonymous.pages, period: t("dailyPeriod"), parsing: usage("textParsing") },
+        { name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages, period: t("dailyPeriod"), parsing: usage("textParsing") },
         ...plans,
       ],
       plans,
     },
     faq: { title: faqT("title"), answer: t("faqAnswer"), items: faq },
     privacy: {
-      title: t("privacyTitle"), answer: t("privacyAnswer"),
+      title: t("privacyTitle"),
+      answer: t("privacyAnswer"),
       documents: privacy("retention.documents"),
-      aiTitle: privacy("aiParsing.title"), aiAnswer: privacy("aiParsing.body"),
-      browserTitle: t("browserTitle"), browserAnswer: privacy("storage.body"),
-      metadataTitle: t("metadataTitle"), metadataAnswer: privacy("accountData.body"),
+      aiTitle: privacy("aiParsing.title"),
+      aiAnswer: privacy("aiParsing.body"),
+      browserTitle: t("browserTitle"),
+      browserAnswer: privacy("storage.body"),
+      metadataTitle: t("metadataTitle"),
+      metadataAnswer: privacy("accountData.body"),
       metadataRetention: privacy("retention.metadata"),
       technicalData: t("analyticsAnswer"),
     },
     site: {
-      title: t("siteTitle"), answer: t("siteAnswer"),
+      title: t("siteTitle"),
+      answer: t("siteAnswer"),
       officialPages,
       links: [
         ...officialPages,
@@ -121,9 +118,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       { name: "faq.md", label: t("faqLabel") },
       { name: "site.md", label: t("siteLabel") },
     ] as const,
-    languageLinks: routing.locales.map((language) => ({
-      name: languages(language), href: getAgentDocumentUrl(language, "llms.txt"),
-    })),
+    languageLinks: routing.locales.map((language) => ({ name: languages(language), href: getAgentDocumentUrl(language, "llms.txt") })),
     languagesLabel: t("languagesLabel"),
     agentsTitle: t("agentsTitle"),
     agentsDescription: t("agentsDescription"),

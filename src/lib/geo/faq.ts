@@ -10,12 +10,15 @@ export const getHomeFaq = cache(async (locale: AppLocale) => {
   return (["banks", "accuracy", "quota", "scans", "ai", "storage", "failure"] as const).map((id) => ({
     id,
     question: t(`${id}.question`),
-    answer: id === "quota" ? t("quota.answer", {
-      anonymousPages: quota.anonymous.pages,
-      authenticatedPages: quota.authenticated.pages,
-      standardPages: quota.subscriptions.standard.pages,
-      professionalPages: quota.subscriptions.professional.pages,
-      enterprisePages: quota.subscriptions.enterprise.pages,
-    }) : t(`${id}.answer`),
+    answer:
+      id === "quota"
+        ? t("quota.answer", {
+            anonymousPages: quota.anonymous.pages,
+            authenticatedPages: quota.authenticated.pages,
+            standardPages: quota.subscriptions.standard.pages,
+            professionalPages: quota.subscriptions.professional.pages,
+            enterprisePages: quota.subscriptions.enterprise.pages,
+          })
+        : t(`${id}.answer`),
   }));
 });

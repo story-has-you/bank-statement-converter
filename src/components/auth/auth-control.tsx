@@ -11,12 +11,7 @@ import { UserAvatar } from "@/components/shared/user-avatar";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 
-type AuthControlProps = {
-  configured: boolean;
-  email: string | null;
-  signedIn: boolean;
-  imageUrl: string | null;
-};
+type AuthControlProps = { configured: boolean; email: string | null; signedIn: boolean; imageUrl: string | null };
 
 export function AuthControl({ configured, email, signedIn, imageUrl }: AuthControlProps) {
   const t = useTranslations("AuthControl");
@@ -37,9 +32,7 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
     try {
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: {
-          redirectTo: `${window.location.origin}/api/auth/callback?locale=${encodeURIComponent(locale)}`,
-        },
+        options: { redirectTo: `${window.location.origin}/api/auth/callback?locale=${encodeURIComponent(locale)}` },
       });
       if (authError) throw authError;
     } catch {
@@ -76,16 +69,16 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
       <div className="flex min-w-0 items-center gap-2">
         {signedIn ? (
           <>
-            <Link href="/account" aria-label={t("myAccount")} title={email ?? t("account")}
-              className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <Link
+              href="/account"
+              aria-label={t("myAccount")}
+              title={email ?? t("account")}
+              className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
               <UserAvatar imageUrl={imageUrl} alt={t("avatar")} />
             </Link>
             <Tooltip>
-              <TooltipTrigger
-                render={
-                  <Button variant="outline" size="icon" disabled={pending} onClick={signOut} aria-label={t("signOut")} />
-                }
-              >
+              <TooltipTrigger render={<Button variant="outline" size="icon" disabled={pending} onClick={signOut} aria-label={t("signOut")} />}>
                 <LogOutIcon />
               </TooltipTrigger>
               <TooltipContent>{t("signOut")}</TooltipContent>
@@ -98,7 +91,11 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
           </Button>
         )}
       </div>
-      {error && <p role="alert" className="max-w-48 text-right text-xs text-destructive">{error}</p>}
+      {error && (
+        <p role="alert" className="max-w-48 text-right text-xs text-destructive">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

@@ -43,7 +43,7 @@ export async function getAccountSnapshot(user: { id: string; email?: string }): 
       usedPages,
       remainingPages,
       limitPages: context.limitPages,
-      remainingPercent: Math.min(100, Math.max(0, remainingPages / context.limitPages * 100)),
+      remainingPercent: Math.min(100, Math.max(0, (remainingPages / context.limitPages) * 100)),
       periodEnd: context.window.end.toISOString(),
     };
   } catch {

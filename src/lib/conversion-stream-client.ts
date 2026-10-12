@@ -1,16 +1,9 @@
 import { conversionLimits } from "@/config/conversion";
 
 import { isPreviewTable, type ConversionStage } from "@/lib/conversion-events";
-import {
-  isParseResponse,
-  type ParsedTable,
-  type ParseResponse,
-} from "@/lib/conversion-types";
+import { isParseResponse, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 
-export type ConversionPreview = {
-  tables: ParsedTable[];
-  stage: ConversionStage;
-};
+export type ConversionPreview = { tables: ParsedTable[]; stage: ConversionStage };
 export class ConversionStreamError extends Error {
   constructor(
     public readonly reason: "invalid" | "interrupted" | "request",
@@ -24,23 +17,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-export async function readConversionStream(
-  response: Response,
-  onPreview: (preview: ConversionPreview) => void,
-): Promise<ParseResponse> {
+export async function readConversionStream(response: Response, onPreview: (preview: ConversionPreview) => void): Promise<ParseResponse> {
   if (!response.ok) {
     const error: unknown = await response.json().catch(() => null);
-    throw new ConversionStreamError(
-      "request",
-      isRecord(error) && typeof error.message === "string"
-        ? error.message
-        : undefined,
-    );
+    throw new ConversionStreamError("request", isRecord(error) && typeof error.message === "string" ? error.message : undefined);
   }
-  if (
-    !response.headers.get("content-type")?.includes("text/event-stream") ||
-    !response.body
-  ) {
+  if (!response.headers.get("content-type")?.includes("text/event-stream") || !response.body) {
     throw new ConversionStreamError("invalid");
   }
   const reader = response.body.getReader();
@@ -54,17 +36,17 @@ export async function readConversionStream(
 
   function publish(force = false): void {
     if (!force && Date.now() - lastPublish < 100) {
-      pendingPublish ??= setTimeout(() => { pendingPublish = undefined; publish(true); }, 100);
+      pendingPublish ??= setTimeout(() => {
+        pendingPublish = undefined;
+        publish(true);
+      }, 100);
       return;
     }
     clearTimeout(pendingPublish);
     pendingPublish = undefined;
     lastPublish = Date.now();
     // React receives snapshots; the stream accumulator continues to mutate locally.
-    onPreview({
-      stage,
-      tables: tables.map((table) => ({ ...table, rows: [...table.rows] })),
-    });
+    onPreview({ stage, tables: tables.map((table) => ({ ...table, rows: [...table.rows] })) });
   }
 
   function processFrame(frame: string): void {
@@ -81,17 +63,10 @@ export async function readConversionStream(
     const data: unknown = JSON.parse(text);
     if (!isRecord(data)) throw new ConversionStreamError("invalid");
     if (type === "error") {
-      throw new ConversionStreamError(
-        "request",
-        typeof data.message === "string" ? data.message : undefined,
-      );
+      throw new ConversionStreamError("request", typeof data.message === "string" ? data.message : undefined);
     }
     if (type === "status") {
-      if (
-        data.stage !== "reading" &&
-        data.stage !== "extracting" &&
-        data.stage !== "finalizing"
-      ) {
+      if (data.stage !== "reading" && data.stage !== "extracting" && data.stage !== "finalizing") {
         throw new ConversionStreamError("invalid");
       }
       stage = data.stage;
@@ -99,41 +74,24 @@ export async function readConversionStream(
       return;
     }
     if (type === "table" || type === "rows") {
-      if (
-        typeof data.tableIndex !== "number" ||
-        !Number.isInteger(data.tableIndex) ||
-        data.tableIndex < 0 ||
-        data.tableIndex > tables.length
-      )
-        throw new ConversionStreamError("invalid");
+      if (typeof data.tableIndex !== "number" || !Number.isInteger(data.tableIndex) || data.tableIndex < 0 || data.tableIndex > tables.length) throw new ConversionStreamError("invalid");
       const index = data.tableIndex;
       if (type === "table") {
         if (!isRecord(data.table)) throw new ConversionStreamError("invalid");
         const candidate = { ...data.table, rows: [] };
-        if (!isPreviewTable(candidate) || candidate.columns.length === 0)
-          throw new ConversionStreamError("invalid");
+        if (!isPreviewTable(candidate) || candidate.columns.length === 0) throw new ConversionStreamError("invalid");
         const previous = tables[index];
-        if (
-          previous &&
-          (previous.id !== candidate.id ||
-            JSON.stringify(previous.columns) !==
-              JSON.stringify(candidate.columns))
-        ) {
+        if (previous && (previous.id !== candidate.id || JSON.stringify(previous.columns) !== JSON.stringify(candidate.columns))) {
           throw new ConversionStreamError("invalid");
         }
         tables[index] = { ...candidate, rows: previous?.rows ?? [] };
       } else {
         const table = tables[index];
-        if (
-          !table ||
-          !Array.isArray(data.rows) ||
-          data.startIndex !== table.rows.length
-        ) {
+        if (!table || !Array.isArray(data.rows) || data.startIndex !== table.rows.length) {
           throw new ConversionStreamError("invalid");
         }
         const candidate = { ...table, rows: data.rows };
-        if (!isPreviewTable(candidate))
-          throw new ConversionStreamError("invalid");
+        if (!isPreviewTable(candidate)) throw new ConversionStreamError("invalid");
         table.rows.push(...candidate.rows);
       }
       publish();
@@ -146,8 +104,7 @@ export async function readConversionStream(
         candidate.pageCount < 1 ||
         candidate.pageCount > conversionLimits.pages ||
         candidate.summary.status === "failed" ||
-        candidate.summary.validRowCount + candidate.summary.warningRowCount ===
-          0
+        candidate.summary.validRowCount + candidate.summary.warningRowCount === 0
       ) {
         throw new ConversionStreamError("invalid");
       }
@@ -160,11 +117,8 @@ export async function readConversionStream(
   try {
     while (result === null) {
       const { value, done } = await reader.read();
-      buffer += done
-        ? decoder.decode()
-        : decoder.decode(value, { stream: true });
-      if (buffer.length > 4 * 1024 * 1024)
-        throw new ConversionStreamError("invalid");
+      buffer += done ? decoder.decode() : decoder.decode(value, { stream: true });
+      if (buffer.length > 4 * 1024 * 1024) throw new ConversionStreamError("invalid");
       // Match LF and CRLF separators, including separators split across reads.
       let separator = /\r?\n\r?\n/.exec(buffer);
       while (separator && result === null) {
@@ -172,14 +126,12 @@ export async function readConversionStream(
         buffer = buffer.slice(separator.index + separator[0].length);
         separator = /\r?\n\r?\n/.exec(buffer);
       }
-      if (done && result === null)
-        throw new ConversionStreamError("interrupted");
+      if (done && result === null) throw new ConversionStreamError("interrupted");
     }
     return result;
   } catch (error) {
     if (error instanceof ConversionStreamError) throw error;
-    if (error instanceof SyntaxError || error instanceof TypeError)
-      throw new ConversionStreamError("invalid");
+    if (error instanceof SyntaxError || error instanceof TypeError) throw new ConversionStreamError("invalid");
     throw new ConversionStreamError("interrupted");
   } finally {
     clearTimeout(pendingPublish);

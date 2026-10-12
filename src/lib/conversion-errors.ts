@@ -1,11 +1,4 @@
-export type ConversionErrorPayload = {
-  code: string;
-  message: string;
-  period?: "day" | "month";
-  usedPages?: number;
-  remainingPages?: number;
-  limitPages?: number;
-};
+export type ConversionErrorPayload = { code: string; message: string; period?: "day" | "month"; usedPages?: number; remainingPages?: number; limitPages?: number };
 
 export class ConversionError extends Error {
   constructor(

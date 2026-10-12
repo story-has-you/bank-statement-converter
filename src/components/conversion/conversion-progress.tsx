@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import type { ConversionPreview } from "@/lib/conversion-stream-client";
 
-export function ConversionProgress({ filename, preview, onCancel }: {
-  filename: string; preview: ConversionPreview; onCancel: () => void;
-}) {
+export function ConversionProgress({ filename, preview, onCancel }: { filename: string; preview: ConversionPreview; onCancel: () => void }) {
   const t = useTranslations("ConversionResult");
   const router = useRouter();
 
@@ -23,7 +21,15 @@ export function ConversionProgress({ filename, preview, onCancel }: {
           </p>
           <p className="mt-2 text-sm text-muted-foreground">{t("stream.previewNotice")}</p>
         </div>
-        <Button variant="outline" onClick={() => { onCancel(); router.push("/"); }}>{t("stream.cancel")}</Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            onCancel();
+            router.push("/");
+          }}
+        >
+          {t("stream.cancel")}
+        </Button>
       </div>
       {preview.tables.map((table, index) => (
         <ConversionTable key={index} table={table} title={t("table.title", { id: table.id })} />

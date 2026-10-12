@@ -34,7 +34,11 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
     if (error || !data.user) throw new BillingError("loginRequired", 401);
     if (action === "create" && !data.user.email) throw new BillingError("emailMissing", 422);
     let payload: unknown;
-    try { payload = await request.json(); } catch { throw new BillingError("invalidRequest", 400); }
+    try {
+      payload = await request.json();
+    } catch {
+      throw new BillingError("invalidRequest", 400);
+    }
     if (typeof payload !== "object" || payload === null || Array.isArray(payload)) throw new BillingError("invalidRequest", 400);
     const input = payload as Record<string, unknown>;
     const provider = getPaymentProvider(legacyProvider ?? input.provider);

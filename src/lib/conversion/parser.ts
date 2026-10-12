@@ -13,15 +13,34 @@ export function canUseQwen(tier: MembershipTier | undefined): boolean {
 
 export function shouldFallback(error: ConversionError): boolean {
   const terminalCodes = [
-    "INVALID_REQUEST", "INVALID_FILE", "MISSING_FILE", "EMPTY_FILE", "INVALID_FILE_TYPE",
-    "INVALID_PDF", "PASSWORD_PROTECTED_PDF", "FILE_TOO_LARGE", "TOO_MANY_PAGES", "PARSER_RESPONSE_TOO_LARGE",
+    "INVALID_REQUEST",
+    "INVALID_FILE",
+    "MISSING_FILE",
+    "EMPTY_FILE",
+    "INVALID_FILE_TYPE",
+    "INVALID_PDF",
+    "PASSWORD_PROTECTED_PDF",
+    "FILE_TOO_LARGE",
+    "TOO_MANY_PAGES",
+    "PARSER_RESPONSE_TOO_LARGE",
   ];
   if (terminalCodes.includes(error.code) || error.code.startsWith("QUOTA_")) return false;
-  return error.status >= 500 || [
-    "UNAUTHORIZED", "PARSER_NOT_CONFIGURED", "PARSER_AUTH_NOT_CONFIGURED", "PARSER_TIMEOUT",
-    "PARSER_UNAVAILABLE", "INVALID_PARSER_RESPONSE", "PARSER_RESPONSE_UNREADABLE",
-    "UNSUPPORTED_SCANNED_PDF", "TABLE_NOT_FOUND", "NO_VERIFIABLE_TRANSACTIONS", "PARSE_FAILED",
-  ].includes(error.code);
+  return (
+    error.status >= 500 ||
+    [
+      "UNAUTHORIZED",
+      "PARSER_NOT_CONFIGURED",
+      "PARSER_AUTH_NOT_CONFIGURED",
+      "PARSER_TIMEOUT",
+      "PARSER_UNAVAILABLE",
+      "INVALID_PARSER_RESPONSE",
+      "PARSER_RESPONSE_UNREADABLE",
+      "UNSUPPORTED_SCANNED_PDF",
+      "TABLE_NOT_FOUND",
+      "NO_VERIFIABLE_TRANSACTIONS",
+      "PARSE_FAILED",
+    ].includes(error.code)
+  );
 }
 
 export function requireUsableResult(value: unknown): ParseResponse {
@@ -44,10 +63,7 @@ export async function parseWithPython(file: File, signal: AbortSignal): Promise<
   const timeout = AbortSignal.timeout(55_000);
   const upstreamSignal = AbortSignal.any([signal, timeout]);
   try {
-    const response = await fetch(`${baseUrl}/parse`, {
-      method: "POST", body, cache: "no-store", headers: { Authorization: `Bearer ${secret}` },
-      signal: upstreamSignal,
-    });
+    const response = await fetch(`${baseUrl}/parse`, { method: "POST", body, cache: "no-store", headers: { Authorization: `Bearer ${secret}` }, signal: upstreamSignal });
     const reader = response.body?.getReader();
     if (!reader) throw new ConversionError("PARSER_RESPONSE_UNREADABLE");
     const chunks: Uint8Array[] = [];
@@ -65,13 +81,18 @@ export async function parseWithPython(file: File, signal: AbortSignal): Promise<
     }
     const bytes = new Uint8Array(size);
     let offset = 0;
-    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
     let payload: unknown;
-    try { payload = JSON.parse(new TextDecoder().decode(bytes)); }
-    catch { throw new ConversionError("INVALID_PARSER_RESPONSE", response.ok ? 502 : response.status); }
+    try {
+      payload = JSON.parse(new TextDecoder().decode(bytes));
+    } catch {
+      throw new ConversionError("INVALID_PARSER_RESPONSE", response.ok ? 502 : response.status);
+    }
     if (!response.ok) {
-      const code = typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string"
-        ? payload.code : "INVALID_PARSER_RESPONSE";
+      const code = typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string" ? payload.code : "INVALID_PARSER_RESPONSE";
       throw new ConversionError(code, response.status);
     }
     return requireUsableResult(payload);

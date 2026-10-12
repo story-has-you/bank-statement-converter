@@ -45,11 +45,16 @@ export function readConversionPayload(): ConversionPayload | null {
     if (!serialized) return null;
     const value: unknown = JSON.parse(serialized);
     if (
-      typeof value !== "object" || value === null ||
-      !("version" in value) || value.version !== 1 ||
-      !("filename" in value) || typeof value.filename !== "string" ||
-      !("result" in value) || !isParseResponse(value.result)
-    ) return null;
+      typeof value !== "object" ||
+      value === null ||
+      !("version" in value) ||
+      value.version !== 1 ||
+      !("filename" in value) ||
+      typeof value.filename !== "string" ||
+      !("result" in value) ||
+      !isParseResponse(value.result)
+    )
+      return null;
     return value as ConversionPayload;
   } catch {
     return null;

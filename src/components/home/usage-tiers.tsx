@@ -19,10 +19,7 @@ export async function UsageTiers() {
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const checkouts = getCheckoutConfigs();
   const readRawTranslation = t.raw as (key: string) => unknown;
-  const plans = readRawTranslation("plans") as Record<
-    (typeof membershipTiers)[number],
-    { name: string; description: string }
-  >;
+  const plans = readRawTranslation("plans") as Record<(typeof membershipTiers)[number], { name: string; description: string }>;
 
   return (
     <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
@@ -41,9 +38,7 @@ export async function UsageTiers() {
               {t("anonymousAmount", { pages: usageQuotaConfig.anonymous.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
             </p>
-            <p className="text-sm text-muted-foreground">
-              {t("anonymousDescription", { pages: usageQuotaConfig.anonymous.pages })}
-            </p>
+            <p className="text-sm text-muted-foreground">{t("anonymousDescription", { pages: usageQuotaConfig.anonymous.pages })}</p>
           </div>
           <div className="flex flex-col gap-3 border-t border-border py-5 sm:border-t-0 sm:pl-6">
             <p className="text-sm font-medium text-muted-foreground">{t("signedIn")}</p>
@@ -51,21 +46,13 @@ export async function UsageTiers() {
               {t("signedInAmount", { pages: usageQuotaConfig.authenticated.pages })}
               <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
             </p>
-            <p className="text-sm text-muted-foreground">
-              {t("signedInDescription", { pages: usageQuotaConfig.authenticated.pages })}
-            </p>
+            <p className="text-sm text-muted-foreground">{t("signedInDescription", { pages: usageQuotaConfig.authenticated.pages })}</p>
           </div>
         </div>
 
         {cancelledPeriodEnd && (
           <p role="status" className="mt-8 text-sm leading-6 text-muted-foreground">
-            {t("cancelledPeriodActive", {
-              date: format.dateTime(new Date(cancelledPeriodEnd), {
-                dateStyle: "medium",
-                timeStyle: "short",
-                timeZone: "UTC",
-              }),
-            })}
+            {t("cancelledPeriodActive", { date: format.dateTime(new Date(cancelledPeriodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) })}
           </p>
         )}
 
@@ -86,19 +73,11 @@ export async function UsageTiers() {
                         <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
                       </p>
                     </div>
-                    {activeSubscription?.tier === tier && (
-                      <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-                        {t("current")}
-                      </span>
-                    )}
+                    {activeSubscription?.tier === tier && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>}
                   </div>
                   <p className="text-sm leading-6 text-muted-foreground">{plan.description}</p>
-                  <p className="text-sm leading-6 text-muted-foreground">
-                    {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
-                  </p>
-                  <p className="mt-auto text-sm font-medium">
-                    {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}
-                  </p>
+                  <p className="text-sm leading-6 text-muted-foreground">{subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}</p>
+                  <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
                   {!cancelledPeriodEnd && !isLowerTier && (
                     <SubscriptionOptions
                       checkouts={checkouts}

@@ -28,27 +28,17 @@ function isAuthorized(request: Request, expectedSecret: string): boolean {
 }
 
 function unauthorized(): Response {
-  return Response.json(
-    { code: "UNAUTHORIZED", message: "解析服务认证失败" },
-    { status: 401, headers: { "Cache-Control": "no-store" } },
-  );
+  return Response.json({ code: "UNAUTHORIZED", message: "解析服务认证失败" }, { status: 401, headers: { "Cache-Control": "no-store" } });
 }
 
 function notConfigured(): Response {
-  return Response.json(
-    { code: "PARSER_AUTH_NOT_CONFIGURED", message: "解析服务认证未配置" },
-    { status: 503, headers: { "Cache-Control": "no-store" } },
-  );
+  return Response.json({ code: "PARSER_AUTH_NOT_CONFIGURED", message: "解析服务认证未配置" }, { status: 503, headers: { "Cache-Control": "no-store" } });
 }
 
 function withNoStore(response: Response): Response {
   const headers = new Headers(response.headers);
   headers.set("Cache-Control", "no-store");
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 }
 
 const worker = {
@@ -64,14 +54,7 @@ const worker = {
     }
 
     const container = env.PARSER_CONTAINER.getByName(PARSER_INSTANCE);
-    await container.startAndWaitForPorts({
-      ports: [8080],
-      startOptions: {
-        envVars: {
-          PARSER_SHARED_SECRET: secret,
-        },
-      },
-    });
+    await container.startAndWaitForPorts({ ports: [8080], startOptions: { envVars: { PARSER_SHARED_SECRET: secret } } });
 
     return withNoStore(await container.fetch(request));
   },

@@ -28,16 +28,22 @@ const BillingReturnStatus: FC<{ signedIn: boolean }> = ({ signedIn }) => {
       attempts += 1;
       try {
         const response = await fetch("/api/billing/subscriptions/activate", {
-          method: "POST", headers: { "Content-Type": "application/json", "x-app-locale": locale },
-          body: JSON.stringify({ provider: "creem", checkoutId, tier }), signal: controller.signal,
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-app-locale": locale },
+          body: JSON.stringify({ provider: "creem", checkoutId, tier }),
+          signal: controller.signal,
         });
-        const payload = await response.json() as { status?: string; error?: string };
+        const payload = (await response.json()) as { status?: string; error?: string };
         if (controller.signal.aborted) return;
         if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
-          setState("active"); router.refresh(); return;
+          setState("active");
+          router.refresh();
+          return;
         }
         if (response.status !== 202 || payload.status !== "PENDING") {
-          setError(payload.error ?? t("failed")); setState("failed"); return;
+          setError(payload.error ?? t("failed"));
+          setState("failed");
+          return;
         }
       } catch {
         if (controller.signal.aborted) return;
@@ -46,15 +52,32 @@ const BillingReturnStatus: FC<{ signedIn: boolean }> = ({ signedIn }) => {
       else timer = setTimeout(check, 2_000);
     }
     timer = setTimeout(check, 0);
-    return () => { controller.abort(); clearTimeout(timer); };
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
   }, [checkoutId, tier, valid, signedIn, locale, retry, router, t]);
   if (!signedIn) return <p role="status">{t("signInRequired")}</p>;
   if (!valid) return <p role="alert">{t("invalidReturn")}</p>;
-  return <div className="grid gap-4">
-    <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>
-    {(state === "failed" || state === "delayed") && <Button onClick={() => { setError(null); setState("pending"); setRetry((value) => value + 1); }}>{t("retry")}</Button>}
-    <Link href="/account" className="text-sm underline">{t("account")}</Link>
-  </div>;
+  return (
+    <div className="grid gap-4">
+      <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>
+      {(state === "failed" || state === "delayed") && (
+        <Button
+          onClick={() => {
+            setError(null);
+            setState("pending");
+            setRetry((value) => value + 1);
+          }}
+        >
+          {t("retry")}
+        </Button>
+      )}
+      <Link href="/account" className="text-sm underline">
+        {t("account")}
+      </Link>
+    </div>
+  );
 };
 BillingReturnStatus.displayName = "BillingReturnStatus";
 export { BillingReturnStatus };

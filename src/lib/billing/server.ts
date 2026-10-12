@@ -25,56 +25,33 @@ export type BillingSubscription = {
   created_at: string;
 };
 
-export async function findBillingSubscriptionByProviderId(
-  provider: PaymentProviderId,
-  subscriptionId: string,
-): Promise<BillingSubscription | null> {
+export async function findBillingSubscriptionByProviderId(provider: PaymentProviderId, subscriptionId: string): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
   if (!admin) {
     throw new Error("Supabase admin configuration is incomplete");
   }
 
-  const { data, error } = await admin
-    .from("billing_subscriptions")
-    .select("*")
-    .eq("provider", provider)
-    .eq("provider_subscription_id", subscriptionId)
-    .maybeSingle();
+  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("provider", provider).eq("provider_subscription_id", subscriptionId).maybeSingle();
 
   if (error) throw error;
   return data as BillingSubscription | null;
 }
 
-export async function findActiveBillingSubscription(
-  userId: string,
-): Promise<BillingSubscription | null> {
+export async function findActiveBillingSubscription(userId: string): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
   if (!admin) return null;
 
-  const { data, error } = await admin
-    .from("billing_subscriptions")
-    .select("*")
-    .eq("user_id", userId)
-    .eq("status", "ACTIVE")
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("user_id", userId).eq("status", "ACTIVE").order("created_at", { ascending: false }).limit(1).maybeSingle();
 
   if (error) throw error;
   return data as BillingSubscription | null;
 }
 
-export async function listBillingSubscriptions(
-  userId: string,
-): Promise<BillingSubscription[]> {
+export async function listBillingSubscriptions(userId: string): Promise<BillingSubscription[]> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
-  const { data, error } = await admin
-    .from("billing_subscriptions")
-    .select("*")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false });
+  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("user_id", userId).order("created_at", { ascending: false });
   if (error) throw error;
   return data as BillingSubscription[];
 }
@@ -85,41 +62,29 @@ function isPaidPeriodCurrent(subscription: BillingSubscription, now: Date): bool
   return Number.isFinite(start) && Number.isFinite(end) && start < end && start <= now.valueOf() && now.valueOf() < end;
 }
 
-export function selectEntitledSubscription(
-  subscriptions: BillingSubscription[],
-  now = new Date(),
-): BillingSubscription | null {
-  const active = subscriptions.find(
-    (subscription) => subscription.status === "ACTIVE" && (subscription.provider !== "creem" || isPaidPeriodCurrent(subscription, now)),
-  );
+export function selectEntitledSubscription(subscriptions: BillingSubscription[], now = new Date()): BillingSubscription | null {
+  const active = subscriptions.find((subscription) => subscription.status === "ACTIVE" && (subscription.provider !== "creem" || isPaidPeriodCurrent(subscription, now)));
   if (active) return active;
 
   return (
     subscriptions.find((subscription) => {
-      const paidStatus = subscription.status === "CANCELLED" ||
-        (subscription.provider === "creem" && subscription.status === "PAYMENT_FAILED");
+      const paidStatus = subscription.status === "CANCELLED" || (subscription.provider === "creem" && subscription.status === "PAYMENT_FAILED");
       return paidStatus && isPaidPeriodCurrent(subscription, now);
     }) ?? null
   );
 }
 
-export async function findEntitledBillingSubscription(
-  userId: string,
-): Promise<BillingSubscription | null> {
+export async function findEntitledBillingSubscription(userId: string): Promise<BillingSubscription | null> {
   return selectEntitledSubscription(await listBillingSubscriptions(userId));
 }
 
 export async function updateBillingSubscriptionFromWebhook(
   subscription: BillingSubscription,
   event: { id: string; at: string },
-  changes:
-    | { status: SubscriptionStatus }
-    | { status?: "ACTIVE"; current_period_start: string; current_period_end: string },
+  changes: { status: SubscriptionStatus } | { status?: "ACTIVE"; current_period_start: string; current_period_end: string },
 ): Promise<"applied" | "ignored"> {
   if (subscription.last_webhook_event_id === event.id) return "ignored";
-  const olderEvent =
-    subscription.last_event_at !== null &&
-    Date.parse(event.at) < Date.parse(subscription.last_event_at);
+  const olderEvent = subscription.last_event_at !== null && Date.parse(event.at) < Date.parse(subscription.last_event_at);
   // 已向支付渠道确认的取消是终态；付款事件即使晚生成也不能阻止取消落库。
   if (olderEvent && changes.status !== "CANCELLED") return "ignored";
   if (subscription.provider === "paypal" && subscription.status !== "ACTIVE") return "ignored";
@@ -131,35 +96,19 @@ export async function updateBillingSubscriptionFromWebhook(
   // 比较读取时的事件版本，避免并发回调覆盖取消状态或更新后的账期。
   let query = admin
     .from("billing_subscriptions")
-    .update({
-      ...changes,
-      last_webhook_event_id: event.id,
-      last_event_at: olderEvent ? subscription.last_event_at : event.at,
-      updated_at: new Date().toISOString(),
-    })
+    .update({ ...changes, last_webhook_event_id: event.id, last_event_at: olderEvent ? subscription.last_event_at : event.at, updated_at: new Date().toISOString() })
     .eq("id", subscription.id)
     .eq("status", subscription.status);
-  query =
-    subscription.last_event_at === null
-      ? query.is("last_event_at", null)
-      : query.eq("last_event_at", subscription.last_event_at);
-  query =
-    subscription.last_webhook_event_id === null
-      ? query.is("last_webhook_event_id", null)
-      : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
+  query = subscription.last_event_at === null ? query.is("last_event_at", null) : query.eq("last_event_at", subscription.last_event_at);
+  query = subscription.last_webhook_event_id === null ? query.is("last_webhook_event_id", null) : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
 
   const { data, error } = await query.select("id");
   if (error) throw error;
-  if (!data.length)
-    throw new Error(
-      "Subscription changed while processing webhook; retry required",
-    );
+  if (!data.length) throw new Error("Subscription changed while processing webhook; retry required");
   return "applied";
 }
 
-export async function findOpenBillingSubscription(
-  userId: string,
-): Promise<BillingSubscription | null> {
+export async function findOpenBillingSubscription(userId: string): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
@@ -176,10 +125,7 @@ export async function findOpenBillingSubscription(
   return data as BillingSubscription | null;
 }
 
-export async function updateBillingSubscriptionStatus(
-  subscription: BillingSubscription,
-  status: "CANCELLED" | "EXPIRED",
-): Promise<"applied" | "ignored"> {
+export async function updateBillingSubscriptionStatus(subscription: BillingSubscription, status: "CANCELLED" | "EXPIRED"): Promise<"applied" | "ignored"> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
@@ -190,14 +136,8 @@ export async function updateBillingSubscriptionStatus(
     .eq("id", subscription.id)
     .eq("user_id", subscription.user_id)
     .eq("status", subscription.status);
-  query =
-    subscription.last_event_at === null
-      ? query.is("last_event_at", null)
-      : query.eq("last_event_at", subscription.last_event_at);
-  query =
-    subscription.last_webhook_event_id === null
-      ? query.is("last_webhook_event_id", null)
-      : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
+  query = subscription.last_event_at === null ? query.is("last_event_at", null) : query.eq("last_event_at", subscription.last_event_at);
+  query = subscription.last_webhook_event_id === null ? query.is("last_webhook_event_id", null) : query.eq("last_webhook_event_id", subscription.last_webhook_event_id);
 
   const { data, error } = await query.select("id");
   if (error) throw error;
@@ -222,11 +162,8 @@ export type BillingActivation = {
   currencyCode: string;
 };
 
-export async function insertActivatedBillingSubscription(
-  update: BillingActivation,
-): Promise<"applied" | "ignored"> {
-  if (await findBillingSubscriptionByProviderId(update.provider, update.subscriptionId))
-    return "ignored";
+export async function insertActivatedBillingSubscription(update: BillingActivation): Promise<"applied" | "ignored"> {
+  if (await findBillingSubscriptionByProviderId(update.provider, update.subscriptionId)) return "ignored";
 
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
@@ -237,28 +174,29 @@ export async function insertActivatedBillingSubscription(
     const entitled = await findEntitledBillingSubscription(update.userId);
     if (open || entitled?.status === "CANCELLED") throw new Error("Account already has an open or paid cancelled subscription");
   }
-  const { error } = await admin.from("billing_subscriptions").insert({
-    provider: update.provider,
-    user_id: update.userId,
-    email: update.email,
-    tier: update.tier,
-    provider_subscription_id: update.subscriptionId,
-    provider_plan_id: update.planId,
-    status: update.status ?? "ACTIVE",
-    amount: update.amount,
-    currency_code: update.currencyCode,
-    payer_id: update.payerId,
-    subscriber_email: update.subscriberEmail,
-    current_period_start: update.currentPeriodStart,
-    current_period_end: update.currentPeriodEnd,
-    last_webhook_event_id: update.eventId,
-    last_event_at: update.eventAt,
-  });
+  const { error } = await admin
+    .from("billing_subscriptions")
+    .insert({
+      provider: update.provider,
+      user_id: update.userId,
+      email: update.email,
+      tier: update.tier,
+      provider_subscription_id: update.subscriptionId,
+      provider_plan_id: update.planId,
+      status: update.status ?? "ACTIVE",
+      amount: update.amount,
+      currency_code: update.currencyCode,
+      payer_id: update.payerId,
+      subscriber_email: update.subscriberEmail,
+      current_period_start: update.currentPeriodStart,
+      current_period_end: update.currentPeriodEnd,
+      last_webhook_event_id: update.eventId,
+      last_event_at: update.eventAt,
+    });
   if (!error) return "applied";
   if (error.code !== "23505") throw error;
 
-  if (await findBillingSubscriptionByProviderId(update.provider, update.subscriptionId))
-    return "ignored";
+  if (await findBillingSubscriptionByProviderId(update.provider, update.subscriptionId)) return "ignored";
 
   throw error;
 }

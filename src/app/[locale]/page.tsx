@@ -15,9 +15,7 @@ import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
 
-type HomePageProps = {
-  params: Promise<{ locale: string }>;
-};
+type HomePageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -28,23 +26,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     title: t("title"),
     description: t("description"),
     keywords: t("keywords").split(", "),
-    alternates: {
-      ...getLocalizedAlternates("/", locale),
-      types: { "text/markdown": getAgentDocumentUrl(locale, "index.md") },
-    },
-    openGraph: {
-      type: "website",
-      siteName: t("brand"),
-      title: t("title"),
-      description: t("description"),
-      url: getLocalizedAlternates("/", locale).canonical,
-      locale: locale.replace("-", "_"),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-    },
+    alternates: { ...getLocalizedAlternates("/", locale), types: { "text/markdown": getAgentDocumentUrl(locale, "index.md") } },
+    openGraph: { type: "website", siteName: t("brand"), title: t("title"), description: t("description"), url: getLocalizedAlternates("/", locale).canonical, locale: locale.replace("-", "_") },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
     robots: { index: true, follow: true },
   };
 }

@@ -4,14 +4,10 @@ export type PaymentProviderId = "paypal" | "creem";
 
 type CheckoutAvailability = { availableTiers: MembershipTier[]; available: boolean };
 
-export type CheckoutConfig = CheckoutAvailability & (
-  | { provider: "paypal"; settings: { clientId: string | null; environment: "sandbox" | "production" } }
-  | { provider: "creem"; settings: { environment: "test" | "production" } }
-);
+export type CheckoutConfig = CheckoutAvailability &
+  ({ provider: "paypal"; settings: { clientId: string | null; environment: "sandbox" | "production" } } | { provider: "creem"; settings: { environment: "test" | "production" } });
 
-export type CheckoutResult =
-  | { provider: "paypal"; subscriptionId: string }
-  | { provider: "creem"; checkoutId: string; checkoutUrl: string };
+export type CheckoutResult = { provider: "paypal"; subscriptionId: string } | { provider: "creem"; checkoutId: string; checkoutUrl: string };
 
 export type CheckoutUser = { id: string; email: string };
 
@@ -27,29 +23,18 @@ export type ProviderSubscription = {
   periodEnd: string | null;
 };
 
-type EventBase = {
-  provider: PaymentProviderId;
-  id: string;
-  at: string;
-  subscription: ProviderSubscription;
-};
+type EventBase = { provider: PaymentProviderId; id: string; at: string; subscription: ProviderSubscription };
 
-export type BillingEvent = EventBase & (
-  | { type: "subscription-activated"; amount: string; currencyCode: string }
-  | { type: "subscription-cancelled" }
-  | { type: "subscription-paid"; amount: string; currencyCode: string; paidAt: string }
-  | { type: "subscription-status-changed" }
-  | { type: "subscription-renewed"; saleAt: string | null; paidAt: string | null }
-);
+export type BillingEvent = EventBase &
+  (
+    | { type: "subscription-activated"; amount: string; currencyCode: string }
+    | { type: "subscription-cancelled" }
+    | { type: "subscription-paid"; amount: string; currencyCode: string; paidAt: string }
+    | { type: "subscription-status-changed" }
+    | { type: "subscription-renewed"; saleAt: string | null; paidAt: string | null }
+  );
 
-export type BillingNotification = {
-  provider: PaymentProviderId;
-  id: string;
-  at: string;
-  type: BillingEvent["type"];
-  subscriptionId: string;
-  resolve: () => Promise<BillingEvent>;
-};
+export type BillingNotification = { provider: PaymentProviderId; id: string; at: string; type: BillingEvent["type"]; subscriptionId: string; resolve: () => Promise<BillingEvent> };
 
 export interface PaymentProvider {
   id: PaymentProviderId;

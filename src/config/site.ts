@@ -10,10 +10,4 @@ if (environment === "preview") {
 const domain = new URL(url).host;
 const contactEmail = "support@bankstatementconverter.xyz";
 
-export const siteConfig = {
-  domain,
-  contactEmail,
-  conversionLimits,
-  url,
-  contactHref: `mailto:${contactEmail}`,
-} as const;
+export const siteConfig = { domain, contactEmail, conversionLimits, url, contactHref: `mailto:${contactEmail}` } as const;

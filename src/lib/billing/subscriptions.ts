@@ -3,10 +3,7 @@ import "server-only";
 import { BillingError } from "./errors";
 import type { MembershipTier } from "./types";
 import type { CheckoutUser, PaymentProvider, ProviderSubscription } from "./provider";
-import {
-  findBillingSubscriptionByProviderId, findEntitledBillingSubscription, findOpenBillingSubscription,
-  updateBillingSubscriptionStatus, type BillingSubscription,
-} from "./server";
+import { findBillingSubscriptionByProviderId, findEntitledBillingSubscription, findOpenBillingSubscription, updateBillingSubscriptionStatus, type BillingSubscription } from "./server";
 import { getPaymentProvider } from "./providers";
 
 export function requireConfiguredProvider(provider: PaymentProvider, tier?: MembershipTier): void {
@@ -45,10 +42,7 @@ export async function confirmSubscription(provider: PaymentProvider, subscriptio
   if (!existing) return { status: "PENDING" as const };
   if (existing.provider_plan_id !== planId || existing.tier !== tier) throw new BillingError("planMismatch", 400);
   if (existing.status !== "ACTIVE") {
-    const errors = {
-      PAYMENT_FAILED: "subscriptionPaymentFailed", CANCELLED: "subscriptionCancelled",
-      EXPIRED: "subscriptionExpired", SUSPENDED: "subscriptionSuspended",
-    } as const;
+    const errors = { PAYMENT_FAILED: "subscriptionPaymentFailed", CANCELLED: "subscriptionCancelled", EXPIRED: "subscriptionExpired", SUSPENDED: "subscriptionSuspended" } as const;
     if (Object.hasOwn(errors, existing.status)) {
       throw new BillingError(errors[existing.status as keyof typeof errors], 409);
     }

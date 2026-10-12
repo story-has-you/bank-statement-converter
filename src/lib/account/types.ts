@@ -15,17 +15,6 @@ export type AccountSubscription = {
   entitlementActive: boolean;
 };
 
-export type AccountQuota = {
-  period: "day" | "month";
-  usedPages: number;
-  remainingPages: number;
-  limitPages: number;
-  remainingPercent: number;
-  periodEnd: string;
-};
+export type AccountQuota = { period: "day" | "month"; usedPages: number; remainingPages: number; limitPages: number; remainingPercent: number; periodEnd: string };
 
-export type AccountSnapshot = {
-  subscriptions: AccountSubscription[] | null;
-  quota: AccountQuota | null;
-  currentTier: MembershipTier | null;
-};
+export type AccountSnapshot = { subscriptions: AccountSubscription[] | null; quota: AccountQuota | null; currentTier: MembershipTier | null };

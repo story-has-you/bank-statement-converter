@@ -22,21 +22,24 @@ export async function HomeHeader() {
         </Link>
 
         <nav className="hidden items-center gap-5 text-sm text-muted-foreground sm:flex" aria-label={t("navigation")}>
-          <Link className="transition-colors hover:text-foreground" href="/#workspace">{t("convert")}</Link>
-          <Link className="transition-colors hover:text-foreground" href="/#features">{t("features")}</Link>
-          <Link className="transition-colors hover:text-foreground" href="/#plans">{t("plans")}</Link>
-          <Link className="transition-colors hover:text-foreground" href="/#faq">{t("faq")}</Link>
+          <Link className="transition-colors hover:text-foreground" href="/#workspace">
+            {t("convert")}
+          </Link>
+          <Link className="transition-colors hover:text-foreground" href="/#features">
+            {t("features")}
+          </Link>
+          <Link className="transition-colors hover:text-foreground" href="/#plans">
+            {t("plans")}
+          </Link>
+          <Link className="transition-colors hover:text-foreground" href="/#faq">
+            {t("faq")}
+          </Link>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
-          <AuthControl
-            configured={Boolean(supabase)}
-            email={user?.email ?? null}
-            imageUrl={user ? getUserAvatarUrl(user.user_metadata) : null}
-            signedIn={Boolean(user)}
-          />
+          <AuthControl configured={Boolean(supabase)} email={user?.email ?? null} imageUrl={user ? getUserAvatarUrl(user.user_metadata) : null} signedIn={Boolean(user)} />
         </div>
       </div>
     </header>

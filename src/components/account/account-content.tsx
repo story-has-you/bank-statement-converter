@@ -17,8 +17,7 @@ export async function AccountContent() {
 
   return (
     <div className="grid gap-6">
-      <AccountProfile email={user.email ?? null} imageUrl={getUserAvatarUrl(user.user_metadata)}
-        tier={snapshot.currentTier} available={snapshot.subscriptions !== null} />
+      <AccountProfile email={user.email ?? null} imageUrl={getUserAvatarUrl(user.user_metadata)} tier={snapshot.currentTier} available={snapshot.subscriptions !== null} />
       <AccountQuota quota={snapshot.quota} />
       <AccountSubscriptions subscriptions={snapshot.subscriptions} />
     </div>

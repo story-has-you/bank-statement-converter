@@ -11,10 +11,7 @@ import { getCreemConfig, getCreemProductId } from "./config";
 export function createCreemClient(): Creem {
   const config = getCreemConfig();
   if (!config) throw new BillingError("configurationMissing", 503);
-  return new Creem({
-    apiKey: config.apiKey, server: config.environment === "test" ? "test" : "prod",
-    timeoutMs: 10_000, retryConfig: { strategy: "none" },
-  });
+  return new Creem({ apiKey: config.apiKey, server: config.environment === "test" ? "test" : "prod", timeoutMs: 10_000, retryConfig: { strategy: "none" } });
 }
 
 export function isCreemId(value: unknown, prefix: "sub" | "ch"): value is string {
@@ -25,8 +22,12 @@ export async function createCreemCheckout(tier: MembershipTier, user: CheckoutUs
   const productId = getCreemProductId(tier);
   if (!productId) throw new BillingError("configurationMissing", 503);
   const checkout = await createCreemClient().checkouts.create({
-    productId, units: 1, requestId: randomUUID(), successUrl: returnUrl,
-    customer: { email: user.email }, metadata: { referenceId: user.id, tier },
+    productId,
+    units: 1,
+    requestId: randomUUID(),
+    successUrl: returnUrl,
+    customer: { email: user.email },
+    metadata: { referenceId: user.id, tier },
   });
   if (!isCreemId(checkout.id, "ch") || !checkout.checkoutUrl) throw new Error("Creem checkout response is incomplete");
   const url = new URL(checkout.checkoutUrl);

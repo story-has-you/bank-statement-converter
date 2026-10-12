@@ -9,22 +9,11 @@ const MAX_QUOTA_ATTEMPTS = 5;
 
 export type UsageActorType = "anonymous" | "user";
 
-export type UsageActor = {
-  type: UsageActorType;
-  key: string;
-  email: string | null;
-};
+export type UsageActor = { type: UsageActorType; key: string; email: string | null };
 
-export type UsageWindow = {
-  period: UsagePeriod;
-  start: Date;
-  end: Date;
-};
+export type UsageWindow = { period: UsagePeriod; start: Date; end: Date };
 
-export type QuotaContext = UsageActor & {
-  limitPages: number;
-  window: UsageWindow;
-};
+export type QuotaContext = UsageActor & { limitPages: number; window: UsageWindow };
 
 export type UsageRecord = {
   actor_type: UsageActorType;
@@ -37,13 +26,7 @@ export type UsageRecord = {
   updated_at: string;
 };
 
-export type QuotaResult = {
-  allowed: boolean;
-  period: UsagePeriod;
-  usedPages: number;
-  remainingPages: number;
-  limitPages: number;
-};
+export type QuotaResult = { allowed: boolean; period: UsagePeriod; usedPages: number; remainingPages: number; limitPages: number };
 
 export class UsageUnavailableError extends Error {
   constructor() {
@@ -98,18 +81,10 @@ function getSubscriptionWindow(subscription: BillingSubscription, now: Date): Us
     return null;
   }
 
-  return {
-    period: "month",
-    start: new Date(subscription.current_period_start as string),
-    end: new Date(subscription.current_period_end as string),
-  };
+  return { period: "month", start: new Date(subscription.current_period_start as string), end: new Date(subscription.current_period_end as string) };
 }
 
-export function getQuotaContext(
-  actor: UsageActor,
-  subscription: BillingSubscription | null,
-  now = new Date(),
-): QuotaContext {
+export function getQuotaContext(actor: UsageActor, subscription: BillingSubscription | null, now = new Date()): QuotaContext {
   if (subscription) {
     const config = usageQuotaConfig.subscriptions[subscription.tier];
     const window = getSubscriptionWindow(subscription, now);
@@ -161,18 +136,12 @@ function validateQuotaInput(context: QuotaContext, pageCount: number): void {
   if (!Number.isFinite(start) || !Number.isFinite(end) || start >= end) {
     throw new Error("Usage period is invalid");
   }
-  if (
-    !Number.isSafeInteger(pageCount) || pageCount <= 0 ||
-    !Number.isSafeInteger(context.limitPages) || context.limitPages <= 0
-  ) {
+  if (!Number.isSafeInteger(pageCount) || pageCount <= 0 || !Number.isSafeInteger(context.limitPages) || context.limitPages <= 0) {
     throw new Error("Usage page values are invalid");
   }
 }
 
-export async function consumeConversionQuota(
-  context: QuotaContext,
-  pageCount: number,
-): Promise<QuotaResult> {
+export async function consumeConversionQuota(context: QuotaContext, pageCount: number): Promise<QuotaResult> {
   validateQuotaInput(context, pageCount);
   const admin = requireAdminClient();
   const periodStart = context.window.start.toISOString();
@@ -184,29 +153,12 @@ export async function consumeConversionQuota(
     const nextUsedPages = currentUsedPages + pageCount;
     const allowed = nextUsedPages <= context.limitPages;
     const usedPages = allowed ? nextUsedPages : currentUsedPages;
-    const quota: QuotaResult = {
-      allowed,
-      period: context.window.period,
-      usedPages,
-      remainingPages: Math.max(context.limitPages - usedPages, 0),
-      limitPages: context.limitPages,
-    };
+    const quota: QuotaResult = { allowed, period: context.window.period, usedPages, remainingPages: Math.max(context.limitPages - usedPages, 0), limitPages: context.limitPages };
     if (!allowed) return quota;
 
-    const changes = {
-      email: context.email,
-      period: context.window.period,
-      period_start: periodStart,
-      period_end: periodEnd,
-      used_pages: nextUsedPages,
-      updated_at: new Date().toISOString(),
-    };
+    const changes = { email: context.email, period: context.window.period, period_start: periodStart, period_end: periodEnd, used_pages: nextUsedPages, updated_at: new Date().toISOString() };
     if (!record) {
-      const { error } = await admin.from("conversion_usage").insert({
-        actor_type: context.type,
-        actor_key: context.key,
-        ...changes,
-      });
+      const { error } = await admin.from("conversion_usage").insert({ actor_type: context.type, actor_key: context.key, ...changes });
       if (error?.code === "23505") continue;
       if (error) throw error;
     } else {
@@ -233,9 +185,5 @@ export async function consumeConversionQuota(
 }
 
 export function isUsageRecordCurrent(record: UsageRecord, context: QuotaContext): boolean {
-  return (
-    record.period === context.window.period &&
-    sameInstant(record.period_start, context.window.start) &&
-    sameInstant(record.period_end, context.window.end)
-  );
+  return record.period === context.window.period && sameInstant(record.period_start, context.window.start) && sameInstant(record.period_end, context.window.end);
 }

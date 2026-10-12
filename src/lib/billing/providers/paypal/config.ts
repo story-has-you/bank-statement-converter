@@ -4,16 +4,9 @@ import type { MembershipTier } from "@/lib/billing/types";
 
 import { membershipTiers } from "@/lib/billing/config";
 
-const planEnvironmentKeys: Record<MembershipTier, string> = {
-  standard: "PAYPAL_PLAN_ID_STANDARD",
-  professional: "PAYPAL_PLAN_ID_PROFESSIONAL",
-  enterprise: "PAYPAL_PLAN_ID_ENTERPRISE",
-};
+const planEnvironmentKeys: Record<MembershipTier, string> = { standard: "PAYPAL_PLAN_ID_STANDARD", professional: "PAYPAL_PLAN_ID_PROFESSIONAL", enterprise: "PAYPAL_PLAN_ID_ENTERPRISE" };
 
-export type PayPalPlan = {
-  tier: MembershipTier;
-  planId: string;
-};
+export type PayPalPlan = { tier: MembershipTier; planId: string };
 
 export type PayPalEnvironment = "sandbox" | "production";
 
@@ -49,9 +42,7 @@ export function getPayPalWebhookId(): string | null {
 }
 
 export function getPayPalApiBaseUrl(): string {
-  return getPayPalEnvironment() === "production"
-    ? "https://api-m.paypal.com"
-    : "https://api-m.sandbox.paypal.com";
+  return getPayPalEnvironment() === "production" ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com";
 }
 
 export function getPayPalEnvironment(): PayPalEnvironment {

@@ -16,8 +16,7 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
   if (notification.type === "subscription-paid" || notification.type === "subscription-status-changed") {
     return applyPaidSubscriptionEvent(notification);
   }
-  const existing = notification.type === "subscription-activated" ? null
-    : await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
+  const existing = notification.type === "subscription-activated" ? null : await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
   if (notification.type !== "subscription-activated") {
     if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
     if (existing.last_webhook_event_id === notification.id) return "ignored";
@@ -34,11 +33,20 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
     if (error) throw error;
     if (!data.user?.email) throw new Error("Subscription user has no account email");
     return insertActivatedBillingSubscription({
-      provider: event.provider, eventId: event.id, eventAt: event.at,
-      subscriptionId: remote.subscriptionId, planId: remote.planId, userId: remote.userId,
-      email: data.user.email, tier: remote.tier, amount: event.amount, currencyCode: event.currencyCode,
-      payerId: remote.payerId, subscriberEmail: remote.subscriberEmail,
-      currentPeriodStart: remote.periodStart!, currentPeriodEnd: remote.periodEnd!,
+      provider: event.provider,
+      eventId: event.id,
+      eventAt: event.at,
+      subscriptionId: remote.subscriptionId,
+      planId: remote.planId,
+      userId: remote.userId,
+      email: data.user.email,
+      tier: remote.tier,
+      amount: event.amount,
+      currencyCode: event.currencyCode,
+      payerId: remote.payerId,
+      subscriberEmail: remote.subscriberEmail,
+      currentPeriodStart: remote.periodStart!,
+      currentPeriodEnd: remote.periodEnd!,
     });
   }
   if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
@@ -60,9 +68,7 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
   }
   const start = Math.max(previousEnd, paidAt);
   if (end <= Date.now() || start >= end || start > Date.now()) throw new Error("Renewed billing period is invalid");
-  return updateBillingSubscriptionFromWebhook(existing, event, {
-    current_period_start: new Date(start).toISOString(), current_period_end: new Date(end).toISOString(),
-  });
+  return updateBillingSubscriptionFromWebhook(existing, event, { current_period_start: new Date(start).toISOString(), current_period_end: new Date(end).toISOString() });
 }
 
 /** Creem 付款先核实交易，再按已有记录区分首次付款、恢复与续费。 */
@@ -92,9 +98,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
     return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE" });
   }
   if (start < previousEnd) throw new Error("Paid subscription period overlaps the previous period");
-  return updateBillingSubscriptionFromWebhook(existing, event, {
-    status: "ACTIVE", current_period_start: remote.periodStart!, current_period_end: remote.periodEnd!,
-  });
+  return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE", current_period_start: remote.periodStart!, current_period_end: remote.periodEnd! });
 }
 
 async function insertPaidSubscription(event: Extract<BillingEvent, { type: "subscription-paid" }>): Promise<"applied" | "ignored"> {
@@ -105,10 +109,20 @@ async function insertPaidSubscription(event: Extract<BillingEvent, { type: "subs
   if (error) throw error;
   if (!data.user?.email) throw new Error("Subscription user has no account email");
   return insertActivatedBillingSubscription({
-    provider: event.provider, eventId: event.id, eventAt: event.at, status: remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE",
-    subscriptionId: remote.subscriptionId, planId: remote.planId, userId: remote.userId,
-    email: data.user.email, tier: remote.tier, amount: event.amount, currencyCode: event.currencyCode,
-    payerId: remote.payerId, subscriberEmail: remote.subscriberEmail,
-    currentPeriodStart: remote.periodStart!, currentPeriodEnd: remote.periodEnd!,
+    provider: event.provider,
+    eventId: event.id,
+    eventAt: event.at,
+    status: remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE",
+    subscriptionId: remote.subscriptionId,
+    planId: remote.planId,
+    userId: remote.userId,
+    email: data.user.email,
+    tier: remote.tier,
+    amount: event.amount,
+    currencyCode: event.currencyCode,
+    payerId: remote.payerId,
+    subscriberEmail: remote.subscriberEmail,
+    currentPeriodStart: remote.periodStart!,
+    currentPeriodEnd: remote.periodEnd!,
   });
 }

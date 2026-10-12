@@ -14,14 +14,7 @@ export async function HomeStructuredData() {
     getTranslations({ locale, namespace: "Geo" }),
     getHomeFaq(locale),
   ]);
-  const questions = faq.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  }));
+  const questions = faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -47,27 +40,13 @@ export async function HomeStructuredData() {
         };
       }),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: questions,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: metadataT("brand"),
-      url: getLocalizedAlternates("/", locale).canonical,
-      inLanguage: locale,
-    },
+    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: questions },
+    { "@context": "https://schema.org", "@type": "WebSite", name: metadataT("brand"), url: getLocalizedAlternates("/", locale).canonical, inLanguage: locale },
   ];
   return (
     <>
       {schemas.map((schema) => (
-        <script
-          key={schema["@type"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
-        />
+        <script key={schema["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       ))}
     </>
   );

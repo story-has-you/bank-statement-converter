@@ -19,7 +19,15 @@ const PayPalSubscriptionSession: FC<PaymentSessionProps> = ({ createCheckout, on
     onCancel,
     onError,
   });
-  return children({ labels: { subscribe: t("subscribe"), processing: t("processing") }, pending: isPending, failed: Boolean(error), start: async () => { await handleClick(); }, cancel: handleCancel });
+  return children({
+    labels: { subscribe: t("subscribe"), processing: t("processing") },
+    pending: isPending,
+    failed: Boolean(error),
+    start: async () => {
+      await handleClick();
+    },
+    cancel: handleCancel,
+  });
 };
 
 PayPalSubscriptionSession.displayName = "PayPalSubscriptionSession";

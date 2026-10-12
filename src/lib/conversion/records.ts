@@ -45,23 +45,23 @@ const pythonFailures: Record<string, { reason: string; category: LlmTriggerCateg
 
 const finalErrorCodes = new Set([
   ...Object.keys(pythonFailures),
-  "QUOTA_EXCEEDED", "QUOTA_EXHAUSTED", "QUOTA_UNAVAILABLE", "QUOTA_RECORD_FAILED", "QUOTA_PERIOD_UNAVAILABLE",
-  "QWEN_NOT_CONFIGURED", "QWEN_UNAVAILABLE", "QWEN_TIMEOUT", "INVALID_QWEN_RESPONSE",
-  "QWEN_RESPONSE_TOO_LARGE", "QWEN_PAGE_COUNT_UNAVAILABLE", "QWEN_INCOMPLETE_RESPONSE",
+  "QUOTA_EXCEEDED",
+  "QUOTA_EXHAUSTED",
+  "QUOTA_UNAVAILABLE",
+  "QUOTA_RECORD_FAILED",
+  "QUOTA_PERIOD_UNAVAILABLE",
+  "QWEN_NOT_CONFIGURED",
+  "QWEN_UNAVAILABLE",
+  "QWEN_TIMEOUT",
+  "INVALID_QWEN_RESPONSE",
+  "QWEN_RESPONSE_TOO_LARGE",
+  "QWEN_PAGE_COUNT_UNAVAILABLE",
+  "QWEN_INCOMPLETE_RESPONSE",
 ]);
 
 export function createParseRecord(actor: UsageActor): ConversionParseRecord | null {
   if (actor.type !== "user") return null;
-  return {
-    user_id: actor.key,
-    email: actor.email,
-    parse_method: "code",
-    status: "failed",
-    python_error_code: null,
-    python_error_reason: null,
-    llm_trigger_category: null,
-    error_code: null,
-  };
+  return { user_id: actor.key, email: actor.email, parse_method: "code", status: "failed", python_error_code: null, python_error_reason: null, llm_trigger_category: null, error_code: null };
 }
 
 export function getParseErrorCode(error: unknown): string {

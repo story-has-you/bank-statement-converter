@@ -3,11 +3,7 @@ import "server-only";
 import { membershipTiers } from "@/lib/billing/config";
 import type { MembershipTier } from "@/lib/billing/types";
 
-const productKeys: Record<MembershipTier, string> = {
-  standard: "CREEM_PRODUCT_ID_STANDARD",
-  professional: "CREEM_PRODUCT_ID_PROFESSIONAL",
-  enterprise: "CREEM_PRODUCT_ID_ENTERPRISE",
-};
+const productKeys: Record<MembershipTier, string> = { standard: "CREEM_PRODUCT_ID_STANDARD", professional: "CREEM_PRODUCT_ID_PROFESSIONAL", enterprise: "CREEM_PRODUCT_ID_ENTERPRISE" };
 
 export function getCreemEnvironment(): "test" | "production" {
   return process.env.CREEM_ENVIRONMENT === "production" ? "production" : "test";

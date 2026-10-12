@@ -10,20 +10,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import type { MembershipTier } from "@/lib/billing/types";
 
-type SubscriptionButtonProps = {
-  checkout: CheckoutConfig;
-  tier: MembershipTier;
-};
+type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
 
-type ActivateResponse = {
-  error?: string;
-  status?: string;
-};
+type ActivateResponse = { error?: string; status?: string };
 
-const SubscriptionButton: FC<SubscriptionButtonProps> = ({
-  checkout,
-  tier,
-}) => {
+const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
   const locale = useLocale();
   const router = useRouter();
@@ -39,10 +30,8 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
         body: JSON.stringify({ provider: checkout.provider, tier }),
       });
-      const payload = await response.json().catch(() => null) as (CheckoutResult & { error?: string }) | null;
-      const validCheckout = payload?.provider === "paypal"
-        ? Boolean(payload.subscriptionId)
-        : Boolean(payload?.checkoutId && payload?.checkoutUrl);
+      const payload = (await response.json().catch(() => null)) as (CheckoutResult & { error?: string }) | null;
+      const validCheckout = payload?.provider === "paypal" ? Boolean(payload.subscriptionId) : Boolean(payload?.checkoutId && payload?.checkoutUrl);
       if (!response.ok || !payload || payload.provider !== checkout.provider || !validCheckout) {
         setFailure(payload?.error ?? t("api.createFailed"));
         throw new Error("Subscription creation failed");
@@ -111,8 +100,14 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
       provider={checkout.provider}
       createCheckout={createCheckout}
       onApprove={onApprove}
-      onCancel={() => { setFailure(null); setMessage(t("cancelled")); }}
-      onError={() => { setMessage(null); setFailure((value) => value ?? t("paymentFailed")); }}
+      onCancel={() => {
+        setFailure(null);
+        setMessage(t("cancelled"));
+      }}
+      onError={() => {
+        setMessage(null);
+        setFailure((value) => value ?? t("paymentFailed"));
+      }}
     >
       {({ labels, pending, failed, start, cancel }) => {
         let label = labels.subscribe;
@@ -121,15 +116,30 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({
         return (
           <div className="grid gap-2">
             <Button
-              type="button" size="lg"
-              onClick={() => { setMessage(null); setFailure(null); void start(); }}
-              onKeyDown={(event) => { if (event.key === "Escape") cancel(); }}
+              type="button"
+              size="lg"
+              onClick={() => {
+                setMessage(null);
+                setFailure(null);
+                void start();
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") cancel();
+              }}
               disabled={pending || confirming}
             >
               {label}
             </Button>
-            {message && <p role="status" className="text-sm text-muted-foreground">{message}</p>}
-            {(failure || failed) && <p role="alert" className="text-sm text-destructive">{failure ?? t("paymentFailed")}</p>}
+            {message && (
+              <p role="status" className="text-sm text-muted-foreground">
+                {message}
+              </p>
+            )}
+            {(failure || failed) && (
+              <p role="alert" className="text-sm text-destructive">
+                {failure ?? t("paymentFailed")}
+              </p>
+            )}
           </div>
         );
       }}
