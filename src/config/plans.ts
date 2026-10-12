@@ -5,7 +5,7 @@ export const freeQuotaConfig = {
   authenticated: { period: "day", pages: 5 },
 } as const;
 
-// Prices shown on the site must match the corresponding PayPal plans.
+// Prices shown on the site must match the corresponding payment provider plans.
 export const subscriptionConfig = {
   standard: {
     monthlyPrice: 19.9,

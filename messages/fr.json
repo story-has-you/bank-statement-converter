@@ -230,11 +230,9 @@
     "aiParsing": "Relais IA automatique ; possibilité d’essayer les PDF scannés",
     "textParsing": "Analyse des PDF contenant du texte"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Connectez-vous avant de démarrer un abonnement.",
     "unavailable": "Le service de paiement n’a pas été configuré.",
-    "subscribe": "S'abonner avec PayPal",
-    "processing": "Ouverture de PayPal",
     "confirming": "Vérification de l’activation de l’abonnement",
     "confirmationDelayed": "L’activation de l’abonnement n’a pas encore été confirmée.",
     "activationFailed": "Le statut d’activation de l’abonnement n’a pas pu être obtenu.",
@@ -250,9 +248,9 @@
       "invalidTier": "L’offre d’abonnement sélectionnée est invalide.",
       "configurationMissing": "Le paiement n'a pas encore été configuré.",
       "subscriptionBelongsToAnotherAccount": "Cet abonnement appartient à un autre compte.",
-      "verificationFailed": "Les informations de l’abonnement PayPal n’ont pas pu être vérifiées.",
+      "verificationFailed": "Impossible de vérifier les informations de l’abonnement.",
       "activationFailed": "Le statut d’activation de l’abonnement n’a pas pu être obtenu.",
-      "createFailed": "L’abonnement PayPal n’a pas pu être créé.",
+      "createFailed": "Impossible de créer l’abonnement.",
       "existingSubscription": "Un abonnement actif ou en attente existe déjà pour ce compte.",
       "cancelledPeriodActive": "L’abonnement est résilié, mais la période de facturation actuelle n’est pas terminée.",
       "webhookInvalidRequest": "La demande de webhook n'est pas valide.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Cet abonnement a expiré.",
       "subscriptionSuspended": "Cet abonnement a été suspendu.",
       "invalidBillingPeriod": "La période de facturation de l’abonnement est invalide.",
-      "subscriptionIdMismatch": "L’identifiant d’abonnement renvoyé par PayPal ne correspond pas à l’abonnement actuel.",
+      "subscriptionIdMismatch": "L’identifiant renvoyé par le prestataire de paiement ne correspond pas à l’abonnement actuel.",
       "existingActiveSubscription": "Ce compte possède déjà un abonnement actif.",
       "existingPendingSubscription": "Ce compte possède déjà un abonnement en attente de confirmation.",
       "existingSuspendedSubscription": "Ce compte possède déjà un abonnement suspendu.",
-      "billingPeriodEnded": "La période de facturation actuelle de cet abonnement est terminée."
+      "billingPeriodEnded": "La période de facturation actuelle de cet abonnement est terminée.",
+      "invalidProvider": "Le prestataire de paiement sélectionné est invalide."
     },
     "invalidStatusResponse": "Le service d’abonnement a renvoyé des informations de statut invalides."
+  },
+  "PayPal": {
+    "subscribe": "S'abonner avec PayPal",
+    "processing": "Ouverture de PayPal"
   },
   "HomeFaq": {
     "title": "Que savoir avant de convertir ?",

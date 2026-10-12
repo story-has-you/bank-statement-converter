@@ -3,11 +3,11 @@
 import type { FC, ReactNode } from "react";
 import { PayPalProvider } from "@paypal/react-paypal-js/sdk-v6";
 
-import type { PayPalEnvironment } from "@/lib/paypal/config";
+import type { CheckoutConfig } from "@/lib/billing/provider";
 
 type PayPalScriptProviderWrapperProps = {
   clientId: string | null;
-  environment: PayPalEnvironment;
+  environment: CheckoutConfig["settings"]["environment"];
   children: ReactNode;
 };
 

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 import { getRequestLocale } from "@/i18n/locale";
 import { getAccountSnapshot } from "@/lib/account/server";
-import { syncPayPalSubscriptionStatus } from "@/lib/paypal/subscription-sync";
+import { syncBillingSubscriptionStatus } from "@/lib/billing/subscriptions";
 import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export async function GET(request: Request): Promise<Response> {
   const t = await getTranslations({
     locale: getRequestLocale(request),
-    namespace: "PayPal.api",
+    namespace: "Billing.api",
   });
   const headers = { "Cache-Control": "private, no-store" };
   const supabase = await createClient();
@@ -27,7 +27,7 @@ export async function GET(request: Request): Promise<Response> {
       { error: t("loginRequired") },
       { status: 401, headers },
     );
-  await syncPayPalSubscriptionStatus(data.user.id);
+  await syncBillingSubscriptionStatus(data.user.id);
   const snapshot = await getAccountSnapshot(data.user);
   return NextResponse.json(snapshot, {
     status: snapshot.subscriptions === null ? 503 : 200,

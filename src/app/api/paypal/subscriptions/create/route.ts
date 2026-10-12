@@ -1,63 +1,8 @@
-import { NextResponse } from "next/server";
-
-import { findEntitledBillingSubscription, findOpenBillingSubscription } from "@/lib/billing/server";
-import { isMembershipTier, getPayPalPlanId, getPayPalServerConfig } from "@/lib/paypal/config";
-import { getPayPalApiTranslations } from "@/lib/paypal/messages";
-import { createPayPalSubscription } from "@/lib/paypal/server";
-import { createClient } from "@/lib/supabase/server";
+import { handleSubscriptionRequest } from "@/lib/billing/http";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function errorResponse(message: string, status: number): NextResponse {
-  return NextResponse.json({ error: message }, { status });
-}
-
 export async function POST(request: Request): Promise<Response> {
-  const t = await getPayPalApiTranslations(request);
-  const supabase = await createClient();
-  if (!supabase) return errorResponse(t("loginUnavailable"), 503);
-
-  const { data, error: userError } = await supabase.auth.getUser();
-  if (userError || !data.user) return errorResponse(t("loginRequired"), 401);
-  if (!data.user.email) return errorResponse(t("emailMissing"), 422);
-
-  let payload: unknown;
-  try {
-    payload = await request.json();
-  } catch {
-    return errorResponse(t("invalidRequest"), 400);
-  }
-
-  const tier =
-    typeof payload === "object" && payload !== null && "tier" in payload
-      ? payload.tier
-      : null;
-  if (!isMembershipTier(tier)) return errorResponse(t("invalidTier"), 400);
-
-  const planId = getPayPalPlanId(tier);
-  if (!getPayPalServerConfig() || !planId) {
-    return errorResponse(t("configurationMissing"), 503);
-  }
-
-  try {
-    const openSubscription = await findOpenBillingSubscription(data.user.id);
-    if (openSubscription) {
-      if (openSubscription.status === "ACTIVE") return errorResponse(t("existingActiveSubscription"), 409);
-      if (openSubscription.status === "SUSPENDED") return errorResponse(t("existingSuspendedSubscription"), 409);
-      return errorResponse(t("existingPendingSubscription"), 409);
-    }
-
-    const entitledSubscription = await findEntitledBillingSubscription(data.user.id);
-    if (entitledSubscription?.status === "CANCELLED") {
-      return errorResponse(t("cancelledPeriodActive"), 409);
-    }
-
-    const subscription = await createPayPalSubscription(planId, data.user.id);
-    if (!subscription.id) throw new Error("PayPal did not return a subscription ID");
-    return NextResponse.json({ subscriptionId: subscription.id });
-  } catch (error) {
-    console.error("Failed to create PayPal subscription", error);
-    return errorResponse(t("createFailed"), 502);
-  }
+  return handleSubscriptionRequest(request, "create", "paypal");
 }

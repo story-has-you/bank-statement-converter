@@ -11,10 +11,12 @@ import {
 import { Button } from "@/components/ui/button";
 import type { AccountSnapshot } from "@/lib/account/types";
 
-type CancelSubscriptionButtonProps = { subscriptionId: string; periodEnd: string | null };
+import type { PaymentProviderId } from "@/lib/billing/provider";
+
+type CancelSubscriptionButtonProps = { provider: PaymentProviderId; subscriptionId: string; periodEnd: string | null };
 type CancellationState = "idle" | "submitting" | "syncing" | "delayed" | "checking";
 
-export function CancelSubscriptionButton({ subscriptionId, periodEnd }: CancelSubscriptionButtonProps) {
+export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }: CancelSubscriptionButtonProps) {
   const t = useTranslations("Account.cancel");
   const locale = useLocale();
   const format = useFormatter();
@@ -40,13 +42,13 @@ export function CancelSubscriptionButton({ subscriptionId, periodEnd }: CancelSu
         });
         if (response.ok) {
           const snapshot = await response.json() as AccountSnapshot;
-          if (snapshot.subscriptions?.some((record) => record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
+          if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
             router.refresh();
             return;
           }
         }
       } catch {
-        // 网络失败仍等待下一次检查，不把 PayPal 成功取消误报为失败。
+        // 网络失败仍等待下一次检查，不把 渠道成功取消误报为失败。
       }
       if (controller.signal.aborted) return;
       if (attempts >= 15) setState("delayed");
@@ -55,17 +57,17 @@ export function CancelSubscriptionButton({ subscriptionId, periodEnd }: CancelSu
 
     timer = setTimeout(poll, 2_000);
     return () => { clearTimeout(timer); controller.abort(); };
-  }, [state, subscriptionId, locale, router]);
+  }, [state, provider, subscriptionId, locale, router]);
 
   async function cancel() {
     if (state !== "idle") return;
     setError(null);
     setState("submitting");
     try {
-      const response = await fetch("/api/paypal/subscriptions/cancel", {
+      const response = await fetch("/api/billing/subscriptions/cancel", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
-        body: JSON.stringify({ subscriptionId }),
+        body: JSON.stringify({ provider, subscriptionId }),
       });
       const payload = await response.json() as { status?: string; error?: string };
       if (!response.ok) {
@@ -90,7 +92,7 @@ export function CancelSubscriptionButton({ subscriptionId, periodEnd }: CancelSu
       const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store" });
       if (!response.ok) throw new Error(t("checkFailed"));
       const snapshot = await response.json() as AccountSnapshot;
-      if (snapshot.subscriptions?.some((record) => record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
+      if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
         router.refresh();
       }
     } catch {

@@ -1,15 +1,11 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 
-import { PayPalSubscriptionButton } from "@/components/billing/paypal-subscription-button";
-import { PayPalScriptProviderWrapper } from "@/components/billing/paypal-script-provider";
+import { SubscriptionButton } from "@/components/billing/subscription-button";
+import { CheckoutProvider } from "@/components/billing/checkout-provider";
 import { subscriptionConfig } from "@/config/plans";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
-import {
-  membershipTiers,
-  getPayPalClientId,
-  getPayPalEnvironment,
-  getPayPalPlans,
-} from "@/lib/paypal/config";
+import { membershipTiers } from "@/lib/billing/config";
+import { getCheckoutConfig } from "@/lib/billing/providers";
 import { createClient } from "@/lib/supabase/server";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
@@ -21,9 +17,7 @@ export async function UsageTiers() {
   const activeSubscription = user ? await findEntitledBillingSubscription(user.id) : null;
   const cancelledPeriodEnd = activeSubscription?.status === "CANCELLED" ? activeSubscription.current_period_end : null;
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
-  const planIds = new Map(getPayPalPlans().map((plan) => [plan.tier, plan.planId]));
-  const clientId = getPayPalClientId();
-  const environment = getPayPalEnvironment();
+  const checkout = getCheckoutConfig();
   const readRawTranslation = t.raw as (key: string) => unknown;
   const plans = readRawTranslation("plans") as Record<
     (typeof membershipTiers)[number],
@@ -75,7 +69,7 @@ export async function UsageTiers() {
           </p>
         )}
 
-        <PayPalScriptProviderWrapper clientId={clientId} environment={environment}>
+        <CheckoutProvider checkout={checkout}>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {membershipTiers.map((tier) => {
               const plan = plans[tier];
@@ -102,14 +96,13 @@ export async function UsageTiers() {
                   <p className="text-sm leading-6 text-muted-foreground">
                     {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
                   </p>
-                  <p className="text-sm font-medium">
+                  <p className="mt-auto text-sm font-medium">
                     {t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}
                   </p>
                   {!cancelledPeriodEnd && !isLowerTier && (
-                    <PayPalSubscriptionButton
-                      clientId={clientId}
+                    <SubscriptionButton
+                      checkout={checkout}
                       current={activeSubscription?.tier === tier && activeSubscription.status === "ACTIVE"}
-                      planId={planIds.get(tier) ?? null}
                       signedIn={Boolean(user)}
                       tier={tier}
                     />
@@ -118,7 +111,7 @@ export async function UsageTiers() {
               );
             })}
           </div>
-        </PayPalScriptProviderWrapper>
+        </CheckoutProvider>
       </div>
     </section>
   );

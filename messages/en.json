@@ -216,25 +216,23 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "For people converting their own bank statements."
+        "description": "For your own bank statements."
       },
       "professional": {
         "name": "Professional",
-        "description": "For people who regularly process multiple statements."
+        "description": "For regular statement processing."
       },
       "enterprise": {
         "name": "Enterprise",
-        "description": "For users who need to convert more pages each month."
+        "description": "For higher monthly page volumes."
       }
     },
-    "aiParsing": "Automatic AI fallback; can attempt scanned PDFs",
+    "aiParsing": "AI fallback; can try scanned PDFs",
     "textParsing": "Text-based PDF parsing"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Sign in before starting a subscription.",
     "unavailable": "Payment has not been configured.",
-    "subscribe": "Subscribe with PayPal",
-    "processing": "Opening PayPal",
     "confirming": "Checking whether the subscription is active",
     "confirmationDelayed": "Subscription activation has not yet been confirmed.",
     "activationFailed": "Subscription activation status could not be retrieved.",
@@ -250,9 +248,9 @@
       "invalidTier": "The selected subscription plan is invalid.",
       "configurationMissing": "Payment has not been configured yet.",
       "subscriptionBelongsToAnotherAccount": "This subscription belongs to another account.",
-      "verificationFailed": "PayPal subscription information could not be verified.",
+      "verificationFailed": "Could not verify subscription information.",
       "activationFailed": "Subscription activation status could not be retrieved.",
-      "createFailed": "The PayPal subscription could not be created.",
+      "createFailed": "Could not create the subscription.",
       "existingSubscription": "An active or pending subscription already exists for this account.",
       "cancelledPeriodActive": "The subscription is cancelled, but the current billing period has not ended.",
       "webhookInvalidRequest": "The webhook request is invalid.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "This subscription has expired.",
       "subscriptionSuspended": "This subscription has been suspended.",
       "invalidBillingPeriod": "The subscription billing period is invalid.",
-      "subscriptionIdMismatch": "The subscription ID returned by PayPal does not match the current subscription.",
+      "subscriptionIdMismatch": "The subscription ID returned by the payment provider does not match the current subscription.",
       "existingActiveSubscription": "This account already has an active subscription.",
       "existingPendingSubscription": "This account already has a subscription awaiting confirmation.",
       "existingSuspendedSubscription": "This account already has a suspended subscription.",
-      "billingPeriodEnded": "The current billing period for this subscription has ended."
+      "billingPeriodEnded": "The current billing period for this subscription has ended.",
+      "invalidProvider": "The selected payment provider is invalid."
     },
     "invalidStatusResponse": "The subscription service returned invalid status information."
+  },
+  "PayPal": {
+    "subscribe": "Subscribe with PayPal",
+    "processing": "Opening PayPal"
   },
   "HomeFaq": {
     "title": "What should I know before converting?",

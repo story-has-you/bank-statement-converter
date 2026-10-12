@@ -230,11 +230,9 @@
     "aiParsing": "Passaggio automatico all’IA; possibilità di provare PDF scansionati",
     "textParsing": "Analisi di PDF con testo"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Accedi prima di avviare un abbonamento.",
     "unavailable": "Il servizio di pagamento non è stato configurato.",
-    "subscribe": "Abbonati con PayPal",
-    "processing": "Apertura di PayPal",
     "confirming": "Verifica dell’attivazione dell’abbonamento",
     "confirmationDelayed": "L’attivazione dell’abbonamento non è ancora stata confermata.",
     "activationFailed": "Non è stato possibile consultare lo stato di attivazione dell’abbonamento.",
@@ -250,9 +248,9 @@
       "invalidTier": "Il piano di abbonamento selezionato non è valido.",
       "configurationMissing": "Il pagamento non è ancora configurato.",
       "subscriptionBelongsToAnotherAccount": "Questo abbonamento appartiene a un altro account.",
-      "verificationFailed": "Non è stato possibile verificare le informazioni sull’abbonamento PayPal.",
+      "verificationFailed": "Impossibile verificare le informazioni dell’abbonamento.",
       "activationFailed": "Non è stato possibile consultare lo stato di attivazione dell’abbonamento.",
-      "createFailed": "Non è stato possibile creare l’abbonamento PayPal.",
+      "createFailed": "Impossibile creare l’abbonamento.",
       "existingSubscription": "Esiste già un abbonamento attivo o in attesa per questo account.",
       "cancelledPeriodActive": "L’abbonamento è annullato, ma il periodo di fatturazione attuale non è terminato.",
       "webhookInvalidRequest": "La richiesta webhook non è valida.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Questo abbonamento è scaduto.",
       "subscriptionSuspended": "Questo abbonamento è stato sospeso.",
       "invalidBillingPeriod": "Il periodo di fatturazione dell’abbonamento non è valido.",
-      "subscriptionIdMismatch": "L’identificativo dell’abbonamento restituito da PayPal non corrisponde all’abbonamento attuale.",
+      "subscriptionIdMismatch": "L’identificativo restituito dal fornitore di pagamento non corrisponde all’abbonamento attuale.",
       "existingActiveSubscription": "Questo account ha già un abbonamento attivo.",
       "existingPendingSubscription": "Questo account ha già un abbonamento in attesa di conferma.",
       "existingSuspendedSubscription": "Questo account ha già un abbonamento sospeso.",
-      "billingPeriodEnded": "Il periodo di fatturazione attuale di questo abbonamento è terminato."
+      "billingPeriodEnded": "Il periodo di fatturazione attuale di questo abbonamento è terminato.",
+      "invalidProvider": "Il fornitore di pagamento selezionato non è valido."
     },
     "invalidStatusResponse": "Il servizio di abbonamento ha restituito informazioni di stato non valide."
+  },
+  "PayPal": {
+    "subscribe": "Abbonati con PayPal",
+    "processing": "Apertura di PayPal"
   },
   "HomeFaq": {
     "title": "Cosa sapere prima della conversione?",

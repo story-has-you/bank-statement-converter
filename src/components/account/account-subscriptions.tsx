@@ -38,7 +38,7 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
               <TableHead className="text-right">{t("subscriptions.actions")}</TableHead>
             </TableRow></TableHeader>
             <TableBody>{subscriptions.map((subscription) => (
-              <TableRow key={subscription.subscriptionId}>
+              <TableRow key={`${subscription.provider}:${subscription.subscriptionId}`}>
                 <TableCell className="font-medium">{plans(`plans.${subscription.tier}.name`)}</TableCell>
                 <TableCell className="tabular-nums">
                   {subscription.amount !== null && subscription.currencyCode
@@ -53,7 +53,7 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
                 </TableCell>
                 <TableCell className="max-w-64 text-right whitespace-normal">
                   {subscription.status === "ACTIVE" && <CancelSubscriptionButton
-                    subscriptionId={subscription.subscriptionId} periodEnd={subscription.periodEnd} />}
+                    provider={subscription.provider} subscriptionId={subscription.subscriptionId} periodEnd={subscription.periodEnd} />}
                   {subscription.status === "CANCELLED" && subscription.entitlementActive && (
                     <p className="text-xs text-muted-foreground">{t("subscriptions.availableUntil", { date: date(subscription.periodEnd) })}</p>
                   )}

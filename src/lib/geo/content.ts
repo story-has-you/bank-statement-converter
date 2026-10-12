@@ -7,7 +7,7 @@ import { getLocalizedPath } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { getHomeFaq } from "@/lib/geo/faq";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
-import { membershipTiers } from "@/lib/paypal/config";
+import { membershipTiers } from "@/lib/billing/config";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 /** Public product facts shared by the homepage and agent documents. */

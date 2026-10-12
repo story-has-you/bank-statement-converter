@@ -230,11 +230,9 @@
     "aiParsing": "AIに自動切り替え、スキャンPDFの変換を試行可能",
     "textParsing": "テキストPDFの解析"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "プランを申し込むには、まずログインしてください。",
     "unavailable": "支払いサービスの設定が完了していません。",
-    "subscribe": "PayPalで申し込む",
-    "processing": "PayPalを開いています",
     "confirming": "サブスクリプションが有効か確認中",
     "confirmationDelayed": "サブスクリプションの有効化はまだ確認されていません。",
     "activationFailed": "サブスクリプションの有効化状態を取得できませんでした。",
@@ -250,9 +248,9 @@
       "invalidTier": "選択されたプランは無効です。",
       "configurationMissing": "支払い設定がまだ完了していません。",
       "subscriptionBelongsToAnotherAccount": "このサブスクリプションは別のアカウントに紐付いています。",
-      "verificationFailed": "PayPalサブスクリプションの情報を検証できませんでした。",
+      "verificationFailed": "サブスクリプション情報を検証できませんでした。",
       "activationFailed": "サブスクリプションの有効化状態を取得できませんでした。",
-      "createFailed": "PayPalサブスクリプションを作成できませんでした。",
+      "createFailed": "サブスクリプションを作成できませんでした。",
       "existingSubscription": "このアカウントには有効または確認待ちのサブスクリプションがあります。",
       "cancelledPeriodActive": "サブスクリプションはキャンセルされていますが、現在の請求期間は終了していません。",
       "webhookInvalidRequest": "Webhookリクエストが無効です。",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "このサブスクリプションは期限切れです。",
       "subscriptionSuspended": "このサブスクリプションは一時停止されています。",
       "invalidBillingPeriod": "サブスクリプションの請求期間が無効です。",
-      "subscriptionIdMismatch": "PayPalから返されたサブスクリプションIDが現在のものと一致しません。",
+      "subscriptionIdMismatch": "決済サービスから返されたサブスクリプションIDが現在のものと一致しません。",
       "existingActiveSubscription": "このアカウントにはすでに有効なサブスクリプションがあります。",
       "existingPendingSubscription": "このアカウントにはすでに確認待ちのサブスクリプションがあります。",
       "existingSuspendedSubscription": "このアカウントにはすでに一時停止中のサブスクリプションがあります。",
-      "billingPeriodEnded": "このサブスクリプションの現在の請求期間は終了しています。"
+      "billingPeriodEnded": "このサブスクリプションの現在の請求期間は終了しています。",
+      "invalidProvider": "選択された決済サービスは無効です。"
     },
     "invalidStatusResponse": "サブスクリプションサービスから無効な状態情報が返されました。"
+  },
+  "PayPal": {
+    "subscribe": "PayPalで申し込む",
+    "processing": "PayPalを開いています"
   },
   "HomeFaq": {
     "title": "変換前に知っておくべきことは？",

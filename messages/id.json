@@ -230,11 +230,9 @@
     "aiParsing": "AI cadangan otomatis; dapat mencoba PDF hasil pindai",
     "textParsing": "Penguraian PDF berbasis teks"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Login sebelum mulai berlangganan.",
     "unavailable": "Layanan pembayaran belum dikonfigurasi.",
-    "subscribe": "Berlangganan dengan PayPal",
-    "processing": "Membuka PayPal",
     "confirming": "Memeriksa apakah langganan sudah aktif",
     "confirmationDelayed": "Aktivasi langganan belum dikonfirmasi.",
     "activationFailed": "Status aktivasi langganan tidak dapat diperoleh.",
@@ -250,9 +248,9 @@
       "invalidTier": "Paket langganan yang dipilih tidak valid.",
       "configurationMissing": "Pembayaran belum dikonfigurasi.",
       "subscriptionBelongsToAnotherAccount": "Langganan ini milik akun lain.",
-      "verificationFailed": "Informasi langganan PayPal tidak dapat diverifikasi.",
+      "verificationFailed": "Informasi langganan tidak dapat diverifikasi.",
       "activationFailed": "Status aktivasi langganan tidak dapat diperoleh.",
-      "createFailed": "Langganan PayPal tidak dapat dibuat.",
+      "createFailed": "Langganan tidak dapat dibuat.",
       "existingSubscription": "Akun ini sudah memiliki langganan aktif atau yang masih diproses.",
       "cancelledPeriodActive": "Langganan sudah dibatalkan, tetapi periode penagihan saat ini belum berakhir.",
       "webhookInvalidRequest": "Permintaan webhook tidak valid.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Langganan ini telah kedaluwarsa.",
       "subscriptionSuspended": "Langganan ini telah ditangguhkan.",
       "invalidBillingPeriod": "Periode penagihan langganan tidak valid.",
-      "subscriptionIdMismatch": "ID langganan yang dikembalikan PayPal tidak sesuai dengan langganan saat ini.",
+      "subscriptionIdMismatch": "ID langganan dari penyedia pembayaran tidak sesuai dengan langganan saat ini.",
       "existingActiveSubscription": "Akun ini sudah memiliki langganan aktif.",
       "existingPendingSubscription": "Akun ini sudah memiliki langganan yang menunggu konfirmasi.",
       "existingSuspendedSubscription": "Akun ini sudah memiliki langganan yang ditangguhkan.",
-      "billingPeriodEnded": "Periode penagihan saat ini untuk langganan ini telah berakhir."
+      "billingPeriodEnded": "Periode penagihan saat ini untuk langganan ini telah berakhir.",
+      "invalidProvider": "Penyedia pembayaran yang dipilih tidak valid."
     },
     "invalidStatusResponse": "Layanan langganan mengembalikan informasi status yang tidak valid."
+  },
+  "PayPal": {
+    "subscribe": "Berlangganan dengan PayPal",
+    "processing": "Membuka PayPal"
   },
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",

@@ -230,11 +230,9 @@
     "aiParsing": "Automatischer KI-Wechsel; Scans können versucht werden",
     "textParsing": "Verarbeitung von Text-PDFs"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
     "unavailable": "Der Zahlungsdienst ist noch nicht konfiguriert.",
-    "subscribe": "Mit PayPal abonnieren",
-    "processing": "PayPal wird geöffnet",
     "confirming": "Aktivierung des Abonnements wird geprüft",
     "confirmationDelayed": "Die Aktivierung des Abonnements wurde noch nicht bestätigt.",
     "activationFailed": "Der Aktivierungsstatus des Abonnements konnte nicht abgefragt werden.",
@@ -250,9 +248,9 @@
       "invalidTier": "Der ausgewählte Abonnementtarif ist ungültig.",
       "configurationMissing": "Die Zahlung wurde noch nicht konfiguriert.",
       "subscriptionBelongsToAnotherAccount": "Dieses Abonnement gehört zu einem anderen Konto.",
-      "verificationFailed": "Die PayPal-Abonnementinformationen konnten nicht überprüft werden.",
+      "verificationFailed": "Die Abonnementinformationen konnten nicht überprüft werden.",
       "activationFailed": "Der Aktivierungsstatus des Abonnements konnte nicht abgefragt werden.",
-      "createFailed": "Das PayPal-Abonnement konnte nicht erstellt werden.",
+      "createFailed": "Das Abonnement konnte nicht erstellt werden.",
       "existingSubscription": "Für dieses Konto besteht bereits ein aktives oder ausstehendes Abonnement.",
       "cancelledPeriodActive": "Das Abonnement ist gekündigt, aber der aktuelle Abrechnungszeitraum ist noch nicht beendet.",
       "webhookInvalidRequest": "Die Webhook-Anfrage ist ungültig.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Dieses Abonnement ist abgelaufen.",
       "subscriptionSuspended": "Dieses Abonnement wurde ausgesetzt.",
       "invalidBillingPeriod": "Der Abrechnungszeitraum des Abonnements ist ungültig.",
-      "subscriptionIdMismatch": "Die von PayPal zurückgegebene Abonnement-ID stimmt nicht mit dem aktuellen Abonnement überein.",
+      "subscriptionIdMismatch": "Die vom Zahlungsanbieter zurückgegebene Abonnement-ID stimmt nicht mit dem aktuellen Abonnement überein.",
       "existingActiveSubscription": "Dieses Konto hat bereits ein aktives Abonnement.",
       "existingPendingSubscription": "Dieses Konto hat bereits ein Abonnement, das auf Bestätigung wartet.",
       "existingSuspendedSubscription": "Dieses Konto hat bereits ein ausgesetztes Abonnement.",
-      "billingPeriodEnded": "Der aktuelle Abrechnungszeitraum dieses Abonnements ist beendet."
+      "billingPeriodEnded": "Der aktuelle Abrechnungszeitraum dieses Abonnements ist beendet.",
+      "invalidProvider": "Der ausgewählte Zahlungsanbieter ist ungültig."
     },
     "invalidStatusResponse": "Der Abonnementdienst hat ungültige Statusinformationen zurückgegeben."
+  },
+  "PayPal": {
+    "subscribe": "Mit PayPal abonnieren",
+    "processing": "PayPal wird geöffnet"
   },
   "HomeFaq": {
     "title": "Was sollte ich vor der Konvertierung wissen?",

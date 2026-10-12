@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
-import { syncPayPalSubscriptionStatus } from "@/lib/paypal/subscription-sync";
+import { syncBillingSubscriptionStatus } from "@/lib/billing/subscriptions";
 import { createClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
           if (userError || !data.user) {
             console.error("Failed to verify login user for subscription synchronization");
           } else {
-            await syncPayPalSubscriptionStatus(data.user.id);
+            await syncBillingSubscriptionStatus(data.user.id);
           }
         } catch {
           console.error("Failed to verify login user for subscription synchronization");

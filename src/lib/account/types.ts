@@ -1,6 +1,9 @@
 import type { MembershipTier, SubscriptionStatus } from "@/lib/billing/types";
 
+import type { PaymentProviderId } from "@/lib/billing/provider";
+
 export type AccountSubscription = {
+  provider: PaymentProviderId;
   subscriptionId: string;
   tier: MembershipTier;
   status: SubscriptionStatus;

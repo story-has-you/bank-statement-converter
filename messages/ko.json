@@ -230,11 +230,9 @@
     "aiParsing": "AI 자동 전환, 스캔 PDF 변환 시도 가능",
     "textParsing": "텍스트 PDF 분석"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "구독을 시작하기 전에 로그인하세요.",
     "unavailable": "결제 서비스 설정이 완료되지 않았습니다.",
-    "subscribe": "PayPal로 구독",
-    "processing": "PayPal 여는 중",
     "confirming": "구독 활성화 여부 확인 중",
     "confirmationDelayed": "구독 활성화가 아직 확인되지 않았습니다.",
     "activationFailed": "구독 활성화 상태를 조회하지 못했습니다.",
@@ -250,9 +248,9 @@
       "invalidTier": "선택한 구독 요금제가 유효하지 않습니다.",
       "configurationMissing": "결제가 아직 구성되지 않았습니다.",
       "subscriptionBelongsToAnotherAccount": "이 구독은 다른 계정에 속해 있습니다.",
-      "verificationFailed": "PayPal 구독 정보를 검증하지 못했습니다.",
+      "verificationFailed": "구독 정보를 검증하지 못했습니다.",
       "activationFailed": "구독 활성화 상태를 조회하지 못했습니다.",
-      "createFailed": "PayPal 구독을 생성하지 못했습니다.",
+      "createFailed": "구독을 생성하지 못했습니다.",
       "existingSubscription": "이 계정에는 활성 또는 대기 중인 구독이 이미 있습니다.",
       "cancelledPeriodActive": "구독은 취소되었지만 현재 결제 기간은 아직 끝나지 않았습니다.",
       "webhookInvalidRequest": "웹훅 요청이 잘못되었습니다.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "이 구독은 만료되었습니다.",
       "subscriptionSuspended": "이 구독은 일시 중지되었습니다.",
       "invalidBillingPeriod": "구독 결제 기간이 유효하지 않습니다.",
-      "subscriptionIdMismatch": "PayPal이 반환한 구독 ID가 현재 구독과 일치하지 않습니다.",
+      "subscriptionIdMismatch": "결제 서비스가 반환한 구독 ID가 현재 구독과 일치하지 않습니다.",
       "existingActiveSubscription": "현재 계정에 이미 활성 구독이 있습니다.",
       "existingPendingSubscription": "현재 계정에 이미 확인 대기 중인 구독이 있습니다.",
       "existingSuspendedSubscription": "현재 계정에 이미 일시 중지된 구독이 있습니다.",
-      "billingPeriodEnded": "이 구독의 현재 결제 기간이 종료되었습니다."
+      "billingPeriodEnded": "이 구독의 현재 결제 기간이 종료되었습니다.",
+      "invalidProvider": "선택한 결제 서비스가 유효하지 않습니다."
     },
     "invalidStatusResponse": "구독 서비스가 잘못된 상태 정보를 반환했습니다."
+  },
+  "PayPal": {
+    "subscribe": "PayPal로 구독",
+    "processing": "PayPal 여는 중"
   },
   "HomeFaq": {
     "title": "변환 전에 무엇을 알아야 하나요?",

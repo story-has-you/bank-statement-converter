@@ -230,11 +230,9 @@
     "aiParsing": "Automatisch overschakelen naar AI; gescande PDF’s proberen",
     "textParsing": "Verwerking van PDF’s met tekst"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Log in voordat je een abonnement afsluit.",
     "unavailable": "De betalingsservice is nog niet ingesteld.",
-    "subscribe": "Abonneren met PayPal",
-    "processing": "PayPal openen",
     "confirming": "Controleren of het abonnement actief is",
     "confirmationDelayed": "De activering van het abonnement is nog niet bevestigd.",
     "activationFailed": "De activeringsstatus van het abonnement kon niet worden opgevraagd.",
@@ -250,9 +248,9 @@
       "invalidTier": "Het geselecteerde abonnementspakket is ongeldig.",
       "configurationMissing": "Betalen is nog niet ingesteld.",
       "subscriptionBelongsToAnotherAccount": "Dit abonnement hoort bij een ander account.",
-      "verificationFailed": "De PayPal-abonnementsinformatie kon niet worden geverifieerd.",
+      "verificationFailed": "De abonnementsinformatie kon niet worden geverifieerd.",
       "activationFailed": "De activeringsstatus van het abonnement kon niet worden opgevraagd.",
-      "createFailed": "Het PayPal-abonnement kon niet worden aangemaakt.",
+      "createFailed": "Het abonnement kon niet worden aangemaakt.",
       "existingSubscription": "Dit account heeft al een actief of nog niet afgerond abonnement.",
       "cancelledPeriodActive": "Het abonnement is opgezegd, maar de huidige factureringsperiode is nog niet afgelopen.",
       "webhookInvalidRequest": "Het webhookverzoek is ongeldig.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Dit abonnement is verlopen.",
       "subscriptionSuspended": "Dit abonnement is opgeschort.",
       "invalidBillingPeriod": "De factureringsperiode van het abonnement is ongeldig.",
-      "subscriptionIdMismatch": "De abonnements-ID van PayPal komt niet overeen met het huidige abonnement.",
+      "subscriptionIdMismatch": "De abonnements-ID van de betalingsprovider komt niet overeen met het huidige abonnement.",
       "existingActiveSubscription": "Dit account heeft al een actief abonnement.",
       "existingPendingSubscription": "Dit account heeft al een abonnement dat op bevestiging wacht.",
       "existingSuspendedSubscription": "Dit account heeft al een opgeschort abonnement.",
-      "billingPeriodEnded": "De huidige factureringsperiode van dit abonnement is afgelopen."
+      "billingPeriodEnded": "De huidige factureringsperiode van dit abonnement is afgelopen.",
+      "invalidProvider": "De geselecteerde betalingsprovider is ongeldig."
     },
     "invalidStatusResponse": "De abonnementsservice heeft ongeldige statusinformatie teruggestuurd."
+  },
+  "PayPal": {
+    "subscribe": "Abonneren met PayPal",
+    "processing": "PayPal openen"
   },
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",

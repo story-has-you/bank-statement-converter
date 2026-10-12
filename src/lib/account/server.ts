@@ -17,7 +17,8 @@ export async function getAccountSnapshot(user: { id: string; email?: string }): 
   const subscription = selectEntitledSubscription(records, now);
   const snapshot: AccountSnapshot = {
     subscriptions: records.map((record) => ({
-      subscriptionId: record.paypal_subscription_id,
+      provider: record.provider,
+      subscriptionId: record.provider_subscription_id,
       tier: record.tier,
       status: record.status,
       amount: record.amount,

@@ -1,8 +1,8 @@
-import { handlePayPalWebhook } from "@/lib/paypal/webhooks/handler";
+import { handleBillingWebhook } from "@/lib/billing/http";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request): Promise<Response> {
-  return handlePayPalWebhook(request);
+  return handleBillingWebhook(request, "paypal");
 }

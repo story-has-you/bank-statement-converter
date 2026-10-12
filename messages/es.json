@@ -230,11 +230,9 @@
     "aiParsing": "Respaldo automático de IA; puede intentar convertir PDF escaneados",
     "textParsing": "Análisis de PDF con texto"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Inicia sesión antes de suscribirte.",
     "unavailable": "El servicio de pago no está configurado.",
-    "subscribe": "Suscríbete con PayPal",
-    "processing": "Abriendo PayPal",
     "confirming": "Comprobando si la suscripción está activa",
     "confirmationDelayed": "La activación de la suscripción aún no se ha confirmado.",
     "activationFailed": "No se pudo consultar el estado de activación de la suscripción.",
@@ -250,9 +248,9 @@
       "invalidTier": "El plan de suscripción seleccionado no es válido.",
       "configurationMissing": "El pago aún no se ha configurado.",
       "subscriptionBelongsToAnotherAccount": "Esta suscripción pertenece a otra cuenta.",
-      "verificationFailed": "No se pudo verificar la información de la suscripción de PayPal.",
+      "verificationFailed": "No se pudo verificar la información de la suscripción.",
       "activationFailed": "No se pudo consultar el estado de activación de la suscripción.",
-      "createFailed": "No se pudo crear la suscripción de PayPal.",
+      "createFailed": "No se pudo crear la suscripción.",
       "existingSubscription": "Esta cuenta ya tiene una suscripción activa o pendiente.",
       "cancelledPeriodActive": "La suscripción está cancelada, pero el periodo de facturación actual no ha terminado.",
       "webhookInvalidRequest": "La solicitud de webhook no es válida.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Esta suscripción ha caducado.",
       "subscriptionSuspended": "Esta suscripción se ha suspendido.",
       "invalidBillingPeriod": "El periodo de facturación de la suscripción no es válido.",
-      "subscriptionIdMismatch": "El identificador de suscripción devuelto por PayPal no coincide con la suscripción actual.",
+      "subscriptionIdMismatch": "El identificador devuelto por el proveedor de pagos no coincide con la suscripción actual.",
       "existingActiveSubscription": "Esta cuenta ya tiene una suscripción activa.",
       "existingPendingSubscription": "Esta cuenta ya tiene una suscripción pendiente de confirmación.",
       "existingSuspendedSubscription": "Esta cuenta ya tiene una suscripción suspendida.",
-      "billingPeriodEnded": "El periodo de facturación actual de esta suscripción ha terminado."
+      "billingPeriodEnded": "El periodo de facturación actual de esta suscripción ha terminado.",
+      "invalidProvider": "El proveedor de pagos seleccionado no es válido."
     },
     "invalidStatusResponse": "El servicio de suscripción devolvió información de estado no válida."
+  },
+  "PayPal": {
+    "subscribe": "Suscríbete con PayPal",
+    "processing": "Abriendo PayPal"
   },
   "HomeFaq": {
     "title": "¿Qué debo saber antes de convertir?",

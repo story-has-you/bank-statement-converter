@@ -4,7 +4,7 @@ import { subscriptionConfig } from "@/config/plans";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { getHomeFaq } from "@/lib/geo/faq";
-import { membershipTiers } from "@/lib/paypal/config";
+import { membershipTiers } from "@/lib/billing/config";
 
 export async function HomeStructuredData() {
   const locale = (await getLocale()) as AppLocale;

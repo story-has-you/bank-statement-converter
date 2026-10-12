@@ -1,6 +1,8 @@
+import "server-only";
+
 import type { MembershipTier } from "@/lib/billing/types";
 
-export const membershipTiers = ["standard", "professional", "enterprise"] as const;
+import { membershipTiers } from "@/lib/billing/config";
 
 const planEnvironmentKeys: Record<MembershipTier, string> = {
   standard: "PAYPAL_PLAN_ID_STANDARD",
@@ -14,10 +16,6 @@ export type PayPalPlan = {
 };
 
 export type PayPalEnvironment = "sandbox" | "production";
-
-export function isMembershipTier(value: unknown): value is MembershipTier {
-  return membershipTiers.includes(value as MembershipTier);
-}
 
 export function getPayPalPlanId(tier: MembershipTier): string | null {
   const value = process.env[planEnvironmentKeys[tier]];

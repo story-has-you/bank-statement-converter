@@ -230,11 +230,9 @@
     "aiParsing": "Recurso automático de IA; pode tentar converter PDFs digitalizados",
     "textParsing": "Análise de PDFs com texto"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "Entre antes de iniciar uma assinatura.",
     "unavailable": "O serviço de pagamento não foi configurado.",
-    "subscribe": "Assinar com PayPal",
-    "processing": "Abrindo o PayPal",
     "confirming": "Verificando se a assinatura está ativa",
     "confirmationDelayed": "A ativação da assinatura ainda não foi confirmada.",
     "activationFailed": "Não foi possível consultar o status de ativação da assinatura.",
@@ -250,9 +248,9 @@
       "invalidTier": "O plano de assinatura selecionado é inválido.",
       "configurationMissing": "O pagamento ainda não foi configurado.",
       "subscriptionBelongsToAnotherAccount": "Esta assinatura pertence a outra conta.",
-      "verificationFailed": "Não foi possível verificar as informações da assinatura do PayPal.",
+      "verificationFailed": "Não foi possível verificar as informações da assinatura.",
       "activationFailed": "Não foi possível consultar o status de ativação da assinatura.",
-      "createFailed": "Não foi possível criar a assinatura do PayPal.",
+      "createFailed": "Não foi possível criar a assinatura.",
       "existingSubscription": "Esta conta já tem uma assinatura ativa ou pendente.",
       "cancelledPeriodActive": "A assinatura está cancelada, mas o período de cobrança atual ainda não terminou.",
       "webhookInvalidRequest": "A solicitação do webhook é inválida.",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "Esta assinatura expirou.",
       "subscriptionSuspended": "Esta assinatura foi suspensa.",
       "invalidBillingPeriod": "O período de cobrança da assinatura é inválido.",
-      "subscriptionIdMismatch": "O identificador de assinatura retornado pelo PayPal não corresponde à assinatura atual.",
+      "subscriptionIdMismatch": "O identificador retornado pelo provedor de pagamento não corresponde à assinatura atual.",
       "existingActiveSubscription": "Esta conta já tem uma assinatura ativa.",
       "existingPendingSubscription": "Esta conta já tem uma assinatura aguardando confirmação.",
       "existingSuspendedSubscription": "Esta conta já tem uma assinatura suspensa.",
-      "billingPeriodEnded": "O período de cobrança atual desta assinatura terminou."
+      "billingPeriodEnded": "O período de cobrança atual desta assinatura terminou.",
+      "invalidProvider": "O provedor de pagamento selecionado é inválido."
     },
     "invalidStatusResponse": "O serviço de assinatura retornou informações de status inválidas."
+  },
+  "PayPal": {
+    "subscribe": "Assinar com PayPal",
+    "processing": "Abrindo o PayPal"
   },
   "HomeFaq": {
     "title": "O que devo saber antes de converter?",

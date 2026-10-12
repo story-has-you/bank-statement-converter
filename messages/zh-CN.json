@@ -230,11 +230,9 @@
     "aiParsing": "自动回退至 AI 解析，可尝试转换扫描件",
     "textParsing": "文字型 PDF 解析"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "请先登录，再订阅套餐。",
     "unavailable": "支付服务尚未完成配置。",
-    "subscribe": "使用 PayPal 订阅",
-    "processing": "正在打开 PayPal",
     "confirming": "正在确认订阅是否已激活",
     "confirmationDelayed": "尚未收到订阅激活确认。",
     "activationFailed": "未能查询订阅激活状态。",
@@ -250,9 +248,9 @@
       "invalidTier": "所选会员套餐无效。",
       "configurationMissing": "支付服务尚未完成配置。",
       "subscriptionBelongsToAnotherAccount": "该订阅已绑定到其他账号。",
-      "verificationFailed": "未能验证 PayPal 订阅信息。",
+      "verificationFailed": "未能验证订阅信息。",
       "activationFailed": "未能查询订阅激活状态。",
-      "createFailed": "未能创建 PayPal 订阅。",
+      "createFailed": "未能创建订阅。",
       "existingSubscription": "当前账号已有生效或待确认的订阅。",
       "cancelledPeriodActive": "订阅已取消，本期尚未结束。",
       "webhookInvalidRequest": "Webhook 请求格式无效。",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "该订阅已到期。",
       "subscriptionSuspended": "该订阅已暂停。",
       "invalidBillingPeriod": "订阅计费周期信息无效。",
-      "subscriptionIdMismatch": "PayPal 返回的订阅编号与当前订阅不一致。",
+      "subscriptionIdMismatch": "支付渠道返回的订阅编号与当前订阅不一致。",
       "existingActiveSubscription": "当前账号已有生效的订阅。",
       "existingPendingSubscription": "当前账号已有待确认的订阅。",
       "existingSuspendedSubscription": "当前账号已有暂停的订阅。",
-      "billingPeriodEnded": "该订阅的本期计费周期已结束。"
+      "billingPeriodEnded": "该订阅的本期计费周期已结束。",
+      "invalidProvider": "所选支付渠道无效。"
     },
     "invalidStatusResponse": "订阅服务返回的状态信息异常。"
+  },
+  "PayPal": {
+    "subscribe": "使用 PayPal 订阅",
+    "processing": "正在打开 PayPal"
   },
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",

@@ -230,11 +230,9 @@
     "aiParsing": "स्वचालित AI विकल्प; स्कैन PDF बदलने की कोशिश संभव",
     "textParsing": "टेक्स्ट वाली PDF का विश्लेषण"
   },
-  "PayPal": {
+  "Billing": {
     "signInRequired": "सदस्यता लेने से पहले साइन इन करें।",
     "unavailable": "भुगतान सेवा का कॉन्फ़िगरेशन पूरा नहीं हुआ है।",
-    "subscribe": "PayPal से सदस्यता लें",
-    "processing": "PayPal खुल रहा है",
     "confirming": "सदस्यता सक्रिय है या नहीं, इसकी जाँच हो रही है",
     "confirmationDelayed": "सदस्यता सक्रिय होने की पुष्टि अभी नहीं मिली है।",
     "activationFailed": "सदस्यता की सक्रियण स्थिति प्राप्त नहीं की जा सकी।",
@@ -250,9 +248,9 @@
       "invalidTier": "चुना गया सदस्यता प्लान अमान्य है।",
       "configurationMissing": "भुगतान अभी कॉन्फ़िगर नहीं हुआ है।",
       "subscriptionBelongsToAnotherAccount": "यह सदस्यता दूसरे खाते की है।",
-      "verificationFailed": "PayPal सदस्यता की जानकारी सत्यापित नहीं की जा सकी।",
+      "verificationFailed": "सदस्यता की जानकारी सत्यापित नहीं की जा सकी।",
       "activationFailed": "सदस्यता की सक्रियण स्थिति प्राप्त नहीं की जा सकी।",
-      "createFailed": "PayPal सदस्यता नहीं बनाई जा सकी।",
+      "createFailed": "सदस्यता बनाई नहीं जा सकी।",
       "existingSubscription": "इस खाते की एक सक्रिय या लंबित सदस्यता पहले से है।",
       "cancelledPeriodActive": "सदस्यता रद्द है, लेकिन वर्तमान बिलिंग अवधि समाप्त नहीं हुई है।",
       "webhookInvalidRequest": "Webhook अनुरोध मान्य नहीं है।",
@@ -268,13 +266,18 @@
       "subscriptionExpired": "यह सदस्यता समाप्त हो गई है।",
       "subscriptionSuspended": "यह सदस्यता निलंबित कर दी गई है।",
       "invalidBillingPeriod": "सदस्यता की बिलिंग अवधि अमान्य है।",
-      "subscriptionIdMismatch": "PayPal द्वारा लौटाया गया सदस्यता ID वर्तमान सदस्यता से मेल नहीं खाता।",
+      "subscriptionIdMismatch": "भुगतान प्रदाता द्वारा लौटाई गई सदस्यता ID वर्तमान सदस्यता से मेल नहीं खाती।",
       "existingActiveSubscription": "इस खाते में पहले से एक सक्रिय सदस्यता है।",
       "existingPendingSubscription": "इस खाते में पहले से एक सदस्यता पुष्टि की प्रतीक्षा में है।",
       "existingSuspendedSubscription": "इस खाते में पहले से एक निलंबित सदस्यता है।",
-      "billingPeriodEnded": "इस सदस्यता की वर्तमान बिलिंग अवधि समाप्त हो गई है।"
+      "billingPeriodEnded": "इस सदस्यता की वर्तमान बिलिंग अवधि समाप्त हो गई है।",
+      "invalidProvider": "चुना गया भुगतान प्रदाता अमान्य है।"
     },
     "invalidStatusResponse": "सदस्यता सेवा ने अमान्य स्थिति जानकारी लौटाई।"
+  },
+  "PayPal": {
+    "subscribe": "PayPal से सदस्यता लें",
+    "processing": "PayPal खुल रहा है"
   },
   "HomeFaq": {
     "title": "रूपांतरण से पहले क्या जानना चाहिए?",
