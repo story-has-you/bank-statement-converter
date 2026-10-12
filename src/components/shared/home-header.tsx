@@ -6,12 +6,11 @@ import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Link } from "@/i18n/navigation";
 import { getUserAvatarUrl } from "@/lib/account/avatar";
-import { createClient } from "@/lib/supabase/server";
+import { getRenderAuthContext } from "@/lib/supabase/server";
 
 export async function HomeHeader() {
   const t = await getTranslations("HomeHeader");
-  const supabase = await createClient();
-  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
+  const { configured, user } = await getRenderAuthContext();
 
   return (
     <header className="border-b border-border">
@@ -39,7 +38,7 @@ export async function HomeHeader() {
         <div className="flex shrink-0 items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
-          <AuthControl configured={Boolean(supabase)} email={user?.email ?? null} imageUrl={user ? getUserAvatarUrl(user.user_metadata) : null} signedIn={Boolean(user)} />
+          <AuthControl configured={configured} email={user?.email ?? null} imageUrl={user ? getUserAvatarUrl(user.user_metadata) : null} signedIn={Boolean(user)} />
         </div>
       </div>
     </header>

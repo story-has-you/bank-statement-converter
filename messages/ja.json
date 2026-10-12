@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "複数ファイルのダウンロードにはブラウザーの許可が必要な場合があります。各表を個別にダウンロードすることもできます。",
-      "downloadTable": "表 {index} をダウンロード · {format}"
-    }
+      "downloadTable": "表 {index} をダウンロード · {format}",
+      "loading": "表計算ファイルのダウンロード機能を読み込んでいます…",
+      "loadFailed": "表計算ファイルのダウンロード機能を読み込めませんでした。再試行してください。",
+      "retry": "再試行"
+    },
+    "restoring": "変換結果を復元しています…"
   },
   "HomeFeatures": {
     "title": "この変換ツールで何ができますか？",

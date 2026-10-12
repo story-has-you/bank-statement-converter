@@ -35,7 +35,7 @@ export async function GET(request: Request) {
     }
   }
 
-  const response = NextResponse.redirect(new URL(`${redirectPath}/auth/error`, origin));
+  const response = NextResponse.redirect(new URL(getLocalizedPath(locale, "/auth/error"), origin));
   response.headers.set("Cache-Control", "private, no-store");
   return response;
 }

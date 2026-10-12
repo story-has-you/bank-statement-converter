@@ -6,20 +6,26 @@ import { subscriptionConfig } from "@/config/plans";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import { membershipTiers } from "@/lib/billing/config";
 import { getCheckoutConfigs } from "@/lib/billing/providers";
-import { createClient } from "@/lib/supabase/server";
+import { getRenderAuthContext } from "@/lib/supabase/server";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 export async function UsageTiers() {
   const t = await getTranslations("UsageTiers");
   const format = await getFormatter();
-  const supabase = await createClient();
-  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
+  const { user } = await getRenderAuthContext();
   const activeSubscription = user ? await findEntitledBillingSubscription(user.id) : null;
   const cancelledPeriodEnd = activeSubscription?.status === "CANCELLED" ? activeSubscription.current_period_end : null;
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const checkouts = getCheckoutConfigs();
-  const readRawTranslation = t.raw as (key: string) => unknown;
-  const plans = readRawTranslation("plans") as Record<(typeof membershipTiers)[number], { name: string; description: string }>;
+  const paypal = checkouts.find((checkout) => checkout.provider === "paypal");
+  const needsPayPal = Boolean(
+    user &&
+    !cancelledPeriodEnd &&
+    paypal?.available &&
+    membershipTiers.some(
+      (tier, index) => index >= activeTierIndex && paypal.availableTiers.includes(tier) && !(activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)),
+    ),
+  );
 
   return (
     <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
@@ -56,10 +62,9 @@ export async function UsageTiers() {
           </p>
         )}
 
-        <CheckoutProvider checkouts={checkouts}>
+        <CheckoutProvider checkouts={checkouts} enabled={needsPayPal}>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {membershipTiers.map((tier) => {
-              const plan = plans[tier];
               const tierIndex = membershipTiers.indexOf(tier);
               const isLowerTier = activeTierIndex > tierIndex;
 
@@ -67,7 +72,7 @@ export async function UsageTiers() {
                 <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
                   <div className="flex items-start justify-between gap-3">
                     <div className="grid gap-1">
-                      <h3 className="text-base font-semibold">{plan.name}</h3>
+                      <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
                       <p className="text-3xl font-semibold">
                         {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
                         <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
@@ -75,7 +80,7 @@ export async function UsageTiers() {
                     </div>
                     {activeSubscription?.tier === tier && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>}
                   </div>
-                  <p className="text-sm leading-6 text-muted-foreground">{plan.description}</p>
+                  <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
                   <p className="text-sm leading-6 text-muted-foreground">{subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}</p>
                   <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
                   {!cancelledPeriodEnd && !isLowerTier && (

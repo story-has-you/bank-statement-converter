@@ -30,6 +30,14 @@ export function isPreviewTable(value: unknown): value is ParsedTable {
 
 function getPreviewSummary(value: unknown): ParseResponse["summary"] {
   const rows: unknown[] = typeof value === "object" && value !== null && "rows" in value && Array.isArray(value.rows) ? value.rows : [];
-  const count = (status: string) => rows.filter((row) => typeof row === "object" && row !== null && "status" in row && row.status === status).length;
-  return { status: "partial", tableCount: 1, rowCount: rows.length, validRowCount: count("valid"), warningRowCount: count("warning"), failedRowCount: count("failed") };
+  let validRowCount = 0;
+  let warningRowCount = 0;
+  let failedRowCount = 0;
+  for (const row of rows) {
+    if (typeof row !== "object" || row === null || !("status" in row)) continue;
+    if (row.status === "valid") validRowCount += 1;
+    else if (row.status === "warning") warningRowCount += 1;
+    else if (row.status === "failed") failedRowCount += 1;
+  }
+  return { status: "partial", tableCount: 1, rowCount: rows.length, validRowCount, warningRowCount, failedRowCount };
 }

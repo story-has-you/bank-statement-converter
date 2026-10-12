@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "Browser mungkin memerlukan izin untuk mengunduh beberapa berkas. Anda juga dapat mengunduh setiap tabel secara terpisah.",
-      "downloadTable": "Unduh tabel {index} · {format}"
-    }
+      "downloadTable": "Unduh tabel {index} · {format}",
+      "loading": "Memuat unduhan spreadsheet…",
+      "loadFailed": "Unduhan spreadsheet tidak dapat dimuat. Silakan coba lagi.",
+      "retry": "Coba lagi"
+    },
+    "restoring": "Memulihkan hasil konversi…"
   },
   "HomeFeatures": {
     "title": "Apa yang dapat dilakukan konverter ini?",

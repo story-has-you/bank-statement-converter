@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "Votre navigateur peut demander une autorisation pour télécharger plusieurs fichiers. Vous pouvez aussi télécharger chaque tableau séparément.",
-      "downloadTable": "Télécharger le tableau {index} · {format}"
-    }
+      "downloadTable": "Télécharger le tableau {index} · {format}",
+      "loading": "Chargement du téléchargement des feuilles de calcul…",
+      "loadFailed": "Impossible de charger le téléchargement des feuilles de calcul. Veuillez réessayer.",
+      "retry": "Réessayer"
+    },
+    "restoring": "Restauration du résultat de conversion…"
   },
   "HomeFeatures": {
     "title": "Que permet ce convertisseur ?",

@@ -82,7 +82,6 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
         { name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages, period: t("dailyPeriod"), parsing: usage("textParsing") },
         ...plans,
       ],
-      plans,
     },
     faq: { title: faqT("title"), answer: t("faqAnswer"), items: faq },
     privacy: {

@@ -1,4 +1,7 @@
+import "server-only";
+
 import { createServerClient } from "@supabase/ssr";
+import { cache } from "react";
 import { cookies } from "next/headers";
 
 import { getSupabaseConfig } from "./config";
@@ -24,3 +27,10 @@ export async function createClient() {
     },
   });
 }
+
+/** Reuses verified identity only within one Server Component render request. */
+export const getRenderAuthContext = cache(async () => {
+  const client = await createClient();
+  const user = client ? (await client.auth.getUser()).data.user : null;
+  return { configured: Boolean(client), user };
+});

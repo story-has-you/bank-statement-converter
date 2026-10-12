@@ -67,11 +67,13 @@ export function PdfUpload() {
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     selectFile(event.target.files?.[0]);
+    event.target.value = "";
   }
 
   function handleDrop(event: DragEvent<HTMLButtonElement>) {
     event.preventDefault();
     setIsDragging(false);
+    if (inputRef.current) inputRef.current.value = "";
 
     if (event.dataTransfer.files.length > 1) {
       setFile(null);

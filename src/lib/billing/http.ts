@@ -92,7 +92,7 @@ export async function handleBillingWebhook(request: Request, providerId: unknown
     if (error instanceof BillingError && ["invalidProvider", "webhookInvalidRequest", "webhookSignatureFailed"].includes(error.code)) {
       return NextResponse.json({ error: t(error.code) }, { status: error.status });
     }
-    console.error("Failed to process billing webhook", { provider: providerId, reason: error instanceof Error ? error.message : "Processing failed" });
+    console.error("Failed to process billing webhook", { provider: providerId, reason: error instanceof BillingError ? error.code : "WEBHOOK_PROCESSING_FAILED" });
     return NextResponse.json({ error: t("webhookProcessingFailed") }, { status: 502 });
   }
 }

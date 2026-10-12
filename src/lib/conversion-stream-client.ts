@@ -1,4 +1,4 @@
-import { conversionLimits } from "@/config/conversion";
+import { conversionLimits, MAX_RESPONSE_BYTES } from "@/config/conversion";
 
 import { isPreviewTable, type ConversionStage } from "@/lib/conversion-events";
 import { isParseResponse, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
@@ -26,6 +26,8 @@ export async function readConversionStream(response: Response, onPreview: (previ
     throw new ConversionStreamError("invalid");
   }
   const reader = response.body.getReader();
+  const encoder = new TextEncoder();
+  const maxFrameBytes = MAX_RESPONSE_BYTES + 1024;
   const decoder = new TextDecoder("utf-8", { fatal: true });
   const tables: ParsedTable[] = [];
   let stage: ConversionStage = "reading";
@@ -50,6 +52,7 @@ export async function readConversionStream(response: Response, onPreview: (previ
   }
 
   function processFrame(frame: string): void {
+    if (encoder.encode(frame).byteLength > maxFrameBytes) throw new ConversionStreamError("invalid");
     const lines = frame.split("\n").map((line) => line.replace(/\r$/, ""));
     const type = lines
       .find((line) => line.startsWith("event:"))
@@ -108,6 +111,7 @@ export async function readConversionStream(response: Response, onPreview: (previ
       ) {
         throw new ConversionStreamError("invalid");
       }
+      if (encoder.encode(JSON.stringify(candidate)).byteLength > MAX_RESPONSE_BYTES) throw new ConversionStreamError("invalid");
       result = candidate;
       return;
     }
@@ -118,7 +122,6 @@ export async function readConversionStream(response: Response, onPreview: (previ
     while (result === null) {
       const { value, done } = await reader.read();
       buffer += done ? decoder.decode() : decoder.decode(value, { stream: true });
-      if (buffer.length > 4 * 1024 * 1024) throw new ConversionStreamError("invalid");
       // Match LF and CRLF separators, including separators split across reads.
       let separator = /\r?\n\r?\n/.exec(buffer);
       while (separator && result === null) {
@@ -126,6 +129,7 @@ export async function readConversionStream(response: Response, onPreview: (previ
         buffer = buffer.slice(separator.index + separator[0].length);
         separator = /\r?\n\r?\n/.exec(buffer);
       }
+      if (result === null && encoder.encode(buffer).byteLength > maxFrameBytes) throw new ConversionStreamError("invalid");
       if (done && result === null) throw new ConversionStreamError("interrupted");
     }
     return result;

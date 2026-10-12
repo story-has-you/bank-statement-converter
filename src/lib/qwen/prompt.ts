@@ -1,3 +1,5 @@
+import "server-only";
+
 export const statementPrompt = `Extract the bank statement PDF into a single JSON object using exactly this contract:
 {"schemaVersion":"1","filename":"statement.pdf","pageCount":1,"tables":[{"id":"table-1","pageStart":1,"pageEnd":1,"columns":[{"key":"c0","label":"Original header","index":0}],"warnings":[],"rows":[{"values":{"c0":"Original cell text"},"source":{"page":1,"row":1},"status":"valid","warnings":[]}]}],"summary":{"status":"success","tableCount":1,"rowCount":1,"validRowCount":1,"warningRowCount":0,"failedRowCount":0},"errors":[]}
 The example shows the shape only. Extract actual transactions, never its example values.

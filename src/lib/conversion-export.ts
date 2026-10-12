@@ -1,8 +1,7 @@
-import * as XLSX from "@e965/xlsx";
-
 import { getRowRiskCode, type ParseIssue, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 
-export type TextExportFormat = "csv" | "json" | "markdown" | "tsv" | "html";
+export type TextExportFormat = "json" | "markdown" | "html";
+export type ExportFormat = TextExportFormat | "csv" | "tsv";
 
 export type ExportLabels = {
   locale: string;
@@ -31,14 +30,8 @@ export function getExportFilename(filename: string, defaultFilename: string, ext
   return `${baseName || defaultFilename}${suffix}.${extension}`;
 }
 
-function getTableRows(table: ParsedTable, labels: ExportLabels): ExportCell[][] {
-  return table.rows.map((row) => [
-    ...table.columns.map((column) => row.values[column.key] ?? ""),
-    getRowRiskCode(row.status),
-    row.warnings.map(labels.issue).join("; "),
-    row.source.page,
-    row.source.row,
-  ]);
+export function getTableRows(table: ParsedTable, issue: ExportLabels["issue"]): ExportCell[][] {
+  return table.rows.map((row) => [...table.columns.map((column) => row.values[column.key] ?? ""), getRowRiskCode(row.status), row.warnings.map(issue).join("; "), row.source.page, row.source.row]);
 }
 
 function escapeHtml(value: ExportCell): string {
@@ -60,7 +53,7 @@ function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabel
       sections.push(`### ${escapeMarkdown(labels.tableWarnings)}\n\n${table.warnings.map((issue) => `- ${escapeMarkdown(labels.issue(issue))}`).join("\n")}`);
     }
     const headers = [...table.columns.map((column) => column.label), ...labels.headers];
-    const lines = [headers, headers.map(() => "---"), ...getTableRows(table, labels)];
+    const lines = [headers, headers.map(() => "---"), ...getTableRows(table, labels.issue)];
     sections.push(lines.map((row, rowIndex) => `| ${row.map((cell) => (rowIndex === 1 ? String(cell) : escapeMarkdown(cell))).join(" | ")} |`).join("\n"));
   });
   return `${sections.join("\n\n")}\n`;
@@ -76,7 +69,7 @@ function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): 
     const warnings = table.warnings.length > 0 ? `<h3>${escapeHtml(labels.tableWarnings)}</h3><ul>${table.warnings.map((issue) => `<li>${escapeHtml(labels.issue(issue))}</li>`).join("")}</ul>` : "";
     sections.push(`<section><h2>${escapeHtml(labels.tableTitle(index + 1))}</h2>${warnings}
 <div class="table-wrapper"><table><thead><tr>${headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr></thead>
-<tbody>${getTableRows(table, labels)
+<tbody>${getTableRows(table, labels.issue)
       .map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`)
       .join("")}</tbody></table></div></section>`);
   });
@@ -91,24 +84,6 @@ function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): 
 /** Generates files from the current result without changing the parser contract or persisting data. */
 export function buildTextExportFiles(format: TextExportFormat, filename: string, result: ParseResponse, labels: ExportLabels): ExportFile[] {
   if (!canDownloadResult(result)) return [];
-  if (format === "csv" || format === "tsv") {
-    const pageRisks = result.errors.map(labels.error).join("; ");
-    return result.tables.map((table, index) => {
-      const tableWarnings = table.warnings.map(labels.issue).join("; ");
-      const headers = [...table.columns.map((column) => column.label), ...labels.headers, labels.pageRisks, labels.tableWarnings];
-      const rows = getTableRows(table, labels).map((row) => [...row, pageRisks, tableWarnings]);
-      // An empty logical table can still carry risks; retain them in a metadata-only row.
-      if (rows.length === 0 && (pageRisks || tableWarnings)) {
-        rows.push([...headers.slice(0, -2).map(() => ""), pageRisks, tableWarnings]);
-      }
-      const content = XLSX.utils.sheet_to_csv(XLSX.utils.aoa_to_sheet([headers, ...rows]), { FS: format === "csv" ? "," : "\t", RS: "\r\n", forceQuotes: true });
-      return {
-        name: getExportFilename(filename, labels.defaultFilename, format, result.tables.length > 1 ? index : undefined),
-        content: `\uFEFF${content}`,
-        mimeType: format === "csv" ? "text/csv;charset=utf-8" : "text/tab-separated-values;charset=utf-8",
-      };
-    });
-  }
   const extension = format === "markdown" ? "md" : format;
   let content: string;
   let mimeType: string;

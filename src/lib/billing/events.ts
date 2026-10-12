@@ -27,27 +27,7 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
     const start = requireTime(remote.periodStart);
     const end = requireTime(remote.periodEnd);
     if (remote.status !== "ACTIVE" || start >= end || end <= Date.now()) throw new Error("Subscription activation period is invalid");
-    const admin = createAdminClient();
-    if (!admin) throw new Error("Supabase admin configuration is incomplete");
-    const { data, error } = await admin.auth.admin.getUserById(remote.userId);
-    if (error) throw error;
-    if (!data.user?.email) throw new Error("Subscription user has no account email");
-    return insertActivatedBillingSubscription({
-      provider: event.provider,
-      eventId: event.id,
-      eventAt: event.at,
-      subscriptionId: remote.subscriptionId,
-      planId: remote.planId,
-      userId: remote.userId,
-      email: data.user.email,
-      tier: remote.tier,
-      amount: event.amount,
-      currencyCode: event.currencyCode,
-      payerId: remote.payerId,
-      subscriberEmail: remote.subscriberEmail,
-      currentPeriodStart: remote.periodStart!,
-      currentPeriodEnd: remote.periodEnd!,
-    });
+    return insertConfirmedSubscription(event, "ACTIVE");
   }
   if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
   checkSubscriptionIdentity(existing, remote);
@@ -89,7 +69,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   const start = requireTime(remote.periodStart);
   const end = requireTime(remote.periodEnd);
   if (!["ACTIVE", "CANCELLED"].includes(remote.status) || start > Date.now() || start >= end || end <= Date.now()) throw new Error("Paid subscription period is invalid");
-  if (!existing) return insertPaidSubscription(event);
+  if (!existing) return insertConfirmedSubscription(event, remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE");
   const previousEnd = requireTime(existing.current_period_end);
   if (end < previousEnd || start < requireTime(existing.current_period_start)) return "ignored";
   if (end === previousEnd) {
@@ -101,7 +81,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE", current_period_start: remote.periodStart!, current_period_end: remote.periodEnd! });
 }
 
-async function insertPaidSubscription(event: Extract<BillingEvent, { type: "subscription-paid" }>): Promise<"applied" | "ignored"> {
+async function insertConfirmedSubscription(event: Extract<BillingEvent, { type: "subscription-paid" | "subscription-activated" }>, status: "ACTIVE" | "CANCELLED"): Promise<"applied" | "ignored"> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
   const remote = event.subscription;
@@ -112,7 +92,7 @@ async function insertPaidSubscription(event: Extract<BillingEvent, { type: "subs
     provider: event.provider,
     eventId: event.id,
     eventAt: event.at,
-    status: remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE",
+    status,
     subscriptionId: remote.subscriptionId,
     planId: remote.planId,
     userId: remote.userId,

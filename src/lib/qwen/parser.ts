@@ -1,3 +1,5 @@
+import "server-only";
+
 import { conversionLimits } from "@/config/conversion";
 
 import OpenAI from "openai";

@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PaymentSession } from "./payment-session";
 import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { useLocale, useTranslations } from "next-intl";
@@ -9,11 +9,25 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { PaymentProviderIcon } from "@/components/billing/payment-provider-icon";
+import { isCheckoutResult, readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
 
 type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
 
-type ActivateResponse = { error?: string; status?: string };
+function waitForConfirmation(signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    signal.throwIfAborted();
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", cancel);
+      resolve();
+    }, 2_000);
+    function cancel(): void {
+      clearTimeout(timer);
+      reject(signal.reason);
+    }
+    signal.addEventListener("abort", cancel, { once: true });
+  });
+}
 
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
@@ -24,6 +38,15 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
   const [failure, setFailure] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const confirmation = useRef<AbortController | null>(null);
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      confirmation.current?.abort();
+    };
+  }, []);
 
   async function createCheckout(): Promise<CheckoutResult> {
     try {
@@ -32,56 +55,68 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
         body: JSON.stringify({ provider: checkout.provider, tier }),
       });
-      const payload = (await response.json().catch(() => null)) as (CheckoutResult & { error?: string }) | null;
-      const validCheckout = payload?.provider === "paypal" ? Boolean(payload.subscriptionId) : Boolean(payload?.checkoutId && payload?.checkoutUrl);
-      if (!response.ok || !payload || payload.provider !== checkout.provider || !validCheckout) {
-        setFailure(payload?.error ?? t("api.createFailed"));
+      const payload: unknown = await response.json().catch(() => null);
+      if (!response.ok || !isCheckoutResult(payload) || payload.provider !== checkout.provider) {
+        if (mounted.current) setFailure(readBillingResponse(payload).error ?? t("api.createFailed"));
         throw new Error("Subscription creation failed");
       }
       return payload;
     } catch (error) {
-      setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
+      if (mounted.current) setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
       throw error;
     }
   }
 
   async function onApprove(subscriptionId: string): Promise<void> {
+    if (!mounted.current) return;
+    confirmation.current?.abort();
+    const controller = new AbortController();
+    confirmation.current = controller;
+    const { signal } = controller;
     setFailure(null);
     setConfirming(true);
     setMessage(t("confirming"));
     try {
       for (let attempt = 0; attempt < 15; attempt += 1) {
-        if (await isSubscriptionActive(subscriptionId)) {
+        if (await isSubscriptionActive(subscriptionId, signal)) {
+          signal.throwIfAborted();
           setSuccess(true);
           setMessage(t("activated"));
           router.refresh();
           return;
         }
-        await new Promise((resolve) => setTimeout(resolve, 2_000));
+        await waitForConfirmation(signal);
       }
+      signal.throwIfAborted();
       setMessage(t("confirmationDelayed"));
     } catch {
+      if (signal.aborted || confirmation.current !== controller) return;
       setMessage(null);
       setFailure((currentFailure) => currentFailure ?? t("activationFailed"));
     } finally {
-      setConfirming(false);
+      if (confirmation.current === controller) {
+        confirmation.current = null;
+        if (!signal.aborted) setConfirming(false);
+      }
     }
   }
 
-  async function isSubscriptionActive(subscriptionId: string): Promise<boolean> {
+  async function isSubscriptionActive(subscriptionId: string, signal: AbortSignal): Promise<boolean> {
     const response = await fetch("/api/billing/subscriptions/activate", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-app-locale": locale },
       body: JSON.stringify({ provider: checkout.provider, subscriptionId, tier }),
+      signal,
     });
-    const payload = (await response.json().catch(() => null)) as ActivateResponse | null;
+    const payload = readBillingResponse(await response.json().catch(() => null));
+    signal.throwIfAborted();
 
-    if (response.status === 202 && payload?.status === "PENDING") return false;
+    if (response.status === 202 && payload.status === "PENDING") return false;
     if (!response.ok) {
-      setFailure(typeof payload?.error === "string" ? payload.error : t("activationFailed"));
+      setFailure(typeof payload.error === "string" ? payload.error : t("activationFailed"));
       throw new Error("Subscription activation check failed");
     }
-    if (payload?.status !== "ACTIVE") {
+    if (payload.status !== "ACTIVE") {
       setFailure(t("invalidStatusResponse"));
       throw new Error("Unexpected subscription status");
     }
@@ -90,7 +125,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
   }
 
   if (!checkout.available || !checkout.availableTiers.includes(tier)) {
-    return <p className="text-sm text-muted-foreground">{t("providerUnavailable", { provider: checkout.provider === "creem" ? "Creem" : "PayPal" })}</p>;
+    return <p className="text-sm text-muted-foreground">{t("providerUnavailable", { provider: providerName })}</p>;
   }
 
   if (success) {

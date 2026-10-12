@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "Your browser may require permission to download multiple files. You can also download each table separately.",
-      "downloadTable": "Download table {index} · {format}"
-    }
+      "downloadTable": "Download table {index} · {format}",
+      "loading": "Loading spreadsheet downloads…",
+      "loadFailed": "Spreadsheet downloads could not be loaded. Please retry.",
+      "retry": "Retry"
+    },
+    "restoring": "Restoring the conversion result…"
   },
   "HomeFeatures": {
     "title": "What can this converter do?",

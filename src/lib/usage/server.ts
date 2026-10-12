@@ -1,3 +1,5 @@
+import "server-only";
+
 import { createHash, randomUUID } from "node:crypto";
 
 import { findEntitledBillingSubscription, type BillingSubscription } from "@/lib/billing/server";
@@ -50,17 +52,11 @@ export function hashAnonymousId(value: string): string {
   return createHash("sha256").update(value).digest("hex");
 }
 
-function createUtcWindow(period: UsagePeriod, now: Date): UsageWindow {
-  if (period === "day") {
-    const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-    const end = new Date(start);
-    end.setUTCDate(end.getUTCDate() + 1);
-    return { period, start, end };
-  }
-
-  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
-  const end = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1));
-  return { period, start, end };
+function createUtcDayWindow(now: Date): UsageWindow {
+  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const end = new Date(start);
+  end.setUTCDate(end.getUTCDate() + 1);
+  return { period: "day", start, end };
 }
 
 function isValidPeriod(startValue: string | null, endValue: string | null, now: Date): boolean {
@@ -93,7 +89,7 @@ export function getQuotaContext(actor: UsageActor, subscription: BillingSubscrip
   }
 
   const config = actor.type === "anonymous" ? usageQuotaConfig.anonymous : usageQuotaConfig.authenticated;
-  return { ...actor, limitPages: config.pages, window: createUtcWindow(config.period, now) };
+  return { ...actor, limitPages: config.pages, window: createUtcDayWindow(now) };
 }
 
 export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {

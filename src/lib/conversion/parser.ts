@@ -1,11 +1,13 @@
-import { conversionLimits } from "@/config/conversion";
+import "server-only";
+
+import { conversionLimits, MAX_RESPONSE_BYTES } from "@/config/conversion";
 
 import { subscriptionConfig } from "@/config/plans";
 import type { MembershipTier } from "@/lib/billing/types";
 import { isParseResponse, type ParseResponse } from "@/lib/conversion-types";
 import { ConversionError } from "@/lib/conversion-errors";
 
-export const MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
+export { MAX_RESPONSE_BYTES } from "@/config/conversion";
 
 export function canUseQwen(tier: MembershipTier | undefined): boolean {
   return tier !== undefined && subscriptionConfig[tier].qwenFallback;

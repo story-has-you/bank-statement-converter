@@ -1,3 +1,5 @@
+import "server-only";
+
 import { after } from "next/server";
 
 import { ConversionError } from "@/lib/conversion-errors";

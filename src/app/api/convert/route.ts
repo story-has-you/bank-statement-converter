@@ -104,7 +104,7 @@ export async function POST(request: Request): Promise<Response> {
     }
   } catch (error) {
     if (!(error instanceof UsageUnavailableError) && !(error instanceof SubscriptionPeriodUnavailableError)) {
-      console.error("Failed to resolve conversion quota", error);
+      console.error("Failed to resolve conversion quota", { code: "QUOTA_UNAVAILABLE" });
     }
     const code = error instanceof SubscriptionPeriodUnavailableError ? "QUOTA_PERIOD_UNAVAILABLE" : "QUOTA_UNAVAILABLE";
     return errorResponse(code, 503, locale);

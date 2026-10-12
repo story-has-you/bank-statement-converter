@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "下载多个文件可能需要浏览器许可，也可分别下载各表。",
-      "downloadTable": "下载表格 {index} · {format}"
-    }
+      "downloadTable": "下载表格 {index} · {format}",
+      "loading": "正在加载表格下载功能……",
+      "loadFailed": "表格下载功能加载失败，请重试。",
+      "retry": "重试"
+    },
+    "restoring": "正在恢复转换结果……"
   },
   "HomeFeatures": {
     "title": "这个转换器能做什么？",

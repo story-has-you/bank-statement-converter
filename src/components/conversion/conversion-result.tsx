@@ -20,16 +20,16 @@ export function ConversionResult() {
   const t = useTranslations("ConversionResult");
   const format = useFormatter();
   const conversion = useConversion();
-  const [savedPayload, setPayload] = useState<ConversionPayload | null>(null);
+  const [restored, setRestored] = useState<{ revision: number; payload: ConversionPayload | null } | null>(null);
 
   useEffect(() => {
     if (conversion.state.phase !== "idle") return;
     const loadPayload = window.setTimeout(() => {
-      setPayload(readConversionPayload());
+      setRestored({ revision: conversion.revision, payload: readConversionPayload() });
     }, 0);
 
     return () => window.clearTimeout(loadPayload);
-  }, [conversion.state.phase]);
+  }, [conversion.state.phase, conversion.revision]);
 
   if (conversion.state.phase === "pending") {
     return <ConversionProgress filename={conversion.state.filename} preview={conversion.state.preview} onCancel={conversion.reset} />;
@@ -49,7 +49,20 @@ export function ConversionResult() {
       </section>
     );
   }
-  const payload: ConversionPayload | null = conversion.state.phase === "complete" ? { version: 1, filename: conversion.state.filename, result: conversion.state.result } : savedPayload;
+  let payload: ConversionPayload | null = null;
+  if (conversion.state.phase === "complete") {
+    payload = { version: 1, filename: conversion.state.filename, result: conversion.state.result };
+  } else if (restored?.revision === conversion.revision) {
+    payload = restored.payload;
+  }
+
+  if (conversion.state.phase === "idle" && restored?.revision !== conversion.revision) {
+    return (
+      <p role="status" aria-busy="true">
+        {t("restoring")}
+      </p>
+    );
+  }
 
   if (!payload) {
     return (

@@ -1,3 +1,5 @@
+import "server-only";
+
 import { NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
 import type { AppConfig } from "next-intl";

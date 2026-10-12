@@ -37,16 +37,6 @@ export async function findBillingSubscriptionByProviderId(provider: PaymentProvi
   return data as BillingSubscription | null;
 }
 
-export async function findActiveBillingSubscription(userId: string): Promise<BillingSubscription | null> {
-  const admin = createAdminClient();
-  if (!admin) return null;
-
-  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("user_id", userId).eq("status", "ACTIVE").order("created_at", { ascending: false }).limit(1).maybeSingle();
-
-  if (error) throw error;
-  return data as BillingSubscription | null;
-}
-
 export async function listBillingSubscriptions(userId: string): Promise<BillingSubscription[]> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");

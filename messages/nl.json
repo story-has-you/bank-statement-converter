@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "Je browser kan toestemming vragen om meerdere bestanden te downloaden. Je kunt elke tabel ook afzonderlijk downloaden.",
-      "downloadTable": "Tabel {index} downloaden · {format}"
-    }
+      "downloadTable": "Tabel {index} downloaden · {format}",
+      "loading": "Downloads van spreadsheets laden…",
+      "loadFailed": "Downloads van spreadsheets konden niet worden geladen. Probeer het opnieuw.",
+      "retry": "Opnieuw proberen"
+    },
+    "restoring": "Conversieresultaat herstellen…"
   },
   "HomeFeatures": {
     "title": "Wat kan deze converter?",

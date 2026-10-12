@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "Ihr Browser benötigt möglicherweise eine Erlaubnis für mehrere Downloads. Sie können jede Tabelle auch einzeln herunterladen.",
-      "downloadTable": "Tabelle {index} herunterladen · {format}"
-    }
+      "downloadTable": "Tabelle {index} herunterladen · {format}",
+      "loading": "Tabellendownloads werden geladen…",
+      "loadFailed": "Tabellendownloads konnten nicht geladen werden. Bitte erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "restoring": "Konvertierungsergebnis wird wiederhergestellt…"
   },
   "HomeFeatures": {
     "title": "Was kann dieser Konverter?",

@@ -6,12 +6,11 @@ import { AccountSubscriptions } from "@/components/account/account-subscriptions
 import { redirect } from "@/i18n/navigation";
 import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { getAccountSnapshot } from "@/lib/account/server";
-import { createClient } from "@/lib/supabase/server";
+import { getRenderAuthContext } from "@/lib/supabase/server";
 
 export async function AccountContent() {
   const locale = await getLocale();
-  const supabase = await createClient();
-  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
+  const { user } = await getRenderAuthContext();
   if (!user) return redirect({ href: "/", locale });
   const snapshot = await getAccountSnapshot(user);
 

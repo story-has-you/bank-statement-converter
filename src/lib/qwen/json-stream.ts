@@ -1,3 +1,5 @@
+import "server-only";
+
 import { JSONParser } from "@streamparser/json";
 
 import { ConversionError } from "@/lib/conversion-errors";
@@ -81,11 +83,20 @@ export class QwenJsonStream {
     // values still go through contract validation instead of being discarded.
     const tables: unknown[] = this.result.tables.map((table) => (isRecord(table) && table.warnings === undefined ? { ...table, warnings: [] } : table));
     const errors = this.result.errors === undefined ? [] : this.result.errors;
-    const rows: unknown[] = tables.flatMap((table) => (isRecord(table) && Array.isArray(table.rows) ? table.rows : []));
-    const count = (status: string) => rows.filter((row) => isRecord(row) && row.status === status).length;
-    const validRowCount = count("valid");
-    const warningRowCount = count("warning");
-    const failedRowCount = count("failed");
+    let rowCount = 0;
+    let validRowCount = 0;
+    let warningRowCount = 0;
+    let failedRowCount = 0;
+    for (const table of tables) {
+      if (!isRecord(table) || !Array.isArray(table.rows)) continue;
+      rowCount += table.rows.length;
+      for (const row of table.rows) {
+        if (!isRecord(row)) continue;
+        if (row.status === "valid") validRowCount += 1;
+        else if (row.status === "warning") warningRowCount += 1;
+        else if (row.status === "failed") failedRowCount += 1;
+      }
+    }
     const hasErrors = Array.isArray(errors) && errors.length > 0;
     const hasTableWarnings = tables.some((table) => isRecord(table) && Array.isArray(table.warnings) && table.warnings.length > 0);
     let status: ParseResponse["summary"]["status"] = "success";
@@ -98,9 +109,9 @@ export class QwenJsonStream {
       pageCount,
       tables,
       errors,
-      summary: { status, tableCount: tables.length, rowCount: rows.length, validRowCount, warningRowCount, failedRowCount },
+      summary: { status, tableCount: tables.length, rowCount, validRowCount, warningRowCount, failedRowCount },
     };
-    if (!isParseResponse(result) || result.tables.some((table) => table.columns.length === 0) || result.errors.some((error) => error.page !== null && error.page > pageCount)) {
+    if (!isParseResponse(result) || result.tables.some((table) => table.columns.length === 0)) {
       throw new ConversionError("INVALID_QWEN_RESPONSE", 502, undefined, "final_result_contract");
     }
     result.tables.forEach((table, index) => {

@@ -187,8 +187,12 @@
         "html": "HTML"
       },
       "multipleFiles": "O navegador pode exigir permissão para baixar vários arquivos. Você também pode baixar cada tabela separadamente.",
-      "downloadTable": "Baixar tabela {index} · {format}"
-    }
+      "downloadTable": "Baixar tabela {index} · {format}",
+      "loading": "Carregando os downloads de planilhas…",
+      "loadFailed": "Não foi possível carregar os downloads de planilhas. Tente novamente.",
+      "retry": "Tentar novamente"
+    },
+    "restoring": "Restaurando o resultado da conversão…"
   },
   "HomeFeatures": {
     "title": "O que este conversor faz?",

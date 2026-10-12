@@ -56,6 +56,7 @@ async function getPayPalAccessToken(): Promise<string> {
     headers: { Authorization: `Basic ${Buffer.from(`${config.clientId}:${config.clientSecret}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
     body: "grant_type=client_credentials",
     cache: "no-store",
+    signal: AbortSignal.timeout(10_000),
   });
 
   if (!response.ok) {
@@ -101,6 +102,7 @@ export async function verifyPayPalWebhookSignature(headers: Headers, rawWebhookE
     // 调用方已验证 JSON；保留原始事件，避免重新序列化改变签名所对应的内容。
     body: `${verificationMetadata.slice(0, -1)},"webhook_event":${rawWebhookEvent}}`,
     cache: "no-store",
+    signal: AbortSignal.timeout(10_000),
   });
 
   if (!response.ok) {

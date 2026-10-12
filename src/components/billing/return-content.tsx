@@ -1,12 +1,11 @@
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
-import { createClient } from "@/lib/supabase/server";
+import { getRenderAuthContext } from "@/lib/supabase/server";
 import { BillingReturnStatus } from "./return-status";
 
 export async function BillingReturnContent() {
   const t = await getTranslations("BillingReturn");
-  const client = await createClient();
-  const user = client ? (await client.auth.getUser()).data.user : null;
+  const { user } = await getRenderAuthContext();
   return (
     <section className="mx-auto grid w-full max-w-xl gap-5 px-5 py-12" aria-labelledby="billing-return-title">
       <h1 id="billing-return-title" className="text-2xl font-semibold">

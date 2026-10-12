@@ -48,10 +48,10 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     return false;
   }
 
-  const pageCount = value.pageCount as number;
-  const tables = value.tables as unknown[];
-  const errors = value.errors as unknown[];
-  const summary = value.summary as Record<string, unknown>;
+  const pageCount = value.pageCount;
+  const tables = value.tables;
+  const errors = value.errors;
+  const summary = value.summary;
   if (
     !isSummaryStatus(summary.status) ||
     !isNonNegativeInteger(summary.tableCount) ||
@@ -75,7 +75,6 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     if (!isRecord(rawTable)) return false;
     const table = rawTable;
     if (
-      !isRecord(table) ||
       typeof table.id !== "string" ||
       !isPositiveInteger(table.pageStart) ||
       !isPositiveInteger(table.pageEnd) ||
@@ -89,31 +88,33 @@ export function isParseResponse(value: unknown): value is ParseResponse {
       return false;
     }
 
-    const pageStart = table.pageStart as number;
-    const pageEnd = table.pageEnd as number;
-    const columns = table.columns as unknown[];
-    const rows = table.rows as unknown[];
+    const pageStart = table.pageStart;
+    const pageEnd = table.pageEnd;
+    const columns = table.columns;
+    const rows = table.rows;
 
     const columnKeys = new Set<string>();
     const columnIndexes = new Set<number>();
-    const columnsAreValid = columns.every(
-      (column) =>
-        isRecord(column) &&
-        typeof column.key === "string" &&
-        column.key.length > 0 &&
-        typeof column.label === "string" &&
-        isNonNegativeInteger(column.index) &&
-        column.index < columns.length &&
-        !columnKeys.has(column.key) &&
-        !columnIndexes.has(column.index) &&
-        Boolean(columnKeys.add(column.key)) &&
-        Boolean(columnIndexes.add(column.index)),
-    );
+    for (const column of columns) {
+      if (
+        !isRecord(column) ||
+        typeof column.key !== "string" ||
+        column.key.length === 0 ||
+        typeof column.label !== "string" ||
+        !isNonNegativeInteger(column.index) ||
+        column.index >= columns.length ||
+        columnKeys.has(column.key) ||
+        columnIndexes.has(column.index)
+      )
+        return false;
+      columnKeys.add(column.key);
+      columnIndexes.add(column.index);
+    }
+    const requiredColumnKeys = [...columnKeys];
     const rowsAreValid = rows.every((rawRow) => {
       if (!isRecord(rawRow)) return false;
       const row = rawRow;
       if (
-        !isRecord(row) ||
         !isRecord(row.values) ||
         !isRecord(row.source) ||
         !isRowStatus(row.status) ||
@@ -128,8 +129,9 @@ export function isParseResponse(value: unknown): value is ParseResponse {
         return false;
       }
 
-      const valuesAreValid = Object.values(row.values).every((cell) => typeof cell === "string" || cell === null);
-      const valuesMatchColumns = columns.every((column) => isRecord(column) && typeof column.key === "string" && column.key in (row.values as Record<string, unknown>));
+      const values = row.values;
+      const valuesAreValid = Object.values(values).every((cell) => typeof cell === "string" || cell === null);
+      const valuesMatchColumns = requiredColumnKeys.every((key) => Object.hasOwn(values, key));
       if (!valuesAreValid || !valuesMatchColumns) return false;
       rowCount += 1;
       if (row.status === "valid") validRowCount += 1;
@@ -138,7 +140,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
       return true;
     });
 
-    return columnsAreValid && rowsAreValid;
+    return rowsAreValid;
   });
 
   return tablesAreValid && rowCount === summary.rowCount && validRowCount === summary.validRowCount && warningRowCount === summary.warningRowCount && failedRowCount === summary.failedRowCount;
@@ -153,11 +155,10 @@ function isPositiveInteger(value: unknown): value is number {
 }
 
 function isParseIssue(value: unknown): value is ParseIssue {
-  if (typeof value !== "object" || value === null || !("code" in value) || !("params" in value)) {
-    return false;
-  }
-
   return (
-    typeof value.code === "string" && typeof value.params === "object" && value.params !== null && Object.values(value.params).every((param) => typeof param === "string" || typeof param === "number")
+    isRecord(value) &&
+    typeof value.code === "string" &&
+    isRecord(value.params) &&
+    Object.values(value.params).every((param) => typeof param === "string" || (typeof param === "number" && Number.isFinite(param)))
   );
 }

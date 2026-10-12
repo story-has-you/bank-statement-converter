@@ -2,7 +2,7 @@
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   AlertDialog,
@@ -16,12 +16,27 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import type { AccountSnapshot } from "@/lib/account/types";
+import { readBillingResponse } from "@/lib/billing/response";
 
 import type { PaymentProviderId } from "@/lib/billing/provider";
 
 type CancelSubscriptionButtonProps = { provider: PaymentProviderId; subscriptionId: string; periodEnd: string | null };
 type CancellationState = "idle" | "submitting" | "syncing" | "delayed" | "checking";
+
+function hasCancelledSubscription(value: unknown, provider: PaymentProviderId, subscriptionId: string): boolean {
+  if (typeof value !== "object" || value === null || !("subscriptions" in value) || !Array.isArray(value.subscriptions)) return false;
+  return value.subscriptions.some(
+    (record: unknown) =>
+      typeof record === "object" &&
+      record !== null &&
+      "provider" in record &&
+      record.provider === provider &&
+      "subscriptionId" in record &&
+      record.subscriptionId === subscriptionId &&
+      "status" in record &&
+      record.status === "CANCELLED",
+  );
+}
 
 export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }: CancelSubscriptionButtonProps) {
   const t = useTranslations("Account.cancel");
@@ -31,6 +46,15 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<CancellationState>("idle");
   const [error, setError] = useState<string | null>(null);
+  const manualCheck = useRef<AbortController | null>(null);
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      manualCheck.current?.abort();
+    };
+  }, []);
   const date = periodEnd && Number.isFinite(Date.parse(periodEnd)) ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) : null;
 
   useEffect(() => {
@@ -44,8 +68,9 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       try {
         const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
         if (response.ok) {
-          const snapshot = (await response.json()) as AccountSnapshot;
-          if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
+          const snapshot: unknown = await response.json();
+          if (controller.signal.aborted) return;
+          if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
             router.refresh();
             return;
           }
@@ -75,7 +100,8 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
         body: JSON.stringify({ provider, subscriptionId }),
       });
-      const payload = (await response.json()) as { status?: string; error?: string };
+      const payload = readBillingResponse(await response.json());
+      if (!mounted.current) return;
       if (!response.ok) {
         setError(payload.error ?? t("failed"));
         setState("idle");
@@ -86,25 +112,33 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       setState("syncing");
       if (payload.status === "CANCELLED") router.refresh();
     } catch {
+      if (!mounted.current) return;
       setError(t("failed"));
       setState("idle");
     }
   }
 
   async function checkStatus() {
+    manualCheck.current?.abort();
+    const controller = new AbortController();
+    manualCheck.current = controller;
     setError(null);
     setState("checking");
     try {
-      const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store" });
+      const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
       if (!response.ok) throw new Error(t("checkFailed"));
-      const snapshot = (await response.json()) as AccountSnapshot;
-      if (snapshot.subscriptions?.some((record) => record.provider === provider && record.subscriptionId === subscriptionId && record.status === "CANCELLED")) {
+      const snapshot: unknown = await response.json();
+      if (controller.signal.aborted || manualCheck.current !== controller) return;
+      if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
         router.refresh();
       }
     } catch {
-      setError(t("checkFailed"));
+      if (!controller.signal.aborted && manualCheck.current === controller) setError(t("checkFailed"));
     } finally {
-      setState("delayed");
+      if (!controller.signal.aborted && manualCheck.current === controller) {
+        manualCheck.current = null;
+        setState("delayed");
+      }
     }
   }
 

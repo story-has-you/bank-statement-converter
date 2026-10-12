@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { createClient } from "@/lib/supabase/browser";
 import { usePathname } from "@/i18n/navigation";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { ConversionStreamError, readConversionStream, type ConversionPreview } from "@/lib/conversion-stream-client";
@@ -13,7 +14,7 @@ type ConversionState =
   | { phase: "pending"; filename: string; preview: ConversionPreview }
   | { phase: "complete"; filename: string; result: ParseResponse }
   | { phase: "error"; filename: string; message: string };
-type ConversionContextValue = { state: ConversionState; start: (file: File) => void; reset: () => void };
+type ConversionContextValue = { state: ConversionState; revision: number; start: (file: File) => void; reset: () => void };
 const ConversionContext = createContext<ConversionContextValue | null>(null);
 
 export function ConversionProvider({ children }: { children: ReactNode }) {
@@ -21,6 +22,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
   const t = useTranslations("ConversionResult.stream");
   const pathname = usePathname();
   const [state, setState] = useState<ConversionState>({ phase: "idle" });
+  const [revision, setRevision] = useState(0);
   const active = useRef<AbortController | null>(null);
   const enteredResult = useRef(false);
   const previousLocale = useRef(locale);
@@ -30,6 +32,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     active.current = null;
     enteredResult.current = false;
     setState({ phase: "idle" });
+    setRevision((value) => value + 1);
     try {
       clearConversionPayload();
     } catch {
@@ -48,6 +51,20 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
       reset();
     }
   }, [locale, reset]);
+
+  useEffect(() => {
+    const client = createClient();
+    if (!client) return;
+    let identity: string | null | undefined;
+    const { data } = client.auth.onAuthStateChange((event, session) => {
+      const nextIdentity = session?.user.id ?? null;
+      // INITIAL_SESSION establishes the baseline, preserving a refreshed result.
+      if (identity !== undefined && nextIdentity !== identity) reset();
+      else if (identity === undefined && event === "SIGNED_OUT") reset();
+      identity = nextIdentity;
+    });
+    return () => data.subscription.unsubscribe();
+  }, [reset]);
 
   useEffect(() => {
     function abortRequest(): void {
@@ -99,7 +116,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     })();
   }
 
-  return <ConversionContext.Provider value={{ state, start, reset }}>{children}</ConversionContext.Provider>;
+  return <ConversionContext.Provider value={{ state, revision, start, reset }}>{children}</ConversionContext.Provider>;
 }
 
 export function useConversion(): ConversionContextValue {
