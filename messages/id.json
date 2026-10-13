@@ -315,12 +315,12 @@
     "privacy": "Kebijakan privasi"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 11 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 13 Oktober 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Ketentuan layanan | Bank Statement Converter",
-      "description": "Pelajari cara Bank Statement Converter menangani berkas, kuota, langganan, dan tanggung jawab pengguna."
+      "description": "Pelajari cara Bank Statement Converter menangani file, kuota, langganan Creem, pengembalian dana, dan tanggung jawab pengguna."
     },
     "title": "Ketentuan layanan",
     "intro": "Layanan ini dikelola ReAvid Ltd melalui <site>{domain}</site>. Baca ketentuan ini dan kebijakan privasi sebelum menggunakan konversi dan langganan.",
@@ -343,7 +343,17 @@
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
-      "body": "Standard, Professional, dan Enterprise diperpanjang bulanan dengan harga yang ditampilkan sebelum pembelian. Creem memproses pembayaran setelah konfirmasi dan mengirim informasi langganan, perpanjangan, serta kegagalan pembayaran. Batalkan perpanjangan otomatis dari akun situs Anda. Akses berbayar tetap berlaku sampai periode tagihan yang dikonfirmasi berakhir."
+      "body": "Standard, Professional, dan Enterprise diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Creem adalah satu-satunya penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi), yang menangani pembayaran, pajak yang berlaku, dan bukti pembayaran. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Creem mengirimkan informasi langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi, dengan mengikuti kebijakan pengembalian dana di bawah."
+    },
+    "refunds": {
+      "title": "Kebijakan pengembalian dana",
+      "eligibility": "Anda dapat meminta pengembalian dana penuh dalam 14 hari kalender setelah pembayaran langganan awal atau tagihan perpanjangan jika belum menggunakan halaman konversi apa pun dalam periode penagihan yang terkait dengan pembayaran tersebut. Setiap pembayaran ditinjau secara terpisah berdasarkan periodenya sendiri.",
+      "usage": "Jika halaman telah digunakan dalam periode tersebut atau permintaan diajukan setelah 14 hari, biaya langganan umumnya tidak dapat dikembalikan, termasuk secara proporsional untuk halaman atau waktu yang tidak digunakan, kecuali dalam kondisi di bawah atau jika diwajibkan hukum. Hasil sebagian dihitung sebagai penggunaan; konversi yang gagal tidak. Kuota yang tidak digunakan kedaluwarsa pada akhir periode, tidak dibawa ke periode berikutnya, dan tidak dapat ditukar dengan uang tunai.",
+      "exceptions": "Segera hubungi kami jika terjadi tagihan ganda, tagihan yang keliru, atau Anda tidak dapat menggunakan layanan berbayar karena gangguan layanan yang telah dikonfirmasi. Kami akan meninjau catatan pembayaran dan penggunaan dan, jika sesuai, mengatur pengembalian dana penuh atau sebagian meskipun di luar ketentuan umum di atas.",
+      "cancellation": "Pembatalan perpanjangan otomatis yang telah dikonfirmasi mencegah tagihan perpanjangan berikutnya; tindakan ini tidak otomatis mengembalikan pembayaran yang sudah dilakukan. Tanpa pengembalian dana, akses berbayar dan sisa kuota tetap tersedia hingga akhir periode yang dikonfirmasi. Permintaan pengembalian dana tidak membatalkan perpanjangan; batalkan secara terpisah di akun situs untuk menghindari tagihan berikutnya.",
+      "request": "Untuk meminta pengembalian dana, kirim email ke <link>{email}</link> dengan email akun situs, identitas pesanan atau transaksi Creem, tanggal pembayaran, dan alasan. Jangan kirim PDF rekening koran atau detail pembayaran sensitif. Kami akan memverifikasi catatan pembayaran dan penggunaan lalu memberi tahu hasilnya melalui email.",
+      "processing": "Pengembalian dana yang disetujui diproses oleh Creem ke metode pembayaran semula. Waktu penerimaan bergantung pada Creem dan bank atau penyedia pembayaran Anda. Pengembalian dana dapat mengakhiri akses berbayar dan menghapus kuota untuk periode yang dikembalikan; kami akan menjelaskan dampaknya pada langganan saat mengonfirmasi pengembalian dana.",
+      "rights": "Kebijakan ini tidak membatasi hak konsumen yang wajib dilindungi, termasuk hak pembatalan yang berlaku atau pemulihan untuk layanan yang cacat. Jika hukum yang berlaku memberikan hak pengembalian dana tambahan, hak tersebut diutamakan."
     },
     "files": {
       "title": "Berkas dan unduhan",
@@ -405,7 +415,7 @@
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Pembayaran dan sinkronisasi status langganan menggunakan Creem. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Creem dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
+      "body": "Login menggunakan Google dan Supabase. Creem adalah satu-satunya penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi). Creem memproses pembayaran langganan, pajak yang berlaku, bukti pembayaran, dan pengembalian dana yang disetujui, serta menyinkronkan status langganan dengan layanan ini. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Creem dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi."
     },
     "storage": {
       "title": "Penyimpanan browser",

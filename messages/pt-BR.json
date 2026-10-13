@@ -315,12 +315,12 @@
     "privacy": "Política de privacidade"
   },
   "LegalCommon": {
-    "lastUpdated": "Última atualização: 11 de outubro de 2026"
+    "lastUpdated": "Última atualização: 13 de outubro de 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Termos de serviço | Bank Statement Converter",
-      "description": "Saiba como o Bank Statement Converter trata arquivos, cotas, assinaturas e responsabilidades do usuário."
+      "description": "Saiba como o Bank Statement Converter trata arquivos, cotas, assinaturas Creem, reembolsos e responsabilidades do usuário."
     },
     "title": "Termos de serviço",
     "intro": "A ReAvid Ltd opera este serviço em <site>{domain}</site>. Leia estes termos e a política de privacidade antes de usar a conversão e as assinaturas.",
@@ -343,7 +343,17 @@
     },
     "subscription": {
       "title": "Assinaturas e pagamento",
-      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. Creem processa o pagamento após sua confirmação e envia informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site. O acesso pago permanece até o fim do período de cobrança confirmado."
+      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. O Creem é nosso único provedor de pagamentos e Merchant of Record (o vendedor legal da transação), responsável pelos pagamentos, impostos aplicáveis e comprovantes. A cobrança ocorre somente após a confirmação da compra. O Creem envia ao serviço informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site; o acesso pago permanece até o fim do período de cobrança confirmado, sujeito à política de reembolso abaixo."
+    },
+    "refunds": {
+      "title": "Política de reembolso",
+      "eligibility": "Você pode solicitar reembolso integral em até 14 dias corridos após o pagamento inicial da assinatura ou uma cobrança de renovação, desde que nenhuma página de conversão tenha sido usada no período de cobrança correspondente. Cada pagamento é analisado separadamente com base no seu próprio período.",
+      "usage": "Se alguma página tiver sido usada nesse período ou se a solicitação ocorrer após 14 dias, as taxas da assinatura geralmente não são reembolsáveis, inclusive proporcionalmente por páginas ou tempo não utilizados, salvo nos casos abaixo ou quando exigido por lei. Resultados parciais contam como uso; conversões que falham não. A cota não utilizada expira ao fim do período, não é transferida e não pode ser trocada por dinheiro.",
+      "exceptions": "Entre em contato prontamente se houver cobrança duplicada ou incorreta, ou se você não puder usar o serviço pago por uma falha confirmada do serviço. Analisaremos os registros de pagamento e uso e, quando cabível, providenciaremos reembolso integral ou parcial mesmo fora das condições habituais acima.",
+      "cancellation": "O cancelamento confirmado da renovação automática impede novas cobranças de renovação; ele não reembolsa automaticamente uma cobrança existente. Sem reembolso, o acesso pago e a cota restante continuam disponíveis até o fim do período confirmado. Solicitar reembolso não cancela a renovação; cancele-a separadamente na sua conta para evitar outra cobrança.",
+      "request": "Para solicitar reembolso, escreva para <link>{email}</link> com o e-mail da sua conta do site, identificador do pedido ou transação Creem, data do pagamento e motivo. Não envie extratos bancários em PDF nem dados de pagamento sensíveis. Verificaremos os registros de pagamento e uso e informaremos o resultado por e-mail.",
+      "processing": "O Creem processa reembolsos aprovados para o método de pagamento original. O prazo de recebimento depende do Creem e do seu banco ou provedor de pagamentos. O reembolso pode encerrar o acesso pago e remover a cota do período reembolsado; explicaremos o efeito na assinatura ao confirmar o reembolso.",
+      "rights": "Esta política não limita direitos obrigatórios do consumidor, incluindo direitos de arrependimento aplicáveis ou medidas para serviços defeituosos. Quando a lei aplicável conceder direitos adicionais de reembolso, esses direitos prevalecerão."
     },
     "files": {
       "title": "Arquivos e downloads",
@@ -405,7 +415,7 @@
     },
     "providers": {
       "title": "Provedores e processamento internacional",
-      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam Creem. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O Creem pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
+      "body": "O login usa Google e Supabase. O Creem é nosso único provedor de pagamentos e Merchant of Record (o vendedor legal da transação). Ele processa os pagamentos das assinaturas, impostos aplicáveis, comprovantes e reembolsos aprovados, e sincroniza o status da assinatura com este serviço. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O Creem pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
     },
     "storage": {
       "title": "Armazenamento no navegador",
