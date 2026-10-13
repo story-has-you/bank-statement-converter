@@ -56,21 +56,8 @@ export function TermsContent() {
       </LegalSection>
 
       <LegalSection id="refunds" title={t("refunds.title")}>
-        <p>{t("refunds.eligibility")}</p>
-        <p>{t("refunds.usage")}</p>
-        <p>{t("refunds.exceptions")}</p>
+        <p>{t("refunds.body")}</p>
         <p>{t("refunds.cancellation")}</p>
-        <p>
-          {t.rich("refunds.request", {
-            email: siteConfig.contactEmail,
-            link: (chunks) => (
-              <a className="break-all text-primary underline underline-offset-4" href={siteConfig.contactHref}>
-                {chunks}
-              </a>
-            ),
-          })}
-        </p>
-        <p>{t("refunds.processing")}</p>
         <p>{t("refunds.rights")}</p>
       </LegalSection>
 
