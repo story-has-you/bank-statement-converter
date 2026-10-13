@@ -82,9 +82,20 @@ async function resolveCreemEvent(type: BillingEvent["type"], id: string, at: str
   const transactionId = string(resource.last_transaction_id);
   if (remote.lastTransactionId !== transactionId) throw new Error("Creem payment evidence changed; retry required");
   const transaction = await createCreemClient().transactions.getById(transactionId);
-  // 套餐价已含税；折扣交易必须使用渠道明确返回的实付金额，不能推算。
+  // 套餐价已含税；折扣交易必须使用渠道明确返回的实付金额。
   const originalCents = Math.round(subscriptionConfig[subscription.tier].monthlyPrice * 100);
-  const discountCents = transaction.discountAmount ?? 0;
+  // Creem 的 100% 优惠券交易可能返回 discountAmount=0，只在完整全额抵扣证据下补齐优惠快照。
+  const fullyDiscounted =
+    transaction.amountPaid === 0 &&
+    (transaction.discountAmount ?? 0) === 0 &&
+    transaction.amount === originalCents &&
+    remote.discount?.type === "percentage" &&
+    remote.discount.amount === 100 &&
+    typeof remote.product !== "string" &&
+    remote.product.price === originalCents &&
+    remote.product.currency === "USD" &&
+    remote.product.taxMode === "inclusive";
+  const discountCents = fullyDiscounted ? originalCents : (transaction.discountAmount ?? 0);
   const paidCents = transaction.amountPaid ?? transaction.amount;
   const providerDiscountId = discountCents > 0 ? remote.discount?.id?.trim() || null : null;
   if (
@@ -100,6 +111,7 @@ async function resolveCreemEvent(type: BillingEvent["type"], id: string, at: str
     discountCents < 0 ||
     discountCents > originalCents ||
     paidCents + discountCents !== originalCents ||
+    (remote.discount !== undefined && transaction.amountPaid == null) ||
     (discountCents > 0 && (transaction.amountPaid == null || !providerDiscountId))
   )
     throw new Error("Creem payment evidence is invalid");
