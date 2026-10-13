@@ -8,10 +8,12 @@ import { ConversionProgress } from "@/components/conversion/conversion-progress"
 import { useConversion } from "@/components/conversion/conversion-provider";
 import { ConversionTable } from "@/components/conversion/conversion-table";
 import { ConversionDownloads } from "@/components/conversion/conversion-downloads";
+import { useResultLeaveConfirmation } from "@/components/conversion/use-result-leave-confirmation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
+import { canDownloadResult } from "@/lib/conversion-export";
 import { readConversionPayload } from "@/lib/conversion-storage";
 import { getParseErrorKey } from "@/lib/parse-issues";
 import type { ConversionPayload, SummaryStatus } from "@/lib/conversion-types";
@@ -31,6 +33,15 @@ export function ConversionResult() {
     return () => window.clearTimeout(loadPayload);
   }, [conversion.state.phase, conversion.revision]);
 
+  let payload: ConversionPayload | null = null;
+  if (conversion.state.phase === "complete") {
+    payload = { version: 1, filename: conversion.state.filename, result: conversion.state.result };
+  } else if (conversion.state.phase === "idle" && restored?.revision === conversion.revision) {
+    payload = restored.payload;
+  }
+  const hasRows = payload?.result.tables.some((table) => table.rows.length > 0) ?? false;
+  useResultLeaveConfirmation(payload !== null && canDownloadResult(payload.result), t("leaveConfirmation"));
+
   if (conversion.state.phase === "pending") {
     return <ConversionProgress filename={conversion.state.filename} preview={conversion.state.preview} onCancel={conversion.reset} />;
   }
@@ -49,13 +60,6 @@ export function ConversionResult() {
       </section>
     );
   }
-  let payload: ConversionPayload | null = null;
-  if (conversion.state.phase === "complete") {
-    payload = { version: 1, filename: conversion.state.filename, result: conversion.state.result };
-  } else if (restored?.revision === conversion.revision) {
-    payload = restored.payload;
-  }
-
   if (conversion.state.phase === "idle" && restored?.revision !== conversion.revision) {
     return (
       <p role="status" aria-busy="true">
@@ -79,7 +83,6 @@ export function ConversionResult() {
   }
 
   const { result } = payload;
-  const hasRows = result.tables.some((table) => table.rows.length > 0);
   const hasRiskRows = result.summary.warningRowCount + result.summary.failedRowCount > 0;
 
   function getStatusLabel(status: SummaryStatus): string {

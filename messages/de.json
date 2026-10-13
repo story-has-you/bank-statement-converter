@@ -97,6 +97,7 @@
     "description": "Vergleichen Sie die markierten Zeilen vor dem Download mit der Original-PDF.",
     "download": "Excel herunterladen",
     "backHome": "Weitere Datei konvertieren",
+    "leaveConfirmation": "Beim Verlassen dieser Seite gehen Ihre Konvertierungsergebnisse verloren. Bitte stellen Sie sicher, dass Sie die benötigten Dateien heruntergeladen haben. Seite verlassen?",
     "summary": {
       "status": "Status",
       "pages": "PDF-Seiten",

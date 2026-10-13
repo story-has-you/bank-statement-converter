@@ -97,6 +97,7 @@
     "description": "ダウンロード前に、印の付いた内容を元の PDF と照合してください。",
     "download": "Excelをダウンロード",
     "backHome": "別のファイルを変換",
+    "leaveConfirmation": "このページを離れると、変換結果は失われます。必要なファイルをダウンロード済みであることを確認してください。ページを離れますか？",
     "summary": {
       "status": "状態",
       "pages": "PDFページ",

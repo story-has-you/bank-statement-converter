@@ -97,6 +97,7 @@
     "description": "Compare the marked rows with the original PDF before downloading.",
     "download": "Download Excel",
     "backHome": "Convert another file",
+    "leaveConfirmation": "Your conversion results will be lost when you leave this page. Please make sure you have downloaded the files you need. Leave this page?",
     "summary": {
       "status": "Status",
       "pages": "PDF pages",

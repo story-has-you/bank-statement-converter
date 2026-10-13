@@ -97,6 +97,7 @@
     "description": "下载前，请对照原 PDF 核对标记内容。",
     "download": "下载 Excel",
     "backHome": "重新转换",
+    "leaveConfirmation": "离开此页面后，转换结果会丢失。请确认已下载需要的文件。确定要离开吗？",
     "summary": {
       "status": "状态",
       "pages": "PDF 页数",

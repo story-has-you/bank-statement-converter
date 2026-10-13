@@ -97,6 +97,7 @@
     "description": "다운로드하기 전에 표시된 내용을 원본 PDF와 대조하세요.",
     "download": "엑셀 다운로드",
     "backHome": "다른 파일 변환",
+    "leaveConfirmation": "이 페이지를 떠나면 변환 결과가 사라집니다. 필요한 파일을 다운로드했는지 확인해 주세요. 페이지를 떠나시겠습니까?",
     "summary": {
       "status": "상태",
       "pages": "PDF 페이지",

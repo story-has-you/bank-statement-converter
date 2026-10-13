@@ -97,6 +97,7 @@
     "description": "Comparez les lignes marquées avec le PDF original avant de télécharger.",
     "download": "Télécharger Excel",
     "backHome": "Convertir un autre fichier",
+    "leaveConfirmation": "Les résultats de conversion seront perdus si vous quittez cette page. Vérifiez que vous avez téléchargé les fichiers nécessaires. Quitter cette page ?",
     "summary": {
       "status": "Statut",
       "pages": "Pages PDF",

@@ -97,6 +97,7 @@
     "description": "Vergelijk de gemarkeerde rijen met de oorspronkelijke PDF voordat je downloadt.",
     "download": "Excel downloaden",
     "backHome": "Ander bestand converteren",
+    "leaveConfirmation": "Uw conversieresultaten gaan verloren als u deze pagina verlaat. Controleer of u de benodigde bestanden hebt gedownload. Deze pagina verlaten?",
     "summary": {
       "status": "Status",
       "pages": "PDF-pagina's",

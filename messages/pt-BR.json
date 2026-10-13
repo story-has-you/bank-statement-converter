@@ -97,6 +97,7 @@
     "description": "Compare as linhas marcadas com o PDF original antes de baixar.",
     "download": "Baixar Excel",
     "backHome": "Converter outro arquivo",
+    "leaveConfirmation": "Os resultados da conversão serão perdidos ao sair desta página. Confirme que você baixou os arquivos necessários. Sair desta página?",
     "summary": {
       "status": "Status",
       "pages": "Páginas do PDF",

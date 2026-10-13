@@ -97,6 +97,7 @@
     "description": "Bandingkan baris bertanda dengan PDF asli sebelum mengunduh.",
     "download": "Unduh Excel",
     "backHome": "Konversi berkas lain",
+    "leaveConfirmation": "Hasil konversi akan hilang saat Anda meninggalkan halaman ini. Pastikan Anda sudah mengunduh file yang diperlukan. Tinggalkan halaman ini?",
     "summary": {
       "status": "Status",
       "pages": "Halaman PDF",
