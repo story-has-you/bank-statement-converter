@@ -315,12 +315,12 @@
     "privacy": "Privacy policy"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 11, 2026"
+    "lastUpdated": "Last updated: October 13, 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Terms of service | Bank Statement Converter",
-      "description": "Learn how Bank Statement Converter handles files, quotas, subscriptions, and user responsibilities."
+      "description": "Learn how Bank Statement Converter handles files, quotas, Creem subscriptions, refunds, and user responsibilities."
     },
     "title": "Terms of service",
     "intro": "This service is operated by ReAvid Ltd and provided through <site>{domain}</site>. Read these terms and the privacy policy before using the conversion and subscription services.",
@@ -343,7 +343,17 @@
     },
     "subscription": {
       "title": "Subscriptions and payment",
-      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Payments are processed through Creem after you confirm the purchase. The selected provider sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends."
+      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our sole payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends, subject to the refund policy below."
+    },
+    "refunds": {
+      "title": "Refund policy",
+      "eligibility": "You may request a full refund within 14 calendar days of an initial subscription payment or a renewal charge if no conversion pages have been used in the billing period covered by that charge. Each charge is assessed separately against its own billing period.",
+      "usage": "If any pages have been used in that period, or the request is made after 14 days, subscription fees are generally non-refundable, including for unused pages or unused time, except as described below or required by law. Partial conversion results count as usage; failed conversions do not. Unused page quota expires at the end of the billing period, does not roll over, and cannot be redeemed for cash.",
+      "exceptions": "If you were charged twice, charged incorrectly, or could not use the paid service because of a confirmed service fault, contact us promptly. We will review the charge and usage records and, where appropriate, arrange a full or partial refund even outside the standard eligibility above.",
+      "cancellation": "Cancelling automatic renewal prevents future renewal charges once confirmed; it does not automatically refund an existing charge. Without a refund, paid access and the remaining quota stay available until the confirmed billing period ends. Requesting a refund does not itself cancel renewal; cancel it separately in your website account to avoid another charge.",
+      "request": "To request a refund, email <link>{email}</link> with your website account email, Creem order or transaction identifier, payment date, and reason. Do not send bank statement PDFs or sensitive payment details. We will verify the payment and usage records and email you the outcome.",
+      "processing": "Approved refunds are processed by Creem to the original payment method. The time for funds to arrive depends on Creem and your bank or payment provider. A refund may end paid access and remove the quota for the refunded period; we will explain any effect on your subscription when confirming the refund.",
+      "rights": "This policy does not limit any mandatory consumer rights, including applicable withdrawal rights or remedies for defective services. Where applicable law grants additional refund rights, those rights take precedence."
     },
     "files": {
       "title": "Files and downloads",
@@ -405,7 +415,7 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Subscription payment and status synchronization use Creem. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. Creem may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
+      "body": "Account sign-in uses Google and Supabase. Creem is our sole payment provider and Merchant of Record (the legal seller for the transaction). It processes subscription payments, applicable taxes, payment receipts, and approved refunds, and synchronizes subscription status with this service. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. Creem may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
     },
     "storage": {
       "title": "Browser storage",

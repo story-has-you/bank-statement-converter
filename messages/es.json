@@ -315,12 +315,12 @@
     "privacy": "Política de privacidad"
   },
   "LegalCommon": {
-    "lastUpdated": "Última actualización: 11 de octubre de 2026"
+    "lastUpdated": "Última actualización: 13 de octubre de 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Términos de servicio | Conversor de extractos bancarios",
-      "description": "Descubra cómo Bank Statement Converter maneja archivos, cuotas, suscripciones y responsabilidades de los usuarios."
+      "description": "Consulta cómo Bank Statement Converter gestiona archivos, cuotas, suscripciones Creem, reembolsos y responsabilidades del usuario."
     },
     "title": "Términos de servicio",
     "intro": "Este servicio es operado por ReAvid Ltd y proporcionado a través de <site>{domain}</site>. Lea estos términos y la política de privacidad antes de utilizar los servicios de conversión y suscripción.",
@@ -343,7 +343,17 @@
     },
     "subscription": {
       "title": "Suscripciones y pago",
-      "body": "Standard, Professional y Enterprise se renuevan mensualmente al precio mostrado antes de la compra. Creem procesa el pago tras su confirmación y envía información de suscripción, renovación y fallos de pago. Puede cancelar la renovación automática desde su cuenta del sitio web. El acceso pagado se mantiene hasta el final del período de facturación confirmado."
+      "body": "Standard, Professional y Enterprise se renuevan mensualmente al precio mostrado antes de la compra. Creem es nuestro único proveedor de pagos y Merchant of Record (el vendedor legal de la transacción), y gestiona los pagos, los impuestos aplicables y los recibos. Solo se realiza el cargo después de confirmar la compra. Creem envía a este servicio información sobre suscripciones, renovaciones y fallos de pago. Puedes cancelar la renovación automática desde tu cuenta del sitio; el acceso de pago sigue disponible hasta que termine el período de facturación confirmado, sujeto a la política de reembolsos que figura a continuación."
+    },
+    "refunds": {
+      "title": "Política de reembolsos",
+      "eligibility": "Puedes solicitar un reembolso completo dentro de los 14 días naturales siguientes al pago inicial de la suscripción o a un cargo de renovación si no has utilizado ninguna página de conversión en el período de facturación correspondiente a ese cargo. Cada pago se evalúa por separado según su propio período.",
+      "usage": "Si has utilizado alguna página en ese período o solicitas el reembolso después de 14 días, las cuotas de suscripción generalmente no son reembolsables, tampoco de forma proporcional por páginas o tiempo sin utilizar, salvo en los casos siguientes o cuando lo exija la ley. Los resultados parciales cuentan como uso; las conversiones fallidas no. La cuota sin utilizar vence al finalizar el período, no se acumula y no se puede canjear por dinero.",
+      "exceptions": "Contáctanos cuanto antes si recibes un cargo duplicado o incorrecto, o si no pudiste usar el servicio de pago debido a un fallo confirmado del servicio. Revisaremos los registros de pago y uso y, cuando corresponda, gestionaremos un reembolso completo o parcial incluso fuera de las condiciones habituales anteriores.",
+      "cancellation": "La cancelación confirmada de la renovación automática evita futuros cargos de renovación; no reembolsa automáticamente un cargo existente. Sin reembolso, el acceso de pago y la cuota restante siguen disponibles hasta el final del período confirmado. Solicitar un reembolso no cancela la renovación; cancélala por separado desde tu cuenta para evitar otro cargo.",
+      "request": "Para solicitar un reembolso, escribe a <link>{email}</link> e incluye el correo de tu cuenta del sitio, el identificador de pedido o transacción de Creem, la fecha de pago y el motivo. No envíes extractos bancarios PDF ni datos de pago sensibles. Verificaremos los registros de pago y uso y te comunicaremos el resultado por correo.",
+      "processing": "Creem procesa los reembolsos aprobados al método de pago original. El plazo de recepción depende de Creem y de tu banco o proveedor de pagos. Un reembolso puede finalizar el acceso de pago y eliminar la cuota del período reembolsado; explicaremos las consecuencias para tu suscripción al confirmar el reembolso.",
+      "rights": "Esta política no limita ningún derecho obligatorio del consumidor, incluidos los derechos de desistimiento aplicables o los recursos por servicios defectuosos. Si la ley aplicable concede derechos adicionales de reembolso, estos prevalecen."
     },
     "files": {
       "title": "Archivos y descargas",
@@ -405,7 +415,7 @@
     },
     "providers": {
       "title": "Proveedores y tratamiento internacional",
-      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. El pago de la suscripción y la sincronización del estado utilizan Creem. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. Creem puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones."
+      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. Creem es nuestro único proveedor de pagos y Merchant of Record (el vendedor legal de la transacción). Procesa los pagos de suscripciones, los impuestos aplicables, los recibos y los reembolsos aprobados, y sincroniza el estado de las suscripciones con este servicio. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. Creem puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones."
     },
     "storage": {
       "title": "Almacenamiento del navegador",
