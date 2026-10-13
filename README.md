@@ -52,7 +52,7 @@ pnpm dev --port 3000
 
 在 [`services/parser/app/conversion-limits.json`](services/parser/app/conversion-limits.json) 统一调整 `megabytes`（单文件大小，按 1 MB = 1024 × 1024 字节校验）和 `pages`（原始 PDF 最大页数），当前为 4 MB、50 页。
 
-Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包和 Docker 的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
+Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
 
 ## Creem 订阅配置
 
@@ -85,7 +85,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Production deployment
 
-生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
+生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务直接运行在 EC2（Amazon Linux 2023）上，由 systemd 管理。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
 
 正式地址：
 
@@ -94,29 +94,22 @@ https://bankstatementconverter.xyz
 https://parser.bankstatementconverter.xyz
 ```
 
-### Cloudflare parser
+### EC2 parser
 
-在 `services/parser` 目录执行：
+将 `services/parser/` 的内容同步到 EC2 的 `/home/ec2-user/apps/parser`，以 `ec2-user` 身份执行：
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm exec wrangler login
-pnpm exec wrangler secret put PARSER_SHARED_SECRET
-pnpm exec wrangler deploy
+cd /home/ec2-user/apps/parser
+bash deploy/install.sh
 ```
 
-`wrangler.jsonc` 已配置 `parser.bankstatementconverter.xyz` Custom Domain、Container 端口 `8080` 和 `/health` readiness 检查。部署前需要 Docker 可用；Cloudflare 会构建 `services/parser/Dockerfile`。
+首次运行前需在 `/etc/bank-statement-parser.env` 设置与 Next.js 一致的 `PARSER_SHARED_SECRET`。脚本幂等安装 uv、Python 3.14、虚拟环境和锁定依赖，以 `--no-deps` 安装本包，然后安装并重启 `bank-statement-parser` systemd 服务。服务以 `ec2-user` 运行，监听 `0.0.0.0:8080`，失败或退出后自动重启。
 
-#### GitHub Actions 自动部署
+对外 HTTPS 入口 `https://parser.bankstatementconverter.xyz` 需转发到 EC2 的 `8080` 端口；DNS、TLS 和转发由现有基础设施管理。环境文件创建、更新步骤及状态、日志、健康检查命令见 [Python 服务部署说明](services/parser/README.md#ec2-部署amazon-linux-2023)。
 
-仓库已配置 `.github/workflows/deploy-parser.yml`。向 `master` 推送提交后，GitHub Actions 会在 `services/parser` 目录执行 `wrangler deploy`，自动更新 Cloudflare Worker 和 Parser Container。工作流使用仓库 Secrets 中的以下配置：
+#### GitHub Actions 质量检查
 
-```text
-CLOUDFLARE_ACCOUNT_ID
-CLOUDFLARE_API_TOKEN
-```
-
-`CLOUDFLARE_API_TOKEN` 需要具备目标 Cloudflare 账户的 Worker 部署权限。`PARSER_SHARED_SECRET` 不放入 GitHub Actions 配置；请先在 Cloudflare 中执行一次 `pnpm exec wrangler secret put PARSER_SHARED_SECRET`，后续自动部署会保留该 Worker Secret。
+仓库已配置 [`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml)。向 `master` 推送提交或创建、更新 Pull Request 时执行 Web 的 TypeScript、ESLint、构建检查，以及 Python 锁定依赖和本包安装、源码编译检查。工作流只做质量检查，不自动部署到 EC2；代码更新后需在 EC2 手动运行安装脚本。
 
 ### Vercel Next.js
 

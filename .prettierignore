@@ -3,4 +3,3 @@
 AGENTS.md
 **/pnpm-lock.yaml
 skills-lock.json
-services/parser/worker-configuration.d.ts

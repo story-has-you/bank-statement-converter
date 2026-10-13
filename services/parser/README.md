@@ -34,7 +34,46 @@ curl -s \
 export PARSER_SHARED_SECRET=local-development-secret
 ```
 
-`GET /health` 不需要认证，供 Cloudflare Container readiness 检查使用。容器部署文件位于本目录的 `Dockerfile`，生产监听端口为 `8080`。
+`GET /health` 不需要认证，可用于检查进程是否就绪。生产环境监听端口为 `8080`。
+
+## EC2 部署（Amazon Linux 2023）
+
+将本目录的内容放到 `/home/ec2-user/apps/parser`，确保归 `ec2-user` 所有。生产环境使用 uv 管理 Python 3.14 和 `.venv`，由 systemd 服务 `bank-statement-parser` 启动 Uvicorn。
+
+首次安装先创建环境文件；已有配置时直接编辑，保留现有共享密钥：
+
+```bash
+sudo touch /etc/bank-statement-parser.env
+sudo chmod 600 /etc/bank-statement-parser.env
+sudoedit /etc/bank-statement-parser.env
+```
+
+文件中设置与 Next.js 服务端相同的共享密钥（将示例值替换为实际密钥）：
+
+```dotenv
+PARSER_SHARED_SECRET=replace-with-your-shared-secret
+```
+
+以 `ec2-user` 身份执行安装脚本，不要使用 `sudo bash`：
+
+```bash
+cd /home/ec2-user/apps/parser
+bash deploy/install.sh
+```
+
+脚本在缺少 uv 时安装 uv，安装 Python 3.14，按需创建 `.venv`，从 `requirements.lock` 安装锁定依赖，再以 `--no-deps` 安装本包。随后将 [`deploy/bank-statement-parser.service`](deploy/bank-statement-parser.service) 安装到 `/etc/systemd/system/`，重新加载 systemd，启用开机启动并重启服务。重复运行会复用虚拟环境、更新依赖和本包，不覆盖环境文件。机器需要能下载 uv、Python 和 Python 包，`ec2-user` 需要 sudo 权限。
+
+服务使用 `User=ec2-user`、`WorkingDirectory=/home/ec2-user/apps/parser` 和 `EnvironmentFile=/etc/bank-statement-parser.env`，执行 `.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8080`，并设置 `Restart=always`。
+
+更新时先将代码同步到同一目录（保留 `.venv`），再运行 `bash deploy/install.sh`。安装或更新后检查状态、日志和健康接口：
+
+```bash
+sudo systemctl status bank-statement-parser --no-pager
+sudo journalctl -u bank-statement-parser -n 100 --no-pager
+curl --fail http://127.0.0.1:8080/health
+```
+
+`/health` 只表示进程就绪，认证和 PDF 解析需另行验收。对外 HTTPS 入口 `https://parser.bankstatementconverter.xyz` 需要转发到 EC2 的 `8080` 端口；DNS、TLS 和转发配置由现有基础设施管理，安装脚本只负责 Python 与 systemd。Next.js 的 `PARSER_SERVICE_URL` 使用该 HTTPS 地址，`PARSER_SHARED_SECRET` 与环境文件保持一致。
 
 服务的文件大小和页数上限统一配置在 [`app/conversion-limits.json`](app/conversion-limits.json)，当前为单文件 4 MB、50 页。Next.js 和 Python 读取同一份配置，修改后需同步发布两个服务；Python 进程重启后加载新值。`pageCount` 始终是原始 PDF 页数；相邻且表头兼容的表格可以合并为一个逻辑表，表格范围和 `rows[].source.page` 保留原始页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
 
