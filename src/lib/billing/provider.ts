@@ -25,7 +25,11 @@ export type ProviderSubscription = {
 type EventBase = { provider: PaymentProviderId; id: string; at: string; subscription: ProviderSubscription };
 
 export type BillingEvent = EventBase &
-  ({ type: "subscription-cancelled" } | { type: "subscription-paid"; amount: string; currencyCode: string; paidAt: string } | { type: "subscription-status-changed" });
+  (
+    | { type: "subscription-cancelled" }
+    | { type: "subscription-paid"; amount: string; originalAmount: string; discountAmount: string; providerDiscountId: string | null; currencyCode: string; paidAt: string }
+    | { type: "subscription-status-changed" }
+  );
 
 export type BillingNotification = { provider: PaymentProviderId; id: string; at: string; type: BillingEvent["type"]; subscriptionId: string; resolve: () => Promise<BillingEvent> };
 

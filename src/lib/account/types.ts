@@ -8,6 +8,8 @@ export type AccountSubscription = {
   tier: MembershipTier;
   status: SubscriptionStatus;
   amount: number | null;
+  originalAmount: number | null;
+  discountAmount: number | null;
   currencyCode: string | null;
   createdAt: string | null;
   periodStart: string | null;

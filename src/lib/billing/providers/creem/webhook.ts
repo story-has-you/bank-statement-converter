@@ -4,7 +4,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { BillingError } from "@/lib/billing/errors";
 import type { BillingEvent, BillingNotification } from "@/lib/billing/provider";
 import { subscriptionConfig } from "@/config/plans";
-import { getCreemWebhookSecret } from "./config";
+import { getCreemEnvironment, getCreemWebhookSecret } from "./config";
 import { createCreemClient, getCreemSubscription, isCreemId } from "./server";
 import { normalizeCreemSubscription } from "./subscription";
 
@@ -63,6 +63,8 @@ export async function parseCreemWebhook(headers: Headers, body: string): Promise
 
 async function resolveCreemEvent(type: BillingEvent["type"], id: string, at: string, subscriptionId: string, resource: Record<string, unknown>): Promise<BillingEvent> {
   const remote = await getCreemSubscription(subscriptionId);
+  const mode = getCreemEnvironment() === "production" ? "prod" : "test";
+  if (remote.mode !== mode || resource.mode !== mode) throw new Error("Creem webhook environment mismatch");
   const subscription = normalizeCreemSubscription(remote);
   if (reference(resource.product) !== subscription.planId || reference(resource.customer) !== subscription.payerId || object(resource.metadata).referenceId !== subscription.userId)
     throw new Error("Creem webhook subscription identity mismatch");
@@ -75,20 +77,30 @@ async function resolveCreemEvent(type: BillingEvent["type"], id: string, at: str
   if (type !== "subscription-paid") throw new Error("Unsupported Creem event");
   // 已到期或暂停的迟到付款只核对身份，不允许恢复权益。
   if (["EXPIRED", "SUSPENDED"].includes(subscription.status)) {
-    return { ...base, type, amount: "0", currencyCode: "USD", paidAt: at };
+    return { ...base, type, amount: "0", originalAmount: "0", discountAmount: "0", providerDiscountId: null, currencyCode: "USD", paidAt: at };
   }
   const transactionId = string(resource.last_transaction_id);
   if (remote.lastTransactionId !== transactionId) throw new Error("Creem payment evidence changed; retry required");
   const transaction = await createCreemClient().transactions.getById(transactionId);
-  const paidCents = transaction.amountPaid ?? transaction.amount + (transaction.taxAmount ?? 0);
+  // 套餐价已含税；折扣交易必须使用渠道明确返回的实付金额，不能推算。
+  const originalCents = Math.round(subscriptionConfig[subscription.tier].monthlyPrice * 100);
+  const discountCents = transaction.discountAmount ?? 0;
+  const paidCents = transaction.amountPaid ?? transaction.amount;
+  const providerDiscountId = discountCents > 0 ? remote.discount?.id?.trim() || null : null;
   if (
     transaction.id !== transactionId ||
+    transaction.mode !== mode ||
     transaction.status !== "paid" ||
     transaction.subscription !== subscriptionId ||
     transaction.customer !== subscription.payerId ||
     transaction.currency !== "USD" ||
     !Number.isSafeInteger(paidCents) ||
-    paidCents !== Math.round(subscriptionConfig[subscription.tier].monthlyPrice * 100)
+    paidCents < 0 ||
+    !Number.isSafeInteger(discountCents) ||
+    discountCents < 0 ||
+    discountCents > originalCents ||
+    paidCents + discountCents !== originalCents ||
+    (discountCents > 0 && (transaction.amountPaid == null || !providerDiscountId))
   )
     throw new Error("Creem payment evidence is invalid");
   const start = Date.parse(subscription.periodStart ?? "");
@@ -106,5 +118,14 @@ async function resolveCreemEvent(type: BillingEvent["type"], id: string, at: str
     (transaction.periodEnd !== undefined && transaction.periodEnd !== end)
   )
     throw new Error("Creem paid billing period is invalid");
-  return { ...base, type, amount: (paidCents / 100).toFixed(2), currencyCode: transaction.currency, paidAt: new Date(paidAt).toISOString() };
+  return {
+    ...base,
+    type,
+    amount: (paidCents / 100).toFixed(2),
+    originalAmount: (originalCents / 100).toFixed(2),
+    discountAmount: (discountCents / 100).toFixed(2),
+    providerDiscountId,
+    currencyCode: transaction.currency,
+    paidAt: new Date(paidAt).toISOString(),
+  };
 }

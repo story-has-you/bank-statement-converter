@@ -15,6 +15,9 @@ export type BillingSubscription = {
   provider_plan_id: string;
   status: SubscriptionStatus;
   amount: number | null;
+  original_amount: number | null;
+  discount_amount: number | null;
+  provider_discount_id: string | null;
   currency_code: string | null;
   payer_id: string | null;
   subscriber_email: string | null;
@@ -149,6 +152,9 @@ export type BillingActivation = {
   tier: MembershipTier;
   planId: string;
   amount: string;
+  originalAmount: string;
+  discountAmount: string;
+  providerDiscountId: string | null;
   currencyCode: string;
 };
 
@@ -173,6 +179,9 @@ export async function insertActivatedBillingSubscription(update: BillingActivati
       provider_plan_id: update.planId,
       status: update.status ?? "ACTIVE",
       amount: update.amount,
+      original_amount: update.originalAmount,
+      discount_amount: update.discountAmount,
+      provider_discount_id: update.providerDiscountId,
       currency_code: update.currencyCode,
       payer_id: update.payerId,
       subscriber_email: update.subscriberEmail,

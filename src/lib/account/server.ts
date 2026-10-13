@@ -22,6 +22,8 @@ export async function getAccountSnapshot(user: { id: string; email?: string }): 
       tier: record.tier,
       status: record.status,
       amount: record.amount,
+      originalAmount: record.original_amount ?? null,
+      discountAmount: record.discount_amount ?? null,
       currencyCode: record.currency_code,
       createdAt: record.created_at ?? null,
       periodStart: record.current_period_start,

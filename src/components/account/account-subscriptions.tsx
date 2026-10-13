@@ -47,6 +47,17 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
                   <TableCell className="font-medium">{plans(`plans.${subscription.tier}.name`)}</TableCell>
                   <TableCell className="tabular-nums">
                     {subscription.amount !== null && subscription.currencyCode ? format.number(subscription.amount, { style: "currency", currency: subscription.currencyCode }) : t("notAvailable")}
+                    {subscription.discountAmount !== null && subscription.discountAmount > 0 && subscription.originalAmount !== null && subscription.currencyCode && (
+                      <div className="flex flex-col items-start gap-1">
+                        <Badge variant="outline">{t("subscriptions.coupon")}</Badge>
+                        <span className="text-xs text-muted-foreground">
+                          {t("subscriptions.originalAmount", { amount: format.number(subscription.originalAmount, { style: "currency", currency: subscription.currencyCode }) })}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {t("subscriptions.discountAmount", { amount: format.number(subscription.discountAmount, { style: "currency", currency: subscription.currencyCode }) })}
+                        </span>
+                      </div>
+                    )}
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary">{t(`statuses.${subscription.status}`)}</Badge>
