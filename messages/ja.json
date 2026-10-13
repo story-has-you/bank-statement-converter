@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "銀行明細変換 | PDFをExcelへ",
-    "description": "銀行明細PDFをExcelに変換し、生成中のプレビューとリスク表示で確認できます。ProfessionalとEnterpriseはAIへの切り替えでスキャンの変換を試せます。ファイル履歴は永続保存しません。",
+    "title": "StatementXL | 銀行明細 PDF を Excel に変換",
+    "description": "StatementXL: 銀行明細PDFをExcelに変換し、生成中のプレビューとリスク表示で確認できます。ProfessionalとEnterpriseはAIへの切り替えでスキャンの変換を試せます。ファイル履歴は永続保存しません。",
     "keywords": "銀行明細変換, 銀行明細 PDF Excel, PDF Excel 変換, 銀行取引抽出, AI銀行明細解析, スキャン銀行明細PDFからExcel",
-    "brand": "銀行明細変換",
+    "brand": "StatementXL",
     "alternateName": "銀行明細PDFからExcelへの変換"
   },
   "HomeHeader": {
-    "brand": "銀行明細変換",
+    "brand": "StatementXL",
     "navigation": "メインナビゲーション",
     "convert": "変換",
     "features": "機能",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "ログイン未完了 | 銀行明細変換",
+      "title": "ログイン未完了 | StatementXL",
       "description": "Googleログインを完了できませんでした。"
     },
     "title": "ログインが完了しませんでした",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "変換結果 | 銀行明細変換",
+      "title": "変換結果 | StatementXL",
       "description": "銀行明細 PDF の抽出結果とリスク表示を確認し、Excel、CSV、JSON、Markdown、TSV、HTML でダウンロードできます。"
     },
     "eyebrow": "変換結果",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "銀行明細変換",
+    "brand": "StatementXL",
     "navigation": "フッターナビゲーション",
     "plans": "プラン",
     "faq": "よくある質問",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "利用規約 | 銀行明細変換",
-      "description": "Bank Statement Converter のファイル処理、利用枠、Creem サブスクリプション、返金方針、利用者の責任について。"
+      "title": "利用規約 | StatementXL",
+      "description": "StatementXL のファイル処理、利用枠、Creem サブスクリプション、返金方針、利用者の責任について。"
     },
     "title": "利用規約",
     "intro": "本サービスはReAvid Ltdが運営し、<site>{domain}</site>で提供します。変換と購読サービスを使う前に、この規約とプライバシーポリシーをご確認ください。",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "プライバシーポリシー | 銀行明細変換",
+      "title": "プライバシーポリシー | StatementXL",
       "description": "銀行明細、AI解析、ブラウザーの一時結果、アカウント、解析運用、利用枠、請求情報の取り扱いを説明します。"
     },
     "title": "プライバシーポリシー",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "要点",
-    "conversionSummary": "Bank Statement Converterは銀行明細PDFを確認用Excelに変換します。ProfessionalとEnterpriseはAIへの切り替えでスキャンPDFの変換を試せます。",
+    "conversionSummary": "StatementXLは銀行明細PDFを確認用Excelに変換します。ProfessionalとEnterpriseはAIへの切り替えでスキャンPDFの変換を試せます。",
     "limitsSummary": "一度に{megabytes} MB、{pages}ページ以内の銀行明細PDFを1件アップロードできます。未ログイン、無料、Standardでは文字層が必要です。ProfessionalとEnterpriseはスキャンの変換を試せます。どのプランもパスワード付きファイルは非対応です。",
     "quotaSummary": "匿名では毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページを変換できます。月額プランは {price} 米ドルからです。",
     "privacySummary": "本サイトはPDF、Excel、取引明細を永続的な履歴として保存しません。上位プランでAIに切り替える際はPDFをAI解析サービス提供者に送信します。結果は元のPDFと照合してください。",
@@ -592,8 +592,8 @@
     "faqLabel": "よくある質問",
     "siteLabel": "サイト案内",
     "languagesLabel": "他の言語",
-    "chatDescription": "公式資料をもとに AI アシスタントに Bank Statement Converter について質問できます。",
-    "prompt": "Bank Statement Converter の公式資料 {fullUrl} にアクセスしてください。詳細が必要なら {indexUrl} を読み、関連文書を参照してください。{language}で機能、手順、ファイル制限、データの扱い、無料枠、購読料金を説明し、出典リンクを示してください。資料にアクセスできない場合や記載がない場合は明示し、推測しないでください。",
+    "chatDescription": "公式資料をもとに AI アシスタントに StatementXL について質問できます。",
+    "prompt": "StatementXL の公式資料 {fullUrl} にアクセスしてください。詳細が必要なら {indexUrl} を読み、関連文書を参照してください。{language}で機能、手順、ファイル制限、データの扱い、無料枠、購読料金を説明し、出典リンクを示してください。資料にアクセスできない場合や記載がない場合は明示し、推測しないでください。",
     "showPrompt": "既定のプロンプトを見る",
     "metadataAnswer": "サービス運営に必要なアカウント、利用枠、請求のメタデータは保持されます。アカウントと Creem で購読情報を確認・管理してください。",
     "analyticsAnswer": "Google Analytics と Pageview はアクセスに関する技術情報を処理する場合があります。銀行明細、抽出された取引、Excel の内容はこれらの分析サービスに送信しません。",
@@ -614,5 +614,61 @@
     "invalidReturn": "決済からの戻りリンクが無効です。",
     "retry": "再確認",
     "account": "アカウントを開く"
+  },
+  "Landing": {
+    "relatedTitle": "銀行明細の変換ガイド",
+    "relatedDescription": "銀行ごとの PDF ダウンロード方法や変換手順をご覧ください。すべての明細レイアウトに対応することを保証するものではありません。",
+    "homeLabel": "StatementXL のホームへ",
+    "stepsTitle": "3 ステップで明細を変換",
+    "uploadTitle": "PDF をアップロード",
+    "uploadText": "元の明細 PDF を 1 件アップロードできます。上限は {megabytes} MB、{pages} ページです。未ログイン、無料、Standard プランではテキスト層が必要です。パスワード保護された PDF は利用できません。",
+    "reviewTitle": "抽出された取引を確認",
+    "downloadTitle": "結果をダウンロード",
+    "downloadText": "Excel のほか、CSV、JSON、Markdown、TSV、HTML を選べます。CSV と TSV は表ごとにファイルを作成し、リスクと出典の項目を含みます。会計ソフトへの取り込み前に列を調整してください。QBO や Xero 専用ファイルではありません。",
+    "availabilityTitle": "{bank} の明細は何年前まで取得できますか？",
+    "bankDownloadTitle": "{bank} の明細 PDF をダウンロードする方法",
+    "historyQuestion": "{bank} の過去の明細はいつまで取得できますか？",
+    "formatsQuestion": "Excel 以外の形式でダウンロードできますか？",
+    "sourcesTitle": "銀行の公式資料",
+    "updated": "情報確認日：{date}",
+    "disclaimer": "{bank} の商標は権利者に帰属します。StatementXL は当該銀行と提携していません。このガイドは明細の取得と確認を説明するもので、すべてのレイアウトの変換を保証しません。",
+    "pages": {
+      "pdf": {
+        "label": "銀行明細 PDF から Excel へ",
+        "title": "銀行明細 PDF を Excel に変換",
+        "intro": "StatementXL で銀行明細 PDF から取引を抽出し、原本とプレビューを照合して、リスク表示付きの Excel をダウンロードできます。未ログインなら 1 日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページまで無料です。確認用に原本を保管してください。"
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase 明細を Excel に変換",
+        "title": "Chase の銀行明細を Excel に変換",
+        "intro": "Chase の明細 PDF を保存し、StatementXL にアップロードして取引を確認後、Excel をダウンロードできます。未ログインなら 1 日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページまで無料です。必ず原本と照合してください。",
+        "availability": "Chase では口座の種類により、最長 7 年分の明細を取得できます。Statements & documents で利用可能な年を確認してください。すべての口座に 7 年分の記録があるとは限りません。",
+        "download": "chase.com にログインし、Main Menu から Statements & documents を開きます。年と口座を選び、明細の横の Open または Save を選択します。スクリーンショットではなく元の PDF を保存してください。",
+        "detailsTitle": "Chase Mobile と取引履歴のダウンロード",
+        "details": "Chase Mobile の Profile & Settings を開き、Document manager 内の Statements & documents、次に Statements を選びます。口座、年、明細を選択して PDF を開きます。\n\n口座の取引履歴のダウンロードと月次の PDF 明細は別の資料です。利用可能な期間と形式は、銀行が現在提供する選択肢を確認してください。"
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank of America 明細を Excel に変換",
+        "title": "Bank of America の明細を Excel に変換",
+        "intro": "Bank of America の明細 PDF を StatementXL にアップロードし、取引を確認して Excel をダウンロードできます。未ログインなら 1 日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページまで無料です。取り寄せた古い明細は早めに保存してください。",
+        "availability": "小切手画像付きの明細は、最長 18 か月分を直接表示、印刷、ダウンロードできます。それ以前のコピーは最長 7 年前まで請求できます。クレジットカードは口座ごとの提供期間を確認してください。",
+        "download": "Online Banking にログインし、Accounts タブの Statements & Documents を開きます。口座と期間を選び、PDF を表示して保存します。古いコピーは同じ場所の Request statements から請求できます。",
+        "detailsTitle": "Bank of America の古い明細を取り寄せる",
+        "details": "電子明細のコピーは無料で、通常は請求後 24～36 時間で利用でき、7 日間アクセスできます。利用可能になったら保存してください。\n\n紙のコピーは通常、請求後 7～10 営業日で発送されます。電子 PDF を優先してください。紙はスキャンが必要で、AI によるスキャン処理を試せるのは Professional と Enterprise のみです。"
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells Fargo 明細を Excel に変換",
+        "title": "Wells Fargo の明細を Excel に変換",
+        "intro": "Wells Fargo の明細 PDF を保存し、StatementXL で取引とリスク表示を確認して Excel をダウンロードできます。未ログインなら 1 日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページまで無料です。口座の種類に応じて明細を早めに保存してください。",
+        "availability": "預金、住宅ローン、信託、運用管理口座は最長 7 年、クレジットカード、住宅担保信用枠、個人ローンと信用枠は最長 2 年、自動車ローンは最長 12 か月です。口座閉鎖後も約 90 日間利用できる場合があります。",
+        "download": "Wells Fargo Online にログインし、Statements & Documents を開きます。口座と利用可能な期間を選び、PDF を開いて分かりやすい名前で保存します。閉鎖した口座の資料が表示されない場合は、銀行にコピーを依頼してください。",
+        "detailsTitle": "Wells Fargo の事業用口座とカード明細",
+        "details": "Business Online では対象の事業用口座の資料を取得できます。最長 7 年という期間も商品別の制限に従い、すべての事業用明細が 7 年間保存されるわけではありません。\n\nクレジットカード明細は最長 2 年間提供されます。期限が過ぎる前に保存してください。"
+      }
+    },
+    "breadcrumbLabel": "パンくずリスト"
   }
 }

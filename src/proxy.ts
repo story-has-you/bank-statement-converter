@@ -4,6 +4,7 @@ import { hasLocale } from "next-intl";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
+import { conversionPages } from "./config/conversion-pages";
 import { getSupabaseConfig } from "./lib/supabase/config";
 import { getAgentDocumentUrl } from "./lib/geo/links";
 
@@ -15,9 +16,10 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
   const locale = hasLocale(routing.locales, firstSegment) ? firstSegment : routing.defaultLocale;
   if (locale === firstSegment) segments.shift();
   const path = segments.join("/");
-  if (!["", "privacy", "terms"].includes(path)) return response;
+  const isConversionPage = conversionPages.some((page) => page.path === `/${path}`);
+  if (!["", "privacy", "terms"].includes(path) && !isConversionPage) return response;
   const links = [`<${getAgentDocumentUrl(locale, "llms.txt")}>; rel="describedby"`];
-  if (path !== "terms") {
+  if (["", "privacy"].includes(path)) {
     links.push(`<${getAgentDocumentUrl(locale, path === "privacy" ? "privacy.md" : "index.md")}>; rel="alternate"; type="text/markdown"`);
   }
   response.headers.append("Link", links.join(", "));

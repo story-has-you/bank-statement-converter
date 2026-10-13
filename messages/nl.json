@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Bank Statement Converter | PDF naar Excel",
-    "description": "Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis.",
+    "title": "StatementXL | Bankafschriften van PDF naar Excel",
+    "description": "StatementXL: Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis.",
     "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen, AI bankafschriften analyseren, gescande bankafschrift PDF naar Excel",
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "alternateName": "Converter voor bankafschriften van PDF naar Excel"
   },
   "HomeHeader": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Hoofdnavigatie",
     "convert": "Converteren",
     "features": "Functies",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "Inloggen niet voltooid | Bank Statement Converter",
+      "title": "Inloggen niet voltooid | StatementXL",
       "description": "Het aanmelden met Google kon niet worden voltooid."
     },
     "title": "Inloggen niet voltooid",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "Conversieresultaat | Bank Statement Converter",
+      "title": "Conversieresultaat | StatementXL",
       "description": "Controleer de geëxtraheerde bankafschriftregels en risico’s en download het resultaat als Excel, CSV, JSON, Markdown, TSV of HTML."
     },
     "eyebrow": "Conversieresultaat",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Navigatie in voettekst",
     "plans": "Abonnementen",
     "faq": "Veelgestelde vragen",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "Gebruiksvoorwaarden | Bank Statement Converter",
-      "description": "Lees hoe Bank Statement Converter omgaat met bestanden, quota, Creem-abonnementen, terugbetalingen en gebruikersverantwoordelijkheden."
+      "title": "Gebruiksvoorwaarden | StatementXL",
+      "description": "Lees hoe StatementXL omgaat met bestanden, quota, Creem-abonnementen, terugbetalingen en gebruikersverantwoordelijkheden."
     },
     "title": "Gebruiksvoorwaarden",
     "intro": "ReAvid Ltd beheert deze dienst via <site>{domain}</site>. Lees deze voorwaarden en het privacybeleid voordat je de conversie en abonnementen gebruikt.",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "Privacybeleid | Bank Statement Converter",
+      "title": "Privacybeleid | StatementXL",
       "description": "Verwerking van bankafschriften, AI-analyse, tijdelijke browserresultaten en gegevens over accounts, analysebeheer, quota en facturering."
     },
     "title": "Privacybeleid",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "In één oogopslag",
-    "conversionSummary": "Bank Statement Converter zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren.",
+    "conversionSummary": "StatementXL zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren.",
     "limitsSummary": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
     "privacySummary": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
@@ -592,8 +592,8 @@
     "faqLabel": "Vragen en antwoorden",
     "siteLabel": "Websitenavigatie",
     "languagesLabel": "Andere talen",
-    "chatDescription": "Vraag een AI-assistent naar Bank Statement Converter met onze officiële bronnen.",
-    "prompt": "Bezoek de officiële informatie van Bank Statement Converter: {fullUrl}. Lees zo nodig {indexUrl} en volg relevante documentlinks. Antwoord in {language}: leg functies, stappen, bestandslimieten, gegevensverwerking, gratis quota en abonnementsprijzen uit met bronlinks. Als een bron niet bereikbaar is of geen antwoord bevat, zeg dit duidelijk en gok niet.",
+    "chatDescription": "Vraag een AI-assistent naar StatementXL met onze officiële bronnen.",
+    "prompt": "Bezoek de officiële informatie van StatementXL: {fullUrl}. Lees zo nodig {indexUrl} en volg relevante documentlinks. Antwoord in {language}: leg functies, stappen, bestandslimieten, gegevensverwerking, gratis quota en abonnementsprijzen uit met bronlinks. Als een bron niet bereikbaar is of geen antwoord bevat, zeg dit duidelijk en gok niet.",
     "showPrompt": "Standaardprompt bekijken",
     "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en Creem.",
     "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden.",
@@ -614,5 +614,61 @@
     "invalidReturn": "Deze terugkeerlink is ongeldig.",
     "retry": "Opnieuw controleren",
     "account": "Uw account openen"
+  },
+  "Landing": {
+    "relatedTitle": "Handleidingen voor bankafschriften",
+    "relatedDescription": "Bekijk hoe u de PDF van uw bank downloadt en omzet. Deze handleidingen garanderen geen ondersteuning voor alle afschriftindelingen.",
+    "homeLabel": "Terug naar StatementXL",
+    "stepsTitle": "Een afschrift omzetten in drie stappen",
+    "uploadTitle": "Upload uw PDF",
+    "uploadText": "Upload één oorspronkelijk PDF-afschrift van maximaal {megabytes} MB en {pages} pagina's. Zonder aanmelding en bij het gratis en Standard-abonnement is een tekstlaag nodig. Bestanden met wachtwoordbeveiliging worden niet ondersteund.",
+    "reviewTitle": "Controleer de uitgelezen transacties",
+    "downloadTitle": "Download de resultaten",
+    "downloadText": "Download Excel of kies CSV, JSON, Markdown, TSV of HTML. CSV en TSV leveren één bestand per tabel, met risico- en bronvelden. Pas de kolommen aan uw boekhoudsoftware aan voordat u importeert; dit zijn geen speciale QBO- of Xero-bestanden.",
+    "availabilityTitle": "Hoe ver gaan afschriften van {bank} terug?",
+    "bankDownloadTitle": "Een PDF-afschrift van {bank} downloaden",
+    "historyQuestion": "Welke oude afschriften kan ik bij {bank} downloaden?",
+    "formatsQuestion": "Kan ik andere formaten dan Excel downloaden?",
+    "sourcesTitle": "Officiële bronnen",
+    "updated": "Informatie gecontroleerd op: {date}",
+    "disclaimer": "{bank} is een handelsmerk van de rechthebbende. StatementXL is niet verbonden aan de bank. Deze handleiding helpt bij het ophalen en controleren van afschriften en garandeert niet dat elke indeling kan worden omgezet.",
+    "pages": {
+      "pdf": {
+        "label": "Bankafschrift van PDF naar Excel",
+        "title": "Zet een PDF-bankafschrift om naar Excel",
+        "intro": "Lees transacties uit uw PDF-bankafschrift met StatementXL, vergelijk de voorvertoning met het origineel en download Excel met risicomarkeringen. Zonder aanmelding kunt u dagelijks {anonymousPages} pagina gratis omzetten, na aanmelding {authenticatedPages} pagina's. Bewaar het origineel ter controle."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase-afschrift naar Excel",
+        "title": "Zet een Chase-bankafschrift om naar Excel",
+        "intro": "Download uw Chase-afschrift als PDF en upload het naar StatementXL om transacties te controleren en Excel te downloaden. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Vergelijk de resultaten met het origineel.",
+        "availability": "Chase biedt afhankelijk van het rekeningtype tot zeven jaar aan afschriften. Controleer de beschikbare jaren in Statements & documents; niet elke rekening bevat zeven volledige jaren.",
+        "download": "Meld u aan op chase.com en open Main Menu, daarna Statements & documents. Kies jaar en rekening en klik op Open of Save naast het afschrift. Bewaar de oorspronkelijke PDF in plaats van een schermafbeelding.",
+        "detailsTitle": "Chase Mobile en transactiedownloads",
+        "details": "Open in Chase Mobile Profile & Settings, kies Statements & documents onder Document manager en daarna Statements. Kies rekening, jaar en afschrift om de PDF te openen.\n\nEen download van rekeningactiviteit verschilt van een maandelijks PDF-afschrift. Controleer bij de bank welke exportformaten en datumbereiken beschikbaar zijn."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank of America-afschrift naar Excel",
+        "title": "Zet een Bank of America-afschrift om naar Excel",
+        "intro": "Upload uw PDF-afschrift van Bank of America naar StatementXL, controleer de transacties en download Excel. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Bewaar aangevraagde oudere afschriften tijdig.",
+        "availability": "Afschriften met chequeafbeeldingen zijn tot 18 maanden rechtstreeks te bekijken, af te drukken en te downloaden. Oudere kopieën kunt u tot zeven jaar terug aanvragen. Controleer de beschikbaarheid voor uw creditcardrekening afzonderlijk.",
+        "download": "Meld u aan bij Online Banking en open Statements & Documents onder Accounts. Kies rekening en periode, open de PDF en sla deze op. Voor oudere kopieën kiest u daar Request statements.",
+        "detailsTitle": "Oudere Bank of America-afschriften aanvragen",
+        "details": "Elektronische kopieën zijn gratis, meestal na 24–36 uur beschikbaar en zeven dagen toegankelijk. Sla ze zo snel mogelijk op.\n\nPapieren kopieën worden doorgaans 7–10 werkdagen na de aanvraag verzonden. Geef de voorkeur aan de elektronische PDF: papier moet worden gescand en alleen Professional en Enterprise kunnen scans proberen te verwerken met de AI-terugvaloptie."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells Fargo-afschrift naar Excel",
+        "title": "Zet een Wells Fargo-afschrift om naar Excel",
+        "intro": "Bewaar uw Wells Fargo-afschrift als PDF, controleer transacties en risicomarkeringen in StatementXL en download Excel. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. De beschikbaarheid hangt af van het rekeningtype.",
+        "availability": "Tot zeven jaar voor deposito-, hypotheek-, trust- en beheerde beleggingsrekeningen; tot twee jaar voor creditcards, kredietlijnen op woningwaarde, persoonlijke leningen en kredietlijnen; tot twaalf maanden voor autoleningen. Na sluiting kunnen afschriften nog ongeveer negentig dagen beschikbaar blijven.",
+        "download": "Meld u aan bij Wells Fargo Online en open Statements & Documents. Kies rekening en beschikbare periode, open de PDF en sla deze op met een duidelijke naam. Vraag de bank om kopieën als documenten van een gesloten rekening niet online staan.",
+        "detailsTitle": "Zakelijke en creditcardafschriften van Wells Fargo",
+        "details": "Business Online biedt documenten voor in aanmerking komende zakelijke rekeningen. De genoemde zeven jaar blijven onderworpen aan productlimieten; niet alle zakelijke afschriften worden zo lang aangeboden.\n\nCreditcardafschriften zijn tot twee jaar beschikbaar. Sla ze op voordat die periode voorbij is."
+      }
+    },
+    "breadcrumbLabel": "Navigatiepad"
   }
 }

@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Bank Statement Converter | PDF para Excel",
-    "description": "Converta extratos PDF em Excel com prévia e alertas de risco. Professional e Enterprise podem tentar converter digitalizações com IA. Sem histórico permanente de arquivos.",
+    "title": "StatementXL | Extrato bancário de PDF para Excel",
+    "description": "StatementXL: Converta extratos PDF em Excel com prévia e alertas de risco. Professional e Enterprise podem tentar converter digitalizações com IA. Sem histórico permanente de arquivos.",
     "keywords": "Bank Statement Converter, extrato bancário PDF para Excel, conversor de PDF para Excel, extração de transações bancárias, análise IA extratos bancários, extrato bancário PDF digitalizado para Excel",
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "alternateName": "Conversor de extratos bancários de PDF para Excel"
   },
   "HomeHeader": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Navegação principal",
     "convert": "Converter",
     "features": "Recursos",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "Login não concluído | Bank Statement Converter",
+      "title": "Login não concluído | StatementXL",
       "description": "Não foi possível concluir o login com o Google."
     },
     "title": "Login não concluído",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "Resultado da conversão | Bank Statement Converter",
+      "title": "Resultado da conversão | StatementXL",
       "description": "Confira as linhas extraídas do extrato bancário e os riscos e baixe o resultado em Excel, CSV, JSON, Markdown, TSV ou HTML."
     },
     "eyebrow": "Resultado da conversão",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Navegação do rodapé",
     "plans": "Planos",
     "faq": "Perguntas frequentes",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "Termos de serviço | Bank Statement Converter",
-      "description": "Saiba como o Bank Statement Converter trata arquivos, cotas, assinaturas Creem, reembolsos e responsabilidades do usuário."
+      "title": "Termos de serviço | StatementXL",
+      "description": "Saiba como o StatementXL trata arquivos, cotas, assinaturas Creem, reembolsos e responsabilidades do usuário."
     },
     "title": "Termos de serviço",
     "intro": "A ReAvid Ltd opera este serviço em <site>{domain}</site>. Leia estes termos e a política de privacidade antes de usar a conversão e as assinaturas.",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "Política de privacidade | Bank Statement Converter",
+      "title": "Política de privacidade | StatementXL",
       "description": "Tratamento de extratos, análise com IA, resultados temporários no navegador e dados de conta, operação da análise, cota e cobrança."
     },
     "title": "Política de privacidade",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "Informações principais",
-    "conversionSummary": "Bank Statement Converter transforma extratos bancários PDF em Excel para revisão. Professional e Enterprise podem tentar converter PDFs digitalizados com o recurso de IA.",
+    "conversionSummary": "StatementXL transforma extratos bancários PDF em Excel para revisão. Professional e Enterprise podem tentar converter PDFs digitalizados com o recurso de IA.",
     "limitsSummary": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
     "quotaSummary": "Converta {anonymousPages} página por dia sem entrar ou {authenticatedPages} páginas com login; os planos mensais começam em {price} USD.",
     "privacySummary": "Este site não mantém um histórico permanente de PDFs, Excel ou transações. O recurso de IA dos planos superiores envia o PDF ao provedor de análise com IA. Confira os resultados com o original.",
@@ -592,8 +592,8 @@
     "faqLabel": "Perguntas e respostas",
     "siteLabel": "Navegação do site",
     "languagesLabel": "Outros idiomas",
-    "chatDescription": "Pergunte a um assistente de IA sobre Bank Statement Converter usando nossas fontes oficiais.",
-    "prompt": "Visite as informações oficiais de Bank Statement Converter: {fullUrl}. Se precisar de detalhes, leia {indexUrl} e siga os links relevantes. Responda em {language}: explique funções, etapas, limites de arquivos, tratamento de dados, cotas gratuitas e preços de assinatura, citando fontes. Se não conseguir acessar uma fonte ou ela não responder, diga isso e não adivinhe.",
+    "chatDescription": "Pergunte a um assistente de IA sobre StatementXL usando nossas fontes oficiais.",
+    "prompt": "Visite as informações oficiais de StatementXL: {fullUrl}. Se precisar de detalhes, leia {indexUrl} e siga os links relevantes. Responda em {language}: explique funções, etapas, limites de arquivos, tratamento de dados, cotas gratuitas e preços de assinatura, citando fontes. Se não conseguir acessar uma fonte ou ela não responder, diga isso e não adivinhe.",
     "showPrompt": "Ver o prompt padrão",
     "metadataAnswer": "Os metadados de conta, cota e cobrança necessários ao serviço são mantidos. Consulte e gerencie a assinatura na sua conta e no Creem.",
     "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços.",
@@ -614,5 +614,61 @@
     "invalidReturn": "Este link de retorno do pagamento é inválido.",
     "retry": "Verificar novamente",
     "account": "Abrir sua conta"
+  },
+  "Landing": {
+    "relatedTitle": "Guias de conversão de extratos bancários",
+    "relatedDescription": "Veja como baixar o PDF do seu banco e como fazer a conversão. Os guias não garantem suporte a todos os layouts de extrato.",
+    "homeLabel": "Voltar ao início do StatementXL",
+    "stepsTitle": "Converta um extrato em três etapas",
+    "uploadTitle": "Envie seu PDF",
+    "uploadText": "Envie um extrato PDF original com até {megabytes} MB e {pages} páginas. O uso anônimo e os planos gratuito e Standard exigem uma camada de texto. Arquivos protegidos por senha não são aceitos.",
+    "reviewTitle": "Confira as transações extraídas",
+    "downloadTitle": "Baixe os resultados",
+    "downloadText": "Baixe Excel ou escolha CSV, JSON, Markdown, TSV ou HTML. CSV e TSV geram um arquivo por tabela, com campos de risco e origem. Ajuste as colunas às exigências do seu software contábil antes de importar; não são arquivos específicos de QBO ou Xero.",
+    "availabilityTitle": "Até quando posso consultar extratos do {bank}?",
+    "bankDownloadTitle": "Como baixar um extrato PDF do {bank}",
+    "historyQuestion": "Quais extratos antigos posso baixar do {bank}?",
+    "formatsQuestion": "Posso baixar outros formatos além do Excel?",
+    "sourcesTitle": "Fontes oficiais",
+    "updated": "Informações conferidas em: {date}",
+    "disclaimer": "{bank} é uma marca de seu titular. O StatementXL não é afiliado ao banco. Este guia explica como obter e conferir extratos, sem garantir a conversão de todos os layouts.",
+    "pages": {
+      "pdf": {
+        "label": "Extrato bancário de PDF para Excel",
+        "title": "Converta um extrato bancário PDF para Excel",
+        "intro": "Use o StatementXL para extrair transações do PDF, comparar a prévia com o original e baixar Excel com indicadores de risco. Converta gratuitamente {anonymousPages} página por dia sem entrar na conta ou {authenticatedPages} páginas após entrar. Guarde o original para conferir os dados."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Extrato Chase para Excel",
+        "title": "Converta um extrato bancário Chase para Excel",
+        "intro": "Baixe o PDF do Chase e envie-o ao StatementXL para conferir as transações e baixar Excel. Você tem {anonymousPages} página gratuita por dia sem entrar na conta ou {authenticatedPages} páginas após entrar. Compare o resultado com o original.",
+        "availability": "O Chase oferece até sete anos de extratos, dependendo do tipo de conta. Confira os anos disponíveis em Statements & documents; nem todas as contas oferecem sete anos completos.",
+        "download": "Entre em chase.com, abra Main Menu e selecione Statements & documents. Escolha ano e conta e use Open ou Save ao lado do extrato. Salve o PDF original em vez de uma captura de tela.",
+        "detailsTitle": "Chase Mobile e download de transações",
+        "details": "No Chase Mobile, abra Profile & Settings, selecione Statements & documents em Document manager e depois Statements. Escolha conta, ano e extrato para abrir o PDF.\n\nO download da movimentação da conta é diferente do extrato mensal PDF. Confira as opções de exportação e os períodos atualmente oferecidos pelo banco."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Extrato Bank of America para Excel",
+        "title": "Converta um extrato Bank of America para Excel",
+        "intro": "Envie seu PDF do Bank of America ao StatementXL, confira as transações e baixe Excel. Você tem {anonymousPages} página gratuita por dia sem entrar na conta ou {authenticatedPages} páginas após entrar. Salve rapidamente os extratos antigos solicitados.",
+        "availability": "Você pode consultar, imprimir e baixar diretamente até 18 meses de extratos com imagens de cheques. Cópias anteriores podem ser solicitadas até sete anos atrás. Confira separadamente o período dos documentos da sua conta de cartão de crédito.",
+        "download": "Entre no Online Banking e abra Statements & Documents na guia Accounts. Escolha conta e período, abra o PDF e salve-o. Para cópias antigas, use Request statements no mesmo local.",
+        "detailsTitle": "Solicitar extratos antigos do Bank of America",
+        "details": "Cópias eletrônicas são gratuitas, normalmente ficam disponíveis 24–36 horas após a solicitação e podem ser acessadas por sete dias. Salve-as assim que estiverem disponíveis.\n\nCópias em papel normalmente são enviadas 7–10 dias úteis após a solicitação. Prefira o PDF eletrônico: o papel precisa ser digitalizado, e só Professional e Enterprise podem tentar processar digitalizações com o recurso à IA."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Extrato Wells Fargo para Excel",
+        "title": "Converta um extrato Wells Fargo para Excel",
+        "intro": "Salve o PDF do Wells Fargo, confira as transações e os indicadores de risco no StatementXL e baixe Excel. Você tem {anonymousPages} página gratuita por dia sem entrar na conta ou {authenticatedPages} páginas após entrar. A disponibilidade varia conforme o tipo de conta.",
+        "availability": "Até sete anos para contas de depósito, hipotecas, trusts e investimentos administrados; até dois anos para cartões de crédito, linhas com garantia de imóvel, empréstimos pessoais e linhas de crédito; até doze meses para financiamento de veículos. Após o encerramento, os extratos podem continuar disponíveis por cerca de noventa dias.",
+        "download": "Entre no Wells Fargo Online e abra Statements & Documents. Escolha conta e período disponível, abra o PDF e salve-o com um nome claro. Se os documentos de uma conta encerrada não estiverem online, peça cópias ao banco.",
+        "detailsTitle": "Extratos empresariais e cartões Wells Fargo",
+        "details": "O Business Online oferece documentos para contas empresariais elegíveis. O prazo anunciado de até sete anos depende dos limites de cada produto; ele não se aplica a todos os extratos empresariais.\n\nExtratos de cartão de crédito ficam disponíveis por até dois anos. Salve-os antes do fim desse período."
+      }
+    },
+    "breadcrumbLabel": "Caminho de navegação"
   }
 }

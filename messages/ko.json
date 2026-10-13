@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "은행 명세서 변환기 | PDF를 엑셀로",
-    "description": "은행 명세서 PDF를 Excel로 변환하고 미리보기와 위험 표시로 확인하세요. Professional과 Enterprise는 AI 자동 전환으로 스캔 변환을 시도할 수 있습니다. 파일 기록은 영구 저장하지 않습니다.",
+    "title": "StatementXL | 은행 명세서 PDF를 Excel로 변환",
+    "description": "StatementXL: 은행 명세서 PDF를 Excel로 변환하고 미리보기와 위험 표시로 확인하세요. Professional과 Enterprise는 AI 자동 전환으로 스캔 변환을 시도할 수 있습니다. 파일 기록은 영구 저장하지 않습니다.",
     "keywords": "은행 명세서 PDF Excel, PDF Excel 변환기, 은행 거래 추출, AI 은행 명세서 분석, 스캔 은행 명세서 PDF Excel 변환",
-    "brand": "은행 명세서 변환기",
+    "brand": "StatementXL",
     "alternateName": "은행 명세서 PDF를 Excel로 변환"
   },
   "HomeHeader": {
-    "brand": "은행 명세서 변환기",
+    "brand": "StatementXL",
     "navigation": "메인 네비게이션",
     "convert": "변환",
     "features": "기능",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "로그인이 완료되지 않았습니다 | 은행 명세서 변환기",
+      "title": "로그인이 완료되지 않았습니다 | StatementXL",
       "description": "Google 로그인을 완료하지 못했습니다."
     },
     "title": "로그인이 완료되지 않았습니다.",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "변환 결과 | 은행 명세서 변환기",
+      "title": "변환 결과 | StatementXL",
       "description": "은행 명세서 PDF의 추출 결과와 위험 표시를 확인한 후 Excel, CSV, JSON, Markdown, TSV 또는 HTML로 다운로드하세요."
     },
     "eyebrow": "변환 결과",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "은행 명세서 변환기",
+    "brand": "StatementXL",
     "navigation": "바닥글 탐색",
     "plans": "요금제",
     "faq": "FAQ",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "서비스 이용약관 | Bank Statement Converter",
-      "description": "Bank Statement Converter의 파일 처리, 할당량, Creem 구독, 환불 정책 및 사용자 책임을 확인하세요."
+      "title": "서비스 이용약관 | StatementXL",
+      "description": "StatementXL의 파일 처리, 할당량, Creem 구독, 환불 정책 및 사용자 책임을 확인하세요."
     },
     "title": "서비스 약관",
     "intro": "본 서비스는 ReAvid Ltd가 운영하며 <site>{domain}</site>를 통해 제공됩니다. 전환 및 구독 서비스를 이용하기 전에 본 약관과 개인정보 보호정책을 읽어보세요.",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "개인정보 보호정책 | 은행 명세서 변환기",
+      "title": "개인정보 보호정책 | StatementXL",
       "description": "은행 명세서, AI 분석, 브라우저 임시 결과 및 계정, 분석 운영, 사용량, 결제 정보의 처리 방식을 설명합니다."
     },
     "title": "개인 정보 보호 정책",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "핵심 요약",
-    "conversionSummary": "Bank Statement Converter는 은행 명세서 PDF를 검토용 Excel로 변환합니다. Professional과 Enterprise는 AI 자동 전환으로 스캔 PDF 변환을 시도할 수 있습니다.",
+    "conversionSummary": "StatementXL는 은행 명세서 PDF를 검토용 Excel로 변환합니다. Professional과 Enterprise는 AI 자동 전환으로 스캔 PDF 변환을 시도할 수 있습니다.",
     "limitsSummary": "한 번에 {megabytes} MB, {pages}페이지 이하의 은행 명세서 PDF 하나를 업로드할 수 있습니다. 비로그인, 무료 및 Standard 사용자는 텍스트 레이어가 필요합니다. Professional과 Enterprise는 스캔 변환을 시도할 수 있습니다. 모든 요금제에서 암호 보호 파일은 지원하지 않습니다.",
     "quotaSummary": "익명 사용자는 하루 {anonymousPages}페이지, 로그인 사용자는 {authenticatedPages}페이지를 변환할 수 있습니다. 월 구독은 {price} USD부터입니다.",
     "privacySummary": "이 사이트는 PDF, Excel 및 거래 내역을 영구 기록으로 저장하지 않습니다. 상위 요금제에서 AI로 전환할 때 PDF를 AI 분석 서비스 제공업체에 보냅니다. 결과는 원본 PDF와 대조하세요.",
@@ -592,8 +592,8 @@
     "faqLabel": "질문과 답변",
     "siteLabel": "사이트 안내",
     "languagesLabel": "다른 언어",
-    "chatDescription": "공식 자료를 사용하여 AI 도우미에게 Bank Statement Converter에 대해 물어보세요.",
-    "prompt": "Bank Statement Converter 공식 자료 {fullUrl}에 방문하세요. 자세한 정보가 필요하면 {indexUrl}을 읽고 관련 문서 링크를 따라가세요. {language}로 기능, 사용 단계, 파일 제한, 데이터 처리, 무료 한도, 구독 가격을 설명하고 출처 링크를 제시하세요. 자료에 접근할 수 없거나 답이 없으면 명시하고 추측하지 마세요.",
+    "chatDescription": "공식 자료를 사용하여 AI 도우미에게 StatementXL에 대해 물어보세요.",
+    "prompt": "StatementXL 공식 자료 {fullUrl}에 방문하세요. 자세한 정보가 필요하면 {indexUrl}을 읽고 관련 문서 링크를 따라가세요. {language}로 기능, 사용 단계, 파일 제한, 데이터 처리, 무료 한도, 구독 가격을 설명하고 출처 링크를 제시하세요. 자료에 접근할 수 없거나 답이 없으면 명시하고 추측하지 마세요.",
     "showPrompt": "기본 프롬프트 보기",
     "metadataAnswer": "서비스 운영에 필요한 계정, 한도, 결제 메타데이터를 보관합니다. 계정과 Creem에서 구독 정보를 확인하고 관리하세요.",
     "analyticsAnswer": "Google Analytics와 Pageview는 방문 관련 기술 정보를 처리할 수 있습니다. 은행 명세서, 추출 거래, Excel 내용은 이 분석 서비스에 보내지 않습니다.",
@@ -614,5 +614,61 @@
     "invalidReturn": "결제 반환 링크가 올바르지 않습니다.",
     "retry": "다시 확인",
     "account": "계정 보기"
+  },
+  "Landing": {
+    "relatedTitle": "은행 명세서 변환 안내",
+    "relatedDescription": "은행별 PDF 다운로드 방법과 전체 변환 과정을 확인하세요. 모든 명세서 양식의 변환을 보장하지는 않습니다.",
+    "homeLabel": "StatementXL 홈으로",
+    "stepsTitle": "세 단계로 명세서 변환",
+    "uploadTitle": "PDF 업로드",
+    "uploadText": "원본 명세서 PDF 한 개를 업로드하세요. 최대 {megabytes} MB, {pages}페이지입니다. 비로그인, 무료, Standard 요금제는 텍스트 레이어가 필요합니다. 암호로 보호된 파일은 지원하지 않습니다.",
+    "reviewTitle": "추출된 거래 확인",
+    "downloadTitle": "결과 다운로드",
+    "downloadText": "Excel 또는 CSV, JSON, Markdown, TSV, HTML로 다운로드할 수 있습니다. CSV와 TSV는 표마다 파일을 생성하며 위험 표시와 출처 필드를 포함합니다. 회계 프로그램에 가져오기 전에 열을 조정하세요. QBO 또는 Xero 전용 파일은 아닙니다.",
+    "availabilityTitle": "{bank} 명세서는 언제까지 조회할 수 있나요?",
+    "bankDownloadTitle": "{bank} 명세서 PDF 다운로드 방법",
+    "historyQuestion": "{bank}의 과거 명세서는 얼마나 오래 조회할 수 있나요?",
+    "formatsQuestion": "Excel 외에 다른 형식도 다운로드할 수 있나요?",
+    "sourcesTitle": "은행 공식 자료",
+    "updated": "정보 확인일: {date}",
+    "disclaimer": "{bank} 상표는 해당 권리자의 소유입니다. StatementXL은 해당 은행과 제휴하지 않습니다. 이 안내는 명세서 조회와 검토 방법을 설명하며 모든 양식의 변환을 보장하지 않습니다.",
+    "pages": {
+      "pdf": {
+        "label": "은행 명세서 PDF를 Excel로",
+        "title": "은행 명세서 PDF를 Excel로 변환",
+        "intro": "StatementXL로 은행 명세서 PDF의 거래를 추출하고 원본과 미리보기를 비교한 뒤 위험 표시가 포함된 Excel을 다운로드하세요. 비로그인 시 하루 {anonymousPages}페이지, 로그인 시 {authenticatedPages}페이지가 무료입니다. 검토를 위해 원본을 보관하세요."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase 명세서를 Excel로",
+        "title": "Chase 은행 명세서를 Excel로 변환",
+        "intro": "Chase 명세서 PDF를 다운로드하여 StatementXL에 업로드한 뒤 거래를 확인하고 Excel로 저장하세요. 비로그인 시 하루 {anonymousPages}페이지, 로그인 시 {authenticatedPages}페이지가 무료입니다. 사용 전에 원본과 대조하세요.",
+        "availability": "Chase는 계좌 유형에 따라 최대 7년의 명세서를 제공합니다. Statements & documents에서 조회 가능한 연도를 확인하세요. 모든 계좌에 7년의 기록이 제공되는 것은 아닙니다.",
+        "download": "chase.com에 로그인하고 Main Menu에서 Statements & documents를 선택하세요. 연도와 계좌를 선택한 다음 명세서 옆의 Open 또는 Save를 누르세요. 화면 캡처 대신 원본 PDF를 저장하세요.",
+        "detailsTitle": "Chase Mobile과 거래 내역 다운로드",
+        "details": "Chase Mobile의 Profile & Settings에서 Document manager 아래 Statements & documents를 열고 Statements를 선택하세요. 계좌, 연도, 명세서를 선택하면 PDF가 열립니다.\n\n계좌 거래 내역 다운로드와 월별 PDF 명세서는 서로 다른 자료입니다. 조회 기간과 형식은 은행에서 현재 제공하는 옵션을 확인하세요."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank of America 명세서를 Excel로",
+        "title": "Bank of America 명세서를 Excel로 변환",
+        "intro": "Bank of America 명세서 PDF를 StatementXL에 업로드하고 거래를 확인한 뒤 Excel로 저장하세요. 비로그인 시 하루 {anonymousPages}페이지, 로그인 시 {authenticatedPages}페이지가 무료입니다. 요청한 과거 명세서는 바로 다운로드하여 원본을 보관하세요.",
+        "availability": "수표 이미지가 포함된 명세서는 최대 최근 18개월까지 바로 조회, 인쇄, 다운로드할 수 있습니다. 이전 사본은 최대 7년 전까지 요청할 수 있습니다. 신용카드는 해당 계좌의 조회 기간을 별도로 확인하세요.",
+        "download": "Online Banking에 로그인하고 Accounts 탭에서 Statements & Documents를 열어 계좌와 기간을 선택하세요. PDF를 열어 저장합니다. 이전 사본은 같은 화면의 Request statements에서 요청하세요.",
+        "detailsTitle": "Bank of America 과거 명세서 요청",
+        "details": "전자 명세서 사본은 무료이며 보통 요청 후 24–36시간에 제공되고 7일간 조회할 수 있습니다. 제공되는 즉시 저장하세요.\n\n종이 사본은 보통 요청 후 7–10영업일에 발송됩니다. 전자 PDF를 우선 선택하세요. 종이는 스캔해야 하며 AI 대체 처리를 통해 스캔 파일을 시도할 수 있는 요금제는 Professional과 Enterprise뿐입니다."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells Fargo 명세서를 Excel로",
+        "title": "Wells Fargo 명세서를 Excel로 변환",
+        "intro": "Wells Fargo 명세서 PDF를 저장하고 StatementXL에서 거래와 위험 표시를 검토한 뒤 Excel을 다운로드하세요. 비로그인 시 하루 {anonymousPages}페이지, 로그인 시 {authenticatedPages}페이지가 무료입니다. 계좌 유형마다 조회 기간이 다르므로 필요한 파일을 미리 보관하세요.",
+        "availability": "예금, 주택 담보 대출, 신탁 및 관리 투자 계좌는 최대 7년, 신용카드, 주택 자산 신용 한도, 개인 대출과 신용 한도는 최대 2년, 자동차 대출은 최대 12개월입니다. 계좌를 해지한 뒤에도 약 90일간 조회할 수 있는 경우가 있습니다.",
+        "download": "Wells Fargo Online에 로그인하여 Statements & Documents에서 계좌와 조회 가능한 기간을 선택하세요. PDF를 열고 알아보기 쉬운 이름으로 저장하세요. 해지 계좌 자료가 온라인에 없으면 은행에 사본을 요청하세요.",
+        "detailsTitle": "Wells Fargo 기업 계좌 및 신용카드 명세서",
+        "details": "Business Online은 대상 기업 계좌의 자료를 제공합니다. 최대 7년이라는 안내에도 상품별 기간 제한이 적용되므로 모든 기업 명세서가 7년간 보관되는 것은 아닙니다.\n\n신용카드 명세서는 최대 2년간 조회할 수 있습니다. 기간이 끝나기 전에 저장하세요."
+      }
+    },
+    "breadcrumbLabel": "현재 위치"
   }
 }

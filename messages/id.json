@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Bank Statement Converter | PDF ke Excel",
-    "description": "Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI cadangan. Tanpa riwayat berkas permanen.",
+    "title": "StatementXL | Rekening koran PDF ke Excel",
+    "description": "StatementXL: Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI cadangan. Tanpa riwayat berkas permanen.",
     "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank, analisis AI rekening koran, PDF rekening koran hasil pindai ke Excel",
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "alternateName": "Konverter rekening koran PDF ke Excel"
   },
   "HomeHeader": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Navigasi utama",
     "convert": "Konversi",
     "features": "Fitur",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "Login belum selesai | Bank Statement Converter",
+      "title": "Login belum selesai | StatementXL",
       "description": "Login Google tidak dapat diselesaikan."
     },
     "title": "Login belum selesai",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "Hasil konversi | Bank Statement Converter",
+      "title": "Hasil konversi | StatementXL",
       "description": "Periksa baris hasil ekstraksi dan penanda risiko, lalu unduh hasil dalam format Excel, CSV, JSON, Markdown, TSV, atau HTML."
     },
     "eyebrow": "Hasil konversi",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Navigasi footer",
     "plans": "Paket",
     "faq": "Pertanyaan umum",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "Ketentuan layanan | Bank Statement Converter",
-      "description": "Pelajari cara Bank Statement Converter menangani file, kuota, langganan Creem, pengembalian dana, dan tanggung jawab pengguna."
+      "title": "Ketentuan layanan | StatementXL",
+      "description": "Pelajari cara StatementXL menangani file, kuota, langganan Creem, pengembalian dana, dan tanggung jawab pengguna."
     },
     "title": "Ketentuan layanan",
     "intro": "Layanan ini dikelola ReAvid Ltd melalui <site>{domain}</site>. Baca ketentuan ini dan kebijakan privasi sebelum menggunakan konversi dan langganan.",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "Kebijakan privasi | Bank Statement Converter",
+      "title": "Kebijakan privasi | StatementXL",
       "description": "Pemrosesan rekening koran, penguraian AI, hasil sementara di browser, serta data akun, operasional penguraian, kuota, dan penagihan."
     },
     "title": "Kebijakan privasi",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "Ringkasan utama",
-    "conversionSummary": "Bank Statement Converter mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI cadangan.",
+    "conversionSummary": "StatementXL mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI cadangan.",
     "limitsSummary": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "quotaSummary": "Konversikan {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk; paket bulanan mulai {price} USD.",
     "privacySummary": "Situs ini tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Saat paket tingkat atas beralih ke AI, PDF dikirim ke penyedia penguraian AI. Periksa hasil dengan PDF asli.",
@@ -592,8 +592,8 @@
     "faqLabel": "Pertanyaan dan jawaban",
     "siteLabel": "Navigasi situs",
     "languagesLabel": "Bahasa lainnya",
-    "chatDescription": "Tanyakan Bank Statement Converter kepada asisten AI menggunakan sumber resmi kami.",
-    "prompt": "Kunjungi informasi resmi Bank Statement Converter: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
+    "chatDescription": "Tanyakan StatementXL kepada asisten AI menggunakan sumber resmi kami.",
+    "prompt": "Kunjungi informasi resmi StatementXL: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
     "showPrompt": "Lihat prompt bawaan",
     "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan Creem.",
     "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
@@ -614,5 +614,61 @@
     "invalidReturn": "Tautan kembali pembayaran ini tidak valid.",
     "retry": "Periksa lagi",
     "account": "Buka akun Anda"
+  },
+  "Landing": {
+    "relatedTitle": "Panduan konversi rekening koran",
+    "relatedDescription": "Lihat cara mengunduh PDF dari bank Anda dan langkah konversinya. Panduan ini tidak menjamin dukungan untuk semua tata letak rekening koran.",
+    "homeLabel": "Kembali ke beranda StatementXL",
+    "stepsTitle": "Konversi rekening koran dalam tiga langkah",
+    "uploadTitle": "Unggah PDF Anda",
+    "uploadText": "Unggah satu PDF rekening koran asli, maksimal {megabytes} MB dan {pages} halaman. Pengguna anonim serta paket gratis dan Standard memerlukan lapisan teks. File yang dilindungi kata sandi tidak didukung.",
+    "reviewTitle": "Periksa transaksi yang diekstrak",
+    "downloadTitle": "Unduh hasil",
+    "downloadText": "Unduh Excel atau pilih CSV, JSON, Markdown, TSV, atau HTML. CSV dan TSV menghasilkan satu file per tabel dengan kolom risiko dan sumber. Sesuaikan kolom dengan kebutuhan perangkat lunak akuntansi sebelum mengimpor; file ini bukan format khusus QBO atau Xero.",
+    "availabilityTitle": "Seberapa lama rekening koran {bank} tersedia?",
+    "bankDownloadTitle": "Cara mengunduh rekening koran PDF {bank}",
+    "historyQuestion": "Seberapa lama rekening koran {bank} dapat diunduh?",
+    "formatsQuestion": "Bisakah saya mengunduh format selain Excel?",
+    "sourcesTitle": "Sumber resmi",
+    "updated": "Informasi diperiksa: {date}",
+    "disclaimer": "{bank} adalah merek dagang milik pemegang haknya. StatementXL tidak berafiliasi dengan bank tersebut. Panduan ini menjelaskan cara memperoleh dan memeriksa rekening koran, tanpa menjamin konversi semua tata letak.",
+    "pages": {
+      "pdf": {
+        "label": "Rekening koran PDF ke Excel",
+        "title": "Konversi rekening koran PDF ke Excel",
+        "intro": "Gunakan StatementXL untuk mengekstrak transaksi dari PDF, membandingkan pratinjau dengan dokumen asli, dan mengunduh Excel dengan penanda risiko. Konversi gratis {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Simpan dokumen asli untuk pemeriksaan."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Rekening koran Chase ke Excel",
+        "title": "Konversi rekening koran Chase ke Excel",
+        "intro": "Unduh PDF rekening koran Chase dan unggah ke StatementXL untuk memeriksa transaksi serta mengunduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Cocokkan hasil dengan dokumen asli.",
+        "availability": "Chase menyediakan rekening koran hingga tujuh tahun, tergantung jenis rekening. Periksa tahun yang tersedia di Statements & documents; tidak semua rekening memiliki tujuh tahun penuh.",
+        "download": "Masuk ke chase.com, buka Main Menu lalu Statements & documents. Pilih tahun dan rekening, lalu ikon Open atau Save di samping rekening koran. Simpan PDF asli, bukan tangkapan layar.",
+        "detailsTitle": "Chase Mobile dan unduhan transaksi",
+        "details": "Di Chase Mobile, buka Profile & Settings, pilih Statements & documents di bawah Document manager, lalu Statements. Pilih rekening, tahun, dan rekening koran untuk membuka PDF.\n\nUnduhan aktivitas rekening berbeda dari rekening koran bulanan PDF. Periksa format ekspor dan rentang tanggal yang saat ini ditawarkan bank."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Rekening koran Bank of America ke Excel",
+        "title": "Konversi rekening koran Bank of America ke Excel",
+        "intro": "Unggah PDF Bank of America ke StatementXL, periksa transaksi, dan unduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Segera simpan rekening koran lama yang diminta.",
+        "availability": "Rekening koran dengan gambar cek dapat dilihat, dicetak, dan diunduh langsung hingga 18 bulan terakhir. Salinan yang lebih lama dapat diminta hingga tujuh tahun ke belakang. Periksa ketersediaan dokumen rekening kartu kredit secara terpisah.",
+        "download": "Masuk ke Online Banking dan buka Statements & Documents di tab Accounts. Pilih rekening dan periode, buka PDF, lalu simpan. Untuk salinan lama, gunakan Request statements di bagian yang sama.",
+        "detailsTitle": "Meminta rekening koran lama Bank of America",
+        "details": "Salinan elektronik gratis, biasanya tersedia 24–36 jam setelah permintaan, dan dapat diakses selama tujuh hari. Simpan segera setelah tersedia.\n\nSalinan kertas biasanya dikirim 7–10 hari kerja setelah permintaan. Utamakan PDF elektronik: kertas perlu dipindai dan hanya Professional serta Enterprise yang dapat mencoba memproses hasil pindai melalui fallback AI."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Rekening koran Wells Fargo ke Excel",
+        "title": "Konversi rekening koran Wells Fargo ke Excel",
+        "intro": "Simpan PDF Wells Fargo, periksa transaksi dan penanda risiko di StatementXL, lalu unduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Masa ketersediaan berbeda menurut jenis rekening.",
+        "availability": "Hingga tujuh tahun untuk rekening simpanan, hipotek, trust, dan investasi terkelola; hingga dua tahun untuk kartu kredit, kredit berbasis ekuitas rumah, pinjaman pribadi, dan fasilitas kredit; hingga dua belas bulan untuk pinjaman kendaraan. Setelah rekening ditutup, rekening koran mungkin tersedia sekitar sembilan puluh hari.",
+        "download": "Masuk ke Wells Fargo Online dan buka Statements & Documents. Pilih rekening dan periode tersedia, buka PDF, lalu simpan dengan nama yang jelas. Jika dokumen rekening yang ditutup tidak tersedia online, mintalah salinan kepada bank.",
+        "detailsTitle": "Rekening bisnis dan kartu kredit Wells Fargo",
+        "details": "Business Online menyediakan dokumen untuk rekening bisnis yang memenuhi syarat. Ketersediaan hingga tujuh tahun tetap mengikuti batas tiap produk; tidak semua rekening koran bisnis tersedia selama itu.\n\nRekening koran kartu kredit tersedia hingga dua tahun. Simpan sebelum periode tersebut berakhir."
+      }
+    },
+    "breadcrumbLabel": "Jalur navigasi"
   }
 }

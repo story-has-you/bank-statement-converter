@@ -2,6 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { cache } from "react";
 
 import { subscriptionConfig } from "@/config/plans";
+import { conversionPages } from "@/config/conversion-pages";
 import { siteConfig } from "@/config/site";
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -32,6 +33,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
   const officialPages = [
     { name: metadata("brand"), href: pageUrl("/") },
     { name: footer("privacy"), href: pageUrl("/privacy") },
+    ...conversionPages.map((page) => ({ name: pageT(`Landing.pages.${page.id}.label`), href: pageUrl(page.path) })),
   ];
   const plans = membershipTiers.map((tier) => ({
     tier,
@@ -56,6 +58,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
         price: format.number(subscriptionConfig.standard.monthlyPrice, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
       }),
       t("privacySummary"),
+      pageT("Landing.downloadText"),
     ],
     features: {
       title: features("title"),

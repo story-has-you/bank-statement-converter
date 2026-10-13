@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Bank Statement Converter | PDF to Excel",
-    "description": "Convert bank statement PDFs to Excel with previews and risk flags. Professional and Enterprise can attempt scans with AI fallback. No persistent file history.",
+    "title": "StatementXL | Bank Statement PDF to Excel",
+    "description": "StatementXL: Convert bank statement PDFs to Excel with previews and risk flags. Professional and Enterprise can attempt scans with AI fallback. No persistent file history.",
     "keywords": "Bank Statement Converter, bank statement PDF to Excel, PDF to Excel converter, bank transaction extraction, AI bank statement parsing, scanned bank statement PDF to Excel",
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "alternateName": "Bank statement PDF to Excel converter"
   },
   "HomeHeader": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Main navigation",
     "convert": "Convert",
     "features": "Features",
@@ -42,7 +42,7 @@
   },
   "AuthError": {
     "metadata": {
-      "title": "Sign-in incomplete | Bank Statement Converter",
+      "title": "Sign-in incomplete | StatementXL",
       "description": "Google sign-in could not be completed."
     },
     "title": "Sign-in incomplete",
@@ -90,7 +90,7 @@
   },
   "ConversionResult": {
     "metadata": {
-      "title": "Conversion result | Bank Statement Converter",
+      "title": "Conversion result | StatementXL",
       "description": "Review the extracted bank statement rows and risk labels, then download Excel, CSV, JSON, Markdown, TSV, or HTML."
     },
     "eyebrow": "Conversion result",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Bank Statement Converter",
+    "brand": "StatementXL",
     "navigation": "Footer navigation",
     "plans": "Plans",
     "faq": "FAQ",
@@ -319,8 +319,8 @@
   },
   "Terms": {
     "metadata": {
-      "title": "Terms of service | Bank Statement Converter",
-      "description": "Learn how Bank Statement Converter handles files, quotas, Creem subscriptions, refunds, and user responsibilities."
+      "title": "Terms of service | StatementXL",
+      "description": "Learn how StatementXL handles files, quotas, Creem subscriptions, refunds, and user responsibilities."
     },
     "title": "Terms of service",
     "intro": "This service is operated by ReAvid Ltd and provided through <site>{domain}</site>. Read these terms and the privacy policy before using the conversion and subscription services.",
@@ -386,7 +386,7 @@
   },
   "Privacy": {
     "metadata": {
-      "title": "Privacy policy | Bank Statement Converter",
+      "title": "Privacy policy | StatementXL",
       "description": "How bank statements, AI parsing, temporary browser results, and account, parsing operations, quota and billing data are processed."
     },
     "title": "Privacy policy",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "At a glance",
-    "conversionSummary": "Bank Statement Converter turns bank statement PDFs into Excel for review; Professional and Enterprise can attempt scanned PDFs with AI fallback.",
+    "conversionSummary": "StatementXL turns bank statement PDFs into Excel for review; Professional and Enterprise can attempt scanned PDFs with AI fallback.",
     "limitsSummary": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
     "quotaSummary": "Convert {anonymousPages} page per day anonymously or {authenticatedPages} pages when signed in; monthly plans start at {price} USD.",
     "privacySummary": "This website keeps no persistent history of PDFs, Excel files or transactions. Higher-tier fallback sends the PDF to the AI parsing provider. Check results against the original PDF.",
@@ -592,8 +592,8 @@
     "faqLabel": "Questions and answers",
     "siteLabel": "Website navigation",
     "languagesLabel": "Other languages",
-    "chatDescription": "Ask an AI assistant about Bank Statement Converter using our official sources.",
-    "prompt": "Visit the official Bank Statement Converter information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
+    "chatDescription": "Ask an AI assistant about StatementXL using our official sources.",
+    "prompt": "Visit the official StatementXL information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
     "showPrompt": "View the default prompt",
     "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Creem.",
     "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
@@ -614,5 +614,61 @@
     "invalidReturn": "This payment return link is invalid.",
     "retry": "Check again",
     "account": "Open your account"
+  },
+  "Landing": {
+    "relatedTitle": "Bank statement conversion guides",
+    "relatedDescription": "Find PDF download instructions for your bank, or read the full conversion guide. These guides do not certify every statement layout.",
+    "homeLabel": "Back to StatementXL",
+    "stepsTitle": "Convert a statement in three steps",
+    "uploadTitle": "Upload your PDF",
+    "uploadText": "Upload one original statement PDF, up to {megabytes} MB and {pages} pages. Use a PDF with a text layer on anonymous, free and Standard plans. Password-protected files are not supported.",
+    "reviewTitle": "Check the extracted transactions",
+    "downloadTitle": "Download your results",
+    "downloadText": "Download Excel, or choose CSV, JSON, Markdown, TSV or HTML. CSV and TSV downloads contain one file per table, including risk and source fields. Adjust columns to your accounting software's requirements; these are not dedicated QBO or Xero files.",
+    "availabilityTitle": "How far back can I get {bank} statements?",
+    "bankDownloadTitle": "How to download a {bank} statement PDF",
+    "historyQuestion": "How far back can I download {bank} statements?",
+    "formatsQuestion": "Can I download formats other than Excel?",
+    "sourcesTitle": "Official sources",
+    "updated": "Information checked: {date}",
+    "disclaimer": "{bank} is a trademark of its owner. StatementXL is not affiliated with the bank. These instructions help you obtain and review statements; they do not guarantee conversion of every layout.",
+    "pages": {
+      "pdf": {
+        "label": "Bank statement PDF to Excel",
+        "title": "Convert a bank statement PDF to Excel",
+        "intro": "Use StatementXL to extract transactions from a bank statement PDF, compare the preview with your original and download Excel with risk flags. Convert {anonymousPages} page per day without signing in, or {authenticatedPages} pages when signed in. Keep your original statement for verification."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase statement to Excel",
+        "title": "Convert a Chase bank statement to Excel",
+        "intro": "Download your Chase statement PDF and upload it to StatementXL to review transactions and download Excel. You get {anonymousPages} free page per day without signing in, or {authenticatedPages} when signed in. Check extracted rows against the original before using them.",
+        "availability": "Chase provides access to up to seven years of statements, depending on your account type. Check the years available for your account in Statements & documents; this is not a promise that every account has seven years of records.",
+        "download": "On chase.com, sign in and open the Main Menu. Choose Statements & documents, select the year and account, then use the Open or Save icon beside the statement. Save the original PDF rather than a screenshot or scan.",
+        "detailsTitle": "Chase Mobile and transaction downloads",
+        "details": "In Chase Mobile, open Profile & Settings, select Statements & documents within Document manager, then Statements. Choose your account, year and statement to open the PDF.\n\nAn account activity download is separate from a monthly statement PDF. Check the bank's current export options and available dates; we have not verified a fixed activity export window or a credit card CSV feature."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank of America statement to Excel",
+        "title": "Convert a Bank of America statement to Excel",
+        "intro": "Get your Bank of America statement PDF and upload it to StatementXL to check the extracted transactions and download Excel. Convert {anonymousPages} free page per day anonymously, or {authenticatedPages} when signed in. Download older requested statements promptly and keep the original PDF.",
+        "availability": "Bank of America lets you view, print and download up to 18 months of statements with check images directly. Older copies can be requested for up to seven years back. Do not apply these periods to every credit card product without checking the account's available documents.",
+        "download": "Sign in to Online Banking. Under the Accounts tab, open Statements & Documents, select the account and statement period, then view and save the statement PDF. For older copies, use Request statements in the same area.",
+        "detailsTitle": "Requesting older Bank of America statements",
+        "details": "Requested electronic statement copies are free. They are generally available 24–36 hours after the request and remain accessible for seven days, so save them promptly.\n\nPaper statement copies are mailed 7–10 business days after a request. Prefer the electronic PDF: a paper copy needs scanning, and only Professional and Enterprise can attempt scans through AI fallback."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells Fargo statement to Excel",
+        "title": "Convert a Wells Fargo statement to Excel",
+        "intro": "Save your Wells Fargo statement PDF and use StatementXL to preview transactions, check risk flags and download Excel. Convert {anonymousPages} free page daily without signing in, or {authenticatedPages} when signed in. Statement availability varies by account type, so save the documents you need.",
+        "availability": "Online availability depends on the product: up to seven years for deposit, home mortgage, trust and managed investment accounts; up to two years for credit cards, home equity lines of credit, personal loans and lines of credit; and up to twelve months for auto loans. After account closure, statements may remain available for approximately ninety days.",
+        "download": "Sign in to Wells Fargo Online and open Statements & Documents. Choose your account and the available statement period, open the PDF and save it with a clear filename. If a closed account's documents are unavailable online, contact Wells Fargo for copies.",
+        "detailsTitle": "Wells Fargo business and credit card statements",
+        "details": "Business Online provides documents for eligible business accounts. The advertised availability of up to seven years is subject to product-specific limits; it does not mean all business statements are retained that long.\n\nCredit card statements are available for up to two years, so save them before they leave the online window."
+      }
+    },
+    "breadcrumbLabel": "Breadcrumb"
   }
 }

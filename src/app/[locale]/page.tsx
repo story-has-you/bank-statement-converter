@@ -11,6 +11,7 @@ import { HomeIntro } from "@/components/home/home-intro";
 import { HomeStructuredData } from "@/components/home/home-structured-data";
 import { PdfUpload } from "@/components/conversion/pdf-upload";
 import { UsageTiers } from "@/components/home/usage-tiers";
+import { RelatedConversionPages } from "@/components/landing/related-conversion-pages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
@@ -46,6 +47,7 @@ export default function HomePage() {
         </section>
 
         <HomeFeatures />
+        <RelatedConversionPages />
         <UsageTiers />
         <HomeFaq />
       </main>

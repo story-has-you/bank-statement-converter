@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "银行流水转换 | PDF 转 Excel",
-    "description": "银行流水 PDF 转 Excel，支持逐步预览与风险标记。专业和企业套餐可通过 AI 回退尝试转换扫描件；文件不作为本站持久化历史保存。",
+    "title": "StatementXL | 银行流水 PDF 转 Excel",
+    "description": "StatementXL: 银行流水 PDF 转 Excel，支持逐步预览与风险标记。专业和企业套餐可通过 AI 回退尝试转换扫描件；文件不作为本站持久化历史保存。",
     "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取, AI 银行流水解析, 扫描银行流水 PDF 转 Excel",
-    "brand": "银行流水转换",
+    "brand": "StatementXL",
     "alternateName": "银行流水 PDF 转 Excel"
   },
   "HomeHeader": {
-    "brand": "银行流水转换",
+    "brand": "StatementXL",
     "navigation": "主导航",
     "convert": "开始转换",
     "features": "功能",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "银行流水转换",
+    "brand": "StatementXL",
     "navigation": "页脚导航",
     "plans": "会员方案",
     "faq": "常见问题",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "关键结论",
-    "conversionSummary": "Bank Statement Converter 将银行流水 PDF 转为可核对的 Excel；专业和企业套餐可通过 AI 回退尝试转换扫描件。",
+    "conversionSummary": "StatementXL 将银行流水 PDF 转为可核对的 Excel；专业和企业套餐可通过 AI 回退尝试转换扫描件。",
     "limitsSummary": "每次上传一个不超过 {megabytes} MB、{pages} 页的银行流水 PDF。匿名、免费和标准套餐要求文字层；专业和企业套餐可尝试扫描件。所有套餐均不支持密码保护文件。",
     "quotaSummary": "匿名用户每日可转换 {anonymousPages} 页，登录用户每日 {authenticatedPages} 页，月订阅从 {price} 美元起。",
     "privacySummary": "本站不将 PDF、Excel 和流水明细保存为持久化历史；高阶套餐回退时会将 PDF 交由 AI 解析服务提供方处理。使用结果前请对照原 PDF 核对。",
@@ -592,8 +592,8 @@
     "faqLabel": "常见问题",
     "siteLabel": "网站导航",
     "languagesLabel": "其他语言",
-    "chatDescription": "根据官方资料，向 AI 助手了解 Bank Statement Converter。",
-    "prompt": "请访问 Bank Statement Converter 的官方资料：{fullUrl}。需要补充信息时，读取 {indexUrl} 并跟随相关文档链接。请用{language}说明产品功能、使用步骤、文件限制、数据处理方式、免费额度及订阅价格，并引用来源链接。无法访问资料或资料未说明的内容，请明确指出，不要猜测。",
+    "chatDescription": "根据官方资料，向 AI 助手了解 StatementXL。",
+    "prompt": "请访问 StatementXL 的官方资料：{fullUrl}。需要补充信息时，读取 {indexUrl} 并跟随相关文档链接。请用{language}说明产品功能、使用步骤、文件限制、数据处理方式、免费额度及订阅价格，并引用来源链接。无法访问资料或资料未说明的内容，请明确指出，不要猜测。",
     "showPrompt": "查看默认提示词",
     "metadataAnswer": "网站会保留提供服务所需的账户、额度和计费元数据。请在个人账户及 Creem 中查看和管理订阅信息。",
     "analyticsAnswer": "Google Analytics 和 Pageview 可能处理访问相关的技术信息。银行流水、提取的交易和 Excel 内容不会发送到这些统计服务。",
@@ -614,5 +614,61 @@
     "invalidReturn": "付款返回链接无效。",
     "retry": "重新检查",
     "account": "查看个人账户"
+  },
+  "Landing": {
+    "relatedTitle": "银行流水转换指南",
+    "relatedDescription": "查看银行账单的 PDF 下载方法，或了解完整的转换流程。这些指南不代表所有账单版式都已验证。",
+    "homeLabel": "返回 StatementXL 首页",
+    "stepsTitle": "三步完成银行流水转换",
+    "uploadTitle": "上传 PDF",
+    "uploadText": "每次上传一份原始账单 PDF，最多 {megabytes} MB、{pages} 页。匿名、免费和标准套餐需要文件有文字层；所有套餐均不支持密码保护文件。",
+    "reviewTitle": "核对提取的交易",
+    "downloadTitle": "下载转换结果",
+    "downloadText": "下载 Excel，或选择 CSV、JSON、Markdown、TSV、HTML。CSV 和 TSV 按逻辑表分别下载，包含风险和来源字段。导入记账软件前需按目标系统要求整理列；这些文件不是 QBO 或 Xero 专用文件。",
+    "availabilityTitle": "{bank} 能提供多久以前的账单？",
+    "bankDownloadTitle": "如何下载 {bank} 账单 PDF",
+    "historyQuestion": "我能下载多久以前的 {bank} 账单？",
+    "formatsQuestion": "除了 Excel，还能下载哪些格式？",
+    "sourcesTitle": "官方资料来源",
+    "updated": "资料核实日期：{date}",
+    "disclaimer": "{bank} 商标归其权利人所有，StatementXL 与该银行无关联。本指南说明账单获取和核对方法，不保证所有版式都能成功转换。",
+    "pages": {
+      "pdf": {
+        "label": "银行流水 PDF 转 Excel",
+        "title": "把银行流水 PDF 转为 Excel",
+        "intro": "使用 StatementXL 提取银行流水 PDF 中的交易，对照原文件检查预览，再下载带风险标记的 Excel。未登录每天可转换 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。请保留原始账单，以便核对。"
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase 账单转 Excel",
+        "title": "把 Chase 银行账单转为 Excel",
+        "intro": "下载 Chase 账单 PDF 并上传至 StatementXL，核对提取的交易后下载 Excel。未登录每天免费 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。使用结果前，请逐行对照原始账单检查。",
+        "availability": "Chase 可提供最多七年的账单，具体取决于账户类型。在 Statements & documents 中查看该账户可用的年份；这不代表每个账户都提供完整的七年记录。",
+        "download": "登录 chase.com，打开 Main Menu，选择 Statements & documents。选择年份和账户，再点击对应账单旁的 Open 或 Save 图标。保存原始 PDF，避免用截图或扫描件替代。",
+        "detailsTitle": "Chase Mobile 与交易记录下载",
+        "details": "在 Chase Mobile 中打开 Profile & Settings，在 Document manager 下选择 Statements & documents，再进入 Statements。选择账户、年份和账单，打开 PDF。\n\n账户 Activity 页面下载的交易记录与月度 PDF 账单是不同资料。请以银行当前提供的导出选项和日期范围为准；此处不提供未经核实的固定下载期限，也不声称信用卡具备 CSV 导出功能。"
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank of America 账单转 Excel",
+        "title": "把 Bank of America 账单转为 Excel",
+        "intro": "取得 Bank of America 账单 PDF 后上传至 StatementXL，核对交易并下载 Excel。匿名用户每天免费 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。申请的旧账单可下载时间有限，请及时保存原始 PDF。",
+        "availability": "Bank of America 可直接查看、打印和下载最近最多 18 个月的账单及支票图像；更早的副本可申请至最多七年前。信用卡产品的期限需以对应账户资料为准，不能直接套用这些年限。",
+        "download": "登录 Online Banking，在 Accounts 标签下打开 Statements & Documents。选择账户和账单周期，查看并保存 PDF。更早的账单可在同一区域通过 Request statements 申请。",
+        "detailsTitle": "申请 Bank of America 的旧账单",
+        "details": "申请电子账单副本免费，通常在申请后 24–36 小时提供，之后可下载七天，建议取得后尽快保存。\n\n纸质副本通常在申请后 7–10 个工作日寄出。优先获取电子 PDF；纸质账单需扫描，只有专业和企业套餐可通过 AI 回退尝试处理扫描件。"
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells Fargo 账单转 Excel",
+        "title": "把 Wells Fargo 账单转为 Excel",
+        "intro": "保存 Wells Fargo 账单 PDF 后，用 StatementXL 预览交易、检查风险标记并下载 Excel。未登录每天免费 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。不同账户的账单保留期限不同，请及时保存所需文件。",
+        "availability": "在线账单期限按产品区分：存款、房贷、信托和托管投资账户最多七年；信用卡、房屋净值信用额度、个人贷款及信用额度最多两年；车贷最多十二个月。关闭账户后，账单可能仍可在线获取约九十天。",
+        "download": "登录 Wells Fargo Online，打开 Statements & Documents。选择账户和可用账单周期，打开 PDF 后用便于识别的文件名保存。关闭账户的文件若已无法在线获取，可联系 Wells Fargo 申请副本。",
+        "detailsTitle": "Wells Fargo 商业与信用卡账单",
+        "details": "Business Online 为符合条件的商业账户提供文件。“最多七年”仍受具体产品期限限制，不代表所有商业账单都保存七年。\n\n信用卡账单最多可在线获取两年，请在到期前下载保存。"
+      }
+    },
+    "breadcrumbLabel": "当前位置"
   }
 }

@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Convertisseur de relevé bancaire | PDF vers Excel",
-    "description": "Convertissez vos relevés PDF en Excel avec aperçu et alertes. Professional et Enterprise peuvent essayer les scans avec un relais IA. Aucun historique permanent de fichiers.",
+    "title": "StatementXL | Relevé bancaire PDF vers Excel",
+    "description": "StatementXL: Convertissez vos relevés PDF en Excel avec aperçu et alertes. Professional et Enterprise peuvent essayer les scans avec un relais IA. Aucun historique permanent de fichiers.",
     "keywords": "relevé bancaire PDF vers Excel, convertisseur PDF Excel, extraction de transactions bancaires, analyse IA relevés bancaires, relevé bancaire PDF scanné vers Excel",
-    "brand": "Convertisseur de relevés bancaires",
+    "brand": "StatementXL",
     "alternateName": "Convertisseur de relevé bancaire PDF vers Excel"
   },
   "HomeHeader": {
-    "brand": "Convertisseur de relevé bancaire",
+    "brand": "StatementXL",
     "navigation": "Navigation principale",
     "convert": "Convertir",
     "features": "Fonctionnalités",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Convertisseur de relevé bancaire",
+    "brand": "StatementXL",
     "navigation": "Navigation en pied de page",
     "plans": "Forfaits",
     "faq": "FAQ",
@@ -320,7 +320,7 @@
   "Terms": {
     "metadata": {
       "title": "Conditions d'utilisation | Convertisseur de relevé bancaire",
-      "description": "Découvrez les règles de Bank Statement Converter concernant les fichiers, quotas, abonnements Creem, remboursements et responsabilités."
+      "description": "Découvrez les règles de StatementXL concernant les fichiers, quotas, abonnements Creem, remboursements et responsabilités."
     },
     "title": "Conditions d'utilisation",
     "intro": "Ce service est exploité par ReAvid Ltd et fourni via <site>{domain}</site>. Lisez ces conditions et la politique de confidentialité avant d'utiliser les services de conversion et d'abonnement.",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "En bref",
-    "conversionSummary": "Bank Statement Converter transforme les relevés bancaires PDF en Excel à vérifier. Professional et Enterprise peuvent essayer les PDF scannés avec un relais IA.",
+    "conversionSummary": "StatementXL transforme les relevés bancaires PDF en Excel à vérifier. Professional et Enterprise peuvent essayer les PDF scannés avec un relais IA.",
     "limitsSummary": "Importez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Enterprise peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
     "quotaSummary": "Convertissez {anonymousPages} page par jour sans connexion ou {authenticatedPages} pages avec connexion ; les abonnements commencent à {price} USD par mois.",
     "privacySummary": "Ce site ne conserve aucun historique permanent des PDF, fichiers Excel ou transactions. Le relais des forfaits supérieurs envoie le PDF au fournisseur d’analyse IA. Vérifiez les résultats avec le PDF original.",
@@ -592,8 +592,8 @@
     "faqLabel": "Questions et réponses",
     "siteLabel": "Navigation du site",
     "languagesLabel": "Autres langues",
-    "chatDescription": "Interrogez un assistant IA sur Bank Statement Converter à partir de nos sources officielles.",
-    "prompt": "Consulte les informations officielles de Bank Statement Converter : {fullUrl}. Pour plus de détails, lis {indexUrl} et suis les liens pertinents. Réponds en {language} : explique les fonctions, étapes, limites de fichiers, traitement des données, quotas gratuits et tarifs des abonnements, avec les liens sources. Si une source est inaccessible ou ne répond pas, indique-le sans deviner.",
+    "chatDescription": "Interrogez un assistant IA sur StatementXL à partir de nos sources officielles.",
+    "prompt": "Consulte les informations officielles de StatementXL : {fullUrl}. Pour plus de détails, lis {indexUrl} et suis les liens pertinents. Réponds en {language} : explique les fonctions, étapes, limites de fichiers, traitement des données, quotas gratuits et tarifs des abonnements, avec les liens sources. Si une source est inaccessible ou ne répond pas, indique-le sans deviner.",
     "showPrompt": "Voir la consigne par défaut",
     "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et Creem.",
     "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services.",
@@ -614,5 +614,61 @@
     "invalidReturn": "Ce lien de retour de paiement est invalide.",
     "retry": "Vérifier à nouveau",
     "account": "Ouvrir votre compte"
+  },
+  "Landing": {
+    "relatedTitle": "Guides de conversion des relevés bancaires",
+    "relatedDescription": "Consultez les instructions de téléchargement PDF de votre banque et les étapes de conversion. Ces guides ne garantissent pas la prise en charge de tous les modèles de relevés.",
+    "homeLabel": "Retour à l'accueil StatementXL",
+    "stepsTitle": "Convertir un relevé en trois étapes",
+    "uploadTitle": "Importer votre PDF",
+    "uploadText": "Importez un relevé PDF original, jusqu'à {megabytes} Mo et {pages} pages. Les offres sans connexion, gratuite et Standard nécessitent une couche de texte. Les fichiers protégés par mot de passe ne sont pas pris en charge.",
+    "reviewTitle": "Vérifier les opérations extraites",
+    "downloadTitle": "Télécharger les résultats",
+    "downloadText": "Téléchargez Excel, ou choisissez CSV, JSON, Markdown, TSV ou HTML. CSV et TSV produisent un fichier par tableau, avec les champs de risque et de source. Adaptez les colonnes aux exigences de votre logiciel comptable avant l'import ; ce ne sont pas des fichiers dédiés QBO ou Xero.",
+    "availabilityTitle": "Jusqu'à quand remontent les relevés de {bank} ?",
+    "bankDownloadTitle": "Télécharger un relevé PDF de {bank}",
+    "historyQuestion": "Quels anciens relevés de {bank} puis-je télécharger ?",
+    "formatsQuestion": "Puis-je télécharger d'autres formats qu'Excel ?",
+    "sourcesTitle": "Sources officielles",
+    "updated": "Informations vérifiées le : {date}",
+    "disclaimer": "{bank} est une marque de son titulaire. StatementXL n'est pas affilié à cette banque. Ce guide explique comment obtenir et vérifier les relevés, sans garantir la conversion de tous leurs modèles.",
+    "pages": {
+      "pdf": {
+        "label": "Relevé bancaire PDF vers Excel",
+        "title": "Convertir un relevé bancaire PDF en Excel",
+        "intro": "Avec StatementXL, extrayez les opérations de votre relevé PDF, comparez l'aperçu à l'original et téléchargez Excel avec les indicateurs de risque. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Conservez l'original pour vos vérifications."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Relevé Chase vers Excel",
+        "title": "Convertir un relevé bancaire Chase en Excel",
+        "intro": "Téléchargez votre relevé Chase en PDF et importez-le dans StatementXL pour vérifier les opérations et télécharger Excel. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Comparez les résultats à l'original.",
+        "availability": "Chase donne accès à jusqu'à sept ans de relevés, selon le type de compte. Consultez les années disponibles dans Statements & documents ; tous les comptes ne disposent pas de sept années complètes.",
+        "download": "Connectez-vous à chase.com, ouvrez Main Menu puis Statements & documents. Choisissez l'année et le compte, puis l'icône Open ou Save à côté du relevé. Enregistrez le PDF original plutôt qu'une capture d'écran.",
+        "detailsTitle": "Chase Mobile et téléchargement des opérations",
+        "details": "Dans Chase Mobile, ouvrez Profile & Settings, sélectionnez Statements & documents sous Document manager, puis Statements. Choisissez le compte, l'année et le relevé pour ouvrir le PDF.\n\nUn téléchargement de l'activité du compte diffère du relevé mensuel PDF. Vérifiez auprès de la banque les formats et périodes actuellement proposés."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Relevé Bank of America vers Excel",
+        "title": "Convertir un relevé Bank of America en Excel",
+        "intro": "Importez votre relevé PDF Bank of America dans StatementXL, vérifiez les opérations et téléchargez Excel. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Enregistrez rapidement les anciens relevés demandés.",
+        "availability": "Les relevés avec images de chèques peuvent être consultés, imprimés et téléchargés directement sur une période maximale de 18 mois. Les copies antérieures peuvent être demandées jusqu'à sept ans en arrière. Vérifiez séparément la disponibilité des documents de votre compte de carte de crédit.",
+        "download": "Connectez-vous à Online Banking et ouvrez Statements & Documents sous l'onglet Accounts. Choisissez le compte et la période, puis ouvrez et enregistrez le PDF. Pour les copies anciennes, utilisez Request statements au même endroit.",
+        "detailsTitle": "Demander d'anciens relevés Bank of America",
+        "details": "Les copies électroniques sont gratuites, généralement disponibles 24–36 heures après la demande et accessibles pendant sept jours. Enregistrez-les dès que possible.\n\nLes copies papier sont généralement expédiées 7–10 jours ouvrés après la demande. Privilégiez le PDF électronique : le papier doit être numérisé, et seuls Professional et Enterprise peuvent tenter de traiter les scans avec le recours à l'IA."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Relevé Wells Fargo vers Excel",
+        "title": "Convertir un relevé Wells Fargo en Excel",
+        "intro": "Enregistrez votre relevé PDF Wells Fargo, vérifiez les opérations et les indicateurs de risque dans StatementXL, puis téléchargez Excel. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. La disponibilité varie selon le type de compte.",
+        "availability": "Jusqu'à sept ans pour les comptes de dépôt, prêts immobiliers, fiducies et investissements gérés ; jusqu'à deux ans pour les cartes de crédit, lignes de crédit sur valeur domiciliaire, prêts personnels et lignes de crédit ; jusqu'à douze mois pour les prêts automobiles. Après clôture, les relevés peuvent rester accessibles environ quatre-vingt-dix jours.",
+        "download": "Connectez-vous à Wells Fargo Online et ouvrez Statements & Documents. Sélectionnez le compte et la période disponible, ouvrez le PDF et enregistrez-le sous un nom explicite. Pour les documents indisponibles d'un compte clôturé, demandez des copies à la banque.",
+        "detailsTitle": "Relevés professionnels et cartes de crédit Wells Fargo",
+        "details": "Business Online propose des documents pour les comptes professionnels éligibles. La durée annoncée de sept ans reste soumise aux limites de chaque produit ; elle ne vaut pas pour tous les relevés professionnels.\n\nLes relevés de carte de crédit sont disponibles jusqu'à deux ans. Enregistrez-les avant la fin de cette période."
+      }
+    },
+    "breadcrumbLabel": "Fil d’Ariane"
   }
 }

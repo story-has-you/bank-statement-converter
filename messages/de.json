@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Kontoauszugskonverter | PDF nach Excel",
-    "description": "Kontoauszug-PDFs in Excel umwandeln, mit Vorschau und Risikohinweisen. Professional und Enterprise können Scans per KI-Ausweichverfahren versuchen. Keine dauerhafte Dateihistorie.",
+    "title": "StatementXL | Kontoauszug als PDF in Excel umwandeln",
+    "description": "StatementXL: Kontoauszug-PDFs in Excel umwandeln, mit Vorschau und Risikohinweisen. Professional und Enterprise können Scans per KI-Ausweichverfahren versuchen. Keine dauerhafte Dateihistorie.",
     "keywords": "Bankauszug PDF zu Excel, PDF-zu-Excel-Konverter, Banktransaktionen extrahieren, KI Kontoauszug Analyse, gescannte Kontoauszug PDF in Excel",
-    "brand": "Bankauszugs-Konverter",
+    "brand": "StatementXL",
     "alternateName": "Bankauszug-PDF-zu-Excel-Konverter"
   },
   "HomeHeader": {
-    "brand": "Kontoauszugskonverter",
+    "brand": "StatementXL",
     "navigation": "Hauptnavigation",
     "convert": "Konvertieren",
     "features": "Funktionen",
@@ -307,7 +307,7 @@
     }
   },
   "HomeFooter": {
-    "brand": "Kontoauszugskonverter",
+    "brand": "StatementXL",
     "navigation": "Fußzeilennavigation",
     "plans": "Tarife",
     "faq": "FAQ",
@@ -320,7 +320,7 @@
   "Terms": {
     "metadata": {
       "title": "Nutzungsbedingungen | Kontoauszugskonverter",
-      "description": "Informationen zu Dateien, Kontingenten, Creem-Abonnements, Rückerstattungen und Nutzerpflichten bei Bank Statement Converter."
+      "description": "Informationen zu Dateien, Kontingenten, Creem-Abonnements, Rückerstattungen und Nutzerpflichten bei StatementXL."
     },
     "title": "Nutzungsbedingungen",
     "intro": "Dieser Dienst wird von ReAvid Ltd betrieben und über <site>{domain}</site> bereitgestellt. Lesen Sie diese Bedingungen und die Datenschutzrichtlinie, bevor Sie die Konvertierungs- und Abonnementdienste nutzen.",
@@ -555,7 +555,7 @@
   },
   "Geo": {
     "glance": "Auf einen Blick",
-    "conversionSummary": "Bank Statement Converter wandelt Kontoauszug-PDFs in Excel zur Prüfung um. Professional und Enterprise können gescannte PDFs mit KI-Unterstützung versuchen.",
+    "conversionSummary": "StatementXL wandelt Kontoauszug-PDFs in Excel zur Prüfung um. Professional und Enterprise können gescannte PDFs mit KI-Unterstützung versuchen.",
     "limitsSummary": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
     "quotaSummary": "Ohne Anmeldung sind täglich {anonymousPages} Seite, nach Anmeldung {authenticatedPages} Seiten möglich; Monatsabos beginnen bei {price} USD.",
     "privacySummary": "Diese Website speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhafte Historie. Beim KI-Wechsel in höheren Tarifen wird die PDF an den KI-Analyseanbieter gesendet. Prüfen Sie Ergebnisse am Original.",
@@ -592,8 +592,8 @@
     "faqLabel": "Fragen und Antworten",
     "siteLabel": "Website-Navigation",
     "languagesLabel": "Weitere Sprachen",
-    "chatDescription": "Fragen Sie einen KI-Assistenten anhand unserer offiziellen Quellen nach Bank Statement Converter.",
-    "prompt": "Besuche die offiziellen Informationen zu Bank Statement Converter: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
+    "chatDescription": "Fragen Sie einen KI-Assistenten anhand unserer offiziellen Quellen nach StatementXL.",
+    "prompt": "Besuche die offiziellen Informationen zu StatementXL: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
     "showPrompt": "Standardprompt ansehen",
     "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Creem.",
     "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
@@ -614,5 +614,61 @@
     "invalidReturn": "Dieser Rückkehrlink ist ungültig.",
     "retry": "Erneut prüfen",
     "account": "Konto öffnen"
+  },
+  "Landing": {
+    "relatedTitle": "Anleitungen für Kontoauszüge",
+    "relatedDescription": "Hier finden Sie PDF-Download-Anleitungen Ihrer Bank und Hinweise zur Umwandlung. Die Anleitungen garantieren keine Unterstützung aller Auszugsformate.",
+    "homeLabel": "Zur StatementXL-Startseite",
+    "stepsTitle": "Kontoauszüge in drei Schritten umwandeln",
+    "uploadTitle": "PDF hochladen",
+    "uploadText": "Laden Sie einen originalen Kontoauszug als PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung sowie im kostenlosen und Standard-Tarif ist eine Textebene erforderlich. Passwortgeschützte Dateien werden nicht unterstützt.",
+    "reviewTitle": "Extrahierte Buchungen prüfen",
+    "downloadTitle": "Ergebnisse herunterladen",
+    "downloadText": "Laden Sie Excel oder CSV, JSON, Markdown, TSV oder HTML herunter. CSV und TSV erzeugen je Tabelle eine Datei mit Risiko- und Quellenfeldern. Passen Sie die Spalten vor dem Import an Ihre Buchhaltungssoftware an; es sind keine speziellen QBO- oder Xero-Dateien.",
+    "availabilityTitle": "Wie weit reichen die Auszüge von {bank} zurück?",
+    "bankDownloadTitle": "So laden Sie einen PDF-Auszug von {bank} herunter",
+    "historyQuestion": "Wie alte Auszüge kann ich bei {bank} herunterladen?",
+    "formatsQuestion": "Kann ich andere Formate als Excel herunterladen?",
+    "sourcesTitle": "Offizielle Quellen",
+    "updated": "Informationen geprüft am: {date}",
+    "disclaimer": "{bank} ist eine Marke des jeweiligen Rechteinhabers. StatementXL ist nicht mit der Bank verbunden. Diese Anleitung erläutert das Abrufen und Prüfen von Auszügen, garantiert aber nicht die Umwandlung jedes Formats.",
+    "pages": {
+      "pdf": {
+        "label": "Kontoauszug von PDF zu Excel",
+        "title": "Kontoauszüge als PDF in Excel umwandeln",
+        "intro": "Extrahieren Sie mit StatementXL Buchungen aus Ihrem PDF-Kontoauszug, vergleichen Sie die Vorschau mit dem Original und laden Sie Excel mit Risikomarkierungen herunter. Ohne Anmeldung sind täglich {anonymousPages} Seite, mit Anmeldung {authenticatedPages} Seiten kostenlos. Bewahren Sie das Original zum Prüfen auf."
+      },
+      "chase": {
+        "bank": "Chase",
+        "label": "Chase-Kontoauszug in Excel",
+        "title": "Chase-Kontoauszüge in Excel umwandeln",
+        "intro": "Laden Sie Ihren Chase-Auszug als PDF herunter und in StatementXL hoch. Prüfen Sie die Buchungen und laden Sie Excel herunter. Täglich sind ohne Anmeldung {anonymousPages} Seite, mit Anmeldung {authenticatedPages} Seiten kostenlos. Vergleichen Sie die Ergebnisse mit dem Original.",
+        "availability": "Chase stellt je nach Kontotyp bis zu sieben Jahre an Auszügen bereit. Prüfen Sie die verfügbaren Jahre unter Statements & documents. Nicht jedes Konto bietet vollständige sieben Jahre.",
+        "download": "Melden Sie sich auf chase.com an und öffnen Sie im Main Menu den Bereich Statements & documents. Wählen Sie Jahr und Konto und anschließend Open oder Save neben dem Auszug. Speichern Sie das Original-PDF statt eines Screenshots.",
+        "detailsTitle": "Chase Mobile und Transaktionsdownloads",
+        "details": "Öffnen Sie in Chase Mobile Profile & Settings, unter Document manager den Bereich Statements & documents und dann Statements. Wählen Sie Konto, Jahr und Auszug, um das PDF zu öffnen.\n\nEin Download der Kontobewegungen ist etwas anderes als ein monatlicher PDF-Auszug. Prüfen Sie die aktuell angebotenen Exportformate und Datumsbereiche bei der Bank."
+      },
+      "bofa": {
+        "bank": "Bank of America",
+        "label": "Bank-of-America-Auszug in Excel",
+        "title": "Bank-of-America-Auszüge in Excel umwandeln",
+        "intro": "Laden Sie Ihren PDF-Auszug von Bank of America in StatementXL hoch, prüfen Sie die Buchungen und laden Sie Excel herunter. Ohne Anmeldung sind täglich {anonymousPages} Seite, mit Anmeldung {authenticatedPages} Seiten kostenlos. Speichern Sie angeforderte ältere Auszüge rechtzeitig.",
+        "availability": "Auszüge mit Scheckbildern sind bis zu 18 Monate direkt abrufbar, druckbar und herunterladbar. Ältere Kopien können bis zu sieben Jahre rückwirkend angefordert werden. Prüfen Sie die Verfügbarkeit bei Kreditkarten separat für das jeweilige Konto.",
+        "download": "Melden Sie sich im Online Banking an und öffnen Sie unter Accounts den Bereich Statements & Documents. Wählen Sie Konto und Zeitraum, öffnen Sie das PDF und speichern Sie es. Ältere Kopien können dort über Request statements angefordert werden.",
+        "detailsTitle": "Ältere Auszüge bei Bank of America anfordern",
+        "details": "Elektronische Kopien sind kostenlos, normalerweise nach 24–36 Stunden verfügbar und sieben Tage abrufbar. Speichern Sie sie möglichst sofort.\n\nPapierkopien werden normalerweise 7–10 Werktage nach der Anfrage versendet. Bevorzugen Sie das elektronische PDF: Papier muss gescannt werden, und nur Professional und Enterprise können Scans über den KI-Fallback versuchen."
+      },
+      "wellsFargo": {
+        "bank": "Wells Fargo",
+        "label": "Wells-Fargo-Auszug in Excel",
+        "title": "Wells-Fargo-Auszüge in Excel umwandeln",
+        "intro": "Speichern Sie Ihren Wells-Fargo-Auszug als PDF und prüfen Sie in StatementXL die Buchungen und Risikomarkierungen, bevor Sie Excel herunterladen. Täglich sind ohne Anmeldung {anonymousPages} Seite, mit Anmeldung {authenticatedPages} Seiten kostenlos. Die Verfügbarkeit hängt vom Kontotyp ab.",
+        "availability": "Einlagen-, Hypotheken-, Treuhand- und verwaltete Anlagekonten: bis zu sieben Jahre. Kreditkarten, Home-Equity-Kreditlinien, persönliche Darlehen und Kreditlinien: bis zu zwei Jahre. Autokredite: bis zu zwölf Monate. Nach Kontoschließung können Auszüge noch ungefähr neunzig Tage abrufbar sein.",
+        "download": "Melden Sie sich bei Wells Fargo Online an und öffnen Sie Statements & Documents. Wählen Sie Konto und verfügbaren Zeitraum, öffnen Sie das PDF und speichern Sie es unter einem aussagekräftigen Namen. Bei fehlenden Unterlagen geschlossener Konten wenden Sie sich an die Bank.",
+        "detailsTitle": "Geschäfts- und Kreditkartenauszüge von Wells Fargo",
+        "details": "Business Online stellt Dokumente für berechtigte Geschäftskonten bereit. Auch die beworbenen sieben Jahre unterliegen produktspezifischen Grenzen; nicht alle Geschäftsauszüge werden so lange angeboten.\n\nKreditkartenauszüge sind bis zu zwei Jahre verfügbar. Speichern Sie sie vor Ablauf dieses Zeitraums."
+      }
+    },
+    "breadcrumbLabel": "Navigationspfad"
   }
 }

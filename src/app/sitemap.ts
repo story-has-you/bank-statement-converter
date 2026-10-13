@@ -3,9 +3,10 @@ import type { MetadataRoute } from "next";
 import { getLocalizedAlternates, getLocalizedPath } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
+import { conversionPages } from "@/config/conversion-pages";
 import { agentDocuments, getAgentDocumentUrl } from "@/lib/geo/links";
 
-const publicPaths = ["/", "/terms", "/privacy"] as const;
+const publicPaths = ["/", "/terms", "/privacy", ...conversionPages.map((page) => page.path)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = publicPaths.flatMap((pathname) =>
