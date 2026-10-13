@@ -2,49 +2,26 @@
 
 import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
-import { PaymentSession } from "./payment-session";
-import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { PaymentProviderIcon } from "@/components/billing/payment-provider-icon";
+import { CreemCheckoutSession } from "@/components/billing/providers/creem/checkout-session";
+import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { isCheckoutResult, readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
 
 type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
 
-function waitForConfirmation(signal: AbortSignal): Promise<void> {
-  return new Promise((resolve, reject) => {
-    signal.throwIfAborted();
-    const timer = setTimeout(() => {
-      signal.removeEventListener("abort", cancel);
-      resolve();
-    }, 2_000);
-    function cancel(): void {
-      clearTimeout(timer);
-      reject(signal.reason);
-    }
-    signal.addEventListener("abort", cancel, { once: true });
-  });
-}
-
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
   const locale = useLocale();
-  const router = useRouter();
-  const providerName = checkout.provider === "creem" ? "Creem" : "PayPal";
-  const [message, setMessage] = useState<string | null>(null);
   const [failure, setFailure] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [confirming, setConfirming] = useState(false);
-  const confirmation = useRef<AbortController | null>(null);
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
-      confirmation.current?.abort();
     };
   }, []);
 
@@ -56,7 +33,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
         body: JSON.stringify({ provider: checkout.provider, tier }),
       });
       const payload: unknown = await response.json().catch(() => null);
-      if (!response.ok || !isCheckoutResult(payload) || payload.provider !== checkout.provider) {
+      if (!response.ok || !isCheckoutResult(payload)) {
         if (mounted.current) setFailure(readBillingResponse(payload).error ?? t("api.createFailed"));
         throw new Error("Subscription creation failed");
       }
@@ -67,95 +44,25 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
     }
   }
 
-  async function onApprove(subscriptionId: string): Promise<void> {
-    if (!mounted.current) return;
-    confirmation.current?.abort();
-    const controller = new AbortController();
-    confirmation.current = controller;
-    const { signal } = controller;
-    setFailure(null);
-    setConfirming(true);
-    setMessage(t("confirming"));
-    try {
-      for (let attempt = 0; attempt < 15; attempt += 1) {
-        if (await isSubscriptionActive(subscriptionId, signal)) {
-          signal.throwIfAborted();
-          setSuccess(true);
-          setMessage(t("activated"));
-          router.refresh();
-          return;
-        }
-        await waitForConfirmation(signal);
-      }
-      signal.throwIfAborted();
-      setMessage(t("confirmationDelayed"));
-    } catch {
-      if (signal.aborted || confirmation.current !== controller) return;
-      setMessage(null);
-      setFailure((currentFailure) => currentFailure ?? t("activationFailed"));
-    } finally {
-      if (confirmation.current === controller) {
-        confirmation.current = null;
-        if (!signal.aborted) setConfirming(false);
-      }
-    }
-  }
-
-  async function isSubscriptionActive(subscriptionId: string, signal: AbortSignal): Promise<boolean> {
-    const response = await fetch("/api/billing/subscriptions/activate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-app-locale": locale },
-      body: JSON.stringify({ provider: checkout.provider, subscriptionId, tier }),
-      signal,
-    });
-    const payload = readBillingResponse(await response.json().catch(() => null));
-    signal.throwIfAborted();
-
-    if (response.status === 202 && payload.status === "PENDING") return false;
-    if (!response.ok) {
-      setFailure(typeof payload.error === "string" ? payload.error : t("activationFailed"));
-      throw new Error("Subscription activation check failed");
-    }
-    if (payload.status !== "ACTIVE") {
-      setFailure(t("invalidStatusResponse"));
-      throw new Error("Unexpected subscription status");
-    }
-
-    return true;
-  }
-
   if (!checkout.available || !checkout.availableTiers.includes(tier)) {
-    const unavailable = t("providerUnavailable", { provider: providerName });
+    const unavailable = t("providerUnavailable", { provider: "Creem" });
     return (
       <Button type="button" size="lg" className="w-full min-w-0" disabled aria-label={unavailable} title={unavailable}>
-        <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
-        <span className="truncate">{providerName}</span>
+        <PaymentProviderIcon data-icon="inline-start" />
+        <span className="truncate">Creem</span>
       </Button>
     );
   }
 
-  if (success) {
-    return <p className="text-sm font-medium text-primary">{message}</p>;
-  }
-
   return (
-    <PaymentSession
-      provider={checkout.provider}
+    <CreemCheckoutSession
       createCheckout={createCheckout}
-      onApprove={onApprove}
-      onCancel={() => {
-        setFailure(null);
-        setMessage(t("cancelled"));
-      }}
       onError={() => {
-        setMessage(null);
-        setFailure((value) => value ?? t("paymentFailed"));
+        if (mounted.current) setFailure((value) => value ?? t("paymentFailed"));
       }}
     >
-      {({ labels, pending, failed, start, cancel }) => {
-        let label = labels.subscribe;
-        if (confirming) label = t("confirming");
-        else if (pending) label = labels.processing;
+      {({ labels, pending, start }) => {
+        const label = pending ? labels.processing : labels.subscribe;
         return (
           <div className="grid min-w-0 gap-2">
             <Button
@@ -165,32 +72,23 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
               aria-label={label}
               title={label}
               onClick={() => {
-                setMessage(null);
                 setFailure(null);
                 void start();
               }}
-              onKeyDown={(event) => {
-                if (event.key === "Escape") cancel();
-              }}
-              disabled={pending || confirming}
+              disabled={pending}
             >
-              <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
-              <span className="truncate">{pending || confirming ? label : providerName}</span>
+              <PaymentProviderIcon data-icon="inline-start" />
+              <span className="truncate">{pending ? label : "Creem"}</span>
             </Button>
-            {message && (
-              <p role="status" className="text-sm text-muted-foreground">
-                {message}
-              </p>
-            )}
-            {(failure || failed) && (
+            {failure && (
               <p role="alert" className="text-sm text-destructive">
-                {failure ?? t("paymentFailed")}
+                {failure}
               </p>
             )}
           </div>
         );
       }}
-    </PaymentSession>
+    </CreemCheckoutSession>
   );
 };
 

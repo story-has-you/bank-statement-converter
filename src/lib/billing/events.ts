@@ -16,39 +16,14 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
   if (notification.type === "subscription-paid" || notification.type === "subscription-status-changed") {
     return applyPaidSubscriptionEvent(notification);
   }
-  const existing = notification.type === "subscription-activated" ? null : await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
-  if (notification.type !== "subscription-activated") {
-    if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
-    if (existing.last_webhook_event_id === notification.id) return "ignored";
-  }
+  const existing = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
+  if (!existing) throw new Error("Subscription payment is not stored yet; retry required");
+  if (existing.last_webhook_event_id === notification.id) return "ignored";
   const event = await notification.resolve();
   const remote = event.subscription;
-  if (event.type === "subscription-activated") {
-    const start = requireTime(remote.periodStart);
-    const end = requireTime(remote.periodEnd);
-    if (remote.status !== "ACTIVE" || start >= end || end <= Date.now()) throw new Error("Subscription activation period is invalid");
-    return insertConfirmedSubscription(event, "ACTIVE");
-  }
-  if (!existing) throw new Error("Subscription activation is not stored yet; retry required");
   checkSubscriptionIdentity(existing, remote);
-  if (event.type === "subscription-cancelled") {
-    if (remote.status !== "CANCELLED") throw new Error("Subscription cancellation is not confirmed");
-    return updateBillingSubscriptionFromWebhook(existing, event, { status: "CANCELLED" });
-  }
-  if (event.type !== "subscription-renewed") throw new Error("Unexpected renewal notification");
-  if (existing.status !== "ACTIVE" || remote.status !== "ACTIVE") return "ignored";
-  if (existing.last_event_at && Date.parse(event.at) < Date.parse(existing.last_event_at)) return "ignored";
-  const previousEnd = requireTime(existing.current_period_end);
-  const saleAt = requireTime(event.saleAt);
-  const paidAt = requireTime(event.paidAt);
-  const end = requireTime(remote.periodEnd);
-  if (end <= previousEnd) {
-    if (saleAt >= previousEnd) throw new Error("Renewed billing period is not ready; retry required");
-    return "ignored";
-  }
-  const start = Math.max(previousEnd, paidAt);
-  if (end <= Date.now() || start >= end || start > Date.now()) throw new Error("Renewed billing period is invalid");
-  return updateBillingSubscriptionFromWebhook(existing, event, { current_period_start: new Date(start).toISOString(), current_period_end: new Date(end).toISOString() });
+  if (event.type !== "subscription-cancelled" || remote.status !== "CANCELLED") throw new Error("Subscription cancellation is not confirmed");
+  return updateBillingSubscriptionFromWebhook(existing, event, { status: "CANCELLED" });
 }
 
 /** Creem 付款先核实交易，再按已有记录区分首次付款、恢复与续费。 */
@@ -81,7 +56,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE", current_period_start: remote.periodStart!, current_period_end: remote.periodEnd! });
 }
 
-async function insertConfirmedSubscription(event: Extract<BillingEvent, { type: "subscription-paid" | "subscription-activated" }>, status: "ACTIVE" | "CANCELLED"): Promise<"applied" | "ignored"> {
+async function insertConfirmedSubscription(event: Extract<BillingEvent, { type: "subscription-paid" }>, status: "ACTIVE" | "CANCELLED"): Promise<"applied" | "ignored"> {
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
   const remote = event.subscription;

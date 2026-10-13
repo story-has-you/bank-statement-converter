@@ -1,6 +1,6 @@
 # Creem 支付接入
 
-套餐页提供 Creem、PayPal 两个入口。Creem 使用官方 `creem@1.13.0` SDK 和现有统一计费接口；仅测试环境已配置，正式环境未启用。
+套餐页仅提供 Creem 入口。Creem 使用官方 `creem@1.13.0` SDK 和现有统一计费接口；仅测试环境已配置，正式环境未启用。
 
 ## 产品与配置
 
@@ -16,7 +16,7 @@ Professional、Enterprise 支持配置中的 AI 解析回退。价格与权益�
 
 ## 接口与事件
 
-- `POST /api/billing/subscriptions/create` 接受 `{ provider, tier }`；Creem 返回 `{ provider: "creem", checkoutId, checkoutUrl }`，PayPal 保留订阅 ID 响应。用户、产品、数量和本地化返回地址在服务端确定，忽略客户端提交的价格、产品和身份。
+- `POST /api/billing/subscriptions/create` 接受 `{ provider, tier }`；Creem 返回 `{ provider: "creem", checkoutId, checkoutUrl }`。用户、产品、数量和本地化返回地址在服务端确定，忽略客户端提交的价格、产品和身份。
 - `POST /api/billing/subscriptions/activate` 为 Creem 接受 `{ provider: "creem", checkoutId, tier }`。查询 checkout 与订阅并核对归属；Webhook 未到返回 202，已落库 ACTIVE 返回 200。浏览器返回页不能创建记录。
 - `POST /api/billing/subscriptions/cancel` 按订阅的渠道执行取消；Creem 使用 scheduled，取消响应不提前修改本地状态，等回调或权威终态同步确认。
 - `POST /api/billing/webhooks/creem` 对原始请求体验证 HMAC-SHA256。`subscription.paid` 远端核对已付款交易、身份、套餐和账期，创建首条记录或续期；active、checkout.completed 不授予权益。
@@ -36,6 +36,10 @@ Professional、Enterprise 支持配置中的 AI 解析回退。价格与权益�
 
 已有本地 3000 服务通过 23 项 HTTP 检查，包括未登录、跨域、签名错误、合法未知通知和 12 个语言返回页。Preview 已部署并绑定域名；正确签名的无业务连通通知返回 200，错误签名返回 400。这个检查证明公网可达、绕过保护和验签配置，不证明 Creem 已投递真实付款事件。
 
-真实付款、取消及账户额度验收需专用测试账号，由曦操作。首次测试顺序：登录 Preview → 选择 Creem 套餐 → 使用 Creem 测试付款 → 返回网站等待激活 → 核对 provider=creem 的单条订阅及额度 → 在账户页取消 → 核对 CANCELLED 且保留本期权益、两个渠道阻止重订。真实续费和扣款失败尚未执行，不以隔离验证替代。
+真实付款、取消及账户额度验收需专用测试账号，由曦操作。首次测试顺序：登录 Preview → 选择 Creem 套餐 → 使用 Creem 测试付款 → 返回网站等待激活 → 核对 provider=creem 的单条订阅及额度 → 在账户页取消 → 核对 CANCELLED 且保留本期权益、阻止重订。真实续费和扣款失败尚未执行，不以隔离验证替代。
 
-最终 Preview 部署为 `dpl_21DFxowZDx5pMYkJjjEFd65a3b2p`（READY），已绑定上述 Preview 域名。浏览器检查了匿名中文首页和付款返回页，未捕获页面错误；未登录时显示登录提示。当前尚未进行已登录双按钮、PayPal 弹窗或 Creem 托管结账的真实付款验收。
+最终 Preview 部署为 `dpl_21DFxowZDx5pMYkJjjEFd65a3b2p`（READY），已绑定上述 Preview 域名。浏览器检查了匿名中文首页和付款返回页，未捕获页面错误；未登录时显示登录提示。当前尚未进行已登录 Creem 按钮或托管结账的真实付款验收。
+
+## 单渠道应用边界
+
+应用只查询 provider=creem 的订阅；历史渠道记录保留，不展示、不同步，也不参与额度或购买限制。旧渠道兼容入口已删除。`20261013000000_limit_open_subscriptions_to_creem.sql` 仅新增到仓库，尚未执行；发布前需要完成该索引迁移，避免历史开放记录阻止新订阅写入。当前部署及真实付款验收状态仍以上述已执行证据为准。

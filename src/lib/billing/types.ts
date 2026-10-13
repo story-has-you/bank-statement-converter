@@ -2,7 +2,3 @@ export const subscriptionStatuses = ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "
 
 export type MembershipTier = "standard" | "professional" | "enterprise";
 export type SubscriptionStatus = (typeof subscriptionStatuses)[number];
-
-export function isSubscriptionStatus(value: unknown): value is SubscriptionStatus {
-  return subscriptionStatuses.includes(value as SubscriptionStatus);
-}

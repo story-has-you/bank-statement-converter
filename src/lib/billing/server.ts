@@ -41,7 +41,7 @@ export async function listBillingSubscriptions(userId: string): Promise<BillingS
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
-  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("user_id", userId).order("created_at", { ascending: false });
+  const { data, error } = await admin.from("billing_subscriptions").select("*").eq("provider", "creem").eq("user_id", userId).order("created_at", { ascending: false });
   if (error) throw error;
   return data as BillingSubscription[];
 }
@@ -53,13 +53,13 @@ function isPaidPeriodCurrent(subscription: BillingSubscription, now: Date): bool
 }
 
 export function selectEntitledSubscription(subscriptions: BillingSubscription[], now = new Date()): BillingSubscription | null {
-  const active = subscriptions.find((subscription) => subscription.status === "ACTIVE" && (subscription.provider !== "creem" || isPaidPeriodCurrent(subscription, now)));
+  const active = subscriptions.find((subscription) => subscription.provider === "creem" && subscription.status === "ACTIVE" && isPaidPeriodCurrent(subscription, now));
   if (active) return active;
 
   return (
     subscriptions.find((subscription) => {
-      const paidStatus = subscription.status === "CANCELLED" || (subscription.provider === "creem" && subscription.status === "PAYMENT_FAILED");
-      return paidStatus && isPaidPeriodCurrent(subscription, now);
+      const paidStatus = subscription.status === "CANCELLED" || subscription.status === "PAYMENT_FAILED";
+      return subscription.provider === "creem" && paidStatus && isPaidPeriodCurrent(subscription, now);
     }) ?? null
   );
 }
@@ -77,8 +77,7 @@ export async function updateBillingSubscriptionFromWebhook(
   const olderEvent = subscription.last_event_at !== null && Date.parse(event.at) < Date.parse(subscription.last_event_at);
   // 已向支付渠道确认的取消是终态；付款事件即使晚生成也不能阻止取消落库。
   if (olderEvent && changes.status !== "CANCELLED") return "ignored";
-  if (subscription.provider === "paypal" && subscription.status !== "ACTIVE") return "ignored";
-  if (subscription.provider === "creem" && ["CANCELLED", "EXPIRED"].includes(subscription.status)) return "ignored";
+  if (["CANCELLED", "EXPIRED"].includes(subscription.status)) return "ignored";
 
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
@@ -105,6 +104,7 @@ export async function findOpenBillingSubscription(userId: string): Promise<Billi
   const { data, error } = await admin
     .from("billing_subscriptions")
     .select("*")
+    .eq("provider", "creem")
     .eq("user_id", userId)
     .in("status", ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "SUSPENDED", "PAYMENT_FAILED"])
     .order("created_at", { ascending: false })
@@ -158,12 +158,10 @@ export async function insertActivatedBillingSubscription(update: BillingActivati
   const admin = createAdminClient();
   if (!admin) throw new Error("Supabase admin configuration is incomplete");
 
-  if (update.provider === "creem") {
-    const open = await findOpenBillingSubscription(update.userId);
-    if (open?.provider === update.provider && open.provider_subscription_id === update.subscriptionId) return "ignored";
-    const entitled = await findEntitledBillingSubscription(update.userId);
-    if (open || entitled?.status === "CANCELLED") throw new Error("Account already has an open or paid cancelled subscription");
-  }
+  const open = await findOpenBillingSubscription(update.userId);
+  if (open?.provider === update.provider && open.provider_subscription_id === update.subscriptionId) return "ignored";
+  const entitled = await findEntitledBillingSubscription(update.userId);
+  if (open || entitled?.status === "CANCELLED") throw new Error("Account already has an open or paid cancelled subscription");
   const { error } = await admin
     .from("billing_subscriptions")
     .insert({

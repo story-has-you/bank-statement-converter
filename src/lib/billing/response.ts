@@ -8,7 +8,6 @@ export function readBillingResponse(value: unknown): { error?: string; status?: 
 
 export function isCheckoutResult(value: unknown): value is CheckoutResult {
   if (typeof value !== "object" || value === null || Array.isArray(value) || !("provider" in value)) return false;
-  if (value.provider === "paypal") return "subscriptionId" in value && typeof value.subscriptionId === "string" && value.subscriptionId.length > 0;
   return (
     value.provider === "creem" &&
     "checkoutId" in value &&

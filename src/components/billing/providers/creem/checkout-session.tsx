@@ -1,10 +1,16 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useState, type FC, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import type { PaymentSessionProps } from "@/components/billing/payment-session";
+import type { CheckoutResult } from "@/lib/billing/provider";
 
-const CreemCheckoutSession: FC<PaymentSessionProps> = ({ createCheckout, onError, children }) => {
+type CheckoutSessionProps = {
+  createCheckout: () => Promise<CheckoutResult>;
+  onError: () => void;
+  children: (session: { labels: { subscribe: string; processing: string }; pending: boolean; start: () => Promise<void> }) => ReactNode;
+};
+
+const CreemCheckoutSession: FC<CheckoutSessionProps> = ({ createCheckout, onError, children }) => {
   const t = useTranslations("Creem");
   const [pending, setPending] = useState(false);
   async function start(): Promise<void> {
@@ -12,14 +18,13 @@ const CreemCheckoutSession: FC<PaymentSessionProps> = ({ createCheckout, onError
     setPending(true);
     try {
       const result = await createCheckout();
-      if (result.provider !== "creem") throw new Error("Unexpected checkout provider");
       window.location.assign(result.checkoutUrl);
     } catch {
       setPending(false);
       onError();
     }
   }
-  return children({ labels: { subscribe: t("subscribe"), processing: t("processing") }, pending, failed: false, start, cancel: () => {} });
+  return children({ labels: { subscribe: t("subscribe"), processing: t("processing") }, pending, start });
 };
 
 CreemCheckoutSession.displayName = "CreemCheckoutSession";

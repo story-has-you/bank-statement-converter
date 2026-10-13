@@ -1,56 +1,40 @@
-# 计费渠道改造的切换与验收
+# Creem 计费切换与验收
 
-网站同时支持 Creem 与 PayPal。PayPal 保留原有环境变量、Sandbox／Production 配置和弹窗购买方式；Creem 使用托管结账跳转。Creem 接入与测试验收结果见 [Creem 支付接入](creem-billing.md)。历史 PayPal 验收状态不因新增渠道而改变。
+网站仅使用 Creem 托管结账，接口保持现有渠道字段。支付配置和既有测试证据见 [Creem 支付接入](creem-billing.md)。历史渠道订阅记录保留，应用只读取 Creem 记录，不提供历史渠道的购买、确认、取消、同步或权益。
 
-## 接口和扩展位置
+## 接口
 
-- `POST /api/billing/subscriptions/create`：`{ provider, tier }`，PayPal 返回 `{ provider, subscriptionId }`，Creem 返回 `{ provider, checkoutId, checkoutUrl }`。
-- `POST /api/billing/subscriptions/activate`：PayPal 接受 `{ provider, subscriptionId, tier }`，Creem 接受 `{ provider, checkoutId, tier }`；等待回调时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。
-- `POST /api/billing/subscriptions/cancel`：`{ provider, subscriptionId }`，接受同站点、已认证的请求，返回 `CANCELLATION_PENDING` 或 `CANCELLED`。
-- `POST /api/billing/webhooks/[provider]`：消费渠道原始请求；无效格式或签名返回 400，处理失败返回 502，以触发重试。
-- 旧 `/api/paypal/subscriptions/*` 和 `/api/paypal/webhooks` 继续有效。旧请求不需要 `provider`，旧创建响应仍仅包含 `subscriptionId`。同一回调投递至两个入口时仍按渠道订阅及事件版本处理。
-- 账户响应的每条订阅新增 `provider`；`subscriptionId` 仍为渠道 ID，调用和列表标识使用二者组合。
+- `POST /api/billing/subscriptions/create`：`{ provider: "creem", tier }`，返回 `{ provider: "creem", checkoutId, checkoutUrl }`。
+- `POST /api/billing/subscriptions/activate`：`{ provider: "creem", checkoutId, tier }`；等待付款回调落库时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。浏览器返回不写入权益。
+- `POST /api/billing/subscriptions/cancel`：`{ provider: "creem", subscriptionId }`，接受同站点、已认证的请求，返回 `CANCELLATION_PENDING` 或 `CANCELLED`。
+- `POST /api/billing/webhooks/creem`：消费原始请求体，验证签名并核实远端付款、身份和账期；无效格式或签名返回 400，处理失败返回 502，等待渠道重试。
+- 其他渠道返回 `400 invalidProvider`；原有渠道专用兼容入口已删除。
 
-渠道实现 `PaymentProvider` 并加入服务端注册表，公开配置和创建结果使用判别联合类型。PayPal 会话消费订阅 ID，Creem 会话消费 checkout ID 和跳转地址；通用按钮不接触支付 SDK。付款返回只查询 Webhook 已写入的订阅，不授予权益。
+## 发布前数据库迁移
 
-## 一次协调切换
+`20261013000000_limit_open_subscriptions_to_creem.sql` 只新增到仓库，尚未执行真实数据库。
 
-1. 核实目标环境和迁移历史，确认此前移除计费业务函数的迁移已执行；保存迁移前订阅数量、主键及全部现有列的快照。
-2. 暂停所有依赖计费表的请求：创建／确认／取消、套餐权益查询、账户读取、登录后的状态同步及转换额度校验。停止旧实例和在途任务对计费表的读写。入口层让 Webhook 返回 503，不能返回成功确认；等待渠道重试。
-3. 在事务中执行 `20261012013133_generalize_billing_provider.sql`。不要手工重跑历史迁移，也不恢复辅助表、RPC 或触发器。
-4. 核对记录数量、主键、账期、金额和状态未变化；全部历史记录的 `provider` 为 `paypal`，两个渠道 ID 与原列完全一致，`provider` 没有默认值。核对 RLS、权限和用户开放订阅部分唯一索引保持不变。
-5. 切换到新代码，确认所有实例使用新列。保留现有 PayPal Webhook 配置地址，不需要修改外部配置。
-6. 恢复入口，核对补投递事件及重复投递没有重复创建、覆盖取消或错误推进账期。
+1. 核实目标数据库已使用通用渠道列，保留全部历史迁移；不要重跑历史迁移或恢复辅助表、RPC、触发器。
+2. 在发布新应用前执行该迁移。它在事务中锁定计费表，检查同用户的 Creem 开放订阅冲突，再替换 `billing_subscriptions_open_user_idx`，限定 `provider = 'creem'`。开放状态仍包括 APPROVAL_PENDING、APPROVED、ACTIVE、SUSPENDED、PAYMENT_FAILED。
+3. 存在冲突时迁移中止并回滚，不自动清理记录。核对前后记录、RLS、权限及渠道订阅唯一约束不变。
+4. 发布应用后，账户、权益、额度、开放订阅检查及登录同步仅使用 Creem。历史渠道开放记录不再阻止 Creem 写入。
 
-迁移前异常可回退旧代码；迁移后回退须先暂停请求，再在事务中恢复原列、单列唯一约束并移除新列，同时切回旧代码。该回退仅适用于仍只有 PayPal 记录的阶段；若已有其他渠道记录，先做数据评估，不能直接回退。
+未执行索引迁移时，应用查询虽忽略历史记录，数据库唯一约束仍可能阻止新订阅写入。环境变量删除只影响后续部署；现有部署需发布新代码后才完成渠道移除。
 
-## 验收场景
+## 验收
 
-静态验收执行 ESLint、TypeScript、生产构建和 diff 检查，不新增单元测试。
+静态检查执行 ESLint、TypeScript、生产构建、12 种语言键与占位符检查和 diff 检查，不新增单元测试。
 
-隔离数据库验收覆盖数据保留、历史渠道回填、无默认值、联合唯一约束、跨渠道开放订阅约束以及按用户限制读取的 RLS。此结果不证明真实数据库已切换。
+临时隔离数据库验证历史开放记录与 Creem 开放记录共存、同用户第二条 Creem 开放记录被拒绝、冲突迁移回滚、历史数据不变。隔离验证不能证明真实数据库已迁移。
 
-在现有本地服务验证匿名页面、未登录接口、非法请求、无签名回调以及新旧路由响应。以下需要已迁移的隔离／Sandbox 环境和明确授权的支付操作：
+复用现有本地 3000 服务检查匿名套餐页、付款返回页、未登录及同源限制、已删除接口和不支持的渠道；不发起付款。
 
-| 场景                                     | 预期                                           |
-| ---------------------------------------- | ---------------------------------------------- |
-| 配置缺失、已有开放订阅、取消周期未结束   | 拒绝创建，不调用渠道创建                       |
-| 其他用户的订阅、错误套餐／身份           | 拒绝确认或取消，不修改记录                     |
-| 用户批准但激活回调未到                   | 确认接口返回 202，不授予权益                   |
-| 已验签且远端 ACTIVE 的有效激活           | 首条记录创建，金额／身份／账期正确             |
-| 重复激活、并发插入                       | 同渠道订阅仅一条；其他唯一冲突不能误报成功     |
-| 渠道取消成功、回调延迟                   | 显示等待确认，本地状态不提前改变               |
-| 已确认取消                               | 本地 CANCELLED，权益到周期结束，结束前不能重订 |
-| 登录／账户读取时远端查询失败或身份不一致 | 保留本地状态，登录继续                         |
-| 未知但签名有效的事件                     | 返回 received，不写数据库                      |
-| 续费先于激活落库、账期证据未就绪         | 返回可重试错误                                 |
-| 重复／乱序续费、并发回调                 | 不倒退账期，版本冲突触发重试                   |
-| 取消后迟到付款                           | 不恢复订阅，不延长权益                         |
+Creem 付款与取消仍须使用专用测试账号单独验收：只有已验签且核实付款交易的事件授予权益；取消保留当前已付周期，失败扣款不延长账期；重复、乱序、并发及迟到付款不得重复创建或恢复取消／到期订阅。既有真实支付验收限制见 [Creem 支付接入](creem-billing.md)。
 
-## 本次已执行的验证（2026-10-12）
+## 本次验证（2026-10-13）
 
-- ESLint、TypeScript、生产构建和 diff 检查通过；12 种语言的计费键一致，其他文案及 PayPal 按钮标签保持原值。
-- 临时目录中的 PGlite 隔离 PostgreSQL 完成 15 项检查：全部历史列与记录保留、渠道回填、非空且无默认值、联合唯一、不同渠道相同外部 ID、跨渠道开放订阅限制及 RLS。使用虚构记录，没有连接真实数据库，也没有修改项目依赖。
-- 已启动的本地 3000 服务完成 24 项 HTTP 检查：新旧创建／确认接口未登录返回 401；取消请求的同源限制返回 403、同源未登录返回 401；格式错误和缺失签名的回调返回 400；不支持渠道的错误在 12 种语言中正确返回。
-- 浏览器核对匿名中文套餐页，三个套餐及登录提示正常，未捕获浏览器警告或错误；未点击订阅／取消按钮。
-- 真实数据库迁移、已登录账户、签名有效的回调和 PayPal Sandbox 创建／付款／续费／取消尚未执行，须按上述切换和验收流程单独确认。
+- ESLint、TypeScript、生产构建、格式和 diff 检查通过，12 种语言的键与原有 ICU 占位符一致。
+- 临时隔离 PostgreSQL 完成 12 项索引迁移检查；真实应用模块、官方 SDK、HMAC 和虚构支付响应完成 42 项隔离联调，覆盖付款、恢复、续费、取消与历史记录排除。不连接真实数据库，不发起真实付款。
+- 复用已有 3000 服务完成 22 项 HTTP 检查：删除的旧入口返回 404，不支持渠道返回 400，未登录订阅操作返回 401，无签名回调返回 400，12 种语言返回页均可访问。浏览器检查匿名中文首页和返回页，未捕获页面错误，首页无旧渠道脚本或文案。
+- Vercel ReAvid / bank-statement-converter 的旧渠道环境变量已删除：Production 9 条、Preview 9 条；重新列举为零，其余 21 条配置的 ID、键和环境范围不变，未读取密钥值。没有自定义环境，Development 和分支覆盖中未发现遗漏。
+- 新索引迁移尚未在真实数据库执行，代码尚未部署，未提交或推送 Git；真实付款及登录账户验收仍未执行。

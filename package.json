@@ -14,8 +14,6 @@
     "@base-ui/react": "^1.8.0",
     "@e965/xlsx": "0.20.3",
     "@next/third-parties": "16.3.8",
-    "@paypal/paypal-server-sdk": "2.5.0",
-    "@paypal/react-paypal-js": "9.3.0",
     "@streamparser/json": "^0.0.26",
     "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.117.2",

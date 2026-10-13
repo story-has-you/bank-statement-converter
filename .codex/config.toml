@@ -1,3 +1,0 @@
-[mcp_servers.paypal-mcp-server]
-command = "npx"
-args = ["mcp-remote", "https://mcp.paypal.com/sse"]

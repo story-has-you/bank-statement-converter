@@ -19,7 +19,7 @@ export function checkSubscriptionIdentity(existing: BillingSubscription, remote:
 }
 
 export async function createSubscription(provider: PaymentProvider, tier: MembershipTier, user: CheckoutUser, returnUrl: string) {
-  if (!isPaymentProviderEnabled(provider.id)) throw new BillingError("paymentDisabled", 503);
+  if (!isPaymentProviderEnabled()) throw new BillingError("paymentDisabled", 503);
   const userId = user.id;
   requireConfiguredProvider(provider, tier);
   const open = await findOpenBillingSubscription(userId);
@@ -60,11 +60,11 @@ export async function cancelSubscription(provider: PaymentProvider, subscription
   requireConfiguredProvider(provider);
   const existing = await findBillingSubscriptionByProviderId(provider.id, subscriptionId);
   if (!existing || existing.user_id !== userId) throw new BillingError("cancelSubscriptionNotFound", 404);
-  if (existing.status !== "ACTIVE" && existing.status !== "CANCELLED" && !(provider.id === "creem" && existing.status === "PAYMENT_FAILED")) throw new BillingError("cancelNotActive", 409);
+  if (!["ACTIVE", "CANCELLED", "PAYMENT_FAILED"].includes(existing.status)) throw new BillingError("cancelNotActive", 409);
   const remote = await provider.getSubscription(subscriptionId);
   checkSubscriptionIdentity(existing, remote);
   if (remote.status !== "CANCELLED") {
-    const cancellableStatuses = provider.id === "creem" ? ["ACTIVE", "PAYMENT_FAILED"] : ["ACTIVE"];
+    const cancellableStatuses = ["ACTIVE", "PAYMENT_FAILED"];
     if (!cancellableStatuses.includes(existing.status) || !cancellableStatuses.includes(remote.status)) {
       throw new BillingError("cancelNotActive", 409);
     }

@@ -205,7 +205,7 @@
   },
   "UsageTiers": {
     "title": "Quanto custam os planos e o que incluem?",
-    "description": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem / PayPal.",
+    "description": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem.",
     "anonymous": "Sem login",
     "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
     "anonymousDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
@@ -236,12 +236,6 @@
   },
   "Billing": {
     "signInRequired": "Entre antes de iniciar uma assinatura.",
-    "unavailable": "O serviço de pagamento não foi configurado.",
-    "confirming": "Verificando se a assinatura está ativa",
-    "confirmationDelayed": "A ativação da assinatura ainda não foi confirmada.",
-    "activationFailed": "Não foi possível consultar o status de ativação da assinatura.",
-    "activated": "Seu plano está ativo.",
-    "cancelled": "Você cancelou o processo de assinatura.",
     "paymentFailed": "Não foi possível confirmar o resultado desta operação de assinatura.",
     "currentPlan": "Você está usando este plano.",
     "api": {
@@ -251,7 +245,7 @@
       "invalidRequest": "A solicitação de assinatura é inválida.",
       "invalidTier": "O plano de assinatura selecionado é inválido.",
       "configurationMissing": "O pagamento ainda não foi configurado.",
-      "paymentDisabled": "Este método de pagamento está desativado. Escolha outro método de pagamento.",
+      "paymentDisabled": "Os pagamentos de assinaturas estão desativados no momento.",
       "subscriptionBelongsToAnotherAccount": "Esta assinatura pertence a outra conta.",
       "verificationFailed": "Não foi possível verificar as informações da assinatura.",
       "activationFailed": "Não foi possível consultar o status de ativação da assinatura.",
@@ -279,12 +273,7 @@
       "invalidProvider": "O provedor de pagamento selecionado é inválido.",
       "existingFailedSubscription": "Há um pagamento pendente. Resolva-o ou cancele sua assinatura."
     },
-    "invalidStatusResponse": "O serviço de assinatura retornou informações de status inválidas.",
     "providerUnavailable": "Os pagamentos via {provider} estão indisponíveis no momento."
-  },
-  "PayPal": {
-    "subscribe": "Assinar com PayPal",
-    "processing": "Abrindo o PayPal"
   },
   "HomeFaq": {
     "title": "O que devo saber antes de converter?",
@@ -335,7 +324,7 @@
     },
     "title": "Termos de serviço",
     "intro": "A ReAvid Ltd opera este serviço em <site>{domain}</site>. Leia estes termos e a política de privacidade antes de usar a conversão e as assinaturas.",
-    "availability": "A conversão de PDF para Excel e as assinaturas Creem / PayPal são oferecidas conforme o estado atual da página. Os preços e a disponibilidade dos planos podem mudar com a configuração do serviço.",
+    "availability": "A conversão de PDF para Excel e as assinaturas Creem são oferecidas conforme o estado atual da página. Os preços e a disponibilidade dos planos podem mudar com a configuração do serviço.",
     "service": {
       "title": "Escopo do serviço",
       "body": "O serviço organiza transações de extratos bancários em PDF compatíveis em arquivos Excel para download e conferência. Os bancos, tipos de arquivo e limites aceitos são descritos na página do serviço. Não oferecemos conexões com contas bancárias, serviços bancários nem orientação financeira, fiscal ou jurídica. A análise habitual é feita primeiro. Professional e Enterprise com direito de uso válido podem recorrer automaticamente à análise com IA se ela falhar, estiver indisponível ou não gerar transações verificáveis, incluindo tentativas de converter digitalizações. Resultados parciais úteis não acionam a IA."
@@ -350,11 +339,11 @@
     },
     "quota": {
       "title": "Cotas de conversão",
-      "body": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} de PDF por dia. Usuários gratuitos com login podem converter {authenticatedPages, plural, one {# página} other {# páginas}} por dia. O Padrão inclui {standardPages, plural, one {# página} other {# páginas}} por mês, o Profissional {professionalPages, number} e o Empresarial {enterprisePages, number}. A cota diária é renovada em UTC e a cota do plano segue o período de cobrança atual do Creem / PayPal. Conversões que falham não consomem cota; resultados parciais contam as páginas do PDF."
+      "body": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} de PDF por dia. Usuários gratuitos com login podem converter {authenticatedPages, plural, one {# página} other {# páginas}} por dia. O Padrão inclui {standardPages, plural, one {# página} other {# páginas}} por mês, o Profissional {professionalPages, number} e o Empresarial {enterprisePages, number}. A cota diária é renovada em UTC e a cota do plano segue o período de cobrança atual do Creem. Conversões que falham não consomem cota; resultados parciais contam as páginas do PDF."
     },
     "subscription": {
       "title": "Assinaturas e pagamento",
-      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. Creem ou PayPal processa o pagamento após sua confirmação e envia informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site. O acesso pago permanece até o fim do período de cobrança confirmado."
+      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. Creem processa o pagamento após sua confirmação e envia informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site. O acesso pago permanece até o fim do período de cobrança confirmado."
     },
     "files": {
       "title": "Arquivos e downloads",
@@ -391,15 +380,15 @@
       "description": "Tratamento de extratos, análise com IA, resultados temporários no navegador e dados de conta, operação da análise, cota e cobrança."
     },
     "title": "Política de privacidade",
-    "intro": "A ReAvid Ltd opera <site>{domain}</site>. Esta política explica como tratamos informações quando você usa a conversão e as assinaturas Creem / PayPal.",
-    "availability": "Esta política se aplica às funções atualmente disponíveis de conversão de PDF para Excel, login e assinaturas Creem / PayPal.",
+    "intro": "A ReAvid Ltd opera <site>{domain}</site>. Esta política explica como tratamos informações quando você usa a conversão e as assinaturas Creem.",
+    "availability": "Esta política se aplica às funções atualmente disponíveis de conversão de PDF para Excel, login e assinaturas Creem.",
     "documents": {
       "title": "Extratos e conteúdo da conversão",
       "body": "Seu PDF pode conter nomes, números de conta, datas, valores, saldos e descrições de transações sensíveis. Processamos PDFs, transações extraídas e conteúdos exportados apenas para a conversão e o download solicitados, sem publicidade ou finalidades alheias. O processamento por terceiros durante o recurso de IA é explicado abaixo."
     },
     "accountData": {
       "title": "Informações de conta, cota e cobrança",
-      "body": "Ao entrar com Google, o Supabase armazena os dados de identidade e conta necessários ao serviço. Após a ativação de uma assinatura, armazenamos o status, plano, identificador Creem / PayPal, período de cobrança, e-mail do pagador e uma cópia do e-mail da conta do site no momento da compra. O Creem / PayPal trata as informações de pagamento. Esses registros não contêm PDFs originais, transações extraídas ou conteúdo do Excel. Para usuários conectados, também armazenamos, em cada tentativa de análise, o ID da conta, uma cópia do e-mail, o momento do registro, o último método de análise selecionado, o status da conversão e os motivos de falhas na análise e do uso de um modelo de IA, para investigar problemas. Esses registros não contêm nomes ou conteúdos de arquivos, detalhes de transações nem saídas do modelo."
+      "body": "Ao entrar com Google, o Supabase armazena os dados de identidade e conta necessários ao serviço. Após a ativação de uma assinatura, armazenamos o status, plano, identificador Creem, período de cobrança, e-mail do pagador e uma cópia do e-mail da conta do site no momento da compra. O Creem trata as informações de pagamento. Esses registros não contêm PDFs originais, transações extraídas ou conteúdo do Excel. Para usuários conectados, também armazenamos, em cada tentativa de análise, o ID da conta, uma cópia do e-mail, o momento do registro, o último método de análise selecionado, o status da conversão e os motivos de falhas na análise e do uso de um modelo de IA, para investigar problemas. Esses registros não contêm nomes ou conteúdos de arquivos, detalhes de transações nem saídas do modelo."
     },
     "technicalData": {
       "title": "Informações técnicas necessárias",
@@ -416,7 +405,7 @@
     },
     "providers": {
       "title": "Provedores e processamento internacional",
-      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam Creem / PayPal. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O Creem / PayPal pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
+      "body": "O login usa Google e Supabase. O pagamento e a sincronização das assinaturas usam Creem. As visitas são medidas com Google Analytics e Pageview, que podem processar informações técnicas conforme seus termos e políticas de privacidade. O Creem pode processar dados de pagamento e conta conforme seus termos e política de privacidade. Se houver processamento entre países, aplicaremos as salvaguardas exigidas pela lei aplicável e descreveremos a operação real. Não vendemos extratos ou informações de transações."
     },
     "storage": {
       "title": "Armazenamento no navegador",
@@ -565,7 +554,7 @@
     "unverifiableDefinition": "Faltam evidências essenciais ou a linha não pode ser verificada com segurança.",
     "limitsTitle": "Quais PDFs posso enviar?",
     "limitsAnswer": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
-    "pricingAnswer": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem / PayPal.",
+    "pricingAnswer": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem.",
     "faqAnswer": "Estas respostas explicam requisitos, cotas e riscos. Leia a resposta relevante e confira seu PDF antes da conversão.",
     "planHeader": "Plano",
     "priceHeader": "Preço (USD)",
@@ -573,8 +562,8 @@
     "periodHeader": "Período da cota",
     "freePrice": "Grátis",
     "dailyPeriod": "Diário (UTC)",
-    "billingPeriod": "Período de cobrança Creem / PayPal",
-    "billingNote": "As assinaturas são renovadas mensalmente pelo Creem / PayPal. Falhas não consomem cota; resultados parciais contam as páginas do PDF original.",
+    "billingPeriod": "Período de cobrança Creem",
+    "billingNote": "As assinaturas são renovadas mensalmente pelo Creem. Falhas não consomem cota; resultados parciais contam as páginas do PDF original.",
     "privacyTitle": "Como meus dados são tratados?",
     "privacyAnswer": "O conteúdo é usado somente na conversão e no download atuais. Guarde PDF e Excel, pois o serviço não possui histórico de arquivos.",
     "browserTitle": "O que fica temporariamente no navegador?",
@@ -593,7 +582,7 @@
     "chatDescription": "Pergunte a um assistente de IA sobre Bank Statement Converter usando nossas fontes oficiais.",
     "prompt": "Visite as informações oficiais de Bank Statement Converter: {fullUrl}. Se precisar de detalhes, leia {indexUrl} e siga os links relevantes. Responda em {language}: explique funções, etapas, limites de arquivos, tratamento de dados, cotas gratuitas e preços de assinatura, citando fontes. Se não conseguir acessar uma fonte ou ela não responder, diga isso e não adivinhe.",
     "showPrompt": "Ver o prompt padrão",
-    "metadataAnswer": "Os metadados de conta, cota e cobrança necessários ao serviço são mantidos. Consulte e gerencie a assinatura na sua conta e no Creem / PayPal.",
+    "metadataAnswer": "Os metadados de conta, cota e cobrança necessários ao serviço são mantidos. Consulte e gerencie a assinatura na sua conta e no Creem.",
     "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços.",
     "parsingHeader": "Capacidade de análise"
   },

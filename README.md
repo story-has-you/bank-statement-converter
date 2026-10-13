@@ -42,11 +42,11 @@ pnpm dev --port 3000
 在 [`src/config/plans.ts`](src/config/plans.ts) 统一调整套餐规则：
 
 - `freeQuotaConfig`：匿名与登录免费用户的每日页数，当前分别为 1 页和 5 页，按 UTC 日重置。
-- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个 PayPal 计费周期的额度）和 `qwenFallback`（是否允许 Python 失败后回退到 Qwen）。当前 Standard 为 $19.90 / 400 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
+- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个 Creem 计费周期的额度）和 `qwenFallback`（是否允许 Python 失败后回退到 Qwen）。当前 Standard 为 $19.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
 
 首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，后台原子扣减 RPC 使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
 
-这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 只调整网站展示，不会修改 PayPal 的实际扣款金额；若今后改价，需要同步调整 PayPal 计划及其环境变量映射。仅修改页数额度不需要调整 PayPal 价格或计划 ID。
+这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 不会自动修改 Creem 的实际扣款金额；若今后改价，需要同步调整 Creem 产品价格及其环境变量映射，付款校验也使用该月价。仅修改页数额度不需要调整 Creem 产品价格或 ID。
 
 ## 单文件转换限制
 
@@ -54,33 +54,15 @@ pnpm dev --port 3000
 
 Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包和 Docker 的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
 
-## 支付渠道开关
+## Creem 订阅配置
 
-PayPal 和 Creem 使用独立的服务端环境变量控制是否接受新建支付：
+订阅使用 Creem 托管结账。服务端环境变量模板见 [`docs/creem-test.env.example`](docs/creem-test.env.example)，接口与付款验收说明见 [Creem 支付接入](docs/creem-billing.md)。
 
-```dotenv
-PAYPAL_PAYMENT_ENABLED=true
-CREEM_PAYMENT_ENABLED=true
-```
+`CREEM_PAYMENT_ENABLED` 控制是否接受新建支付：未设置时默认开启；已设置时仅 `true` 开启（忽略首尾空白和大小写），其他值关闭。关闭时隐藏购买按钮，新建订阅返回 HTTP 503。开启但凭据或套餐配置不完整时显示禁用按钮，通过无障碍标签和 title 提示不可用原因。已有订阅的确认、回调与取消继续处理。
 
-`true` 开启，`false` 关闭；未设置时默认开启，以兼容现有环境。已设置时仅 `true` 表示开启（忽略首尾空白和大小写），其他值均关闭。开启后仍需渠道凭据和套餐配置完整。
+新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/creem`，本地联调需要公开 HTTPS 地址。
 
-关闭后，对应支付按钮隐藏，也不会初始化该渠道的支付会话。支付按钮在同一行排列：两个渠道开启时平分宽度，只开启一个时占满整行，全部关闭时不显示支付按钮区域。开启但配置不完整的渠道仍显示禁用按钮，通过无障碍标签和 title 提示不可用原因。新建订阅接口（包括旧 PayPal 入口）会拒绝关闭渠道的请求并返回 HTTP 503。已有订阅的确认、回调、自动续费和取消继续按原流程处理；关闭入口不会取消已创建的结账或已有订阅。
-
-配置示例见 [`docs/paypal-sandbox.env.example`](docs/paypal-sandbox.env.example) 和 [`docs/creem-test.env.example`](docs/creem-test.env.example)。本地修改环境变量后需重启现有 Next.js 进程；Vercel 修改对应环境变量后需重新部署，刷新页面后查看按钮状态。
-
-## PayPal Sandbox 订阅配置
-
-会员方案使用 PayPal Sandbox 自动续费订阅。环境变量模板见
-[`docs/paypal-sandbox.env.example`](docs/paypal-sandbox.env.example)。复制需要的配置到本地环境文件，并补充 PayPal Client ID、Secret 和 Supabase Service Role Key；Secret 和 Service Role Key 只能放在服务端环境变量中。
-
-执行 Supabase migration 后，将 PayPal Sandbox Webhook 的公开地址配置为：
-
-```text
-https://<your-domain>/api/paypal/webhooks
-```
-
-本地开发需要使用 PayPal 可访问的 HTTPS 隧道。支付激活接口要求用户先完成 Supabase 登录，并会在服务端重新查询 PayPal 订阅后写入会员状态。
+本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。发布前的数据库约束调整见 [计费切换与验收](docs/billing-provider-cutover.md)。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -144,14 +126,13 @@ CLOUDFLARE_API_TOKEN
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 SUPABASE_SERVICE_ROLE_KEY
-NEXT_PUBLIC_PAYPAL_CLIENT_ID
-PAYPAL_CLIENT_ID
-PAYPAL_CLIENT_SECRET
-PAYPAL_ENVIRONMENT=sandbox
-PAYPAL_PLAN_ID_STANDARD
-PAYPAL_PLAN_ID_PROFESSIONAL
-PAYPAL_PLAN_ID_ENTERPRISE
-PAYPAL_WEBHOOK_ID
+CREEM_PAYMENT_ENABLED=true
+CREEM_API_KEY
+CREEM_ENVIRONMENT=production
+CREEM_PRODUCT_ID_STANDARD
+CREEM_PRODUCT_ID_PROFESSIONAL
+CREEM_PRODUCT_ID_ENTERPRISE
+CREEM_WEBHOOK_SECRET
 PARSER_SERVICE_URL=https://parser.bankstatementconverter.xyz
 PARSER_SHARED_SECRET
 ```
@@ -162,13 +143,13 @@ PARSER_SHARED_SECRET
 https://bankstatementconverter.xyz/api/auth/callback
 ```
 
-PayPal Sandbox Webhook 地址为：
+Creem Webhook 地址为：
 
 ```text
-https://bankstatementconverter.xyz/api/paypal/webhooks
+https://bankstatementconverter.xyz/api/billing/webhooks/creem
 ```
 
-不要把 `SUPABASE_SERVICE_ROLE_KEY`、`PAYPAL_CLIENT_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
+不要把 `SUPABASE_SERVICE_ROLE_KEY`、`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
 
 ### Qwen 自动回退与流式预览
 

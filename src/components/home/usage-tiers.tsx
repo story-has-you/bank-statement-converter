@@ -1,7 +1,6 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 
 import { SubscriptionOptions } from "@/components/billing/subscription-options";
-import { CheckoutProvider } from "@/components/billing/checkout-provider";
 import { subscriptionConfig } from "@/config/plans";
 import { findEntitledBillingSubscription } from "@/lib/billing/server";
 import { membershipTiers } from "@/lib/billing/config";
@@ -17,15 +16,6 @@ export async function UsageTiers() {
   const cancelledPeriodEnd = activeSubscription?.status === "CANCELLED" ? activeSubscription.current_period_end : null;
   const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const checkouts = getCheckoutConfigs();
-  const paypal = checkouts.find((checkout) => checkout.provider === "paypal");
-  const needsPayPal = Boolean(
-    user &&
-    !cancelledPeriodEnd &&
-    paypal?.available &&
-    membershipTiers.some(
-      (tier, index) => index >= activeTierIndex && paypal.availableTiers.includes(tier) && !(activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)),
-    ),
-  );
 
   return (
     <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
@@ -62,40 +52,38 @@ export async function UsageTiers() {
           </p>
         )}
 
-        <CheckoutProvider checkouts={checkouts} enabled={needsPayPal}>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {membershipTiers.map((tier) => {
-              const tierIndex = membershipTiers.indexOf(tier);
-              const isLowerTier = activeTierIndex > tierIndex;
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {membershipTiers.map((tier) => {
+            const tierIndex = membershipTiers.indexOf(tier);
+            const isLowerTier = activeTierIndex > tierIndex;
 
-              return (
-                <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="grid gap-1">
-                      <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
-                      <p className="text-3xl font-semibold">
-                        {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
-                        <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
-                      </p>
-                    </div>
-                    {activeSubscription?.tier === tier && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>}
+            return (
+              <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="grid gap-1">
+                    <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
+                    <p className="text-3xl font-semibold">
+                      {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
+                      <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
+                    </p>
                   </div>
-                  <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
-                  <p className="text-sm leading-6 text-muted-foreground">{subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}</p>
-                  <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
-                  {!cancelledPeriodEnd && !isLowerTier && (
-                    <SubscriptionOptions
-                      checkouts={checkouts}
-                      current={activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)}
-                      signedIn={Boolean(user)}
-                      tier={tier}
-                    />
-                  )}
-                </article>
-              );
-            })}
-          </div>
-        </CheckoutProvider>
+                  {activeSubscription?.tier === tier && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>}
+                </div>
+                <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}</p>
+                <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
+                {!cancelledPeriodEnd && !isLowerTier && (
+                  <SubscriptionOptions
+                    checkouts={checkouts}
+                    current={activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)}
+                    signedIn={Boolean(user)}
+                    tier={tier}
+                  />
+                )}
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
