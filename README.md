@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-产品当前功能范围见 [产品边界](docs/product-boundary.md)。
+项目文档见 [文档目录](docs/README.md)，产品当前功能范围见 [产品边界](docs/product/product-boundary.md)。
 
 ## Getting Started
 
@@ -56,13 +56,13 @@ Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、
 
 ## Creem 订阅配置
 
-订阅使用 Creem 托管结账。服务端环境变量模板见 [`docs/creem-test.env.example`](docs/creem-test.env.example)，接口与付款验收说明见 [Creem 支付接入](docs/creem-billing.md)。
+订阅使用 Creem 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，接口与付款验收说明见 [Creem 支付接入](docs/billing/creem-billing.md)。
 
 `CREEM_PAYMENT_ENABLED` 控制是否接受新建支付：未设置时默认开启；已设置时仅 `true` 开启（忽略首尾空白和大小写），其他值关闭。关闭时隐藏购买按钮，新建订阅返回 HTTP 503。开启但凭据或套餐配置不完整时显示禁用按钮，通过无障碍标签和 title 提示不可用原因。已有订阅的确认、回调与取消继续处理。
 
 新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/creem`，本地联调需要公开 HTTPS 地址。
 
-本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。发布前的数据库约束调整见 [计费切换与验收](docs/billing-provider-cutover.md)。
+本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。发布前的数据库约束调整见 [计费切换与验收](docs/billing/billing-provider-cutover.md)。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

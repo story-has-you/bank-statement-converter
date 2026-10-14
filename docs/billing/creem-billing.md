@@ -12,7 +12,7 @@
 
 Professional、Enterprise 支持配置中的 AI 解析回退。价格与权益由 `src/config/plans.ts` 决定，Creem 产品说明不执行网站额度限制。
 
-服务器变量参考 `docs/creem-test.env.example`。`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 不得公开或提交；环境默认 test，production 使用正式密钥及独立正式产品。配置不完整时该渠道不可购买。此次本地变量保存在被忽略的 `.env.local`，Vercel 的六个变量仅对 Preview 的 preview 分支生效。
+服务器变量参考根目录 README 的 [Vercel Next.js 配置](../../README.md#vercel-nextjs)。`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 不得公开或提交；环境默认 test，production 使用正式密钥及独立正式产品。配置不完整时该渠道不可购买。此次本地变量保存在被忽略的 `.env.local`，Vercel 的六个变量仅对 Preview 的 preview 分支生效。
 
 ## 接口与事件
 
