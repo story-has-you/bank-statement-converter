@@ -664,6 +664,78 @@
         "download": "Wells Fargo Online にログインし、Statements & Documents を開きます。口座と利用可能な期間を選び、PDF を開いて分かりやすい名前で保存します。閉鎖した口座の資料が表示されない場合は、銀行にコピーを依頼してください。",
         "detailsTitle": "Wells Fargo の事業用口座とカード明細",
         "details": "Business Online では対象の事業用口座の資料を取得できます。最長 7 年という期間も商品別の制限に従い、すべての事業用明細が 7 年間保存されるわけではありません。\n\nクレジットカード明細は最長 2 年間提供されます。期限が過ぎる前に保存してください。"
+      },
+      "scanned": {
+        "label": "スキャンした銀行明細を Excel に",
+        "title": "スキャンした銀行明細を Excel に変換",
+        "intro": "StatementXL で紙やスキャンした明細 PDF の取引抽出を試せます。Professional と Enterprise は通常の解析で利用可能な取引を取得できない場合に AI を利用できます。成功は保証されません。Excel を使う前に原本と照合してください。",
+        "planNote": "スキャン PDF には Professional または Enterprise と利用可能なページ枠が必要です。未ログイン、無料、Standard ではテキスト層が必要です。下のプラン比較をご覧ください。",
+        "planCta": "AI フォールバック対応プランを見る",
+        "requirementsTitle": "スキャンを試せるプランは？",
+        "requirements": "Professional と Enterprise が AI フォールバックの対象です。まず通常の解析を行い、対象となる失敗時に AI を使います。利用できる部分結果は保持します。契約してもすべてのスキャンを読み取れるとは限りません。",
+        "preparationTitle": "読みやすいスキャン PDF を準備",
+        "preparation": "ページ全体を順番にスキャンし、日付と金額を鮮明にしてください。切れた端、影、回転を避け、表示された制限内の PDF を一つアップロードします。JPG や PNG は先に PDF にまとめてください。銀行の元のテキスト PDF があれば優先します。",
+        "limitationsTitle": "AI 結果とデータ処理を確認",
+        "limitations": "取引数、日付、金額の方向、残高を原本と照合してください。OK は問題が検出されなかったことを示し、正確さを保証しません。AI 利用時は PDF 全体とファイル名を外部業者へ送信し、その方針が適用されます。パスワード付きファイルは非対応です。失敗時は枠を消費せず、部分結果は PDF ページ数を使います。",
+        "stepsTitle": "スキャンを変換する 3 ステップ",
+        "steps": {
+          "upload": {
+            "title": "対応プランを選んでアップロード",
+            "text": "有効な Professional または Enterprise と残り枠があるアカウントでログインし、最大 {megabytes} MB、{pages} ページのスキャン PDF を一つアップロードします。"
+          },
+          "review": {
+            "title": "抽出された取引を確認",
+            "text": "最終確認を待ち、全取引を原本と照合してください。利用前に DISCREPANCY と UNVERIFIABLE の表示を確認します。"
+          },
+          "download": {
+            "title": "確認した結果をダウンロード",
+            "text": "Excel または他の対応形式をダウンロードします。永続的なファイル履歴はないため、原本とダウンロードを保管してください。"
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "銀行明細から QuickBooks への手順",
+        "title": "QuickBooks Online 用に銀行取引を準備",
+        "intro": "StatementXL で PDF を変換して取引を確認し、QuickBooks Online 用の 3 列または 4 列 CSV に整理します。手動インポートの手順です。QuickBooks アカウントへの接続や QBO 専用ファイルの作成は行いません。QuickBooks 自体にも PDF と画像のインポートがあります。",
+        "planNote": "テキスト PDF は毎日の無料枠を利用でき、大量の処理にはサブスクリプションを選べます。スキャンには Professional または Enterprise が必要です。料金とページ枠は下をご覧ください。",
+        "planCta": "ページ枠と解析プランを比較",
+        "requirementsTitle": "QuickBooks 用 CSV を整理",
+        "requirements": "Date、Description、Amount の 3 列、または Date、Description、Credit、Debit の 4 列にします。確認した取引を新しいシートへコピーし、インポート用から残高、リスク、出典、集計列を削除します。確認用の完全な出力は別に保管してください。日付形式を統一し、金額は小数値、未使用欄は空欄にします。",
+        "preparationTitle": "日付、金額とアップロード制限",
+        "preparation": "Intuit の米国ガイドは dd/mm/yyyy、英語のファイル、350 KB 以下、1 回最大 1,000 取引行を指定しています。大きいファイルは期間を重複させず分割します。銀行口座の 3 列では支払は負、入金は正です。カードは符号が異なる場合があるため、正しいカード口座を選びプレビューを確認してください。",
+        "limitationsTitle": "インポートと重複確認、照合",
+        "limitations": "QuickBooks Online の All apps → Accounting → Bank transactions → Upload from file を開きます。口座を選び、列と日付形式を対応付け、取引を確認してから確定します。既存取引との重複を避け、後で照合と分類を行います。画面や機能は地域とアカウントで異なります。CSV は任意の手順で、Intuit は PDF と画像の直接インポートも説明しています。",
+        "stepsTitle": "PDF から確認済み QuickBooks インポートへ",
+        "steps": {
+          "upload": {
+            "title": "明細 PDF を変換",
+            "text": "最大 {megabytes} MB、{pages} ページの PDF を一つアップロードします。無料と Standard はテキスト PDF、Professional と Enterprise はスキャンも試せます。"
+          },
+          "review": {
+            "title": "取引を確認して出力",
+            "text": "リスク表示を原本と照合し、Excel または CSV をダウンロードします。出典とリスクを含む完全な出力を確認用に保管してください。"
+          },
+          "download": {
+            "title": "3 列または 4 列に整理",
+            "text": "必要項目だけの別の CSV を作り、日付と金額方向を統一します。集計と余分な列を削除し、Intuit の制限内で分割します。"
+          },
+          "import": {
+            "title": "QuickBooks にアップロードして照合",
+            "text": "正しい口座へ CSV をアップロードし、項目を対応付けて確定前に確認します。重複を避け、分類と照合を行います。"
+          }
+        },
+        "examplesTitle": "3 列と 4 列の CSV 例",
+        "examplesNote": "架空の例は Intuit の銀行口座の例に従い、支払を Amount の負数または Credit の正数、入金を Amount の正数または Debit とします。インポート用に見出しと説明は英語です。未使用欄は空欄にし、カードへそのまま適用せず口座のプレビューを確認してください。",
+        "columnsCaption": "{count} 列 CSV の例",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "パンくずリスト"

@@ -7,6 +7,8 @@ import { HomeHeader } from "@/components/shared/home-header";
 import { LandingFaq } from "@/components/landing/landing-faq";
 import { LandingGuide } from "@/components/landing/landing-guide";
 import { LandingIntro } from "@/components/landing/landing-intro";
+import { LandingPlanLink } from "@/components/landing/landing-plan-link";
+import { QuickbooksCsvExamples } from "@/components/landing/quickbooks-csv-examples";
 import { LandingRequirements } from "@/components/landing/landing-requirements";
 import { LandingSources } from "@/components/landing/landing-sources";
 import { LandingSteps } from "@/components/landing/landing-steps";
@@ -26,10 +28,12 @@ export async function ConversionLandingPage({ id }: { id: ConversionPageId }) {
       <main id="main" className="flex-1">
         <section className="mx-auto w-full max-w-4xl px-5 pb-12 pt-10 sm:px-8">
           <LandingIntro content={content} />
-          <PdfUpload />
+          <LandingPlanLink id={id} />
+          <PdfUpload showFreeQuota={id !== "scanned"} />
         </section>
         <LandingGuide content={content} />
         <LandingSteps content={content} />
+        {id === "quickbooks" && <QuickbooksCsvExamples />}
         <LandingRequirements content={content} />
         <UsageTiers />
         <LandingFaq content={content} />

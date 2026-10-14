@@ -664,6 +664,78 @@
         "download": "Meld u aan bij Wells Fargo Online en open Statements & Documents. Kies rekening en beschikbare periode, open de PDF en sla deze op met een duidelijke naam. Vraag de bank om kopieën als documenten van een gesloten rekening niet online staan.",
         "detailsTitle": "Zakelijke en creditcardafschriften van Wells Fargo",
         "details": "Business Online biedt documenten voor in aanmerking komende zakelijke rekeningen. De genoemde zeven jaar blijven onderworpen aan productlimieten; niet alle zakelijke afschriften worden zo lang aangeboden.\n\nCreditcardafschriften zijn tot twee jaar beschikbaar. Sla ze op voordat die periode voorbij is."
+      },
+      "scanned": {
+        "label": "Gescand bankafschrift naar Excel",
+        "title": "Zet een gescand bankafschrift om naar Excel",
+        "intro": "Probeer met StatementXL transacties uit een gescand PDF-afschrift te halen. Professional en Enterprise kunnen AI gebruiken als de gewone analyse geen bruikbare transacties oplevert. Succes is niet gegarandeerd; vergelijk de resultaten met het origineel voordat u Excel downloadt.",
+        "planNote": "Scans vereisen Professional of Enterprise en beschikbare pagina's. Anoniem, gratis en Standard vereisen een tekstlaag. Vergelijk de abonnementen hieronder.",
+        "planCta": "Abonnementen met AI-terugval vergelijken",
+        "requirementsTitle": "Welke abonnementen kunnen scans verwerken?",
+        "requirements": "Professional en Enterprise bieden AI-terugval. De gewone analyse gaat eerst; alleen geschikte fouten activeren AI. Bruikbare gedeeltelijke resultaten blijven behouden. Een abonnement garandeert niet dat elke scan leesbaar is.",
+        "preparationTitle": "Een leesbare scan-PDF voorbereiden",
+        "preparation": "Scan volledige pagina's in volgorde, met scherpe datums en bedragen. Vermijd afgesneden randen, schaduwen en gedraaide pagina's. Upload één PDF binnen de getoonde grenzen. Voeg JPG of PNG eerst samen tot PDF; gebruik indien mogelijk het oorspronkelijke tekst-PDF van de bank.",
+        "limitationsTitle": "AI-resultaten en gegevensverwerking controleren",
+        "limitations": "Controleer aantallen, datums, bedragrichting en saldi met het origineel. OK betekent alleen dat geen probleem is gevonden. AI verstuurt het volledige PDF en de bestandsnaam naar een externe aanbieder onder diens beleid. Wachtwoordbestanden worden niet ondersteund. Fouten gebruiken geen quota; gedeeltelijke resultaten tellen de PDF-pagina's.",
+        "stepsTitle": "Een scan omzetten in drie stappen",
+        "steps": {
+          "upload": {
+            "title": "Kies een geschikt abonnement en upload",
+            "text": "Meld u aan met actief Professional of Enterprise en beschikbare quota. Upload één scan-PDF tot {megabytes} MB en {pages} pagina's."
+          },
+          "review": {
+            "title": "Controleer de uitgelezen transacties",
+            "text": "Wacht op de eindcontrole, vergelijk alle transacties met het PDF en controleer DISCREPANCY en UNVERIFIABLE voor gebruik."
+          },
+          "download": {
+            "title": "Download gecontroleerde resultaten",
+            "text": "Download Excel of een ander formaat. Bewaar origineel en download; StatementXL heeft geen blijvende bestandsgeschiedenis."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Bankafschrift voorbereiden voor QuickBooks",
+        "title": "Bereid transacties voor QuickBooks Online voor",
+        "intro": "Zet het PDF om in StatementXL, controleer de transacties en maak een CSV met drie of vier kolommen voor QuickBooks Online. De import is handmatig, zonder accountkoppeling of speciale QBO-bestanden. QuickBooks biedt ook eigen PDF- en afbeeldingsimport.",
+        "planNote": "Tekst-PDFs kunnen het gratis dagquotum gebruiken; grotere hoeveelheden een abonnement. Scans vereisen Professional of Enterprise. Prijzen en paginaquota staan hieronder.",
+        "planCta": "Quota en analyseabonnementen vergelijken",
+        "requirementsTitle": "Een schone CSV voor QuickBooks maken",
+        "requirements": "Gebruik Date, Description, Amount of Date, Description, Credit, Debit. Kopieer gecontroleerde transacties naar een nieuw blad; verwijder saldo-, risico-, bron- en totaalkolommen uit de importkopie. Bewaar de volledige export apart. Gebruik één datumformaat, gewone decimale bedragen en lege ongebruikte bedragcellen.",
+        "preparationTitle": "Datums, bedragen en uploadgrenzen",
+        "preparation": "Intuits Amerikaanse gids adviseert dd/mm/yyyy, Engelse bestanden tot 350 KB en maximaal 1.000 transactieregels per upload. Splits zonder overlappende periodes. Bij bankrekeningen met drie kolommen zijn betalingen negatief en stortingen positief. Creditcards kunnen andere tekens gebruiken: kies de juiste kaartrekening en controleer de voorvertoning.",
+        "limitationsTitle": "Importeren, duplicaten voorkomen en afstemmen",
+        "limitations": "Ga in QuickBooks Online naar All apps → Accounting → Bank transactions → Upload from file. Kies de rekening, koppel kolommen en datumformaat en controleer vóór bevestiging. Voorkom dubbele transacties; koppel, categoriseer en stem daarna af. Schermen verschillen per account of regio. CSV is optioneel; Intuit beschrijft ook directe PDF-/afbeeldingsimport.",
+        "stepsTitle": "Van PDF naar een gecontroleerde QuickBooks-import",
+        "steps": {
+          "upload": {
+            "title": "Zet het PDF-afschrift om",
+            "text": "Upload één PDF tot {megabytes} MB en {pages} pagina's. Gratis en Standard vereisen tekst; Professional en Enterprise kunnen scans proberen."
+          },
+          "review": {
+            "title": "Controleer en exporteer transacties",
+            "text": "Vergelijk risico's met het origineel en download Excel of CSV. Bewaar de volledige export met risico's en bronnen als referentie."
+          },
+          "download": {
+            "title": "Maak drie of vier kolommen",
+            "text": "Maak een aparte CSV met verplichte velden. Uniformeer datums en bedragrichting, verwijder totalen en extra kolommen en houd Intuits grenzen aan."
+          },
+          "import": {
+            "title": "Upload en stem af in QuickBooks",
+            "text": "Upload naar de juiste rekening, koppel velden en controleer vóór bevestiging. Voorkom duplicaten en categoriseer en stem af."
+          }
+        },
+        "examplesTitle": "CSV-voorbeelden met drie en vier kolommen",
+        "examplesNote": "Fictieve gegevens volgen Intuits bankvoorbeeld: betaling negatief in Amount of positief in Credit; storting positief in Amount of in Debit. Koppen en beschrijvingen blijven Engels voor de import. Ongebruikte cellen blijven leeg. Controleer de voorvertoning; pas deze tekens niet zonder controle toe op creditcards.",
+        "columnsCaption": "CSV-voorbeeld met {count} kolommen",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Navigatiepad"

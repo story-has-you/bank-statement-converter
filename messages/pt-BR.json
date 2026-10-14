@@ -664,6 +664,78 @@
         "download": "Entre no Wells Fargo Online e abra Statements & Documents. Escolha conta e período disponível, abra o PDF e salve-o com um nome claro. Se os documentos de uma conta encerrada não estiverem online, peça cópias ao banco.",
         "detailsTitle": "Extratos empresariais e cartões Wells Fargo",
         "details": "O Business Online oferece documentos para contas empresariais elegíveis. O prazo anunciado de até sete anos depende dos limites de cada produto; ele não se aplica a todos os extratos empresariais.\n\nExtratos de cartão de crédito ficam disponíveis por até dois anos. Salve-os antes do fim desse período."
+      },
+      "scanned": {
+        "label": "Extrato digitalizado para Excel",
+        "title": "Converta um extrato bancário digitalizado para Excel",
+        "intro": "Tente extrair transações de um PDF digitalizado com o StatementXL. Professional e Enterprise podem recorrer à IA quando a análise comum não gera transações utilizáveis. O sucesso não é garantido; compare o resultado com o original antes de baixar Excel.",
+        "planNote": "Digitalizações exigem Professional ou Enterprise e cota disponível. O uso anônimo, gratuito e Standard exige uma camada de texto. Compare os planos abaixo.",
+        "planCta": "Comparar planos com recurso à IA",
+        "requirementsTitle": "Quais planos podem processar digitalizações?",
+        "requirements": "Professional e Enterprise permitem o recurso à IA. A análise comum ocorre primeiro e apenas falhas elegíveis ativam a IA. Resultados parciais utilizáveis são mantidos. A assinatura não garante a leitura de qualquer digitalização.",
+        "preparationTitle": "Prepare um PDF digitalizado legível",
+        "preparation": "Digitalize páginas completas em ordem, com datas e valores nítidos. Evite cortes, sombras e páginas giradas. Envie um PDF dentro dos limites exibidos. Una JPG ou PNG em PDF primeiro; prefira o PDF de texto original do banco quando disponível.",
+        "limitationsTitle": "Confira resultados e tratamento de dados",
+        "limitations": "Confira quantidade de transações, datas, direção dos valores e saldos no original. OK indica apenas que nenhum problema foi detectado. A IA envia o PDF completo e o nome do arquivo a um fornecedor externo sob suas políticas. Arquivos com senha não são aceitos. Falhas não consomem cota; resultados parciais usam as páginas do PDF.",
+        "stepsTitle": "Converta uma digitalização em três etapas",
+        "steps": {
+          "upload": {
+            "title": "Escolha um plano elegível e envie",
+            "text": "Entre com Professional ou Enterprise ativo e cota disponível. Envie um PDF digitalizado de até {megabytes} MB e {pages} páginas."
+          },
+          "review": {
+            "title": "Confira as transações extraídas",
+            "text": "Espere a validação final, compare todas as transações com o PDF e confira DISCREPANCY e UNVERIFIABLE antes de usar."
+          },
+          "download": {
+            "title": "Baixe os resultados conferidos",
+            "text": "Baixe Excel ou outro formato. Guarde o original e o arquivo; o StatementXL não oferece histórico permanente."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Preparar extratos para QuickBooks",
+        "title": "Prepare transações para QuickBooks Online",
+        "intro": "Converta o PDF no StatementXL, confira as transações e prepare um CSV de três ou quatro colunas para o QuickBooks Online. A importação é manual, sem conexão de conta nem arquivos QBO específicos. O QuickBooks também oferece importação própria de PDF e imagens.",
+        "planNote": "PDFs de texto podem usar a cota gratuita diária; volumes maiores, uma assinatura. Digitalizações exigem Professional ou Enterprise. Confira preços e páginas abaixo.",
+        "planCta": "Comparar cotas e planos de análise",
+        "requirementsTitle": "Prepare um CSV limpo para QuickBooks",
+        "requirements": "Use Date, Description, Amount ou Date, Description, Credit, Debit. Copie transações conferidas para uma nova planilha e remova saldo, risco, origem e totais da cópia para importar. Guarde a exportação completa separadamente. Uniformize datas, use valores decimais e deixe células de valor não utilizadas em branco.",
+        "preparationTitle": "Datas, valores e limites de envio",
+        "preparation": "O guia dos EUA da Intuit recomenda dd/mm/yyyy, arquivos em inglês de até 350 KB e até 1.000 linhas de transação por envio. Divida arquivos sem sobrepor períodos. No formato bancário de três colunas, pagamentos são negativos e depósitos positivos. Cartões podem ter outros sinais: selecione a conta correta e confira a prévia.",
+        "limitationsTitle": "Importe, evite duplicatas e concilie",
+        "limitations": "No QuickBooks Online, acesse All apps → Accounting → Bank transactions → Upload from file. Escolha a conta, mapeie colunas e datas e confira antes de confirmar. Evite duplicatas com as transações existentes; depois corresponda, categorize e concilie. Telas variam por conta ou região. CSV é opcional; a Intuit também explica o envio direto de PDF e imagens.",
+        "stepsTitle": "Do PDF à importação QuickBooks conferida",
+        "steps": {
+          "upload": {
+            "title": "Converta o extrato PDF",
+            "text": "Envie um PDF de até {megabytes} MB e {pages} páginas. Gratuito e Standard exigem texto; Professional e Enterprise podem tentar digitalizações."
+          },
+          "review": {
+            "title": "Confira e exporte as transações",
+            "text": "Compare os riscos com o original e baixe Excel ou CSV. Guarde a exportação completa com riscos e origem como referência."
+          },
+          "download": {
+            "title": "Prepare três ou quatro colunas",
+            "text": "Crie um CSV separado com os campos necessários. Uniformize datas e direção dos valores, remova totais e colunas extras e respeite os limites da Intuit."
+          },
+          "import": {
+            "title": "Envie e concilie no QuickBooks",
+            "text": "Envie à conta correta, mapeie os campos e confira antes de confirmar. Evite duplicatas, depois categorize e concilie no QuickBooks."
+          }
+        },
+        "examplesTitle": "Exemplos CSV com três e quatro colunas",
+        "examplesNote": "Dados fictícios conforme o exemplo bancário da Intuit: pagamento negativo em Amount ou positivo em Credit; depósito positivo em Amount ou em Debit. Cabeçalhos e descrições ficam em inglês para importar. Células não usadas ficam vazias. Confira a prévia e não aplique esses sinais a cartões sem verificar.",
+        "columnsCaption": "Exemplo CSV com {count} colunas",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Caminho de navegação"

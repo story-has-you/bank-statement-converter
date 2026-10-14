@@ -664,6 +664,78 @@
         "download": "Wells Fargo Online에 로그인하여 Statements & Documents에서 계좌와 조회 가능한 기간을 선택하세요. PDF를 열고 알아보기 쉬운 이름으로 저장하세요. 해지 계좌 자료가 온라인에 없으면 은행에 사본을 요청하세요.",
         "detailsTitle": "Wells Fargo 기업 계좌 및 신용카드 명세서",
         "details": "Business Online은 대상 기업 계좌의 자료를 제공합니다. 최대 7년이라는 안내에도 상품별 기간 제한이 적용되므로 모든 기업 명세서가 7년간 보관되는 것은 아닙니다.\n\n신용카드 명세서는 최대 2년간 조회할 수 있습니다. 기간이 끝나기 전에 저장하세요."
+      },
+      "scanned": {
+        "label": "스캔한 은행 명세서를 Excel로",
+        "title": "스캔한 은행 명세서를 Excel로 변환",
+        "intro": "StatementXL로 종이나 스캔 명세서 PDF의 거래 추출을 시도하세요. Professional과 Enterprise는 일반 분석에서 사용 가능한 거래를 얻지 못하면 AI 대체 처리를 사용할 수 있습니다. 성공을 보장하지 않으므로 Excel을 사용하기 전에 원본과 대조하세요.",
+        "planNote": "스캔 PDF에는 Professional 또는 Enterprise와 남은 페이지 할당량이 필요합니다. 비로그인, 무료, Standard는 텍스트 레이어가 필요합니다. 아래 요금제를 비교하세요.",
+        "planCta": "AI 대체 처리 요금제 비교",
+        "requirementsTitle": "어떤 요금제가 스캔을 처리하나요?",
+        "requirements": "Professional과 Enterprise가 AI 대체 처리 대상입니다. 일반 분석을 먼저 실행하고 해당하는 실패에만 AI를 사용합니다. 사용 가능한 부분 결과는 유지합니다. 구독이 모든 스캔의 인식을 보장하지는 않습니다.",
+        "preparationTitle": "읽기 쉬운 스캔 PDF 준비",
+        "preparation": "페이지 전체를 순서대로 스캔하고 날짜와 금액을 선명하게 유지하세요. 잘린 가장자리, 그림자, 회전을 피하고 표시된 제한 내의 PDF 한 개를 올리세요. JPG와 PNG는 먼저 PDF로 합치고, 은행의 원본 텍스트 PDF가 있으면 우선 사용하세요.",
+        "limitationsTitle": "AI 결과와 데이터 처리 확인",
+        "limitations": "거래 수, 날짜, 금액 방향, 잔액을 원본과 대조하세요. OK는 문제 미검출을 뜻하며 정확성을 보장하지 않습니다. AI 처리 시 전체 PDF와 파일명이 외부 업체에 전달되며 해당 정책이 적용됩니다. 암호 파일은 지원하지 않습니다. 실패는 할당량을 쓰지 않고 부분 결과는 PDF 페이지 수를 사용합니다.",
+        "stepsTitle": "세 단계로 스캔 변환",
+        "steps": {
+          "upload": {
+            "title": "해당 요금제로 업로드",
+            "text": "유효한 Professional 또는 Enterprise와 남은 할당량이 있는 계정으로 로그인하여 최대 {megabytes} MB, {pages}페이지의 스캔 PDF 한 개를 올리세요."
+          },
+          "review": {
+            "title": "추출된 거래 검토",
+            "text": "최종 검사가 끝나면 원본과 모든 거래를 대조하고 DISCREPANCY 및 UNVERIFIABLE 표시를 확인하세요."
+          },
+          "download": {
+            "title": "검토한 결과 다운로드",
+            "text": "Excel 또는 지원 형식으로 다운로드하세요. 영구 파일 기록이 없으므로 원본과 다운로드 파일을 보관하세요."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "은행 명세서에서 QuickBooks로",
+        "title": "QuickBooks Online용 은행 거래 준비",
+        "intro": "StatementXL로 PDF를 변환하고 거래를 검토한 뒤 QuickBooks Online용 3열 또는 4열 CSV를 준비하세요. 수동 가져오기 과정이며 QuickBooks 계정 연결이나 QBO 전용 파일을 제공하지 않습니다. QuickBooks 자체에도 PDF와 이미지 가져오기 기능이 있습니다.",
+        "planNote": "텍스트 PDF는 일일 무료 할당량을 사용할 수 있습니다. 많은 분량은 구독을 비교하세요. 스캔에는 Professional 또는 Enterprise가 필요합니다. 가격과 페이지 수는 아래에 표시됩니다.",
+        "planCta": "페이지 할당량과 요금제 비교",
+        "requirementsTitle": "QuickBooks용 CSV 정리",
+        "requirements": "Date, Description, Amount 3열 또는 Date, Description, Credit, Debit 4열을 사용하세요. 검토한 거래를 새 시트에 복사하고 가져오기 사본에서 잔액, 위험, 출처, 합계 열을 삭제하세요. 전체 내보내기는 별도 보관하세요. 날짜 형식을 통일하고 일반 소수 금액을 쓰며 사용하지 않는 금액 셀은 비워 두세요.",
+        "preparationTitle": "날짜, 금액 방향, 업로드 제한",
+        "preparation": "Intuit 미국 안내는 dd/mm/yyyy, 영어 파일, 최대 350 KB, 업로드당 최대 1,000개 거래 행을 안내합니다. 큰 파일은 범위가 겹치지 않게 나누세요. 은행 계좌 3열에서 지급은 음수, 입금은 양수입니다. 신용카드는 방향이 다를 수 있으므로 실제 카드 계좌를 선택하고 미리보기를 확인하세요.",
+        "limitationsTitle": "가져오기, 중복 확인 및 대사",
+        "limitations": "QuickBooks Online에서 All apps → Accounting → Bank transactions → Upload from file로 이동하세요. 올바른 계좌를 선택하고 열과 날짜 형식을 연결한 뒤 확인하고 가져오세요. 기존 거래와 중복을 피하고 이후 매칭, 분류, 대사를 진행하세요. 화면과 기능은 지역 및 계정별로 다를 수 있습니다. CSV는 선택 가능한 과정이며 PDF와 이미지 직접 가져오기도 공식 안내에 있습니다.",
+        "stepsTitle": "PDF에서 검토한 QuickBooks 가져오기까지",
+        "steps": {
+          "upload": {
+            "title": "명세서 PDF 변환",
+            "text": "최대 {megabytes} MB, {pages}페이지 PDF 한 개를 올리세요. 무료와 Standard는 텍스트 PDF가 필요하고 Professional과 Enterprise는 스캔도 시도할 수 있습니다."
+          },
+          "review": {
+            "title": "거래 검토 및 내보내기",
+            "text": "위험 표시를 원본과 대조한 뒤 Excel 또는 CSV를 다운로드하세요. 위험과 출처가 포함된 전체 결과를 참고용으로 보관하세요."
+          },
+          "download": {
+            "title": "3열 또는 4열 준비",
+            "text": "필수 필드만 있는 별도 CSV를 만들고 날짜와 금액 방향을 통일하세요. 합계와 추가 열을 제거하고 Intuit 제한에 맞춰 나누세요."
+          },
+          "import": {
+            "title": "QuickBooks 업로드 및 대사",
+            "text": "올바른 계좌에 CSV를 올리고 필드를 연결하여 확인 후 가져오세요. 중복을 피하고 QuickBooks에서 매칭, 분류, 대사를 진행하세요."
+          }
+        },
+        "examplesTitle": "3열과 4열 CSV 예시",
+        "examplesNote": "가상 데이터는 Intuit 은행 계좌 예시를 따릅니다. 지급은 Amount에서 음수 또는 Credit에서 양수이며 입금은 Amount에서 양수 또는 Debit에 입력됩니다. 가져오기 파일의 머리글과 설명은 영어이며 미사용 셀은 비워 둡니다. 신용카드에 그대로 적용하지 말고 목표 계좌 미리보기를 확인하세요.",
+        "columnsCaption": "{count}열 CSV 예시",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "현재 위치"

@@ -664,6 +664,78 @@
         "download": "Melden Sie sich bei Wells Fargo Online an und öffnen Sie Statements & Documents. Wählen Sie Konto und verfügbaren Zeitraum, öffnen Sie das PDF und speichern Sie es unter einem aussagekräftigen Namen. Bei fehlenden Unterlagen geschlossener Konten wenden Sie sich an die Bank.",
         "detailsTitle": "Geschäfts- und Kreditkartenauszüge von Wells Fargo",
         "details": "Business Online stellt Dokumente für berechtigte Geschäftskonten bereit. Auch die beworbenen sieben Jahre unterliegen produktspezifischen Grenzen; nicht alle Geschäftsauszüge werden so lange angeboten.\n\nKreditkartenauszüge sind bis zu zwei Jahre verfügbar. Speichern Sie sie vor Ablauf dieses Zeitraums."
+      },
+      "scanned": {
+        "label": "Gescannte Kontoauszüge in Excel",
+        "title": "Gescannte Kontoauszüge in Excel umwandeln",
+        "intro": "Versuchen Sie mit StatementXL, Buchungen aus gescannten PDF-Auszügen zu extrahieren. Professional und Enterprise können auf KI zurückgreifen, wenn die reguläre Analyse keine nutzbaren Buchungen liefert. Erfolg ist nicht garantiert; vergleichen Sie die Ergebnisse vor dem Excel-Download mit dem Original.",
+        "planNote": "Scans benötigen Professional oder Enterprise und ein verfügbares Seitenkontingent. Anonyme, kostenlose und Standard-Nutzung erfordern eine Textebene. Vergleichen Sie die Tarife unten.",
+        "planCta": "Tarife mit KI-Fallback vergleichen",
+        "requirementsTitle": "Welche Tarife erlauben die Verarbeitung von Scans?",
+        "requirements": "Professional und Enterprise ermöglichen KI-Fallback. Die reguläre Analyse läuft zuerst; nur geeignete Fehler lösen KI aus. Nutzbare Teilergebnisse bleiben erhalten. Ein Abonnement garantiert keine Erkennung jedes Scans.",
+        "preparationTitle": "Ein lesbares Scan-PDF vorbereiten",
+        "preparation": "Scannen Sie vollständige Seiten in Reihenfolge und halten Sie Daten und Beträge scharf. Vermeiden Sie abgeschnittene Ränder, Schatten und gedrehte Seiten. Laden Sie ein PDF innerhalb der angezeigten Grenzen hoch. JPG und PNG zuerst zu PDF zusammenfügen; wenn möglich das Original-PDF mit Textebene verwenden.",
+        "limitationsTitle": "KI-Ergebnisse und Datenverarbeitung prüfen",
+        "limitations": "Prüfen Sie Anzahl, Datum, Betragsrichtung und Salden am Original. OK bedeutet nur, dass kein Problem erkannt wurde. KI-Fallback sendet das gesamte PDF und den Dateinamen an einen externen Anbieter gemäß dessen Richtlinien. Passwortgeschützte Dateien sind ausgeschlossen. Fehler verbrauchen kein Kontingent; Teilergebnisse zählen nach PDF-Seiten.",
+        "stepsTitle": "Scans in drei Schritten umwandeln",
+        "steps": {
+          "upload": {
+            "title": "Geeigneten Tarif wählen und hochladen",
+            "text": "Melden Sie sich mit aktivem Professional- oder Enterprise-Tarif und verfügbarem Kontingent an. Laden Sie ein Scan-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch."
+          },
+          "review": {
+            "title": "Extrahierte Buchungen prüfen",
+            "text": "Warten Sie auf die abschließende Prüfung, vergleichen Sie alle Buchungen mit dem PDF und prüfen Sie DISCREPANCY sowie UNVERIFIABLE."
+          },
+          "download": {
+            "title": "Geprüfte Ergebnisse herunterladen",
+            "text": "Laden Sie Excel oder ein anderes Format herunter. Bewahren Sie Original und Download auf; es gibt keine dauerhafte Dateihistorie."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Kontoauszüge für QuickBooks vorbereiten",
+        "title": "Bankbuchungen für QuickBooks Online vorbereiten",
+        "intro": "Wandeln Sie das PDF in StatementXL um, prüfen Sie die Buchungen und erstellen Sie eine CSV mit drei oder vier Spalten für QuickBooks Online. Der Import erfolgt manuell, ohne Kontoverbindung oder spezielle QBO-Dateien. QuickBooks bietet auch einen eigenen PDF- und Bildimport.",
+        "planNote": "Text-PDFs können das tägliche Gratis-Kontingent nutzen; größere Mengen einen passenden Tarif. Scans benötigen Professional oder Enterprise. Preise und Seitenkontingente finden Sie unten.",
+        "planCta": "Kontingente und Analysetarife vergleichen",
+        "requirementsTitle": "Eine saubere CSV für QuickBooks erstellen",
+        "requirements": "Verwenden Sie Date, Description, Amount oder Date, Description, Credit, Debit. Kopieren Sie geprüfte Buchungen in ein neues Blatt; entfernen Sie Saldo-, Risiko-, Quellen- und Summenspalten aus der Importkopie. Bewahren Sie den vollständigen Export separat auf. Einheitliche Datumsformate, einfache Dezimalbeträge und leere ungenutzte Betragszellen verwenden.",
+        "preparationTitle": "Datum, Beträge und Uploadgrenzen",
+        "preparation": "Intuits US-Anleitung empfiehlt dd/mm/yyyy, englische Dateien bis 350 KB und höchstens 1.000 Transaktionszeilen je Upload. Größere Dateien ohne überlappende Zeiträume aufteilen. Im Bankkonto-Format mit drei Spalten sind Zahlungen negativ, Einzahlungen positiv. Kreditkarten können andere Vorzeichen verwenden: richtiges Kartenkonto auswählen und Vorschau prüfen.",
+        "limitationsTitle": "Importieren, Duplikate prüfen und abstimmen",
+        "limitations": "Öffnen Sie All apps → Accounting → Bank transactions → Upload from file in QuickBooks Online. Wählen Sie das richtige Konto, ordnen Sie Spalten und Datumsformat zu und prüfen Sie vor der Bestätigung. Vermeiden Sie doppelte Buchungen; gleichen Sie anschließend ab und kategorisieren Sie. Oberfläche und Funktionen können je Region und Konto variieren. CSV ist optional; Intuit beschreibt auch direkten PDF-/Bildimport.",
+        "stepsTitle": "Vom PDF zum geprüften QuickBooks-Import",
+        "steps": {
+          "upload": {
+            "title": "PDF-Auszug umwandeln",
+            "text": "Laden Sie ein PDF bis {megabytes} MB und {pages} Seiten hoch. Kostenlos und Standard benötigen Text-PDFs; Professional und Enterprise können Scans versuchen."
+          },
+          "review": {
+            "title": "Buchungen prüfen und exportieren",
+            "text": "Vergleichen Sie Risikomarkierungen mit dem Original und laden Sie Excel oder CSV herunter. Bewahren Sie den vollständigen Export mit Quellen und Risiken auf."
+          },
+          "download": {
+            "title": "Drei oder vier Spalten vorbereiten",
+            "text": "Erstellen Sie eine separate CSV mit Pflichtfeldern. Vereinheitlichen Sie Datum und Betragsrichtung, entfernen Sie Summen und Extras und teilen Sie nach Intuits Grenzen auf."
+          },
+          "import": {
+            "title": "In QuickBooks hochladen und abstimmen",
+            "text": "Laden Sie die CSV ins richtige Konto, ordnen Sie Felder zu und prüfen Sie vor der Bestätigung. Vermeiden Sie Duplikate, kategorisieren Sie und stimmen Sie ab."
+          }
+        },
+        "examplesTitle": "CSV-Beispiele mit drei und vier Spalten",
+        "examplesNote": "Fiktive Daten nach Intuits Bankkonto-Beispiel: Zahlung negativ in Amount oder positiv in Credit; Einzahlung positiv in Amount oder in Debit. Überschriften und Beschreibungen bleiben für die Importdatei englisch. Ungenutzte Zellen bleiben leer. Prüfen Sie die Kontovorschau und übernehmen Sie Vorzeichen nicht ungeprüft für Kreditkarten.",
+        "columnsCaption": "CSV-Beispiel mit {count} Spalten",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Navigationspfad"

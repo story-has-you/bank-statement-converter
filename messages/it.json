@@ -664,6 +664,78 @@
         "download": "Accedi a Wells Fargo Online e apri Statements & Documents. Seleziona conto e periodo disponibile, apri il PDF e salvalo con un nome chiaro. Se i documenti di un conto chiuso non sono online, richiedi copie alla banca.",
         "detailsTitle": "Estratti aziendali e carte Wells Fargo",
         "details": "Business Online offre documenti per i conti aziendali idonei. Il periodo pubblicizzato di sette anni è soggetto ai limiti del singolo prodotto e non vale per tutti gli estratti aziendali.\n\nGli estratti delle carte di credito sono disponibili fino a due anni. Salvali prima che scada questo periodo."
+      },
+      "scanned": {
+        "label": "Estratto conto scansionato in Excel",
+        "title": "Converti un estratto conto scansionato in Excel",
+        "intro": "Prova a estrarre operazioni da PDF scansionati con StatementXL. Professional ed Enterprise possono ricorrere all'IA quando l'analisi ordinaria non produce operazioni utilizzabili. Il successo non è garantito: confronta i risultati con l'originale prima di scaricare Excel.",
+        "planNote": "Le scansioni richiedono Professional o Enterprise e una quota disponibile. Uso anonimo, gratuito e Standard richiedono testo nel PDF. Confronta i piani qui sotto.",
+        "planCta": "Confronta i piani con fallback IA",
+        "requirementsTitle": "Quali piani possono elaborare scansioni?",
+        "requirements": "Professional ed Enterprise consentono il fallback IA. L'analisi ordinaria viene prima; solo gli errori idonei attivano l'IA. I risultati parziali utilizzabili vengono mantenuti. L'abbonamento non garantisce la lettura di ogni scansione.",
+        "preparationTitle": "Prepara un PDF scansionato leggibile",
+        "preparation": "Scansiona pagine complete in ordine, con date e importi nitidi. Evita bordi tagliati, ombre e rotazioni. Carica un PDF entro i limiti mostrati. Unisci prima JPG o PNG in PDF; preferisci il PDF testuale originale della banca quando disponibile.",
+        "limitationsTitle": "Controlla risultati IA e trattamento dei dati",
+        "limitations": "Controlla numero di operazioni, date, direzione degli importi e saldi sull'originale. OK indica solo che non sono stati rilevati problemi. L'IA invia PDF completo e nome a un fornitore esterno secondo le sue politiche. I file protetti non sono supportati. Gli errori non consumano quota; i risultati parziali contano le pagine PDF.",
+        "stepsTitle": "Converti una scansione in tre passaggi",
+        "steps": {
+          "upload": {
+            "title": "Scegli un piano idoneo e carica",
+            "text": "Accedi con Professional o Enterprise attivo e quota disponibile, poi carica un PDF scansionato fino a {megabytes} MB e {pages} pagine."
+          },
+          "review": {
+            "title": "Controlla le operazioni estratte",
+            "text": "Attendi la verifica finale, confronta tutte le operazioni con il PDF e controlla DISCREPANCY e UNVERIFIABLE prima dell'uso."
+          },
+          "download": {
+            "title": "Scarica i risultati controllati",
+            "text": "Scarica Excel o un altro formato. Conserva originale e download: StatementXL non offre una cronologia permanente dei file."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Preparare estratti per QuickBooks",
+        "title": "Prepara le operazioni per QuickBooks Online",
+        "intro": "Converti il PDF in StatementXL, controlla le operazioni e prepara un CSV con tre o quattro colonne per QuickBooks Online. L'importazione è manuale, senza collegamento al conto né file QBO dedicati. QuickBooks offre anche l'importazione diretta di PDF e immagini.",
+        "planNote": "I PDF testuali possono usare la quota gratuita giornaliera; i volumi maggiori un abbonamento. Le scansioni richiedono Professional o Enterprise. Prezzi e pagine sono indicati sotto.",
+        "planCta": "Confronta quote e piani di analisi",
+        "requirementsTitle": "Prepara un CSV pulito per QuickBooks",
+        "requirements": "Usa Date, Description, Amount oppure Date, Description, Credit, Debit. Copia le operazioni controllate in un nuovo foglio e rimuovi saldo, rischio, origine e totali dalla copia da importare. Conserva separatamente l'export completo. Uniforma date, usa importi decimali e lascia vuote le celle inutilizzate.",
+        "preparationTitle": "Date, importi e limiti di caricamento",
+        "preparation": "La guida USA di Intuit raccomanda dd/mm/yyyy, file in inglese fino a 350 KB e fino a 1.000 righe di operazioni per caricamento. Dividi senza sovrapporre periodi. Per conti bancari a tre colonne, pagamenti negativi e depositi positivi. Le carte possono usare altri segni: seleziona il conto corretto e controlla l'anteprima.",
+        "limitationsTitle": "Importa, evita duplicati e riconcilia",
+        "limitations": "In QuickBooks Online apri All apps → Accounting → Bank transactions → Upload from file. Scegli conto, associa colonne e date e controlla prima di confermare. Evita duplicati con le operazioni esistenti, poi abbina, categorizza e riconcilia. Schermate e funzioni variano per conto o regione. Il CSV è facoltativo; Intuit descrive anche il caricamento diretto PDF/immagine.",
+        "stepsTitle": "Dal PDF all'importazione QuickBooks controllata",
+        "steps": {
+          "upload": {
+            "title": "Converti l'estratto PDF",
+            "text": "Carica un PDF fino a {megabytes} MB e {pages} pagine. Gratuito e Standard richiedono testo; Professional ed Enterprise possono tentare scansioni."
+          },
+          "review": {
+            "title": "Controlla ed esporta le operazioni",
+            "text": "Confronta i rischi con l'originale, poi scarica Excel o CSV. Conserva l'export completo con rischi e origine come riferimento."
+          },
+          "download": {
+            "title": "Prepara tre o quattro colonne",
+            "text": "Crea un CSV separato con i campi necessari. Uniforma date e direzione degli importi, elimina totali e colonne extra e rispetta i limiti Intuit."
+          },
+          "import": {
+            "title": "Carica e riconcilia in QuickBooks",
+            "text": "Carica nel conto corretto, associa i campi e controlla prima della conferma. Evita duplicati, poi categorizza e riconcilia."
+          }
+        },
+        "examplesTitle": "Esempi CSV con tre e quattro colonne",
+        "examplesNote": "Dati fittizi secondo l'esempio bancario Intuit: pagamento negativo in Amount o positivo in Credit; deposito positivo in Amount o in Debit. Intestazioni e descrizioni restano inglesi per l'importazione. Celle inutilizzate vuote. Controlla l'anteprima e non applicare questi segni alle carte senza verificarli.",
+        "columnsCaption": "Esempio CSV con {count} colonne",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Percorso di navigazione"

@@ -16,7 +16,7 @@ import { useConversion } from "@/components/conversion/conversion-provider";
 import { clearConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
-export function PdfUpload() {
+export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean }) {
   const t = useTranslations("PdfUpload");
   const format = useFormatter();
   const router = useRouter();
@@ -184,7 +184,7 @@ export function PdfUpload() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">{t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}</p>
+          {showFreeQuota && <p className="text-sm font-medium">{t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}</p>}
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
         <Button type="button" size="lg" disabled={!file || isPending} onClick={startConversion} className="w-full sm:w-auto">

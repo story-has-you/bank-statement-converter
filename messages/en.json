@@ -664,6 +664,78 @@
         "download": "Sign in to Wells Fargo Online and open Statements & Documents. Choose your account and the available statement period, open the PDF and save it with a clear filename. If a closed account's documents are unavailable online, contact Wells Fargo for copies.",
         "detailsTitle": "Wells Fargo business and credit card statements",
         "details": "Business Online provides documents for eligible business accounts. The advertised availability of up to seven years is subject to product-specific limits; it does not mean all business statements are retained that long.\n\nCredit card statements are available for up to two years, so save them before they leave the online window."
+      },
+      "scanned": {
+        "label": "Scanned bank statement to Excel",
+        "title": "Convert a scanned bank statement to Excel",
+        "intro": "Turn a paper or scanned statement PDF into reviewable transactions with StatementXL. Professional and Enterprise can attempt scans through AI fallback after regular parsing cannot produce usable transactions. Success is not guaranteed; compare the results with your original before downloading Excel.",
+        "planNote": "Scanned PDFs require Professional or Enterprise and available page quota. Anonymous, free and Standard access requires a text layer. Use the plan comparison below to choose the appropriate parsing capability.",
+        "planCta": "Compare plans with AI fallback",
+        "requirementsTitle": "Which plans can attempt scanned statements?",
+        "requirements": "Professional and Enterprise allow AI fallback. Regular parsing runs first; eligible failures can trigger AI, while usable partial results stay with regular parsing. Purchasing a plan does not guarantee that a particular scan can be read.",
+        "preparationTitle": "Prepare a readable scanned PDF",
+        "preparation": "Scan complete pages in order, keep dates and amounts sharp, and avoid cropped edges, shadows and rotated pages. Upload a single PDF within the displayed limits. JPG or PNG images need to be combined into a PDF first; prefer the bank's original text PDF when available.",
+        "limitationsTitle": "Review AI results and data handling",
+        "limitations": "Check transaction count, dates, amount direction and balances against the original. OK means no issue detected, not guaranteed accuracy. AI fallback sends the complete PDF and filename to an external parsing provider under its policies. Password-protected files are unsupported. Failed conversions do not use quota; partial results use the PDF page count.",
+        "stepsTitle": "Convert a scan in three steps",
+        "steps": {
+          "upload": {
+            "title": "Choose an eligible plan and upload",
+            "text": "Sign in with an active Professional or Enterprise plan and available quota, then upload one scanned PDF up to {megabytes} MB and {pages} pages."
+          },
+          "review": {
+            "title": "Review the extracted transactions",
+            "text": "Wait for final checks, compare all transactions with the PDF, and resolve DISCREPANCY and UNVERIFIABLE flags before using the data."
+          },
+          "download": {
+            "title": "Download the reviewed results",
+            "text": "Download Excel or another supported format. Keep the original and the downloaded file: StatementXL does not provide persistent file history."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Bank statement PDF to QuickBooks",
+        "title": "Prepare bank statement transactions for QuickBooks Online",
+        "intro": "Convert your PDF in StatementXL, review the transactions, then prepare a three- or four-column CSV for QuickBooks Online. This is a manual import workflow: StatementXL does not connect to your QuickBooks account or generate dedicated QBO files. QuickBooks also offers its own PDF and image import options.",
+        "planNote": "Text PDFs can use the free daily quota; larger workloads can use a subscription. Scanned PDFs require Professional or Enterprise. Compare the configured prices and page quotas below.",
+        "planCta": "Compare page quotas and parsing plans",
+        "requirementsTitle": "Prepare a clean CSV for QuickBooks",
+        "requirements": "Use Date, Description, Amount, or Date, Description, Credit, Debit. Copy reviewed transactions into a new sheet; remove balance, risk, source and summary columns from the import copy. Keep the full StatementXL export separately for checking. Use one date format, plain decimal amounts and blank unused amount cells.",
+        "preparationTitle": "Dates, amounts and upload limits",
+        "preparation": "Intuit's US guide recommends dd/mm/yyyy, English files up to 350 KB, and no more than 1,000 transaction lines per upload. Split larger files into non-overlapping batches. For a bank-account three-column CSV, payments are negative and deposits positive. Credit-card statements can use different signs: select the actual credit-card account and check the preview.",
+        "limitationsTitle": "Import, check duplicates and reconcile",
+        "limitations": "In QuickBooks Online, go to All apps → Accounting → Bank transactions → Upload from file. Choose the correct account, map the columns and date format, review the selected transactions, then confirm the import. Check existing transactions to prevent duplicates; match, categorize and reconcile afterward. Screens and availability may vary by account or region. CSV preparation here is optional: Intuit also documents direct PDF/image uploads.",
+        "stepsTitle": "From statement PDF to a reviewed QuickBooks import",
+        "steps": {
+          "upload": {
+            "title": "Convert the statement PDF",
+            "text": "Upload one PDF up to {megabytes} MB and {pages} pages. Use a text PDF on free or Standard access; Professional and Enterprise can attempt scans."
+          },
+          "review": {
+            "title": "Check and export transactions",
+            "text": "Review risk flags against the original, then download Excel or CSV. Keep the export with risk and source information as your reference."
+          },
+          "download": {
+            "title": "Prepare three or four columns",
+            "text": "Create a separate CSV with only the required fields. Normalize dates and amount direction, remove totals and extra columns, and split batches within Intuit's upload limits."
+          },
+          "import": {
+            "title": "Upload and reconcile in QuickBooks",
+            "text": "Upload the CSV to the correct account, map the fields and review before confirming. Avoid duplicate transactions, then match, categorize and reconcile in QuickBooks."
+          }
+        },
+        "examplesTitle": "Three- and four-column CSV examples",
+        "examplesNote": "Synthetic examples follow Intuit's bank-account sample: payment is negative in Amount, or positive in Credit; deposit is positive in Amount, or in Debit. Headers and sample descriptions remain in English for the import file. Empty cells stay blank. Check your target account's preview; do not apply these signs blindly to credit cards.",
+        "columnsCaption": "{count}-column CSV example",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Breadcrumb"

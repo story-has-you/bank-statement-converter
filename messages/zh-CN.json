@@ -664,6 +664,78 @@
         "download": "登录 Wells Fargo Online，打开 Statements & Documents。选择账户和可用账单周期，打开 PDF 后用便于识别的文件名保存。关闭账户的文件若已无法在线获取，可联系 Wells Fargo 申请副本。",
         "detailsTitle": "Wells Fargo 商业与信用卡账单",
         "details": "Business Online 为符合条件的商业账户提供文件。“最多七年”仍受具体产品期限限制，不代表所有商业账单都保存七年。\n\n信用卡账单最多可在线获取两年，请在到期前下载保存。"
+      },
+      "scanned": {
+        "label": "扫描银行流水转 Excel",
+        "title": "把扫描银行流水转为 Excel",
+        "intro": "使用 StatementXL 尝试将纸质或扫描账单 PDF 整理成可核对的交易。专业和企业套餐在常规解析无法提供可用交易时可回退至 AI 处理。转换不保证成功；下载 Excel 前，请对照原始账单核对结果。",
+        "planNote": "扫描 PDF 需要专业或企业套餐及可用页数额度。匿名、免费和标准套餐要求文件有文字层。请在下方对比解析能力和套餐。",
+        "planCta": "查看支持 AI 兜底的套餐",
+        "requirementsTitle": "哪些套餐可尝试处理扫描件？",
+        "requirements": "专业和企业套餐具备 AI 兜底资格。先进行常规解析，符合条件的失败才触发 AI；常规解析已有可用部分结果时直接保留。购买套餐不保证某份扫描件一定能识别。",
+        "preparationTitle": "准备清晰完整的扫描 PDF",
+        "preparation": "按顺序扫描完整页面，确保日期和金额清晰，避免裁切、阴影和页面旋转。每次上传一份符合所示限制的 PDF。JPG、PNG 图片需先合成 PDF；能取得银行原始文字 PDF 时优先使用原件。",
+        "limitationsTitle": "核对 AI 结果与数据处理方式",
+        "limitations": "对照原始账单检查交易数量、日期、金额方向和余额。OK 只表示未检测到问题，不保证准确。AI 兜底会将完整 PDF 和文件名发送至外部解析服务，适用其数据政策。所有套餐均不支持密码保护文件。失败不扣额度，部分结果按 PDF 页数计费。",
+        "stepsTitle": "三步转换扫描账单",
+        "steps": {
+          "upload": {
+            "title": "选择合适套餐并上传",
+            "text": "登录具备有效专业或企业套餐且有可用额度的账号，上传一份最多 {megabytes} MB、{pages} 页的扫描 PDF。"
+          },
+          "review": {
+            "title": "核对提取的交易",
+            "text": "等待最终校验完成，对照原 PDF 检查所有交易，使用前核实 DISCREPANCY 和 UNVERIFIABLE 标记。"
+          },
+          "download": {
+            "title": "下载核对后的结果",
+            "text": "下载 Excel 或其他支持的格式。自行保管原件和下载文件，StatementXL 不提供持久化文件历史。"
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "银行流水 PDF 转 QuickBooks 教程",
+        "title": "为 QuickBooks Online 整理银行流水交易",
+        "intro": "在 StatementXL 中转换 PDF 并核对交易，再整理成 QuickBooks Online 可导入的三列或四列 CSV。这是手动导入流程：StatementXL 不连接 QuickBooks 账号，也不生成 QBO 专用文件。QuickBooks 自身也提供 PDF 和图片导入选项。",
+        "planNote": "文字 PDF 可使用每日免费额度；批量补账可按需选择订阅额度。扫描 PDF 需要专业或企业套餐。具体价格与页数请查看下方配置。",
+        "planCta": "对比页数额度与解析套餐",
+        "requirementsTitle": "整理 QuickBooks 所需的 CSV",
+        "requirements": "使用 Date、Description、Amount 三列，或 Date、Description、Credit、Debit 四列。把核对后的交易复制到新工作表，从导入副本中删除余额、风险、来源和汇总列。另行保留完整导出供核对。统一日期格式，金额使用普通小数，未使用的金额单元格留空。",
+        "preparationTitle": "日期、金额方向和上传限制",
+        "preparation": "Intuit 美国版指南建议 dd/mm/yyyy 日期格式，文件使用英文且不超过 350 KB，单次最多 1,000 行交易。超限时按不重叠范围分批。银行账户的三列 CSV 中支出为负、入账为正；信用卡可能采用不同方向，请选择实际信用卡账户并检查预览。",
+        "limitationsTitle": "导入、排除重复并对账",
+        "limitations": "在 QuickBooks Online 中进入 All apps → Accounting → Bank transactions → Upload from file。选择正确账户，映射列和日期格式，核对选中的交易后确认导入。先检查已有交易避免重复，随后匹配、分类并对账。界面和可用功能可能因账户或地区不同。本教程的 CSV 整理是可选流程，Intuit 也说明了 PDF/图片直接导入方法。",
+        "stepsTitle": "从账单 PDF 到经核对的 QuickBooks 导入",
+        "steps": {
+          "upload": {
+            "title": "转换账单 PDF",
+            "text": "上传一份最多 {megabytes} MB、{pages} 页的 PDF。免费或标准套餐使用文字 PDF，专业和企业套餐可尝试扫描件。"
+          },
+          "review": {
+            "title": "核对并导出交易",
+            "text": "对照原文件检查风险标记，再下载 Excel 或 CSV。保留带风险和来源信息的完整导出作为核对依据。"
+          },
+          "download": {
+            "title": "整理三列或四列 CSV",
+            "text": "另建仅包含所需字段的 CSV，统一日期和金额方向，删除汇总与额外列，并按 Intuit 的上传限制分批。"
+          },
+          "import": {
+            "title": "在 QuickBooks 上传并对账",
+            "text": "将 CSV 上传至正确账户，映射字段并在确认前检查交易。避免重复导入，再在 QuickBooks 匹配、分类和对账。"
+          }
+        },
+        "examplesTitle": "三列和四列 CSV 示例",
+        "examplesNote": "以下为虚构数据，沿用 Intuit 银行账户示例：支出在 Amount 中为负，或在 Credit 中为正；入账在 Amount 中为正，或填入 Debit。导入文件的表头和示例描述保留英文，空单元格留空。请核对目标账户的预览，不要直接套用到信用卡。",
+        "columnsCaption": "{count} 列 CSV 示例",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "当前位置"

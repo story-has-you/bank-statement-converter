@@ -664,6 +664,78 @@
         "download": "Masuk ke Wells Fargo Online dan buka Statements & Documents. Pilih rekening dan periode tersedia, buka PDF, lalu simpan dengan nama yang jelas. Jika dokumen rekening yang ditutup tidak tersedia online, mintalah salinan kepada bank.",
         "detailsTitle": "Rekening bisnis dan kartu kredit Wells Fargo",
         "details": "Business Online menyediakan dokumen untuk rekening bisnis yang memenuhi syarat. Ketersediaan hingga tujuh tahun tetap mengikuti batas tiap produk; tidak semua rekening koran bisnis tersedia selama itu.\n\nRekening koran kartu kredit tersedia hingga dua tahun. Simpan sebelum periode tersebut berakhir."
+      },
+      "scanned": {
+        "label": "Rekening koran pindai ke Excel",
+        "title": "Konversi rekening koran hasil pindai ke Excel",
+        "intro": "Coba ekstrak transaksi dari PDF hasil pindai dengan StatementXL. Professional dan Enterprise dapat memakai fallback AI jika analisis biasa tidak menghasilkan transaksi yang dapat digunakan. Keberhasilan tidak dijamin; cocokkan hasil dengan dokumen asli sebelum mengunduh Excel.",
+        "planNote": "Hasil pindai memerlukan Professional atau Enterprise dan kuota tersedia. Pengguna anonim, gratis, dan Standard memerlukan lapisan teks. Bandingkan paket di bawah.",
+        "planCta": "Bandingkan paket dengan fallback AI",
+        "requirementsTitle": "Paket mana yang dapat mencoba hasil pindai?",
+        "requirements": "Professional dan Enterprise mengizinkan fallback AI. Analisis biasa berjalan lebih dulu; hanya kegagalan yang memenuhi syarat memicu AI. Hasil parsial yang dapat digunakan dipertahankan. Langganan tidak menjamin setiap hasil pindai dapat dibaca.",
+        "preparationTitle": "Siapkan PDF hasil pindai yang terbaca",
+        "preparation": "Pindai halaman lengkap berurutan, dengan tanggal dan angka jelas. Hindari tepi terpotong, bayangan, dan halaman miring. Unggah satu PDF sesuai batas. Gabungkan JPG atau PNG menjadi PDF dahulu; utamakan PDF teks asli dari bank jika tersedia.",
+        "limitationsTitle": "Periksa hasil AI dan penanganan data",
+        "limitations": "Periksa jumlah transaksi, tanggal, arah nilai dan saldo pada dokumen asli. OK hanya berarti tidak ditemukan masalah. AI mengirim PDF lengkap dan nama file kepada penyedia eksternal berdasarkan kebijakannya. File berkata sandi tidak didukung. Kegagalan tidak memakai kuota; hasil parsial memakai jumlah halaman PDF.",
+        "stepsTitle": "Konversi hasil pindai dalam tiga langkah",
+        "steps": {
+          "upload": {
+            "title": "Pilih paket yang sesuai dan unggah",
+            "text": "Masuk dengan Professional atau Enterprise aktif dan kuota tersedia, lalu unggah satu PDF hasil pindai maksimal {megabytes} MB dan {pages} halaman."
+          },
+          "review": {
+            "title": "Periksa transaksi yang diekstrak",
+            "text": "Tunggu pemeriksaan akhir, cocokkan semua transaksi dengan PDF, dan periksa DISCREPANCY serta UNVERIFIABLE sebelum digunakan."
+          },
+          "download": {
+            "title": "Unduh hasil yang diperiksa",
+            "text": "Unduh Excel atau format lain. Simpan dokumen asli dan unduhan; StatementXL tidak menyediakan riwayat file permanen."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Siapkan rekening koran untuk QuickBooks",
+        "title": "Siapkan transaksi untuk QuickBooks Online",
+        "intro": "Konversi PDF di StatementXL, periksa transaksi, lalu buat CSV tiga atau empat kolom untuk QuickBooks Online. Impor dilakukan manual, tanpa koneksi akun atau file QBO khusus. QuickBooks juga menyediakan impor PDF dan gambar sendiri.",
+        "planNote": "PDF teks dapat memakai kuota gratis harian; pekerjaan lebih besar dapat memakai langganan. Hasil pindai memerlukan Professional atau Enterprise. Harga dan halaman ditampilkan di bawah.",
+        "planCta": "Bandingkan kuota dan paket analisis",
+        "requirementsTitle": "Siapkan CSV bersih untuk QuickBooks",
+        "requirements": "Gunakan Date, Description, Amount atau Date, Description, Credit, Debit. Salin transaksi yang diperiksa ke lembar baru dan hapus saldo, risiko, sumber, serta total dari salinan impor. Simpan ekspor lengkap terpisah. Seragamkan tanggal, gunakan angka desimal biasa dan kosongkan sel nilai yang tidak digunakan.",
+        "preparationTitle": "Tanggal, nilai dan batas unggahan",
+        "preparation": "Panduan AS Intuit menyarankan dd/mm/yyyy, file bahasa Inggris maksimal 350 KB, dan hingga 1.000 baris transaksi per unggahan. Bagi file besar tanpa periode tumpang tindih. Dalam tiga kolom rekening bank, pembayaran negatif dan setoran positif. Kartu dapat memakai tanda berbeda: pilih akun kartu yang benar dan periksa pratinjau.",
+        "limitationsTitle": "Impor, hindari duplikat dan rekonsiliasi",
+        "limitations": "Di QuickBooks Online, buka All apps → Accounting → Bank transactions → Upload from file. Pilih akun, petakan kolom dan tanggal, lalu periksa sebelum mengonfirmasi. Hindari duplikat dengan transaksi lama; kemudian cocokkan, kategorikan, dan rekonsiliasi. Tampilan dapat berbeda menurut akun atau wilayah. CSV bersifat opsional; Intuit juga menjelaskan unggahan PDF/gambar langsung.",
+        "stepsTitle": "Dari PDF ke impor QuickBooks yang diperiksa",
+        "steps": {
+          "upload": {
+            "title": "Konversi PDF rekening koran",
+            "text": "Unggah satu PDF maksimal {megabytes} MB dan {pages} halaman. Gratis dan Standard memerlukan teks; Professional dan Enterprise dapat mencoba hasil pindai."
+          },
+          "review": {
+            "title": "Periksa dan ekspor transaksi",
+            "text": "Cocokkan risiko dengan dokumen asli, lalu unduh Excel atau CSV. Simpan ekspor lengkap dengan risiko dan sumber sebagai referensi."
+          },
+          "download": {
+            "title": "Siapkan tiga atau empat kolom",
+            "text": "Buat CSV terpisah dengan kolom yang diperlukan. Seragamkan tanggal dan arah nilai, hapus total dan kolom tambahan, lalu bagi sesuai batas Intuit."
+          },
+          "import": {
+            "title": "Unggah dan rekonsiliasi di QuickBooks",
+            "text": "Unggah ke akun yang benar, petakan kolom, dan periksa sebelum konfirmasi. Hindari duplikat, kemudian kategorikan dan rekonsiliasi."
+          }
+        },
+        "examplesTitle": "Contoh CSV tiga dan empat kolom",
+        "examplesNote": "Data fiktif mengikuti contoh bank Intuit: pembayaran negatif di Amount atau positif di Credit; setoran positif di Amount atau di Debit. Judul dan deskripsi tetap bahasa Inggris untuk impor. Sel tak terpakai kosong. Periksa pratinjau akun dan jangan langsung menerapkan tanda ini pada kartu kredit.",
+        "columnsCaption": "Contoh CSV {count} kolom",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Jalur navigasi"

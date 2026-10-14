@@ -1,11 +1,8 @@
-import { getTranslations } from "next-intl/server";
-
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import type { AppLocale } from "@/i18n/routing";
 import type { LandingContent } from "@/lib/seo/landing-content";
 
-export async function LandingStructuredData({ content, locale }: { content: LandingContent; locale: AppLocale }) {
-  const t = await getTranslations("Landing");
+export function LandingStructuredData({ content, locale }: { content: LandingContent; locale: AppLocale }) {
   const url = getLocalizedAlternates(content.page.path, locale).canonical;
   const schemas = [
     { "@context": "https://schema.org", "@type": "WebPage", "@id": `${url}#webpage`, url, name: content.title, description: content.intro, inLanguage: locale, dateModified: content.page.checkedOn },
@@ -25,7 +22,7 @@ export async function LandingStructuredData({ content, locale }: { content: Land
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
-      name: t("stepsTitle"),
+      name: content.stepsTitle,
       inLanguage: locale,
       step: content.steps.map((step, index) => ({ "@type": "HowToStep", position: index + 1, name: step.title, text: step.text, url: `${url}#step-${step.id}` })),
     },

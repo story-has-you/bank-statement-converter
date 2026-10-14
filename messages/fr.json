@@ -664,6 +664,78 @@
         "download": "Connectez-vous à Wells Fargo Online et ouvrez Statements & Documents. Sélectionnez le compte et la période disponible, ouvrez le PDF et enregistrez-le sous un nom explicite. Pour les documents indisponibles d'un compte clôturé, demandez des copies à la banque.",
         "detailsTitle": "Relevés professionnels et cartes de crédit Wells Fargo",
         "details": "Business Online propose des documents pour les comptes professionnels éligibles. La durée annoncée de sept ans reste soumise aux limites de chaque produit ; elle ne vaut pas pour tous les relevés professionnels.\n\nLes relevés de carte de crédit sont disponibles jusqu'à deux ans. Enregistrez-les avant la fin de cette période."
+      },
+      "scanned": {
+        "label": "Relevé bancaire numérisé vers Excel",
+        "title": "Convertir un relevé bancaire numérisé en Excel",
+        "intro": "Essayez d'extraire les opérations d'un PDF numérisé avec StatementXL. Professional et Enterprise peuvent recourir à l'IA si l'analyse habituelle ne fournit pas d'opérations utilisables. Le succès n'est pas garanti ; comparez les résultats à l'original avant de télécharger Excel.",
+        "planNote": "Les scans nécessitent Professional ou Enterprise et un quota disponible. L'accès anonyme, gratuit et Standard exige une couche de texte. Comparez les offres ci-dessous.",
+        "planCta": "Comparer les offres avec recours à l'IA",
+        "requirementsTitle": "Quelles offres peuvent traiter les scans ?",
+        "requirements": "Professional et Enterprise autorisent le recours à l'IA. L'analyse habituelle passe d'abord ; seuls les échecs admissibles déclenchent l'IA. Les résultats partiels utilisables sont conservés. Un abonnement ne garantit pas la lecture de chaque scan.",
+        "preparationTitle": "Préparer un PDF numérisé lisible",
+        "preparation": "Numérisez les pages complètes dans l'ordre, avec dates et montants nets. Évitez bords coupés, ombres et rotations. Importez un seul PDF dans les limites affichées. Assemblez d'abord les JPG ou PNG en PDF ; privilégiez le PDF texte original de la banque s'il existe.",
+        "limitationsTitle": "Vérifier les résultats IA et le traitement des données",
+        "limitations": "Vérifiez nombre d'opérations, dates, sens des montants et soldes sur l'original. OK indique seulement qu'aucun problème n'a été détecté. Le recours à l'IA transmet le PDF complet et son nom à un prestataire externe, selon ses politiques. Les fichiers protégés sont exclus. Les échecs ne consomment pas de quota ; les résultats partiels comptent les pages PDF.",
+        "stepsTitle": "Convertir un scan en trois étapes",
+        "steps": {
+          "upload": {
+            "title": "Choisir une offre admissible et importer",
+            "text": "Connectez-vous avec une offre Professional ou Enterprise active et un quota disponible, puis importez un scan PDF de {megabytes} Mo et {pages} pages maximum."
+          },
+          "review": {
+            "title": "Vérifier les opérations extraites",
+            "text": "Attendez la validation finale, comparez toutes les opérations au PDF et vérifiez les mentions DISCREPANCY et UNVERIFIABLE."
+          },
+          "download": {
+            "title": "Télécharger les résultats vérifiés",
+            "text": "Téléchargez Excel ou un autre format. Conservez l'original et le fichier ; StatementXL ne propose pas d'historique permanent."
+          }
+        }
+      },
+      "quickbooks": {
+        "label": "Préparer un relevé pour QuickBooks",
+        "title": "Préparer les opérations pour QuickBooks Online",
+        "intro": "Convertissez le PDF dans StatementXL, vérifiez les opérations, puis préparez un CSV à trois ou quatre colonnes pour QuickBooks Online. L'import est manuel, sans connexion au compte ni fichier QBO dédié. QuickBooks propose aussi son propre import PDF et image.",
+        "planNote": "Les PDF texte peuvent utiliser le quota gratuit quotidien ; les volumes importants une offre adaptée. Les scans nécessitent Professional ou Enterprise. Tarifs et quotas figurent ci-dessous.",
+        "planCta": "Comparer les quotas et les offres d'analyse",
+        "requirementsTitle": "Préparer un CSV propre pour QuickBooks",
+        "requirements": "Utilisez Date, Description, Amount ou Date, Description, Credit, Debit. Copiez les opérations vérifiées dans une nouvelle feuille ; retirez les colonnes de solde, risque, source et total de la copie à importer. Gardez l'export complet séparément. Uniformisez les dates, utilisez des montants décimaux et laissez les cellules inutilisées vides.",
+        "preparationTitle": "Dates, montants et limites d'import",
+        "preparation": "Le guide américain d'Intuit recommande dd/mm/yyyy, des fichiers en anglais de 350 Ko maximum et jusqu'à 1 000 lignes d'opérations par import. Divisez sans chevaucher les périodes. Pour un compte bancaire à trois colonnes, paiements négatifs et dépôts positifs. Les cartes peuvent avoir d'autres signes : choisissez le compte de carte et vérifiez l'aperçu.",
+        "limitationsTitle": "Importer, éviter les doublons et rapprocher",
+        "limitations": "Dans QuickBooks Online, ouvrez All apps → Accounting → Bank transactions → Upload from file. Choisissez le compte, associez colonnes et dates, puis vérifiez avant de confirmer. Évitez les doublons avec les opérations existantes, puis associez, catégorisez et rapprochez. Les écrans varient selon la région ou le compte. Le CSV est facultatif ; Intuit décrit aussi l'import direct PDF/image.",
+        "stepsTitle": "Du PDF à un import QuickBooks vérifié",
+        "steps": {
+          "upload": {
+            "title": "Convertir le relevé PDF",
+            "text": "Importez un PDF de {megabytes} Mo et {pages} pages maximum. Gratuit et Standard exigent du texte ; Professional et Enterprise peuvent tenter les scans."
+          },
+          "review": {
+            "title": "Vérifier et exporter les opérations",
+            "text": "Comparez les risques à l'original, puis téléchargez Excel ou CSV. Conservez l'export complet avec risques et sources comme référence."
+          },
+          "download": {
+            "title": "Préparer trois ou quatre colonnes",
+            "text": "Créez un CSV séparé avec les champs requis. Uniformisez dates et signes, retirez totaux et colonnes supplémentaires et respectez les limites Intuit."
+          },
+          "import": {
+            "title": "Importer et rapprocher dans QuickBooks",
+            "text": "Importez dans le bon compte, associez les champs et vérifiez avant confirmation. Évitez les doublons, puis catégorisez et rapprochez."
+          }
+        },
+        "examplesTitle": "Exemples CSV à trois et quatre colonnes",
+        "examplesNote": "Données fictives suivant l'exemple bancaire Intuit : paiement négatif dans Amount ou positif dans Credit ; dépôt positif dans Amount ou dans Debit. En-têtes et descriptions restent en anglais pour l'import. Cellules inutilisées vides. Vérifiez l'aperçu du compte ; ne transposez pas ces signes aux cartes sans contrôle.",
+        "columnsCaption": "Exemple CSV à {count} colonnes",
+        "samplePayment": "Example payment",
+        "sampleDeposit": "Example deposit",
+        "headers": {
+          "date": "Date",
+          "description": "Description",
+          "amount": "Amount",
+          "credit": "Credit",
+          "debit": "Debit"
+        }
       }
     },
     "breadcrumbLabel": "Fil d’Ariane"
