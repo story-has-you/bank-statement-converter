@@ -85,7 +85,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Production deployment
 
-生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务直接运行在 EC2（Amazon Linux 2023）上，由 systemd 管理。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
+生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers，通过 Worker Custom Domain 提供 HTTPS 解析入口。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
 
 正式地址：
 
@@ -94,22 +94,15 @@ https://bankstatementconverter.xyz
 https://parser.bankstatementconverter.xyz
 ```
 
-### EC2 parser
+### Cloudflare Containers parser
 
-将 `services/parser/` 的内容同步到 EC2 的 `/home/ec2-user/apps/parser`，以 `ec2-user` 身份执行：
+在 `services/parser/` 安装独立 Worker 依赖，使用 Docker 构建 Python 3.14 镜像，由 Wrangler 部署 Worker 与容器。复用现有的 `bank-statement-parser` Worker 和 `ParserContainer`，正式 Custom Domain 为 `parser.bankstatementconverter.xyz`；容器内 Uvicorn 监听 8080。
 
-```bash
-cd /home/ec2-user/apps/parser
-bash deploy/install.sh
-```
+共享密钥使用 Worker Secret `PARSER_SHARED_SECRET`，由 Worker 在容器启动时传入，与 Vercel Production、Preview 保持一致；部署不自动生成或轮换密钥。构建、部署命令与验收方式见 [Python 服务部署说明](services/parser/README.md#cloudflare-containers-部署)。
 
-首次运行前需在 `/etc/bank-statement-parser.env` 设置与 Next.js 一致的 `PARSER_SHARED_SECRET`。脚本幂等安装 uv、Python 3.14、虚拟环境和锁定依赖，以 `--no-deps` 安装本包，然后安装并重启 `bank-statement-parser` systemd 服务。服务以 `ec2-user` 运行，监听 `0.0.0.0:8080`，失败或退出后自动重启。
+#### GitHub Actions 质量检查与部署
 
-对外 HTTPS 入口 `https://parser.bankstatementconverter.xyz` 需转发到 EC2 的 `8080` 端口；DNS、TLS 和转发由现有基础设施管理。环境文件创建、更新步骤及状态、日志、健康检查命令见 [Python 服务部署说明](services/parser/README.md#ec2-部署amazon-linux-2023)。
-
-#### GitHub Actions 质量检查
-
-仓库已配置 [`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml)。向 `master` 推送提交或创建、更新 Pull Request 时执行 Web 的 TypeScript、ESLint、构建检查，以及 Python 锁定依赖和本包安装、源码编译检查。工作流只做质量检查，不自动部署到 EC2；代码更新后需在 EC2 手动运行安装脚本。
+[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时检查 Web 类型、Lint、构建、Python 安装与编译，以及 Worker 类型与打包。仅 `master` 推送且检查通过后执行 Cloudflare Containers 部署，并检查公开健康接口。仓库 Secrets 使用现有 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
 
 ### Vercel Next.js
 

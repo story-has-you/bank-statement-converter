@@ -36,44 +36,35 @@ export PARSER_SHARED_SECRET=local-development-secret
 
 `GET /health` 不需要认证，可用于检查进程是否就绪。生产环境监听端口为 `8080`。
 
-## EC2 部署（Amazon Linux 2023）
+## Cloudflare Containers 部署
 
-将本目录的内容放到 `/home/ec2-user/apps/parser`，确保归 `ec2-user` 所有。生产环境使用 uv 管理 Python 3.14 和 `.venv`，由 systemd 服务 `bank-statement-parser` 启动 Uvicorn。
+生产解析服务通过 Cloudflare Worker `bank-statement-parser` 转发到 Python 容器，正式入口为 `https://parser.bankstatementconverter.xyz`。Worker Custom Domain 管理该域名的 DNS 和 TLS；不需要 EC2 回源、端口转发或 Flexible SSL 规则。
 
-首次安装先创建环境文件；已有配置时直接编辑，保留现有共享密钥：
+Dockerfile 使用 Python 3.14，安装 `requirements.lock` 和本包，Uvicorn 监听 `0.0.0.0:8080`。Worker 使用已有的 `ParserContainer` Durable Object，固定实例名为 `parser`，空闲 10 分钟后休眠，请求到达时等待 8080 端口就绪。容器无需访问公网。
 
-```bash
-sudo touch /etc/bank-statement-parser.env
-sudo chmod 600 /etc/bank-statement-parser.env
-sudoedit /etc/bank-statement-parser.env
-```
-
-文件中设置与 Next.js 服务端相同的共享密钥（将示例值替换为实际密钥）：
-
-```dotenv
-PARSER_SHARED_SECRET=replace-with-your-shared-secret
-```
-
-以 `ec2-user` 身份执行安装脚本，不要使用 `sudo bash`：
+在本目录安装 Worker 依赖并验证：
 
 ```bash
-cd /home/ec2-user/apps/parser
-bash deploy/install.sh
+pnpm install --frozen-lockfile
+pnpm exec wrangler types
+pnpm exec tsc --noEmit
+pnpm exec wrangler deploy --dry-run --containers-rollout=none
 ```
 
-脚本在缺少 uv 时安装 uv，安装 Python 3.14，按需创建 `.venv`，从 `requirements.lock` 安装锁定依赖，再以 `--no-deps` 安装本包。随后将 [`deploy/bank-statement-parser.service`](deploy/bank-statement-parser.service) 安装到 `/etc/systemd/system/`，重新加载 systemd，启用开机启动并重启服务。重复运行会复用虚拟环境、更新依赖和本包，不覆盖环境文件。机器需要能下载 uv、Python 和 Python 包，`ec2-user` 需要 sudo 权限。
-
-服务使用 `User=ec2-user`、`WorkingDirectory=/home/ec2-user/apps/parser` 和 `EnvironmentFile=/etc/bank-statement-parser.env`，执行 `.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8080`，并设置 `Restart=always`。
-
-更新时先将代码同步到同一目录（保留 `.venv`），再运行 `bash deploy/install.sh`。安装或更新后检查状态、日志和健康接口：
+实际部署需要运行中的 Docker、已登录的 Wrangler 或 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。首次配置密钥时使用交互命令，沿用与 Vercel 相同的现有值：
 
 ```bash
-sudo systemctl status bank-statement-parser --no-pager
-sudo journalctl -u bank-statement-parser -n 100 --no-pager
-curl --fail http://127.0.0.1:8080/health
+pnpm exec wrangler secret put PARSER_SHARED_SECRET
+pnpm exec wrangler deploy
 ```
 
-`/health` 只表示进程就绪，认证和 PDF 解析需另行验收。对外 HTTPS 入口 `https://parser.bankstatementconverter.xyz` 需要转发到 EC2 的 `8080` 端口；DNS、TLS 和转发配置由现有基础设施管理，安装脚本只负责 Python 与 systemd。Next.js 的 `PARSER_SERVICE_URL` 使用该 HTTPS 地址，`PARSER_SHARED_SECRET` 与环境文件保持一致。
+Worker 将已有 `PARSER_SHARED_SECRET` 作为启动环境变量传入容器，不在镜像或配置文件中保存密钥。日常部署保留远端密钥，不自动轮换。修改密钥后还需滚动更新或重启现有容器，使新值生效。
+
+仓库的 GitHub Actions 在 Pull Request 和 `master` 推送时执行质量检查，仅在 `master` 推送且检查通过后部署 Worker 和容器。仓库 Secrets 需要配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
+
+Vercel Production 和 Preview 均设置 `PARSER_SERVICE_URL=https://parser.bankstatementconverter.xyz`，共享密钥与 Worker 一致，修改环境变量后分别重新部署。`GET /health` 必须实际到达容器；健康响应 200 后，还需验证 `/parse` 未认证返回 401、正确认证上传无效 PDF 返回 `INVALID_PDF`、有效电子版 PDF 返回预期交易数据。Worker 打包 dry-run 不会构建或部署容器，也不能证明线上转换成功。
+
+`deploy/` 中的 EC2 安装脚本保留用于回退，不是当前生产发布流程。
 
 服务的文件大小和页数上限统一配置在 [`app/conversion-limits.json`](app/conversion-limits.json)，当前为单文件 4 MB、50 页。Next.js 和 Python 读取同一份配置，修改后需同步发布两个服务；Python 进程重启后加载新值。`pageCount` 始终是原始 PDF 页数；相邻且表头兼容的表格可以合并为一个逻辑表，表格范围和 `rows[].source.page` 保留原始页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
 
