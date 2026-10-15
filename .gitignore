@@ -43,6 +43,8 @@ next-env.d.ts
 
 # python parser service
 /services/parser/.venv/
+/services/parser/node_modules/
+/services/parser/.wrangler/
 /services/parser/**/__pycache__/
 /services/parser/**/*.py[cod]
 /services/parser/*.egg-info/
