@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "Wat kosten de plannen en wat bieden ze?",
-    "description": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem abonneert.",
+    "description": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem of PayPal abonneert.",
     "anonymous": "Zonder inloggen",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
     "anonymousDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
@@ -274,7 +274,13 @@
       "invalidProvider": "De geselecteerde betalingsprovider is ongeldig.",
       "existingFailedSubscription": "Er is een onopgeloste betaling. Los deze op of zeg uw abonnement op."
     },
-    "providerUnavailable": "Betalingen via {provider} zijn momenteel niet beschikbaar."
+    "providerUnavailable": "Betalingen via {provider} zijn momenteel niet beschikbaar.",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "Abonneren via {provider}",
+    "openingProvider": "{provider} openen"
   },
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "Gebruiksvoorwaarden | StatementXL",
-      "description": "Lees hoe StatementXL omgaat met bestanden, quota, Creem-abonnementen, terugbetalingen en gebruikersverantwoordelijkheden."
+      "description": "Lees hoe StatementXL omgaat met bestanden, quota, Creem of PayPal-abonnementen, terugbetalingen en gebruikersverantwoordelijkheden."
     },
     "title": "Gebruiksvoorwaarden",
     "intro": "ReAvid Ltd beheert deze dienst via <site>{domain}</site>. Lees deze voorwaarden en het privacybeleid voordat je de conversie en abonnementen gebruikt.",
-    "availability": "De conversie van PDF naar Excel en Creem-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
+    "availability": "De conversie van PDF naar Excel en Creem of PayPal-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
     "service": {
       "title": "Omvang van de dienst",
       "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise met een geldig gebruiksrecht kunnen automatisch overschakelen naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, inclusief pogingen om scans te converteren. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling."
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "Conversietegoed",
-      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's."
+      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem of PayPal-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's."
     },
     "subscription": {
       "title": "Abonnementen en betaling",
-      "body": "Standard, Professional en Enterprise worden maandelijks verlengd tegen de prijs die vóór aankoop wordt getoond. Creem is onze enige betaalprovider en Merchant of Record (de juridische verkoper van de transactie) en verzorgt betalingen, toepasselijke belastingen en betalingsbewijzen. U wordt pas belast nadat u de aankoop bevestigt. Creem stuurt informatie over abonnementen, verlengingen en mislukte betalingen naar deze dienst. U kunt automatische verlenging annuleren vanuit uw websiteaccount; betaalde toegang blijft beschikbaar tot het einde van de bevestigde factureringsperiode."
+      "body": "Standard, Professional en Enterprise worden maandelijks verlengd tegen de prijs die vóór aankoop wordt getoond. Creem is onze betaalprovider en Merchant of Record (de juridische verkoper van de transactie) en verzorgt betalingen, toepasselijke belastingen en betalingsbewijzen. U wordt pas belast nadat u de aankoop bevestigt. Creem stuurt informatie over abonnementen, verlengingen en mislukte betalingen naar deze dienst. U kunt automatische verlenging annuleren vanuit uw websiteaccount; betaalde toegang blijft beschikbaar tot het einde van de bevestigde factureringsperiode. Bij afrekenen via PayPal is ReAvid Ltd de verkoper. PayPal verwerkt abonnementsbetalingen en bijbehorende accountgegevens volgens zijn voorwaarden en privacybeleid en is niet de Merchant of Record voor deze dienst."
     },
     "refunds": {
       "title": "Terugbetalingsbeleid",
@@ -387,15 +393,15 @@
       "description": "Verwerking van bankafschriften, AI-analyse, tijdelijke browserresultaten en gegevens over accounts, analysebeheer, quota en facturering."
     },
     "title": "Privacybeleid",
-    "intro": "ReAvid Ltd beheert <site>{domain}</site>. Dit beleid legt uit hoe we informatie behandelen wanneer je de conversie en Creem-abonnementen gebruikt.",
-    "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en Creem-abonnementen.",
+    "intro": "ReAvid Ltd beheert <site>{domain}</site>. Dit beleid legt uit hoe we informatie behandelen wanneer je de conversie en Creem of PayPal-abonnementen gebruikt.",
+    "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en Creem of PayPal-abonnementen.",
     "documents": {
       "title": "Bankafschriften en conversiegegevens",
       "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. Verwerking door derden bij overschakeling naar AI wordt hieronder uitgelegd."
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem of PayPal-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem of PayPal verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "Dienstverleners en internationale verwerking",
-      "body": "Inloggen gebruikt Google en Supabase. Creem is onze enige betaalprovider en Merchant of Record (de juridische verkoper van de transactie). Het verwerkt abonnementsbetalingen, toepasselijke belastingen, betalingsbewijzen en wettelijk verplichte terugbetalingen en synchroniseert de abonnementsstatus met deze dienst. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. Creem kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens."
+      "body": "Inloggen gebruikt Google en Supabase. Creem is onze betaalprovider en Merchant of Record (de juridische verkoper van de transactie). Het verwerkt abonnementsbetalingen, toepasselijke belastingen, betalingsbewijzen en wettelijk verplichte terugbetalingen en synchroniseert de abonnementsstatus met deze dienst. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. Creem kan betaal- en accountgegevens verwerken volgens zijn voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens. Bij afrekenen via PayPal is ReAvid Ltd de verkoper. PayPal verwerkt abonnementsbetalingen en bijbehorende accountgegevens volgens zijn voorwaarden en privacybeleid en is niet de Merchant of Record voor deze dienst."
     },
     "storage": {
       "title": "Browseropslag",
@@ -523,7 +529,8 @@
       "created": "Aangemaakt",
       "period": "Factuurperiode",
       "actions": "Acties",
-      "availableUntil": "Het resterende tegoed is beschikbaar tot {date} UTC."
+      "availableUntil": "Het resterende tegoed is beschikbaar tot {date} UTC.",
+      "provider": "Betaalprovider"
     },
     "statuses": {
       "APPROVAL_PENDING": "Wacht op goedkeuring",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
     "limitsTitle": "Welke PDF’s kan ik uploaden?",
     "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
-    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem abonneert.",
+    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem of PayPal abonneert.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
     "priceHeader": "Prijs (USD)",
@@ -572,8 +579,8 @@
     "periodHeader": "Quotaperiode",
     "freePrice": "Gratis",
     "dailyPeriod": "Dagelijks (UTC)",
-    "billingPeriod": "Creem-factuurperiode",
-    "billingNote": "Abonnementen verlengen maandelijks via Creem. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s.",
+    "billingPeriod": "factuurperiode",
+    "billingNote": "Abonnementen verlengen maandelijks via Creem of PayPal. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s.",
     "privacyTitle": "Hoe worden mijn gegevens verwerkt?",
     "privacyAnswer": "Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
     "browserTitle": "Wat wordt tijdelijk in mijn browser bewaard?",
@@ -592,13 +599,9 @@
     "chatDescription": "Vraag een AI-assistent naar StatementXL met onze officiële bronnen.",
     "prompt": "Bezoek de officiële informatie van StatementXL: {fullUrl}. Lees zo nodig {indexUrl} en volg relevante documentlinks. Antwoord in {language}: leg functies, stappen, bestandslimieten, gegevensverwerking, gratis quota en abonnementsprijzen uit met bronlinks. Als een bron niet bereikbaar is of geen antwoord bevat, zeg dit duidelijk en gok niet.",
     "showPrompt": "Standaardprompt bekijken",
-    "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en Creem.",
+    "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en Creem of PayPal.",
     "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden.",
     "parsingHeader": "Analysemogelijkheden"
-  },
-  "Creem": {
-    "subscribe": "Abonneren met Creem",
-    "processing": "Creem openen"
   },
   "BillingReturn": {
     "title": "Abonnement bevestigen",
@@ -610,7 +613,9 @@
     "signInRequired": "Log in met het account dat u voor deze aankoop gebruikte en controleer opnieuw.",
     "invalidReturn": "Deze terugkeerlink is ongeldig.",
     "retry": "Opnieuw controleren",
-    "account": "Uw account openen"
+    "account": "Uw account openen",
+    "cancelled": "De betalingsgoedkeuring is geannuleerd. Deze terugkeer activeert geen abonnement.",
+    "backToPlans": "Terug naar abonnementen"
   },
   "Landing": {
     "relatedTitle": "Handleidingen voor bankafschriften",

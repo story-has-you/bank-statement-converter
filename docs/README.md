@@ -20,7 +20,8 @@
 ## 支付与计费
 
 - [Creem 支付接入](billing/creem-billing.md)
-- [Creem 计费切换与验收](billing/billing-provider-cutover.md)
+- [PayPal 沙箱支付接入](billing/paypal-billing.md)
+- [计费渠道切换与验收](billing/billing-provider-cutover.md)
 
 ## SEO/AEO
 

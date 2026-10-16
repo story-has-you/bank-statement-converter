@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "プランの料金と利用枠は？",
-    "description": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして Creem で申し込んでください。",
+    "description": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして Creem または PayPal で申し込んでください。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages, number}ページ",
     "anonymousDescription": "1日に{pages, number}ページまで変換できます。",
@@ -274,7 +274,13 @@
       "invalidProvider": "選択された決済サービスは無効です。",
       "existingFailedSubscription": "未解決の支払いがあります。支払いを解決するか購読を解約してください。"
     },
-    "providerUnavailable": "{provider} での支払いは現在利用できません。"
+    "providerUnavailable": "{provider} での支払いは現在利用できません。",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "{provider} で契約",
+    "openingProvider": "{provider} を開いています"
   },
   "HomeFaq": {
     "title": "変換前に知っておくべきことは？",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "利用規約 | StatementXL",
-      "description": "StatementXL のファイル処理、利用枠、Creem サブスクリプション、返金方針、利用者の責任について。"
+      "description": "StatementXL のファイル処理、利用枠、Creem または PayPal サブスクリプション、返金方針、利用者の責任について。"
     },
     "title": "利用規約",
     "intro": "本サービスはReAvid Ltdが運営し、<site>{domain}</site>で提供します。変換と購読サービスを使う前に、この規約とプライバシーポリシーをご確認ください。",
-    "availability": "PDFからExcelへの変換とCreem購読は、現在のサービス設定に従って提供します。料金や利用状況は変更される場合があります。",
+    "availability": "PDFからExcelへの変換とCreem または PayPal購読は、現在のサービス設定に従って提供します。料金や利用状況は変更される場合があります。",
     "service": {
       "title": "サービスの範囲",
       "body": "対応する銀行明細PDFの取引情報を、確認とダウンロード用のExcelに整理します。対応する銀行、ファイル形式、処理上限はサービスページに記載します。銀行口座接続、銀行業務、財務・税務・法律上の助言は提供しません。 まず通常の解析を行います。有効な利用資格があるProfessionalとEnterpriseでは、通常の解析が失敗、利用不可、または確認可能な取引を返さない場合にAI解析へ自動で切り替え、スキャンの変換も試みます。利用できる部分結果があれば切り替えません。"
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "変換の利用枠",
-      "body": "ログインなしで1日{anonymousPages, number}ページ、無料アカウントへのログイン後は1日{authenticatedPages, number}ページまで変換できます。スタンダードは月{standardPages, number}ページ、プロフェッショナルは月{professionalPages, number}ページ、エンタープライズは月{enterprisePages, number}ページです。日次の利用枠はUTCでリセットされ、サブスクリプションの利用枠はCreemの現在の請求期間に従います。変換に失敗した場合は利用枠を消費しません。部分的な結果はPDFのページ数で計算します。"
+      "body": "ログインなしで1日{anonymousPages, number}ページ、無料アカウントへのログイン後は1日{authenticatedPages, number}ページまで変換できます。スタンダードは月{standardPages, number}ページ、プロフェッショナルは月{professionalPages, number}ページ、エンタープライズは月{enterprisePages, number}ページです。日次の利用枠はUTCでリセットされ、サブスクリプションの利用枠はCreem または PayPalの現在の請求期間に従います。変換に失敗した場合は利用枠を消費しません。部分的な結果はPDFのページ数で計算します。"
     },
     "subscription": {
       "title": "サブスクリプションと支払い",
-      "body": "Standard、Professional、Enterprise は購入前に表示される料金で毎月自動更新されます。唯一の決済事業者である Creem は Merchant of Record（取引上の法的な販売者）として、決済、適用される税金、支払証明を扱います。購入を確認した後にのみ請求されます。Creem は契約、更新、支払い失敗の情報を本サービスに送信します。自動更新はサイトのアカウントから解約できます。有料の利用権は確認済みの請求期間の終了まで継続します。"
+      "body": "Standard、Professional、Enterprise は購入前に表示される料金で毎月自動更新されます。決済事業者である Creem は Merchant of Record（取引上の法的な販売者）として、決済、適用される税金、支払証明を扱います。購入を確認した後にのみ請求されます。Creem は契約、更新、支払い失敗の情報を本サービスに送信します。自動更新はサイトのアカウントから解約できます。有料の利用権は確認済みの請求期間の終了まで継続します。 PayPal で決済する場合、販売者は ReAvid Ltd です。PayPal は規約とプライバシーポリシーに従い、契約の支払いと関連するアカウント情報を処理します。本サービスの Merchant of Record ではありません。"
     },
     "refunds": {
       "title": "返金方針",
@@ -387,15 +393,15 @@
       "description": "銀行明細、AI解析、ブラウザーの一時結果、アカウント、解析運用、利用枠、請求情報の取り扱いを説明します。"
     },
     "title": "プライバシーポリシー",
-    "intro": "ReAvid Ltdは<site>{domain}</site>を運営しています。このポリシーは変換とCreem購読の利用時に情報をどう扱うかを説明します。",
-    "availability": "このポリシーは、現在提供しているPDFからExcelへの変換、ログイン、Creem購読に適用します。",
+    "intro": "ReAvid Ltdは<site>{domain}</site>を運営しています。このポリシーは変換とCreem または PayPal購読の利用時に情報をどう扱うかを説明します。",
+    "availability": "このポリシーは、現在提供しているPDFからExcelへの変換、ログイン、Creem または PayPal購読に適用します。",
     "documents": {
       "title": "銀行明細と変換内容",
       "body": "PDFには氏名、口座番号、取引日、金額、残高、取引説明などの機密情報が含まれる場合があります。PDF、抽出した取引、エクスポート内容は、ご依頼の変換とダウンロードにのみ使用し、広告や無関係な目的には使用しません。AIへの切り替え時の第三者による処理は以下で説明します。"
     },
     "accountData": {
       "title": "アカウント、利用枠、請求情報",
-      "body": "Googleでログインすると、アカウントサービスに必要な識別情報とアカウント情報をSupabaseに保存します。サブスクリプションの有効化後は、状態、プラン、CreemサブスクリプションID、請求期間、支払者のメールアドレス、購入時点のサイトアカウントのメールアドレスを保存します。支払い情報はCreemが処理します。これらの記録には元のPDF、抽出した取引、Excelの内容は含まれません。 ログイン済みユーザーについては、障害調査のため、解析を試みるたびにアカウント ID、メールアドレスのスナップショット、記録時刻、最後に選択された解析方法、変換状態、解析失敗および大規模言語モデルへの切り替え理由も保存します。これらの記録にファイル名、ファイル内容、取引明細、モデルの出力は含まれません。"
+      "body": "Googleでログインすると、アカウントサービスに必要な識別情報とアカウント情報をSupabaseに保存します。サブスクリプションの有効化後は、状態、プラン、Creem または PayPalサブスクリプションID、請求期間、支払者のメールアドレス、購入時点のサイトアカウントのメールアドレスを保存します。支払い情報はCreem または PayPalが処理します。これらの記録には元のPDF、抽出した取引、Excelの内容は含まれません。 ログイン済みユーザーについては、障害調査のため、解析を試みるたびにアカウント ID、メールアドレスのスナップショット、記録時刻、最後に選択された解析方法、変換状態、解析失敗および大規模言語モデルへの切り替え理由も保存します。これらの記録にファイル名、ファイル内容、取引明細、モデルの出力は含まれません。"
     },
     "technicalData": {
       "title": "必要な技術情報",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "提供者と越境処理",
-      "body": "ログインにはGoogleとSupabase、アクセス解析にはGoogle AnalyticsとPageviewを使います。Creem は唯一の決済事業者であり、Merchant of Record（取引上の法的な販売者）です。契約の決済、適用される税金、支払証明、適用法により義務付けられた返金を処理し、本サービスと契約状態を同期します。分析サービスは、それぞれの利用規約とプライバシーポリシーに従って技術情報を処理する場合があります。Creemも、その規約とポリシーに従って支払い情報とアカウント情報を処理する場合があります。越境処理がある場合は、適用法が求める保護措置を取り、実際の取り扱いを説明します。銀行明細や取引情報は販売しません。"
+      "body": "ログインにはGoogleとSupabase、アクセス解析にはGoogle AnalyticsとPageviewを使います。Creem は決済事業者であり、Merchant of Record（取引上の法的な販売者）です。契約の決済、適用される税金、支払証明、適用法により義務付けられた返金を処理し、本サービスと契約状態を同期します。分析サービスは、それぞれの利用規約とプライバシーポリシーに従って技術情報を処理する場合があります。Creemも、その規約とポリシーに従って支払い情報とアカウント情報を処理する場合があります。越境処理がある場合は、適用法が求める保護措置を取り、実際の取り扱いを説明します。銀行明細や取引情報は販売しません。 PayPal で決済する場合、販売者は ReAvid Ltd です。PayPal は規約とプライバシーポリシーに従い、契約の支払いと関連するアカウント情報を処理します。本サービスの Merchant of Record ではありません。"
     },
     "storage": {
       "title": "ブラウザ保存",
@@ -523,7 +529,8 @@
       "created": "作成日時",
       "period": "請求期間",
       "actions": "操作",
-      "availableUntil": "残りの利用枠は {date} UTC まで利用できます。"
+      "availableUntil": "残りの利用枠は {date} UTC まで利用できます。",
+      "provider": "決済事業者"
     },
     "statuses": {
       "APPROVAL_PENDING": "承認待ち",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "重要な根拠が不足しているか、行を確実に検証できません。",
     "limitsTitle": "どの PDF をアップロードできますか？",
     "limitsAnswer": "一度に{megabytes} MB、{pages}ページ以内の銀行明細PDFを1件アップロードできます。未ログイン、無料、Standardでは文字層が必要です。ProfessionalとEnterpriseはスキャンの変換を試せます。どのプランもパスワード付きファイルは非対応です。",
-    "pricingAnswer": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして Creem で申し込んでください。",
+    "pricingAnswer": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして Creem または PayPal で申し込んでください。",
     "faqAnswer": "ファイル要件、利用枠、変換リスクについて説明します。該当する回答を読み、変換前に PDF を確認してください。",
     "planHeader": "プラン",
     "priceHeader": "価格（米ドル）",
@@ -572,8 +579,8 @@
     "periodHeader": "利用枠の期間",
     "freePrice": "無料",
     "dailyPeriod": "毎日（UTC）",
-    "billingPeriod": "Creem 請求期間",
-    "billingNote": "Creem で毎月自動更新されます。失敗した変換は枠を消費せず、部分的な結果は元の PDF のページ数で計上されます。",
+    "billingPeriod": "請求期間",
+    "billingNote": "Creem または PayPal で毎月自動更新されます。失敗した変換は枠を消費せず、部分的な結果は元の PDF のページ数で計上されます。",
     "privacyTitle": "データはどう扱われますか？",
     "privacyAnswer": "明細の内容は今回の変換とダウンロードにのみ使われます。履歴機能がないため、元の PDF と Excel を保管してください。",
     "browserTitle": "ブラウザーに何が一時保存されますか？",
@@ -592,13 +599,9 @@
     "chatDescription": "公式資料をもとに AI アシスタントに StatementXL について質問できます。",
     "prompt": "StatementXL の公式資料 {fullUrl} にアクセスしてください。詳細が必要なら {indexUrl} を読み、関連文書を参照してください。{language}で機能、手順、ファイル制限、データの扱い、無料枠、購読料金を説明し、出典リンクを示してください。資料にアクセスできない場合や記載がない場合は明示し、推測しないでください。",
     "showPrompt": "既定のプロンプトを見る",
-    "metadataAnswer": "サービス運営に必要なアカウント、利用枠、請求のメタデータは保持されます。アカウントと Creem で購読情報を確認・管理してください。",
+    "metadataAnswer": "サービス運営に必要なアカウント、利用枠、請求のメタデータは保持されます。アカウントと Creem または PayPal で購読情報を確認・管理してください。",
     "analyticsAnswer": "Google Analytics と Pageview はアクセスに関する技術情報を処理する場合があります。銀行明細、抽出された取引、Excel の内容はこれらの分析サービスに送信しません。",
     "parsingHeader": "解析機能"
-  },
-  "Creem": {
-    "subscribe": "Creem で購読",
-    "processing": "Creem を開いています"
   },
   "BillingReturn": {
     "title": "購読の確認",
@@ -610,7 +613,9 @@
     "signInRequired": "購入に使用したアカウントでログインして再確認してください。",
     "invalidReturn": "決済からの戻りリンクが無効です。",
     "retry": "再確認",
-    "account": "アカウントを開く"
+    "account": "アカウントを開く",
+    "cancelled": "支払いの承認がキャンセルされました。この画面への復帰では契約は有効になりません。",
+    "backToPlans": "プランに戻る"
   },
   "Landing": {
     "relatedTitle": "銀行明細の変換ガイド",

@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "Quels sont les prix et quotas des offres ?",
-    "description": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem.",
+    "description": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem ou PayPal.",
     "anonymous": "Sans vous connecter",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "anonymousDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
@@ -274,7 +274,13 @@
       "invalidProvider": "Le prestataire de paiement sélectionné est invalide.",
       "existingFailedSubscription": "Un paiement reste en attente. Régularisez-le ou résiliez votre abonnement."
     },
-    "providerUnavailable": "Les paiements via {provider} sont actuellement indisponibles."
+    "providerUnavailable": "Les paiements via {provider} sont actuellement indisponibles.",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "S’abonner avec {provider}",
+    "openingProvider": "Ouverture de {provider}"
   },
   "HomeFaq": {
     "title": "Que savoir avant de convertir ?",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "Conditions d'utilisation | Convertisseur de relevé bancaire",
-      "description": "Découvrez les règles de StatementXL concernant les fichiers, quotas, abonnements Creem, remboursements et responsabilités."
+      "description": "Découvrez les règles de StatementXL concernant les fichiers, quotas, abonnements Creem ou PayPal, remboursements et responsabilités."
     },
     "title": "Conditions d'utilisation",
     "intro": "Ce service est exploité par ReAvid Ltd et fourni via <site>{domain}</site>. Lisez ces conditions et la politique de confidentialité avant d'utiliser les services de conversion et d'abonnement.",
-    "availability": "La conversion PDF vers Excel et les abonnements Creem sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
+    "availability": "La conversion PDF vers Excel et les abonnements Creem ou PayPal sont fournis en fonction de l'état actuel de la page. Les prix et la disponibilité des forfaits peuvent changer en fonction de la configuration du service.",
     "service": {
       "title": "Portée du service",
       "body": "Le service organise les transactions des relevés bancaires PDF pris en charge dans des fichiers Excel à télécharger et à vérifier. Les banques, les types de fichiers et les limites de traitement sont indiqués sur la page du service. Nous ne proposons ni connexion aux comptes bancaires, ni services bancaires, ni conseils financiers, fiscaux ou juridiques. L’analyse habituelle est utilisée en premier. Professional et Enterprise avec des droits valides peuvent passer automatiquement à l’analyse IA si elle échoue, est indisponible ou ne fournit aucune transaction vérifiable, et essayer les scans. Les résultats partiels utilisables ne déclenchent pas ce relais."
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "Quotas de conversion",
-      "body": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} PDF par jour ; avec un compte gratuit, {authenticatedPages, plural, one {# page} other {# pages}}. Standard inclut {standardPages, plural, one {# page} other {# pages}} par mois, Professionnel {professionalPages, number} et Entreprise {enterprisePages, number}. Le quota quotidien est réinitialisé selon UTC et celui de l’abonnement suit la période de facturation Creem en cours. Les conversions échouées ne consomment pas de quota ; les résultats partiels sont comptés selon le nombre de pages du PDF."
+      "body": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} PDF par jour ; avec un compte gratuit, {authenticatedPages, plural, one {# page} other {# pages}}. Standard inclut {standardPages, plural, one {# page} other {# pages}} par mois, Professionnel {professionalPages, number} et Entreprise {enterprisePages, number}. Le quota quotidien est réinitialisé selon UTC et celui de l’abonnement suit la période de facturation Creem ou PayPal en cours. Les conversions échouées ne consomment pas de quota ; les résultats partiels sont comptés selon le nombre de pages du PDF."
     },
     "subscription": {
       "title": "Abonnements et paiement",
-      "body": "Standard, Professional et Enterprise sont renouvelés chaque mois au prix affiché avant l’achat. Creem est notre unique prestataire de paiement et Merchant of Record (le vendeur légal de la transaction), chargé des paiements, des taxes applicables et des reçus de paiement. Vous êtes débité uniquement après confirmation de l’achat. Creem transmet les informations d’abonnement, de renouvellement et d’échec de paiement à ce service. Vous pouvez annuler le renouvellement automatique depuis votre compte sur le site ; l’accès payant reste disponible jusqu’à la fin de la période de facturation confirmée."
+      "body": "Standard, Professional et Enterprise sont renouvelés chaque mois au prix affiché avant l’achat. Creem est notre prestataire de paiement et Merchant of Record (le vendeur légal de la transaction), chargé des paiements, des taxes applicables et des reçus de paiement. Vous êtes débité uniquement après confirmation de l’achat. Creem transmet les informations d’abonnement, de renouvellement et d’échec de paiement à ce service. Vous pouvez annuler le renouvellement automatique depuis votre compte sur le site ; l’accès payant reste disponible jusqu’à la fin de la période de facturation confirmée. Lors du paiement via PayPal, ReAvid Ltd est le vendeur. PayPal traite les paiements d’abonnement et les données de compte associées selon ses conditions et sa politique de confidentialité, sans être le Merchant of Record de ce service."
     },
     "refunds": {
       "title": "Politique de remboursement",
@@ -387,15 +393,15 @@
       "description": "Traitement des relevés, de l’analyse IA, des résultats temporaires du navigateur et des données de compte, d’exploitation de l’analyse, de quota et de facturation."
     },
     "title": "Politique de confidentialité",
-    "intro": "ReAvid Ltd exploite <site>{domain}</site>. Cette politique explique comment nous traitons les informations lorsque vous utilisez les services de conversion et d'abonnement Creem.",
-    "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement Creem actuellement disponibles.",
+    "intro": "ReAvid Ltd exploite <site>{domain}</site>. Cette politique explique comment nous traitons les informations lorsque vous utilisez les services de conversion et d'abonnement Creem ou PayPal.",
+    "availability": "Cette politique s'applique aux fonctionnalités de conversion PDF vers Excel, de connexion au compte et d'abonnement Creem ou PayPal actuellement disponibles.",
     "documents": {
       "title": "Relevés bancaires et contenu de conversion",
       "body": "Votre PDF peut contenir des noms, numéros de compte, dates, montants, soldes et descriptions de transactions sensibles. Nous traitons les PDF, transactions extraites et contenus exportés uniquement pour votre conversion et téléchargement, sans publicité ni finalité sans rapport. Le traitement par des tiers lors du relais IA est expliqué ci-dessous."
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
-      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Creem, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Creem gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons également, à chaque tentative d’analyse, l’identifiant du compte, un instantané de l’adresse e-mail, la date et l’heure d’enregistrement, la dernière méthode d’analyse choisie, l’état de la conversion et les raisons des échecs d’analyse ou du recours à un modèle d’IA, afin de diagnostiquer les problèmes. Ces enregistrements ne contiennent aucun nom de fichier, contenu de fichier, détail de transaction ni sortie du modèle."
+      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Creem ou PayPal, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Creem ou PayPal gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons également, à chaque tentative d’analyse, l’identifiant du compte, un instantané de l’adresse e-mail, la date et l’heure d’enregistrement, la dernière méthode d’analyse choisie, l’état de la conversion et les raisons des échecs d’analyse ou du recours à un modèle d’IA, afin de diagnostiquer les problèmes. Ces enregistrements ne contiennent aucun nom de fichier, contenu de fichier, détail de transaction ni sortie du modèle."
     },
     "technicalData": {
       "title": "Informations techniques nécessaires",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
-      "body": "La connexion au compte utilise Google et Supabase. Creem est notre unique prestataire de paiement et Merchant of Record (le vendeur légal de la transaction). Il traite les paiements des abonnements, les taxes applicables, les reçus et les remboursements exigés par la loi applicable, et synchronise l’état des abonnements avec ce service. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. Creem peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions."
+      "body": "La connexion au compte utilise Google et Supabase. Creem est notre prestataire de paiement et Merchant of Record (le vendeur légal de la transaction). Il traite les paiements des abonnements, les taxes applicables, les reçus et les remboursements exigés par la loi applicable, et synchronise l’état des abonnements avec ce service. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. Creem peut traiter les informations de paiement et de compte conformément à ses conditions et à sa politique de confidentialité. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions. Lors du paiement via PayPal, ReAvid Ltd est le vendeur. PayPal traite les paiements d’abonnement et les données de compte associées selon ses conditions et sa politique de confidentialité, sans être le Merchant of Record de ce service."
     },
     "storage": {
       "title": "Stockage du navigateur",
@@ -523,7 +529,8 @@
       "created": "Création",
       "period": "Période de facturation",
       "actions": "Actions",
-      "availableUntil": "Le quota restant est disponible jusqu’au {date} UTC."
+      "availableUntil": "Le quota restant est disponible jusqu’au {date} UTC.",
+      "provider": "Prestataire de paiement"
     },
     "statuses": {
       "APPROVAL_PENDING": "En attente d’approbation",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "Des preuves essentielles manquent ou la ligne ne peut pas être vérifiée de façon fiable.",
     "limitsTitle": "Quels PDF puis-je importer ?",
     "limitsAnswer": "Importez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Enterprise peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
-    "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem.",
+    "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem ou PayPal.",
     "faqAnswer": "Ces réponses expliquent les exigences, quotas et risques. Lisez la réponse pertinente et vérifiez votre PDF avant la conversion.",
     "planHeader": "Offre",
     "priceHeader": "Prix (USD)",
@@ -572,8 +579,8 @@
     "periodHeader": "Période du quota",
     "freePrice": "Gratuit",
     "dailyPeriod": "Chaque jour (UTC)",
-    "billingPeriod": "Période de facturation Creem",
-    "billingNote": "Les abonnements sont renouvelés chaque mois via Creem. Un échec ne consomme pas de quota ; un résultat partiel compte les pages du PDF original.",
+    "billingPeriod": "Période de facturation",
+    "billingNote": "Les abonnements sont renouvelés chaque mois via Creem ou PayPal. Un échec ne consomme pas de quota ; un résultat partiel compte les pages du PDF original.",
     "privacyTitle": "Comment mes données sont-elles traitées ?",
     "privacyAnswer": "Le contenu sert uniquement à la conversion et au téléchargement en cours. Conservez PDF et Excel, car le service ne propose aucun historique de fichiers.",
     "browserTitle": "Que conserve temporairement mon navigateur ?",
@@ -592,13 +599,9 @@
     "chatDescription": "Interrogez un assistant IA sur StatementXL à partir de nos sources officielles.",
     "prompt": "Consulte les informations officielles de StatementXL : {fullUrl}. Pour plus de détails, lis {indexUrl} et suis les liens pertinents. Réponds en {language} : explique les fonctions, étapes, limites de fichiers, traitement des données, quotas gratuits et tarifs des abonnements, avec les liens sources. Si une source est inaccessible ou ne répond pas, indique-le sans deviner.",
     "showPrompt": "Voir la consigne par défaut",
-    "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et Creem.",
+    "metadataAnswer": "Les métadonnées de compte, quota et facturation nécessaires au service sont conservées. Consultez et gérez votre abonnement dans votre compte et Creem ou PayPal.",
     "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services.",
     "parsingHeader": "Capacité d’analyse"
-  },
-  "Creem": {
-    "subscribe": "S’abonner avec Creem",
-    "processing": "Ouverture de Creem"
   },
   "BillingReturn": {
     "title": "Confirmation de l’abonnement",
@@ -610,7 +613,9 @@
     "signInRequired": "Connectez-vous au compte utilisé pour cet achat, puis réessayez.",
     "invalidReturn": "Ce lien de retour de paiement est invalide.",
     "retry": "Vérifier à nouveau",
-    "account": "Ouvrir votre compte"
+    "account": "Ouvrir votre compte",
+    "cancelled": "L’approbation du paiement a été annulée. Ce retour n’active aucun abonnement.",
+    "backToPlans": "Retour aux offres"
   },
   "Landing": {
     "relatedTitle": "Guides de conversion des relevés bancaires",

@@ -7,9 +7,14 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
+import type { PaymentProviderId } from "@/lib/billing/provider";
 
 type ReturnState = "pending" | "active" | "delayed" | "failed";
-const CheckoutReturnStatus: FC<{ checkoutId: string; tier: MembershipTier }> = ({ checkoutId, tier }) => {
+const CheckoutReturnStatus: FC<{
+  provider: PaymentProviderId;
+  checkoutId: string;
+  tier: MembershipTier;
+}> = ({ provider, checkoutId, tier }) => {
   const t = useTranslations("BillingReturn");
   const locale = useLocale();
   const router = useRouter();
@@ -26,11 +31,13 @@ const CheckoutReturnStatus: FC<{ checkoutId: string; tier: MembershipTier }> = (
         const response = await fetch("/api/billing/subscriptions/activate", {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-app-locale": locale },
-          body: JSON.stringify({ provider: "creem", checkoutId, tier }),
+          body: JSON.stringify({ provider, checkoutId, tier }),
           signal: controller.signal,
         });
         const payload = readBillingResponse(await response.json());
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted) {
+          return;
+        }
         if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
           setState("active");
           router.refresh();
@@ -42,17 +49,22 @@ const CheckoutReturnStatus: FC<{ checkoutId: string; tier: MembershipTier }> = (
           return;
         }
       } catch {
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted) {
+          return;
+        }
       }
-      if (attempts >= 15) setState("delayed");
-      else timer = setTimeout(check, 2_000);
+      if (attempts >= 15) {
+        setState("delayed");
+      } else {
+        timer = setTimeout(check, 2_000);
+      }
     }
     timer = setTimeout(check, 0);
     return () => {
       controller.abort();
       clearTimeout(timer);
     };
-  }, [checkoutId, tier, locale, retry, router, t]);
+  }, [provider, checkoutId, tier, locale, retry, router, t]);
   return (
     <div className="grid gap-4">
       <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>

@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "What do the plans cost and include?",
-    "description": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem.",
+    "description": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem or PayPal.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "anonymousDescription": "Convert up to {pages, plural, one {# PDF page} other {# PDF pages}} per day.",
@@ -274,7 +274,13 @@
       "invalidProvider": "The selected payment provider is invalid.",
       "existingFailedSubscription": "Your subscription has an unresolved payment. Cancel it or resolve the payment before subscribing again."
     },
-    "providerUnavailable": "{provider} payments are currently unavailable."
+    "providerUnavailable": "{provider} payments are currently unavailable.",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "Subscribe with {provider}",
+    "openingProvider": "Opening {provider}"
   },
   "HomeFaq": {
     "title": "What should I know before converting?",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "Terms of service | StatementXL",
-      "description": "Learn how StatementXL handles files, quotas, Creem subscriptions, refunds, and user responsibilities."
+      "description": "Learn how StatementXL handles files, quotas, Creem or PayPal subscriptions, refunds, and user responsibilities."
     },
     "title": "Terms of service",
     "intro": "This service is operated by ReAvid Ltd and provided through <site>{domain}</site>. Read these terms and the privacy policy before using the conversion and subscription services.",
-    "availability": "PDF to Excel conversion and Creem subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
+    "availability": "PDF to Excel conversion and Creem or PayPal subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
     "service": {
       "title": "Service scope",
       "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice. Regular parsing runs first. Professional and Enterprise with a valid entitlement can fall back automatically to the AI parsing provider when regular parsing fails, is unavailable or yields no reviewable transactions, including attempts to convert scans. Usable partial results do not trigger fallback."
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "Conversion quotas",
-      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Creem billing period. Failed conversions do not use quota; partial results count PDF pages."
+      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Creem or PayPal billing period. Failed conversions do not use quota; partial results count PDF pages."
     },
     "subscription": {
       "title": "Subscriptions and payment",
-      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our sole payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends."
+      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service."
     },
     "refunds": {
       "title": "Refund policy",
@@ -387,15 +393,15 @@
       "description": "How bank statements, AI parsing, temporary browser results, and account, parsing operations, quota and billing data are processed."
     },
     "title": "Privacy policy",
-    "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and Creem subscription services.",
-    "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and Creem subscription features.",
+    "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and Creem or PayPal subscription services.",
+    "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and Creem or PayPal subscription features.",
     "documents": {
       "title": "Bank statements and conversion content",
       "body": "Your PDF may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. We process PDFs, extracted transactions and export content only to complete your requested conversion and download, not for advertising or unrelated purposes. Third-party processing during AI fallback is explained below."
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Creem subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Creem handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we also store the account ID, email snapshot, record time, last selected parsing method, conversion status, and reasons for parsing failures and AI fallback for each parsing attempt to investigate failures. These records contain no file names, file contents, transactions, or model output."
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Creem or PayPal subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Creem or PayPal handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we also store the account ID, email snapshot, record time, last selected parsing method, conversion status, and reasons for parsing failures and AI fallback for each parsing attempt to investigate failures. These records contain no file names, file contents, transactions, or model output."
     },
     "technicalData": {
       "title": "Necessary technical information",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Creem is our sole payment provider and Merchant of Record (the legal seller for the transaction). It processes subscription payments, applicable taxes, payment receipts, and refunds required by applicable law, and synchronizes subscription status with this service. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. Creem may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information."
+      "body": "Account sign-in uses Google and Supabase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction). It processes subscription payments, applicable taxes, payment receipts, and refunds required by applicable law, and synchronizes subscription status with this service. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. Creem may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service."
     },
     "storage": {
       "title": "Browser storage",
@@ -523,7 +529,8 @@
       "created": "Created",
       "period": "Billing period",
       "actions": "Actions",
-      "availableUntil": "Remaining quota is available until {date} UTC."
+      "availableUntil": "Remaining quota is available until {date} UTC.",
+      "provider": "Payment provider"
     },
     "statuses": {
       "APPROVAL_PENDING": "Awaiting approval",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
     "limitsTitle": "Which PDFs can I upload?",
     "limitsAnswer": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
-    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem.",
+    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem or PayPal.",
     "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
     "planHeader": "Plan",
     "priceHeader": "Price (USD)",
@@ -572,8 +579,8 @@
     "periodHeader": "Quota period",
     "freePrice": "Free",
     "dailyPeriod": "Daily (UTC)",
-    "billingPeriod": "Creem billing period",
-    "billingNote": "Subscriptions renew monthly through Creem. Failed conversions do not use quota; partial results use the original PDF page count.",
+    "billingPeriod": "billing period",
+    "billingNote": "Subscriptions renew monthly through Creem or PayPal. Failed conversions do not use quota; partial results use the original PDF page count.",
     "privacyTitle": "How is my data handled?",
     "privacyAnswer": "Statement content is used for the current conversion and download only. Keep your original PDF and downloaded Excel because the service has no file history.",
     "browserTitle": "What is temporarily stored in my browser?",
@@ -592,13 +599,9 @@
     "chatDescription": "Ask an AI assistant about StatementXL using our official sources.",
     "prompt": "Visit the official StatementXL information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
     "showPrompt": "View the default prompt",
-    "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Creem.",
+    "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Creem or PayPal.",
     "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
     "parsingHeader": "Parsing capability"
-  },
-  "Creem": {
-    "subscribe": "Subscribe with Creem",
-    "processing": "Opening Creem"
   },
   "BillingReturn": {
     "title": "Confirming your subscription",
@@ -610,7 +613,9 @@
     "signInRequired": "Please sign in to the account used for this purchase, then check again.",
     "invalidReturn": "This payment return link is invalid.",
     "retry": "Check again",
-    "account": "Open your account"
+    "account": "Open your account",
+    "cancelled": "Payment approval was cancelled. No subscription was activated by this return.",
+    "backToPlans": "Back to plans"
   },
   "Landing": {
     "relatedTitle": "Bank statement conversion guides",

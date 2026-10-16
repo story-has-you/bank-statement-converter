@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "Was kosten die Tarife und was enthalten sie?",
-    "description": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem-Abo an.",
+    "description": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem oder PayPal-Abo an.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
     "anonymousDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
@@ -274,7 +274,13 @@
       "invalidProvider": "Der ausgewählte Zahlungsanbieter ist ungültig.",
       "existingFailedSubscription": "Für Ihr Abonnement ist eine Zahlung offen. Klären Sie diese oder kündigen Sie das Abonnement."
     },
-    "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar."
+    "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar.",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "Mit {provider} abonnieren",
+    "openingProvider": "{provider} wird geöffnet"
   },
   "HomeFaq": {
     "title": "Was sollte ich vor der Konvertierung wissen?",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "Nutzungsbedingungen | Kontoauszugskonverter",
-      "description": "Informationen zu Dateien, Kontingenten, Creem-Abonnements, Rückerstattungen und Nutzerpflichten bei StatementXL."
+      "description": "Informationen zu Dateien, Kontingenten, Creem oder PayPal-Abonnements, Rückerstattungen und Nutzerpflichten bei StatementXL."
     },
     "title": "Nutzungsbedingungen",
     "intro": "Dieser Dienst wird von ReAvid Ltd betrieben und über <site>{domain}</site> bereitgestellt. Lesen Sie diese Bedingungen und die Datenschutzrichtlinie, bevor Sie die Konvertierungs- und Abonnementdienste nutzen.",
-    "availability": "Die Konvertierung von PDF in Excel und Creem-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
+    "availability": "Die Konvertierung von PDF in Excel und Creem oder PayPal-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
     "service": {
       "title": "Leistungsumfang",
       "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an. Die reguläre Analyse erfolgt zuerst. Professional und Enterprise mit gültiger Berechtigung können automatisch zur KI-Analyse wechseln, wenn diese fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, und dabei auch Scans versuchen. Nutzbare Teilergebnisse lösen keinen Wechsel aus."
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "Konvertierungskontingente",
-      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Creem-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten."
+      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Creem oder PayPal-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten."
     },
     "subscription": {
       "title": "Abonnements und Zahlung",
-      "body": "Standard, Professional und Enterprise verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Creem ist unser einziger Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion) und übernimmt Zahlungen, anfallende Steuern und Zahlungsbelege. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Creem übermittelt Informationen zu Abonnements, Verlängerungen und fehlgeschlagenen Zahlungen an diesen Dienst. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen."
+      "body": "Standard, Professional und Enterprise verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion) und übernimmt Zahlungen, anfallende Steuern und Zahlungsbelege. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Creem übermittelt Informationen zu Abonnements, Verlängerungen und fehlgeschlagenen Zahlungen an diesen Dienst. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst."
     },
     "refunds": {
       "title": "Rückerstattungsregelung",
@@ -387,15 +393,15 @@
       "description": "Verarbeitung von Kontoauszügen, KI-Analyse, temporären Browserergebnissen sowie Konto-, Analysebetriebs-, Kontingent- und Abrechnungsdaten."
     },
     "title": "Datenschutzrichtlinie",
-    "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und Creem-Abonnementdienste nutzen.",
-    "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und Creem-Abonnementfunktionen.",
+    "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und Creem oder PayPal-Abonnementdienste nutzen.",
+    "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und Creem oder PayPal-Abonnementfunktionen.",
     "documents": {
       "title": "Kontoauszüge und Umrechnungsinhalte",
       "body": "Ihre PDF kann sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Wir verarbeiten PDFs, extrahierte Transaktionen und Exportinhalte nur für die angeforderte Umwandlung und den Download, nicht für Werbung oder andere Zwecke. Die Verarbeitung durch Dritte beim KI-Wechsel wird unten erläutert."
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Creem-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Creem verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer speichern wir zur Fehleranalyse außerdem bei jedem Parsing-Versuch die Konto-ID, einen Snapshot der E-Mail-Adresse, den Zeitpunkt der Aufzeichnung, die zuletzt gewählte Parsing-Methode, den Konvertierungsstatus sowie die Gründe für Parsing-Fehler und den Wechsel zu einem KI-Modell. Diese Datensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben."
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Creem oder PayPal-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Creem oder PayPal verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer speichern wir zur Fehleranalyse außerdem bei jedem Parsing-Versuch die Konto-ID, einen Snapshot der E-Mail-Adresse, den Zeitpunkt der Aufzeichnung, die zuletzt gewählte Parsing-Methode, den Konvertierungsstatus sowie die Gründe für Parsing-Fehler und den Wechsel zu einem KI-Modell. Diese Datensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben."
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
-      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Creem ist unser einziger Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion). Creem verarbeitet Abonnementzahlungen, anfallende Steuern, Zahlungsbelege und gesetzlich vorgeschriebene Rückerstattungen und gleicht den Abonnementstatus mit diesem Dienst ab. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Creem kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen."
+      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion). Creem verarbeitet Abonnementzahlungen, anfallende Steuern, Zahlungsbelege und gesetzlich vorgeschriebene Rückerstattungen und gleicht den Abonnementstatus mit diesem Dienst ab. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Creem kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst."
     },
     "storage": {
       "title": "Browserspeicher",
@@ -523,7 +529,8 @@
       "created": "Erstellt",
       "period": "Abrechnungszeitraum",
       "actions": "Aktionen",
-      "availableUntil": "Das Restkontingent ist bis {date} UTC verfügbar."
+      "availableUntil": "Das Restkontingent ist bis {date} UTC verfügbar.",
+      "provider": "Zahlungsanbieter"
     },
     "statuses": {
       "APPROVAL_PENDING": "Genehmigung ausstehend",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
     "limitsTitle": "Welche PDFs kann ich hochladen?",
     "limitsAnswer": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
-    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem-Abo an.",
+    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem oder PayPal-Abo an.",
     "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
     "planHeader": "Tarif",
     "priceHeader": "Preis (USD)",
@@ -572,8 +579,8 @@
     "periodHeader": "Kontingentzeitraum",
     "freePrice": "Kostenlos",
     "dailyPeriod": "Täglich (UTC)",
-    "billingPeriod": "Creem-Abrechnungszeitraum",
-    "billingNote": "Abos verlängern sich monatlich über Creem. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt.",
+    "billingPeriod": "Abrechnungszeitraum",
+    "billingNote": "Abos verlängern sich monatlich über Creem oder PayPal. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt.",
     "privacyTitle": "Wie werden meine Daten verarbeitet?",
     "privacyAnswer": "Auszugsinhalte dienen nur der aktuellen Konvertierung und dem Download. Bewahren Sie PDF und Excel selbst auf, da es keinen Dateiverlauf gibt.",
     "browserTitle": "Was wird vorübergehend im Browser gespeichert?",
@@ -592,13 +599,9 @@
     "chatDescription": "Fragen Sie einen KI-Assistenten anhand unserer offiziellen Quellen nach StatementXL.",
     "prompt": "Besuche die offiziellen Informationen zu StatementXL: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
     "showPrompt": "Standardprompt ansehen",
-    "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Creem.",
+    "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Creem oder PayPal.",
     "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
     "parsingHeader": "Analysefunktionen"
-  },
-  "Creem": {
-    "subscribe": "Mit Creem abonnieren",
-    "processing": "Creem wird geöffnet"
   },
   "BillingReturn": {
     "title": "Abonnement bestätigen",
@@ -610,7 +613,9 @@
     "signInRequired": "Melden Sie sich mit dem beim Kauf verwendeten Konto an und prüfen Sie erneut.",
     "invalidReturn": "Dieser Rückkehrlink ist ungültig.",
     "retry": "Erneut prüfen",
-    "account": "Konto öffnen"
+    "account": "Konto öffnen",
+    "cancelled": "Die Zahlungsfreigabe wurde abgebrochen. Diese Rückkehr aktiviert kein Abonnement.",
+    "backToPlans": "Zurück zu den Tarifen"
   },
   "Landing": {
     "relatedTitle": "Anleitungen für Kontoauszüge",

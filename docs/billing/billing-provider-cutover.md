@@ -1,37 +1,31 @@
-# Creem 计费切换与验收
+# 计费渠道切换与验收
 
-网站仅使用 Creem 托管结账，接口保持现有渠道字段。支付配置和既有测试证据见 [Creem 支付接入](creem-billing.md)。历史渠道订阅记录保留，应用只读取 Creem 记录，不提供历史渠道的购买、确认、取消、同步或权益。
+当前支持 Creem 和 PayPal 跳转结账。渠道适配器负责远端 API、验签和证据校验，通用计费模块负责账号、资格、权益、账期与数据库写入。配置见 [Creem 支付接入](creem-billing.md) 和 [PayPal 沙箱支付接入](paypal-billing.md)。
 
 ## 接口
 
-- `POST /api/billing/subscriptions/create`：`{ provider: "creem", tier }`，返回 `{ provider: "creem", checkoutId, checkoutUrl }`。
-- `POST /api/billing/subscriptions/activate`：`{ provider: "creem", checkoutId, tier }`；等待付款回调落库时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。浏览器返回不写入权益。
-- `POST /api/billing/subscriptions/cancel`：`{ provider: "creem", subscriptionId }`，接受同站点、已认证的请求，返回 `CANCELLATION_PENDING` 或 `CANCELLED`。
-- `POST /api/billing/webhooks/creem`：消费原始请求体，验证签名并核实远端付款、身份和账期；无效格式或签名返回 400，处理失败返回 502，等待渠道重试。
-- 其他渠道返回 `400 invalidProvider`；原有渠道专用兼容入口已删除。
+- 创建：`POST /api/billing/subscriptions/create`，接受 `{ provider, tier }`，返回 `{ provider, checkoutId, checkoutUrl }`。
+- 确认：`POST /api/billing/subscriptions/activate`，接受 `{ provider, checkoutId, tier }`；回调未落库时返回 `202 { status: "PENDING" }`，已激活返回 `200 { tier, status: "ACTIVE", subscriptionId }`。浏览器返回不写入权益。
+- 取消：`POST /api/billing/subscriptions/cancel`，接受 `{ provider, subscriptionId }`，要求已认证且同源，返回 CANCELLATION_PENDING 或 CANCELLED；保留已付账期。
+- 回调：`POST /api/billing/webhooks/{provider}`，无效签名返回 400，处理失败返回 502 供渠道重试。未知渠道返回 400。
 
-## 发布前数据库迁移
+`provider` 支持 `creem` 和 `paypal`。PayPal 的 checkoutId 使用渠道订阅 ID；原 `/api/paypal/*` 兼容入口不恢复。`handleSubscriptionRequest` 保持原实现，不包含渠道分支。
 
-`20261013000000_limit_open_subscriptions_to_creem.sql` 只新增到仓库，尚未执行真实数据库。
+## 数据库切换（2026-10-16）
 
-1. 核实目标数据库已使用通用渠道列，保留全部历史迁移；不要重跑历史迁移或恢复辅助表、RPC、触发器。
-2. 在发布新应用前执行该迁移。它在事务中锁定计费表，检查同用户的 Creem 开放订阅冲突，再替换 `billing_subscriptions_open_user_idx`，限定 `provider = 'creem'`。开放状态仍包括 APPROVAL_PENDING、APPROVED、ACTIVE、SUSPENDED、PAYMENT_FAILED。
-3. 存在冲突时迁移中止并回滚，不自动清理记录。核对前后记录、RLS、权限及渠道订阅唯一约束不变。
-4. 发布应用后，账户、权益、额度、开放订阅检查及登录同步仅使用 Creem。历史渠道开放记录不再阻止 Creem 写入。
+已在 `.env.local` 指向的 Supabase 项目中，通过已认证 CLI 执行单条增量迁移 `20261016071822_enable_paypal_billing.sql`。事务锁定计费表、检查同用户开放订阅冲突，再将 `billing_subscriptions_open_user_idx` 从 Creem 单渠道扩展为 Creem、PayPal 共用。存在冲突时中止并回滚，不自动删除或修改记录。
 
-未执行索引迁移时，应用查询虽忽略历史记录，数据库唯一约束仍可能阻止新订阅写入。环境变量删除只影响后续部署；现有部署需发布新代码后才完成渠道移除。
+开放状态保持 APPROVAL_PENDING、APPROVED、ACTIVE、SUSPENDED、PAYMENT_FAILED；同一用户跨渠道最多一条开放订阅。取消后仍在已付周期内时，应用继续阻止新购。账户列表、额度和登录同步均查询两渠道。
 
-## 验收
+执行前后回查：既有两条 ACTIVE Creem 记录的全部字段完全一致；RLS 仍启用，策略、表权限和其他索引未变。当前没有 PayPal 历史记录，因此不增加归档标记或历史恢复逻辑。目标库没有 `supabase_migrations.schema_migrations` 表，本次未创建该表或重跑其他迁移。历史 SQL 文件原样保留。
 
-静态检查执行 ESLint、TypeScript、生产构建、12 种语言键与占位符检查和 diff 检查，不新增单元测试。
+## 当前验收与发布边界
 
-临时隔离数据库验证历史开放记录与 Creem 开放记录共存、同用户第二条 Creem 开放记录被拒绝、冲突迁移回滚、历史数据不变。隔离验证不能证明真实数据库已迁移。
+本地已通过 ESLint、TypeScript、生产构建；隔离 PostgreSQL 与真实应用模块、Supabase 客户端完成付款、并发、状态及索引场景验证。外部响应均为虚构数据，不发起付款。最终验收结果见 [PayPal 沙箱支付接入](paypal-billing.md)。
 
-复用现有本地 3000 服务检查匿名套餐页、付款返回页、未登录及同源限制、已删除接口和不支持的渠道；不发起付款。
+本次只配置本地 PayPal Sandbox，未修改 Vercel、未部署、未提交或推送 Git，未在 PayPal 后台修改 Webhook。已只读核实沙箱应用、三个计划及 Webhook 事件配置。真实审批、付款、回调落库和登录账户额度仍需专门验收；数据库迁移和隔离检查不能替代这些证据。
 
-Creem 付款与取消仍须使用专用测试账号单独验收：只有已验签且核实付款交易的事件授予权益；取消保留当前已付周期，失败扣款不延长账期；重复、乱序、并发及迟到付款不得重复创建或恢复取消／到期订阅。既有真实支付验收限制见 [Creem 支付接入](creem-billing.md)。
-
-## 本次验证（2026-10-13）
+## 历史验证（2026-10-13，Creem 单渠道阶段）
 
 - ESLint、TypeScript、生产构建、格式和 diff 检查通过，12 种语言的键与原有 ICU 占位符一致。
 - 临时隔离 PostgreSQL 完成 12 项索引迁移检查；真实应用模块、官方 SDK、HMAC 和虚构支付响应完成 42 项隔离联调，覆盖付款、恢复、续费、取消与历史记录排除。不连接真实数据库，不发起真实付款。

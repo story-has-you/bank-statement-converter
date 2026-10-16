@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { PaymentProviderIcon } from "@/components/billing/payment-provider-icon";
-import { CreemCheckoutSession } from "@/components/billing/providers/creem/checkout-session";
+import { CheckoutSession } from "@/components/billing/checkout-session";
 import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { isCheckoutResult, readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
@@ -16,6 +16,7 @@ type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier 
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
   const locale = useLocale();
+  const providerName = t(`providers.${checkout.provider}`);
   const [failure, setFailure] = useState<string | null>(null);
   const mounted = useRef(false);
   useEffect(() => {
@@ -34,31 +35,38 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
       });
       const payload: unknown = await response.json().catch(() => null);
       if (!response.ok || !isCheckoutResult(payload)) {
-        if (mounted.current) setFailure(readBillingResponse(payload).error ?? t("api.createFailed"));
+        if (mounted.current) {
+          setFailure(readBillingResponse(payload).error ?? t("api.createFailed"));
+        }
         throw new Error("Subscription creation failed");
       }
       return payload;
     } catch (error) {
-      if (mounted.current) setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
+      if (mounted.current) {
+        setFailure((currentFailure) => currentFailure ?? t("api.createFailed"));
+      }
       throw error;
     }
   }
 
   if (!checkout.available || !checkout.availableTiers.includes(tier)) {
-    const unavailable = t("providerUnavailable", { provider: "Creem" });
+    const unavailable = t("providerUnavailable", { provider: providerName });
     return (
       <Button type="button" size="lg" className="w-full min-w-0" disabled aria-label={unavailable} title={unavailable}>
-        <PaymentProviderIcon data-icon="inline-start" />
-        <span className="truncate">Creem</span>
+        <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+        <span className="truncate">{providerName}</span>
       </Button>
     );
   }
 
   return (
-    <CreemCheckoutSession
+    <CheckoutSession
+      provider={checkout.provider}
       createCheckout={createCheckout}
       onError={() => {
-        if (mounted.current) setFailure((value) => value ?? t("paymentFailed"));
+        if (mounted.current) {
+          setFailure((value) => value ?? t("paymentFailed"));
+        }
       }}
     >
       {({ labels, pending, start }) => {
@@ -77,8 +85,8 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
               }}
               disabled={pending}
             >
-              <PaymentProviderIcon data-icon="inline-start" />
-              <span className="truncate">{pending ? label : "Creem"}</span>
+              <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+              <span className="truncate">{pending ? label : providerName}</span>
             </Button>
             {failure && (
               <p role="alert" className="text-sm text-destructive">
@@ -88,7 +96,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
           </div>
         );
       }}
-    </CreemCheckoutSession>
+    </CheckoutSession>
   );
 };
 

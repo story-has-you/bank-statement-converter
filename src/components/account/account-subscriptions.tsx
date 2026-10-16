@@ -10,10 +10,17 @@ import type { AccountSubscription } from "@/lib/account/types";
 export async function AccountSubscriptions({ subscriptions }: { subscriptions: AccountSubscription[] | null }) {
   const t = await getTranslations("Account");
   const plans = await getTranslations("UsageTiers");
+  const billing = await getTranslations("Billing");
   const format = await getFormatter();
   function date(value: string | null): string {
-    if (!value || !Number.isFinite(Date.parse(value))) return t("notAvailable");
-    return format.dateTime(new Date(value), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" });
+    if (!value || !Number.isFinite(Date.parse(value))) {
+      return t("notAvailable");
+    }
+    return format.dateTime(new Date(value), {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "UTC",
+    });
   }
 
   return (
@@ -34,6 +41,7 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
             <TableHeader>
               <TableRow>
                 <TableHead>{t("subscriptions.plan")}</TableHead>
+                <TableHead>{t("subscriptions.provider")}</TableHead>
                 <TableHead>{t("subscriptions.amount")}</TableHead>
                 <TableHead>{t("subscriptions.status")}</TableHead>
                 <TableHead>{t("subscriptions.created")}</TableHead>
@@ -45,19 +53,38 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
               {subscriptions.map((subscription) => (
                 <TableRow key={`${subscription.provider}:${subscription.subscriptionId}`}>
                   <TableCell className="font-medium">{plans(`plans.${subscription.tier}.name`)}</TableCell>
+                  <TableCell>{billing(`providers.${subscription.provider}`)}</TableCell>
                   <TableCell className="tabular-nums">
-                    {subscription.amount !== null && subscription.currencyCode ? format.number(subscription.amount, { style: "currency", currency: subscription.currencyCode }) : t("notAvailable")}
-                    {subscription.discountAmount !== null && subscription.discountAmount > 0 && subscription.originalAmount !== null && subscription.currencyCode && (
-                      <div className="flex flex-col items-start gap-1">
-                        <Badge variant="outline">{t("subscriptions.coupon")}</Badge>
-                        <span className="text-xs text-muted-foreground">
-                          {t("subscriptions.originalAmount", { amount: format.number(subscription.originalAmount, { style: "currency", currency: subscription.currencyCode }) })}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {t("subscriptions.discountAmount", { amount: format.number(subscription.discountAmount, { style: "currency", currency: subscription.currencyCode }) })}
-                        </span>
-                      </div>
-                    )}
+                    {subscription.amount !== null && subscription.currencyCode
+                      ? format.number(subscription.amount, {
+                          style: "currency",
+                          currency: subscription.currencyCode,
+                        })
+                      : t("notAvailable")}
+                    {subscription.discountAmount !== null &&
+                      subscription.discountAmount > 0 &&
+                      subscription.originalAmount !== null &&
+                      subscription.currencyCode && (
+                        <div className="flex flex-col items-start gap-1">
+                          <Badge variant="outline">{t("subscriptions.coupon")}</Badge>
+                          <span className="text-xs text-muted-foreground">
+                            {t("subscriptions.originalAmount", {
+                              amount: format.number(subscription.originalAmount, {
+                                style: "currency",
+                                currency: subscription.currencyCode,
+                              }),
+                            })}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {t("subscriptions.discountAmount", {
+                              amount: format.number(subscription.discountAmount, {
+                                style: "currency",
+                                currency: subscription.currencyCode,
+                              }),
+                            })}
+                          </span>
+                        </div>
+                      )}
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary">{t(`statuses.${subscription.status}`)}</Badge>
@@ -69,10 +96,16 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
                   </TableCell>
                   <TableCell className="max-w-64 text-right whitespace-normal">
                     {(subscription.status === "ACTIVE" || subscription.status === "PAYMENT_FAILED") && (
-                      <CancelSubscriptionButton provider={subscription.provider} subscriptionId={subscription.subscriptionId} periodEnd={subscription.periodEnd} />
+                      <CancelSubscriptionButton
+                        provider={subscription.provider}
+                        subscriptionId={subscription.subscriptionId}
+                        periodEnd={subscription.periodEnd}
+                      />
                     )}
                     {subscription.status === "CANCELLED" && subscription.entitlementActive && (
-                      <p className="text-xs text-muted-foreground">{t("subscriptions.availableUntil", { date: date(subscription.periodEnd) })}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {t("subscriptions.availableUntil", { date: date(subscription.periodEnd) })}
+                      </p>
                     )}
                   </TableCell>
                 </TableRow>

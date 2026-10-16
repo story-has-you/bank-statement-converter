@@ -1,12 +1,20 @@
 import type { MembershipTier, SubscriptionStatus } from "./types";
 
-export type PaymentProviderId = "creem";
+export type PaymentProviderId = "creem" | "paypal";
 
 type CheckoutAvailability = { availableTiers: MembershipTier[]; available: boolean };
 
-export type CheckoutConfig = CheckoutAvailability & { provider: "creem"; settings: { environment: "test" | "production" } };
+export type CheckoutConfig = CheckoutAvailability &
+  (
+    | { provider: "creem"; settings: { environment: "test" | "production" } }
+    | { provider: "paypal"; settings: { environment: "sandbox" | "live" } }
+  );
 
-export type CheckoutResult = { provider: "creem"; checkoutId: string; checkoutUrl: string };
+export type CheckoutResult = {
+  provider: PaymentProviderId;
+  checkoutId: string;
+  checkoutUrl: string;
+};
 
 export type CheckoutUser = { id: string; email: string };
 
@@ -22,16 +30,36 @@ export type ProviderSubscription = {
   periodEnd: string | null;
 };
 
-type EventBase = { provider: PaymentProviderId; id: string; at: string; subscription: ProviderSubscription };
+type EventBase = {
+  provider: PaymentProviderId;
+  id: string;
+  at: string;
+  subscription: ProviderSubscription;
+};
 
 export type BillingEvent = EventBase &
   (
     | { type: "subscription-cancelled" }
-    | { type: "subscription-paid"; amount: string; originalAmount: string; discountAmount: string; providerDiscountId: string | null; currencyCode: string; paidAt: string }
+    | {
+        type: "subscription-paid";
+        amount: string;
+        originalAmount: string;
+        discountAmount: string;
+        providerDiscountId: string | null;
+        currencyCode: string;
+        paidAt: string;
+      }
     | { type: "subscription-status-changed" }
   );
 
-export type BillingNotification = { provider: PaymentProviderId; id: string; at: string; type: BillingEvent["type"]; subscriptionId: string; resolve: () => Promise<BillingEvent> };
+export type BillingNotification = {
+  provider: PaymentProviderId;
+  id: string;
+  at: string;
+  type: BillingEvent["type"];
+  subscriptionId: string;
+  resolve: () => Promise<BillingEvent>;
+};
 
 export interface PaymentProvider {
   id: PaymentProviderId;

@@ -206,7 +206,7 @@
   },
   "UsageTiers": {
     "title": "Quanto costano i piani e cosa includono?",
-    "description": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem.",
+    "description": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem o PayPal.",
     "anonymous": "Senza accesso",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagine}}",
     "anonymousDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
@@ -274,7 +274,13 @@
       "invalidProvider": "Il fornitore di pagamento selezionato non è valido.",
       "existingFailedSubscription": "Un pagamento è irrisolto. Risolvilo o annulla il tuo abbonamento."
     },
-    "providerUnavailable": "I pagamenti tramite {provider} non sono al momento disponibili."
+    "providerUnavailable": "I pagamenti tramite {provider} non sono al momento disponibili.",
+    "providers": {
+      "creem": "Creem",
+      "paypal": "PayPal"
+    },
+    "subscribeWith": "Abbonati con {provider}",
+    "openingProvider": "Apertura di {provider}"
   },
   "HomeFaq": {
     "title": "Cosa sapere prima della conversione?",
@@ -321,11 +327,11 @@
   "Terms": {
     "metadata": {
       "title": "Termini di servizio | StatementXL",
-      "description": "Scopri come StatementXL gestisce file, quote, abbonamenti Creem, rimborsi e responsabilità degli utenti."
+      "description": "Scopri come StatementXL gestisce file, quote, abbonamenti Creem o PayPal, rimborsi e responsabilità degli utenti."
     },
     "title": "Termini di servizio",
     "intro": "ReAvid Ltd gestisce questo servizio su <site>{domain}</site>. Leggi questi termini e l'informativa sulla privacy prima di usare la conversione e gli abbonamenti.",
-    "availability": "La conversione da PDF a Excel e gli abbonamenti Creem sono offerti secondo lo stato attuale della pagina. Prezzi e disponibilità dei piani possono cambiare in base alla configurazione del servizio.",
+    "availability": "La conversione da PDF a Excel e gli abbonamenti Creem o PayPal sono offerti secondo lo stato attuale della pagina. Prezzi e disponibilità dei piani possono cambiare in base alla configurazione del servizio.",
     "service": {
       "title": "Ambito del servizio",
       "body": "Il servizio organizza i movimenti degli estratti conto PDF supportati in file Excel da scaricare e controllare. Banche, tipi di file e limiti di elaborazione supportati sono descritti nella pagina del servizio. Non offriamo collegamenti a conti bancari, servizi bancari né consulenza finanziaria, fiscale o legale. Si usa prima l’analisi ordinaria. Professional ed Enterprise con un diritto di utilizzo valido possono passare automaticamente all’analisi IA se fallisce, non è disponibile o non produce transazioni verificabili, anche per tentare di convertire scansioni. I risultati parziali utilizzabili non attivano il passaggio."
@@ -340,11 +346,11 @@
     },
     "quota": {
       "title": "Limiti di conversione",
-      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF."
+      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem o PayPal attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF."
     },
     "subscription": {
       "title": "Abbonamenti e pagamenti",
-      "body": "Standard, Professional ed Enterprise si rinnovano mensilmente al prezzo indicato prima dell’acquisto. Creem è il nostro unico fornitore di pagamenti e Merchant of Record (il venditore legale della transazione) e gestisce pagamenti, imposte applicabili e ricevute. L’addebito avviene solo dopo la conferma dell’acquisto. Creem invia al servizio informazioni su abbonamenti, rinnovi e pagamenti non riusciti. Puoi annullare il rinnovo automatico dal tuo account sul sito; l’accesso a pagamento rimane disponibile fino alla fine del periodo di fatturazione confermato."
+      "body": "Standard, Professional ed Enterprise si rinnovano mensilmente al prezzo indicato prima dell’acquisto. Creem è il nostro fornitore di pagamenti e Merchant of Record (il venditore legale della transazione) e gestisce pagamenti, imposte applicabili e ricevute. L’addebito avviene solo dopo la conferma dell’acquisto. Creem invia al servizio informazioni su abbonamenti, rinnovi e pagamenti non riusciti. Puoi annullare il rinnovo automatico dal tuo account sul sito; l’accesso a pagamento rimane disponibile fino alla fine del periodo di fatturazione confermato. Per il pagamento con PayPal, ReAvid Ltd è il venditore. PayPal tratta i pagamenti degli abbonamenti e i dati dell’account correlati secondo i propri termini e informativa sulla privacy, senza essere il Merchant of Record di questo servizio."
     },
     "refunds": {
       "title": "Politica di rimborso",
@@ -387,15 +393,15 @@
       "description": "Trattamento di estratti conto, analisi IA, risultati temporanei nel browser e dati di account, gestione delle analisi, quote e fatturazione."
     },
     "title": "Informativa sulla privacy",
-    "intro": "ReAvid Ltd gestisce <site>{domain}</site>. Questa informativa spiega come trattiamo le informazioni quando usi la conversione e gli abbonamenti Creem.",
-    "availability": "L'informativa si applica alle funzioni attualmente disponibili di conversione da PDF a Excel, accesso all'account e abbonamenti Creem.",
+    "intro": "ReAvid Ltd gestisce <site>{domain}</site>. Questa informativa spiega come trattiamo le informazioni quando usi la conversione e gli abbonamenti Creem o PayPal.",
+    "availability": "L'informativa si applica alle funzioni attualmente disponibili di conversione da PDF a Excel, accesso all'account e abbonamenti Creem o PayPal.",
     "documents": {
       "title": "Estratti conto e contenuti della conversione",
       "body": "Il PDF può contenere nomi, numeri di conto, date, importi, saldi e descrizioni di transazioni sensibili. Trattiamo PDF, transazioni estratte e contenuti esportati solo per la conversione e il download richiesti, senza finalità pubblicitarie o estranee. Il trattamento da parte di terzi durante il passaggio all’IA è spiegato di seguito."
     },
     "accountData": {
       "title": "Dati di account, utilizzo e fatturazione",
-      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti che hanno effettuato l’accesso, conserviamo inoltre, per ogni tentativo di analisi, l’ID dell’account, una copia dell’indirizzo e-mail, l’ora di registrazione, l’ultimo metodo di analisi selezionato, lo stato della conversione e i motivi degli errori di analisi e del ricorso a un modello di IA, per indagare sui problemi. Questi record non contengono nomi o contenuti dei file, dettagli delle transazioni o output del modello."
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem o PayPal, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem o PayPal gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti che hanno effettuato l’accesso, conserviamo inoltre, per ogni tentativo di analisi, l’ID dell’account, una copia dell’indirizzo e-mail, l’ora di registrazione, l’ultimo metodo di analisi selezionato, lo stato della conversione e i motivi degli errori di analisi e del ricorso a un modello di IA, per indagare sui problemi. Questi record non contengono nomi o contenuti dei file, dettagli delle transazioni o output del modello."
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
@@ -412,7 +418,7 @@
     },
     "providers": {
       "title": "Fornitori e trattamento internazionale",
-      "body": "L'accesso usa Google e Supabase. Creem è il nostro unico fornitore di pagamenti e Merchant of Record (il venditore legale della transazione). Gestisce pagamenti degli abbonamenti, imposte applicabili, ricevute e rimborsi obbligatori per legge e sincronizza lo stato degli abbonamenti con questo servizio. Le visite sono misurate tramite Google Analytics e Pageview, che possono trattare dati tecnici secondo i rispettivi termini e informative sulla privacy. Creem può trattare dati di pagamento e account secondo i propri termini e informativa. In caso di trattamento transfrontaliero, applicheremo le garanzie richieste dalla legge e descriveremo le modalità effettive. Non vendiamo estratti conto o informazioni sui movimenti."
+      "body": "L'accesso usa Google e Supabase. Creem è il nostro fornitore di pagamenti e Merchant of Record (il venditore legale della transazione). Gestisce pagamenti degli abbonamenti, imposte applicabili, ricevute e rimborsi obbligatori per legge e sincronizza lo stato degli abbonamenti con questo servizio. Le visite sono misurate tramite Google Analytics e Pageview, che possono trattare dati tecnici secondo i rispettivi termini e informative sulla privacy. Creem può trattare dati di pagamento e account secondo i propri termini e informativa. In caso di trattamento transfrontaliero, applicheremo le garanzie richieste dalla legge e descriveremo le modalità effettive. Non vendiamo estratti conto o informazioni sui movimenti. Per il pagamento con PayPal, ReAvid Ltd è il venditore. PayPal tratta i pagamenti degli abbonamenti e i dati dell’account correlati secondo i propri termini e informativa sulla privacy, senza essere il Merchant of Record di questo servizio."
     },
     "storage": {
       "title": "Archiviazione nel browser",
@@ -523,7 +529,8 @@
       "created": "Creato il",
       "period": "Periodo di fatturazione",
       "actions": "Azioni",
-      "availableUntil": "Le pagine rimanenti sono disponibili fino al {date} UTC."
+      "availableUntil": "Le pagine rimanenti sono disponibili fino al {date} UTC.",
+      "provider": "Fornitore di pagamenti"
     },
     "statuses": {
       "APPROVAL_PENDING": "In attesa di approvazione",
@@ -564,7 +571,7 @@
     "unverifiableDefinition": "Mancano prove essenziali o la riga non è verificabile in modo affidabile.",
     "limitsTitle": "Quali PDF posso caricare?",
     "limitsAnswer": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
-    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem.",
+    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem o PayPal.",
     "faqAnswer": "Queste risposte spiegano requisiti, quote e rischi. Leggi la risposta pertinente e controlla il PDF prima della conversione.",
     "planHeader": "Piano",
     "priceHeader": "Prezzo (USD)",
@@ -572,8 +579,8 @@
     "periodHeader": "Periodo della quota",
     "freePrice": "Gratis",
     "dailyPeriod": "Giornaliero (UTC)",
-    "billingPeriod": "Periodo di fatturazione Creem",
-    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Creem. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale.",
+    "billingPeriod": "Periodo di fatturazione",
+    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Creem o PayPal. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale.",
     "privacyTitle": "Come vengono trattati i miei dati?",
     "privacyAnswer": "Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
     "browserTitle": "Cosa viene salvato temporaneamente nel browser?",
@@ -592,13 +599,9 @@
     "chatDescription": "Chiedi a un assistente IA informazioni su StatementXL usando le nostre fonti ufficiali.",
     "prompt": "Visita le informazioni ufficiali di StatementXL: {fullUrl}. Per dettagli leggi {indexUrl} e segui i link pertinenti. Rispondi in {language}: spiega funzioni, passaggi, limiti dei file, trattamento dei dati, quote gratuite e prezzi degli abbonamenti, citando le fonti. Se una fonte non è accessibile o manca una risposta, dichiaralo senza indovinare.",
     "showPrompt": "Visualizza il prompt predefinito",
-    "metadataAnswer": "Vengono conservati i metadati di account, quota e fatturazione necessari al servizio. Consulta e gestisci l’abbonamento nel tuo account e in Creem.",
+    "metadataAnswer": "Vengono conservati i metadati di account, quota e fatturazione necessari al servizio. Consulta e gestisci l’abbonamento nel tuo account e in Creem o PayPal.",
     "analyticsAnswer": "Google Analytics e Pageview possono elaborare informazioni tecniche sulle visite. Estratti conto, transazioni estratte e contenuti Excel non vengono inviati a questi servizi.",
     "parsingHeader": "Funzioni di analisi"
-  },
-  "Creem": {
-    "subscribe": "Abbonati con Creem",
-    "processing": "Apertura di Creem"
   },
   "BillingReturn": {
     "title": "Conferma abbonamento",
@@ -610,7 +613,9 @@
     "signInRequired": "Accedi all’account usato per l’acquisto e controlla di nuovo.",
     "invalidReturn": "Questo link di ritorno dal pagamento non è valido.",
     "retry": "Controlla di nuovo",
-    "account": "Apri il tuo account"
+    "account": "Apri il tuo account",
+    "cancelled": "L’approvazione del pagamento è stata annullata. Questo ritorno non attiva un abbonamento.",
+    "backToPlans": "Torna ai piani"
   },
   "Landing": {
     "relatedTitle": "Guide alla conversione degli estratti conto",
