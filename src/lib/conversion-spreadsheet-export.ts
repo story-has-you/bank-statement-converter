@@ -1,6 +1,14 @@
 import * as XLSX from "@e965/xlsx";
 
-import { canDownloadResult, getExportFilename, getTableRows, type ExportLabels, type ExportFile } from "@/lib/conversion-export";
+import {
+  canDownloadResult,
+  getExportFilename,
+  getTableHeaders,
+  getTableRows,
+  type ExportLabels,
+  type ExportFile,
+  type MerchantExport,
+} from "@/lib/conversion-export";
 import type { ParseResponse } from "@/lib/conversion-types";
 
 /** Loaded only after a usable final result is available. */
@@ -9,6 +17,7 @@ export function buildDelimitedExportFiles(
   filename: string,
   result: ParseResponse,
   labels: ExportLabels,
+  merchants?: MerchantExport,
 ): ExportFile[] {
   if (!canDownloadResult(result)) {
     return [];
@@ -16,8 +25,8 @@ export function buildDelimitedExportFiles(
   const pageRisks = result.errors.map(labels.error).join("; ");
   return result.tables.map((table, index) => {
     const tableWarnings = table.warnings.map(labels.issue).join("; ");
-    const headers = [...table.columns.map((column) => column.label), ...labels.headers, labels.pageRisks, labels.tableWarnings];
-    const rows = getTableRows(table, labels.issue).map((row) => [...row, pageRisks, tableWarnings]);
+    const headers = [...getTableHeaders(table, labels, merchants), labels.pageRisks, labels.tableWarnings];
+    const rows = getTableRows(table, labels.issue, merchants).map((row) => [...row, pageRisks, tableWarnings]);
     // An empty logical table can still carry risks; retain them in a metadata-only row.
     if (rows.length === 0 && (pageRisks || tableWarnings)) {
       rows.push([...headers.slice(0, -2).map(() => ""), pageRisks, tableWarnings]);
@@ -35,24 +44,26 @@ export function buildDelimitedExportFiles(
   });
 }
 
-export function buildExcelWorkbook(result: ParseResponse, labels: ExportLabels): XLSX.WorkBook {
+export function buildExcelWorkbook(result: ParseResponse, labels: ExportLabels, merchants?: MerchantExport): XLSX.WorkBook {
   const workbook = XLSX.utils.book_new();
   result.tables.forEach((table, index) => {
-    const headers = [...table.columns.map((column) => column.label), ...labels.headers];
+    const headers = getTableHeaders(table, labels, merchants);
     const riskRows = [...(index === 0 ? result.errors.map(labels.error) : []), ...table.warnings.map(labels.issue)].map((message) => [
       message,
-      ...Array.from({ length: 9 }, () => ""),
+      ...headers.slice(1).map(() => ""),
     ]);
-    const worksheet = XLSX.utils.aoa_to_sheet([...riskRows, headers, ...getTableRows(table, labels.issue)]);
-    worksheet["!cols"] = table.columns.map(() => ({ wch: 20 })).concat([{ wch: 14 }, { wch: 36 }, { wch: 14 }, { wch: 14 }]);
+    const worksheet = XLSX.utils.aoa_to_sheet([...riskRows, headers, ...getTableRows(table, labels.issue, merchants)]);
+    worksheet["!cols"] = table.columns
+      .map(() => ({ wch: 20 }))
+      .concat(merchants ? [{ wch: 24 }, { wch: 24 }] : [], [{ wch: 14 }, { wch: 36 }, { wch: 14 }, { wch: 14 }]);
     XLSX.utils.book_append_sheet(workbook, worksheet, labels.tableTitle(index + 1));
   });
   return workbook;
 }
 
-export function downloadExcelWorkbook(filename: string, result: ParseResponse, labels: ExportLabels): void {
+export function downloadExcelWorkbook(filename: string, result: ParseResponse, labels: ExportLabels, merchants?: MerchantExport): void {
   if (!canDownloadResult(result)) {
     return;
   }
-  XLSX.writeFile(buildExcelWorkbook(result, labels), getExportFilename(filename, labels.defaultFilename, "xlsx"));
+  XLSX.writeFile(buildExcelWorkbook(result, labels, merchants), getExportFilename(filename, labels.defaultFilename, "xlsx"));
 }

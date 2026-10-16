@@ -1,3 +1,5 @@
+import type { MerchantNormalization } from "@/lib/merchant-normalization";
+
 export type RowStatus = "valid" | "warning" | "failed";
 
 export function getRowRiskCode(status: RowStatus): "OK" | "DISCREPANCY" | "UNVERIFIABLE" {
@@ -48,7 +50,7 @@ export type ParseResponse = {
   errors: Array<{ code: string; page: number | null }>;
 };
 
-export type ConversionPayload = { version: 1; filename: string; result: ParseResponse };
+export type ConversionPayload = { version: 1; filename: string; result: ParseResponse; merchantNormalization?: MerchantNormalization };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);

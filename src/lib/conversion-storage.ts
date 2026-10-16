@@ -1,9 +1,10 @@
 import { isParseResponse, type ConversionPayload, type ParseResponse } from "@/lib/conversion-types";
+import { isMerchantNormalization, type MerchantNormalization } from "@/lib/merchant-normalization";
 
 export const CONVERSION_STORAGE_KEY = "bank-statement-converter:conversion-result";
 
-export function saveConversionPayload(filename: string, result: ParseResponse): void {
-  const payload: ConversionPayload = { version: 1, filename, result };
+export function saveConversionPayload(filename: string, result: ParseResponse, merchantNormalization?: MerchantNormalization): void {
+  const payload: ConversionPayload = { version: 1, filename, result, merchantNormalization };
   sessionStorage.setItem(CONVERSION_STORAGE_KEY, JSON.stringify(payload));
 }
 
@@ -30,7 +31,11 @@ export function readConversionPayload(): ConversionPayload | null {
     ) {
       return null;
     }
-    return value as ConversionPayload;
+    const payload: ConversionPayload = { version: 1, filename: value.filename, result: value.result };
+    if ("merchantNormalization" in value && isMerchantNormalization(value.merchantNormalization, value.result)) {
+      payload.merchantNormalization = value.merchantNormalization;
+    }
+    return payload;
   } catch {
     return null;
   }

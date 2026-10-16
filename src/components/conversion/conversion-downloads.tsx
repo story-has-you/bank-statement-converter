@@ -16,16 +16,17 @@ import {
   type ExportFile,
   type ExportFormat,
   type ExportLabels,
+  type MerchantExport,
 } from "@/lib/conversion-export";
 import type { ParseResponse } from "@/lib/conversion-types";
 import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
-type ConversionDownloadsProps = { filename: string; result: ParseResponse };
+type ConversionDownloadsProps = { filename: string; result: ParseResponse; merchants?: MerchantExport };
 type SpreadsheetExport = typeof import("@/lib/conversion-spreadsheet-export");
 
 const formats: ExportFormat[] = ["csv", "json", "markdown", "tsv", "html"];
 
-export function ConversionDownloads({ filename, result }: ConversionDownloadsProps) {
+export function ConversionDownloads({ filename, result, merchants }: ConversionDownloadsProps) {
   const t = useTranslations("ConversionResult");
   const locale = useLocale();
   const [failed, setFailed] = useState(false);
@@ -75,7 +76,7 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
     }
     setFailed(false);
     try {
-      spreadsheet.downloadExcelWorkbook(filename, result, labels);
+      spreadsheet.downloadExcelWorkbook(filename, result, labels, merchants);
     } catch {
       setFailed(true);
     }
@@ -89,8 +90,8 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
     try {
       const files =
         format === "csv" || format === "tsv"
-          ? spreadsheet?.buildDelimitedExportFiles(format, filename, result, labels)
-          : buildTextExportFiles(format, filename, result, labels);
+          ? spreadsheet?.buildDelimitedExportFiles(format, filename, result, labels, merchants)
+          : buildTextExportFiles(format, filename, result, labels, merchants);
       if (!files) {
         return;
       }

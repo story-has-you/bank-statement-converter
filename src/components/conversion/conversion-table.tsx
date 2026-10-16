@@ -5,11 +5,19 @@ import { CircleAlertIcon, TriangleAlertIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
+import type { MerchantExport } from "@/lib/conversion-export";
 import { getRowRiskCode, type ParsedTable, type RowStatus } from "@/lib/conversion-types";
+import { getMerchantName } from "@/lib/merchant-normalization";
 import { getParseIssueKey } from "@/lib/parse-issues";
 import { cn } from "@/lib/utils";
 
-type ConversionTableProps = { table: ParsedTable; title?: string; onlyRiskRows?: boolean; riskFilter?: ReactNode };
+type ConversionTableProps = {
+  table: ParsedTable;
+  title?: string;
+  onlyRiskRows?: boolean;
+  riskFilter?: ReactNode;
+  merchants?: MerchantExport;
+};
 
 function statusVariant(status: RowStatus): "default" | "secondary" | "outline" {
   if (status === "failed") {
@@ -40,7 +48,7 @@ function columnWidthClass(index: number): string {
   return "min-w-28";
 }
 
-export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter }: ConversionTableProps) {
+export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter, merchants }: ConversionTableProps) {
   const t = useTranslations("ConversionResult");
   const rows = onlyRiskRows ? table.rows.filter((row) => row.status !== "valid") : table.rows;
 
@@ -96,6 +104,11 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
                     {column.label}
                   </th>
                 ))}
+                {merchants?.headers.map((header, index) => (
+                  <th key={index} scope="col" className="min-w-48 border-b border-border px-3 py-2 font-medium">
+                    {header}
+                  </th>
+                ))}
                 <th scope="col" className="min-w-48 border-b border-border px-3 py-2 font-medium">
                   {t("table.warnings")}
                 </th>
@@ -108,44 +121,59 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
               </tr>
             </thead>
             <tbody>
-              {rows.map((row) => (
-                <tr
-                  key={`${table.id}-${row.source.page}-${row.source.row}`}
-                  className={cn(
-                    "align-top",
-                    row.status === "valid" && "even:bg-muted/20",
-                    row.status === "warning" && "bg-secondary/50",
-                    row.status === "failed" && "bg-destructive/10",
-                  )}
-                >
-                  <td
+              {rows.map((row) => {
+                const merchantName = merchants ? getMerchantName(merchants.normalization, table.id, row) : null;
+                return (
+                  <tr
+                    key={`${table.id}-${row.source.page}-${row.source.row}`}
                     className={cn(
-                      "sticky left-0 z-10 min-w-44 border-r border-b border-border bg-card px-3 py-2",
-                      row.status === "warning" && "bg-secondary",
-                      row.status === "failed" && "bg-[color-mix(in_oklch,var(--card),var(--destructive)_10%)]",
+                      "align-top",
+                      row.status === "valid" && "even:bg-muted/20",
+                      row.status === "warning" && "bg-secondary/50",
+                      row.status === "failed" && "bg-destructive/10",
                     )}
                   >
-                    <Badge variant={statusVariant(row.status)}>
-                      {row.status === "warning" && <TriangleAlertIcon data-icon="inline-start" aria-hidden="true" />}
-                      {row.status === "failed" && <CircleAlertIcon data-icon="inline-start" aria-hidden="true" />}
-                      {getRowRiskCode(row.status)}
-                    </Badge>
-                  </td>
-                  {table.columns.map((column) => (
                     <td
-                      key={column.key}
-                      className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap`}
+                      className={cn(
+                        "sticky left-0 z-10 min-w-44 border-r border-b border-border bg-card px-3 py-2",
+                        row.status === "warning" && "bg-secondary",
+                        row.status === "failed" && "bg-[color-mix(in_oklch,var(--card),var(--destructive)_10%)]",
+                      )}
                     >
-                      {row.values[column.key] ?? "-"}
+                      <Badge variant={statusVariant(row.status)}>
+                        {row.status === "warning" && <TriangleAlertIcon data-icon="inline-start" aria-hidden="true" />}
+                        {row.status === "failed" && <CircleAlertIcon data-icon="inline-start" aria-hidden="true" />}
+                        {getRowRiskCode(row.status)}
+                      </Badge>
                     </td>
-                  ))}
-                  <td className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
-                    {row.warnings.length > 0 ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ") : "-"}
-                  </td>
-                  <td className="border-b border-border px-3 py-2">{row.source.page}</td>
-                  <td className="border-b border-border px-3 py-2">{row.source.row}</td>
-                </tr>
-              ))}
+                    {table.columns.map((column) => (
+                      <td
+                        key={column.key}
+                        className={`${columnWidthClass(column.index)} max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap`}
+                      >
+                        {row.values[column.key] ?? "-"}
+                      </td>
+                    ))}
+                    {merchants && (
+                      <>
+                        <td className="min-w-48 max-w-64 border-b border-border px-3 py-2 wrap-break-word whitespace-pre-wrap">
+                          {merchantName ?? ""}
+                        </td>
+                        <td className="min-w-48 border-b border-border px-3 py-2 text-xs text-muted-foreground">
+                          {merchantName === null ? merchants.unassigned : merchants.confirmed}
+                        </td>
+                      </>
+                    )}
+                    <td className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
+                      {row.warnings.length > 0
+                        ? row.warnings.map((warning) => t(getParseIssueKey(warning), warning.params)).join("; ")
+                        : "-"}
+                    </td>
+                    <td className="border-b border-border px-3 py-2">{row.source.page}</td>
+                    <td className="border-b border-border px-3 py-2">{row.source.row}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

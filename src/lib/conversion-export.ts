@@ -1,4 +1,5 @@
 import { getRowRiskCode, type ParseIssue, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
+import { getMerchantName, type MerchantNormalization } from "@/lib/merchant-normalization";
 
 export type TextExportFormat = "json" | "markdown" | "html";
 export type ExportFormat = TextExportFormat | "csv" | "tsv";
@@ -15,6 +16,12 @@ export type ExportLabels = {
 };
 
 export type ExportFile = { name: string; content: string; mimeType: string };
+export type MerchantExport = {
+  normalization: MerchantNormalization;
+  headers: [string, string];
+  confirmed: string;
+  unassigned: string;
+};
 type ExportCell = string | number;
 
 export function canDownloadResult(result: ParseResponse): boolean {
@@ -30,14 +37,23 @@ export function getExportFilename(filename: string, defaultFilename: string, ext
   return `${baseName || defaultFilename}${suffix}.${extension}`;
 }
 
-export function getTableRows(table: ParsedTable, issue: ExportLabels["issue"]): ExportCell[][] {
-  return table.rows.map((row) => [
-    ...table.columns.map((column) => row.values[column.key] ?? ""),
-    getRowRiskCode(row.status),
-    row.warnings.map(issue).join("; "),
-    row.source.page,
-    row.source.row,
-  ]);
+export function getTableHeaders(table: ParsedTable, labels: ExportLabels, merchants?: MerchantExport): string[] {
+  return [...table.columns.map((column) => column.label), ...(merchants?.headers ?? []), ...labels.headers];
+}
+
+export function getTableRows(table: ParsedTable, issue: ExportLabels["issue"], merchants?: MerchantExport): ExportCell[][] {
+  return table.rows.map((row) => {
+    const name = merchants ? getMerchantName(merchants.normalization, table.id, row) : null;
+    const merchantCells = merchants ? [name ?? "", name === null ? merchants.unassigned : merchants.confirmed] : [];
+    return [
+      ...table.columns.map((column) => row.values[column.key] ?? ""),
+      ...merchantCells,
+      getRowRiskCode(row.status),
+      row.warnings.map(issue).join("; "),
+      row.source.page,
+      row.source.row,
+    ];
+  });
 }
 
 function escapeHtml(value: ExportCell): string {
@@ -48,7 +64,7 @@ function escapeMarkdown(value: ExportCell): string {
   return escapeHtml(String(value).replace(/[\\`*_[\]{}()#+.!|~\-]/g, "\\$&")).replace(/\r\n|\r|\n/g, "<br>");
 }
 
-function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabels): string {
+function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabels, merchants?: MerchantExport): string {
   const sections = [`# ${escapeMarkdown(filename)}`];
   if (result.errors.length > 0) {
     sections.push(
@@ -62,8 +78,8 @@ function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabel
         `### ${escapeMarkdown(labels.tableWarnings)}\n\n${table.warnings.map((issue) => `- ${escapeMarkdown(labels.issue(issue))}`).join("\n")}`,
       );
     }
-    const headers = [...table.columns.map((column) => column.label), ...labels.headers];
-    const lines = [headers, headers.map(() => "---"), ...getTableRows(table, labels.issue)];
+    const headers = getTableHeaders(table, labels, merchants);
+    const lines = [headers, headers.map(() => "---"), ...getTableRows(table, labels.issue, merchants)];
     sections.push(
       lines
         .map((row, rowIndex) => `| ${row.map((cell) => (rowIndex === 1 ? String(cell) : escapeMarkdown(cell))).join(" | ")} |`)
@@ -73,7 +89,7 @@ function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabel
   return `${sections.join("\n\n")}\n`;
 }
 
-function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): string {
+function toHtml(filename: string, result: ParseResponse, labels: ExportLabels, merchants?: MerchantExport): string {
   const sections = [`<h1>${escapeHtml(filename)}</h1>`];
   if (result.errors.length > 0) {
     sections.push(
@@ -81,14 +97,14 @@ function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): 
     );
   }
   result.tables.forEach((table, index) => {
-    const headers = [...table.columns.map((column) => column.label), ...labels.headers];
+    const headers = getTableHeaders(table, labels, merchants);
     const warnings =
       table.warnings.length > 0
         ? `<h3>${escapeHtml(labels.tableWarnings)}</h3><ul>${table.warnings.map((issue) => `<li>${escapeHtml(labels.issue(issue))}</li>`).join("")}</ul>`
         : "";
     sections.push(`<section><h2>${escapeHtml(labels.tableTitle(index + 1))}</h2>${warnings}
 <div class="table-wrapper"><table><thead><tr>${headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr></thead>
-<tbody>${getTableRows(table, labels.issue)
+<tbody>${getTableRows(table, labels.issue, merchants)
       .map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`)
       .join("")}</tbody></table></div></section>`);
   });
@@ -106,6 +122,7 @@ export function buildTextExportFiles(
   filename: string,
   result: ParseResponse,
   labels: ExportLabels,
+  merchants?: MerchantExport,
 ): ExportFile[] {
   if (!canDownloadResult(result)) {
     return [];
@@ -114,16 +131,30 @@ export function buildTextExportFiles(
   let content: string;
   let mimeType: string;
   switch (format) {
-    case "json":
-      content = `${JSON.stringify(result, null, 2)}\n`;
+    case "json": {
+      let exportResult = result;
+      if (merchants) {
+        exportResult = {
+          ...result,
+          tables: result.tables.map((table) => ({
+            ...table,
+            rows: table.rows.map((row) => {
+              const merchantName = getMerchantName(merchants.normalization, table.id, row);
+              return { ...row, merchantName, merchantNormalizationStatus: merchantName === null ? "unassigned" : "confirmed" };
+            }),
+          })),
+        };
+      }
+      content = `${JSON.stringify(exportResult, null, 2)}\n`;
       mimeType = "application/json;charset=utf-8";
       break;
+    }
     case "markdown":
-      content = toMarkdown(filename, result, labels);
+      content = toMarkdown(filename, result, labels, merchants);
       mimeType = "text/markdown;charset=utf-8";
       break;
     case "html":
-      content = toHtml(filename, result, labels);
+      content = toHtml(filename, result, labels, merchants);
       mimeType = "text/html;charset=utf-8";
       break;
   }

@@ -5,10 +5,11 @@ import { ConversionTable } from "@/components/conversion/conversion-table";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
 import type { ParseResponse } from "@/lib/conversion-types";
+import type { MerchantExport } from "@/lib/conversion-export";
 
-type ConversionReviewProps = { result: ParseResponse };
+type ConversionReviewProps = { result: ParseResponse; merchants?: MerchantExport };
 
-export function ConversionReview({ result }: ConversionReviewProps) {
+export function ConversionReview({ result, merchants }: ConversionReviewProps) {
   const t = useTranslations("ConversionResult");
   const [onlyRiskRows, setOnlyRiskRows] = useState(false);
   const riskRowCount = result.summary.warningRowCount + result.summary.failedRowCount;
@@ -24,6 +25,7 @@ export function ConversionReview({ result }: ConversionReviewProps) {
         <ConversionTable
           key={table.id}
           table={table}
+          merchants={merchants}
           onlyRiskRows={onlyRiskRows}
           title={result.tables.length === 1 ? t("table.singleTitle") : undefined}
           riskFilter={
