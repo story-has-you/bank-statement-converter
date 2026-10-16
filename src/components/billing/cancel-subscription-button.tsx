@@ -24,7 +24,9 @@ type CancelSubscriptionButtonProps = { provider: PaymentProviderId; subscription
 type CancellationState = "idle" | "submitting" | "syncing" | "delayed" | "checking";
 
 function hasCancelledSubscription(value: unknown, provider: PaymentProviderId, subscriptionId: string): boolean {
-  if (typeof value !== "object" || value === null || !("subscriptions" in value) || !Array.isArray(value.subscriptions)) return false;
+  if (typeof value !== "object" || value === null || !("subscriptions" in value) || !Array.isArray(value.subscriptions)) {
+    return false;
+  }
   return value.subscriptions.some(
     (record: unknown) =>
       typeof record === "object" &&
@@ -55,10 +57,15 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       manualCheck.current?.abort();
     };
   }, []);
-  const date = periodEnd && Number.isFinite(Date.parse(periodEnd)) ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) : null;
+  const date =
+    periodEnd && Number.isFinite(Date.parse(periodEnd))
+      ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" })
+      : null;
 
   useEffect(() => {
-    if (state !== "syncing") return;
+    if (state !== "syncing") {
+      return;
+    }
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
     let attempts = 0;
@@ -69,7 +76,9 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
         if (response.ok) {
           const snapshot: unknown = await response.json();
-          if (controller.signal.aborted) return;
+          if (controller.signal.aborted) {
+            return;
+          }
           if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
             router.refresh();
             return;
@@ -78,9 +87,14 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       } catch {
         // 网络失败仍等待下一次检查，不把 渠道成功取消误报为失败。
       }
-      if (controller.signal.aborted) return;
-      if (attempts >= 15) setState("delayed");
-      else timer = setTimeout(poll, 2_000);
+      if (controller.signal.aborted) {
+        return;
+      }
+      if (attempts >= 15) {
+        setState("delayed");
+      } else {
+        timer = setTimeout(poll, 2_000);
+      }
     }
 
     timer = setTimeout(poll, 2_000);
@@ -91,7 +105,9 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
   }, [state, provider, subscriptionId, locale, router]);
 
   async function cancel() {
-    if (state !== "idle") return;
+    if (state !== "idle") {
+      return;
+    }
     setError(null);
     setState("submitting");
     try {
@@ -101,18 +117,26 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         body: JSON.stringify({ provider, subscriptionId }),
       });
       const payload = readBillingResponse(await response.json());
-      if (!mounted.current) return;
+      if (!mounted.current) {
+        return;
+      }
       if (!response.ok) {
         setError(payload.error ?? t("failed"));
         setState("idle");
         return;
       }
-      if (payload.status !== "CANCELLATION_PENDING" && payload.status !== "CANCELLED") throw new Error(t("failed"));
+      if (payload.status !== "CANCELLATION_PENDING" && payload.status !== "CANCELLED") {
+        throw new Error(t("failed"));
+      }
       setOpen(false);
       setState("syncing");
-      if (payload.status === "CANCELLED") router.refresh();
+      if (payload.status === "CANCELLED") {
+        router.refresh();
+      }
     } catch {
-      if (!mounted.current) return;
+      if (!mounted.current) {
+        return;
+      }
       setError(t("failed"));
       setState("idle");
     }
@@ -126,14 +150,20 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
     setState("checking");
     try {
       const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
-      if (!response.ok) throw new Error(t("checkFailed"));
+      if (!response.ok) {
+        throw new Error(t("checkFailed"));
+      }
       const snapshot: unknown = await response.json();
-      if (controller.signal.aborted || manualCheck.current !== controller) return;
+      if (controller.signal.aborted || manualCheck.current !== controller) {
+        return;
+      }
       if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
         router.refresh();
       }
     } catch {
-      if (!controller.signal.aborted && manualCheck.current === controller) setError(t("checkFailed"));
+      if (!controller.signal.aborted && manualCheck.current === controller) {
+        setError(t("checkFailed"));
+      }
     } finally {
       if (!controller.signal.aborted && manualCheck.current === controller) {
         manualCheck.current = null;
@@ -147,10 +177,14 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       <AlertDialog
         open={open}
         onOpenChange={(value) => {
-          if (state !== "submitting") setOpen(value);
+          if (state !== "submitting") {
+            setOpen(value);
+          }
         }}
       >
-        <AlertDialogTrigger render={<Button variant="outline" size="sm" disabled={state !== "idle"} />}>{t(state === "submitting" ? "submitting" : "button")}</AlertDialogTrigger>
+        <AlertDialogTrigger render={<Button variant="outline" size="sm" disabled={state !== "idle"} />}>
+          {t(state === "submitting" ? "submitting" : "button")}
+        </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{t("title")}</AlertDialogTitle>

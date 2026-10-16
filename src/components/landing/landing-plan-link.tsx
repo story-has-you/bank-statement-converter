@@ -5,7 +5,9 @@ import { Link } from "@/i18n/navigation";
 import type { ConversionPageId } from "@/config/conversion-pages";
 
 export async function LandingPlanLink({ id }: { id: ConversionPageId }) {
-  if (id !== "scanned" && id !== "quickbooks") return null;
+  if (id !== "scanned" && id !== "quickbooks") {
+    return null;
+  }
   const t = await getTranslations(`Landing.pages.${id}`);
   return (
     <div className="mb-6 flex flex-col items-start gap-2">

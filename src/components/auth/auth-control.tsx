@@ -36,7 +36,9 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
         provider: "google",
         options: { redirectTo: `${window.location.origin}/api/auth/callback?locale=${encodeURIComponent(locale)}` },
       });
-      if (authError) throw authError;
+      if (authError) {
+        throw authError;
+      }
     } catch {
       setError(t("signInFailed"));
       setPending(false);
@@ -81,7 +83,9 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
               <UserAvatar imageUrl={imageUrl} alt={t("avatar")} />
             </Link>
             <Tooltip>
-              <TooltipTrigger render={<Button variant="outline" size="icon" disabled={pending} onClick={signOut} aria-label={t("signOut")} />}>
+              <TooltipTrigger
+                render={<Button variant="outline" size="icon" disabled={pending} onClick={signOut} aria-label={t("signOut")} />}
+              >
                 <LogOutIcon />
               </TooltipTrigger>
               <TooltipContent>{t("signOut")}</TooltipContent>

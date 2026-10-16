@@ -6,16 +6,26 @@ type ResultNavigateEvent = Event & { navigationType: string; destination: { same
 
 export function useResultLeaveConfirmation(enabled: boolean, message: string): void {
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      return;
+    }
 
     function confirmLink(event: MouseEvent): void {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
       const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
-      if (!(link instanceof HTMLAnchorElement) || link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
+      if (!(link instanceof HTMLAnchorElement) || link.hasAttribute("download") || (link.target && link.target !== "_self")) {
+        return;
+      }
       const destination = new URL(link.href);
       // Full navigations to other sites are covered by the browser's beforeunload dialog.
-      if (destination.origin !== window.location.origin) return;
-      if (destination.pathname === window.location.pathname && destination.search === window.location.search) return;
+      if (destination.origin !== window.location.origin) {
+        return;
+      }
+      if (destination.pathname === window.location.pathname && destination.search === window.location.search) {
+        return;
+      }
 
       // Capture before React handlers can clear the result, including “convert again”.
       if (!window.confirm(message)) {
@@ -31,10 +41,16 @@ export function useResultLeaveConfirmation(enabled: boolean, message: string): v
 
     function confirmHistory(event: Event): void {
       const navigationEvent = event as ResultNavigateEvent;
-      if (!event.cancelable || navigationEvent.navigationType !== "traverse" || !navigationEvent.destination.sameDocument) return;
+      if (!event.cancelable || navigationEvent.navigationType !== "traverse" || !navigationEvent.destination.sameDocument) {
+        return;
+      }
       const destination = new URL(navigationEvent.destination.url);
-      if (destination.pathname === window.location.pathname && destination.search === window.location.search) return;
-      if (!window.confirm(message)) event.preventDefault();
+      if (destination.pathname === window.location.pathname && destination.search === window.location.search) {
+        return;
+      }
+      if (!window.confirm(message)) {
+        event.preventDefault();
+      }
     }
 
     // Navigation API cancels back/forward before Next.js changes the page, without adding history entries.

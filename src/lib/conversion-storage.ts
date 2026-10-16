@@ -14,7 +14,9 @@ export function clearConversionPayload(): void {
 export function readConversionPayload(): ConversionPayload | null {
   try {
     const serialized = sessionStorage.getItem(CONVERSION_STORAGE_KEY);
-    if (!serialized) return null;
+    if (!serialized) {
+      return null;
+    }
     const value: unknown = JSON.parse(serialized);
     if (
       typeof value !== "object" ||
@@ -25,8 +27,9 @@ export function readConversionPayload(): ConversionPayload | null {
       typeof value.filename !== "string" ||
       !("result" in value) ||
       !isParseResponse(value.result)
-    )
+    ) {
       return null;
+    }
     return value as ConversionPayload;
   } catch {
     return null;

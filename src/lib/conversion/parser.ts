@@ -26,7 +26,9 @@ export function shouldFallback(error: ConversionError): boolean {
     "TOO_MANY_PAGES",
     "PARSER_RESPONSE_TOO_LARGE",
   ];
-  if (terminalCodes.includes(error.code) || error.code.startsWith("QUOTA_")) return false;
+  if (terminalCodes.includes(error.code) || error.code.startsWith("QUOTA_")) {
+    return false;
+  }
   return (
     error.status >= 500 ||
     [
@@ -49,7 +51,9 @@ export function requireUsableResult(value: unknown): ParseResponse {
   if (!isParseResponse(value) || value.pageCount < 1) {
     throw new ConversionError("INVALID_PARSER_RESPONSE");
   }
-  if (value.pageCount > conversionLimits.pages) throw new ConversionError("TOO_MANY_PAGES", 413);
+  if (value.pageCount > conversionLimits.pages) {
+    throw new ConversionError("TOO_MANY_PAGES", 413);
+  }
   if (value.summary.status === "failed" || value.summary.validRowCount + value.summary.warningRowCount === 0) {
     throw new ConversionError("NO_VERIFIABLE_TRANSACTIONS", 422);
   }
@@ -58,24 +62,38 @@ export function requireUsableResult(value: unknown): ParseResponse {
 
 export async function parseWithPython(file: File, signal: AbortSignal): Promise<ParseResponse> {
   const secret = process.env.PARSER_SHARED_SECRET?.trim();
-  if (!secret) throw new ConversionError("PARSER_NOT_CONFIGURED", 503);
+  if (!secret) {
+    throw new ConversionError("PARSER_NOT_CONFIGURED", 503);
+  }
   const baseUrl = (process.env.PARSER_SERVICE_URL ?? "http://127.0.0.1:8000").replace(/\/+$/, "");
   const body = new FormData();
   body.append("file", file);
   const timeout = AbortSignal.timeout(55_000);
   const upstreamSignal = AbortSignal.any([signal, timeout]);
   try {
-    const response = await fetch(`${baseUrl}/parse`, { method: "POST", body, cache: "no-store", headers: { Authorization: `Bearer ${secret}` }, signal: upstreamSignal });
+    const response = await fetch(`${baseUrl}/parse`, {
+      method: "POST",
+      body,
+      cache: "no-store",
+      headers: { Authorization: `Bearer ${secret}` },
+      signal: upstreamSignal,
+    });
     const reader = response.body?.getReader();
-    if (!reader) throw new ConversionError("PARSER_RESPONSE_UNREADABLE");
+    if (!reader) {
+      throw new ConversionError("PARSER_RESPONSE_UNREADABLE");
+    }
     const chunks: Uint8Array[] = [];
     let size = 0;
     try {
       while (true) {
         const { done, value } = await reader.read();
-        if (done) break;
+        if (done) {
+          break;
+        }
         size += value.byteLength;
-        if (size > MAX_RESPONSE_BYTES) throw new ConversionError("PARSER_RESPONSE_TOO_LARGE");
+        if (size > MAX_RESPONSE_BYTES) {
+          throw new ConversionError("PARSER_RESPONSE_TOO_LARGE");
+        }
         chunks.push(value);
       }
     } finally {
@@ -94,14 +112,21 @@ export async function parseWithPython(file: File, signal: AbortSignal): Promise<
       throw new ConversionError("INVALID_PARSER_RESPONSE", response.ok ? 502 : response.status);
     }
     if (!response.ok) {
-      const code = typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string" ? payload.code : "INVALID_PARSER_RESPONSE";
+      const code =
+        typeof payload === "object" && payload !== null && "code" in payload && typeof payload.code === "string"
+          ? payload.code
+          : "INVALID_PARSER_RESPONSE";
       throw new ConversionError(code, response.status);
     }
     return requireUsableResult(payload);
   } catch (error) {
     signal.throwIfAborted();
-    if (error instanceof ConversionError) throw error;
-    if (timeout.aborted) throw new ConversionError("PARSER_TIMEOUT");
+    if (error instanceof ConversionError) {
+      throw error;
+    }
+    if (timeout.aborted) {
+      throw new ConversionError("PARSER_TIMEOUT");
+    }
     throw new ConversionError("PARSER_UNAVAILABLE");
   }
 }

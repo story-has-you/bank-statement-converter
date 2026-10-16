@@ -24,13 +24,17 @@ export class QwenJsonStream {
   constructor(private readonly emit: EmitConversionEvent) {
     this.parser.onValue = ({ value, key, parent, stack }) => {
       const path = JSON.stringify([...stack.map((entry) => entry.key), key]);
-      if (this.completedPaths.has(path)) throw new ConversionError("INVALID_QWEN_RESPONSE");
+      if (this.completedPaths.has(path)) {
+        throw new ConversionError("INVALID_QWEN_RESPONSE");
+      }
       this.completedPaths.add(path);
       if (stack.length === 0) {
         this.result = value;
         return;
       }
-      if (stack[1]?.key !== "tables" || typeof stack[2]?.key !== "number") return;
+      if (stack[1]?.key !== "tables" || typeof stack[2]?.key !== "number") {
+        return;
+      }
       const tableIndex = stack[2].key;
       if (stack.length === 4 && stack[3].key === "rows" && typeof key === "number") {
         const rows = this.pendingRows.get(tableIndex) ?? new Map<number, unknown>();
@@ -41,9 +45,20 @@ export class QwenJsonStream {
       if (stack.length === 3 && isRecord(parent)) {
         // The columns array must be closed before exposing it to the browser.
         const columnsPath = JSON.stringify([undefined, "tables", tableIndex, "columns"]);
-        if (!this.completedPaths.has(columnsPath)) return;
-        const candidate = { id: parent.id, pageStart: parent.pageStart, pageEnd: parent.pageEnd, columns: parent.columns, warnings: parent.warnings === undefined ? [] : parent.warnings, rows: [] };
-        if (!isPreviewTable(candidate) || candidate.columns.length === 0) return;
+        if (!this.completedPaths.has(columnsPath)) {
+          return;
+        }
+        const candidate = {
+          id: parent.id,
+          pageStart: parent.pageStart,
+          pageEnd: parent.pageEnd,
+          columns: parent.columns,
+          warnings: parent.warnings === undefined ? [] : parent.warnings,
+          rows: [],
+        };
+        if (!isPreviewTable(candidate) || candidate.columns.length === 0) {
+          return;
+        }
         const previous = this.tables.get(tableIndex);
         if (previous && JSON.stringify(previous.columns) !== JSON.stringify(candidate.columns)) {
           throw new ConversionError("INVALID_QWEN_RESPONSE");
@@ -61,18 +76,24 @@ export class QwenJsonStream {
 
   write(content: string): void {
     this.size += Buffer.byteLength(content, "utf8");
-    if (this.size > MAX_RESPONSE_BYTES) throw new ConversionError("QWEN_RESPONSE_TOO_LARGE");
+    if (this.size > MAX_RESPONSE_BYTES) {
+      throw new ConversionError("QWEN_RESPONSE_TOO_LARGE");
+    }
     try {
       this.parser.write(content);
     } catch (error) {
-      if (error instanceof ConversionError) throw error;
+      if (error instanceof ConversionError) {
+        throw error;
+      }
       throw new ConversionError("INVALID_QWEN_RESPONSE", 502, undefined, "invalid_json");
     }
   }
 
   finish(filename: string, pageCount: number): ParseResponse {
     try {
-      if (!this.parser.isEnded) this.parser.end();
+      if (!this.parser.isEnded) {
+        this.parser.end();
+      }
     } catch {
       throw new ConversionError("QWEN_INCOMPLETE_RESPONSE", 502, undefined, "incomplete_json");
     }
@@ -81,27 +102,40 @@ export class QwenJsonStream {
     }
     // Match Python's defaults for absent optional risk arrays. Explicitly invalid
     // values still go through contract validation instead of being discarded.
-    const tables: unknown[] = this.result.tables.map((table) => (isRecord(table) && table.warnings === undefined ? { ...table, warnings: [] } : table));
+    const tables: unknown[] = this.result.tables.map((table) =>
+      isRecord(table) && table.warnings === undefined ? { ...table, warnings: [] } : table,
+    );
     const errors = this.result.errors === undefined ? [] : this.result.errors;
     let rowCount = 0;
     let validRowCount = 0;
     let warningRowCount = 0;
     let failedRowCount = 0;
     for (const table of tables) {
-      if (!isRecord(table) || !Array.isArray(table.rows)) continue;
+      if (!isRecord(table) || !Array.isArray(table.rows)) {
+        continue;
+      }
       rowCount += table.rows.length;
       for (const row of table.rows) {
-        if (!isRecord(row)) continue;
-        if (row.status === "valid") validRowCount += 1;
-        else if (row.status === "warning") warningRowCount += 1;
-        else if (row.status === "failed") failedRowCount += 1;
+        if (!isRecord(row)) {
+          continue;
+        }
+        if (row.status === "valid") {
+          validRowCount += 1;
+        } else if (row.status === "warning") {
+          warningRowCount += 1;
+        } else if (row.status === "failed") {
+          failedRowCount += 1;
+        }
       }
     }
     const hasErrors = Array.isArray(errors) && errors.length > 0;
     const hasTableWarnings = tables.some((table) => isRecord(table) && Array.isArray(table.warnings) && table.warnings.length > 0);
     let status: ParseResponse["summary"]["status"] = "success";
-    if (validRowCount + warningRowCount === 0) status = "failed";
-    else if (warningRowCount + failedRowCount > 0 || hasErrors || hasTableWarnings) status = "partial";
+    if (validRowCount + warningRowCount === 0) {
+      status = "failed";
+    } else if (warningRowCount + failedRowCount > 0 || hasErrors || hasTableWarnings) {
+      status = "partial";
+    }
     const result = {
       ...this.result,
       schemaVersion: "1",
@@ -125,16 +159,22 @@ export class QwenJsonStream {
   private flushRows(tableIndex: number): void {
     const table = this.tables.get(tableIndex);
     const pending = this.pendingRows.get(tableIndex);
-    if (!table || !pending) return;
+    if (!table || !pending) {
+      return;
+    }
     const startIndex = this.sentRows.get(tableIndex) ?? 0;
     const rows: ParsedRow[] = [];
     while (pending.has(startIndex + rows.length)) {
       const candidate = { ...table, rows: [pending.get(startIndex + rows.length)] };
-      if (!isPreviewTable(candidate)) throw new ConversionError("INVALID_QWEN_RESPONSE");
+      if (!isPreviewTable(candidate)) {
+        throw new ConversionError("INVALID_QWEN_RESPONSE");
+      }
       rows.push(candidate.rows[0]);
       pending.delete(startIndex + rows.length - 1);
     }
-    if (rows.length === 0) return;
+    if (rows.length === 0) {
+      return;
+    }
     this.emit({ type: "rows", data: { tableIndex, startIndex, rows } });
     this.sentRows.set(tableIndex, startIndex + rows.length);
   }

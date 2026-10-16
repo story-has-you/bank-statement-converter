@@ -9,7 +9,11 @@ import { getGeoContent } from "@/lib/geo/content";
 
 /** One public content source for visible sections, metadata and structured data. */
 export const getLandingContent = cache(async (locale: AppLocale, id: ConversionPageId) => {
-  const [t, p, geo] = await Promise.all([getTranslations({ locale, namespace: "Landing" }), getTranslations({ locale, namespace: `Landing.pages.${id}` }), getGeoContent(locale)]);
+  const [t, p, geo] = await Promise.all([
+    getTranslations({ locale, namespace: "Landing" }),
+    getTranslations({ locale, namespace: `Landing.pages.${id}` }),
+    getGeoContent(locale),
+  ]);
   const page = conversionPages.find((item) => item.id === id)!;
   const bank = page.path.startsWith("/banks/") ? p("bank") : null;
   let guides = bank
@@ -26,14 +30,26 @@ export const getLandingContent = cache(async (locale: AppLocale, id: ConversionP
   ];
   let stepsTitle = t("stepsTitle");
   if (id === "scanned" || id === "quickbooks") {
-    guides = (["requirements", "preparation", "limitations"] as const).map((section) => ({ id: section, title: p(`${section}Title`), text: p(section) }));
+    guides = (["requirements", "preparation", "limitations"] as const).map((section) => ({
+      id: section,
+      title: p(`${section}Title`),
+      text: p(section),
+    }));
     stepsTitle = p("stepsTitle");
-    steps = (["upload", "review", "download"] as const).map((step) => ({ id: step, title: p(`steps.${step}.title`), text: p(`steps.${step}.text`, conversionLimits) }));
-    if (id === "quickbooks") steps.push({ id: "import", title: p("steps.import.title"), text: p("steps.import.text") });
+    steps = (["upload", "review", "download"] as const).map((step) => ({
+      id: step,
+      title: p(`steps.${step}.title`),
+      text: p(`steps.${step}.text`, conversionLimits),
+    }));
+    if (id === "quickbooks") {
+      steps.push({ id: "import", title: p("steps.import.title"), text: p("steps.import.text") });
+    }
   }
   const faq = [
     ...(bank ? [{ id: "history", question: t("historyQuestion", { bank }), answer: p("availability") }] : []),
-    ...(id === "scanned" || id === "quickbooks" ? guides.map((guide) => ({ id: guide.id, question: guide.title, answer: guide.text })) : []),
+    ...(id === "scanned" || id === "quickbooks"
+      ? guides.map((guide) => ({ id: guide.id, question: guide.title, answer: guide.text }))
+      : []),
     { id: "formats", question: t("formatsQuestion"), answer: t("downloadText") },
     ...geo.faq.items,
   ];

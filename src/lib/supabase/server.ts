@@ -8,7 +8,9 @@ import { getSupabaseConfig } from "./config";
 
 export async function createClient() {
   const config = getSupabaseConfig();
-  if (!config) return null;
+  if (!config) {
+    return null;
+  }
 
   const cookieStore = await cookies();
 

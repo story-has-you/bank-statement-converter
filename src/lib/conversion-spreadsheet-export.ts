@@ -4,8 +4,15 @@ import { canDownloadResult, getExportFilename, getTableRows, type ExportLabels, 
 import type { ParseResponse } from "@/lib/conversion-types";
 
 /** Loaded only after a usable final result is available. */
-export function buildDelimitedExportFiles(format: "csv" | "tsv", filename: string, result: ParseResponse, labels: ExportLabels): ExportFile[] {
-  if (!canDownloadResult(result)) return [];
+export function buildDelimitedExportFiles(
+  format: "csv" | "tsv",
+  filename: string,
+  result: ParseResponse,
+  labels: ExportLabels,
+): ExportFile[] {
+  if (!canDownloadResult(result)) {
+    return [];
+  }
   const pageRisks = result.errors.map(labels.error).join("; ");
   return result.tables.map((table, index) => {
     const tableWarnings = table.warnings.map(labels.issue).join("; ");
@@ -15,7 +22,11 @@ export function buildDelimitedExportFiles(format: "csv" | "tsv", filename: strin
     if (rows.length === 0 && (pageRisks || tableWarnings)) {
       rows.push([...headers.slice(0, -2).map(() => ""), pageRisks, tableWarnings]);
     }
-    const content = XLSX.utils.sheet_to_csv(XLSX.utils.aoa_to_sheet([headers, ...rows]), { FS: format === "csv" ? "," : "\t", RS: "\r\n", forceQuotes: true });
+    const content = XLSX.utils.sheet_to_csv(XLSX.utils.aoa_to_sheet([headers, ...rows]), {
+      FS: format === "csv" ? "," : "\t",
+      RS: "\r\n",
+      forceQuotes: true,
+    });
     return {
       name: getExportFilename(filename, labels.defaultFilename, format, result.tables.length > 1 ? index : undefined),
       content: `\uFEFF${content}`,
@@ -28,7 +39,10 @@ export function buildExcelWorkbook(result: ParseResponse, labels: ExportLabels):
   const workbook = XLSX.utils.book_new();
   result.tables.forEach((table, index) => {
     const headers = [...table.columns.map((column) => column.label), ...labels.headers];
-    const riskRows = [...(index === 0 ? result.errors.map(labels.error) : []), ...table.warnings.map(labels.issue)].map((message) => [message, ...Array.from({ length: 9 }, () => "")]);
+    const riskRows = [...(index === 0 ? result.errors.map(labels.error) : []), ...table.warnings.map(labels.issue)].map((message) => [
+      message,
+      ...Array.from({ length: 9 }, () => ""),
+    ]);
     const worksheet = XLSX.utils.aoa_to_sheet([...riskRows, headers, ...getTableRows(table, labels.issue)]);
     worksheet["!cols"] = table.columns.map(() => ({ wch: 20 })).concat([{ wch: 14 }, { wch: 36 }, { wch: 14 }, { wch: 14 }]);
     XLSX.utils.book_append_sheet(workbook, worksheet, labels.tableTitle(index + 1));
@@ -37,6 +51,8 @@ export function buildExcelWorkbook(result: ParseResponse, labels: ExportLabels):
 }
 
 export function downloadExcelWorkbook(filename: string, result: ParseResponse, labels: ExportLabels): void {
-  if (!canDownloadResult(result)) return;
+  if (!canDownloadResult(result)) {
+    return;
+  }
   XLSX.writeFile(buildExcelWorkbook(result, labels), getExportFilename(filename, labels.defaultFilename, "xlsx"));
 }

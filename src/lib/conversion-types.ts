@@ -1,8 +1,12 @@
 export type RowStatus = "valid" | "warning" | "failed";
 
 export function getRowRiskCode(status: RowStatus): "OK" | "DISCREPANCY" | "UNVERIFIABLE" {
-  if (status === "failed") return "UNVERIFIABLE";
-  if (status === "warning") return "DISCREPANCY";
+  if (status === "failed") {
+    return "UNVERIFIABLE";
+  }
+  if (status === "warning") {
+    return "DISCREPANCY";
+  }
   return "OK";
 }
 
@@ -10,18 +14,37 @@ export type SummaryStatus = "success" | "partial" | "failed";
 
 export type ParseColumn = { key: string; label: string; index: number };
 
-export type ParsedRow = { values: Record<string, string | null>; source: { page: number; row: number }; status: RowStatus; warnings: ParseIssue[] };
+export type ParsedRow = {
+  values: Record<string, string | null>;
+  source: { page: number; row: number };
+  status: RowStatus;
+  warnings: ParseIssue[];
+};
 
 export type ParseIssue = { code: string; params: Record<string, number | string> };
 
-export type ParsedTable = { id: string; pageStart: number; pageEnd: number; columns: ParseColumn[]; rows: ParsedRow[]; warnings: ParseIssue[] };
+export type ParsedTable = {
+  id: string;
+  pageStart: number;
+  pageEnd: number;
+  columns: ParseColumn[];
+  rows: ParsedRow[];
+  warnings: ParseIssue[];
+};
 
 export type ParseResponse = {
   schemaVersion: "1";
   filename: string;
   pageCount: number;
   tables: ParsedTable[];
-  summary: { status: SummaryStatus; tableCount: number; rowCount: number; validRowCount: number; warningRowCount: number; failedRowCount: number };
+  summary: {
+    status: SummaryStatus;
+    tableCount: number;
+    rowCount: number;
+    validRowCount: number;
+    warningRowCount: number;
+    failedRowCount: number;
+  };
   errors: Array<{ code: string; page: number | null }>;
 };
 
@@ -44,7 +67,13 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     return false;
   }
 
-  if (value.schemaVersion !== "1" || !isNonNegativeInteger(value.pageCount) || !Array.isArray(value.tables) || !Array.isArray(value.errors) || !isRecord(value.summary)) {
+  if (
+    value.schemaVersion !== "1" ||
+    !isNonNegativeInteger(value.pageCount) ||
+    !Array.isArray(value.tables) ||
+    !Array.isArray(value.errors) ||
+    !isRecord(value.summary)
+  ) {
     return false;
   }
 
@@ -64,15 +93,24 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     return false;
   }
 
-  const errorsAreValid = errors.every((error) => isRecord(error) && typeof error.code === "string" && (error.page === null || (isPositiveInteger(error.page) && error.page <= pageCount)));
-  if (!errorsAreValid) return false;
+  const errorsAreValid = errors.every(
+    (error) =>
+      isRecord(error) &&
+      typeof error.code === "string" &&
+      (error.page === null || (isPositiveInteger(error.page) && error.page <= pageCount)),
+  );
+  if (!errorsAreValid) {
+    return false;
+  }
 
   let rowCount = 0;
   let validRowCount = 0;
   let warningRowCount = 0;
   let failedRowCount = 0;
   const tablesAreValid = tables.every((rawTable) => {
-    if (!isRecord(rawTable)) return false;
+    if (!isRecord(rawTable)) {
+      return false;
+    }
     const table = rawTable;
     if (
       typeof table.id !== "string" ||
@@ -105,14 +143,17 @@ export function isParseResponse(value: unknown): value is ParseResponse {
         column.index >= columns.length ||
         columnKeys.has(column.key) ||
         columnIndexes.has(column.index)
-      )
+      ) {
         return false;
+      }
       columnKeys.add(column.key);
       columnIndexes.add(column.index);
     }
     const requiredColumnKeys = [...columnKeys];
     const rowsAreValid = rows.every((rawRow) => {
-      if (!isRecord(rawRow)) return false;
+      if (!isRecord(rawRow)) {
+        return false;
+      }
       const row = rawRow;
       if (
         !isRecord(row.values) ||
@@ -132,18 +173,32 @@ export function isParseResponse(value: unknown): value is ParseResponse {
       const values = row.values;
       const valuesAreValid = Object.values(values).every((cell) => typeof cell === "string" || cell === null);
       const valuesMatchColumns = requiredColumnKeys.every((key) => Object.hasOwn(values, key));
-      if (!valuesAreValid || !valuesMatchColumns) return false;
+      if (!valuesAreValid || !valuesMatchColumns) {
+        return false;
+      }
       rowCount += 1;
-      if (row.status === "valid") validRowCount += 1;
-      if (row.status === "warning") warningRowCount += 1;
-      if (row.status === "failed") failedRowCount += 1;
+      if (row.status === "valid") {
+        validRowCount += 1;
+      }
+      if (row.status === "warning") {
+        warningRowCount += 1;
+      }
+      if (row.status === "failed") {
+        failedRowCount += 1;
+      }
       return true;
     });
 
     return rowsAreValid;
   });
 
-  return tablesAreValid && rowCount === summary.rowCount && validRowCount === summary.validRowCount && warningRowCount === summary.warningRowCount && failedRowCount === summary.failedRowCount;
+  return (
+    tablesAreValid &&
+    rowCount === summary.rowCount &&
+    validRowCount === summary.validRowCount &&
+    warningRowCount === summary.warningRowCount &&
+    failedRowCount === summary.failedRowCount
+  );
 }
 
 function isNonNegativeInteger(value: unknown): value is number {

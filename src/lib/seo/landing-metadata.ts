@@ -8,7 +8,9 @@ import { routing } from "@/i18n/routing";
 import { getLandingContent } from "@/lib/seo/landing-content";
 
 export async function getLandingMetadata(locale: string, id: ConversionPageId): Promise<Metadata> {
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   const c = await getLandingContent(locale, id);
   const title = `${c.label} | ${c.geo.brand}`;
   const alternates = getLocalizedAlternates(c.page.path, locale);
@@ -16,7 +18,14 @@ export async function getLandingMetadata(locale: string, id: ConversionPageId): 
     title,
     description: c.intro,
     alternates,
-    openGraph: { type: "website", siteName: c.geo.brand, title, description: c.intro, url: alternates.canonical, locale: locale.replace("-", "_") },
+    openGraph: {
+      type: "website",
+      siteName: c.geo.brand,
+      title,
+      description: c.intro,
+      url: alternates.canonical,
+      locale: locale.replace("-", "_"),
+    },
     twitter: { card: "summary_large_image", title, description: c.intro },
     robots: { index: true, follow: true },
   };
@@ -25,6 +34,8 @@ export async function getLandingMetadata(locale: string, id: ConversionPageId): 
 export async function getBankLandingMetadata(params: Promise<{ locale: string; slug: string }>): Promise<Metadata> {
   const { locale, slug } = await params;
   const page = findBankPage(slug);
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
   return getLandingMetadata(locale, page.id);
 }

@@ -12,7 +12,9 @@ type TermsPageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   const t = await getTranslations({ locale, namespace: "Terms.metadata" });
   return { title: t("title"), description: t("description"), alternates: getLocalizedAlternates("/terms", locale) };
 }

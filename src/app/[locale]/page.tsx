@@ -20,7 +20,9 @@ type HomePageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
@@ -28,7 +30,14 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     description: t("description"),
     keywords: t("keywords").split(", "),
     alternates: { ...getLocalizedAlternates("/", locale), types: { "text/markdown": getAgentDocumentUrl(locale, "index.md") } },
-    openGraph: { type: "website", siteName: t("brand"), title: t("title"), description: t("description"), url: getLocalizedAlternates("/", locale).canonical, locale: locale.replace("-", "_") },
+    openGraph: {
+      type: "website",
+      siteName: t("brand"),
+      title: t("title"),
+      description: t("description"),
+      url: getLocalizedAlternates("/", locale).canonical,
+      locale: locale.replace("-", "_"),
+    },
     twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
     robots: { index: true, follow: true },
   };

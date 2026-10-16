@@ -13,9 +13,13 @@ export async function GET(request: Request): Promise<Response> {
   const t = await getTranslations({ locale: getRequestLocale(request), namespace: "Billing.api" });
   const headers = { "Cache-Control": "private, no-store" };
   const supabase = await createClient();
-  if (!supabase) return NextResponse.json({ error: t("loginUnavailable") }, { status: 503, headers });
+  if (!supabase) {
+    return NextResponse.json({ error: t("loginUnavailable") }, { status: 503, headers });
+  }
   const { data, error } = await supabase.auth.getUser();
-  if (error || !data.user) return NextResponse.json({ error: t("loginRequired") }, { status: 401, headers });
+  if (error || !data.user) {
+    return NextResponse.json({ error: t("loginRequired") }, { status: 401, headers });
+  }
   await syncBillingSubscriptionStatus(data.user.id);
   const snapshot = await getAccountSnapshot(data.user);
   return NextResponse.json(snapshot, { status: snapshot.subscriptions === null ? 503 : 200, headers });

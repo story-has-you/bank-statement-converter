@@ -62,12 +62,25 @@ const finalErrorCodes = new Set([
 ]);
 
 export function createParseRecord(actor: UsageActor): ConversionParseRecord | null {
-  if (actor.type !== "user") return null;
-  return { user_id: actor.key, email: actor.email, parse_method: "code", status: "failed", python_error_code: null, python_error_reason: null, llm_trigger_category: null, error_code: null };
+  if (actor.type !== "user") {
+    return null;
+  }
+  return {
+    user_id: actor.key,
+    email: actor.email,
+    parse_method: "code",
+    status: "failed",
+    python_error_code: null,
+    python_error_reason: null,
+    llm_trigger_category: null,
+    error_code: null,
+  };
 }
 
 export function getParseErrorCode(error: unknown): string {
-  if (error instanceof ConversionError && finalErrorCodes.has(error.code)) return error.code;
+  if (error instanceof ConversionError && finalErrorCodes.has(error.code)) {
+    return error.code;
+  }
   return "UNKNOWN";
 }
 

@@ -31,7 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
@@ -44,7 +46,9 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
-      {process.env.NODE_ENV === "production" && <Script src="https://app.pageview.app/js/script.js" data-domain="bankstatementconverter.xyz" strategy="afterInteractive" />}
+      {process.env.NODE_ENV === "production" && (
+        <Script src="https://app.pageview.app/js/script.js" data-domain="bankstatementconverter.xyz" strategy="afterInteractive" />
+      )}
       <GoogleAnalytics gaId="G-93LC8N8C85" />
     </html>
   );

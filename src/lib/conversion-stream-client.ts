@@ -52,7 +52,9 @@ export async function readConversionStream(response: Response, onPreview: (previ
   }
 
   function processFrame(frame: string): void {
-    if (encoder.encode(frame).byteLength > maxFrameBytes) throw new ConversionStreamError("invalid");
+    if (encoder.encode(frame).byteLength > maxFrameBytes) {
+      throw new ConversionStreamError("invalid");
+    }
     const lines = frame.split("\n").map((line) => line.replace(/\r$/, ""));
     const type = lines
       .find((line) => line.startsWith("event:"))
@@ -62,9 +64,13 @@ export async function readConversionStream(response: Response, onPreview: (previ
       .filter((line) => line.startsWith("data:"))
       .map((line) => line.slice(5).trimStart())
       .join("\n");
-    if (!text) return; // SSE comments are heartbeats.
+    if (!text) {
+      return;
+    } // SSE comments are heartbeats.
     const data: unknown = JSON.parse(text);
-    if (!isRecord(data)) throw new ConversionStreamError("invalid");
+    if (!isRecord(data)) {
+      throw new ConversionStreamError("invalid");
+    }
     if (type === "error") {
       throw new ConversionStreamError("request", typeof data.message === "string" ? data.message : undefined);
     }
@@ -77,12 +83,23 @@ export async function readConversionStream(response: Response, onPreview: (previ
       return;
     }
     if (type === "table" || type === "rows") {
-      if (typeof data.tableIndex !== "number" || !Number.isInteger(data.tableIndex) || data.tableIndex < 0 || data.tableIndex > tables.length) throw new ConversionStreamError("invalid");
+      if (
+        typeof data.tableIndex !== "number" ||
+        !Number.isInteger(data.tableIndex) ||
+        data.tableIndex < 0 ||
+        data.tableIndex > tables.length
+      ) {
+        throw new ConversionStreamError("invalid");
+      }
       const index = data.tableIndex;
       if (type === "table") {
-        if (!isRecord(data.table)) throw new ConversionStreamError("invalid");
+        if (!isRecord(data.table)) {
+          throw new ConversionStreamError("invalid");
+        }
         const candidate = { ...data.table, rows: [] };
-        if (!isPreviewTable(candidate) || candidate.columns.length === 0) throw new ConversionStreamError("invalid");
+        if (!isPreviewTable(candidate) || candidate.columns.length === 0) {
+          throw new ConversionStreamError("invalid");
+        }
         const previous = tables[index];
         if (previous && (previous.id !== candidate.id || JSON.stringify(previous.columns) !== JSON.stringify(candidate.columns))) {
           throw new ConversionStreamError("invalid");
@@ -94,7 +111,9 @@ export async function readConversionStream(response: Response, onPreview: (previ
           throw new ConversionStreamError("invalid");
         }
         const candidate = { ...table, rows: data.rows };
-        if (!isPreviewTable(candidate)) throw new ConversionStreamError("invalid");
+        if (!isPreviewTable(candidate)) {
+          throw new ConversionStreamError("invalid");
+        }
         table.rows.push(...candidate.rows);
       }
       publish();
@@ -111,7 +130,9 @@ export async function readConversionStream(response: Response, onPreview: (previ
       ) {
         throw new ConversionStreamError("invalid");
       }
-      if (encoder.encode(JSON.stringify(candidate)).byteLength > MAX_RESPONSE_BYTES) throw new ConversionStreamError("invalid");
+      if (encoder.encode(JSON.stringify(candidate)).byteLength > MAX_RESPONSE_BYTES) {
+        throw new ConversionStreamError("invalid");
+      }
       result = candidate;
       return;
     }
@@ -129,13 +150,21 @@ export async function readConversionStream(response: Response, onPreview: (previ
         buffer = buffer.slice(separator.index + separator[0].length);
         separator = /\r?\n\r?\n/.exec(buffer);
       }
-      if (result === null && encoder.encode(buffer).byteLength > maxFrameBytes) throw new ConversionStreamError("invalid");
-      if (done && result === null) throw new ConversionStreamError("interrupted");
+      if (result === null && encoder.encode(buffer).byteLength > maxFrameBytes) {
+        throw new ConversionStreamError("invalid");
+      }
+      if (done && result === null) {
+        throw new ConversionStreamError("interrupted");
+      }
     }
     return result;
   } catch (error) {
-    if (error instanceof ConversionStreamError) throw error;
-    if (error instanceof SyntaxError || error instanceof TypeError) throw new ConversionStreamError("invalid");
+    if (error instanceof ConversionStreamError) {
+      throw error;
+    }
+    if (error instanceof SyntaxError || error instanceof TypeError) {
+      throw new ConversionStreamError("invalid");
+    }
     throw new ConversionStreamError("interrupted");
   } finally {
     clearTimeout(pendingPublish);

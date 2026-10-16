@@ -8,9 +8,23 @@ import type { ParseResponse } from "@/lib/conversion-types";
 import { parseWithQwen } from "@/lib/qwen/parser";
 import { consumeConversionQuota, type QuotaContext } from "@/lib/usage/server";
 import { MAX_RESPONSE_BYTES, parseWithPython, shouldFallback } from "./parser";
-import { createParseRecord, getParseErrorCode, recordLlmFallback, recordPythonFailure, scheduleParseRecord, type ConversionParseRecord } from "./records";
+import {
+  createParseRecord,
+  getParseErrorCode,
+  recordLlmFallback,
+  recordPythonFailure,
+  scheduleParseRecord,
+  type ConversionParseRecord,
+} from "./records";
 
-export async function convertStatement(file: File, context: QuotaContext, allowQwen: boolean, signal: AbortSignal, emit: EmitConversionEvent, availablePages: number): Promise<ParseResponse> {
+export async function convertStatement(
+  file: File,
+  context: QuotaContext,
+  allowQwen: boolean,
+  signal: AbortSignal,
+  emit: EmitConversionEvent,
+  availablePages: number,
+): Promise<ParseResponse> {
   signal.throwIfAborted();
   emit({ type: "status", data: { stage: "reading" } });
   const record = createParseRecord(context);
@@ -34,7 +48,9 @@ export async function convertStatement(file: File, context: QuotaContext, allowQ
     const { schemaVersion, filename, pageCount, summary, errors } = result;
     const data = { schemaVersion, filename, pageCount, summary, errors };
     emit({ type: "complete", data });
-    if (record) record.status = result.summary.status;
+    if (record) {
+      record.status = result.summary.status;
+    }
     return result;
   } catch (error) {
     if (record) {
@@ -43,7 +59,9 @@ export async function convertStatement(file: File, context: QuotaContext, allowQ
     }
     throw error;
   } finally {
-    if (record) scheduleParseRecord(record);
+    if (record) {
+      scheduleParseRecord(record);
+    }
   }
 }
 
@@ -61,16 +79,28 @@ function scheduleQuotaConsumption(context: QuotaContext, pageCount: number): voi
   });
 }
 
-async function parseStatement(file: File, allowQwen: boolean, signal: AbortSignal, emit: EmitConversionEvent, record: ConversionParseRecord | null): Promise<ParseResponse> {
+async function parseStatement(
+  file: File,
+  allowQwen: boolean,
+  signal: AbortSignal,
+  emit: EmitConversionEvent,
+  record: ConversionParseRecord | null,
+): Promise<ParseResponse> {
   let result: ParseResponse;
   try {
     result = await parseWithPython(file, signal);
   } catch (error) {
     signal.throwIfAborted();
-    if (record) recordPythonFailure(record, error);
-    if (!allowQwen || !(error instanceof ConversionError) || !shouldFallback(error)) throw error;
+    if (record) {
+      recordPythonFailure(record, error);
+    }
+    if (!allowQwen || !(error instanceof ConversionError) || !shouldFallback(error)) {
+      throw error;
+    }
     emit({ type: "status", data: { stage: "extracting" } });
-    if (record) recordLlmFallback(record);
+    if (record) {
+      recordLlmFallback(record);
+    }
     return parseWithQwen(file, signal, emit);
   }
 

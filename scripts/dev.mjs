@@ -11,7 +11,9 @@ const children = [];
 let stopping = false;
 
 function stop(code) {
-  if (stopping) return;
+  if (stopping) {
+    return;
+  }
   stopping = true;
   process.exitCode = code;
   for (const child of children) {
@@ -19,7 +21,9 @@ function stop(code) {
       try {
         process.kill(-child.pid, "SIGTERM");
       } catch (error) {
-        if (error.code !== "ESRCH") throw error;
+        if (error.code !== "ESRCH") {
+          throw error;
+        }
       }
     }
   }
@@ -49,7 +53,9 @@ async function main() {
   const baseUrl = (process.env.PARSER_SERVICE_URL ?? "http://127.0.0.1:8000").replace(/\/+$/, "");
   const parserUrl = new URL(baseUrl);
   const secret = process.env.PARSER_SHARED_SECRET?.trim();
-  if (!secret) throw new Error("请在根目录 .env.local 配置 PARSER_SHARED_SECRET。");
+  if (!secret) {
+    throw new Error("请在根目录 .env.local 配置 PARSER_SHARED_SECRET。");
+  }
 
   if (["127.0.0.1", "localhost"].includes(parserUrl.hostname) && parserUrl.port === "8000") {
     if (!(await isParserHealthy(baseUrl))) {
@@ -61,10 +67,14 @@ async function main() {
       start(python, ["-m", "uvicorn", "app.main:app", "--reload", "--host", "127.0.0.1", "--port", "8000"], parserDir);
       const deadline = Date.now() + 10_000;
       while (!stopping && !(await isParserHealthy(baseUrl))) {
-        if (Date.now() >= deadline) throw new Error("解析服务未能在 8000 端口就绪，请检查启动日志。");
+        if (Date.now() >= deadline) {
+          throw new Error("解析服务未能在 8000 端口就绪，请检查启动日志。");
+        }
         await setTimeout(200);
       }
-      if (stopping) return;
+      if (stopping) {
+        return;
+      }
     }
 
     // An invalid content type checks authentication without parsing or consuming quota.

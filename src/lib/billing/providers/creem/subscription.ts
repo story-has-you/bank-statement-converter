@@ -20,7 +20,9 @@ export function normalizeCreemSubscription(remote: SubscriptionEntity): Provider
     unpaid: "PAYMENT_FAILED",
   };
   const status = statuses[remote.status];
-  if (!tier || !status || typeof userId !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(userId)) throw new Error("Creem subscription identity is incomplete");
+  if (!tier || !status || typeof userId !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(userId)) {
+    throw new Error("Creem subscription identity is incomplete");
+  }
   const customer = typeof remote.customer === "string" ? null : remote.customer;
   return {
     subscriptionId: remote.id,

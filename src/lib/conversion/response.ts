@@ -13,14 +13,23 @@ import { convertStatement } from "./server";
 
 type ApiErrorCode = keyof AppConfig["Messages"]["ApiErrors"];
 
-async function errorPayload(code: string, locale: AppLocale, quota?: Omit<ConversionErrorPayload, "code" | "message">): Promise<ConversionErrorPayload> {
+async function errorPayload(
+  code: string,
+  locale: AppLocale,
+  quota?: Omit<ConversionErrorPayload, "code" | "message">,
+): Promise<ConversionErrorPayload> {
   const t = await getTranslations({ locale, namespace: "ApiErrors" });
   const publicCode = code.replaceAll("QWEN", "LLM");
   const key: ApiErrorCode = t.has(publicCode as ApiErrorCode) ? (publicCode as ApiErrorCode) : "UNKNOWN";
   return { code: publicCode, message: t(key, conversionLimits), ...quota };
 }
 
-export async function errorResponse(code: string, status: number, locale: AppLocale, quota?: Omit<ConversionErrorPayload, "code" | "message">): Promise<NextResponse<ConversionErrorPayload>> {
+export async function errorResponse(
+  code: string,
+  status: number,
+  locale: AppLocale,
+  quota?: Omit<ConversionErrorPayload, "code" | "message">,
+): Promise<NextResponse<ConversionErrorPayload>> {
   return NextResponse.json(await errorPayload(code, locale, quota), { status });
 }
 
@@ -28,7 +37,14 @@ function asConversionError(error: unknown): ConversionError {
   return error instanceof ConversionError ? error : new ConversionError("UNKNOWN", 500);
 }
 
-export async function createConversionResponse(request: Request, file: File, context: QuotaContext, allowQwen: boolean, locale: AppLocale, availablePages: number): Promise<NextResponse> {
+export async function createConversionResponse(
+  request: Request,
+  file: File,
+  context: QuotaContext,
+  allowQwen: boolean,
+  locale: AppLocale,
+  availablePages: number,
+): Promise<NextResponse> {
   if (request.headers.get("accept")?.includes("text/event-stream")) {
     return streamResponse(request, file, context, allowQwen, locale, availablePages);
   }
@@ -41,7 +57,14 @@ export async function createConversionResponse(request: Request, file: File, con
   }
 }
 
-function streamResponse(request: Request, file: File, context: QuotaContext, allowQwen: boolean, locale: AppLocale, availablePages: number): NextResponse {
+function streamResponse(
+  request: Request,
+  file: File,
+  context: QuotaContext,
+  allowQwen: boolean,
+  locale: AppLocale,
+  availablePages: number,
+): NextResponse {
   const abort = new AbortController();
   const signal = AbortSignal.any([request.signal, abort.signal]);
   const encoder = new TextEncoder();
@@ -54,7 +77,9 @@ function streamResponse(request: Request, file: File, context: QuotaContext, all
         }
       }
       const heartbeat = setInterval(() => {
-        if (!closed && !signal.aborted) controller.enqueue(encoder.encode(": heartbeat\n\n"));
+        if (!closed && !signal.aborted) {
+          controller.enqueue(encoder.encode(": heartbeat\n\n"));
+        }
       }, 15_000);
       try {
         await convertStatement(file, context, allowQwen, signal, send, availablePages);
@@ -77,5 +102,12 @@ function streamResponse(request: Request, file: File, context: QuotaContext, all
       abort.abort();
     },
   });
-  return new NextResponse(stream, { headers: { "Content-Type": "text/event-stream; charset=utf-8", "Cache-Control": "no-store, no-transform", "X-Accel-Buffering": "no", Vary: "Accept" } });
+  return new NextResponse(stream, {
+    headers: {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-store, no-transform",
+      "X-Accel-Buffering": "no",
+      Vary: "Accept",
+    },
+  });
 }

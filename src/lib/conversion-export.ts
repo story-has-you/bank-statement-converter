@@ -31,7 +31,13 @@ export function getExportFilename(filename: string, defaultFilename: string, ext
 }
 
 export function getTableRows(table: ParsedTable, issue: ExportLabels["issue"]): ExportCell[][] {
-  return table.rows.map((row) => [...table.columns.map((column) => row.values[column.key] ?? ""), getRowRiskCode(row.status), row.warnings.map(issue).join("; "), row.source.page, row.source.row]);
+  return table.rows.map((row) => [
+    ...table.columns.map((column) => row.values[column.key] ?? ""),
+    getRowRiskCode(row.status),
+    row.warnings.map(issue).join("; "),
+    row.source.page,
+    row.source.row,
+  ]);
 }
 
 function escapeHtml(value: ExportCell): string {
@@ -45,16 +51,24 @@ function escapeMarkdown(value: ExportCell): string {
 function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabels): string {
   const sections = [`# ${escapeMarkdown(filename)}`];
   if (result.errors.length > 0) {
-    sections.push(`## ${escapeMarkdown(labels.pageRisks)}\n\n${result.errors.map((error) => `- ${escapeMarkdown(labels.error(error))}`).join("\n")}`);
+    sections.push(
+      `## ${escapeMarkdown(labels.pageRisks)}\n\n${result.errors.map((error) => `- ${escapeMarkdown(labels.error(error))}`).join("\n")}`,
+    );
   }
   result.tables.forEach((table, index) => {
     sections.push(`## ${escapeMarkdown(labels.tableTitle(index + 1))}`);
     if (table.warnings.length > 0) {
-      sections.push(`### ${escapeMarkdown(labels.tableWarnings)}\n\n${table.warnings.map((issue) => `- ${escapeMarkdown(labels.issue(issue))}`).join("\n")}`);
+      sections.push(
+        `### ${escapeMarkdown(labels.tableWarnings)}\n\n${table.warnings.map((issue) => `- ${escapeMarkdown(labels.issue(issue))}`).join("\n")}`,
+      );
     }
     const headers = [...table.columns.map((column) => column.label), ...labels.headers];
     const lines = [headers, headers.map(() => "---"), ...getTableRows(table, labels.issue)];
-    sections.push(lines.map((row, rowIndex) => `| ${row.map((cell) => (rowIndex === 1 ? String(cell) : escapeMarkdown(cell))).join(" | ")} |`).join("\n"));
+    sections.push(
+      lines
+        .map((row, rowIndex) => `| ${row.map((cell) => (rowIndex === 1 ? String(cell) : escapeMarkdown(cell))).join(" | ")} |`)
+        .join("\n"),
+    );
   });
   return `${sections.join("\n\n")}\n`;
 }
@@ -62,11 +76,16 @@ function toMarkdown(filename: string, result: ParseResponse, labels: ExportLabel
 function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): string {
   const sections = [`<h1>${escapeHtml(filename)}</h1>`];
   if (result.errors.length > 0) {
-    sections.push(`<section><h2>${escapeHtml(labels.pageRisks)}</h2><ul>${result.errors.map((error) => `<li>${escapeHtml(labels.error(error))}</li>`).join("")}</ul></section>`);
+    sections.push(
+      `<section><h2>${escapeHtml(labels.pageRisks)}</h2><ul>${result.errors.map((error) => `<li>${escapeHtml(labels.error(error))}</li>`).join("")}</ul></section>`,
+    );
   }
   result.tables.forEach((table, index) => {
     const headers = [...table.columns.map((column) => column.label), ...labels.headers];
-    const warnings = table.warnings.length > 0 ? `<h3>${escapeHtml(labels.tableWarnings)}</h3><ul>${table.warnings.map((issue) => `<li>${escapeHtml(labels.issue(issue))}</li>`).join("")}</ul>` : "";
+    const warnings =
+      table.warnings.length > 0
+        ? `<h3>${escapeHtml(labels.tableWarnings)}</h3><ul>${table.warnings.map((issue) => `<li>${escapeHtml(labels.issue(issue))}</li>`).join("")}</ul>`
+        : "";
     sections.push(`<section><h2>${escapeHtml(labels.tableTitle(index + 1))}</h2>${warnings}
 <div class="table-wrapper"><table><thead><tr>${headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr></thead>
 <tbody>${getTableRows(table, labels.issue)
@@ -82,8 +101,15 @@ function toHtml(filename: string, result: ParseResponse, labels: ExportLabels): 
 }
 
 /** Generates files from the current result without changing the parser contract or persisting data. */
-export function buildTextExportFiles(format: TextExportFormat, filename: string, result: ParseResponse, labels: ExportLabels): ExportFile[] {
-  if (!canDownloadResult(result)) return [];
+export function buildTextExportFiles(
+  format: TextExportFormat,
+  filename: string,
+  result: ParseResponse,
+  labels: ExportLabels,
+): ExportFile[] {
+  if (!canDownloadResult(result)) {
+    return [];
+  }
   const extension = format === "markdown" ? "md" : format;
   let content: string;
   let mimeType: string;

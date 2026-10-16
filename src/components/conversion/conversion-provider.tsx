@@ -41,8 +41,11 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (pathname === "/result") enteredResult.current = true;
-    else if (enteredResult.current || pathname !== "/") reset();
+    if (pathname === "/result") {
+      enteredResult.current = true;
+    } else if (enteredResult.current || pathname !== "/") {
+      reset();
+    }
   }, [pathname, reset]);
 
   useEffect(() => {
@@ -54,13 +57,18 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const client = createClient();
-    if (!client) return;
+    if (!client) {
+      return;
+    }
     let identity: string | null | undefined;
     const { data } = client.auth.onAuthStateChange((event, session) => {
       const nextIdentity = session?.user.id ?? null;
       // INITIAL_SESSION establishes the baseline, preserving a refreshed result.
-      if (identity !== undefined && nextIdentity !== identity) reset();
-      else if (identity === undefined && event === "SIGNED_OUT") reset();
+      if (identity !== undefined && nextIdentity !== identity) {
+        reset();
+      } else if (identity === undefined && event === "SIGNED_OUT") {
+        reset();
+      }
       identity = nextIdentity;
     });
     return () => data.subscription.unsubscribe();
@@ -92,13 +100,20 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
       try {
         const body = new FormData();
         body.append("file", file);
-        const response = await fetch("/api/convert", { method: "POST", body, headers: { "x-app-locale": locale, Accept: "text/event-stream" }, signal: controller.signal });
+        const response = await fetch("/api/convert", {
+          method: "POST",
+          body,
+          headers: { "x-app-locale": locale, Accept: "text/event-stream" },
+          signal: controller.signal,
+        });
         const result = await readConversionStream(response, (preview) => {
           if (active.current === controller && !controller.signal.aborted) {
             setState({ phase: "pending", filename: file.name, preview });
           }
         });
-        if (active.current !== controller || controller.signal.aborted) return;
+        if (active.current !== controller || controller.signal.aborted) {
+          return;
+        }
         try {
           saveConversionPayload(file.name, result);
         } catch {
@@ -107,11 +122,15 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
         }
         setState({ phase: "complete", filename: file.name, result });
       } catch (error) {
-        if (active.current !== controller || controller.signal.aborted) return;
+        if (active.current !== controller || controller.signal.aborted) {
+          return;
+        }
         const message = error instanceof ConversionStreamError ? (error.serverMessage ?? t(`errors.${error.reason}`)) : t("errors.request");
         setState({ phase: "error", filename: file.name, message });
       } finally {
-        if (active.current === controller) active.current = null;
+        if (active.current === controller) {
+          active.current = null;
+        }
       }
     })();
   }
@@ -121,6 +140,8 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
 
 export function useConversion(): ConversionContextValue {
   const value = useContext(ConversionContext);
-  if (!value) throw new Error("ConversionProvider is required");
+  if (!value) {
+    throw new Error("ConversionProvider is required");
+  }
   return value;
 }

@@ -1,7 +1,9 @@
 import type { LandingContent } from "@/lib/seo/landing-content";
 
 export function LandingGuide({ content }: { content: LandingContent }) {
-  if (content.guides.length === 0) return null;
+  if (content.guides.length === 0) {
+    return null;
+  }
   return (
     <div className="border-t border-border bg-muted/35">
       <div className="mx-auto grid w-full max-w-4xl gap-8 px-5 py-12 sm:px-8">

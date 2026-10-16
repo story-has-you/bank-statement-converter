@@ -22,7 +22,9 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState<"invalidPdf" | "emptyFile" | "fileTooLarge" | "multipleFiles" | "browserStorageUnavailable" | null>(null);
+  const [error, setError] = useState<"invalidPdf" | "emptyFile" | "fileTooLarge" | "multipleFiles" | "browserStorageUnavailable" | null>(
+    null,
+  );
   const [isDragging, setIsDragging] = useState(false);
   const conversion = useConversion();
   const isPending = conversion.state.phase === "pending";
@@ -37,7 +39,9 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   }, []);
 
   function formatFileSize(bytes: number): string {
-    if (bytes < 1024) return t("fileSize.bytes", { size: format.number(bytes) });
+    if (bytes < 1024) {
+      return t("fileSize.bytes", { size: format.number(bytes) });
+    }
     if (bytes < 1024 * 1024) {
       return t("fileSize.kilobytes", { size: format.number(Math.round(bytes / 1024)) });
     }
@@ -45,19 +49,25 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   }
 
   function selectFile(candidate: File | undefined) {
-    if (!candidate) return;
+    if (!candidate) {
+      return;
+    }
 
     if (!candidate.name.toLowerCase().endsWith(".pdf") || (candidate.type && candidate.type !== "application/pdf")) {
       setFile(null);
       setError("invalidPdf");
-      if (inputRef.current) inputRef.current.value = "";
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
       return;
     }
 
     if (candidate.size === 0 || candidate.size > maxUploadBytes) {
       setFile(null);
       setError(candidate.size === 0 ? "emptyFile" : "fileTooLarge");
-      if (inputRef.current) inputRef.current.value = "";
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
       return;
     }
 
@@ -73,12 +83,16 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   function handleDrop(event: DragEvent<HTMLButtonElement>) {
     event.preventDefault();
     setIsDragging(false);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
 
     if (event.dataTransfer.files.length > 1) {
       setFile(null);
       setError("multipleFiles");
-      if (inputRef.current) inputRef.current.value = "";
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
       return;
     }
 
@@ -88,11 +102,15 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   function removeFile() {
     setFile(null);
     setError(null);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   }
 
   function startConversion(): void {
-    if (!file || isPending) return;
+    if (!file || isPending) {
+      return;
+    }
     conversion.start(file);
     router.push("/result");
   }
@@ -184,7 +202,11 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          {showFreeQuota && <p className="text-sm font-medium">{t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}</p>}
+          {showFreeQuota && (
+            <p className="text-sm font-medium">
+              {t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}
+            </p>
+          )}
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
         <Button type="button" size="lg" disabled={!file || isPending} onClick={startConversion} className="w-full sm:w-auto">

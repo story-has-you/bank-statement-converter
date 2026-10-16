@@ -11,8 +11,11 @@ export async function AccountProfile({ email, imageUrl, tier, available }: Accou
   const t = await getTranslations("Account");
   const plans = await getTranslations("UsageTiers");
   let planName = t("freePlan");
-  if (!available) planName = t("planUnavailable");
-  else if (tier) planName = plans(`plans.${tier}.name`);
+  if (!available) {
+    planName = t("planUnavailable");
+  } else if (tier) {
+    planName = plans(`plans.${tier}.name`);
+  }
 
   return (
     <section className="flex flex-wrap items-center justify-between gap-4" aria-labelledby="account-title">

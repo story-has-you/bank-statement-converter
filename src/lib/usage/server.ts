@@ -60,7 +60,9 @@ function createUtcDayWindow(now: Date): UsageWindow {
 }
 
 function isValidPeriod(startValue: string | null, endValue: string | null, now: Date): boolean {
-  if (!startValue || !endValue) return false;
+  if (!startValue || !endValue) {
+    return false;
+  }
 
   const start = new Date(startValue);
   const end = new Date(endValue);
@@ -77,14 +79,20 @@ function getSubscriptionWindow(subscription: BillingSubscription, now: Date): Us
     return null;
   }
 
-  return { period: "month", start: new Date(subscription.current_period_start as string), end: new Date(subscription.current_period_end as string) };
+  return {
+    period: "month",
+    start: new Date(subscription.current_period_start as string),
+    end: new Date(subscription.current_period_end as string),
+  };
 }
 
 export function getQuotaContext(actor: UsageActor, subscription: BillingSubscription | null, now = new Date()): QuotaContext {
   if (subscription) {
     const config = usageQuotaConfig.subscriptions[subscription.tier];
     const window = getSubscriptionWindow(subscription, now);
-    if (window) return { ...actor, limitPages: config.pages, window };
+    if (window) {
+      return { ...actor, limitPages: config.pages, window };
+    }
     throw new SubscriptionPeriodUnavailableError();
   }
 
@@ -93,13 +101,17 @@ export function getQuotaContext(actor: UsageActor, subscription: BillingSubscrip
 }
 
 export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {
-  if (!createAdminClient()) throw new UsageUnavailableError();
+  if (!createAdminClient()) {
+    throw new UsageUnavailableError();
+  }
   return findEntitledBillingSubscription(userId);
 }
 
 function requireAdminClient() {
   const admin = createAdminClient();
-  if (!admin) throw new UsageUnavailableError();
+  if (!admin) {
+    throw new UsageUnavailableError();
+  }
   return admin;
 }
 
@@ -112,7 +124,9 @@ export async function getUsageRecord(actor: UsageActor): Promise<UsageRecord | n
     .eq("actor_key", actor.key)
     .maybeSingle();
 
-  if (error) throw error;
+  if (error) {
+    throw error;
+  }
   return data as UsageRecord | null;
 }
 
@@ -149,14 +163,33 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
     const nextUsedPages = currentUsedPages + pageCount;
     const allowed = nextUsedPages <= context.limitPages;
     const usedPages = allowed ? nextUsedPages : currentUsedPages;
-    const quota: QuotaResult = { allowed, period: context.window.period, usedPages, remainingPages: Math.max(context.limitPages - usedPages, 0), limitPages: context.limitPages };
-    if (!allowed) return quota;
+    const quota: QuotaResult = {
+      allowed,
+      period: context.window.period,
+      usedPages,
+      remainingPages: Math.max(context.limitPages - usedPages, 0),
+      limitPages: context.limitPages,
+    };
+    if (!allowed) {
+      return quota;
+    }
 
-    const changes = { email: context.email, period: context.window.period, period_start: periodStart, period_end: periodEnd, used_pages: nextUsedPages, updated_at: new Date().toISOString() };
+    const changes = {
+      email: context.email,
+      period: context.window.period,
+      period_start: periodStart,
+      period_end: periodEnd,
+      used_pages: nextUsedPages,
+      updated_at: new Date().toISOString(),
+    };
     if (!record) {
       const { error } = await admin.from("conversion_usage").insert({ actor_type: context.type, actor_key: context.key, ...changes });
-      if (error?.code === "23505") continue;
-      if (error) throw error;
+      if (error?.code === "23505") {
+        continue;
+      }
+      if (error) {
+        throw error;
+      }
     } else {
       // 仅更新读取时的版本；其他请求已扣减或切换周期时，重读后重新计算。
       const { data, error } = await admin
@@ -170,8 +203,12 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
         .eq("used_pages", record.used_pages)
         .eq("updated_at", record.updated_at)
         .select("actor_key");
-      if (error) throw error;
-      if (!data.length) continue;
+      if (error) {
+        throw error;
+      }
+      if (!data.length) {
+        continue;
+      }
     }
 
     return quota;
@@ -181,5 +218,9 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
 }
 
 export function isUsageRecordCurrent(record: UsageRecord, context: QuotaContext): boolean {
-  return record.period === context.window.period && sameInstant(record.period_start, context.window.start) && sameInstant(record.period_end, context.window.end);
+  return (
+    record.period === context.window.period &&
+    sameInstant(record.period_start, context.window.start) &&
+    sameInstant(record.period_end, context.window.end)
+  );
 }

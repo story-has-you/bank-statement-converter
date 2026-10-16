@@ -14,10 +14,14 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
   const segments = request.nextUrl.pathname.split("/").filter(Boolean);
   const firstSegment = segments[0];
   const locale = hasLocale(routing.locales, firstSegment) ? firstSegment : routing.defaultLocale;
-  if (locale === firstSegment) segments.shift();
+  if (locale === firstSegment) {
+    segments.shift();
+  }
   const path = segments.join("/");
   const isConversionPage = conversionPages.some((page) => page.path === `/${path}`);
-  if (!["", "privacy", "terms"].includes(path) && !isConversionPage) return response;
+  if (!["", "privacy", "terms"].includes(path) && !isConversionPage) {
+    return response;
+  }
   const links = [`<${getAgentDocumentUrl(locale, "llms.txt")}>; rel="describedby"`];
   if (["", "privacy"].includes(path)) {
     links.push(`<${getAgentDocumentUrl(locale, path === "privacy" ? "privacy.md" : "index.md")}>; rel="alternate"; type="text/markdown"`);
@@ -28,7 +32,9 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
 
 export default async function proxy(request: NextRequest) {
   const config = getSupabaseConfig();
-  if (!config) return withAgentLinks(handleLocale(request), request);
+  if (!config) {
+    return withAgentLinks(handleLocale(request), request);
+  }
 
   let authResponse = NextResponse.next({ request });
   const supabase = createServerClient(config.url, config.key, {
@@ -51,7 +57,9 @@ export default async function proxy(request: NextRequest) {
   authResponse.cookies.getAll().forEach((cookie) => response.cookies.set(cookie));
   for (const header of ["cache-control", "expires", "pragma"]) {
     const value = authResponse.headers.get(header);
-    if (value) response.headers.set(header, value);
+    if (value) {
+      response.headers.set(header, value);
+    }
   }
   return withAgentLinks(response, request);
 }
