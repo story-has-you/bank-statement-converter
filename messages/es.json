@@ -123,11 +123,16 @@
       "status": "Estado",
       "warnings": "Notas de revisión",
       "sourcePage": "Página de origen",
-      "sourceRow": "Fila en la página"
+      "sourceRow": "Fila en la página",
+      "visibleRowCount": "{visible, number} de {total, plural, one {# fila} other {# filas}}",
+      "noRiskRows": "Ninguna fila de esta tabla necesita revisión.",
+      "scrollRegion": "{title}: tabla con desplazamiento horizontal"
     },
     "partial": {
       "title": "Algunos contenidos necesitan revisión",
-      "description": "El contenido reconocido se puede revisar y descargar. Compara las filas marcadas como \"DISCREPANCY\" o \"UNVERIFIABLE\" con el PDF original."
+      "description": "El contenido reconocido se puede revisar y descargar. Compara las filas marcadas como \"DISCREPANCY\" o \"UNVERIFIABLE\" con el PDF original.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "No hay datos descargables.",
@@ -193,7 +198,14 @@
       "loadFailed": "No se pudieron cargar las descargas de hojas de cálculo. Vuelve a intentarlo.",
       "retry": "Reintentar"
     },
-    "restoring": "Restaurando el resultado de la conversión…"
+    "restoring": "Restaurando el resultado de la conversión…",
+    "review": {
+      "onlyRiskRows": "Solo filas por revisar",
+      "showingRiskRows": "{count, plural, one {Se muestra # fila por revisar.} other {Se muestran # filas por revisar.}}",
+      "showingAllRows": "{count, plural, one {Se muestra # fila.} other {Se muestran las # filas.}}",
+      "riskRowCount": "{count, plural, one {# fila necesita revisión} other {# filas necesitan revisión}}",
+      "exportAllRows": "Las exportaciones incluyen todas las transacciones y sus indicadores de riesgo."
+    }
   },
   "HomeFeatures": {
     "title": "¿Qué puede hacer este convertidor?",

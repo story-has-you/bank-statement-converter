@@ -123,11 +123,16 @@
       "status": "Status",
       "warnings": "Observações para conferência",
       "sourcePage": "Página de origem",
-      "sourceRow": "Linha na página"
+      "sourceRow": "Linha na página",
+      "visibleRowCount": "{visible, number} de {total, plural, one {# linha} other {# linhas}}",
+      "noRiskRows": "Nenhuma linha desta tabela precisa de revisão.",
+      "scrollRegion": "{title}: tabela com rolagem horizontal"
     },
     "partial": {
       "title": "Alguns dados precisam de conferência",
-      "description": "Você ainda pode visualizar e baixar os dados extraídos. Confira as linhas DISCREPANCY ou UNVERIFIABLE com o PDF original."
+      "description": "Você ainda pode visualizar e baixar os dados extraídos. Confira as linhas DISCREPANCY ou UNVERIFIABLE com o PDF original.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Não há dados para baixar",
@@ -193,7 +198,14 @@
       "loadFailed": "Não foi possível carregar os downloads de planilhas. Tente novamente.",
       "retry": "Tentar novamente"
     },
-    "restoring": "Restaurando o resultado da conversão…"
+    "restoring": "Restaurando o resultado da conversão…",
+    "review": {
+      "onlyRiskRows": "Somente linhas para revisar",
+      "showingRiskRows": "{count, plural, one {Exibindo # linha para revisar.} other {Exibindo # linhas para revisar.}}",
+      "showingAllRows": "{count, plural, one {Exibindo # linha.} other {Exibindo todas as # linhas.}}",
+      "riskRowCount": "{count, plural, one {# linha precisa de revisão} other {# linhas precisam de revisão}}",
+      "exportAllRows": "As exportações incluem todas as transações e os indicadores de risco."
+    }
   },
   "HomeFeatures": {
     "title": "O que este conversor faz?",

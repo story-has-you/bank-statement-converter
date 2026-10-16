@@ -6,7 +6,7 @@ import { useFormatter, useTranslations } from "next-intl";
 
 import { ConversionProgress } from "@/components/conversion/conversion-progress";
 import { useConversion } from "@/components/conversion/conversion-provider";
-import { ConversionTable } from "@/components/conversion/conversion-table";
+import { ConversionReview } from "@/components/conversion/conversion-review";
 import { ConversionDownloads } from "@/components/conversion/conversion-downloads";
 import { useResultLeaveConfirmation } from "@/components/conversion/use-result-leave-confirmation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -25,7 +25,9 @@ export function ConversionResult() {
   const [restored, setRestored] = useState<{ revision: number; payload: ConversionPayload | null } | null>(null);
 
   useEffect(() => {
-    if (conversion.state.phase !== "idle") return;
+    if (conversion.state.phase !== "idle") {
+      return;
+    }
     const loadPayload = window.setTimeout(() => {
       setRestored({ revision: conversion.revision, payload: readConversionPayload() });
     }, 0);
@@ -86,8 +88,12 @@ export function ConversionResult() {
   const hasRiskRows = result.summary.warningRowCount + result.summary.failedRowCount > 0;
 
   function getStatusLabel(status: SummaryStatus): string {
-    if (status === "partial") return t("summaryStatus.partial");
-    if (status === "failed") return t("summaryStatus.failed");
+    if (status === "partial") {
+      return t("summaryStatus.partial");
+    }
+    if (status === "failed") {
+      return t("summaryStatus.failed");
+    }
     return t("summaryStatus.success");
   }
 
@@ -113,7 +119,16 @@ export function ConversionResult() {
         <Alert>
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("partial.title")}</AlertTitle>
-          <AlertDescription>{t("partial.description")}</AlertDescription>
+          <AlertDescription>
+            {t("partial.description")}
+            <div className="mt-2 flex flex-wrap gap-2">
+              <Badge variant="secondary">{t("partial.discrepancyCount", { count: result.summary.warningRowCount })}</Badge>
+              <Badge variant="outline">
+                <CircleAlertIcon data-icon="inline-start" aria-hidden="true" />
+                {t("partial.unverifiableCount", { count: result.summary.failedRowCount })}
+              </Badge>
+            </div>
+          </AlertDescription>
         </Alert>
       )}
 
@@ -132,7 +147,9 @@ export function ConversionResult() {
           <AlertDescription>
             <ul className="list-disc space-y-1 pl-5">
               {result.errors.map((error, index) => (
-                <li key={`${error.code}-${error.page ?? "document"}-${index}`}>{t(getParseErrorKey(error.code), { page: error.page ?? "?" })}</li>
+                <li key={`${error.code}-${error.page ?? "document"}-${index}`}>
+                  {t(getParseErrorKey(error.code), { page: error.page ?? "?" })}
+                </li>
               ))}
             </ul>
           </AlertDescription>
@@ -143,7 +160,9 @@ export function ConversionResult() {
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
           <dt className="text-xs text-muted-foreground">{t("summary.status")}</dt>
           <dd className="mt-1">
-            <Badge variant={result.summary.status === "failed" ? "destructive" : "secondary"}>{getStatusLabel(result.summary.status)}</Badge>
+            <Badge variant={result.summary.status === "failed" ? "destructive" : "secondary"}>
+              {getStatusLabel(result.summary.status)}
+            </Badge>
           </dd>
         </div>
         <div className="rounded-md border border-border bg-card p-3 shadow-xs">
@@ -164,11 +183,7 @@ export function ConversionResult() {
         </div>
       </dl>
 
-      <div className="flex flex-col gap-4">
-        {result.tables.map((table) => (
-          <ConversionTable key={table.id} table={table} title={result.tables.length === 1 ? t("table.singleTitle") : undefined} />
-        ))}
-      </div>
+      <ConversionReview key={conversion.revision} result={result} />
 
       <div className="flex justify-start">
         <Link href="/" onClick={conversion.reset} className={buttonVariants()}>

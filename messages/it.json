@@ -123,11 +123,16 @@
       "status": "Stato",
       "warnings": "Note per il controllo",
       "sourcePage": "Pagina originale",
-      "sourceRow": "Riga nella pagina"
+      "sourceRow": "Riga nella pagina",
+      "visibleRowCount": "{visible, number} di {total, plural, one {# riga} other {# righe}}",
+      "noRiskRows": "Nessuna riga di questa tabella richiede una verifica.",
+      "scrollRegion": "{title}: tabella a scorrimento orizzontale"
     },
     "partial": {
       "title": "Alcuni dati vanno controllati",
-      "description": "Puoi comunque visualizzare e scaricare i dati estratti. Confronta le righe DISCREPANCY o UNVERIFIABLE con il PDF originale."
+      "description": "Puoi comunque visualizzare e scaricare i dati estratti. Confronta le righe DISCREPANCY o UNVERIFIABLE con il PDF originale.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Nessun dato da scaricare",
@@ -193,7 +198,14 @@
       "loadFailed": "Impossibile caricare i download dei fogli di calcolo. Riprova.",
       "retry": "Riprova"
     },
-    "restoring": "Ripristino del risultato della conversione…"
+    "restoring": "Ripristino del risultato della conversione…",
+    "review": {
+      "onlyRiskRows": "Solo righe da verificare",
+      "showingRiskRows": "{count, plural, one {È visualizzata # riga da verificare.} other {Sono visualizzate # righe da verificare.}}",
+      "showingAllRows": "{count, plural, one {È visualizzata # riga.} other {Sono visualizzate tutte le # righe.}}",
+      "riskRowCount": "{count, plural, one {# riga da verificare} other {# righe da verificare}}",
+      "exportAllRows": "Le esportazioni includono tutte le transazioni e gli indicatori di rischio."
+    }
   },
   "HomeFeatures": {
     "title": "Cosa può fare questo convertitore?",

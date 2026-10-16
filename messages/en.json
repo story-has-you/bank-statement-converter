@@ -123,11 +123,16 @@
       "status": "Status",
       "warnings": "Review notes",
       "sourcePage": "Source page",
-      "sourceRow": "Row on page"
+      "sourceRow": "Row on page",
+      "visibleRowCount": "{visible, number} of {total, plural, one {# row} other {# rows}}",
+      "noRiskRows": "No rows in this table need review.",
+      "scrollRegion": "{title}: horizontally scrollable table"
     },
     "partial": {
       "title": "Some content needs review",
-      "description": "You can still preview and download the extracted content. Check rows marked DISCREPANCY or UNVERIFIABLE against the original PDF."
+      "description": "You can still preview and download the extracted content. Check rows marked DISCREPANCY or UNVERIFIABLE against the original PDF.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "No data to download",
@@ -193,7 +198,14 @@
       "loadFailed": "Spreadsheet downloads could not be loaded. Please retry.",
       "retry": "Retry"
     },
-    "restoring": "Restoring the conversion result…"
+    "restoring": "Restoring the conversion result…",
+    "review": {
+      "onlyRiskRows": "Only rows to review",
+      "showingRiskRows": "{count, plural, one {Showing # row to review.} other {Showing # rows to review.}}",
+      "showingAllRows": "{count, plural, one {Showing # row.} other {Showing all # rows.}}",
+      "riskRowCount": "{count, plural, one {# row needs review} other {# rows need review}}",
+      "exportAllRows": "Exports include all transactions and risk flags."
+    }
   },
   "HomeFeatures": {
     "title": "What can this converter do?",

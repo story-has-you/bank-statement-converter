@@ -123,11 +123,16 @@
       "status": "Status",
       "warnings": "Prüfhinweise",
       "sourcePage": "Originalseite",
-      "sourceRow": "Zeile auf der Seite"
+      "sourceRow": "Zeile auf der Seite",
+      "visibleRowCount": "{visible, number} von {total, plural, one {# Zeile} other {# Zeilen}}",
+      "noRiskRows": "In dieser Tabelle müssen keine Zeilen geprüft werden.",
+      "scrollRegion": "{title}: horizontal scrollbare Tabelle"
     },
     "partial": {
       "title": "Einige Inhalte müssen überprüft werden",
-      "description": "Erkannte Inhalte können weiterhin geprüft und heruntergeladen werden. Vergleichen Sie Zeilen mit „DISCREPANCY“ oder „UNVERIFIABLE“ mit dem Original-PDF."
+      "description": "Erkannte Inhalte können weiterhin geprüft und heruntergeladen werden. Vergleichen Sie Zeilen mit „DISCREPANCY“ oder „UNVERIFIABLE“ mit dem Original-PDF.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Es gibt keine herunterladbaren Daten",
@@ -193,7 +198,14 @@
       "loadFailed": "Tabellendownloads konnten nicht geladen werden. Bitte erneut versuchen.",
       "retry": "Erneut versuchen"
     },
-    "restoring": "Konvertierungsergebnis wird wiederhergestellt…"
+    "restoring": "Konvertierungsergebnis wird wiederhergestellt…",
+    "review": {
+      "onlyRiskRows": "Nur zu prüfende Zeilen",
+      "showingRiskRows": "{count, plural, one {# zu prüfende Zeile wird angezeigt.} other {# zu prüfende Zeilen werden angezeigt.}}",
+      "showingAllRows": "{count, plural, one {# Zeile wird angezeigt.} other {Alle # Zeilen werden angezeigt.}}",
+      "riskRowCount": "{count, plural, one {# Zeile muss geprüft werden} other {# Zeilen müssen geprüft werden}}",
+      "exportAllRows": "Exporte enthalten alle Transaktionen und Risikohinweise."
+    }
   },
   "HomeFeatures": {
     "title": "Was kann dieser Konverter?",

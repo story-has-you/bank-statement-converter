@@ -123,11 +123,16 @@
       "status": "Status",
       "warnings": "Catatan pemeriksaan",
       "sourcePage": "Halaman sumber",
-      "sourceRow": "Baris pada halaman"
+      "sourceRow": "Baris pada halaman",
+      "visibleRowCount": "{visible, number} dari {total, number} baris",
+      "noRiskRows": "Tidak ada baris dalam tabel ini yang perlu diperiksa.",
+      "scrollRegion": "{title}: tabel yang dapat digulir secara horizontal"
     },
     "partial": {
       "title": "Sebagian data perlu diperiksa",
-      "description": "Anda masih dapat melihat dan mengunduh data yang diekstrak. Bandingkan baris DISCREPANCY atau UNVERIFIABLE dengan PDF asli."
+      "description": "Anda masih dapat melihat dan mengunduh data yang diekstrak. Bandingkan baris DISCREPANCY atau UNVERIFIABLE dengan PDF asli.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Tidak ada data untuk diunduh",
@@ -193,7 +198,14 @@
       "loadFailed": "Unduhan spreadsheet tidak dapat dimuat. Silakan coba lagi.",
       "retry": "Coba lagi"
     },
-    "restoring": "Memulihkan hasil konversi…"
+    "restoring": "Memulihkan hasil konversi…",
+    "review": {
+      "onlyRiskRows": "Hanya baris yang perlu diperiksa",
+      "showingRiskRows": "Menampilkan {count, number} baris yang perlu diperiksa.",
+      "showingAllRows": "Menampilkan semua {count, number} baris.",
+      "riskRowCount": "{count, number} baris perlu diperiksa",
+      "exportAllRows": "Ekspor menyertakan semua transaksi dan penanda risiko."
+    }
   },
   "HomeFeatures": {
     "title": "Apa yang dapat dilakukan konverter ini?",

@@ -123,11 +123,16 @@
       "status": "Status",
       "warnings": "Controleopmerkingen",
       "sourcePage": "Bronpagina",
-      "sourceRow": "Regel op pagina"
+      "sourceRow": "Regel op pagina",
+      "visibleRowCount": "{visible, number} van {total, plural, one {# rij} other {# rijen}}",
+      "noRiskRows": "Geen rijen in deze tabel hoeven te worden gecontroleerd.",
+      "scrollRegion": "{title}: horizontaal verschuifbare tabel"
     },
     "partial": {
       "title": "Sommige gegevens moeten worden gecontroleerd",
-      "description": "Je kunt de uitgelezen gegevens nog bekijken en downloaden. Vergelijk regels met DISCREPANCY of UNVERIFIABLE met de originele PDF."
+      "description": "Je kunt de uitgelezen gegevens nog bekijken en downloaden. Vergelijk regels met DISCREPANCY of UNVERIFIABLE met de originele PDF.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Geen gegevens om te downloaden",
@@ -193,7 +198,14 @@
       "loadFailed": "Downloads van spreadsheets konden niet worden geladen. Probeer het opnieuw.",
       "retry": "Opnieuw proberen"
     },
-    "restoring": "Conversieresultaat herstellen…"
+    "restoring": "Conversieresultaat herstellen…",
+    "review": {
+      "onlyRiskRows": "Alleen te controleren rijen",
+      "showingRiskRows": "{count, plural, one {# te controleren rij wordt getoond.} other {# te controleren rijen worden getoond.}}",
+      "showingAllRows": "{count, plural, one {# rij wordt getoond.} other {Alle # rijen worden getoond.}}",
+      "riskRowCount": "{count, plural, one {# rij moet worden gecontroleerd} other {# rijen moeten worden gecontroleerd}}",
+      "exportAllRows": "Exports bevatten alle transacties en risicomarkeringen."
+    }
   },
   "HomeFeatures": {
     "title": "Wat kan deze converter?",

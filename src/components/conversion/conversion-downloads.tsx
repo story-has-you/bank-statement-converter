@@ -6,9 +6,17 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { ExcelDownload } from "@/components/conversion/excel-download";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { buildTextExportFiles, canDownloadResult, downloadExportFiles, type ExportFile, type ExportFormat, type ExportLabels } from "@/lib/conversion-export";
+import {
+  buildTextExportFiles,
+  canDownloadResult,
+  downloadExportFiles,
+  type ExportFile,
+  type ExportFormat,
+  type ExportLabels,
+} from "@/lib/conversion-export";
 import type { ParseResponse } from "@/lib/conversion-types";
 import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
@@ -23,19 +31,26 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
   const [failed, setFailed] = useState(false);
   const [tableDownloads, setTableDownloads] = useState<{ format: ExportFormat; files: ExportFile[] } | null>(null);
   const canDownload = canDownloadResult(result);
+  const riskRowCount = result.summary.warningRowCount + result.summary.failedRowCount;
   const [spreadsheet, setSpreadsheet] = useState<SpreadsheetExport | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
   const [retry, setRetry] = useState(0);
 
   useEffect(() => {
-    if (!canDownload) return;
+    if (!canDownload) {
+      return;
+    }
     let current = true;
     void import("@/lib/conversion-spreadsheet-export").then(
       (module) => {
-        if (current) setSpreadsheet(module);
+        if (current) {
+          setSpreadsheet(module);
+        }
       },
       () => {
-        if (current) setLoadFailed(true);
+        if (current) {
+          setLoadFailed(true);
+        }
       },
     );
     return () => {
@@ -55,7 +70,9 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
   } satisfies ExportLabels;
 
   function downloadExcel(): void {
-    if (!canDownload || !spreadsheet) return;
+    if (!canDownload || !spreadsheet) {
+      return;
+    }
     setFailed(false);
     try {
       spreadsheet.downloadExcelWorkbook(filename, result, labels);
@@ -65,11 +82,18 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
   }
 
   function download(format: ExportFormat): void {
-    if (!canDownload) return;
+    if (!canDownload) {
+      return;
+    }
     setFailed(false);
     try {
-      const files = format === "csv" || format === "tsv" ? spreadsheet?.buildDelimitedExportFiles(format, filename, result, labels) : buildTextExportFiles(format, filename, result, labels);
-      if (!files) return;
+      const files =
+        format === "csv" || format === "tsv"
+          ? spreadsheet?.buildDelimitedExportFiles(format, filename, result, labels)
+          : buildTextExportFiles(format, filename, result, labels);
+      if (!files) {
+        return;
+      }
       setTableDownloads(files.length > 1 ? { format, files } : null);
       downloadExportFiles(files);
     } catch {
@@ -79,16 +103,32 @@ export function ConversionDownloads({ filename, result }: ConversionDownloadsPro
 
   return (
     <div className="flex flex-col gap-3 sm:items-end">
+      {riskRowCount > 0 && (
+        <div className="flex max-w-sm flex-col gap-1 sm:items-end">
+          <Badge variant="secondary">
+            <CircleAlertIcon data-icon="inline-start" aria-hidden="true" />
+            {t("review.riskRowCount", { count: riskRowCount })}
+          </Badge>
+          <p className="text-xs text-muted-foreground sm:text-right">{t("review.exportAllRows")}</p>
+        </div>
+      )}
       <div className="flex w-fit">
         <ExcelDownload disabled={!canDownload || !spreadsheet} onDownload={downloadExcel} className="rounded-e-none" />
         <DropdownMenu>
-          <DropdownMenuTrigger disabled={!canDownload} render={<Button type="button" size="icon-lg" className="rounded-s-none" aria-label={t("export.moreFormats")} />}>
+          <DropdownMenuTrigger
+            disabled={!canDownload}
+            render={<Button type="button" size="icon-lg" className="rounded-s-none" aria-label={t("export.moreFormats")} />}
+          >
             <ChevronDownIcon aria-hidden="true" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
               {formats.map((format) => (
-                <DropdownMenuItem key={format} disabled={(format === "csv" || format === "tsv") && !spreadsheet} onClick={() => download(format)}>
+                <DropdownMenuItem
+                  key={format}
+                  disabled={(format === "csv" || format === "tsv") && !spreadsheet}
+                  onClick={() => download(format)}
+                >
                   {t(`export.formats.${format}`)}
                 </DropdownMenuItem>
               ))}

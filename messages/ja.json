@@ -123,11 +123,16 @@
       "status": "状態",
       "warnings": "確認メモ",
       "sourcePage": "元のページ",
-      "sourceRow": "ページ内の行"
+      "sourceRow": "ページ内の行",
+      "visibleRowCount": "{visible, number} / {total, number} 行",
+      "noRiskRows": "この表に確認が必要な行はありません。",
+      "scrollRegion": "{title}：横にスクロールできる表"
     },
     "partial": {
       "title": "確認が必要な内容があります",
-      "description": "読み取れた内容はプレビューとダウンロードができます。DISCREPANCYまたはUNVERIFIABLEと表示された行は、元のPDFと照合してください。"
+      "description": "読み取れた内容はプレビューとダウンロードができます。DISCREPANCYまたはUNVERIFIABLEと表示された行は、元のPDFと照合してください。",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "ダウンロードできるデータがありません",
@@ -193,7 +198,14 @@
       "loadFailed": "表計算ファイルのダウンロード機能を読み込めませんでした。再試行してください。",
       "retry": "再試行"
     },
-    "restoring": "変換結果を復元しています…"
+    "restoring": "変換結果を復元しています…",
+    "review": {
+      "onlyRiskRows": "確認が必要な行のみ表示",
+      "showingRiskRows": "確認が必要な {count, number} 行を表示しています。",
+      "showingAllRows": "全 {count, number} 行を表示しています。",
+      "riskRowCount": "{count, number} 行の確認が必要です",
+      "exportAllRows": "すべての取引とリスク表示がエクスポートされます。"
+    }
   },
   "HomeFeatures": {
     "title": "この変換ツールで何ができますか？",

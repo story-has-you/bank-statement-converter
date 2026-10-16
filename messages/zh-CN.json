@@ -123,11 +123,16 @@
       "status": "状态",
       "warnings": "核对提示",
       "sourcePage": "原始页码",
-      "sourceRow": "页内行号"
+      "sourceRow": "页内行号",
+      "visibleRowCount": "{visible, number} / {total, number} 行",
+      "noRiskRows": "此表没有需要核对的行。",
+      "scrollRegion": "{title}：可横向滚动的表格"
     },
     "partial": {
       "title": "有些内容需要核对",
-      "description": "已识别的内容仍可预览和下载。请对照原 PDF 核对标为 DISCREPANCY 或 UNVERIFIABLE 的行。"
+      "description": "已识别的内容仍可预览和下载。请对照原 PDF 核对标为 DISCREPANCY 或 UNVERIFIABLE 的行。",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "没有可下载的数据",
@@ -193,7 +198,14 @@
       "loadFailed": "表格下载功能加载失败，请重试。",
       "retry": "重试"
     },
-    "restoring": "正在恢复转换结果……"
+    "restoring": "正在恢复转换结果……",
+    "review": {
+      "onlyRiskRows": "只看需核对行",
+      "showingRiskRows": "正在显示 {count, number} 行需核对内容。",
+      "showingAllRows": "正在显示全部 {count, number} 行。",
+      "riskRowCount": "{count, number} 行需要核对",
+      "exportAllRows": "导出包含全部交易及风险标记。"
+    }
   },
   "HomeFeatures": {
     "title": "这个转换器能做什么？",

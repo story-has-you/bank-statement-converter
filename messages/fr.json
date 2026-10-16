@@ -123,11 +123,16 @@
       "status": "Statut",
       "warnings": "Points à vérifier",
       "sourcePage": "Page source",
-      "sourceRow": "Ligne dans la page"
+      "sourceRow": "Ligne dans la page",
+      "visibleRowCount": "{visible, number} sur {total, plural, one {# ligne} other {# lignes}}",
+      "noRiskRows": "Aucune ligne de ce tableau ne nécessite de vérification.",
+      "scrollRegion": "{title} : tableau à défilement horizontal"
     },
     "partial": {
       "title": "Certains éléments doivent être vérifiés",
-      "description": "Le contenu reconnu peut être vérifié et téléchargé. Comparez les lignes marquées « DISCREPANCY » ou « UNVERIFIABLE » avec le PDF original."
+      "description": "Le contenu reconnu peut être vérifié et téléchargé. Comparez les lignes marquées « DISCREPANCY » ou « UNVERIFIABLE » avec le PDF original.",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "Il n'y a pas de données téléchargeables",
@@ -193,7 +198,14 @@
       "loadFailed": "Impossible de charger le téléchargement des feuilles de calcul. Veuillez réessayer.",
       "retry": "Réessayer"
     },
-    "restoring": "Restauration du résultat de conversion…"
+    "restoring": "Restauration du résultat de conversion…",
+    "review": {
+      "onlyRiskRows": "Uniquement les lignes à vérifier",
+      "showingRiskRows": "{count, plural, one {# ligne à vérifier est affichée.} other {# lignes à vérifier sont affichées.}}",
+      "showingAllRows": "{count, plural, one {# ligne est affichée.} other {Les # lignes sont toutes affichées.}}",
+      "riskRowCount": "{count, plural, one {# ligne à vérifier} other {# lignes à vérifier}}",
+      "exportAllRows": "Les exports incluent toutes les transactions et les indicateurs de risque."
+    }
   },
   "HomeFeatures": {
     "title": "Que permet ce convertisseur ?",

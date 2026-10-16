@@ -123,11 +123,16 @@
       "status": "स्थिति",
       "warnings": "जाँच के नोट",
       "sourcePage": "मूल पृष्ठ",
-      "sourceRow": "पृष्ठ पर पंक्ति"
+      "sourceRow": "पृष्ठ पर पंक्ति",
+      "visibleRowCount": "कुल {total, number} में से {visible, number} पंक्तियाँ",
+      "noRiskRows": "इस तालिका में किसी पंक्ति की जाँच की ज़रूरत नहीं है।",
+      "scrollRegion": "{title}: क्षैतिज रूप से स्क्रॉल की जा सकने वाली तालिका"
     },
     "partial": {
       "title": "कुछ डेटा की जाँच ज़रूरी है",
-      "description": "आप निकाले गए डेटा को देख और डाउनलोड कर सकते हैं। DISCREPANCY या UNVERIFIABLE वाली पंक्तियों को मूल PDF से मिलाएँ।"
+      "description": "आप निकाले गए डेटा को देख और डाउनलोड कर सकते हैं। DISCREPANCY या UNVERIFIABLE वाली पंक्तियों को मूल PDF से मिलाएँ।",
+      "discrepancyCount": "DISCREPANCY: {count, number}",
+      "unverifiableCount": "UNVERIFIABLE: {count, number}"
     },
     "empty": {
       "title": "डाउनलोड करने के लिए डेटा नहीं है",
@@ -193,7 +198,14 @@
       "loadFailed": "स्प्रेडशीट डाउनलोड सुविधा लोड नहीं हो सकी। फिर से प्रयास करें।",
       "retry": "फिर से प्रयास करें"
     },
-    "restoring": "रूपांतरण परिणाम बहाल किया जा रहा है…"
+    "restoring": "रूपांतरण परिणाम बहाल किया जा रहा है…",
+    "review": {
+      "onlyRiskRows": "केवल जाँच वाली पंक्तियाँ दिखाएँ",
+      "showingRiskRows": "जाँच के लिए {count, number} पंक्तियाँ दिखाई जा रही हैं।",
+      "showingAllRows": "सभी {count, number} पंक्तियाँ दिखाई जा रही हैं।",
+      "riskRowCount": "{count, number} पंक्तियों की जाँच ज़रूरी है",
+      "exportAllRows": "निर्यात में सभी लेनदेन और जोखिम संकेत शामिल होते हैं।"
+    }
   },
   "HomeFeatures": {
     "title": "यह कनवर्टर क्या कर सकता है?",
