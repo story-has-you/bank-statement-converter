@@ -28,7 +28,7 @@ PayPal 与 Creem 共用订阅路由、资格检查、权益、额度及数据库
 
 ## Webhook 与付款证据
 
-公网 HTTPS 回调必须完整指向 `/api/billing/webhooks/paypal`，并属于配置中的同一沙箱应用。localhost 不能接收 PayPal 投递。当前已配置的 Webhook URL 指向已有 devtunnel 根路径，尚未改为该接口；本次没有修改 PayPal 后台。
+公网 HTTPS 回调必须完整指向 `/api/billing/webhooks/paypal`，并属于配置中的同一沙箱应用。localhost 不能接收 PayPal 投递。2026-10-16 经曦授权，沙箱 Webhook URL 已从 devtunnel 根路径改为 `https://l6sscc6p-3000.jpe1.devtunnels.ms/api/billing/webhooks/paypal`，原事件订阅范围保持不变。根路径返回 HTML 首页的 HTTP 200 不代表 Webhook 处理成功。
 
 在沙箱应用中订阅以下事件；当前应用已订阅 `*`：
 
@@ -36,12 +36,14 @@ PayPal 与 Creem 共用订阅路由、资格检查、权益、额度及数据库
 - `BILLING.SUBSCRIPTION.CANCELLED`：取消自动续费。
 - `BILLING.SUBSCRIPTION.PAYMENT.FAILED`、`BILLING.SUBSCRIPTION.SUSPENDED`、`BILLING.SUBSCRIPTION.EXPIRED`：失败、暂停及到期。
 
-处理前将签名头、Webhook ID 及事件提交给 PayPal 验签，要求 `verification_status=SUCCESS`。付款后重新读取订阅、计划和所属交易，要求对应交易为 COMPLETED，交易 ID、事件金额、USD 价格和账号套餐一致。账期从原始起始日按自然月推导，每次保留原始日期锚点；最新正常付款还核对下一扣款时间，不用固定 30 天或将首次起始日当作所有周期起点。
+处理前将签名头、Webhook ID 及事件提交给 PayPal 验签，要求 `verification_status=SUCCESS`。付款后重新读取订阅、计划和所属交易，要求对应交易为 COMPLETED，交易 ID、事件金额、USD 价格和账号套餐一致。付款时间与远端最新付款按时间戳比较，兼容相同时间的不同小数秒表示。账期结束直接采用 PayPal 的 `next_billing_time`；首期从订阅起始时间开始，续期保留原始日锚点并采用渠道的扣款时分秒。PayPal 可将后续扣款安排在不同于创建时间的 UTC 时刻，不能要求下一扣款时间与创建时间逐秒一致。取消、失败等状态通知只同步状态，不从重试日期推导新的已付账期。
 
 失败和取消不推进账期，同期恢复不重置额度；重复、乱序、并发和迟到付款沿用通用计费保护。无效签名返回 400，证据尚未同步或处理失败返回 502，等待渠道重试。忽略的事件在验签后返回成功。
 
 ## 验收边界
 
-真实 Supabase 索引迁移及保留既有记录的回查见 [计费渠道切换与验收](billing-provider-cutover.md)。静态、隔离付款和本地 HTTP 检查不代表真实付款成功。完整沙箱验收仍需正确的公网回调地址、沙箱买家审批、真实签名事件落库及账户额度核对；本次不代为付款，不部署或修改 Vercel。
+真实 Supabase 索引迁移及保留既有记录的回查见 [计费渠道切换与验收](billing-provider-cutover.md)。静态、隔离付款和本地 HTTP 检查不代表真实付款成功。本次付款由曦完成；代理没有代为付款、部署或修改 Vercel。登录浏览器返回、额度扣减、真实续费及 PayPal 取消仍需分别验收。
 
 2026-10-16 本地验证：ESLint、TypeScript、生产构建、格式及 diff 检查通过，12 种语言键及 ICU 参数一致，原有转换文案保持不变。临时隔离环境通过 23 个计费及迁移场景和 60 次多语言组件渲染；使用真实应用模块、Supabase 客户端及 PGlite PostgreSQL，所有支付与数据库网络响应均被拦截。已有 3000 服务通过 28 项 HTTP 检查，浏览器检查匿名中文套餐页未捕获页面错误；未验证登录后的浏览器付款。实际应用的 PayPal REST 模块还通过三个真实沙箱计划的只读校验。
+
+同日真实沙箱修复验收：查到订阅 `I-95UHBU23HG1Y` 的 COMPLETED 交易 `35K63052HX728382T`（USD 19.90），付款事件为 `WH-3VD12579LL246915S-9XL898674U071571C`。修正 Webhook URL 和账期映射后重发该既有事件，Supabase 回读确认生成一条 Standard / ACTIVE 订阅，保存的付款事件 ID 一致；账期为 `2026-10-16T08:05:34Z` 至 `2026-11-16T10:00:00Z`。没有绕过签名或手工插入订阅。真实付款事件和激活事件均已产生；激活事件仍不直接授予权益。

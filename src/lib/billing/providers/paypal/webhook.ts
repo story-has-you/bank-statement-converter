@@ -94,15 +94,6 @@ async function resolvePayPalEvent(event: PayPalWebhook, type: BillingEvent["type
     throw new Error("PayPal payment evidence is invalid");
   }
   const period = getPayPalPaidPeriod(remote, transaction.time);
-  // Retry schedules and cancelled subscriptions need not expose the next regular charge.
-  const billing = remote.billing_info;
-  if (
-    subscription.status === "ACTIVE" &&
-    billing?.last_payment?.time === transaction.time &&
-    Date.parse(billing.next_billing_time ?? "") !== Date.parse(period.periodEnd)
-  ) {
-    throw new Error("PayPal next billing date does not match the paid cycle");
-  }
   return {
     ...base,
     subscription: { ...subscription, ...period },

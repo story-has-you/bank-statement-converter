@@ -18,15 +18,27 @@ function monthlyBoundary(anchor: Date, months: number): Date {
 export function getPayPalPaidPeriod(remote: PayPalSubscription, paidAt: string): { periodStart: string; periodEnd: string } {
   const anchor = new Date(remote.start_time);
   const payment = new Date(paidAt);
-  if (!Number.isFinite(anchor.valueOf()) || !Number.isFinite(payment.valueOf()) || payment < anchor) {
+  const billing = remote.billing_info;
+  const end = new Date(billing?.next_billing_time ?? "");
+  if (
+    !Number.isFinite(anchor.valueOf()) ||
+    !Number.isFinite(payment.valueOf()) ||
+    !Number.isFinite(end.valueOf()) ||
+    payment < anchor ||
+    end <= payment ||
+    Date.parse(billing?.last_payment?.time ?? "") !== payment.valueOf()
+  ) {
     throw new Error("PayPal paid billing period is invalid");
   }
-  let months = (payment.getUTCFullYear() - anchor.getUTCFullYear()) * 12 + payment.getUTCMonth() - anchor.getUTCMonth();
-  if (monthlyBoundary(anchor, months) > payment) {
-    months -= 1;
+  const months = (end.getUTCFullYear() - anchor.getUTCFullYear()) * 12 + end.getUTCMonth() - anchor.getUTCMonth();
+  if (months < 1) {
+    throw new Error("PayPal paid billing period is invalid");
   }
-  const start = monthlyBoundary(anchor, months);
-  const end = monthlyBoundary(anchor, months + 1);
+  const start = months === 1 ? anchor : monthlyBoundary(anchor, months - 1);
+  if (months > 1) {
+    // PayPal can align recurring charges to a different UTC time from subscription creation.
+    start.setUTCHours(end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds(), end.getUTCMilliseconds());
+  }
   return { periodStart: start.toISOString(), periodEnd: end.toISOString() };
 }
 
@@ -40,7 +52,10 @@ export function normalizePayPalSubscription(remote: PayPalSubscription): Provide
     throw new Error("PayPal subscription identity is incomplete");
   }
   const payment = remote.billing_info?.last_payment;
-  const period = payment ? getPayPalPaidPeriod(remote, payment.time) : { periodStart: null, periodEnd: null };
+  const period =
+    payment && remote.status === "ACTIVE" && remote.billing_info!.failed_payments_count === 0
+      ? getPayPalPaidPeriod(remote, payment.time)
+      : { periodStart: null, periodEnd: null };
   return {
     subscriptionId: remote.id,
     planId: remote.plan_id,
