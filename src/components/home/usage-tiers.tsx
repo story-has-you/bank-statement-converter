@@ -2,7 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 
 import { SubscriptionOptions } from "@/components/billing/subscription-options";
 import { subscriptionConfig } from "@/config/plans";
-import { findEntitledBillingSubscription } from "@/lib/billing/server";
+import { findEntitledBillingSubscription, findOpenBillingSubscription } from "@/lib/billing/server";
 import { membershipTiers } from "@/lib/billing/config";
 import { getCheckoutConfigs } from "@/lib/billing/providers";
 import { getRenderAuthContext } from "@/lib/supabase/server";
@@ -12,9 +12,11 @@ export async function UsageTiers() {
   const t = await getTranslations("UsageTiers");
   const format = await getFormatter();
   const { user } = await getRenderAuthContext();
-  const activeSubscription = user ? await findEntitledBillingSubscription(user.id) : null;
+  const [activeSubscription, openSubscription] = user
+    ? await Promise.all([findEntitledBillingSubscription(user.id), findOpenBillingSubscription(user.id)])
+    : [null, null];
+  const hasSubscription = Boolean(activeSubscription || openSubscription);
   const cancelledPeriodEnd = activeSubscription?.status === "CANCELLED" ? activeSubscription.current_period_end : null;
-  const activeTierIndex = activeSubscription ? membershipTiers.indexOf(activeSubscription.tier) : -1;
   const checkouts = getCheckoutConfigs();
 
   return (
@@ -48,41 +50,35 @@ export async function UsageTiers() {
 
         {cancelledPeriodEnd && (
           <p role="status" className="mt-8 text-sm leading-6 text-muted-foreground">
-            {t("cancelledPeriodActive", { date: format.dateTime(new Date(cancelledPeriodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) })}
+            {t("cancelledPeriodActive", {
+              date: format.dateTime(new Date(cancelledPeriodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }),
+            })}
           </p>
         )}
 
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {membershipTiers.map((tier) => {
-            const tierIndex = membershipTiers.indexOf(tier);
-            const isLowerTier = activeTierIndex > tierIndex;
-
-            return (
-              <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="grid gap-1">
-                    <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
-                    <p className="text-3xl font-semibold">
-                      {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
-                      <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
-                    </p>
-                  </div>
-                  {activeSubscription?.tier === tier && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>}
+          {membershipTiers.map((tier) => (
+            <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div className="grid gap-1">
+                  <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
+                  <p className="text-3xl font-semibold">
+                    {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
+                    <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
+                  </p>
                 </div>
-                <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
-                <p className="text-sm leading-6 text-muted-foreground">{subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}</p>
-                <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
-                {!cancelledPeriodEnd && !isLowerTier && (
-                  <SubscriptionOptions
-                    checkouts={checkouts}
-                    current={activeSubscription?.tier === tier && ["ACTIVE", "PAYMENT_FAILED"].includes(activeSubscription.status)}
-                    signedIn={Boolean(user)}
-                    tier={tier}
-                  />
+                {activeSubscription?.tier === tier && (
+                  <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">{t("current")}</span>
                 )}
-              </article>
-            );
-          })}
+              </div>
+              <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
+              <p className="text-sm leading-6 text-muted-foreground">
+                {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
+              </p>
+              <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
+              {!hasSubscription && <SubscriptionOptions checkouts={checkouts} signedIn={Boolean(user)} tier={tier} />}
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Abonneren via {provider}",
-    "openingProvider": "{provider} openen",
-    "waffoTaxNote": "Waffo-prijzen zijn exclusief belasting; toepasselijke belastingen worden bij het afrekenen toegevoegd."
+    "openingProvider": "{provider} openen"
   },
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",

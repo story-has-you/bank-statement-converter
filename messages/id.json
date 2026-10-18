@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Berlangganan dengan {provider}",
-    "openingProvider": "Membuka {provider}",
-    "waffoTaxNote": "Harga Waffo belum termasuk pajak; pajak yang berlaku ditambahkan saat pembayaran."
+    "openingProvider": "Membuka {provider}"
   },
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",

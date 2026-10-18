@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "{provider} で契約",
-    "openingProvider": "{provider} を開いています",
-    "waffoTaxNote": "Waffo の価格は税抜きです。適用される税金は決済時に加算されます。"
+    "openingProvider": "{provider} を開いています"
   },
   "HomeFaq": {
     "title": "変換前に知っておくべきことは？",

@@ -12,8 +12,8 @@ export function HomeFooter() {
     <footer className="border-t border-border px-5 py-8 text-xs text-muted-foreground sm:px-8 sm:py-10">
       <div className="mx-auto w-full max-w-5xl">
         <AgentsFooter />
-        <div className="mt-8 grid gap-6 border-t border-border pt-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-          <div className="flex min-w-0 flex-col gap-4">
+        <div className="mt-8 flex items-center justify-between gap-6 border-t border-border pt-6">
+          <div className="flex min-w-0 flex-1 flex-col gap-4">
             <div className="flex items-center gap-2">
               <BrandLogo className="size-6 shrink-0" />
               <span>{t("brand")}</span>

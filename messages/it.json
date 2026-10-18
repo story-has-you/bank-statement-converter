@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Abbonati con {provider}",
-    "openingProvider": "Apertura di {provider}",
-    "waffoTaxNote": "I prezzi Waffo non includono le imposte; quelle applicabili vengono aggiunte al pagamento."
+    "openingProvider": "Apertura di {provider}"
   },
   "HomeFaq": {
     "title": "Cosa sapere prima della conversione?",

@@ -1,6 +1,6 @@
 # Waffo 测试支付接入
 
-Waffo 与 Creem、PayPal 共用订阅资格、账户、权益和额度流程，使用官方 `@waffo/pancake-ts@0.26.0` SDK。适配器位于 `src/lib/billing/providers/waffo/`，不直接访问 Supabase。只启用本地测试环境，未部署或发布生产商品。
+Waffo 与 Creem、PayPal 共用订阅资格、账户、权益和额度流程，使用官方 `@waffo/pancake-ts@0.26.0` SDK。适配器位于 `src/lib/billing/providers/waffo/`，不直接访问 Supabase。本地仍使用测试环境；Vercel Production 的 Waffo 环境变量已配置，但尚未部署包含这些变量的版本。
 
 ## 测试资源与配置
 
@@ -13,6 +13,14 @@ Waffo 与 Creem、PayPal 共用订阅资格、账户、权益和额度流程，�
 | Enterprise   | 79.90        | 2,000      | PROD_53gsd2GEigjTX0int75SKe |
 
 三个商品均为 active、monthly、USD、saas，无试用配置，未发布生产版本。新建测试商品组 `StatementXL Monthly Plans`，ID 为 `67a5223e-42ae-43c0-8db1-e3ccc0c6cd94`，关闭 sharedTrial、selfServicePlanChange。
+
+2026-10-18 使用曦提供的 Waffo 生产密钥，在同一店铺创建三档生产商品。回读确认均为 active、monthly、USD、saas；税前价格与测试商品一致，无试用，且测试商品未发生变化。
+
+| 套餐         | 生产商品 ID                 | 生产版本 ID                 |
+| ------------ | --------------------------- | --------------------------- |
+| Standard     | PROD_68MbWXL64q4VGs4LoPKYPP | PROD_3LK5b3ZSZWfbisRwbJUsBH |
+| Professional | PROD_6d4riSa9kf5Pv0SwpbJpnd | PROD_0buCrwHMQFzznEVH40qElV |
+| Enterprise   | PROD_38tKsotjOccsX9Nq0kwSzw | PROD_1h99CP2XDp86LNJP7XlabP |
 
 Waffo 官网 Skill 的 `taxIncluded` 示例与 SDK 不一致。[SDK 更新记录](https://github.com/waffo-com/waffo-pancake-sdk-ts/blob/main/CHANGELOG.md)说明该字段已移除，平台按税前价格计价。2026-10-18 经曦确认，Waffo 使用上述税前价，在购买入口提示税费于结账时计算；Creem、PayPal 计价不变。首次实付保存含税渠道扣款总额，零优惠时原价快照等于实付。
 
@@ -72,4 +80,20 @@ canceling 映射 CANCELLED，保留已付周期；past_due 映射 PAYMENT_FAILED
 
 真实测试付款、Waffo 签名投递、付款后数据库写入和账户额度、真实续费及取消仍未验证。由曦在同一 devtunnel 域名登录专用测试账号后选择 Waffo，使用官方成功测试卡 `4576750000000110`（未来有效期、任意 CVC），检查最终税额并完成付款；付款后点击 Done 返回网站，再核对 provider=waffo 的单条订阅、实际扣款和套餐额度。随后由曦发起取消，核对 CANCELLED、保留本期权益及阻止重订。不能使用已有开放订阅的账号测试新购，也不要手动插入权益记录绕过付款。
 
-本次未改动 Vercel 配置、未部署、未提交或推送 Git。devtunnel 需要保持在线；生产接入需独立密钥、生产商品和单独配置。
+## Vercel Production 配置（2026-10-18）
+
+Vercel `bank-statement-converter` 项目已写入以下 Production-only 环境变量：
+
+```text
+WAFFO_MERCHANT_ID
+WAFFO_PRIVATE_KEY
+WAFFO_STORE_ID
+WAFFO_ENVIRONMENT=prod
+WAFFO_PAYMENT_ENABLED=true
+WAFFO_PRODUCT_ID_STANDARD=PROD_68MbWXL64q4VGs4LoPKYPP
+WAFFO_PRODUCT_ID_PROFESSIONAL=PROD_6d4riSa9kf5Pv0SwpbJpnd
+WAFFO_PRODUCT_ID_ENTERPRISE=PROD_38tKsotjOccsX9Nq0kwSzw
+WAFFO_RETURN_BASE_URL=https://bankstatementconverter.xyz
+```
+
+私钥在 Vercel 中保存为 `sensitive`／`secret`，回读时未解密。Production 环境变量仅在后续 Production 部署中生效；本次没有部署，也没有修改 Preview 或 Development 配置。部署前仍需配置 Waffo Production Webhook 至 `https://bankstatementconverter.xyz/api/billing/webhooks/waffo` 并验证签名投递。真实付款与账户额度验收尚未执行。

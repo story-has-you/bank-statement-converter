@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "{provider} से सदस्यता लें",
-    "openingProvider": "{provider} खुल रहा है",
-    "waffoTaxNote": "Waffo की कीमतें कर के बिना हैं; लागू कर भुगतान के समय जोड़े जाते हैं।"
+    "openingProvider": "{provider} खुल रहा है"
   },
   "HomeFaq": {
     "title": "रूपांतरण से पहले क्या जानना चाहिए?",

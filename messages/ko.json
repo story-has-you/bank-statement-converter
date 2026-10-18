@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "{provider}(으)로 구독",
-    "openingProvider": "{provider} 여는 중",
-    "waffoTaxNote": "Waffo 가격은 세금 별도이며, 해당 세금은 결제 시 추가됩니다."
+    "openingProvider": "{provider} 여는 중"
   },
   "HomeFaq": {
     "title": "변환 전에 무엇을 알아야 하나요?",

@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "通过 {provider} 订阅",
-    "openingProvider": "正在打开 {provider}",
-    "waffoTaxNote": "Waffo 为税前价格，适用税费将在结账时计算。"
+    "openingProvider": "正在打开 {provider}"
   },
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",

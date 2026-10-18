@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Subscribe with {provider}",
-    "openingProvider": "Opening {provider}",
-    "waffoTaxNote": "Waffo prices exclude tax; applicable taxes are added at checkout."
+    "openingProvider": "Opening {provider}"
   },
   "HomeFaq": {
     "title": "What should I know before converting?",

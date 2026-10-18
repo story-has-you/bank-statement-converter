@@ -333,8 +333,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "S’abonner avec {provider}",
-    "openingProvider": "Ouverture de {provider}",
-    "waffoTaxNote": "Les prix Waffo sont hors taxes ; les taxes applicables sont ajoutées au paiement."
+    "openingProvider": "Ouverture de {provider}"
   },
   "HomeFaq": {
     "title": "Que savoir avant de convertir ?",
