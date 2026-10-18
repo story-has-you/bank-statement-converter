@@ -258,7 +258,7 @@
   },
   "UsageTiers": {
     "title": "Berapa harga paket dan apa yang termasuk?",
-    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem atau PayPal.",
+    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo.",
     "anonymous": "Tanpa login",
     "anonymousAmount": "{pages, number} halaman",
     "anonymousDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
@@ -329,10 +329,12 @@
     "providerUnavailable": "Pembayaran melalui {provider} saat ini tidak tersedia.",
     "providers": {
       "creem": "Creem",
-      "paypal": "PayPal"
+      "paypal": "PayPal",
+      "waffo": "Waffo"
     },
     "subscribeWith": "Berlangganan dengan {provider}",
-    "openingProvider": "Membuka {provider}"
+    "openingProvider": "Membuka {provider}",
+    "waffoTaxNote": "Harga Waffo belum termasuk pajak; pajak yang berlaku ditambahkan saat pembayaran."
   },
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",
@@ -377,16 +379,16 @@
     "tinyLaunchBadge": "Segera hadir di TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 13 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 18 Oktober 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Ketentuan layanan | StatementXL",
-      "description": "Pelajari cara StatementXL menangani file, kuota, langganan Creem atau PayPal, pengembalian dana, dan tanggung jawab pengguna."
+      "description": "Pelajari cara StatementXL menangani file, kuota, langganan Creem, PayPal atau Waffo, pengembalian dana, dan tanggung jawab pengguna."
     },
     "title": "Ketentuan layanan",
     "intro": "Layanan ini dikelola ReAvid Ltd melalui <site>{domain}</site>. Baca ketentuan ini dan kebijakan privasi sebelum menggunakan konversi dan langganan.",
-    "availability": "Konversi PDF ke Excel dan langganan Creem atau PayPal disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
+    "availability": "Konversi PDF ke Excel dan langganan Creem, PayPal atau Waffo disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
     "service": {
       "title": "Cakupan layanan",
       "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum. Penguraian biasa dijalankan terlebih dahulu. Professional dan Enterprise dengan hak penggunaan yang masih berlaku dapat beralih otomatis ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, termasuk mencoba mengonversi hasil pindai. Hasil sebagian yang berguna tidak memicu peralihan."
@@ -401,11 +403,11 @@
     },
     "quota": {
       "title": "Kuota konversi",
-      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem atau PayPal saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
+      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem, PayPal atau Waffo saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
-      "body": "Standard, Professional, dan Enterprise diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi), yang menangani pembayaran, pajak yang berlaku, dan bukti pembayaran. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Creem mengirimkan informasi langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini."
+      "body": "Standard, Professional, dan Enterprise diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi), yang menangani pembayaran, pajak yang berlaku, dan bukti pembayaran. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Creem mengirimkan informasi langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini. Untuk pembayaran melalui Waffo, Waffo bertindak sebagai Merchant of Record dan menangani pembayaran serta pajak yang berlaku. Harga Waffo belum termasuk pajak; jumlah akhir ditampilkan saat pembayaran."
     },
     "refunds": {
       "title": "Kebijakan pengembalian dana",
@@ -448,15 +450,15 @@
       "description": "Pemrosesan rekening koran, penguraian AI, hasil sementara di browser, serta data akun, operasional penguraian, kuota, dan penagihan."
     },
     "title": "Kebijakan privasi",
-    "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan Creem atau PayPal.",
-    "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan Creem atau PayPal yang tersedia saat ini.",
+    "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan Creem, PayPal atau Waffo.",
+    "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan Creem, PayPal atau Waffo yang tersedia saat ini.",
     "documents": {
       "title": "Rekening koran dan isi konversi",
       "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Pemrosesan pihak ketiga saat beralih ke AI dijelaskan di bawah."
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem atau PayPal, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem atau PayPal menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem, PayPal atau Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem, PayPal atau Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -473,7 +475,7 @@
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi). Creem memproses pembayaran langganan, pajak yang berlaku, bukti pembayaran, dan pengembalian dana yang diwajibkan hukum yang berlaku, serta menyinkronkan status langganan dengan layanan ini. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Creem dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini."
+      "body": "Login menggunakan Google dan Supabase. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi). Creem memproses pembayaran langganan, pajak yang berlaku, bukti pembayaran, dan pengembalian dana yang diwajibkan hukum yang berlaku, serta menyinkronkan status langganan dengan layanan ini. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Creem dapat memproses data pembayaran dan akun sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini. Saat Anda memilih Waffo, Waffo bertindak sebagai penyedia pembayaran dan Merchant of Record, memproses informasi pembayaran serta akun, dan mengirim pembaruan langganan ke layanan ini."
     },
     "storage": {
       "title": "Penyimpanan browser",
@@ -626,7 +628,7 @@
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
     "limitsTitle": "PDF apa yang dapat diunggah?",
     "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
-    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem atau PayPal.",
+    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
     "priceHeader": "Harga (USD)",
@@ -635,7 +637,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Harian (UTC)",
     "billingPeriod": "Periode tagihan",
-    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem atau PayPal. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
+    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem, PayPal atau Waffo. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
     "privacyTitle": "Bagaimana data saya diproses?",
     "privacyAnswer": "Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
     "browserTitle": "Apa yang disimpan sementara di browser?",
@@ -654,7 +656,7 @@
     "chatDescription": "Tanyakan StatementXL kepada asisten AI menggunakan sumber resmi kami.",
     "prompt": "Kunjungi informasi resmi StatementXL: {fullUrl}. Jika perlu detail, baca {indexUrl} dan ikuti tautan dokumen yang relevan. Jawab dalam {language}: jelaskan fitur, langkah penggunaan, batas berkas, pemrosesan data, kuota gratis, dan harga langganan dengan tautan sumber. Jika sumber tidak dapat diakses atau tidak menjawab, nyatakan dengan jelas dan jangan menebak.",
     "showPrompt": "Lihat prompt bawaan",
-    "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan Creem atau PayPal.",
+    "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan Creem, PayPal atau Waffo.",
     "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
     "parsingHeader": "Kemampuan penguraian"
   },

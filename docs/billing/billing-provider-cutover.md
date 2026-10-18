@@ -1,6 +1,6 @@
 # 计费渠道切换与验收
 
-当前支持 Creem 和 PayPal 跳转结账。渠道适配器负责远端 API、验签和证据校验，通用计费模块负责账号、资格、权益、账期与数据库写入。配置见 [Creem 支付接入](creem-billing.md) 和 [PayPal 沙箱支付接入](paypal-billing.md)。
+当前支持 Creem、PayPal 和 Waffo 跳转结账。渠道适配器负责远端 API、验签和证据校验，通用计费模块负责账号、资格、权益、账期与数据库写入。配置见 [Creem 支付接入](creem-billing.md)、[PayPal 沙箱支付接入](paypal-billing.md) 和 [Waffo 测试支付接入](waffo-billing.md)。
 
 ## 接口
 
@@ -9,7 +9,11 @@
 - 取消：`POST /api/billing/subscriptions/cancel`，接受 `{ provider, subscriptionId }`，要求已认证且同源，返回 CANCELLATION_PENDING 或 CANCELLED；保留已付账期。
 - 回调：`POST /api/billing/webhooks/{provider}`，无效签名返回 400，处理失败返回 502 供渠道重试。未知渠道返回 400。
 
-`provider` 支持 `creem` 和 `paypal`。PayPal 的 checkoutId 使用渠道订阅 ID；原 `/api/paypal/*` 兼容入口不恢复。`handleSubscriptionRequest` 保持原实现，不包含渠道分支。
+`provider` 支持 `creem`、`paypal` 和 `waffo`。PayPal 的 checkoutId 使用渠道订阅 ID，Waffo 使用服务端生成的业务引用；原 `/api/paypal/*` 兼容入口不恢复。`handleSubscriptionRequest` 保持原实现，不包含渠道分支。
+
+## Waffo 增量接入（2026-10-18）
+
+已执行 `20261018092942_enable_waffo_billing.sql`，开放订阅索引扩展至三渠道。迁移前后 1 条订阅及其完整摘要未变，列、约束、RLS、策略、权限和其他索引未变。仅配置 Waffo 本地测试商品、商品组及 devtunnel 回调，未部署；真实付款和账户验收待完成。详细配置、验证及已授权的税前价格规则见 [Waffo 测试支付接入](waffo-billing.md)。以下保留此前阶段记录。
 
 ## 数据库切换（2026-10-16）
 
@@ -19,7 +23,7 @@
 
 执行前后回查：既有两条 ACTIVE Creem 记录的全部字段完全一致；RLS 仍启用，策略、表权限和其他索引未变。当前没有 PayPal 历史记录，因此不增加归档标记或历史恢复逻辑。目标库没有 `supabase_migrations.schema_migrations` 表，本次未创建该表或重跑其他迁移。历史 SQL 文件原样保留。
 
-## 当前验收与发布边界
+## PayPal 阶段验收与发布边界（2026-10-16）
 
 本地已通过 ESLint、TypeScript、生产构建；隔离 PostgreSQL 与真实应用模块、Supabase 客户端完成付款、并发、状态及索引场景验证。外部响应均为虚构数据，不发起付款。最终验收结果见 [PayPal 沙箱支付接入](paypal-billing.md)。
 

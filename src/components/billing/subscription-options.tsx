@@ -25,10 +25,13 @@ export async function SubscriptionOptions({
     return null;
   }
   return (
-    <div className="grid auto-cols-fr grid-flow-col items-start gap-3">
-      {checkouts.map((checkout) => (
-        <SubscriptionButton key={checkout.provider} checkout={checkout} tier={tier} />
-      ))}
+    <div className="grid gap-2">
+      <div className="grid auto-cols-fr grid-flow-col items-start gap-3">
+        {checkouts.map((checkout) => (
+          <SubscriptionButton key={checkout.provider} checkout={checkout} tier={tier} />
+        ))}
+      </div>
+      {checkouts.some((checkout) => checkout.provider === "waffo") && <p className="text-xs text-muted-foreground">{t("waffoTaxNote")}</p>}
     </div>
   );
 }

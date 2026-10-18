@@ -15,7 +15,7 @@ export function BillingReturnStatus({ signedIn }: { signedIn: boolean }) {
   if (!signedIn) {
     return <p role="status">{t("signInRequired")}</p>;
   }
-  if (provider !== "creem" && provider !== "paypal") {
+  if (provider !== "creem" && provider !== "paypal" && provider !== "waffo") {
     return <p role="alert">{t("invalidReturn")}</p>;
   }
   if (provider === "paypal" && params.get("cancelled") === "true") {
@@ -28,7 +28,12 @@ export function BillingReturnStatus({ signedIn }: { signedIn: boolean }) {
       </div>
     );
   }
-  const validId = provider === "paypal" ? /^I-[A-Z0-9]{1,64}$/ : /^ch_[A-Za-z0-9]{1,64}$/;
+  const idPatterns = {
+    paypal: /^I-[A-Z0-9]{1,64}$/,
+    creem: /^ch_[A-Za-z0-9]{1,64}$/,
+    waffo: /^wco_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
+  };
+  const validId = idPatterns[provider];
   if (!checkoutId || !validId.test(checkoutId) || !isMembershipTier(tier)) {
     return <p role="alert">{t("invalidReturn")}</p>;
   }

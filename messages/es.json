@@ -258,7 +258,7 @@
   },
   "UsageTiers": {
     "title": "¿Cuánto cuestan los planes y qué incluyen?",
-    "description": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Creem o PayPal.",
+    "description": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Creem, PayPal o Waffo.",
     "anonymous": "Sin iniciar sesión",
     "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
     "anonymousDescription": "Convierte hasta {pages, plural, one {# página} other {# páginas}} de PDF al día.",
@@ -329,10 +329,12 @@
     "providerUnavailable": "Los pagos con {provider} no están disponibles en este momento.",
     "providers": {
       "creem": "Creem",
-      "paypal": "PayPal"
+      "paypal": "PayPal",
+      "waffo": "Waffo"
     },
     "subscribeWith": "Suscribirse con {provider}",
-    "openingProvider": "Abriendo {provider}"
+    "openingProvider": "Abriendo {provider}",
+    "waffoTaxNote": "Los precios de Waffo no incluyen impuestos; los impuestos aplicables se añaden al pagar."
   },
   "HomeFaq": {
     "title": "¿Qué debo saber antes de convertir?",
@@ -377,16 +379,16 @@
     "tinyLaunchBadge": "Próximamente en TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Última actualización: 13 de octubre de 2026"
+    "lastUpdated": "Última actualización: 18 de octubre de 2026"
   },
   "Terms": {
     "metadata": {
       "title": "Términos de servicio | Conversor de extractos bancarios",
-      "description": "Consulta cómo StatementXL gestiona archivos, cuotas, suscripciones Creem o PayPal, reembolsos y responsabilidades del usuario."
+      "description": "Consulta cómo StatementXL gestiona archivos, cuotas, suscripciones Creem, PayPal o Waffo, reembolsos y responsabilidades del usuario."
     },
     "title": "Términos de servicio",
     "intro": "Este servicio es operado por ReAvid Ltd y proporcionado a través de <site>{domain}</site>. Lea estos términos y la política de privacidad antes de utilizar los servicios de conversión y suscripción.",
-    "availability": "La conversión de PDF a Excel y las suscripciones a Creem o PayPal se proporcionan según el estado actual de la página. Los precios y la disponibilidad de los planes pueden cambiar según la configuración del servicio.",
+    "availability": "La conversión de PDF a Excel y las suscripciones a Creem, PayPal o Waffo se proporcionan según el estado actual de la página. Los precios y la disponibilidad de los planes pueden cambiar según la configuración del servicio.",
     "service": {
       "title": "Alcance del servicio",
       "body": "El servicio organiza la información de las transacciones desde archivos PDF de extractos bancarios admitidos en archivos de Excel para descargarlos y revisarlos. Los bancos admitidos, los tipos de archivos y los límites de procesamiento se describen en la página del servicio. No proporcionamos conexiones de cuentas bancarias, servicios bancarios ni asesoramiento financiero, fiscal o legal. Primero se usa el análisis habitual. Professional y Enterprise con derechos vigentes pueden recurrir automáticamente al análisis con IA si falla, no está disponible o no devuelve transacciones revisables, incluidos los intentos de convertir escaneos. Los resultados parciales útiles no activan el respaldo."
@@ -401,11 +403,11 @@
     },
     "quota": {
       "title": "Cuotas de conversión",
-      "body": "Sin iniciar sesión puedes convertir {anonymousPages, plural, one {# página} other {# páginas}} PDF al día; con una cuenta gratuita, {authenticatedPages, plural, one {# página} other {# páginas}}. Estándar incluye {standardPages, plural, one {# página} other {# páginas}} al mes, Profesional {professionalPages, number} y Empresa {enterprisePages, number}. La cuota diaria se restablece según UTC y la del plan sigue el período de facturación actual de Creem o PayPal. Las conversiones fallidas no consumen cuota; los resultados parciales se cuentan por las páginas del PDF."
+      "body": "Sin iniciar sesión puedes convertir {anonymousPages, plural, one {# página} other {# páginas}} PDF al día; con una cuenta gratuita, {authenticatedPages, plural, one {# página} other {# páginas}}. Estándar incluye {standardPages, plural, one {# página} other {# páginas}} al mes, Profesional {professionalPages, number} y Empresa {enterprisePages, number}. La cuota diaria se restablece según UTC y la del plan sigue el período de facturación actual de Creem, PayPal o Waffo. Las conversiones fallidas no consumen cuota; los resultados parciales se cuentan por las páginas del PDF."
     },
     "subscription": {
       "title": "Suscripciones y pago",
-      "body": "Standard, Professional y Enterprise se renuevan mensualmente al precio mostrado antes de la compra. Creem es nuestro proveedor de pagos y Merchant of Record (el vendedor legal de la transacción), y gestiona los pagos, los impuestos aplicables y los recibos. Solo se realiza el cargo después de confirmar la compra. Creem envía a este servicio información sobre suscripciones, renovaciones y fallos de pago. Puedes cancelar la renovación automática desde tu cuenta del sitio; el acceso de pago sigue disponible hasta que termine el período de facturación confirmado. En el pago con PayPal, ReAvid Ltd es el vendedor. PayPal procesa los pagos de suscripción y los datos de cuenta relacionados según sus términos y política de privacidad; no es el Merchant of Record de este servicio."
+      "body": "Standard, Professional y Enterprise se renuevan mensualmente al precio mostrado antes de la compra. Creem es nuestro proveedor de pagos y Merchant of Record (el vendedor legal de la transacción), y gestiona los pagos, los impuestos aplicables y los recibos. Solo se realiza el cargo después de confirmar la compra. Creem envía a este servicio información sobre suscripciones, renovaciones y fallos de pago. Puedes cancelar la renovación automática desde tu cuenta del sitio; el acceso de pago sigue disponible hasta que termine el período de facturación confirmado. En el pago con PayPal, ReAvid Ltd es el vendedor. PayPal procesa los pagos de suscripción y los datos de cuenta relacionados según sus términos y política de privacidad; no es el Merchant of Record de este servicio. Al pagar con Waffo, Waffo actúa como Merchant of Record y gestiona los pagos y los impuestos aplicables. Los precios de Waffo no incluyen impuestos; el importe final se muestra al pagar."
     },
     "refunds": {
       "title": "Política de reembolsos",
@@ -448,15 +450,15 @@
       "description": "Tratamiento de extractos, análisis con IA, resultados temporales del navegador y datos de cuenta, operación del análisis, cuota y facturación."
     },
     "title": "Política de privacidad",
-    "intro": "ReAvid Ltd opera <site>{domain}</site>. Esta política explica cómo manejamos la información cuando utiliza los servicios de conversión y suscripción de Creem o PayPal.",
-    "availability": "Esta política se aplica a las funciones de conversión de PDF a Excel, inicio de sesión de cuenta y suscripción de Creem o PayPal disponibles actualmente.",
+    "intro": "ReAvid Ltd opera <site>{domain}</site>. Esta política explica cómo manejamos la información cuando utiliza los servicios de conversión y suscripción de Creem, PayPal o Waffo.",
+    "availability": "Esta política se aplica a las funciones de conversión de PDF a Excel, inicio de sesión de cuenta y suscripción de Creem, PayPal o Waffo disponibles actualmente.",
     "documents": {
       "title": "Extractos bancarios y contenido de conversión",
       "body": "Tu PDF puede contener nombres, números de cuenta, fechas, importes, saldos y descripciones de transacciones sensibles. Procesamos PDF, transacciones extraídas y contenidos exportados solo para la conversión y descarga solicitadas, sin publicidad ni fines ajenos. El tratamiento por terceros durante el respaldo de IA se explica a continuación."
     },
     "accountData": {
       "title": "Información de cuenta, cuota y facturación",
-      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de Creem o PayPal, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. Creem o PayPal maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel. Para los usuarios que han iniciado sesión, también guardamos, en cada intento de análisis, el ID de la cuenta, una copia del correo electrónico, el momento del registro, el último método de análisis seleccionado, el estado de la conversión y los motivos de los fallos de análisis y del recurso a un modelo de IA, para investigar problemas. Estos registros no contienen nombres ni contenidos de archivos, detalles de transacciones ni respuestas del modelo."
+      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de Creem, PayPal o Waffo, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. Creem, PayPal o Waffo maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel. Para los usuarios que han iniciado sesión, también guardamos, en cada intento de análisis, el ID de la cuenta, una copia del correo electrónico, el momento del registro, el último método de análisis seleccionado, el estado de la conversión y los motivos de los fallos de análisis y del recurso a un modelo de IA, para investigar problemas. Estos registros no contienen nombres ni contenidos de archivos, detalles de transacciones ni respuestas del modelo."
     },
     "technicalData": {
       "title": "Información técnica necesaria",
@@ -473,7 +475,7 @@
     },
     "providers": {
       "title": "Proveedores y tratamiento internacional",
-      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. Creem es nuestro proveedor de pagos y Merchant of Record (el vendedor legal de la transacción). Procesa los pagos de suscripciones, los impuestos aplicables, los recibos y los reembolsos exigidos por la ley aplicable, y sincroniza el estado de las suscripciones con este servicio. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. Creem puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones. En el pago con PayPal, ReAvid Ltd es el vendedor. PayPal procesa los pagos de suscripción y los datos de cuenta relacionados según sus términos y política de privacidad; no es el Merchant of Record de este servicio."
+      "body": "El inicio de sesión de la cuenta utiliza Google y Supabase. Creem es nuestro proveedor de pagos y Merchant of Record (el vendedor legal de la transacción). Procesa los pagos de suscripciones, los impuestos aplicables, los recibos y los reembolsos exigidos por la ley aplicable, y sincroniza el estado de las suscripciones con este servicio. La medición de visitas utiliza Google Analytics y Pageview, que pueden procesar información técnica de las visitas según sus términos y políticas de privacidad aplicables. Creem puede procesar información de pago y de cuenta según sus términos y su política de privacidad. Si el procesamiento ocurre a través de fronteras, aplicaremos las salvaguardas requeridas por la ley aplicable y describiremos el acuerdo real. No vendemos extractos bancarios ni información de transacciones. En el pago con PayPal, ReAvid Ltd es el vendedor. PayPal procesa los pagos de suscripción y los datos de cuenta relacionados según sus términos y política de privacidad; no es el Merchant of Record de este servicio. Si eliges Waffo, actúa como proveedor de pagos y Merchant of Record, procesa información de pago y de cuenta y envía actualizaciones de la suscripción a este servicio."
     },
     "storage": {
       "title": "Almacenamiento del navegador",
@@ -626,7 +628,7 @@
     "unverifiableDefinition": "Faltan pruebas clave o la fila no puede verificarse de forma fiable.",
     "limitsTitle": "¿Qué PDF puedo subir?",
     "limitsAnswer": "Sube un extracto bancario PDF de hasta {megabytes} MB y {pages} páginas. Sin sesión, con cuenta gratuita y con Standard se requiere una capa de texto; Professional y Enterprise pueden intentar convertir escaneos. Ningún plan admite archivos protegidos con contraseña.",
-    "pricingAnswer": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Creem o PayPal.",
+    "pricingAnswer": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Creem, PayPal o Waffo.",
     "faqAnswer": "Estas respuestas explican requisitos, cuotas y riesgos. Lee la respuesta pertinente y revisa tu PDF antes de convertirlo.",
     "planHeader": "Plan",
     "priceHeader": "Precio (USD)",
@@ -635,7 +637,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Diario (UTC)",
     "billingPeriod": "Periodo de facturación",
-    "billingNote": "Las suscripciones se renuevan mensualmente con Creem o PayPal. Los fallos no consumen cuota; los resultados parciales cuentan las páginas del PDF original.",
+    "billingNote": "Las suscripciones se renuevan mensualmente con Creem, PayPal o Waffo. Los fallos no consumen cuota; los resultados parciales cuentan las páginas del PDF original.",
     "privacyTitle": "¿Cómo se tratan mis datos?",
     "privacyAnswer": "El contenido se usa solo para la conversión y descarga actuales. Conserva el PDF y Excel porque el servicio no tiene historial de archivos.",
     "browserTitle": "¿Qué se guarda temporalmente en mi navegador?",
@@ -654,7 +656,7 @@
     "chatDescription": "Pregunta a un asistente de IA sobre StatementXL usando nuestras fuentes oficiales.",
     "prompt": "Visita la información oficial de StatementXL: {fullUrl}. Para más detalles, lee {indexUrl} y sigue los enlaces pertinentes. Responde en {language}: explica funciones, pasos, límites de archivos, tratamiento de datos, cuotas gratuitas y precios de suscripción, citando fuentes. Si no puedes acceder a una fuente o no responde, indícalo y no adivines.",
     "showPrompt": "Ver la indicación predeterminada",
-    "metadataAnswer": "Se conservan los metadatos de cuenta, cuota y facturación necesarios para el servicio. Consulta y gestiona tu suscripción en tu cuenta y Creem o PayPal.",
+    "metadataAnswer": "Se conservan los metadatos de cuenta, cuota y facturación necesarios para el servicio. Consulta y gestiona tu suscripción en tu cuenta y Creem, PayPal o Waffo.",
     "analyticsAnswer": "Google Analytics y Pageview pueden procesar información técnica de visitas. Los extractos, transacciones extraídas y contenido Excel no se envían a estos servicios.",
     "parsingHeader": "Capacidad de análisis"
   },

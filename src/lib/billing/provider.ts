@@ -1,6 +1,6 @@
 import type { MembershipTier, SubscriptionStatus } from "./types";
 
-export type PaymentProviderId = "creem" | "paypal";
+export type PaymentProviderId = "creem" | "paypal" | "waffo";
 
 type CheckoutAvailability = { availableTiers: MembershipTier[]; available: boolean };
 
@@ -8,6 +8,7 @@ export type CheckoutConfig = CheckoutAvailability &
   (
     | { provider: "creem"; settings: { environment: "test" | "production" } }
     | { provider: "paypal"; settings: { environment: "sandbox" | "live" } }
+    | { provider: "waffo"; settings: { environment: "test" | "prod" } }
   );
 
 export type CheckoutResult = {
@@ -50,6 +51,7 @@ export type BillingEvent = EventBase &
         paidAt: string;
       }
     | { type: "subscription-status-changed" }
+    | { type: "subscription-resumed" }
   );
 
 export type BillingNotification = {

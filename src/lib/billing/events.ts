@@ -15,6 +15,9 @@ function requireTime(value: string | null): number {
 
 /** 仅接受渠道验签和远端核实后的标准化事件，统一控制持久化及账期演进。 */
 export async function applyBillingEvent(notification: BillingNotification): Promise<"applied" | "ignored"> {
+  if (notification.type === "subscription-resumed") {
+    return resumeCancelledSubscription(notification);
+  }
   if (notification.type === "subscription-paid" || notification.type === "subscription-status-changed") {
     return applyPaidSubscriptionEvent(notification);
   }
@@ -32,6 +35,38 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
     throw new Error("Subscription cancellation is not confirmed");
   }
   return updateBillingSubscriptionFromWebhook(existing, event, { status: "CANCELLED" });
+}
+
+/** 撤销周期末取消只恢复同一已付账期，不创建订阅或改变额度窗口。 */
+async function resumeCancelledSubscription(notification: BillingNotification): Promise<"applied" | "ignored"> {
+  const existing = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
+  if (!existing) {
+    throw new Error("Subscription payment is not stored yet; retry required");
+  }
+  if (
+    existing.last_webhook_event_id === notification.id ||
+    (existing.last_event_at && Date.parse(notification.at) < Date.parse(existing.last_event_at)) ||
+    existing.status !== "CANCELLED"
+  ) {
+    return "ignored";
+  }
+  const event = await notification.resolve();
+  const remote = event.subscription;
+  checkSubscriptionIdentity(existing, remote);
+  if (remote.status !== "ACTIVE") {
+    return "ignored";
+  }
+  const start = requireTime(remote.periodStart);
+  const end = requireTime(remote.periodEnd);
+  if (
+    start !== requireTime(existing.current_period_start) ||
+    end !== requireTime(existing.current_period_end) ||
+    start > Date.now() ||
+    end <= Date.now()
+  ) {
+    throw new Error("Resumed subscription must retain its current paid period");
+  }
+  return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE" });
 }
 
 /** 渠道付款先核实交易，再按已有记录区分首次付款、恢复与续费。 */

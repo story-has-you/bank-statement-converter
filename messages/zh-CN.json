@@ -258,7 +258,7 @@
   },
   "UsageTiers": {
     "title": "套餐价格和转换额度是多少？",
-    "description": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem 或 PayPal 订阅所需档位。",
+    "description": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem、PayPal 或 Waffo 订阅所需档位。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages, number} 页",
     "anonymousDescription": "每天累计可转换 {pages, number} 页 PDF。",
@@ -329,10 +329,12 @@
     "providerUnavailable": "{provider} 支付暂不可用。",
     "providers": {
       "creem": "Creem",
-      "paypal": "PayPal"
+      "paypal": "PayPal",
+      "waffo": "Waffo"
     },
     "subscribeWith": "通过 {provider} 订阅",
-    "openingProvider": "正在打开 {provider}"
+    "openingProvider": "正在打开 {provider}",
+    "waffoTaxNote": "Waffo 为税前价格，适用税费将在结账时计算。"
   },
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",
@@ -377,16 +379,16 @@
     "tinyLaunchBadge": "即将在 TinyLaunch 上线"
   },
   "LegalCommon": {
-    "lastUpdated": "最后更新：2026 年 10 月 13 日"
+    "lastUpdated": "最后更新：2026 年 10 月 18 日"
   },
   "Terms": {
     "metadata": {
       "title": "服务条款 | 流水转换",
-      "description": "了解流水转换的文件处理、使用额度、Creem 或 PayPal 订阅、退款政策与用户责任。"
+      "description": "了解流水转换的文件处理、使用额度、Creem、PayPal 或 Waffo 订阅、退款政策与用户责任。"
     },
     "title": "服务条款",
     "intro": "本服务由 ReAvid Ltd 运营，通过 <site>{domain}</site> 提供。使用网站提供的转换和订阅服务时，请阅读本条款及隐私政策。",
-    "availability": "PDF 转 Excel 和 Creem 或 PayPal 订阅服务按页面当前状态提供；套餐价格和可用状态可能因服务配置变化而调整。",
+    "availability": "PDF 转 Excel 和 Creem、PayPal 或 Waffo 订阅服务按页面当前状态提供；套餐价格和可用状态可能因服务配置变化而调整。",
     "service": {
       "title": "服务范围",
       "body": "服务用于将受支持的银行对账单 PDF 中的流水信息整理为 Excel，供您下载和核对。支持的银行、文件类型及处理限制以服务页面届时公布的信息为准。我们不提供银行账户连接、银行业务或财务、税务、法律建议。所有转换优先使用常规解析。专业和企业套餐在有效权益期内，可在常规解析失败、不可用或没有可核对交易时自动回退至 AI 解析，并尝试转换扫描件；已有可用部分结果时不回退。"
@@ -401,11 +403,11 @@
     },
     "quota": {
       "title": "转换额度",
-      "body": "不登录每天累计可转换 {anonymousPages, number} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages, number} 页 PDF。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。每日额度按 UTC 重置，订阅额度按 Creem 或 PayPal 当前计费周期计算。转换失败不扣额度；部分结果按 PDF 页数扣减额度。"
+      "body": "不登录每天累计可转换 {anonymousPages, number} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages, number} 页 PDF。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。每日额度按 UTC 重置，订阅额度按 Creem、PayPal 或 Waffo 当前计费周期计算。转换失败不扣额度；部分结果按 PDF 页数扣减额度。"
     },
     "subscription": {
       "title": "订阅与付款",
-      "body": "标准、专业和企业套餐按月自动续费，价格会在购买前清楚展示。Creem 是我们的支付服务商和名义销售商（Merchant of Record，即交易的法律销售方），负责付款处理、适用税费和付款凭证。确认购买后才会收费。Creem 向本服务发送订阅、续费和扣款失败信息。可在网站个人账户中取消自动续费；已付权益保留至确认的计费周期结束。 选择 PayPal 结账时，ReAvid Ltd 是销售方，PayPal 根据其条款和隐私政策处理订阅付款及相关账户信息，不担任本服务的名义销售商。"
+      "body": "标准、专业和企业套餐按月自动续费，价格会在购买前清楚展示。Creem 是我们的支付服务商和名义销售商（Merchant of Record，即交易的法律销售方），负责付款处理、适用税费和付款凭证。确认购买后才会收费。Creem 向本服务发送订阅、续费和扣款失败信息。可在网站个人账户中取消自动续费；已付权益保留至确认的计费周期结束。 选择 PayPal 结账时，ReAvid Ltd 是销售方，PayPal 根据其条款和隐私政策处理订阅付款及相关账户信息，不担任本服务的名义销售商。 选择 Waffo 结账时，Waffo 作为名义商户处理付款及适用税费。Waffo 显示价格为税前价，最终金额以结账页为准。"
     },
     "refunds": {
       "title": "退款政策",
@@ -448,15 +450,15 @@
       "description": "了解银行流水、AI 解析、浏览器临时结果，以及账号、解析运维、额度和计费信息的处理方式。"
     },
     "title": "隐私政策",
-    "intro": "ReAvid Ltd 运营 <site>{domain}</site>。本政策说明使用网站的转换和 Creem 或 PayPal 订阅服务时，我们如何处理相关信息。",
-    "availability": "本政策适用于当前开放的 PDF 转 Excel、账号登录和 Creem 或 PayPal 订阅功能。",
+    "intro": "ReAvid Ltd 运营 <site>{domain}</site>。本政策说明使用网站的转换和 Creem、PayPal 或 Waffo 订阅服务时，我们如何处理相关信息。",
+    "availability": "本政策适用于当前开放的 PDF 转 Excel、账号登录和 Creem、PayPal 或 Waffo 订阅功能。",
     "documents": {
       "title": "银行对账单与转换内容",
       "body": "您上传的 PDF 可能包含姓名、账号、交易日期、金额、余额和交易说明等敏感信息。我们仅为完成您请求的转换与下载处理 PDF、提取的流水明细及导出内容，不将这些内容用于广告或其他无关目的。AI 回退涉及的第三方处理见下文。"
     },
     "accountData": {
       "title": "账号、额度与计费信息",
-      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、Creem 或 PayPal 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。Creem 或 PayPal 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。 对已登录用户，我们还会保存每次解析尝试的账号 ID、邮箱快照、记录时间、最后选择的解析方式、转换状态，以及解析失败和大模型回退的原因，用于排查故障。这些记录不包含文件名、文件内容、流水明细或模型输出。"
+      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、Creem、PayPal 或 Waffo 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。Creem、PayPal 或 Waffo 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。 对已登录用户，我们还会保存每次解析尝试的账号 ID、邮箱快照、记录时间、最后选择的解析方式、转换状态，以及解析失败和大模型回退的原因，用于排查故障。这些记录不包含文件名、文件内容、流水明细或模型输出。"
     },
     "technicalData": {
       "title": "必要的技术信息",
@@ -473,7 +475,7 @@
     },
     "providers": {
       "title": "服务提供方与跨境处理",
-      "body": "账号登录使用 Google 和 Supabase，Creem 是我们的支付服务商和名义销售商（Merchant of Record，即交易的法律销售方），负责处理订阅付款、适用税费、付款凭证和依法必须处理的退款，并与本服务同步订阅状态。网站访问统计使用 Google Analytics 和 Pageview，这些服务可能按其适用的服务条款和隐私政策处理访问相关的技术信息。Creem 可能处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。 选择 PayPal 结账时，ReAvid Ltd 是销售方，PayPal 根据其条款和隐私政策处理订阅付款及相关账户信息，不担任本服务的名义销售商。"
+      "body": "账号登录使用 Google 和 Supabase，Creem 是我们的支付服务商和名义销售商（Merchant of Record，即交易的法律销售方），负责处理订阅付款、适用税费、付款凭证和依法必须处理的退款，并与本服务同步订阅状态。网站访问统计使用 Google Analytics 和 Pageview，这些服务可能按其适用的服务条款和隐私政策处理访问相关的技术信息。Creem 可能处理付款及相关账户信息。若发生跨境数据处理，我们会按适用法律要求采取相应保护措施并说明实际安排。我们不会出售银行对账单或流水信息。 选择 PayPal 结账时，ReAvid Ltd 是销售方，PayPal 根据其条款和隐私政策处理订阅付款及相关账户信息，不担任本服务的名义销售商。 选择 Waffo 时，其作为支付服务商及名义商户处理付款和账户信息，并向本服务同步订阅状态。"
     },
     "storage": {
       "title": "浏览器存储",
@@ -626,7 +628,7 @@
     "unverifiableDefinition": "缺少关键证据，或无法可靠核对该行。",
     "limitsTitle": "可以上传哪些银行流水 PDF？",
     "limitsAnswer": "每次上传一个不超过 {megabytes} MB、{pages} 页的银行流水 PDF。匿名、免费和标准套餐要求文字层；专业和企业套餐可尝试扫描件。所有套餐均不支持密码保护文件。",
-    "pricingAnswer": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem 或 PayPal 订阅所需档位。",
+    "pricingAnswer": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem、PayPal 或 Waffo 订阅所需档位。",
     "faqAnswer": "这些答案说明文件要求、转换额度和结果风险。转换前，请阅读与你的问题相关的答案，并检查银行流水 PDF。",
     "planHeader": "套餐",
     "priceHeader": "价格（美元）",
@@ -635,7 +637,7 @@
     "freePrice": "免费",
     "dailyPeriod": "每日（UTC）",
     "billingPeriod": "计费周期",
-    "billingNote": "订阅通过 Creem 或 PayPal 按月自动续费。失败转换不扣额度，部分结果按原始 PDF 页数扣减额度。",
+    "billingNote": "订阅通过 Creem、PayPal 或 Waffo 按月自动续费。失败转换不扣额度，部分结果按原始 PDF 页数扣减额度。",
     "privacyTitle": "网站如何处理我的数据？",
     "privacyAnswer": "银行流水内容仅用于本次转换和下载。请自行保管原始 PDF 和下载的 Excel，因为网站不提供文件历史。",
     "browserTitle": "浏览器会临时保存什么？",
@@ -654,7 +656,7 @@
     "chatDescription": "根据官方资料，向 AI 助手了解 StatementXL。",
     "prompt": "请访问 StatementXL 的官方资料：{fullUrl}。需要补充信息时，读取 {indexUrl} 并跟随相关文档链接。请用{language}说明产品功能、使用步骤、文件限制、数据处理方式、免费额度及订阅价格，并引用来源链接。无法访问资料或资料未说明的内容，请明确指出，不要猜测。",
     "showPrompt": "查看默认提示词",
-    "metadataAnswer": "网站会保留提供服务所需的账户、额度和计费元数据。请在个人账户及 Creem 或 PayPal 中查看和管理订阅信息。",
+    "metadataAnswer": "网站会保留提供服务所需的账户、额度和计费元数据。请在个人账户及 Creem、PayPal 或 Waffo 中查看和管理订阅信息。",
     "analyticsAnswer": "Google Analytics 和 Pageview 可能处理访问相关的技术信息。银行流水、提取的交易和 Excel 内容不会发送到这些统计服务。",
     "parsingHeader": "解析能力"
   },

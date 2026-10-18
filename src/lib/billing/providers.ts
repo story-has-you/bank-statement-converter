@@ -4,8 +4,9 @@ import { BillingError } from "./errors";
 import type { PaymentProvider, PaymentProviderId } from "./provider";
 import { creemProvider } from "./providers/creem/adapter";
 import { paypalProvider } from "./providers/paypal/adapter";
+import { waffoProvider } from "./providers/waffo/adapter";
 
-const providers: PaymentProvider[] = [creemProvider, paypalProvider];
+const providers: PaymentProvider[] = [creemProvider, paypalProvider, waffoProvider];
 
 export function getPaymentProvider(value: unknown): PaymentProvider {
   const provider = providers.find((candidate) => candidate.id === value);

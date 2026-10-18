@@ -54,9 +54,9 @@ pnpm dev --port 3000
 
 Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
 
-## Creem 订阅配置
+## 订阅配置
 
-订阅使用 Creem 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，接口与付款验收说明见 [Creem 支付接入](docs/billing/creem-billing.md)。
+订阅支持 Creem、PayPal 和 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，接口与付款验收说明见 [Creem 支付接入](docs/billing/creem-billing.md)、[PayPal 支付接入](docs/billing/paypal-billing.md) 和 [Waffo 测试支付接入](docs/billing/waffo-billing.md)。Waffo 当前仅本地测试，价格为税前价，适用税费在结账时计算。
 
 `CREEM_PAYMENT_ENABLED` 控制是否接受新建支付：未设置时默认开启；已设置时仅 `true` 开启（忽略首尾空白和大小写），其他值关闭。关闭时隐藏购买按钮，新建订阅返回 HTTP 503。开启但凭据或套餐配置不完整时显示禁用按钮，通过无障碍标签和 title 提示不可用原因。已有订阅的确认、回调与取消继续处理。
 

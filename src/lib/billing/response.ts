@@ -16,7 +16,7 @@ export function isCheckoutResult(value: unknown): value is CheckoutResult {
     return false;
   }
   return (
-    (value.provider === "creem" || value.provider === "paypal") &&
+    (value.provider === "creem" || value.provider === "paypal" || value.provider === "waffo") &&
     "checkoutId" in value &&
     typeof value.checkoutId === "string" &&
     value.checkoutId.length > 0 &&

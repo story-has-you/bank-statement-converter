@@ -1,12 +1,16 @@
 import type { ComponentProps, FC } from "react";
+import { CreditCard } from "lucide-react";
 import type { PaymentProviderId } from "@/lib/billing/provider";
 
 // Brand vector: Creem's official icon.
 // https://www.creem.io/new-branding/Logo/SVG/creem%20logo%20icon_black.svg
 type PaymentProviderIconProps = ComponentProps<"svg"> & { provider: PaymentProviderId };
 
-/** Renders a decorative payment brand icon using the surrounding text color. */
+/** Renders a decorative payment icon using the surrounding text color. */
 const PaymentProviderIcon: FC<PaymentProviderIconProps> = ({ provider, ...props }) => {
+  if (provider === "waffo") {
+    return <CreditCard aria-hidden="true" {...props} />;
+  }
   if (provider === "paypal") {
     return (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

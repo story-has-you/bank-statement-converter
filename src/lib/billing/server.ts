@@ -59,7 +59,7 @@ export async function listBillingSubscriptions(userId: string): Promise<BillingS
   const { data, error } = await admin
     .from("billing_subscriptions")
     .select("*")
-    .in("provider", ["creem", "paypal"])
+    .in("provider", ["creem", "paypal", "waffo"])
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
   if (error) {
@@ -94,7 +94,7 @@ export async function findEntitledBillingSubscription(userId: string): Promise<B
 
 export async function updateBillingSubscriptionFromWebhook(
   subscription: BillingSubscription,
-  event: { id: string; at: string },
+  event: { id: string; at: string; type?: string },
   changes: { status: SubscriptionStatus } | { status?: "ACTIVE"; current_period_start: string; current_period_end: string },
 ): Promise<"applied" | "ignored"> {
   if (subscription.last_webhook_event_id === event.id) {
@@ -105,7 +105,8 @@ export async function updateBillingSubscriptionFromWebhook(
   if (olderEvent && changes.status !== "CANCELLED") {
     return "ignored";
   }
-  if (["CANCELLED", "EXPIRED"].includes(subscription.status)) {
+  const resumingCancellation = event.type === "subscription-resumed" && changes.status === "ACTIVE";
+  if (subscription.status === "EXPIRED" || (subscription.status === "CANCELLED" && !resumingCancellation)) {
     return "ignored";
   }
 
@@ -150,7 +151,7 @@ export async function findOpenBillingSubscription(userId: string): Promise<Billi
   const { data, error } = await admin
     .from("billing_subscriptions")
     .select("*")
-    .in("provider", ["creem", "paypal"])
+    .in("provider", ["creem", "paypal", "waffo"])
     .eq("user_id", userId)
     .in("status", ["APPROVAL_PENDING", "APPROVED", "ACTIVE", "SUSPENDED", "PAYMENT_FAILED"])
     .order("created_at", { ascending: false })
