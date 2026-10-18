@@ -66,7 +66,7 @@
     "multipleFiles": "Un seul PDF peut être traité à la fois.",
     "conversionFailed": "La cause précise de l’échec n’a pas pu être déterminée.",
     "parserUnavailable": "Impossible de joindre le service de conversion.",
-    "quotaExceeded": "Ce PDF contient plus de pages que vous ne pouvez encore en convertir.",
+    "quotaExceeded": "Ce PDF contient {pageCount, plural, one {# page} other {# pages}}, mais il ne vous reste que {remainingPages, plural, one {# page} other {# pages}} à convertir.",
     "quotaUnavailable": "Votre quota de conversion disponible n’a pas pu être déterminé.",
     "removeFile": "Retirer le fichier",
     "quota": "Quota gratuit : {anonymousPages, plural, one {# page} other {# pages}} par jour sans connexion, {authenticatedPages, plural, one {# page} other {# pages}} par jour après connexion",
@@ -86,7 +86,13 @@
     "emptyFile": "Le fichier PDF téléversé est vide.",
     "quotaExhausted": "Vous avez utilisé toutes les pages disponibles pour cette période.",
     "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide.",
-    "aiNotice": "Pour Professional et Enterprise, si l’analyse habituelle échoue, est indisponible ou ne fournit aucune transaction vérifiable, le PDF complet et son nom sont envoyés au fournisseur d’analyse IA selon ses conditions et sa politique de confidentialité. Ce site ne conserve pas durablement le contenu des conversions ; la conservation et l’utilisation par le fournisseur suivent ses politiques."
+    "aiNotice": "Pour Professional et Enterprise, si l’analyse habituelle échoue, est indisponible ou ne fournit aucune transaction vérifiable, le PDF complet et son nom sont envoyés au fournisseur d’analyse IA selon ses conditions et sa politique de confidentialité. Ce site ne conserve pas durablement le contenu des conversions ; la conservation et l’utilisation par le fournisseur suivent ses politiques.",
+    "checking": "Vérification du PDF et du quota",
+    "retryCheck": "Réessayer",
+    "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
+    "tooManyPages": "Ce PDF dépasse la limite de {pages, number} pages par fichier.",
+    "unreadablePdf": "Impossible de lire ce PDF. Veuillez choisir un PDF qui s’ouvre normalement.",
+    "passwordProtectedPdf": "Ce PDF est protégé par un mot de passe. Retirez-le avant de téléverser le fichier."
   },
   "ConversionResult": {
     "metadata": {

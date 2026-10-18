@@ -13,6 +13,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useConversion } from "@/components/conversion/conversion-provider";
+import { usePdfPreflight } from "@/components/conversion/use-pdf-preflight";
 import { clearConversionPayload } from "@/lib/conversion-storage";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
@@ -26,8 +27,17 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     null,
   );
   const [isDragging, setIsDragging] = useState(false);
+  const preflight = usePdfPreflight(file);
+  const errorMessage = error ? t(error, conversionLimits) : preflight.error;
   const conversion = useConversion();
   const isPending = conversion.state.phase === "pending";
+  let statusLabel = t("status");
+  let actionLabel = t("start");
+  if (isPending) {
+    statusLabel = actionLabel = t("converting");
+  } else if (preflight.isChecking) {
+    statusLabel = actionLabel = t("checking");
+  }
 
   useEffect(() => {
     try {
@@ -52,6 +62,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     if (!candidate) {
       return;
     }
+    preflight.cancel();
 
     if (!candidate.name.toLowerCase().endsWith(".pdf") || (candidate.type && candidate.type !== "application/pdf")) {
       setFile(null);
@@ -88,6 +99,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     }
 
     if (event.dataTransfer.files.length > 1) {
+      preflight.cancel();
       setFile(null);
       setError("multipleFiles");
       if (inputRef.current) {
@@ -100,6 +112,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   }
 
   function removeFile() {
+    preflight.cancel();
     setFile(null);
     setError(null);
     if (inputRef.current) {
@@ -107,12 +120,14 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     }
   }
 
-  function startConversion(): void {
-    if (!file || isPending) {
+  async function startConversion(): Promise<void> {
+    if (!file || isPending || !preflight.canConvert) {
       return;
     }
-    conversion.start(file);
-    router.push("/result");
+    if (await preflight.check()) {
+      conversion.start(file);
+      router.push("/result");
+    }
   }
 
   return (
@@ -124,11 +139,11 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
           </h2>
           <p className="text-sm text-muted-foreground">{t("description")}</p>
         </div>
-        <Badge variant="secondary">{isPending ? t("converting") : t("status")}</Badge>
+        <Badge variant="secondary">{statusLabel}</Badge>
       </div>
 
       <FieldGroup>
-        <Field data-invalid={Boolean(error)}>
+        <Field data-invalid={Boolean(errorMessage)}>
           <FieldLabel htmlFor="statement-pdf" className="sr-only">
             {t("fileLabel")}
           </FieldLabel>
@@ -165,7 +180,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             id="statement-pdf"
             type="file"
             accept=".pdf,application/pdf"
-            aria-invalid={Boolean(error)}
+            aria-invalid={Boolean(errorMessage)}
             aria-describedby="pdf-help"
             className="hidden"
             onChange={handleInputChange}
@@ -175,11 +190,18 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
         </Field>
       </FieldGroup>
 
-      {error && (
+      {errorMessage && (
         <Alert variant="destructive" className="mt-4">
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("errorTitle")}</AlertTitle>
-          <AlertDescription>{t(error, conversionLimits)}</AlertDescription>
+          <AlertDescription>
+            {errorMessage}
+            {preflight.canRetry && (
+              <Button type="button" variant="outline" size="sm" onClick={() => void preflight.check()}>
+                {t("retryCheck")}
+              </Button>
+            )}
+          </AlertDescription>
         </Alert>
       )}
 
@@ -191,6 +213,9 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
               {file.name}
             </p>
             <p className="text-xs text-muted-foreground">{formatFileSize(file.size)}</p>
+            {preflight.pageCount !== null && (
+              <p className="text-xs text-muted-foreground">{t("pageCount", { pageCount: preflight.pageCount })}</p>
+            )}
           </div>
           <Button type="button" variant="ghost" size="icon" onClick={removeFile} aria-label={t("removeFile")} title={t("removeFile")}>
             <XIcon data-icon="inline-start" />
@@ -209,9 +234,19 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
           )}
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
-        <Button type="button" size="lg" disabled={!file || isPending} onClick={startConversion} className="w-full sm:w-auto">
-          {isPending ? <LoaderCircleIcon className="animate-spin" data-icon="inline-start" /> : <ArrowRightIcon data-icon="inline-start" />}
-          {isPending ? t("converting") : t("start")}
+        <Button
+          type="button"
+          size="lg"
+          disabled={!preflight.canConvert || isPending || Boolean(error)}
+          onClick={startConversion}
+          className="w-full sm:w-auto"
+        >
+          {isPending || preflight.isChecking ? (
+            <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />
+          ) : (
+            <ArrowRightIcon data-icon="inline-start" />
+          )}
+          {actionLabel}
         </Button>
       </div>
     </section>

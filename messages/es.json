@@ -66,7 +66,7 @@
     "multipleFiles": "Solo puedes procesar un PDF a la vez.",
     "conversionFailed": "No se pudo determinar la causa concreta del fallo.",
     "parserUnavailable": "No se pudo conectar con el servicio de conversión.",
-    "quotaExceeded": "Este PDF tiene más páginas de las que te quedan por convertir.",
+    "quotaExceeded": "Este PDF tiene {pageCount, plural, one {# página} other {# páginas}}, pero solo te quedan {remainingPages, plural, one {# página} other {# páginas}} por convertir.",
     "quotaUnavailable": "No se pudo determinar tu cuota de conversión disponible.",
     "removeFile": "Quitar archivo",
     "quota": "Cuota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} al día sin iniciar sesión, {authenticatedPages, plural, one {# página} other {# páginas}} al día al iniciar sesión",
@@ -86,7 +86,13 @@
     "emptyFile": "El archivo PDF subido está vacío.",
     "quotaExhausted": "Has utilizado todas las páginas disponibles para este periodo.",
     "invalidResponse": "El servicio de conversión devolvió datos en un formato no válido.",
-    "aiNotice": "En Professional y Enterprise, si el análisis habitual falla, no está disponible o no devuelve transacciones revisables, el PDF completo y su nombre se envían al proveedor de análisis con IA según sus condiciones y política de privacidad. Este sitio no guarda de forma permanente el contenido convertido; la conservación y el uso por el proveedor siguen sus políticas."
+    "aiNotice": "En Professional y Enterprise, si el análisis habitual falla, no está disponible o no devuelve transacciones revisables, el PDF completo y su nombre se envían al proveedor de análisis con IA según sus condiciones y política de privacidad. Este sitio no guarda de forma permanente el contenido convertido; la conservación y el uso por el proveedor siguen sus políticas.",
+    "checking": "Comprobando PDF y cuota",
+    "retryCheck": "Volver a comprobar",
+    "pageCount": "{pageCount, plural, one {# página} other {# páginas}}",
+    "tooManyPages": "Este PDF supera el límite de {pages, number} páginas por archivo.",
+    "unreadablePdf": "No se pudo leer el PDF. Elige un PDF que se abra correctamente.",
+    "passwordProtectedPdf": "Este PDF está protegido con contraseña. Elimínala antes de subirlo."
   },
   "ConversionResult": {
     "metadata": {

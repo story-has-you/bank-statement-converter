@@ -66,7 +66,7 @@
     "multipleFiles": "Unggah satu PDF setiap kali.",
     "conversionFailed": "Penyebab spesifik kegagalan tidak dapat ditentukan.",
     "parserUnavailable": "Layanan konversi tidak dapat dihubungi.",
-    "quotaExceeded": "Jumlah halaman PDF ini melebihi sisa halaman yang dapat Anda konversi.",
+    "quotaExceeded": "PDF ini memiliki {pageCount, number} halaman, tetapi kuota konversi Anda hanya tersisa {remainingPages, number} halaman.",
     "quotaUnavailable": "Kuota konversi yang tersedia tidak dapat ditentukan.",
     "removeFile": "Hapus berkas",
     "quota": "Kuota gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} halaman per hari setelah login",
@@ -86,7 +86,13 @@
     "emptyFile": "Berkas PDF yang diunggah kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
     "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
-    "aiNotice": "Untuk Professional dan Enterprise, jika penguraian biasa gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, PDF lengkap dan nama berkas dikirim ke penyedia penguraian AI berdasarkan ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan isi konversi secara permanen; retensi dan penggunaan oleh penyedia mengikuti kebijakannya."
+    "aiNotice": "Untuk Professional dan Enterprise, jika penguraian biasa gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, PDF lengkap dan nama berkas dikirim ke penyedia penguraian AI berdasarkan ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan isi konversi secara permanen; retensi dan penggunaan oleh penyedia mengikuti kebijakannya.",
+    "checking": "Memeriksa PDF dan kuota",
+    "retryCheck": "Periksa lagi",
+    "pageCount": "{pageCount, number} halaman",
+    "tooManyPages": "PDF ini melebihi batas {pages, number} halaman per file.",
+    "unreadablePdf": "PDF tidak dapat dibaca. Pilih PDF yang dapat dibuka dengan normal.",
+    "passwordProtectedPdf": "PDF ini dilindungi kata sandi. Hapus kata sandinya sebelum mengunggah."
   },
   "ConversionResult": {
     "metadata": {

@@ -66,7 +66,7 @@
     "multipleFiles": "Upload één PDF tegelijk.",
     "conversionFailed": "De specifieke oorzaak van de fout kon niet worden vastgesteld.",
     "parserUnavailable": "De conversieservice kon niet worden bereikt.",
-    "quotaExceeded": "Deze PDF bevat meer pagina's dan je nog kunt converteren.",
+    "quotaExceeded": "Deze PDF bevat {pageCount, plural, one {# pagina} other {# pagina’s}}, maar je kunt nog maar {remainingPages, plural, one {# pagina} other {# pagina’s}} converteren.",
     "quotaUnavailable": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "removeFile": "Bestand verwijderen",
     "quota": "Gratis tegoed: {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag zonder inloggen, {authenticatedPages, plural, one {# pagina} other {# pagina's}} per dag na inloggen",
@@ -86,7 +86,13 @@
     "emptyFile": "Het geüploade PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar de aanbieder van AI-analyse gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid."
+    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar de aanbieder van AI-analyse gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid.",
+    "checking": "PDF en tegoed controleren",
+    "retryCheck": "Opnieuw controleren",
+    "pageCount": "{pageCount, plural, one {# pagina} other {# pagina’s}}",
+    "tooManyPages": "Deze PDF overschrijdt de limiet van {pages, number} pagina’s per bestand.",
+    "unreadablePdf": "De PDF kon niet worden gelezen. Kies een PDF die normaal kan worden geopend.",
+    "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord voordat je het bestand uploadt."
   },
   "ConversionResult": {
     "metadata": {

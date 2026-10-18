@@ -66,7 +66,7 @@
     "multipleFiles": "一次只能处理一份 PDF。",
     "conversionFailed": "未能获取具体失败原因。",
     "parserUnavailable": "无法连接转换服务。",
-    "quotaExceeded": "这份 PDF 的页数超过了剩余可转换页数。",
+    "quotaExceeded": "这份 PDF 共 {pageCount, number} 页，当前剩余可转换 {remainingPages, number} 页。",
     "quotaUnavailable": "未能确认当前可用的转换额度。",
     "removeFile": "移除文件",
     "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
@@ -86,7 +86,13 @@
     "emptyFile": "上传的 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
     "invalidResponse": "转换服务返回的数据格式异常。",
-    "aiNotice": "专业和企业套餐在常规解析失败、不可用或没有可核对交易时，会将完整 PDF 和文件名发送至 AI 解析服务提供方处理，适用其服务条款和隐私政策。本站不持久化保存转换内容；供应商的数据留存与使用规则以其政策为准。"
+    "aiNotice": "专业和企业套餐在常规解析失败、不可用或没有可核对交易时，会将完整 PDF 和文件名发送至 AI 解析服务提供方处理，适用其服务条款和隐私政策。本站不持久化保存转换内容；供应商的数据留存与使用规则以其政策为准。",
+    "checking": "正在检查 PDF 和额度",
+    "retryCheck": "重新检查",
+    "pageCount": "共 {pageCount, number} 页",
+    "tooManyPages": "这份 PDF 超过了单个文件最多 {pages, number} 页的限制。",
+    "unreadablePdf": "无法读取这份 PDF，请选择可正常打开的 PDF 文件。",
+    "passwordProtectedPdf": "这份 PDF 已加密，请移除密码后重新上传。"
   },
   "ConversionResult": {
     "metadata": {

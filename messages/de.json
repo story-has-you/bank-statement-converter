@@ -66,7 +66,7 @@
     "multipleFiles": "Es kann jeweils nur ein PDF verarbeitet werden.",
     "conversionFailed": "Die genaue Ursache des Fehlers konnte nicht ermittelt werden.",
     "parserUnavailable": "Der Konvertierungsdienst konnte nicht erreicht werden.",
-    "quotaExceeded": "Diese PDF-Datei enthält mehr Seiten, als Sie noch konvertieren können.",
+    "quotaExceeded": "Diese PDF hat {pageCount, plural, one {# Seite} other {# Seiten}}, aber Sie können nur noch {remainingPages, plural, one {# Seite} other {# Seiten}} konvertieren.",
     "quotaUnavailable": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
     "removeFile": "Datei entfernen",
     "quota": "Kostenloses Kontingent: {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag ohne Anmeldung, {authenticatedPages, plural, one {# Seite} other {# Seiten}} pro Tag nach Anmeldung",
@@ -86,7 +86,13 @@
     "emptyFile": "Die hochgeladene PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "aiNotice": "Wenn die reguläre Analyse bei Professional und Enterprise fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, werden die vollständige PDF und ihr Dateiname gemäß den Bedingungen und der Datenschutzrichtlinie an den KI-Analyseanbieter gesendet. Diese Website speichert Umwandlungsinhalte nicht dauerhaft; für Aufbewahrung und Nutzung beim Anbieter gelten dessen Richtlinien."
+    "aiNotice": "Wenn die reguläre Analyse bei Professional und Enterprise fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, werden die vollständige PDF und ihr Dateiname gemäß den Bedingungen und der Datenschutzrichtlinie an den KI-Analyseanbieter gesendet. Diese Website speichert Umwandlungsinhalte nicht dauerhaft; für Aufbewahrung und Nutzung beim Anbieter gelten dessen Richtlinien.",
+    "checking": "PDF und Kontingent werden geprüft",
+    "retryCheck": "Erneut prüfen",
+    "pageCount": "{pageCount, plural, one {# Seite} other {# Seiten}}",
+    "tooManyPages": "Diese PDF überschreitet das Limit von {pages, number} Seiten pro Datei.",
+    "unreadablePdf": "Die PDF konnte nicht gelesen werden. Bitte wählen Sie eine PDF, die sich normal öffnen lässt.",
+    "passwordProtectedPdf": "Diese PDF ist passwortgeschützt. Entfernen Sie das Passwort vor dem Hochladen."
   },
   "ConversionResult": {
     "metadata": {

@@ -66,7 +66,7 @@
     "multipleFiles": "Upload one PDF at a time.",
     "conversionFailed": "The specific reason for the failure could not be determined.",
     "parserUnavailable": "The conversion service could not be reached.",
-    "quotaExceeded": "This PDF has more pages than you have left to convert.",
+    "quotaExceeded": "This PDF has {pageCount, plural, one {# page} other {# pages}}, but you only have {remainingPages, plural, one {# page} other {# pages}} left to convert.",
     "quotaUnavailable": "Your available conversion quota could not be determined.",
     "removeFile": "Remove file",
     "quota": "Free quota: {anonymousPages, plural, one {# page} other {# pages}} per day without signing in, {authenticatedPages, plural, one {# page} other {# pages}} per day when signed in",
@@ -86,7 +86,13 @@
     "emptyFile": "The uploaded PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "For Professional and Enterprise, if regular parsing fails, is unavailable or yields no reviewable transactions, the complete PDF and its filename are sent to the AI parsing provider under its terms and privacy policy. This website does not persist conversion content; provider retention and use follow its policies."
+    "aiNotice": "For Professional and Enterprise, if regular parsing fails, is unavailable or yields no reviewable transactions, the complete PDF and its filename are sent to the AI parsing provider under its terms and privacy policy. This website does not persist conversion content; provider retention and use follow its policies.",
+    "checking": "Checking PDF and quota",
+    "retryCheck": "Retry check",
+    "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
+    "tooManyPages": "This PDF exceeds the limit of {pages, number} pages per file.",
+    "unreadablePdf": "The PDF could not be read. Please choose a PDF that opens normally.",
+    "passwordProtectedPdf": "This PDF is password protected. Remove its password before uploading."
   },
   "ConversionResult": {
     "metadata": {

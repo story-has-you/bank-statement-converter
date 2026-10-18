@@ -66,7 +66,7 @@
     "multipleFiles": "一度に処理できるPDFは1つです。",
     "conversionFailed": "具体的な失敗の原因を確認できませんでした。",
     "parserUnavailable": "変換サービスに接続できませんでした。",
-    "quotaExceeded": "このPDFのページ数が、残りの変換可能ページ数を超えています。",
+    "quotaExceeded": "この PDF は {pageCount, number} ページですが、変換できる残りのページ数は {remainingPages, number} ページです。",
     "quotaUnavailable": "現在利用できる変換枠を確認できませんでした。",
     "removeFile": "ファイルの選択を解除",
     "quota": "無料枠：匿名は1日{anonymousPages, number}ページ、ログイン後は1日{authenticatedPages, number}ページ",
@@ -86,7 +86,13 @@
     "emptyFile": "アップロードされたPDFファイルは空です。",
     "quotaExhausted": "今期の変換可能ページ数を使い切りました。",
     "invalidResponse": "変換サービスから返されたデータの形式が無効です。",
-    "aiNotice": "ProfessionalとEnterpriseでは通常の解析が失敗、利用不可、または確認可能な取引を返さない場合、PDF全体とファイル名をAI解析サービス提供者へ送信します。同社の利用規約とプライバシーポリシーが適用されます。本サイトは変換内容を永続保存しません。提供元のデータ保存と利用は同社の方針に従います。"
+    "aiNotice": "ProfessionalとEnterpriseでは通常の解析が失敗、利用不可、または確認可能な取引を返さない場合、PDF全体とファイル名をAI解析サービス提供者へ送信します。同社の利用規約とプライバシーポリシーが適用されます。本サイトは変換内容を永続保存しません。提供元のデータ保存と利用は同社の方針に従います。",
+    "checking": "PDF と残りページ数を確認中",
+    "retryCheck": "再確認",
+    "pageCount": "{pageCount, number} ページ",
+    "tooManyPages": "この PDF は、1 ファイルあたり {pages, number} ページの上限を超えています。",
+    "unreadablePdf": "PDF を読み取れませんでした。正常に開ける PDF を選択してください。",
+    "passwordProtectedPdf": "この PDF はパスワードで保護されています。パスワードを解除してからアップロードしてください。"
   },
   "ConversionResult": {
     "metadata": {
