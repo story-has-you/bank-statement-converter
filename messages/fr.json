@@ -371,7 +371,10 @@
     "plans": "Forfaits",
     "faq": "FAQ",
     "terms": "Conditions d'utilisation",
-    "privacy": "Politique de confidentialité"
+    "privacy": "Politique de confidentialité",
+    "twelveTools": "Twelve Tools",
+    "productHuntBadge": "Voir StatementXL sur Product Hunt",
+    "tinyLaunchBadge": "Bientôt sur TinyLaunch"
   },
   "LegalCommon": {
     "lastUpdated": "Dernière mise à jour : 13 octobre 2026"

@@ -371,7 +371,10 @@
     "plans": "Plans",
     "faq": "FAQ",
     "terms": "Terms of service",
-    "privacy": "Privacy policy"
+    "privacy": "Privacy policy",
+    "twelveTools": "Twelve Tools",
+    "productHuntBadge": "Find StatementXL on Product Hunt",
+    "tinyLaunchBadge": "Launching soon on TinyLaunch"
   },
   "LegalCommon": {
     "lastUpdated": "Last updated: October 13, 2026"

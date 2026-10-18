@@ -371,7 +371,10 @@
     "plans": "会员方案",
     "faq": "常见问题",
     "terms": "服务条款",
-    "privacy": "隐私政策"
+    "privacy": "隐私政策",
+    "twelveTools": "Twelve Tools",
+    "productHuntBadge": "在 Product Hunt 查看 StatementXL",
+    "tinyLaunchBadge": "即将在 TinyLaunch 上线"
   },
   "LegalCommon": {
     "lastUpdated": "最后更新：2026 年 10 月 13 日"

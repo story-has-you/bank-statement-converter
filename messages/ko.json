@@ -371,7 +371,10 @@
     "plans": "요금제",
     "faq": "FAQ",
     "terms": "이용약관",
-    "privacy": "개인정보 처리방침"
+    "privacy": "개인정보 처리방침",
+    "twelveTools": "Twelve Tools",
+    "productHuntBadge": "Product Hunt에서 StatementXL 보기",
+    "tinyLaunchBadge": "TinyLaunch에서 곧 출시"
   },
   "LegalCommon": {
     "lastUpdated": "최종 업데이트 날짜: 2026년 10월 13일"
