@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "Quante pagine posso convertire al giorno?",
-      "answer": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} al giorno; dopo l'accesso, {authenticatedPages, plural, one {# pagina} other {# pagine}}. I piani mensili includono {standardPages, plural, one {# pagina} other {# pagine}} per Standard, {professionalPages, number} per Professionale e {enterprisePages, number} per Aziendale."
+      "answer": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} al giorno; dopo l'accesso, {authenticatedPages, plural, one {# pagina} other {# pagine}}. I piani mensili includono {standardPages, plural, one {# pagina} other {# pagine}} per Standard, {professionalPages, number} per Professionale e {enterprisePages, number} per Aziendale. Prima del caricamento, il browser legge localmente il numero di pagine del PDF e chiede al sito la quota residua, senza inviare il PDF né consumare quota. Il file viene caricato quando avvii la conversione; il server verifica comunque file, pagine e quota."
     },
     "scans": {
       "question": "Posso convertire PDF scansionati o crittografati?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Salvate il mio PDF, il file Excel o i movimenti?",
-      "answer": "Il server non conserva PDF, Excel o transazioni in una cronologia permanente. Il browser salva temporaneamente i risultati nella sessione per il flusso attuale. Conserva personalmente il PDF originale ed Excel."
+      "answer": "Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download."
     },
     "failure": {
       "question": "Cosa succede se la conversione non riesce?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Prossimamente su TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Ultimo aggiornamento: 18 ottobre 2026"
+    "lastUpdated": "Ultimo aggiornamento: 19 ottobre 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Controllo dei risultati",
-      "body": "La struttura, la leggibilità e il contenuto dell'estratto conto possono influire sull'estrazione. I risultati possono contenere campi mancanti, duplicati o identificati in modo errato. Confronta Excel con l'estratto conto originale prima di usarlo per contabilità, dichiarazioni, invio di documenti o altre decisioni. Anche l’analisi IA e la conversione di scansioni possono contenere errori od omissioni. Le tabelle mostrate durante la generazione sono anteprime temporanee; superare la convalida finale non garantisce una precisione completa."
+      "body": "La struttura, la leggibilità e il contenuto dell'estratto conto possono influire sull'estrazione. I risultati possono contenere campi mancanti, duplicati o identificati in modo errato. Confronta Excel con l'estratto conto originale prima di usarlo per contabilità, dichiarazioni, invio di documenti o altre decisioni. Anche l’analisi IA e la conversione di scansioni possono contenere errori od omissioni. Le tabelle mostrate durante la generazione sono anteprime temporanee; superare la convalida finale non garantisce una precisione completa. L’uniformazione registra i nomi degli esercenti che confermi manualmente; non ne verifica l’identità e non modifica il testo originale, i riferimenti di origine o i rischi di estrazione. I filtri di rischio riguardano solo l’anteprima; le esportazioni includono tutte le transazioni del risultato."
     },
     "quota": {
       "title": "Limiti di conversione",
-      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem, PayPal o Waffo attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF."
+      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem, PayPal o Waffo attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF. Prima del caricamento, il browser legge localmente il numero di pagine del PDF e chiede al sito la quota residua, senza inviare il PDF né consumare quota. Il file viene caricato quando avvii la conversione; il server verifica comunque file, pagine e quota."
     },
     "subscription": {
       "title": "Abbonamenti e pagamenti",
-      "body": "Standard, Professional ed Enterprise si rinnovano mensilmente al prezzo indicato prima dell’acquisto. Creem è il nostro fornitore di pagamenti e Merchant of Record (il venditore legale della transazione) e gestisce pagamenti, imposte applicabili e ricevute. L’addebito avviene solo dopo la conferma dell’acquisto. Creem invia al servizio informazioni su abbonamenti, rinnovi e pagamenti non riusciti. Puoi annullare il rinnovo automatico dal tuo account sul sito; l’accesso a pagamento rimane disponibile fino alla fine del periodo di fatturazione confermato. Per il pagamento con PayPal, ReAvid Ltd è il venditore. PayPal tratta i pagamenti degli abbonamenti e i dati dell’account correlati secondo i propri termini e informativa sulla privacy, senza essere il Merchant of Record di questo servizio. Per i pagamenti con Waffo, Waffo agisce come Merchant of Record e gestisce i pagamenti e le imposte applicabili. I prezzi Waffo non includono le imposte; il totale viene mostrato al pagamento."
+      "body": "Standard, Professional ed Enterprise si rinnovano mensilmente al prezzo indicato prima dell’acquisto. Creem è il nostro fornitore di pagamenti e Merchant of Record (il venditore legale della transazione) e gestisce pagamenti, imposte applicabili e ricevute. L’addebito avviene solo dopo la conferma dell’acquisto. Creem invia al servizio informazioni su abbonamenti, rinnovi e pagamenti non riusciti. Puoi annullare il rinnovo automatico dal tuo account sul sito; l’accesso a pagamento rimane disponibile fino alla fine del periodo di fatturazione confermato. Per il pagamento con PayPal, ReAvid Ltd è il venditore. PayPal tratta i pagamenti degli abbonamenti e i dati dell’account correlati secondo i propri termini e informativa sulla privacy, senza essere il Merchant of Record di questo servizio. Per i pagamenti con Waffo, Waffo agisce come Merchant of Record e gestisce i pagamenti e le imposte applicabili. I prezzi Waffo non includono le imposte; il totale viene mostrato al pagamento. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito."
     },
     "refunds": {
       "title": "Politica di rimborso",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "File e download",
-      "body": "I PDF caricati, i movimenti estratti e i file Excel generati servono solo alla conversione e al download attuali. Non vengono conservati in un archivio permanente. Conserva l'estratto conto originale e il risultato scaricato; il servizio non consente di scaricare di nuovo i risultati dopo la fine della procedura."
+      "body": "Excel, CSV, JSON, Markdown, TSV e HTML vengono generati nel browser dal risultato finale corrente, inclusi i nomi degli esercenti confermati. Il server non conserva una cronologia persistente di PDF, transazioni estratte o file esportati. Nome del file, risultato e associazioni restano temporaneamente nella sessione di questa scheda per anteprima, ripristino dopo l’aggiornamento e download. Conserva gli estratti originali e i file scaricati; al termine del flusso corrente il servizio non consente di scaricare nuovamente file storici."
     },
     "prohibited": {
       "title": "Usi vietati",
@@ -455,11 +455,11 @@
     "availability": "L'informativa si applica alle funzioni attualmente disponibili di conversione da PDF a Excel, accesso all'account e abbonamenti Creem, PayPal o Waffo.",
     "documents": {
       "title": "Estratti conto e contenuti della conversione",
-      "body": "Il PDF può contenere nomi, numeri di conto, date, importi, saldi e descrizioni di transazioni sensibili. Trattiamo PDF, transazioni estratte e contenuti esportati solo per la conversione e il download richiesti, senza finalità pubblicitarie o estranee. Il trattamento da parte di terzi durante il passaggio all’IA è spiegato di seguito."
+      "body": "Il PDF può contenere nomi, numeri di conto, date, importi, saldi e descrizioni di transazioni sensibili. Trattiamo PDF, transazioni estratte e contenuti esportati solo per la conversione e il download richiesti, senza finalità pubblicitarie o estranee. Il trattamento da parte di terzi durante il passaggio all’IA è spiegato di seguito. Prima del caricamento, il browser legge localmente il numero di pagine del PDF e chiede al sito la quota residua, senza inviare il PDF né consumare quota. Il file viene caricato quando avvii la conversione; il server verifica comunque file, pagine e quota."
     },
     "accountData": {
       "title": "Dati di account, utilizzo e fatturazione",
-      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem, PayPal o Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem, PayPal o Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti che hanno effettuato l’accesso, conserviamo inoltre, per ogni tentativo di analisi, l’ID dell’account, una copia dell’indirizzo e-mail, l’ora di registrazione, l’ultimo metodo di analisi selezionato, lo stato della conversione e i motivi degli errori di analisi e del ricorso a un modello di IA, per indagare sui problemi. Questi record non contengono nomi o contenuti dei file, dettagli delle transazioni o output del modello."
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem, PayPal o Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem, PayPal o Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti che hanno effettuato l’accesso, conserviamo inoltre, per ogni tentativo di analisi, l’ID dell’account, una copia dell’indirizzo e-mail, l’ora di registrazione, l’ultimo metodo di analisi selezionato, lo stato della conversione e i motivi degli errori di analisi e del ricorso a un modello di IA, per indagare sui problemi. Questi record non contengono nomi o contenuti dei file, dettagli delle transazioni o output del modello. Per creare il pagamento inviamo al fornitore scelto il piano selezionato e un identificativo che lo collega all’account. Creem e Waffo ricevono anche l’e-mail dell’account del sito; PayPal gestisce i dati di pagamento tramite il proprio percorso di account. I metadati di fatturazione possono includere anche gli identificativi del piano e del pagatore presso il fornitore, importo e valuta, importo originale, importo e identificativo dello sconto e identificativi degli eventi di pagamento."
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Archiviazione nel browser",
-      "body": "Il sito usa l'archiviazione locale del browser per ricordare le preferenze di aspetto e i cookie di sessione necessari a mantenere l'accesso. I servizi di analisi possono usare cookie o identificatori simili per misurare le visite. Puoi gestirli nelle impostazioni del browser. Il flusso corrente conserva anche temporaneamente il nome del file e i risultati estratti nella memoria di sessione del browser per anteprima e download. Non si tratta di una cronologia permanente sul server."
+      "body": "Il sito usa l'archiviazione locale del browser per ricordare le preferenze di aspetto e i cookie di sessione necessari a mantenere l'accesso. I servizi di analisi possono usare cookie o identificatori simili per misurare le visite. Puoi gestirli nelle impostazioni del browser. Il flusso corrente conserva anche temporaneamente il nome del file e i risultati estratti nella memoria di sessione del browser per anteprima e download. Non si tratta di una cronologia permanente sul server. Anche le colonne di origine scelte per gli esercenti, le associazioni degli alias e i nomi uniformati confermati vengono salvati con il risultato corrente nello spazio di sessione di questa scheda. Si possono recuperare dopo un aggiornamento e vengono cancellati insieme al risultato avviando un’altra conversione o eliminando quella corrente. Non sono salvati sul server né riutilizzati tra file; l’uniformazione non invia ulteriori richieste al modello."
     },
     "security": {
       "title": "Sicurezza delle informazioni",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "In breve",
-    "conversionSummary": "StatementXL trasforma gli estratti conto PDF in Excel da verificare. Professional ed Enterprise possono provare a convertire PDF scansionati con il supporto IA.",
+    "conversionSummary": "StatementXL trasforma gli estratti conto PDF in Excel da verificare. Professional ed Enterprise possono provare a convertire PDF scansionati con il supporto IA. Filtra i rischi, uniforma manualmente i nomi degli esercenti ed esporta in Excel, CSV, JSON, Markdown, TSV o HTML.",
     "limitsSummary": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
     "quotaSummary": "Converti {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine con accesso; i piani mensili partono da {price} USD.",
     "privacySummary": "Questo sito non conserva PDF, Excel o transazioni in una cronologia permanente. Il passaggio all’IA nei piani superiori invia il PDF al fornitore di analisi IA. Verifica i risultati con l’originale.",
     "featuresAnswer": "Si usa prima l’analisi ordinaria. Professional ed Enterprise passano all’analisi IA se fallisce, non è disponibile o non produce transazioni verificabili. I risultati parziali utilizzabili vengono mantenuti senza passare all’IA. Le tabelle IA sono visibili durante la generazione; il download richiede la convalida finale. Verifica i risultati con il PDF originale.",
     "riskTitle": "Cosa significano le etichette di rischio?",
-    "riskAnswer": "Le etichette descrivono le prove disponibili per ogni riga estratta. Confronta le righe segnalate con il PDF originale prima dell’uso.",
+    "riskAnswer": "Le etichette descrivono le prove disponibili per ogni riga estratta. Confronta le righe segnalate con il PDF originale prima dell’uso. I filtri di rischio modificano solo l’anteprima; uniformazione ed esportazioni continuano a includere tutte le transazioni del risultato.",
     "okDefinition": "Nessun problema rilevato; non garantisce accuratezza o completezza.",
     "discrepancyDefinition": "Sono state rilevate prove contrastanti o la necessità di verifica.",
     "unverifiableDefinition": "Mancano prove essenziali o la riga non è verificabile in modo affidabile.",
     "limitsTitle": "Quali PDF posso caricare?",
-    "limitsAnswer": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
-    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem, PayPal o Waffo.",
+    "limitsAnswer": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password. Prima del caricamento, il browser legge localmente il numero di pagine del PDF e chiede al sito la quota residua, senza inviare il PDF né consumare quota. Il file viene caricato quando avvii la conversione; il server verifica comunque file, pagine e quota.",
+    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem, PayPal o Waffo. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito.",
     "faqAnswer": "Queste risposte spiegano requisiti, quote e rischi. Leggi la risposta pertinente e controlla il PDF prima della conversione.",
     "planHeader": "Piano",
     "priceHeader": "Prezzo (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Giornaliero (UTC)",
     "billingPeriod": "Periodo di fatturazione",
-    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Creem, PayPal o Waffo. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale.",
+    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Creem, PayPal o Waffo. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito. I prezzi Waffo sono al netto delle imposte; le imposte applicabili e il totale finale sono mostrati al pagamento.",
     "privacyTitle": "Come vengono trattati i miei dati?",
     "privacyAnswer": "Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
     "browserTitle": "Cosa viene salvato temporaneamente nel browser?",
-    "browserAnswer": "I risultati estratti sono salvati temporaneamente nella memoria di sessione del browser per il flusso attuale. Non è una cronologia sul server.",
+    "browserAnswer": "Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download.",
     "metadataTitle": "Quali dati di account e fatturazione vengono conservati?",
     "siteTitle": "Dove trovo le informazioni sul sito?",
-    "siteAnswer": "La home include conversione, piani e FAQ. Segui i link per le informazioni pubbliche; account e risultati sono schermate del flusso operativo.",
+    "siteAnswer": "StatementXL converte estratti conto PDF in tabelle da verificare, con filtri di rischio, uniformazione manuale degli esercenti e sei formati di esportazione. La home offre conversione, piani e FAQ; panoramica del prodotto, prezzi e documenti sulla privacy descrivono funzionalità e limiti. Gestisci gli abbonamenti nell’account, verifica e scarica dalla pagina dei risultati e usa il collegamento di contatto per l’assistenza.",
     "agentsTitle": "Agents",
     "agentsDescription": "Leggi le informazioni ufficiali del prodotto in Markdown.",
     "indexLabel": "Panoramica del prodotto",
@@ -659,7 +659,9 @@
     "showPrompt": "Visualizza il prompt predefinito",
     "metadataAnswer": "Vengono conservati i metadati di account, quota e fatturazione necessari al servizio. Consulta e gestisci l’abbonamento nel tuo account e in Creem, PayPal o Waffo.",
     "analyticsAnswer": "Google Analytics e Pageview possono elaborare informazioni tecniche sulle visite. Estratti conto, transazioni estratte e contenuti Excel non vengono inviati a questi servizi.",
-    "parsingHeader": "Funzioni di analisi"
+    "parsingHeader": "Funzioni di analisi",
+    "merchantTitle": "Come posso uniformare i nomi degli esercenti?",
+    "merchantAnswer": "In ogni tabella del risultato finale scegli una colonna di nomi o descrizioni. I testi originali identici vengono raggruppati tra le tabelle di questo file per confermare, rinominare o rimuovere manualmente gli alias. Testo originale, ordine, fonti e rischi di estrazione restano invariati; non si deduce l’identità dell’esercente e non si fanno ulteriori richieste al modello. I nomi confermati e uno stato separato compaiono nell’anteprima e in tutti e sei i formati di esportazione. In JSON i campi sono merchantName e merchantNormalizationStatus: i nomi non assegnati sono null con stato unassigned, quelli assegnati hanno stato confirmed. Le associazioni restano temporaneamente con il risultato nella sessione di questa scheda e non sono riutilizzate per un altro file. Rimuoverle tutte ripristina i campi di esportazione originali."
   },
   "BillingReturn": {
     "title": "Conferma abbonamento",

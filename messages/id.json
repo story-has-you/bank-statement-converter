@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "Berapa halaman yang dapat dikonversi per hari?",
-      "answer": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman per hari; setelah login, {authenticatedPages, number} halaman. Paket bulanan mencakup {standardPages, number} halaman untuk Standar, {professionalPages, number} untuk Profesional, dan {enterprisePages, number} untuk Perusahaan."
+      "answer": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman per hari; setelah login, {authenticatedPages, number} halaman. Paket bulanan mencakup {standardPages, number} halaman untuk Standar, {professionalPages, number} untuk Profesional, dan {enterprisePages, number} untuk Perusahaan. Sebelum unggah, browser membaca jumlah halaman PDF secara lokal dan meminta sisa kuota Anda ke situs ini, tanpa mengirim PDF atau memakai kuota. File diunggah saat Anda memulai konversi; server tetap memvalidasi file, halaman, dan kuota."
     },
     "scans": {
       "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
-      "answer": "Server tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Browser menyimpan hasil sementara di sesi untuk alur saat ini. Simpan sendiri PDF asli dan Excel yang diunduh."
+      "answer": "Server tidak menyimpan riwayat permanen PDF, ekspor, atau transaksi. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda."
     },
     "failure": {
       "question": "Apa yang terjadi jika konversi gagal?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Segera hadir di TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 18 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 19 Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Memeriksa hasil konversi",
-      "body": "Tata letak, kejelasan, dan isi rekening koran dapat memengaruhi ekstraksi. Hasil dapat memuat kolom yang hilang, ganda, atau salah dikenali. Bandingkan Excel dengan rekening koran asli sebelum pembukuan, pelaporan, pengajuan dokumen, atau keputusan lain. Penguraian AI dan konversi hasil pindai juga dapat menghasilkan kesalahan atau kelalaian. Tabel yang ditampilkan saat dibuat adalah pratinjau sementara; lolos validasi akhir tidak menjamin ketepatan penuh."
+      "body": "Tata letak, kejelasan, dan isi rekening koran dapat memengaruhi ekstraksi. Hasil dapat memuat kolom yang hilang, ganda, atau salah dikenali. Bandingkan Excel dengan rekening koran asli sebelum pembukuan, pelaporan, pengajuan dokumen, atau keputusan lain. Penguraian AI dan konversi hasil pindai juga dapat menghasilkan kesalahan atau kelalaian. Tabel yang ditampilkan saat dibuat adalah pratinjau sementara; lolos validasi akhir tidak menjamin ketepatan penuh. Penyeragaman mencatat nama merchant yang Anda konfirmasi secara manual; fitur ini tidak memverifikasi identitas merchant atau mengubah teks asli, rujukan sumber, maupun risiko ekstraksi. Filter risiko hanya memengaruhi pratinjau; ekspor memuat semua transaksi dalam hasil."
     },
     "quota": {
       "title": "Kuota konversi",
-      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem, PayPal atau Waffo saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF."
+      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem, PayPal atau Waffo saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF. Sebelum unggah, browser membaca jumlah halaman PDF secara lokal dan meminta sisa kuota Anda ke situs ini, tanpa mengirim PDF atau memakai kuota. File diunggah saat Anda memulai konversi; server tetap memvalidasi file, halaman, dan kuota."
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
-      "body": "Standard, Professional, dan Enterprise diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi), yang menangani pembayaran, pajak yang berlaku, dan bukti pembayaran. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Creem mengirimkan informasi langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini. Untuk pembayaran melalui Waffo, Waffo bertindak sebagai Merchant of Record dan menangani pembayaran serta pajak yang berlaku. Harga Waffo belum termasuk pajak; jumlah akhir ditampilkan saat pembayaran."
+      "body": "Standard, Professional, dan Enterprise diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Creem adalah penyedia pembayaran kami dan Merchant of Record (penjual yang sah dalam transaksi), yang menangani pembayaran, pajak yang berlaku, dan bukti pembayaran. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Creem mengirimkan informasi langganan, perpanjangan, dan kegagalan pembayaran ke layanan ini. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi. Untuk pembayaran melalui PayPal, ReAvid Ltd adalah penjualnya. PayPal memproses pembayaran langganan dan informasi akun terkait sesuai ketentuan dan kebijakan privasinya, bukan sebagai Merchant of Record layanan ini. Untuk pembayaran melalui Waffo, Waffo bertindak sebagai Merchant of Record dan menangani pembayaran serta pajak yang berlaku. Harga Waffo belum termasuk pajak; jumlah akhir ditampilkan saat pembayaran. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs."
     },
     "refunds": {
       "title": "Kebijakan pengembalian dana",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "Berkas dan unduhan",
-      "body": "PDF yang diunggah, transaksi yang diekstrak, dan Excel yang dihasilkan hanya digunakan untuk konversi dan unduhan saat ini. Data tidak disimpan sebagai riwayat berkas permanen. Simpan sendiri rekening koran asli dan hasil unduhan; layanan tidak menyediakan unduhan ulang setelah proses berakhir."
+      "body": "Excel, CSV, JSON, Markdown, TSV, dan HTML dibuat di browser dari hasil akhir saat ini, termasuk nama merchant yang dikonfirmasi. Server tidak menyimpan riwayat permanen PDF, transaksi yang diekstrak, atau file ekspor. Nama file, hasil, dan pemetaan merchant disimpan sementara dalam sesi tab ini untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Simpan laporan asli dan unduhan Anda; layanan tidak menyediakan unduhan ulang file historis setelah alur saat ini berakhir."
     },
     "prohibited": {
       "title": "Penyalahgunaan yang dilarang",
@@ -455,11 +455,11 @@
     "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan Creem, PayPal atau Waffo yang tersedia saat ini.",
     "documents": {
       "title": "Rekening koran dan isi konversi",
-      "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Pemrosesan pihak ketiga saat beralih ke AI dijelaskan di bawah."
+      "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Pemrosesan pihak ketiga saat beralih ke AI dijelaskan di bawah. Sebelum unggah, browser membaca jumlah halaman PDF secara lokal dan meminta sisa kuota Anda ke situs ini, tanpa mengirim PDF atau memakai kuota. File diunggah saat Anda memulai konversi; server tetap memvalidasi file, halaman, dan kuota."
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem, PayPal atau Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem, PayPal atau Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem, PayPal atau Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem, PayPal atau Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami juga menyimpan ID akun, salinan email saat itu, waktu pencatatan, metode parsing terakhir yang dipilih, status konversi, serta alasan kegagalan parsing dan peralihan ke model AI untuk setiap upaya parsing guna menyelidiki masalah. Catatan ini tidak berisi nama file, isi file, rincian transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Creem dan Waffo juga menerima email akun situs; PayPal menangani rincian pembayaran melalui alur akunnya sendiri. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Penyimpanan browser",
-      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser. Alur konversi saat ini juga menyimpan sementara nama berkas dan hasil ekstraksi dalam penyimpanan sesi browser untuk pratinjau dan unduhan. Ini bukan riwayat berkas permanen di server."
+      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser. Alur konversi saat ini juga menyimpan sementara nama berkas dan hasil ekstraksi dalam penyimpanan sesi browser untuk pratinjau dan unduhan. Ini bukan riwayat berkas permanen di server. Kolom sumber merchant yang dipilih, pemetaan alias, dan nama merchant baku yang dikonfirmasi juga disimpan bersama hasil saat ini dalam penyimpanan sesi tab ini. Data dapat dipulihkan setelah memuat ulang dan dihapus bersama hasil saat Anda memulai konversi baru atau membersihkan hasil. Data tidak disimpan di server atau dipakai ulang antarfile; penyeragaman nama tidak membuat permintaan model tambahan."
     },
     "security": {
       "title": "Keamanan informasi",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "Ringkasan utama",
-    "conversionSummary": "StatementXL mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI cadangan.",
+    "conversionSummary": "StatementXL mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI cadangan. Filter risiko, seragamkan nama merchant secara manual, dan ekspor ke Excel, CSV, JSON, Markdown, TSV, atau HTML.",
     "limitsSummary": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "quotaSummary": "Konversikan {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk; paket bulanan mulai {price} USD.",
     "privacySummary": "Situs ini tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Saat paket tingkat atas beralih ke AI, PDF dikirim ke penyedia penguraian AI. Periksa hasil dengan PDF asli.",
     "featuresAnswer": "Penguraian biasa dijalankan terlebih dahulu. Professional dan Enterprise beralih ke penguraian AI jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa. Hasil sebagian yang berguna dipertahankan tanpa beralih ke AI. Tabel AI dapat dilihat saat dibuat; unduhan memerlukan validasi akhir. Periksa hasil dengan PDF asli.",
     "riskTitle": "Apa arti label risiko?",
-    "riskAnswer": "Label menjelaskan bukti yang tersedia pada setiap baris hasil ekstraksi. Cocokkan baris bertanda dengan PDF asli sebelum menggunakan hasil.",
+    "riskAnswer": "Label menjelaskan bukti yang tersedia pada setiap baris hasil ekstraksi. Cocokkan baris bertanda dengan PDF asli sebelum menggunakan hasil. Filter risiko hanya mengubah pratinjau; penyeragaman dan ekspor tetap mencakup semua transaksi dalam hasil.",
     "okDefinition": "Tidak ada masalah terdeteksi; ini tidak menjamin ketepatan atau kelengkapan.",
     "discrepancyDefinition": "Bukti yang bertentangan atau masalah yang perlu ditinjau terdeteksi.",
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
     "limitsTitle": "PDF apa yang dapat diunggah?",
-    "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
-    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo.",
+    "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket. Sebelum unggah, browser membaca jumlah halaman PDF secara lokal dan meminta sisa kuota Anda ke situs ini, tanpa mengirim PDF atau memakai kuota. File diunggah saat Anda memulai konversi; server tetap memvalidasi file, halaman, dan kuota.",
+    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
     "priceHeader": "Harga (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Harian (UTC)",
     "billingPeriod": "Periode tagihan",
-    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem, PayPal atau Waffo. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli.",
+    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem, PayPal atau Waffo. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs. Harga Waffo belum termasuk pajak; pajak yang berlaku dan total akhir ditampilkan saat checkout.",
     "privacyTitle": "Bagaimana data saya diproses?",
     "privacyAnswer": "Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
     "browserTitle": "Apa yang disimpan sementara di browser?",
-    "browserAnswer": "Hasil ekstraksi disimpan sementara di penyimpanan sesi browser untuk alur saat ini. Ini berbeda dari riwayat berkas di server.",
+    "browserAnswer": "Server tidak menyimpan riwayat permanen PDF, ekspor, atau transaksi. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda.",
     "metadataTitle": "Data akun dan tagihan apa yang disimpan?",
     "siteTitle": "Di mana informasi situs dapat ditemukan?",
-    "siteAnswer": "Beranda memuat konversi, paket, dan pertanyaan umum. Ikuti tautan untuk informasi publik; halaman akun dan hasil adalah layar alur penggunaan.",
+    "siteAnswer": "StatementXL mengubah PDF rekening koran menjadi tabel untuk diperiksa, dengan filter risiko, penyeragaman nama merchant secara manual, dan enam format ekspor. Beranda menyediakan konversi, paket, dan FAQ; ikhtisar produk, harga, dan dokumen privasi menjelaskan kemampuan dan batasan. Kelola langganan di halaman akun, periksa dan unduh di halaman hasil, serta gunakan tautan kontak untuk dukungan.",
     "agentsTitle": "Agents",
     "agentsDescription": "Baca informasi produk resmi dalam Markdown.",
     "indexLabel": "Ikhtisar produk",
@@ -659,7 +659,9 @@
     "showPrompt": "Lihat prompt bawaan",
     "metadataAnswer": "Metadata akun, kuota, dan tagihan yang diperlukan untuk layanan disimpan. Tinjau dan kelola langganan di akun Anda dan Creem, PayPal atau Waffo.",
     "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
-    "parsingHeader": "Kemampuan penguraian"
+    "parsingHeader": "Kemampuan penguraian",
+    "merchantTitle": "Bagaimana menyeragamkan nama merchant?",
+    "merchantAnswer": "Pada setiap tabel hasil akhir, pilih kolom nama atau deskripsi. Teks sumber yang persis sama dikelompokkan lintas tabel dalam file ini untuk mengonfirmasi, mengganti nama, atau menghapus alias secara manual. Teks asli, urutan, sumber, dan risiko ekstraksi tetap utuh; identitas merchant tidak disimpulkan dan model tidak dipanggil lagi. Nama yang dikonfirmasi dan status terpisah muncul dalam pratinjau dan keenam format ekspor. Pada JSON, bidangnya adalah merchantName dan merchantNormalizationStatus: nama yang belum ditetapkan bernilai null dengan status unassigned, sedangkan yang sudah ditetapkan berstatus confirmed. Pemetaan disimpan sementara bersama hasil dalam sesi tab ini dan tidak dipakai ulang pada file lain. Menghapus semua pemetaan mengembalikan bidang ekspor asli."
   },
   "BillingReturn": {
     "title": "Konfirmasi langganan",

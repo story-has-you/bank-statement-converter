@@ -29,20 +29,29 @@ export async function getAgentDocumentResponse(locale: string, document: string)
     "index.md":
       `## ${c.features.title}\n\n${c.features.answer}\n\n` +
       c.features.items.map((item) => `### ${item.title}\n\n${item.answer}`).join("\n\n") +
+      `\n\n## ${c.merchants.title}\n\n${c.merchants.answer}` +
       `\n\n## ${c.limits.title}\n\n${c.limits.answer}\n\n` +
       `## ${c.risks.title}\n\n${c.risks.answer}\n\n` +
       c.risks.items.map((risk) => `> **${risk.code}**: ${risk.definition}`).join("\n\n"),
     "pricing.md":
       `## ${c.pricing.title}\n\n${c.pricing.answer}\n\n` +
       `| ${c.pricing.headers.map(tableCell).join(" | ")} |\n| ${c.pricing.headers.map(() => "---").join(" | ")} |\n` +
-      c.pricing.rows.map((row) => `| ${[row.name, row.formattedPrice, row.pages, row.period, row.parsing].map(tableCell).join(" | ")} |`).join("\n") +
-      `\n\n${c.pricing.note}`,
+      c.pricing.rows
+        .map((row) => `| ${[row.name, row.formattedPrice, row.pages, row.period, row.parsing].map(tableCell).join(" | ")} |`)
+        .join("\n") +
+      `\n\n${c.pricing.note}\n\n` +
+      `## ${c.pricing.subscriptionTitle}\n\n${c.pricing.subscription}\n\n` +
+      `## ${c.pricing.refundsTitle}\n\n${c.pricing.refunds.join("\n\n")}`,
     "privacy.md":
-      `## ${c.privacy.title}\n\n${c.privacy.answer}\n\n${c.privacy.documents}\n\n` +
+      `## ${c.privacy.title}\n\n${c.privacy.answer}\n\n${c.privacy.processing}\n\n${c.privacy.documents}\n\n` +
       `## ${c.privacy.aiTitle}\n\n${c.privacy.aiAnswer}\n\n` +
+      `## ${c.privacy.providersTitle}\n\n${c.privacy.providersAnswer}\n\n` +
       `## ${c.privacy.browserTitle}\n\n${c.privacy.browserAnswer}\n\n` +
       `## ${c.privacy.metadataTitle}\n\n${c.privacy.metadataAnswer}\n\n${c.privacy.metadataRetention}\n\n${c.privacy.technicalData}`,
-    "site.md": `## ${c.site.title}\n\n${c.site.answer}\n\n` + c.site.links.map((link) => `- [${link.name}](${link.href})`).join("\n") + `\n\n${c.languagesLabel}\n\n${languageLinks}`,
+    "site.md":
+      `## ${c.site.title}\n\n${c.site.answer}\n\n` +
+      c.site.links.map((link) => `- [${link.name}](${link.href})`).join("\n") +
+      `\n\n${c.languagesLabel}\n\n${languageLinks}`,
   };
   let body: string;
   if (name === "llms.txt") {

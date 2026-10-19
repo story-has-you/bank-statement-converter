@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "Wie viele Seiten kann ich pro Tag konvertieren?",
-      "answer": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, nach der Anmeldung {authenticatedPages, plural, one {# Seite} other {# Seiten}}. Die Monatstarife umfassen {standardPages, plural, one {# Seite} other {# Seiten}} für Standard, {professionalPages, plural, one {# Seite} other {# Seiten}} für Professional und {enterprisePages, plural, one {# Seite} other {# Seiten}} für Unternehmen."
+      "answer": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, nach der Anmeldung {authenticatedPages, plural, one {# Seite} other {# Seiten}}. Die Monatstarife umfassen {standardPages, plural, one {# Seite} other {# Seiten}} für Standard, {professionalPages, plural, one {# Seite} other {# Seiten}} für Professional und {enterprisePages, plural, one {# Seite} other {# Seiten}} für Unternehmen. Vor dem Hochladen liest Ihr Browser die PDF-Seitenzahl lokal aus und fragt bei dieser Website Ihr Restkontingent ab. Dabei wird weder das PDF übertragen noch Kontingent verbraucht. Erst beim Start der Konvertierung wird die Datei hochgeladen; der Server prüft Datei, Seitenzahl und Kontingent abschließend."
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
-      "answer": "Der Server speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhaften Dateiverlauf. Der Browser hält extrahierte Ergebnisse vorübergehend im Sitzungsspeicher für den aktuellen Ablauf. Bewahren Sie Original-PDF und Excel selbst auf."
+      "answer": "Der Server speichert PDFs, Exporte und Transaktionen nicht als dauerhaften Verlauf. Im Sitzungsspeicher dieses Tabs liegen vorübergehend Dateiname, extrahiertes Ergebnis, gewählte Händlerspalten und Aliaszuordnungen samt bestätigten Namen für Vorschau, Wiederherstellung nach dem Neuladen und Download. Eine neue Konvertierung oder das Löschen des Ergebnisses entfernt diese Daten; Zuordnungen werden nicht für andere Dateien verwendet. Bewahren Sie Original-PDF und Downloads selbst auf."
     },
     "failure": {
       "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Demnächst auf TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Letzte Aktualisierung: 18. Oktober 2026"
+    "lastUpdated": "Letzte Aktualisierung: 19. Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Überprüfung der Konvertierungsergebnisse",
-      "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen. Auch KI-Analyse und Scan-Umwandlung können Fehler oder Auslassungen enthalten. Während der Erstellung angezeigte Tabellen sind vorläufige Vorschauen; die abschließende Validierung garantiert keine vollständige Genauigkeit."
+      "body": "Das Layout, die Klarheit und der Inhalt der Anweisung können sich auf die Extraktion auswirken. Die Ergebnisse können fehlende, doppelte oder falsch identifizierte Felder enthalten. Vergleichen Sie die Excel-Datei mit der Originalabrechnung, bevor Sie Buchhaltung führen, Unterlagen einreichen, Materialien einreichen oder eine andere Entscheidung treffen. Auch KI-Analyse und Scan-Umwandlung können Fehler oder Auslassungen enthalten. Während der Erstellung angezeigte Tabellen sind vorläufige Vorschauen; die abschließende Validierung garantiert keine vollständige Genauigkeit. Die Vereinheitlichung erfasst von Ihnen manuell bestätigte Händlernamen und prüft keine Händleridentität. Originaltext, Quellenangaben und Extraktionsrisiken bleiben unverändert. Risikofilter betreffen nur die Vorschau; Exporte enthalten alle Transaktionen des Ergebnisses."
     },
     "quota": {
       "title": "Konvertierungskontingente",
-      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Creem, PayPal oder Waffo-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten."
+      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Creem, PayPal oder Waffo-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten. Vor dem Hochladen liest Ihr Browser die PDF-Seitenzahl lokal aus und fragt bei dieser Website Ihr Restkontingent ab. Dabei wird weder das PDF übertragen noch Kontingent verbraucht. Erst beim Start der Konvertierung wird die Datei hochgeladen; der Server prüft Datei, Seitenzahl und Kontingent abschließend."
     },
     "subscription": {
       "title": "Abonnements und Zahlung",
-      "body": "Standard, Professional und Enterprise verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion) und übernimmt Zahlungen, anfallende Steuern und Zahlungsbelege. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Creem übermittelt Informationen zu Abonnements, Verlängerungen und fehlgeschlagenen Zahlungen an diesen Dienst. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst. Bei Zahlungen über Waffo ist Waffo der Merchant of Record und wickelt Zahlungen sowie anfallende Steuern ab. Die Waffo-Preise verstehen sich ohne Steuern; der Endbetrag wird beim Bezahlen angezeigt."
+      "body": "Standard, Professional und Enterprise verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion) und übernimmt Zahlungen, anfallende Steuern und Zahlungsbelege. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Creem übermittelt Informationen zu Abonnements, Verlängerungen und fehlgeschlagenen Zahlungen an diesen Dienst. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst. Bei Zahlungen über Waffo ist Waffo der Merchant of Record und wickelt Zahlungen sowie anfallende Steuern ab. Die Waffo-Preise verstehen sich ohne Steuern; der Endbetrag wird beim Bezahlen angezeigt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen."
     },
     "refunds": {
       "title": "Rückerstattungsregelung",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "Dateien und Downloads",
-      "body": "Hochgeladene PDFs, extrahierte Transaktionen und generierte Excel-Dateien werden nur zum Abschließen der aktuellen Konvertierung und zum Herunterladen verwendet. Sie werden nicht als dauerhafter Dateiverlauf gespeichert. Bewahren Sie Ihre Originalabrechnung und das heruntergeladene Ergebnis selbst auf; Der Dienst stellt keine historischen erneuten Downloads bereit, nachdem der aktuelle Fluss endet."
+      "body": "Excel, CSV, JSON, Markdown, TSV und HTML werden im Browser aus dem aktuellen Endergebnis einschließlich bestätigter Händlernamen erzeugt. Der Server führt keinen dauerhaften Verlauf von PDFs, extrahierten Transaktionen oder Exportdateien. Dateiname, Ergebnis und Händlerzuordnungen bleiben vorübergehend in der Sitzung dieses Tabs für Vorschau, Wiederherstellung nach dem Neuladen und Download. Bewahren Sie Originalauszüge und Downloads selbst auf; nach Ende des aktuellen Ablaufs gibt es keinen erneuten Download früherer Dateien."
     },
     "prohibited": {
       "title": "Verbotener Missbrauch",
@@ -455,11 +455,11 @@
     "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und Creem, PayPal oder Waffo-Abonnementfunktionen.",
     "documents": {
       "title": "Kontoauszüge und Umrechnungsinhalte",
-      "body": "Ihre PDF kann sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Wir verarbeiten PDFs, extrahierte Transaktionen und Exportinhalte nur für die angeforderte Umwandlung und den Download, nicht für Werbung oder andere Zwecke. Die Verarbeitung durch Dritte beim KI-Wechsel wird unten erläutert."
+      "body": "Ihre PDF kann sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Wir verarbeiten PDFs, extrahierte Transaktionen und Exportinhalte nur für die angeforderte Umwandlung und den Download, nicht für Werbung oder andere Zwecke. Die Verarbeitung durch Dritte beim KI-Wechsel wird unten erläutert. Vor dem Hochladen liest Ihr Browser die PDF-Seitenzahl lokal aus und fragt bei dieser Website Ihr Restkontingent ab. Dabei wird weder das PDF übertragen noch Kontingent verbraucht. Erst beim Start der Konvertierung wird die Datei hochgeladen; der Server prüft Datei, Seitenzahl und Kontingent abschließend."
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Creem, PayPal oder Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Creem, PayPal oder Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer speichern wir zur Fehleranalyse außerdem bei jedem Parsing-Versuch die Konto-ID, einen Snapshot der E-Mail-Adresse, den Zeitpunkt der Aufzeichnung, die zuletzt gewählte Parsing-Methode, den Konvertierungsstatus sowie die Gründe für Parsing-Fehler und den Wechsel zu einem KI-Modell. Diese Datensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben."
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Creem, PayPal oder Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Creem, PayPal oder Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer speichern wir zur Fehleranalyse außerdem bei jedem Parsing-Versuch die Konto-ID, einen Snapshot der E-Mail-Adresse, den Zeitpunkt der Aufzeichnung, die zuletzt gewählte Parsing-Methode, den Konvertierungsstatus sowie die Gründe für Parsing-Fehler und den Wechsel zu einem KI-Modell. Diese Datensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Creem und Waffo erhalten außerdem die E-Mail-Adresse des Website-Kontos; PayPal verarbeitet Zahlungsdaten über seinen eigenen Kontoablauf. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören."
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Browserspeicher",
-      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten. Im aktuellen Ablauf werden Dateiname und extrahierte Ergebnisse vorübergehend im Sitzungsspeicher des Browsers für Vorschau und Download gespeichert. Dies ist keine dauerhafte Dateihistorie auf dem Server."
+      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten. Im aktuellen Ablauf werden Dateiname und extrahierte Ergebnisse vorübergehend im Sitzungsspeicher des Browsers für Vorschau und Download gespeichert. Dies ist keine dauerhafte Dateihistorie auf dem Server. Auch die ausgewählten Quellspalten für Händlernamen, Aliaszuordnungen und bestätigten einheitlichen Namen werden mit dem aktuellen Ergebnis im Sitzungsspeicher dieses Tabs abgelegt. Sie lassen sich nach dem Neuladen wiederherstellen und werden bei einer neuen Konvertierung oder beim Löschen des Ergebnisses entfernt. Sie werden weder auf dem Server gespeichert noch für andere Dateien verwendet. Die Namensvereinheitlichung löst keine zusätzliche Modellanfrage aus."
     },
     "security": {
       "title": "Informationssicherheit",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "Auf einen Blick",
-    "conversionSummary": "StatementXL wandelt Kontoauszug-PDFs in Excel zur Prüfung um. Professional und Enterprise können gescannte PDFs mit KI-Unterstützung versuchen.",
+    "conversionSummary": "StatementXL wandelt Kontoauszug-PDFs in Excel zur Prüfung um. Professional und Enterprise können gescannte PDFs mit KI-Unterstützung versuchen. Risiken filtern, Händlernamen manuell vereinheitlichen und als Excel, CSV, JSON, Markdown, TSV oder HTML exportieren.",
     "limitsSummary": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
     "quotaSummary": "Ohne Anmeldung sind täglich {anonymousPages} Seite, nach Anmeldung {authenticatedPages} Seiten möglich; Monatsabos beginnen bei {price} USD.",
     "privacySummary": "Diese Website speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhafte Historie. Beim KI-Wechsel in höheren Tarifen wird die PDF an den KI-Analyseanbieter gesendet. Prüfen Sie Ergebnisse am Original.",
     "featuresAnswer": "Zuerst erfolgt die reguläre Analyse. Bei Professional und Enterprise wird zur KI-Analyse gewechselt, wenn sie fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert. Nutzbare Teilergebnisse bleiben ohne Wechsel erhalten. KI-Tabellen sind während der Erstellung sichtbar; Downloads erfordern die abschließende Validierung. Prüfen Sie Ergebnisse am Original-PDF.",
     "riskTitle": "Was bedeuten die Risikomarkierungen?",
-    "riskAnswer": "Die Markierungen beschreiben die Belege jeder extrahierten Zeile. Prüfen Sie markierte Zeilen anhand des Original-PDFs vor der Nutzung.",
+    "riskAnswer": "Die Markierungen beschreiben die Belege jeder extrahierten Zeile. Prüfen Sie markierte Zeilen anhand des Original-PDFs vor der Nutzung. Risikofilter ändern nur die Vorschau; Namensvereinheitlichung und Exporte berücksichtigen weiterhin alle Transaktionen des Ergebnisses.",
     "okDefinition": "Kein Problem erkannt; Genauigkeit und Vollständigkeit sind damit nicht garantiert.",
     "discrepancyDefinition": "Widersprüchliche Belege oder ein Prüfbedarf wurden erkannt.",
     "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
     "limitsTitle": "Welche PDFs kann ich hochladen?",
-    "limitsAnswer": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
-    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem, PayPal oder Waffo-Abo an.",
+    "limitsAnswer": "Laden Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt. Vor dem Hochladen liest Ihr Browser die PDF-Seitenzahl lokal aus und fragt bei dieser Website Ihr Restkontingent ab. Dabei wird weder das PDF übertragen noch Kontingent verbraucht. Erst beim Start der Konvertierung wird die Datei hochgeladen; der Server prüft Datei, Seitenzahl und Kontingent abschließend.",
+    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem, PayPal oder Waffo-Abo an. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen.",
     "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
     "planHeader": "Tarif",
     "priceHeader": "Preis (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Kostenlos",
     "dailyPeriod": "Täglich (UTC)",
     "billingPeriod": "Abrechnungszeitraum",
-    "billingNote": "Abos verlängern sich monatlich über Creem, PayPal oder Waffo. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt.",
+    "billingNote": "Abos verlängern sich monatlich über Creem, PayPal oder Waffo. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen. Waffo zeigt Nettopreise an; anfallende Steuern und der endgültige Gesamtbetrag werden im Checkout angezeigt.",
     "privacyTitle": "Wie werden meine Daten verarbeitet?",
     "privacyAnswer": "Auszugsinhalte dienen nur der aktuellen Konvertierung und dem Download. Bewahren Sie PDF und Excel selbst auf, da es keinen Dateiverlauf gibt.",
     "browserTitle": "Was wird vorübergehend im Browser gespeichert?",
-    "browserAnswer": "Extrahierte Ergebnisse werden für den aktuellen Ablauf vorübergehend im Sitzungsspeicher des Browsers gespeichert. Das ist kein serverseitiger Dateiverlauf.",
+    "browserAnswer": "Der Server speichert PDFs, Exporte und Transaktionen nicht als dauerhaften Verlauf. Im Sitzungsspeicher dieses Tabs liegen vorübergehend Dateiname, extrahiertes Ergebnis, gewählte Händlerspalten und Aliaszuordnungen samt bestätigten Namen für Vorschau, Wiederherstellung nach dem Neuladen und Download. Eine neue Konvertierung oder das Löschen des Ergebnisses entfernt diese Daten; Zuordnungen werden nicht für andere Dateien verwendet. Bewahren Sie Original-PDF und Downloads selbst auf.",
     "metadataTitle": "Welche Konto- und Abrechnungsdaten werden gespeichert?",
     "siteTitle": "Wo finde ich die Website-Informationen?",
-    "siteAnswer": "Die Startseite enthält Konvertierung, Tarife und FAQs. Folgen Sie den Links zu öffentlichen Informationen; Konto- und Ergebnisseiten dienen dem Arbeitsablauf.",
+    "siteAnswer": "StatementXL wandelt Bankauszugs-PDFs in prüfbare Tabellen um, mit Risikofiltern, manueller Vereinheitlichung von Händlernamen und sechs Exportformaten. Die Startseite enthält Konvertierung, Tarife und häufige Fragen; Produktübersicht, Preis- und Datenschutzdokumente beschreiben Funktionen und Grenzen. Abonnements verwalten Sie im Konto, Ergebnisse prüfen und laden Sie auf der Ergebnisseite herunter. Über den Kontaktlink erreichen Sie den Support.",
     "agentsTitle": "Agents",
     "agentsDescription": "Offizielle Produktinformationen als Markdown lesen.",
     "indexLabel": "Produktübersicht",
@@ -659,7 +659,9 @@
     "showPrompt": "Standardprompt ansehen",
     "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Creem, PayPal oder Waffo.",
     "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
-    "parsingHeader": "Analysefunktionen"
+    "parsingHeader": "Analysefunktionen",
+    "merchantTitle": "Wie lassen sich Händlernamen vereinheitlichen?",
+    "merchantAnswer": "Wählen Sie im Endergebnis für jede Tabelle eine Namens- oder Beschreibungsspalte. Exakt gleiche Originaltexte werden innerhalb dieser Datei tabellenübergreifend gruppiert; Aliase können Sie manuell bestätigen, umbenennen oder aufheben. Originaltext, Reihenfolge, Quellen und Extraktionsrisiken bleiben erhalten. Händleridentitäten werden nicht abgeleitet und es gibt keine zusätzliche Modellanfrage. Bestätigte Namen und ein eigener Zuordnungsstatus erscheinen in der Vorschau und allen sechs Exportformaten. In JSON heißen die Felder merchantName und merchantNormalizationStatus: nicht zugeordnete Namen sind null mit Status unassigned, zugeordnete Namen haben den Status confirmed. Die Zuordnungen bleiben mit dem Ergebnis vorübergehend in der Sitzung dieses Tabs und werden nicht für andere Dateien verwendet. Das Aufheben aller Zuordnungen stellt die ursprünglichen Exportfelder wieder her."
   },
   "BillingReturn": {
     "title": "Abonnement bestätigen",

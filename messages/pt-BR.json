@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "Quantas páginas posso converter por dia?",
-      "answer": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} por dia. Com login, são {authenticatedPages, plural, one {# página} other {# páginas}} por dia. Os planos mensais incluem {standardPages, plural, one {# página} other {# páginas}} no Padrão, {professionalPages, number} no Profissional e {enterprisePages, number} no Empresarial."
+      "answer": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} por dia. Com login, são {authenticatedPages, plural, one {# página} other {# páginas}} por dia. Os planos mensais incluem {standardPages, plural, one {# página} other {# páginas}} no Padrão, {professionalPages, number} no Profissional e {enterprisePages, number} no Empresarial. Antes do envio, o navegador lê localmente o número de páginas do PDF e consulta a cota restante no site, sem enviar o PDF nem consumir cota. O arquivo é enviado ao iniciar a conversão; o servidor continua responsável por validar o arquivo, as páginas e a cota."
     },
     "scans": {
       "question": "Posso converter PDFs digitalizados ou criptografados?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Vocês salvam meu PDF, Excel ou as transações?",
-      "answer": "O servidor não mantém PDF, Excel ou transações como histórico permanente. O navegador guarda temporariamente os resultados na sessão para o fluxo atual. Guarde o PDF original e o Excel por conta própria."
+      "answer": "O servidor não mantém histórico persistente de PDFs, exportações ou transações. O armazenamento de sessão desta aba guarda temporariamente o nome do arquivo, o resultado extraído, as colunas de estabelecimentos escolhidas e os mapeamentos de aliases com os nomes confirmados para prévia, restauração após atualização e download. Iniciar outra conversão ou limpar o resultado apaga esses dados; os mapeamentos não são reutilizados entre arquivos. Guarde seus PDFs originais e downloads."
     },
     "failure": {
       "question": "O que acontece se a conversão falhar?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Em breve no TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Última atualização: 18 de outubro de 2026"
+    "lastUpdated": "Última atualização: 19 de outubro de 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Conferência dos resultados",
-      "body": "O formato, a nitidez e o conteúdo do extrato podem afetar a extração. O resultado pode conter campos ausentes, duplicados ou identificados incorretamente. Compare o Excel com o extrato original antes de usá-lo na escrituração, em declarações, no envio de documentos ou em outras decisões. A análise com IA e a conversão de digitalizações também podem conter erros ou omissões. As tabelas exibidas durante a geração são prévias temporárias; passar na validação final não garante precisão total."
+      "body": "O formato, a nitidez e o conteúdo do extrato podem afetar a extração. O resultado pode conter campos ausentes, duplicados ou identificados incorretamente. Compare o Excel com o extrato original antes de usá-lo na escrituração, em declarações, no envio de documentos ou em outras decisões. A análise com IA e a conversão de digitalizações também podem conter erros ou omissões. As tabelas exibidas durante a geração são prévias temporárias; passar na validação final não garante precisão total. A padronização registra os nomes de estabelecimentos que você confirma manualmente; ela não verifica sua identidade nem altera o texto original, as referências de origem ou os riscos de extração. Os filtros de risco afetam apenas a prévia; as exportações incluem todas as transações do resultado."
     },
     "quota": {
       "title": "Cotas de conversão",
-      "body": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} de PDF por dia. Usuários gratuitos com login podem converter {authenticatedPages, plural, one {# página} other {# páginas}} por dia. O Padrão inclui {standardPages, plural, one {# página} other {# páginas}} por mês, o Profissional {professionalPages, number} e o Empresarial {enterprisePages, number}. A cota diária é renovada em UTC e a cota do plano segue o período de cobrança atual do Creem, PayPal ou Waffo. Conversões que falham não consomem cota; resultados parciais contam as páginas do PDF."
+      "body": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} de PDF por dia. Usuários gratuitos com login podem converter {authenticatedPages, plural, one {# página} other {# páginas}} por dia. O Padrão inclui {standardPages, plural, one {# página} other {# páginas}} por mês, o Profissional {professionalPages, number} e o Empresarial {enterprisePages, number}. A cota diária é renovada em UTC e a cota do plano segue o período de cobrança atual do Creem, PayPal ou Waffo. Conversões que falham não consomem cota; resultados parciais contam as páginas do PDF. Antes do envio, o navegador lê localmente o número de páginas do PDF e consulta a cota restante no site, sem enviar o PDF nem consumir cota. O arquivo é enviado ao iniciar a conversão; o servidor continua responsável por validar o arquivo, as páginas e a cota."
     },
     "subscription": {
       "title": "Assinaturas e pagamento",
-      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. O Creem é nosso provedor de pagamentos e Merchant of Record (o vendedor legal da transação), responsável pelos pagamentos, impostos aplicáveis e comprovantes. A cobrança ocorre somente após a confirmação da compra. O Creem envia ao serviço informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site; o acesso pago permanece até o fim do período de cobrança confirmado. No pagamento pelo PayPal, a ReAvid Ltd é a vendedora. O PayPal processa pagamentos de assinaturas e dados de conta relacionados conforme seus termos e política de privacidade; não é o Merchant of Record deste serviço. Ao pagar com Waffo, o Waffo atua como Merchant of Record e gerencia os pagamentos e os impostos aplicáveis. Os preços do Waffo não incluem impostos; o valor final é exibido no checkout."
+      "body": "Standard, Professional e Enterprise renovam mensalmente pelo preço mostrado antes da compra. O Creem é nosso provedor de pagamentos e Merchant of Record (o vendedor legal da transação), responsável pelos pagamentos, impostos aplicáveis e comprovantes. A cobrança ocorre somente após a confirmação da compra. O Creem envia ao serviço informações de assinatura, renovação e falhas de pagamento. Cancele a renovação automática na sua conta do site; o acesso pago permanece até o fim do período de cobrança confirmado. No pagamento pelo PayPal, a ReAvid Ltd é a vendedora. O PayPal processa pagamentos de assinaturas e dados de conta relacionados conforme seus termos e política de privacidade; não é o Merchant of Record deste serviço. Ao pagar com Waffo, o Waffo atua como Merchant of Record e gerencia os pagamentos e os impostos aplicáveis. Os preços do Waffo não incluem impostos; o valor final é exibido no checkout. Os provedores de pagamento disponíveis dependem das opções de compra exibidas atualmente no site."
     },
     "refunds": {
       "title": "Política de reembolso",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "Arquivos e downloads",
-      "body": "PDFs enviados, transações extraídas e arquivos Excel gerados são usados apenas na conversão e no download atuais. Não são mantidos em um histórico permanente. Guarde seu extrato original e o resultado baixado; o serviço não oferece novos downloads depois que o fluxo atual termina."
+      "body": "Excel, CSV, JSON, Markdown, TSV e HTML são gerados no navegador com base no resultado final atual, incluindo os nomes de estabelecimentos confirmados. O servidor não mantém histórico persistente de PDFs, transações extraídas ou arquivos exportados. O nome do arquivo, o resultado e os mapeamentos ficam temporariamente na sessão desta aba para prévia, restauração após atualização e download. Guarde seus extratos originais e downloads; o serviço não permite baixar novamente arquivos históricos após o fim do fluxo atual."
     },
     "prohibited": {
       "title": "Uso indevido",
@@ -455,11 +455,11 @@
     "availability": "Esta política se aplica às funções atualmente disponíveis de conversão de PDF para Excel, login e assinaturas Creem, PayPal ou Waffo.",
     "documents": {
       "title": "Extratos e conteúdo da conversão",
-      "body": "Seu PDF pode conter nomes, números de conta, datas, valores, saldos e descrições de transações sensíveis. Processamos PDFs, transações extraídas e conteúdos exportados apenas para a conversão e o download solicitados, sem publicidade ou finalidades alheias. O processamento por terceiros durante o recurso de IA é explicado abaixo."
+      "body": "Seu PDF pode conter nomes, números de conta, datas, valores, saldos e descrições de transações sensíveis. Processamos PDFs, transações extraídas e conteúdos exportados apenas para a conversão e o download solicitados, sem publicidade ou finalidades alheias. O processamento por terceiros durante o recurso de IA é explicado abaixo. Antes do envio, o navegador lê localmente o número de páginas do PDF e consulta a cota restante no site, sem enviar o PDF nem consumir cota. O arquivo é enviado ao iniciar a conversão; o servidor continua responsável por validar o arquivo, as páginas e a cota."
     },
     "accountData": {
       "title": "Informações de conta, cota e cobrança",
-      "body": "Ao entrar com Google, o Supabase armazena os dados de identidade e conta necessários ao serviço. Após a ativação de uma assinatura, armazenamos o status, plano, identificador Creem, PayPal ou Waffo, período de cobrança, e-mail do pagador e uma cópia do e-mail da conta do site no momento da compra. O Creem, PayPal ou Waffo trata as informações de pagamento. Esses registros não contêm PDFs originais, transações extraídas ou conteúdo do Excel. Para usuários conectados, também armazenamos, em cada tentativa de análise, o ID da conta, uma cópia do e-mail, o momento do registro, o último método de análise selecionado, o status da conversão e os motivos de falhas na análise e do uso de um modelo de IA, para investigar problemas. Esses registros não contêm nomes ou conteúdos de arquivos, detalhes de transações nem saídas do modelo."
+      "body": "Ao entrar com Google, o Supabase armazena os dados de identidade e conta necessários ao serviço. Após a ativação de uma assinatura, armazenamos o status, plano, identificador Creem, PayPal ou Waffo, período de cobrança, e-mail do pagador e uma cópia do e-mail da conta do site no momento da compra. O Creem, PayPal ou Waffo trata as informações de pagamento. Esses registros não contêm PDFs originais, transações extraídas ou conteúdo do Excel. Para usuários conectados, também armazenamos, em cada tentativa de análise, o ID da conta, uma cópia do e-mail, o momento do registro, o último método de análise selecionado, o status da conversão e os motivos de falhas na análise e do uso de um modelo de IA, para investigar problemas. Esses registros não contêm nomes ou conteúdos de arquivos, detalhes de transações nem saídas do modelo. Para criar o pagamento, enviamos o plano selecionado e um identificador de vínculo com a conta ao provedor escolhido. Creem e Waffo também recebem o e-mail da conta do site; o PayPal processa os dados de pagamento em seu próprio fluxo de conta. Os metadados de cobrança também podem incluir identificadores do plano e do pagador no provedor, valor e moeda do pagamento, valor original, valor e identificador do desconto e identificadores de eventos de pagamento."
     },
     "technicalData": {
       "title": "Informações técnicas necessárias",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Armazenamento no navegador",
-      "body": "O site usa armazenamento local do navegador para lembrar preferências de aparência e cookies de sessão necessários ao login. Os serviços de análise também podem usar cookies ou identificadores semelhantes para medir visitas. Você pode gerenciar esses dados nas configurações do navegador. O fluxo atual também guarda temporariamente o nome do arquivo e os resultados extraídos no armazenamento de sessão do navegador para prévia e download. Isso não é um histórico permanente no servidor."
+      "body": "O site usa armazenamento local do navegador para lembrar preferências de aparência e cookies de sessão necessários ao login. Os serviços de análise também podem usar cookies ou identificadores semelhantes para medir visitas. Você pode gerenciar esses dados nas configurações do navegador. O fluxo atual também guarda temporariamente o nome do arquivo e os resultados extraídos no armazenamento de sessão do navegador para prévia e download. Isso não é um histórico permanente no servidor. As colunas de origem escolhidas para os estabelecimentos, os mapeamentos de aliases e os nomes padronizados confirmados também ficam com o resultado atual no armazenamento de sessão desta aba. Eles podem ser restaurados após atualizar a página e são apagados com o resultado ao iniciar outra conversão ou limpar a atual. Não são salvos no servidor nem reutilizados entre arquivos; a padronização não faz chamadas adicionais ao modelo."
     },
     "security": {
       "title": "Segurança da informação",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "Informações principais",
-    "conversionSummary": "StatementXL transforma extratos bancários PDF em Excel para revisão. Professional e Enterprise podem tentar converter PDFs digitalizados com o recurso de IA.",
+    "conversionSummary": "StatementXL transforma extratos bancários PDF em Excel para revisão. Professional e Enterprise podem tentar converter PDFs digitalizados com o recurso de IA. Filtre riscos, padronize manualmente os nomes de estabelecimentos e exporte em Excel, CSV, JSON, Markdown, TSV ou HTML.",
     "limitsSummary": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
     "quotaSummary": "Converta {anonymousPages} página por dia sem entrar ou {authenticatedPages} páginas com login; os planos mensais começam em {price} USD.",
     "privacySummary": "Este site não mantém um histórico permanente de PDFs, Excel ou transações. O recurso de IA dos planos superiores envia o PDF ao provedor de análise com IA. Confira os resultados com o original.",
     "featuresAnswer": "A análise habitual é feita primeiro. Professional e Enterprise recorrem à análise com IA se ela falhar, estiver indisponível ou não gerar transações verificáveis. Resultados parciais úteis são mantidos sem acionar a IA. As tabelas podem ser visualizadas durante a geração; o download exige a validação final. Confira os resultados com o PDF original.",
     "riskTitle": "O que significam os indicadores de risco?",
-    "riskAnswer": "Os indicadores descrevem as evidências de cada linha extraída. Compare as linhas sinalizadas com o PDF original antes de usar o resultado.",
+    "riskAnswer": "Os indicadores descrevem as evidências de cada linha extraída. Compare as linhas sinalizadas com o PDF original antes de usar o resultado. Os filtros de risco alteram apenas a prévia; a padronização e as exportações continuam abrangendo todas as transações do resultado.",
     "okDefinition": "Nenhum problema foi detectado; isso não garante precisão ou integridade.",
     "discrepancyDefinition": "Foram detectadas evidências conflitantes ou necessidade de revisão.",
     "unverifiableDefinition": "Faltam evidências essenciais ou a linha não pode ser verificada com segurança.",
     "limitsTitle": "Quais PDFs posso enviar?",
-    "limitsAnswer": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha.",
-    "pricingAnswer": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem, PayPal ou Waffo.",
+    "limitsAnswer": "Envie um extrato bancário PDF de até {megabytes} MB e {pages} páginas. Sem login, no plano gratuito e no Standard, é necessária uma camada de texto; Professional e Enterprise podem tentar converter digitalizações. Nenhum plano aceita arquivos protegidos por senha. Antes do envio, o navegador lê localmente o número de páginas do PDF e consulta a cota restante no site, sem enviar o PDF nem consumir cota. O arquivo é enviado ao iniciar a conversão; o servidor continua responsável por validar o arquivo, as páginas e a cota.",
+    "pricingAnswer": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem, PayPal ou Waffo. Os provedores de pagamento disponíveis dependem das opções de compra exibidas atualmente no site.",
     "faqAnswer": "Estas respostas explicam requisitos, cotas e riscos. Leia a resposta relevante e confira seu PDF antes da conversão.",
     "planHeader": "Plano",
     "priceHeader": "Preço (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Grátis",
     "dailyPeriod": "Diário (UTC)",
     "billingPeriod": "Período de cobrança",
-    "billingNote": "As assinaturas são renovadas mensalmente pelo Creem, PayPal ou Waffo. Falhas não consomem cota; resultados parciais contam as páginas do PDF original.",
+    "billingNote": "As assinaturas são renovadas mensalmente pelo Creem, PayPal ou Waffo. Falhas não consomem cota; resultados parciais contam as páginas do PDF original. Os provedores de pagamento disponíveis dependem das opções de compra exibidas atualmente no site. Os preços da Waffo não incluem impostos; os impostos aplicáveis e o total final são exibidos no checkout.",
     "privacyTitle": "Como meus dados são tratados?",
     "privacyAnswer": "O conteúdo é usado somente na conversão e no download atuais. Guarde PDF e Excel, pois o serviço não possui histórico de arquivos.",
     "browserTitle": "O que fica temporariamente no navegador?",
-    "browserAnswer": "Os resultados extraídos ficam temporariamente no armazenamento de sessão do navegador para o fluxo atual. Isso é diferente de um histórico de arquivos no servidor.",
+    "browserAnswer": "O servidor não mantém histórico persistente de PDFs, exportações ou transações. O armazenamento de sessão desta aba guarda temporariamente o nome do arquivo, o resultado extraído, as colunas de estabelecimentos escolhidas e os mapeamentos de aliases com os nomes confirmados para prévia, restauração após atualização e download. Iniciar outra conversão ou limpar o resultado apaga esses dados; os mapeamentos não são reutilizados entre arquivos. Guarde seus PDFs originais e downloads.",
     "metadataTitle": "Quais dados de conta e cobrança são mantidos?",
     "siteTitle": "Onde encontro informações do site?",
-    "siteAnswer": "A página inicial contém conversão, planos e perguntas frequentes. Use os links para informações públicas; conta e resultados são telas do fluxo de uso.",
+    "siteAnswer": "O StatementXL converte extratos bancários PDF em tabelas para revisão, com filtros de risco, padronização manual de estabelecimentos e seis formatos de exportação. A página inicial oferece conversão, planos e perguntas frequentes; a visão geral do produto, os preços e os documentos de privacidade explicam funções e limites. Gerencie assinaturas na conta, revise e baixe na página de resultado e use o link de contato para falar com o suporte.",
     "agentsTitle": "Agents",
     "agentsDescription": "Leia as informações oficiais do produto em Markdown.",
     "indexLabel": "Visão geral do produto",
@@ -659,7 +659,9 @@
     "showPrompt": "Ver o prompt padrão",
     "metadataAnswer": "Os metadados de conta, cota e cobrança necessários ao serviço são mantidos. Consulte e gerencie a assinatura na sua conta e no Creem, PayPal ou Waffo.",
     "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços.",
-    "parsingHeader": "Capacidade de análise"
+    "parsingHeader": "Capacidade de análise",
+    "merchantTitle": "Como padronizar os nomes dos estabelecimentos?",
+    "merchantAnswer": "Em cada tabela do resultado final, selecione uma coluna de nomes ou descrições. Textos originais exatamente iguais são agrupados entre as tabelas deste arquivo para confirmar, renomear ou remover aliases manualmente. O texto original, a ordem, as fontes e os riscos de extração permanecem intactos; a identidade do estabelecimento não é inferida e não há chamadas adicionais ao modelo. Os nomes confirmados e um status separado aparecem na prévia e nos seis formatos de exportação. No JSON, os campos são merchantName e merchantNormalizationStatus: nomes não atribuídos são null com status unassigned e nomes atribuídos têm status confirmed. Os mapeamentos ficam temporariamente com o resultado na sessão desta aba e não são reutilizados em outro arquivo. Remover todos restaura os campos originais da exportação."
   },
   "BillingReturn": {
     "title": "Confirmação da assinatura",

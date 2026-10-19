@@ -16,11 +16,13 @@
 
 - [产品边界](product/product-boundary.md)
 - [解析记录交付与验收](conversion/parse-records-verification.md)
+- [商户别名归一化验收](conversion/merchant-normalization-verification.md)
 
 ## 支付与计费
 
 - [Creem 支付接入](billing/creem-billing.md)
 - [PayPal 沙箱支付接入](billing/paypal-billing.md)
+- [Waffo 支付接入与验收](billing/waffo-billing.md)
 - [计费渠道切换与验收](billing/billing-provider-cutover.md)
 
 ## SEO/AEO

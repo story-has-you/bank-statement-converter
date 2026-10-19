@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "How many pages can I convert each day?",
-      "answer": "Anonymous users can convert {anonymousPages, plural, one {# page} other {# pages}} per day, and signed-in users can convert {authenticatedPages, plural, one {# page} other {# pages}} per day. Monthly plans include {standardPages, plural, one {# page} other {# pages}} for Standard, {professionalPages, plural, one {# page} other {# pages}} for Professional, and {enterprisePages, plural, one {# page} other {# pages}} for Enterprise."
+      "answer": "Anonymous users can convert {anonymousPages, plural, one {# page} other {# pages}} per day, and signed-in users can convert {authenticatedPages, plural, one {# page} other {# pages}} per day. Monthly plans include {standardPages, plural, one {# page} other {# pages}} for Standard, {professionalPages, plural, one {# page} other {# pages}} for Professional, and {enterprisePages, plural, one {# page} other {# pages}} for Enterprise. Before upload, your browser reads the PDF page count locally and asks this website for your remaining quota, without sending the PDF or consuming quota. The file is uploaded when you start conversion; the server still validates the file, pages and quota."
     },
     "scans": {
       "question": "Can I convert scanned or encrypted PDFs?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Are my PDF, Excel file, or transactions saved?",
-      "answer": "The server does not keep PDFs, Excel files or transactions as persistent file history. The browser temporarily stores extracted results in session storage for the current workflow. Keep your original PDF and downloaded Excel yourself."
+      "answer": "The server keeps no persistent history of PDFs, exports or transactions. This tab’s session storage temporarily holds the filename, extracted result, selected merchant columns and alias mappings, including confirmed names, for preview, refresh recovery and download. Starting another conversion or clearing the result clears these records; mappings are not reused across files. Keep your original PDF and downloads."
     },
     "failure": {
       "question": "What happens if conversion fails?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Launching soon on TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 18, 2026"
+    "lastUpdated": "Last updated: October 19, 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Reviewing conversion results",
-      "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision. AI parsing and scan conversion may also produce errors or omissions. Tables shown during generation are temporary previews; passing final validation does not guarantee complete accuracy."
+      "body": "Statement layout, clarity, and content can affect extraction. Results may contain missing, duplicated, or incorrectly identified fields. Compare the Excel file with the original statement before bookkeeping, filing, submitting materials, or making another decision. AI parsing and scan conversion may also produce errors or omissions. Tables shown during generation are temporary previews; passing final validation does not guarantee complete accuracy. Merchant normalization records names you confirm manually; it does not verify merchant identity or change the original text, source references or extraction risks. Risk filters affect only the preview; exports include all transactions in the result."
     },
     "quota": {
       "title": "Conversion quotas",
-      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Creem, PayPal or Waffo billing period. Failed conversions do not use quota; partial results count PDF pages."
+      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Creem, PayPal or Waffo billing period. Failed conversions do not use quota; partial results count PDF pages. Before upload, your browser reads the PDF page count locally and asks this website for your remaining quota, without sending the PDF or consuming quota. The file is uploaded when you start conversion; the server still validates the file, pages and quota."
     },
     "subscription": {
       "title": "Subscriptions and payment",
-      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service. For Waffo checkout, Waffo acts as Merchant of Record and handles payments and applicable taxes. Waffo prices exclude tax; the final amount is shown at checkout."
+      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service. For Waffo checkout, Waffo acts as Merchant of Record and handles payments and applicable taxes. Waffo prices exclude tax; the final amount is shown at checkout. Available payment providers depend on the purchase options currently shown on the website."
     },
     "refunds": {
       "title": "Refund policy",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "Files and downloads",
-      "body": "Uploaded PDFs, extracted transactions, and generated Excel files are used to complete the current conversion and download only. They are not kept as persistent file history. Keep your original statement and downloaded result yourself; the service does not provide historical re-downloads after the current flow ends."
+      "body": "Excel, CSV, JSON, Markdown, TSV and HTML exports are generated in your browser from the current final result, including any merchant names you confirm. The server keeps no persistent history of PDFs, extracted transactions or export files. The filename, result and merchant mappings are temporarily stored in this tab’s session for preview, refresh recovery and download. Keep your original statement and downloads; the service offers no historical re-downloads after the current flow ends."
     },
     "prohibited": {
       "title": "Prohibited misuse",
@@ -455,11 +455,11 @@
     "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and Creem, PayPal or Waffo subscription features.",
     "documents": {
       "title": "Bank statements and conversion content",
-      "body": "Your PDF may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. We process PDFs, extracted transactions and export content only to complete your requested conversion and download, not for advertising or unrelated purposes. Third-party processing during AI fallback is explained below."
+      "body": "Your PDF may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. We process PDFs, extracted transactions and export content only to complete your requested conversion and download, not for advertising or unrelated purposes. Third-party processing during AI fallback is explained below. Before upload, your browser reads the PDF page count locally and asks this website for your remaining quota, without sending the PDF or consuming quota. The file is uploaded when you start conversion; the server still validates the file, pages and quota."
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Creem, PayPal or Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Creem, PayPal or Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we also store the account ID, email snapshot, record time, last selected parsing method, conversion status, and reasons for parsing failures and AI fallback for each parsing attempt to investigate failures. These records contain no file names, file contents, transactions, or model output."
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Creem, PayPal or Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Creem, PayPal or Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we also store the account ID, email snapshot, record time, last selected parsing method, conversion status, and reasons for parsing failures and AI fallback for each parsing attempt to investigate failures. These records contain no file names, file contents, transactions, or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Creem and Waffo also receive the website account email; PayPal handles payment details through its own account flow. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers."
     },
     "technicalData": {
       "title": "Necessary technical information",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Browser storage",
-      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history."
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history. Selected merchant source columns, alias mappings and confirmed merchant names are also stored with the current result in this tab’s session storage. They can be restored on refresh and are cleared with the result when you start another conversion or clear the current one. They are not saved on the server or reused across files; merchant normalization makes no additional model request."
     },
     "security": {
       "title": "Information security",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "At a glance",
-    "conversionSummary": "StatementXL turns bank statement PDFs into Excel for review; Professional and Enterprise can attempt scanned PDFs with AI fallback.",
+    "conversionSummary": "StatementXL turns bank statement PDFs into Excel for review; Professional and Enterprise can attempt scanned PDFs with AI fallback. Review risks, normalize merchant names manually, and export Excel, CSV, JSON, Markdown, TSV or HTML.",
     "limitsSummary": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
     "quotaSummary": "Convert {anonymousPages} page per day anonymously or {authenticatedPages} pages when signed in; monthly plans start at {price} USD.",
     "privacySummary": "This website keeps no persistent history of PDFs, Excel files or transactions. Higher-tier fallback sends the PDF to the AI parsing provider. Check results against the original PDF.",
     "featuresAnswer": "Regular parsing runs first. Professional and Enterprise fall back to AI parsing if regular parsing fails, is unavailable or produces no reviewable transactions. Usable partial results are kept without fallback. AI tables can be previewed as they appear; downloads require final validation, and results still need checking against the PDF.",
     "riskTitle": "What do the risk labels mean?",
-    "riskAnswer": "Risk labels describe the evidence available for each extracted row. Compare flagged rows with the original PDF before using the result.",
+    "riskAnswer": "Risk labels describe the evidence available for each extracted row. Compare flagged rows with the original PDF before using the result. Risk filters change only the preview; merchant normalization and exports still cover all transactions in the result.",
     "okDefinition": "No issue was detected; this does not guarantee accuracy or completeness.",
     "discrepancyDefinition": "Evidence conflicts or a review issue was detected.",
     "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
     "limitsTitle": "Which PDFs can I upload?",
-    "limitsAnswer": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
-    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem, PayPal or Waffo.",
+    "limitsAnswer": "Upload one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan. Before upload, your browser reads the PDF page count locally and asks this website for your remaining quota, without sending the PDF or consuming quota. The file is uploaded when you start conversion; the server still validates the file, pages and quota.",
+    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem, PayPal or Waffo. Available payment providers depend on the purchase options currently shown on the website.",
     "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
     "planHeader": "Plan",
     "priceHeader": "Price (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Free",
     "dailyPeriod": "Daily (UTC)",
     "billingPeriod": "billing period",
-    "billingNote": "Subscriptions renew monthly through Creem, PayPal or Waffo. Failed conversions do not use quota; partial results use the original PDF page count.",
+    "billingNote": "Subscriptions renew monthly through Creem, PayPal or Waffo. Failed conversions do not use quota; partial results use the original PDF page count. Available payment providers depend on the purchase options currently shown on the website. Waffo prices exclude tax; applicable tax and the final total are shown at checkout.",
     "privacyTitle": "How is my data handled?",
     "privacyAnswer": "Statement content is used for the current conversion and download only. Keep your original PDF and downloaded Excel because the service has no file history.",
     "browserTitle": "What is temporarily stored in my browser?",
-    "browserAnswer": "Extracted results are temporarily stored in browser session storage for the current workflow. This is separate from server-side file history.",
+    "browserAnswer": "The server keeps no persistent history of PDFs, exports or transactions. This tab’s session storage temporarily holds the filename, extracted result, selected merchant columns and alias mappings, including confirmed names, for preview, refresh recovery and download. Starting another conversion or clearing the result clears these records; mappings are not reused across files. Keep your original PDF and downloads.",
     "metadataTitle": "Which account and billing data is retained?",
     "siteTitle": "Where can I find the website information?",
-    "siteAnswer": "The homepage contains conversion, plans and FAQs. Follow the links below for public information; account and result pages are workflow screens.",
+    "siteAnswer": "StatementXL converts bank statement PDFs for review, with risk filtering, manual merchant normalization and six export formats. The homepage contains conversion, plans and FAQs; the product overview, pricing and privacy documents describe capabilities and limits. Use the account page to manage subscriptions, the result page to review and download, and the contact link for support.",
     "agentsTitle": "Agents",
     "agentsDescription": "Read the official product information in Markdown.",
     "indexLabel": "Product overview",
@@ -659,7 +659,9 @@
     "showPrompt": "View the default prompt",
     "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Creem, PayPal or Waffo.",
     "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
-    "parsingHeader": "Parsing capability"
+    "parsingHeader": "Parsing capability",
+    "merchantTitle": "How can I normalize merchant names?",
+    "merchantAnswer": "For each table in the final result, select a name or description column, group identical source text across tables in this file, and manually confirm, rename or remove merchant aliases. Original text, order, source references and extraction risks stay unchanged; no merchant identity is inferred and no additional model request is made. Confirmed names and a separate normalization status appear in the preview and all six export formats. In JSON, these fields are merchantName and merchantNormalizationStatus; unassigned names are null with status unassigned, and assigned names have status confirmed. Mappings stay in this tab’s session with the result and are not reused for another file. Removing all mappings restores the original export fields."
   },
   "BillingReturn": {
     "title": "Confirming your subscription",

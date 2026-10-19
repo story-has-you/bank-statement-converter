@@ -13,12 +13,13 @@ import { usageQuotaConfig } from "@/lib/usage/config";
 
 /** Public product facts shared by the homepage and agent documents. */
 export const getGeoContent = cache(async (locale: AppLocale) => {
-  const [t, home, features, usage, privacy, footer, metadata, languages, format, faq, faqT, pageT] = await Promise.all([
+  const [t, home, features, usage, privacy, terms, footer, metadata, languages, format, faq, faqT, pageT] = await Promise.all([
     getTranslations({ locale, namespace: "Geo" }),
     getTranslations({ locale, namespace: "HomeIntro" }),
     getTranslations({ locale, namespace: "HomeFeatures" }),
     getTranslations({ locale, namespace: "UsageTiers" }),
     getTranslations({ locale, namespace: "Privacy" }),
+    getTranslations({ locale, namespace: "Terms" }),
     getTranslations({ locale, namespace: "HomeFooter" }),
     getTranslations({ locale, namespace: "Metadata" }),
     getTranslations({ locale, namespace: "LanguageSwitcher" }),
@@ -57,14 +58,20 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
         authenticatedPages: quota.authenticated.pages,
         price: format.number(subscriptionConfig.standard.monthlyPrice, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
       }),
+      t("billingNote"),
       t("privacySummary"),
       pageT("Landing.downloadText"),
     ],
     features: {
       title: features("title"),
       answer: t("featuresAnswer"),
-      items: (["security", "banks", "accuracy"] as const).map((id) => ({ id, title: features(`${id}Title`), answer: features(`${id}Description`) })),
+      items: (["security", "banks", "accuracy"] as const).map((id) => ({
+        id,
+        title: features(`${id}Title`),
+        answer: features(`${id}Description`),
+      })),
     },
+    merchants: { title: t("merchantTitle"), answer: t("merchantAnswer") },
     risks: {
       title: t("riskTitle"),
       answer: t("riskAnswer"),
@@ -79,10 +86,26 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       title: usage("title"),
       answer: t("pricingAnswer"),
       note: t("billingNote"),
+      subscriptionTitle: terms("subscription.title"),
+      subscription: terms("subscription.body"),
+      refundsTitle: terms("refunds.title"),
+      refunds: [terms("refunds.body"), terms("refunds.cancellation"), terms("refunds.rights")],
       headers: [t("planHeader"), t("priceHeader"), t("quotaHeader"), t("periodHeader"), t("parsingHeader")],
       rows: [
-        { name: usage("anonymous"), formattedPrice: t("freePrice"), pages: quota.anonymous.pages, period: t("dailyPeriod"), parsing: usage("textParsing") },
-        { name: usage("signedIn"), formattedPrice: t("freePrice"), pages: quota.authenticated.pages, period: t("dailyPeriod"), parsing: usage("textParsing") },
+        {
+          name: usage("anonymous"),
+          formattedPrice: t("freePrice"),
+          pages: quota.anonymous.pages,
+          period: t("dailyPeriod"),
+          parsing: usage("textParsing"),
+        },
+        {
+          name: usage("signedIn"),
+          formattedPrice: t("freePrice"),
+          pages: quota.authenticated.pages,
+          period: t("dailyPeriod"),
+          parsing: usage("textParsing"),
+        },
         ...plans,
       ],
     },
@@ -90,9 +113,12 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     privacy: {
       title: t("privacyTitle"),
       answer: t("privacyAnswer"),
+      processing: privacy("documents.body"),
       documents: privacy("retention.documents"),
       aiTitle: privacy("aiParsing.title"),
       aiAnswer: privacy("aiParsing.body"),
+      providersTitle: privacy("providers.title"),
+      providersAnswer: privacy("providers.body"),
       browserTitle: t("browserTitle"),
       browserAnswer: privacy("storage.body"),
       metadataTitle: t("metadataTitle"),
@@ -111,6 +137,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
         { name: footer("terms"), href: pageUrl("/terms") },
         { name: pageT("Account.title"), href: pageUrl("/account") },
         { name: pageT("ConversionResult.eyebrow"), href: pageUrl("/result") },
+        { name: footer("contactUs"), href: siteConfig.contactHref },
       ],
     },
     documents: [

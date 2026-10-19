@@ -347,7 +347,7 @@
     },
     "quota": {
       "question": "Hoeveel pagina's kan ik per dag converteren?",
-      "answer": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren, na inloggen {authenticatedPages, plural, one {# pagina} other {# pagina's}}. Maandabonnementen bevatten {standardPages, plural, one {# pagina} other {# pagina's}} voor Standaard, {professionalPages, number} voor Professioneel en {enterprisePages, number} voor Zakelijk."
+      "answer": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren, na inloggen {authenticatedPages, plural, one {# pagina} other {# pagina's}}. Maandabonnementen bevatten {standardPages, plural, one {# pagina} other {# pagina's}} voor Standaard, {professionalPages, number} voor Professioneel en {enterprisePages, number} voor Zakelijk. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
     },
     "scans": {
       "question": "Kan ik gescande of versleutelde PDF's converteren?",
@@ -355,7 +355,7 @@
     },
     "storage": {
       "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
-      "answer": "De server bewaart PDF’s, Excel-bestanden en transacties niet als blijvende geschiedenis. De browser bewaart resultaten tijdelijk in de sessie voor het huidige proces. Bewaar de oorspronkelijke PDF en Excel zelf."
+      "answer": "De server bewaart geen permanente geschiedenis van PDF’s, exports of transacties. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf."
     },
     "failure": {
       "question": "Wat gebeurt er als de conversie mislukt?",
@@ -380,7 +380,7 @@
     "tinyLaunchBadge": "Binnenkort op TinyLaunch"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 18 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 19 oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -400,15 +400,15 @@
     },
     "accuracy": {
       "title": "Resultaten controleren",
-      "body": "Indeling, leesbaarheid en inhoud van een afschrift kunnen het uitlezen beïnvloeden. Het resultaat kan ontbrekende, dubbele of verkeerd herkende velden bevatten. Vergelijk Excel met het originele afschrift voordat je het gebruikt voor boekhouding, aangiften, het indienen van stukken of andere beslissingen. AI-analyse en scanconversie kunnen ook fouten of ontbrekende gegevens opleveren. Tabellen tijdens het genereren zijn tijdelijke voorvertoningen; definitieve validatie garandeert geen volledige nauwkeurigheid."
+      "body": "Indeling, leesbaarheid en inhoud van een afschrift kunnen het uitlezen beïnvloeden. Het resultaat kan ontbrekende, dubbele of verkeerd herkende velden bevatten. Vergelijk Excel met het originele afschrift voordat je het gebruikt voor boekhouding, aangiften, het indienen van stukken of andere beslissingen. AI-analyse en scanconversie kunnen ook fouten of ontbrekende gegevens opleveren. Tabellen tijdens het genereren zijn tijdelijke voorvertoningen; definitieve validatie garandeert geen volledige nauwkeurigheid. Naamnormalisatie legt handelaarsnamen vast die u handmatig bevestigt; de identiteit wordt niet gecontroleerd en de oorspronkelijke tekst, bronverwijzingen en extractierisico’s veranderen niet. Risicofilters gelden alleen voor het voorbeeld; exports bevatten alle transacties in het resultaat."
     },
     "quota": {
       "title": "Conversietegoed",
-      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's."
+      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
     },
     "subscription": {
       "title": "Abonnementen en betaling",
-      "body": "Standard, Professional en Enterprise worden maandelijks verlengd tegen de prijs die vóór aankoop wordt getoond. Creem is onze betaalprovider en Merchant of Record (de juridische verkoper van de transactie) en verzorgt betalingen, toepasselijke belastingen en betalingsbewijzen. U wordt pas belast nadat u de aankoop bevestigt. Creem stuurt informatie over abonnementen, verlengingen en mislukte betalingen naar deze dienst. U kunt automatische verlenging annuleren vanuit uw websiteaccount; betaalde toegang blijft beschikbaar tot het einde van de bevestigde factureringsperiode. Bij afrekenen via PayPal is ReAvid Ltd de verkoper. PayPal verwerkt abonnementsbetalingen en bijbehorende accountgegevens volgens zijn voorwaarden en privacybeleid en is niet de Merchant of Record voor deze dienst. Bij betaling via Waffo treedt Waffo op als Merchant of Record en verwerkt het betalingen en toepasselijke belastingen. Waffo-prijzen zijn exclusief belasting; het eindbedrag wordt bij het afrekenen getoond."
+      "body": "Standard, Professional en Enterprise worden maandelijks verlengd tegen de prijs die vóór aankoop wordt getoond. Creem is onze betaalprovider en Merchant of Record (de juridische verkoper van de transactie) en verzorgt betalingen, toepasselijke belastingen en betalingsbewijzen. U wordt pas belast nadat u de aankoop bevestigt. Creem stuurt informatie over abonnementen, verlengingen en mislukte betalingen naar deze dienst. U kunt automatische verlenging annuleren vanuit uw websiteaccount; betaalde toegang blijft beschikbaar tot het einde van de bevestigde factureringsperiode. Bij afrekenen via PayPal is ReAvid Ltd de verkoper. PayPal verwerkt abonnementsbetalingen en bijbehorende accountgegevens volgens zijn voorwaarden en privacybeleid en is niet de Merchant of Record voor deze dienst. Bij betaling via Waffo treedt Waffo op als Merchant of Record en verwerkt het betalingen en toepasselijke belastingen. Waffo-prijzen zijn exclusief belasting; het eindbedrag wordt bij het afrekenen getoond. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan."
     },
     "refunds": {
       "title": "Terugbetalingsbeleid",
@@ -418,7 +418,7 @@
     },
     "files": {
       "title": "Bestanden en downloads",
-      "body": "Geüploade PDF's, uitgelezen transacties en gegenereerde Excel-bestanden worden alleen voor de huidige conversie en download gebruikt. We bewaren ze niet in een permanent bestandsarchief. Bewaar zelf je originele afschrift en het gedownloade resultaat; na deze procedure biedt de dienst geen herhaalde downloads."
+      "body": "Excel, CSV, JSON, Markdown, TSV en HTML worden in uw browser gemaakt uit het huidige eindresultaat, inclusief bevestigde handelaarsnamen. De server bewaart geen permanente geschiedenis van PDF’s, geëxtraheerde transacties of exportbestanden. Bestandsnaam, resultaat en handelaarskoppelingen blijven tijdelijk in de sessie van dit tabblad voor het voorbeeld, herstel na vernieuwen en downloaden. Bewaar originele afschriften en downloads zelf; na afloop van het huidige proces kunt u historische bestanden niet opnieuw downloaden."
     },
     "prohibited": {
       "title": "Verboden gebruik",
@@ -455,11 +455,11 @@
     "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en Creem, PayPal of Waffo-abonnementen.",
     "documents": {
       "title": "Bankafschriften en conversiegegevens",
-      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. Verwerking door derden bij overschakeling naar AI wordt hieronder uitgelegd."
+      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. Verwerking door derden bij overschakeling naar AI wordt hieronder uitgelegd. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Creem en Waffo ontvangen ook het e-mailadres van het websiteaccount; PayPal verwerkt betaalgegevens via de eigen accountprocedure. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -480,7 +480,7 @@
     },
     "storage": {
       "title": "Browseropslag",
-      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen. De huidige conversie slaat ook de bestandsnaam en geëxtraheerde resultaten tijdelijk op in de sessieopslag van de browser voor voorvertoning en download. Dit is geen permanente bestandsgeschiedenis op de server."
+      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen. De huidige conversie slaat ook de bestandsnaam en geëxtraheerde resultaten tijdelijk op in de sessieopslag van de browser voor voorvertoning en download. Dit is geen permanente bestandsgeschiedenis op de server. Ook de gekozen bronkolommen voor handelaars, aliaskoppelingen en bevestigde uniforme namen worden met het huidige resultaat in de sessieopslag van dit tabblad bewaard. Ze kunnen na vernieuwen worden hersteld en worden bij een nieuwe conversie of het wissen van het resultaat verwijderd. Ze worden niet op de server opgeslagen of voor andere bestanden gebruikt; naamnormalisatie doet geen extra modelaanvraag."
     },
     "security": {
       "title": "Informatiebeveiliging",
@@ -617,19 +617,19 @@
   },
   "Geo": {
     "glance": "In één oogopslag",
-    "conversionSummary": "StatementXL zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren.",
+    "conversionSummary": "StatementXL zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren. Filter risico’s, normaliseer handelaarsnamen handmatig en exporteer naar Excel, CSV, JSON, Markdown, TSV of HTML.",
     "limitsSummary": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
     "privacySummary": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
     "featuresAnswer": "Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise schakelen over naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert. Bruikbare gedeeltelijke resultaten blijven behouden zonder overschakeling. AI-tabellen zijn tijdens het genereren zichtbaar; downloaden vereist de definitieve validatie. Controleer resultaten aan de hand van de originele PDF.",
     "riskTitle": "Wat betekenen de risicolabels?",
-    "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt.",
+    "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt. Risicofilters wijzigen alleen het voorbeeld; naamnormalisatie en exports omvatten nog steeds alle transacties in het resultaat.",
     "okDefinition": "Geen probleem gedetecteerd; dit garandeert geen juistheid of volledigheid.",
     "discrepancyDefinition": "Tegenstrijdig bewijs of een punt ter controle is gedetecteerd.",
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
     "limitsTitle": "Welke PDF’s kan ik uploaden?",
-    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
-    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem, PayPal of Waffo abonneert.",
+    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum.",
+    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem, PayPal of Waffo abonneert. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
     "priceHeader": "Prijs (USD)",
@@ -638,14 +638,14 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Dagelijks (UTC)",
     "billingPeriod": "factuurperiode",
-    "billingNote": "Abonnementen verlengen maandelijks via Creem, PayPal of Waffo. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s.",
+    "billingNote": "Abonnementen verlengen maandelijks via Creem, PayPal of Waffo. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan. Waffo-prijzen zijn exclusief belasting; de toepasselijke belasting en het definitieve totaal staan bij het afrekenen.",
     "privacyTitle": "Hoe worden mijn gegevens verwerkt?",
     "privacyAnswer": "Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
     "browserTitle": "Wat wordt tijdelijk in mijn browser bewaard?",
-    "browserAnswer": "Uitgelezen resultaten worden tijdelijk in de browsersessie bewaard voor het huidige proces. Dit staat los van bestandsgeschiedenis op de server.",
+    "browserAnswer": "De server bewaart geen permanente geschiedenis van PDF’s, exports of transacties. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf.",
     "metadataTitle": "Welke account- en factuurgegevens worden bewaard?",
     "siteTitle": "Waar vind ik informatie over de website?",
-    "siteAnswer": "De homepage bevat conversie, plannen en veelgestelde vragen. Volg de links voor openbare informatie; account- en resultaatpagina’s zijn processchermen.",
+    "siteAnswer": "StatementXL zet bankafschrift-PDF’s om in controleerbare tabellen met risicofilters, handmatige normalisatie van handelaarsnamen en zes exportformaten. De startpagina biedt conversie, abonnementen en veelgestelde vragen; productoverzicht, prijzen en privacydocumenten beschrijven functies en grenzen. Beheer abonnementen in uw account, controleer en download op de resultaatpagina en gebruik de contactlink voor ondersteuning.",
     "agentsTitle": "Agents",
     "agentsDescription": "Lees officiële productinformatie in Markdown.",
     "indexLabel": "Productoverzicht",
@@ -659,7 +659,9 @@
     "showPrompt": "Standaardprompt bekijken",
     "metadataAnswer": "Noodzakelijke account-, quota- en factuurmetagegevens worden bewaard voor de dienst. Bekijk en beheer uw abonnement in uw account en Creem, PayPal of Waffo.",
     "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden.",
-    "parsingHeader": "Analysemogelijkheden"
+    "parsingHeader": "Analysemogelijkheden",
+    "merchantTitle": "Hoe kan ik handelaarsnamen normaliseren?",
+    "merchantAnswer": "Kies in elke tabel van het eindresultaat een naam- of beschrijvingskolom. Exact gelijke oorspronkelijke teksten worden binnen dit bestand over tabellen heen gegroepeerd om aliassen handmatig te bevestigen, te hernoemen of te verwijderen. Oorspronkelijke tekst, volgorde, bronnen en extractierisico’s blijven intact; er wordt geen identiteit afgeleid en er is geen extra modelaanvraag. Bevestigde namen en een afzonderlijke status verschijnen in het voorbeeld en alle zes exportformaten. In JSON heten de velden merchantName en merchantNormalizationStatus: niet-toegewezen namen zijn null met status unassigned; toegewezen namen hebben status confirmed. Koppelingen blijven tijdelijk met het resultaat in de sessie van dit tabblad en worden niet voor een ander bestand gebruikt. Alle koppelingen verwijderen herstelt de oorspronkelijke exportvelden."
   },
   "BillingReturn": {
     "title": "Abonnement bevestigen",
