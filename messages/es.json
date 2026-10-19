@@ -373,7 +373,9 @@
     "faq": "Preguntas frecuentes",
     "terms": "Términos de servicio",
     "privacy": "Política de privacidad",
+    "support": "<label>Atención al cliente</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "Contáctanos",
     "productHuntBadge": "Ver StatementXL en Product Hunt",
     "tinyLaunchBadge": "Próximamente en TinyLaunch"
   },

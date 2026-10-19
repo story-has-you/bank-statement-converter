@@ -373,7 +373,9 @@
     "faq": "आम सवाल",
     "terms": "सेवा की शर्तें",
     "privacy": "गोपनीयता नीति",
+    "support": "<label>ग्राहक सहायता</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "हमसे संपर्क करें",
     "productHuntBadge": "Product Hunt पर StatementXL देखें",
     "tinyLaunchBadge": "जल्द ही TinyLaunch पर"
   },

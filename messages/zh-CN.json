@@ -373,7 +373,9 @@
     "faq": "常见问题",
     "terms": "服务条款",
     "privacy": "隐私政策",
+    "support": "<label>客服邮箱</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "联系我们",
     "productHuntBadge": "在 Product Hunt 查看 StatementXL",
     "tinyLaunchBadge": "即将在 TinyLaunch 上线"
   },

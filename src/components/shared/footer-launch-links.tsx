@@ -5,7 +5,7 @@ export function FooterLaunchLinks() {
   const t = useTranslations("HomeFooter");
 
   return (
-    <div className="flex w-fit max-w-1/2 shrink-0 items-center gap-3">
+    <div className="flex w-full max-w-sm items-center gap-3 sm:w-auto sm:shrink-0">
       <a
         className="min-w-0 rounded-md transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
         href="https://tinylaunch.com"
@@ -13,7 +13,7 @@ export function FooterLaunchLinks() {
         rel="noopener noreferrer"
       >
         <Image
-          className="h-auto w-56 max-w-full dark:invert"
+          className="h-auto w-40 max-w-full dark:invert"
           src="/tinylaunch-launching-soon.svg"
           width={250}
           height={54}
@@ -27,7 +27,7 @@ export function FooterLaunchLinks() {
         rel="noopener noreferrer"
       >
         <Image
-          className="h-auto w-56 max-w-full dark:hidden"
+          className="h-auto w-40 max-w-full dark:hidden"
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1279950&theme=light"
           width={250}
           height={54}
@@ -35,7 +35,7 @@ export function FooterLaunchLinks() {
           unoptimized
         />
         <Image
-          className="hidden h-auto w-56 max-w-full dark:block"
+          className="hidden h-auto w-40 max-w-full dark:block"
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1279950&theme=dark"
           width={250}
           height={54}

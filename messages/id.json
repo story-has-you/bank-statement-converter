@@ -373,7 +373,9 @@
     "faq": "Pertanyaan umum",
     "terms": "Ketentuan layanan",
     "privacy": "Kebijakan privasi",
+    "support": "<label>Dukungan pelanggan</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "Hubungi kami",
     "productHuntBadge": "Lihat StatementXL di Product Hunt",
     "tinyLaunchBadge": "Segera hadir di TinyLaunch"
   },

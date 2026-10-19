@@ -373,7 +373,9 @@
     "faq": "FAQ",
     "terms": "이용약관",
     "privacy": "개인정보 처리방침",
+    "support": "<label>고객 지원</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "문의하기",
     "productHuntBadge": "Product Hunt에서 StatementXL 보기",
     "tinyLaunchBadge": "TinyLaunch에서 곧 출시"
   },

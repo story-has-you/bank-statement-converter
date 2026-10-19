@@ -373,7 +373,9 @@
     "faq": "Veelgestelde vragen",
     "terms": "Gebruiksvoorwaarden",
     "privacy": "Privacybeleid",
+    "support": "<label>Klantenservice</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "Neem contact op",
     "productHuntBadge": "Bekijk StatementXL op Product Hunt",
     "tinyLaunchBadge": "Binnenkort op TinyLaunch"
   },

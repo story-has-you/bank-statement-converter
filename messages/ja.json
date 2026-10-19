@@ -373,7 +373,9 @@
     "faq": "よくある質問",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
+    "support": "<label>カスタマーサポート</label>{email}",
     "twelveTools": "Twelve Tools",
+    "contactUs": "お問い合わせ",
     "productHuntBadge": "Product HuntでStatementXLを見る",
     "tinyLaunchBadge": "TinyLaunchで近日公開"
   },
