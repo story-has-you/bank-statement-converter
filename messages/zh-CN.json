@@ -377,7 +377,9 @@
     "twelveTools": "Twelve Tools",
     "contactUs": "联系我们",
     "productHuntBadge": "在 Product Hunt 查看 StatementXL",
-    "tinyLaunchBadge": "即将在 TinyLaunch 上线"
+    "tinyLaunchBadge": "即将在 TinyLaunch 上线",
+    "about": "关于 StatementXL",
+    "resources": "指南与工具"
   },
   "LegalCommon": {
     "lastUpdated": "最后更新：2026 年 10 月 19 日"
@@ -678,9 +680,6 @@
     "backToPlans": "返回套餐"
   },
   "Landing": {
-    "relatedTitle": "银行流水转换指南",
-    "relatedDescription": "查看银行账单的 PDF 下载方法，或了解完整的转换流程。这些指南不代表所有账单版式都已验证。",
-    "homeLabel": "返回 StatementXL 首页",
     "stepsTitle": "三步完成银行流水转换",
     "uploadTitle": "上传 PDF",
     "uploadText": "每次上传一份原始账单 PDF，最多 {megabytes} MB、{pages} 页。匿名、免费和标准套餐需要文件有文字层；所有套餐均不支持密码保护文件。",
@@ -801,8 +800,419 @@
           "credit": "Credit",
           "debit": "Debit"
         }
+      },
+      "hsbc": {
+        "label": "HSBC 英国流水转 Excel",
+        "title": "将 HSBC 英国个人 GBP 流水转换为 Excel",
+        "intro": "对照原件检查英国个人往来账户 PDF 的导出结果。本文依据 HSBC 官方账单说明，不代表该版式已通过解析验收。",
+        "availability": "仅讨论 HSBC 英国个人 GBP 往来账户，不适用于其他国家、企业账户或信用卡。版式可能变化，需检查原件和提取行。",
+        "download": "通过 HSBC 网银或 App 下载原始 PDF，保留全部按页码排序的页面和原件。若原生交易导出已经合用，可优先使用。",
+        "detailsTitle": "账户汇总、页码和缩写",
+        "details": "HSBC 说明右上方账户汇总包含期初余额、收入、支出、期末余额及透支限额，并列出账户标识。这些总额不是逐笔交易。Sheet number 用于整理跨页账单。CR 表示贷记、DR 借记、DD 直接扣款、SO 定期付款指令、TRF 转账。对照原件核实缩写及换行摘要，不根据本文推断固定交易列序。",
+        "bank": "HSBC UK"
       }
     },
     "breadcrumbLabel": "当前位置"
+  },
+  "Editorial": {
+    "byline": "作者：{author}",
+    "updated": "更新于 {date}",
+    "faq": "常见问题",
+    "sources": "参考来源",
+    "convert": "转换银行流水",
+    "officialProfiles": "官方主页",
+    "pages": {
+      "docuclipper": {
+        "title": "StatementXL 与 DocuClipper：按实际工作流程选择",
+        "intro": "本文由 StatementXL 编写，依据官方资料比较单份 PDF 核对导出与更广泛的财务文档平台，并非独立速度或准确率测试。",
+        "sections": [
+          {
+            "title": "哪些需求更适合 DocuClipper",
+            "text": "DocuClipper 宣传支持银行、信用卡、证券账单及发票、收据、支票，提供 QBO 导出、批量处理、API 和 Webhook。如果你需要多类文档或自动化收件流程，这些能力更值得考虑。购买前核实所需功能属于哪个套餐。"
+          },
+          {
+            "title": "哪些需求更适合 StatementXL",
+            "text": "StatementXL 面向单份 PDF：先检查交易行，再下载 Excel、CSV、TSV、JSON、Markdown 或 HTML。导出保留风险原因和原始位置；OK、DISCREPANCY、UNVERIFIABLE 表示每行可用的核对证据。产品没有 QBO 导出或会计软件连接。"
+          },
+          {
+            "title": "用代表性文件比较完整成本",
+            "text": "用同一份获准使用的样本核对交易数、日期、金额方向和换行摘要。除套餐和文件限制外，也计算人工核对时间。我们没有运行两款产品的对照测试，不把供应商自述的准确率当作独立结论。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "StatementXL 能替代所有 DocuClipper 工作流吗？",
+            "answer": "不能。它主要用于逐份核对并导出流水 PDF；DocuClipper 宣传的文档范围、批量处理和集成适用于不同需求。"
+          }
+        ]
+      },
+      "alternatives": {
+        "title": "DocuClipper 替代方案：原生导出、StatementXL 与 Nanonets",
+        "intro": "先确定你需要的是电子表格、会计导入文件，还是重复运行的文档处理流程。银行能直接导出所需数据时，优先使用原生导出。",
+        "sections": [
+          {
+            "title": "先尝试银行自己的交易下载",
+            "text": "若网银提供所需期间的 CSV 或 Excel，优先下载并核对日期、摘要、金额、账户和币种。交易导出与银行正式 PDF 用途不同；需要证明材料时保留原始账单。"
+          },
+          {
+            "title": "比较三种工作流程",
+            "text": "StatementXL 处理单份 PDF，提供逐行风险和来源位置。DocuClipper 宣传更广的财务文档范围、批量处理和会计导出。Nanonets 提供可配置自动化、API 和工作流模块。少量手工整理与大量系统集成的选择标准不同。"
+          },
+          {
+            "title": "检查最终交付是否合用",
+            "text": "比较目标软件格式、套餐限制、隐私条款及人工复核成本。StatementXL 导出后仍需手工整理会计导入副本。功能和价格可能变化，以各产品官方页面的当前条款为准。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "应该先试哪种替代方案？",
+            "answer": "先试银行原生导出。只有 PDF 时，再根据目标格式和核对流程选择工具，用一份代表性文件验证。"
+          }
+        ]
+      },
+      "nanonets": {
+        "title": "StatementXL 与 Nanonets：流水导出还是自动化工作流？",
+        "intro": "StatementXL 聚焦可核对的流水导出，Nanonets 提供文档处理和自动化流程。本文依据官方说明编写，不是准确率对照测试。",
+        "sections": [
+          {
+            "title": "Nanonets 的优势场景",
+            "text": "Nanonets 宣传数据提取、API、邮件集成和云存储连接；高阶方案还包括 ERP、数据库集成和可配置模块。提取只是业务流程的一环时，这些能力有价值，具体可用性和条款需要核实。"
+          },
+          {
+            "title": "StatementXL 的适用场景",
+            "text": "一次处理一份 PDF，下载 Excel、CSV 等核对格式，通过风险标记和原始位置复查疑点。扫描件需要符合条件的套餐和剩余额度。产品没有公开提取 API、批量收件或类似 Nanonets 的自动化工作流。"
+          },
+          {
+            "title": "用相同任务比较费用",
+            "text": "Nanonets 按工作流模块运行使用积分，StatementXL 付费套餐按月度 PDF 页数计额。积分、模块运行次数和页数不能直接换算；应比较完整任务及人工复核成本。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "StatementXL 已证明比 Nanonets 更准确吗？",
+            "answer": "没有。我们未进行受控对照测试；公开样本报告只描述本地解析器在指定样本上的结果。"
+          }
+        ]
+      },
+      "xero": {
+        "title": "银行流水 PDF 转 Xero：整理并核对 CSV 导入文件",
+        "intro": "只有 PDF 时可使用这套手动流程；银行已有合用 CSV 时优先原生导出。StatementXL 不连接 Xero，也不创建会计分录。",
+        "sections": [
+          {
+            "title": "保留核对原件，另做导入副本",
+            "text": "转换后对照 PDF 检查，保留含风险和来源列的完整导出。导入副本按 Xero 所在地区的模板整理，Date、Amount 必填；收入为正、支出为负，放在同一个 Amount 列，金额不使用小数逗号。"
+          },
+          {
+            "title": "映射、预览，再完成对账",
+            "text": "在 Xero 的 Accounting → Bank accounts 为正确账户选择 Import a Statement，上传 CSV、映射列并确认日期格式。导入副本删除期初期末余额列、账号和空行。检查预览后导入，再将流水与已有交易对账。"
+          },
+          {
+            "title": "避免账户和期间重叠",
+            "text": "每个账户、币种分别整理文件；日期格式统一，保留有用的收款人、摘要和参考号。检查银行直连及历史导入重叠。Xero 也有其他账单导入选项，本指南不宣称 Xero 无法接收 PDF。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "下载的 CSV 可以直接导入 Xero 吗？",
+            "answer": "不能默认如此。StatementXL 保留原始列并附加核对字段；请先按 Xero 格式制作副本并确认映射。"
+          }
+        ]
+      },
+      "wave": {
+        "title": "银行流水 PDF 转 Wave：核对并上传交易",
+        "intro": "面向美国和加拿大 Wave 用户的手动 CSV 流程。无合用银行原生导出时再转换，并在 Wave 中确认账户和金额方向。",
+        "sections": [
+          {
+            "title": "区分核对副本与导入副本",
+            "text": "对照 PDF 检查日期、摘要、金额和风险。保留完整导出；导入副本删除余额汇总、空行及不属于交易字段的风险和来源列。不同账户、币种不要混合。"
+          },
+          {
+            "title": "使用 Wave 的导入预览",
+            "text": "进入 Accounting → Transactions → More → Upload transactions，选择文件及目标账户。预览确认日期、金额和摘要，再选择 Upload my statement。Wave 的金额选择区分支票账户存款和信用卡消费，不要假定两者方向相同。"
+          },
+          {
+            "title": "先检查已经存在的交易",
+            "text": "核对银行直连和以往上传的期间，避免重复，再在 Wave 中分类及对账。本指南不增加 Wave 连接、自动分类或专用导出能力。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "StatementXL 会把 PDF 直接传到 Wave 吗？",
+            "answer": "不会。先下载并核对数据，制作 CSV 副本，再到 Wave 内上传并确认字段。"
+          }
+        ]
+      },
+      "sage": {
+        "title": "银行流水 PDF 转英国 Sage Accounting：整理 CSV",
+        "intro": "适用于英国 Sage Accounting 的流水导入，不适用于 Sage 50 US、Sage Intacct，也不是 StatementXL 直连接口。",
+        "sections": [
+          {
+            "title": "明确选用四列格式",
+            "text": "Sage 四列 CSV 按 Date、Description、Money in、Money out 排列。转换后另做这些列的导入副本；完整导出和风险、来源字段留作核对，不把余额列改名当作交易金额。"
+          },
+          {
+            "title": "核对收支并选择正确账户",
+            "text": "按真实账单区分收入与支出，日期格式统一，并遵守下方 Sage 官方格式说明。在 Banking 选择相应账户导入账单，检查预览，按提示映射。"
+          },
+          {
+            "title": "导入后完成会计复核",
+            "text": "检查银行直连及历史导入的重叠，再在 Sage 中分类和对账。StatementXL 不分配 Sage 科目代码，不连接账户，也不保证原始转换结果可直接导入。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "这份 CSV 适用于所有 Sage 产品吗？",
+            "answer": "不适用。本文仅针对英国 Sage Accounting，制作文件前请确认实际产品和地区的文档。"
+          }
+        ]
+      },
+      "loan": {
+        "title": "为贷款申请整理银行流水",
+        "intro": "使用电子表格整理和核对交易，同时保留银行原始 PDF。接受哪些材料、期间和解释，由贷款机构决定。",
+        "sections": [
+          {
+            "title": "从贷款机构要求开始",
+            "text": "列出所需账户、币种和期间，取得完整银行 PDF，包括全部页面。记录缺失期间并咨询处理方式。电子表格是工作辅助，不能替代机构要求的原始证明。"
+          },
+          {
+            "title": "建立可追溯的核对表",
+            "text": "逐份转换，核对日期、摘要、交易数量、金额方向及期初期末余额。保留来源，调查风险行。用独立备注列解释转账或异常项目，不修改银行原始交易文字。"
+          },
+          {
+            "title": "证据与解释分别保存",
+            "text": "将原 PDF、核对导出和说明配套保存，仅通过机构批准的渠道分享。不为改善表面收入而修改或隐藏记录。StatementXL 不评估信用资格，也不保证贷款获批。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "贷款机构会接受 StatementXL 表格吗？",
+            "answer": "取决于机构。请确认它要求的原始流水和附件；转换本身不等于认证或审批。"
+          }
+        ]
+      },
+      "tax": {
+        "title": "为报税整理银行流水交易",
+        "intro": "参考美国 IRS 记录保存指引的资料整理流程。银行交易本身不能证明支出可抵扣，也不能替代收据等支持材料。",
+        "sections": [
+          {
+            "title": "按账户和期间收集材料",
+            "text": "收齐流水、收据、发票等资料，区分个人和业务账户，记录缺失期间。IRS 建议记录系统清晰体现收入支出，并保留支持性文件。"
+          },
+          {
+            "title": "分类前先核对提取结果",
+            "text": "逐份转换 PDF，对照原件检查日期、摘要、金额方向及风险行。保留带来源的完整导出，在另一份工作副本分类。统计前区分转账、退款、贷款入账和一般收入支出。"
+          },
+          {
+            "title": "与税务专业人士解决疑问",
+            "text": "交易匹配支持凭证，总额与原账单核对。保留待解决事项，不自动视为可抵扣。税制和保存期限因地区而异；StatementXL 提供提取，不提供申报、税额计算或税务建议。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "所有支出都能作为税务扣除吗？",
+            "answer": "不能。取决于交易性质、凭证和适用规则；不确定项目应咨询合格税务专业人士。"
+          }
+        ]
+      },
+      "catchup": {
+        "title": "补账：把缺失流水期间变成可核对清单",
+        "intro": "积压数月账目时，先确定缺少哪些账户和期间。转换帮助准备数据，对账和会计判断仍需复核。",
+        "sections": [
+          {
+            "title": "建立账户与月份清单",
+            "text": "列出账户、币种和期间，标明已有账单、缺失页面及银行直连已导入的交易。先取得缺失原件，不凭记忆补流水；从最后一次已完成对账的期末余额开始。"
+          },
+          {
+            "title": "逐份处理账单",
+            "text": "每次转换一份 PDF，保留原件并复查风险行，核对交易数、日期、金额和方向。核对副本保留来源；分类和商户归一化与原始文字分开。StatementXL 不提供整文件夹批量处理。"
+          },
+          {
+            "title": "每期对平后再进入下期",
+            "text": "排查重叠、重复上传和内部转账，将整理副本导入目标系统。期末余额与账单对平后带入下期。明确记录未解决项目，不编造平衡交易。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "转换完就算补账完成了吗？",
+            "answer": "不是。转换准备交易数据；查重、分类、凭证复核和对账是独立步骤。"
+          }
+        ]
+      },
+      "about": {
+        "title": "关于 StatementXL",
+        "intro": "StatementXL 将银行流水 PDF 转为电子表格，并提供逐行风险标记和来源位置，便于对照原始文件核对交易。",
+        "sections": [
+          {
+            "title": "产品提供什么",
+            "text": "上传单份 PDF，检查提取表格后下载 Excel、CSV、TSV、JSON、Markdown 或 HTML。行状态为 OK、DISCREPANCY、UNVERIFIABLE；OK 不保证完全准确或没有遗漏。当前文件限制、免费额度和订阅额度以转换器及套餐展示为准。"
+          },
+          {
+            "title": "数据处理与产品边界",
+            "text": "网站不把流水内容持久保存为文档历史。符合条件的扫描件可能使用外部 AI，按已发布隐私政策处理。账户、支付和运行元数据与流水内容分开。产品没有银行连接、公开提取 API 或直接会计导入。"
+          },
+          {
+            "title": "谁发布这些指南",
+            "text": "StatementXL 是产品品牌，也是指南、对比和公开样本报告的作者与发布者。页面列出来源和实际复核日期，对比披露产品关系。下方主页仅关联已核实品牌，不宣称个人创始人履历或未经确认的法律身份。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "在哪里查看产品说法的依据？",
+            "answer": "查看指南来源链接，以及样本报告的方法和可下载结果。产品问题可以联系支持邮箱。"
+          }
+        ]
+      },
+      "checker": {
+        "title": "免费银行流水余额核对器与 Excel 模板",
+        "intro": "检查期初余额加收入减支出是否等于期末余额。计算在浏览器内完成，无需上传账单或登录。",
+        "sections": [
+          {
+            "title": "输入同一份账单的总额",
+            "text": "只使用一个账户、币种和期间的期初、期末余额及收入、支出总额。透支余额可为负，收入和支出总额输入非负数，最多两位小数。"
+          },
+          {
+            "title": "理解差额的含义",
+            "text": "计算期末余额 = 期初余额 + 收入总额 − 支出总额。差额 = 计算期末余额 − 账单期末余额。正差额表示计算余额较高，负差额表示较低；检查遗漏费用、利息、转账、重复及期间边界。"
+          },
+          {
+            "title": "总额相符只是一项检查",
+            "text": "总额相符不能证明逐笔完整或分类正确，错误可能相互抵消。仍需核对每笔并保留银行原件。Excel 模板使用相同输入和公式，适用于采用两位小数的币种。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "金额会发送到 StatementXL 吗？",
+            "answer": "不会。输入只保留在页面内存。下载的模板是由你控制的独立本地文件。"
+          }
+        ]
+      },
+      "benchmark": {
+        "title": "公开样本报告：两种流水版式的本地解析结果",
+        "intro": "对 Carson Bank 公开样本和 BHW 官方指南第 12 页模拟账单进行可复现核对。结果只描述这两种版式，不代表通用银行支持或全产品准确率。",
+        "sections": [
+          {
+            "title": "方法与参考数据",
+            "text": "下载官方 PDF，渲染选定页，先记录有日期的逐笔交易，再与解析输出比较。Carson 取原第 1–2 页，BHW 取原第 12 页单独输入；参考交易数不含期初期末余额行。直接运行本地 Python 解析器，不使用 AI、用户账户或额度。"
+          },
+          {
+            "title": "行标记能说明什么",
+            "text": "OK、DISCREPANCY、UNVERIFIABLE 是解析器自身的证据标签，与人工参考对比单独报告。OK 行也可能丢失摘要中的空格，余额汇总也可能作为多余行返回。请同时查看字段核对和多行统计。"
+          },
+          {
+            "title": "限制与复现",
+            "text": "样本是公开演示，包括较旧 Carson 版式及模拟 BHW 储蓄合同账单，只评估源文件部分页面。它不是随机样本、扫描/OCR 测试或竞品对照。下载记录来源、校验值、选页范围、解析器版本和实测数量。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "OK 比例高就代表提取准确吗？",
+            "answer": "不代表。它只表示解析器没有标记这些已提取行；漏行、多行和字段差异仍需对照原件核查。"
+          }
+        ]
+      }
+    }
+  },
+  "PublicAccount": {
+    "loading": "正在读取账户状态…",
+    "error": "账户状态读取失败，请刷新重试。"
+  },
+  "BalanceChecker": {
+    "title": "余额核对",
+    "opening": "期初余额",
+    "incoming": "收入总额",
+    "outgoing": "支出总额",
+    "closing": "期末余额",
+    "format": "使用同一币种，最多 12 位整数及 2 位小数，不使用千位分隔符。",
+    "invalid": "请输入有效金额，最多 12 位整数和 2 位小数；收入和支出总额不能为负。",
+    "expected": "计算期末余额：{amount}",
+    "difference": "差额：{amount}",
+    "balanced": "总额相符，仍需核对逐笔交易。",
+    "unbalanced": "总额不符，请排查差额。",
+    "incomplete": "四个金额都填写有效后显示结果。",
+    "reset": "重置",
+    "download": "下载 Excel 模板",
+    "privacy": "金额只保留在页面内存，不上传，无需账户，不追踪输入金额。",
+    "templateNote": "金额使用同一币种，最多两位小数。填写着色输入格，公式会自动更新。",
+    "statusLabel": "核对结果"
+  },
+  "Benchmark": {
+    "title": "公开样本实测结果",
+    "summary": "{layouts} 种版式、{pages} 个选定页面：参考交易 {reference} 笔，提取 {rows} 行，其中 {ok} 行为 OK，占已提取行的 {percentage}。这不是准确率。",
+    "caption": "状态顺序：OK / DISCREPANCY / UNVERIFIABLE。数量仅对应选定页面。",
+    "sample": "样本",
+    "reference": "参考交易",
+    "extracted": "提取行",
+    "statuses": "行状态",
+    "missing": "未匹配参考行",
+    "extra": "多余行",
+    "mismatches": "字段差异",
+    "findings": "Carson 有 11 笔摘要丢失 ACH 与 DEBIT 之间的空格，仍标为 OK。BHW 的期末余额被作为一条多余的 UNVERIFIABLE 行返回。选定输入没有返回失败页。",
+    "matching": "按日期、金额及方向匹配，每条提取行只匹配一次；未匹配参考行不一定已证明是漏行。匹配后字段仅规范空白，不修正文字。完整结果见下载。",
+    "measured": "实测日期：{date}（UTC）",
+    "download": "下载实测结果（JSON）"
+  },
+  "Comparison": {
+    "criterion": "比较项",
+    "caption": "官方产品描述；本文由 StatementXL 编写，未进行两款产品的对照测试。",
+    "labels": {
+      "workflow": "工作流程",
+      "exports": "导出格式",
+      "integration": "集成方式",
+      "pricing": "计费单位"
+    },
+    "statementxl": {
+      "workflow": "逐份处理 PDF，附行风险与来源位置。",
+      "exports": "Excel、CSV、TSV、JSON、Markdown、HTML，无 QBO。",
+      "integration": "手工会计导入，没有银行连接或公开提取 API。",
+      "pricing": "每月 US${price} 起，含 {pages} 页 PDF，参阅当前套餐。"
+    },
+    "docuclipper": {
+      "workflow": "财务文档、批量处理及更广泛收件。",
+      "exports": "银行流水导出包含 Excel、CSV、QBO。",
+      "integration": "宣传 API、Webhook 和会计流程，具体以套餐为准。",
+      "pricing": "按页计费方案，查看官方当前价格与条件。"
+    },
+    "nanonets": {
+      "workflow": "可配置的文档处理工作流。",
+      "exports": "提供流水转 Excel，具体输出按工作流确认。",
+      "integration": "宣传 API、邮件、云连接及高阶 ERP 集成。",
+      "pricing": "工作流模块积分，不等同于月度 PDF 页数。"
+    }
+  },
+  "Resources": {
+    "title": "银行流水指南与工具",
+    "intro": "按需查找转换说明、银行账单指南、会计软件手工导入步骤、产品对比、免费工具和样本实测结果。",
+    "featuredTitle": "实用指南与免费工具",
+    "featuredDescription": "查看 PDF 转换、会计导入和余额核对的实用说明。",
+    "relatedTitle": "相关指南与工具",
+    "viewAll": "查看全部指南与工具",
+    "groups": {
+      "conversion": "转换基础",
+      "banks": "银行账单指南",
+      "accounting": "会计软件导入",
+      "bookkeeping": "记账与资料整理",
+      "comparisons": "产品对比",
+      "tools": "工具与实测报告"
+    },
+    "links": {
+      "pdf": "PDF 转 Excel 指南",
+      "scanned": "扫描账单转换说明",
+      "chase": "Chase 银行账单",
+      "bofa": "Bank of America 银行账单",
+      "wellsFargo": "Wells Fargo 银行账单",
+      "hsbc": "HSBC 英国银行账单",
+      "quickbooks": "QuickBooks 导入指南",
+      "xero": "Xero 导入指南",
+      "wave": "Wave 导入指南",
+      "sage": "英国 Sage Accounting 导入指南",
+      "loan": "贷款申请资料整理",
+      "tax": "报税资料整理",
+      "catchup": "补账流程",
+      "docuclipper": "StatementXL 与 DocuClipper",
+      "alternatives": "DocuClipper 替代方案",
+      "nanonets": "StatementXL 与 Nanonets",
+      "checker": "余额核对器与 Excel 模板",
+      "benchmark": "公开样本实测报告"
+    }
   }
 }

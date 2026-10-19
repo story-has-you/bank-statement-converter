@@ -56,9 +56,9 @@ export default function HomePage() {
         </section>
 
         <HomeFeatures />
-        <RelatedConversionPages />
         <UsageTiers />
         <HomeFaq />
+        <RelatedConversionPages />
       </main>
 
       <HomeFooter />

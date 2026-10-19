@@ -75,6 +75,8 @@ Vercel Production 和 Preview 均设置 `PARSER_SERVICE_URL=https://parser.banks
 ## 已验证的公开样本
 
 - [Carson Bank Sample Statement](https://www.carsonbank.com/wp-content/uploads/2021/01/Sample-Statement.pdf)（美国）：6 页；第 1-2 页支票账户交易区提取为 47 行，保留 `Date`、`Description`、`Debits`、`Credits`、`Balance`，并合并换行的交易摘要。支票清单、每日余额汇总及授信页不作为同一交易表返回。
-- [BHW Jahreskontoauszüge 2024](https://www.bhw.de/dam/bhwde/pdf/Jahreskontoauszuege_koop_2024.pdf)（德国）：公开说明材料的第 12 页包含独立的模拟账单；单独解析该页得到 30 行，保留 `Wertstellung`、`Jahreskontoauszug 2024`、`Lastschrift in €`、`Gutschrift in €`。整份 PDF 是多账户示例和说明材料，不应当当作一份个人账单。
+- [BHW Jahreskontoauszüge 2024](https://www.bhw.de/dam/bhwde/pdf/Jahreskontoauszuege_koop_2024.pdf)（德国）：公开说明材料的第 12 页包含独立的模拟账单；2026-10-19 单页复测返回 31 行，其中 30 笔交易和 1 条缺日期的期末余额行；保留 `Wertstellung`、`Jahreskontoauszug 2024`、`Lastschrift in €`、`Gutschrift in €`。整份 PDF 是多账户示例和说明材料，不应当当作一份个人账单。
 
 这些结果只证明所列电子版样本及对应版式通过了人工核对，不代表支持上述银行的所有账单版本或其他国家的任意账单。
+
+公开样本报告、逐行核对及复现方法见 [第三批 SEO/GEO 实测记录](../../docs/seo/seo-third-wave-verification.md)。行状态比例不代表准确率。

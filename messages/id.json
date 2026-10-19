@@ -377,7 +377,9 @@
     "twelveTools": "Twelve Tools",
     "contactUs": "Hubungi kami",
     "productHuntBadge": "Lihat StatementXL di Product Hunt",
-    "tinyLaunchBadge": "Segera hadir di TinyLaunch"
+    "tinyLaunchBadge": "Segera hadir di TinyLaunch",
+    "about": "Tentang StatementXL",
+    "resources": "Panduan dan alat"
   },
   "LegalCommon": {
     "lastUpdated": "Terakhir diperbarui: 19 Oktober 2026"
@@ -678,9 +680,6 @@
     "backToPlans": "Kembali ke paket"
   },
   "Landing": {
-    "relatedTitle": "Panduan konversi rekening koran",
-    "relatedDescription": "Lihat cara mengunduh PDF dari bank Anda dan langkah konversinya. Panduan ini tidak menjamin dukungan untuk semua tata letak rekening koran.",
-    "homeLabel": "Kembali ke beranda StatementXL",
     "stepsTitle": "Konversi rekening koran dalam tiga langkah",
     "uploadTitle": "Unggah PDF Anda",
     "uploadText": "Unggah satu PDF rekening koran asli, maksimal {megabytes} MB dan {pages} halaman. Pengguna anonim serta paket gratis dan Standard memerlukan lapisan teks. File yang dilindungi kata sandi tidak didukung.",
@@ -801,8 +800,419 @@
           "credit": "Credit",
           "debit": "Debit"
         }
+      },
+      "hsbc": {
+        "label": "Rekening HSBC UK ke Excel",
+        "title": "Konversi rekening pribadi GBP HSBC UK ke Excel",
+        "intro": "Periksa PDF rekening pribadi Inggris bersama asli. Berdasarkan penjelasan resmi HSBC, bukan klaim dukungan parser terverifikasi.",
+        "availability": "Untuk rekening giro pribadi GBP HSBC UK, bukan negara lain, bisnis atau kartu. Format berbeda; periksa asli dan baris.",
+        "download": "Unduh PDF asli melalui perbankan daring atau aplikasi HSBC, simpan semua lembar bernomor berurutan. Utamakan ekspor bank yang sesuai.",
+        "detailsTitle": "Ringkasan, nomor lembar dan singkatan",
+        "details": "HSBC menjelaskan saldo awal/akhir, masuk, keluar, batas cerukan dan identitas di kanan atas. Total bukan transaksi individual. Sheet number mengurutkan halaman. CR kredit, DR debit, DD debit langsung, SO perintah tetap, TRF transfer. Periksa uraian terpotong; jangan menganggap urutan kolom tetap.",
+        "bank": "HSBC UK"
       }
     },
     "breadcrumbLabel": "Jalur navigasi"
+  },
+  "Editorial": {
+    "byline": "Oleh {author}",
+    "updated": "Diperbarui: {date}",
+    "faq": "Tanya jawab",
+    "sources": "Sumber",
+    "convert": "Konversi rekening",
+    "officialProfiles": "Profil resmi",
+    "pages": {
+      "docuclipper": {
+        "title": "StatementXL vs DocuClipper: pilih sesuai pekerjaan",
+        "intro": "Perbandingan oleh StatementXL berdasarkan sumber resmi: pemeriksaan satu PDF atau platform dokumen keuangan yang lebih luas. Kami tidak menguji kecepatan atau akurasi kedua produk secara langsung.",
+        "sections": [
+          {
+            "title": "Kapan DocuClipper cocok",
+            "text": "DocuClipper menawarkan ekstraksi rekening bank, kartu, investasi, faktur, kuitansi dan cek, serta QBO, batch, API dan webhook. Berguna untuk berbagai dokumen atau penerimaan otomatis. Periksa fitur dan paket sebelum membeli."
+          },
+          {
+            "title": "Kapan StatementXL cocok",
+            "text": "Satu PDF, periksa baris lalu unduh Excel, CSV, TSV, JSON, Markdown atau HTML. Alasan risiko dan posisi sumber dipertahankan. OK, DISCREPANCY dan UNVERIFIABLE menunjukkan bukti tiap baris. Tidak ada QBO atau koneksi akuntansi langsung."
+          },
+          {
+            "title": "Bandingkan pekerjaan lengkap",
+            "text": "Gunakan sampel berizin yang sama, periksa jumlah, tanggal, nominal, arah dan uraian multibaris. Hitung batas paket dan waktu pemeriksaan. Klaim akurasi vendor bukan hasil independen; kami belum melakukan uji langsung."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah semua alur DocuClipper dapat diganti?",
+            "answer": "Tidak. Fokusnya memeriksa dan mengekspor satu PDF sekaligus. Batch, integrasi dan jenis dokumen lain memiliki kebutuhan berbeda."
+          }
+        ]
+      },
+      "alternatives": {
+        "title": "Alternatif DocuClipper: ekspor bank, StatementXL dan Nanonets",
+        "intro": "Tentukan apakah Anda memerlukan spreadsheet, impor akuntansi atau otomatisasi berulang. Coba ekspor bank terlebih dahulu jika sesuai.",
+        "sections": [
+          {
+            "title": "Mulai dari ekspor bank",
+            "text": "Jika CSV atau Excel tersedia, periksa tanggal, uraian, nominal, rekening dan mata uang. Data transaksi dan PDF resmi berbeda fungsi; simpan dokumen asli sebagai bukti."
+          },
+          {
+            "title": "Bedakan tiga alur",
+            "text": "StatementXL berfokus pada satu PDF dengan risiko per baris dan sumber. DocuClipper menawarkan lebih banyak dokumen keuangan, batch dan keluaran akuntansi. Nanonets menyediakan otomatisasi yang dapat dikonfigurasi, API dan blok alur. Pekerjaan kecil manual berbeda dari integrasi besar."
+          },
+          {
+            "title": "Periksa penyerahan akhir",
+            "text": "Bandingkan format tujuan, paket, batas, privasi dan pekerjaan pemeriksaan. Dari StatementXL, siapkan salinan impor secara manual. Fitur dan harga terkini tercantum di halaman resmi."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apa yang dicoba dahulu?",
+            "answer": "Ekspor asli bank. Jika hanya PDF, pilih berdasarkan format dan pemeriksaan lalu uji berkas yang mewakili kebutuhan."
+          }
+        ]
+      },
+      "nanonets": {
+        "title": "StatementXL vs Nanonets: ekspor rekening atau otomatisasi?",
+        "intro": "StatementXL berfokus pada ekspor yang dapat diperiksa; Nanonets pada pemrosesan dan otomatisasi. Berdasarkan deskripsi resmi, bukan uji akurasi perbandingan.",
+        "sections": [
+          {
+            "title": "Keunggulan Nanonets",
+            "text": "Menawarkan ekstraksi, API, email dan konektor penyimpanan. Tingkat lebih tinggi mencakup ERP, basis data dan blok yang dapat diatur. Cocok jika ekstraksi bagian dari proses lebih besar. Pastikan ketersediaan dan ketentuannya."
+          },
+          {
+            "title": "Kegunaan StatementXL",
+            "text": "Satu PDF sekaligus ke Excel, CSV dan format lain dengan risiko dan posisi sumber. Hasil pindai memerlukan paket sesuai dan kuota tersisa. Tidak ada API ekstraksi publik, penerimaan batch atau otomatisasi setara."
+          },
+          {
+            "title": "Bandingkan satuan yang tepat",
+            "text": "Nanonets menjelaskan kredit per eksekusi blok; StatementXL kuota halaman PDF bulanan. Kredit, eksekusi dan halaman tidak setara. Bandingkan tugas lengkap termasuk pemeriksaan manual."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah StatementXL terbukti lebih akurat?",
+            "answer": "Tidak. Belum ada uji langsung terkontrol. Laporan publik hanya menilai parser lokal pada sampel yang disebutkan."
+          }
+        ]
+      },
+      "xero": {
+        "title": "PDF rekening ke Xero: siapkan dan periksa CSV",
+        "intro": "Alur manual saat hanya tersedia PDF. Utamakan CSV bank yang sesuai. StatementXL tidak terhubung ke Xero atau membuat jurnal.",
+        "sections": [
+          {
+            "title": "Pisahkan salinan pemeriksaan dan impor",
+            "text": "Bandingkan PDF dan simpan keluaran lengkap dengan risiko serta sumber. Gunakan templat regional Xero: Date dan Amount wajib. Pemasukan positif dan pengeluaran negatif dalam satu kolom Amount, tanpa koma desimal."
+          },
+          {
+            "title": "Petakan, pratinjau dan rekonsiliasi",
+            "text": "Di Accounting → Bank accounts pilih Import a Statement untuk rekening yang benar. Pastikan CSV, kolom dan tanggal. Hapus saldo awal/akhir, nomor rekening dan baris kosong dari salinan. Periksa, impor dan rekonsiliasi dengan transaksi yang ada."
+          },
+          {
+            "title": "Hindari tumpang tindih",
+            "text": "Pisahkan rekening dan mata uang, konsistenkan tanggal dan simpan uraian/referensi berguna. Periksa koneksi bank dan impor lama. CSV satu pilihan, bukan pernyataan bahwa Xero tidak menerima PDF."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah CSV langsung siap impor?",
+            "answer": "Belum tentu. Kolom asli dan pemeriksaan dipertahankan. Siapkan salinan Xero dan konfirmasi pemetaan."
+          }
+        ]
+      },
+      "wave": {
+        "title": "PDF rekening ke Wave: periksa dan unggah transaksi",
+        "intro": "Alur CSV manual untuk Wave di AS dan Kanada. Konversi jika ekspor bank tidak sesuai, lalu periksa rekening dan arah nominal.",
+        "sections": [
+          {
+            "title": "Simpan dua salinan",
+            "text": "Cocokkan tanggal, uraian, nominal dan risiko dengan PDF. Simpan semua; hapus ringkasan saldo, baris kosong dan kolom risiko/sumber dari salinan impor. Jangan campur rekening atau mata uang."
+          },
+          {
+            "title": "Gunakan pratinjau Wave",
+            "text": "Accounting → Transactions → More → Upload transactions: pilih berkas dan rekening. Konfirmasi tanggal, nominal dan uraian sebelum Upload my statement. Setoran rekening dan tagihan kartu menggunakan pilihan nominal berbeda; periksa arahnya."
+          },
+          {
+            "title": "Periksa transaksi yang sudah ada",
+            "text": "Bandingkan koneksi dan unggahan lama agar tidak ganda, lalu kategorikan dan rekonsiliasi. Tidak menambahkan koneksi Wave, klasifikasi otomatis atau ekspor khusus."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah PDF langsung dikirim ke Wave?",
+            "answer": "Tidak. Unduh dan periksa data, siapkan CSV lalu unggah dan konfirmasi kolom di Wave."
+          }
+        ]
+      },
+      "sage": {
+        "title": "PDF rekening ke Sage Accounting UK: siapkan CSV",
+        "intro": "Untuk impor rekening Sage Accounting Inggris, bukan Sage 50 US, Sage Intacct atau koneksi langsung.",
+        "sections": [
+          {
+            "title": "Pilih empat kolom",
+            "text": "Sage menggunakan Date, Description, Money in, Money out sesuai urutan. Buat salinan dan simpan keluaran lengkap dengan risiko dan sumber. Jangan mengubah saldo menjadi nominal transaksi."
+          },
+          {
+            "title": "Periksa arah dan rekening",
+            "text": "Pisahkan masuk/keluar berdasarkan asli, seragamkan tanggal dan ikuti persyaratan resmi berikut. Pilih rekening di Banking lalu periksa impor, pratinjau dan pemetaan."
+          },
+          {
+            "title": "Selesaikan pemeriksaan akuntansi",
+            "text": "Periksa tumpang tindih dengan koneksi/impor, kategorikan dan rekonsiliasi di Sage. StatementXL tidak menetapkan kode akun atau menjamin keluaran mentah siap impor."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Bisa untuk semua produk Sage?",
+            "answer": "Tidak. Hanya Sage Accounting UK. Periksa dokumentasi produk dan wilayah yang tepat."
+          }
+        ]
+      },
+      "loan": {
+        "title": "Menata rekening untuk permohonan pinjaman",
+        "intro": "Spreadsheet membantu menata dan memeriksa; simpan PDF asli bank. Pemberi pinjaman menentukan dokumen, periode dan penjelasan yang diterima.",
+        "sections": [
+          {
+            "title": "Mulai dari persyaratan pemberi pinjaman",
+            "text": "Daftar rekening, mata uang dan periode; dapatkan PDF lengkap. Catat kekurangan dan tanyakan penyelesaiannya. Spreadsheet hanya alat kerja, bukan pengganti bukti asli yang diminta."
+          },
+          {
+            "title": "Buat pemeriksaan terlacak",
+            "text": "Konversi terpisah dan periksa tanggal, uraian, jumlah, arah serta saldo. Simpan sumber dan teliti risiko. Jelaskan transfer dalam catatan terpisah tanpa mengubah teks bank."
+          },
+          {
+            "title": "Pisahkan bukti dan penjelasan",
+            "text": "Simpan dokumen asli, ekspor terperiksa dan catatan, lalu bagikan lewat kanal yang disetujui. Jangan mengubah/menyembunyikan transaksi agar pendapatan tampak lebih baik. StatementXL tidak menilai kelayakan kredit atau menjamin persetujuan."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah spreadsheet diterima pemberi pinjaman?",
+            "answer": "Tergantung pemberi pinjaman. Pastikan dokumen asli dan lampiran; konversi bukan autentikasi atau persetujuan."
+          }
+        ]
+      },
+      "tax": {
+        "title": "Menata transaksi bank untuk persiapan pajak",
+        "intro": "Alur pemeriksaan dengan panduan catatan IRS AS sebagai referensi. Transaksi bank saja tidak membuktikan pengurang pajak atau menggantikan kuitansi.",
+        "sections": [
+          {
+            "title": "Kumpulkan per rekening dan periode",
+            "text": "Kumpulkan rekening, kuitansi dan faktur, bedakan pribadi/usaha dan catat kekurangan. IRS menyarankan catatan pemasukan/pengeluaran yang jelas dan bukti pendukung."
+          },
+          {
+            "title": "Periksa sebelum kategorisasi",
+            "text": "Konversi satu PDF, cocokkan tanggal, uraian, arah dan risiko. Simpan sumber dan kategorikan salinan. Pisahkan transfer, pengembalian dan pencairan pinjaman dari arus biasa sebelum penjumlahan."
+          },
+          {
+            "title": "Selesaikan pertanyaan pajak",
+            "text": "Cocokkan bukti dan total dengan rekening. Jangan otomatis mengurangkan biaya yang belum jelas. Aturan dan masa simpan berbeda per yurisdiksi. StatementXL tidak mengisi laporan, menghitung atau memberi saran pajak."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah semua pengeluaran dapat dikurangkan?",
+            "answer": "Tidak. Tergantung transaksi, bukti dan aturan. Konsultasikan dengan ahli pajak yang berkualifikasi."
+          }
+        ]
+      },
+      "catchup": {
+        "title": "Mengejar pembukuan: daftar periode rekening yang hilang",
+        "intro": "Kenali rekening dan bulan yang kurang dahulu. Konversi menyiapkan data; rekonsiliasi dan keputusan akuntansi tetap terpisah.",
+        "sections": [
+          {
+            "title": "Buat daftar rekening-bulan",
+            "text": "Catat rekening, mata uang, periode, dokumen tersedia, halaman kurang dan transaksi terimpor. Dapatkan asli, jangan isi dari ingatan. Mulai dari saldo akhir terakhir yang direkonsiliasi."
+          },
+          {
+            "title": "Kerjakan satu rekening koran",
+            "text": "Simpan PDF, konversi dan periksa risiko, jumlah, tanggal, nominal dan arah. Simpan sumber; pisahkan kategori dan normalisasi pedagang dari teks asli bank. Tidak ada pemrosesan folder batch."
+          },
+          {
+            "title": "Tutup periode sebelum lanjut",
+            "text": "Periksa duplikasi, tumpang tindih dan transfer internal sebelum impor. Rekonsiliasi saldo akhir dan bawa ke periode berikutnya. Catat persoalan terbuka tanpa membuat transaksi penyeimbang."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah konversi menyelesaikan pembukuan?",
+            "answer": "Tidak. Duplikasi, kategori, bukti dan rekonsiliasi memerlukan pemeriksaan tersendiri."
+          }
+        ]
+      },
+      "about": {
+        "title": "Tentang StatementXL",
+        "intro": "StatementXL mengubah PDF rekening menjadi spreadsheet dengan risiko per baris dan sumber agar transaksi dapat diperiksa terhadap dokumen asli.",
+        "sections": [
+          {
+            "title": "Fitur produk",
+            "text": "Satu PDF ke Excel, CSV, TSV, JSON, Markdown atau HTML. OK, DISCREPANCY, UNVERIFIABLE adalah status baris; OK tidak menjamin lengkap atau bebas kesalahan. Batas dan kuota ada di konverter dan paket."
+          },
+          {
+            "title": "Pemrosesan dan batas",
+            "text": "Isi tidak disimpan permanen sebagai riwayat dokumen. Pindaian yang memenuhi syarat dapat memakai AI eksternal menurut kebijakan privasi. Metadata akun, pembayaran dan operasi terpisah. Tanpa koneksi bank, API ekstraksi publik atau impor akuntansi langsung."
+          },
+          {
+            "title": "Siapa penerbitnya",
+            "text": "StatementXL adalah merek, penulis dan penerbit panduan, perbandingan dan laporan. Sumber, tanggal pemeriksaan nyata dan afiliasi ditampilkan. Hanya profil merek terverifikasi; tanpa biografi pendiri atau status hukum yang belum dikonfirmasi."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Di mana bukti klaimnya?",
+            "answer": "Pada sumber panduan serta metode dan hasil laporan yang dapat diunduh. Hubungi dukungan untuk pertanyaan produk."
+          }
+        ]
+      },
+      "checker": {
+        "title": "Pemeriksa saldo bank gratis dan templat Excel",
+        "intro": "Periksa saldo awal + masuk − keluar = saldo akhir. Dihitung di browser tanpa unggahan atau login.",
+        "sections": [
+          {
+            "title": "Gunakan total dari rekening yang sama",
+            "text": "Satu rekening, mata uang dan periode. Masukkan saldo dan total masuk/keluar. Saldo negatif boleh; total tidak negatif, maksimal dua desimal."
+          },
+          {
+            "title": "Memahami selisih",
+            "text": "Saldo hitungan = awal + masuk − keluar. Selisih = hitungan − saldo tercatat. Positif berarti lebih tinggi, negatif lebih rendah. Periksa biaya, bunga, transfer, duplikasi dan batas periode."
+          },
+          {
+            "title": "Seimbang hanya satu pemeriksaan",
+            "text": "Kesalahan dapat saling meniadakan. Kesamaan tidak membuktikan kelengkapan atau kategori. Periksa tiap transaksi dan simpan asli. Templat memakai rumus sama untuk mata uang dua desimal."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah nominal dikirim?",
+            "answer": "Tidak. Tetap di memori halaman. Templat unduhan adalah berkas lokal dalam kendali Anda."
+          }
+        ]
+      },
+      "benchmark": {
+        "title": "Laporan sampel publik: dua format rekening dalam parser lokal",
+        "intro": "Pemeriksaan yang dapat diulang atas sampel Carson Bank dan simulasi BHW pada halaman 12 panduan resmi. Hanya menggambarkan dua format itu.",
+        "sections": [
+          {
+            "title": "Metode dan referensi",
+            "text": "PDF resmi dirender dan transaksi bertanggal ditranskripsikan sebelum perbandingan. Carson: halaman asli 1–2; BHW: 12 terpisah. Saldo awal/akhir bukan transaksi referensi. Python lokal tanpa AI, akun atau kuota."
+          },
+          {
+            "title": "Pisahkan label dan pemeriksaan asli",
+            "text": "OK, DISCREPANCY, UNVERIFIABLE adalah label parser. Baris OK bisa kehilangan spasi dan saldo bisa menjadi baris tambahan. Periksa perbedaan kolom dan baris ekstra selain status."
+          },
+          {
+            "title": "Batas dan reproduksi",
+            "text": "Demonstrasi publik: format lama Carson dan kontrak tabungan perumahan simulasi BHW, halaman terpilih. Bukan sampel acak, OCR atau perbandingan vendor. Unduhan berisi URL, hash, halaman, versi dan ukuran aktual."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apakah persentase OK berarti akurasi?",
+            "answer": "Tidak. Hanya baris hasil ekstraksi yang tidak ditandai. Baris hilang, tambahan dan perbedaan perlu dibandingkan dengan asli."
+          }
+        ]
+      }
+    }
+  },
+  "PublicAccount": {
+    "loading": "Memuat akun…",
+    "error": "Status akun tidak tersedia. Muat ulang halaman."
+  },
+  "BalanceChecker": {
+    "title": "Pemeriksa saldo",
+    "opening": "Saldo awal",
+    "incoming": "Total masuk",
+    "outgoing": "Total keluar",
+    "closing": "Saldo akhir",
+    "format": "Satu mata uang; hingga 12 digit dan 2 desimal, tanpa pemisah ribuan.",
+    "invalid": "Masukkan nominal sah, hingga 12 digit dan 2 desimal; total masuk/keluar tidak negatif.",
+    "expected": "Saldo akhir hitungan: {amount}",
+    "difference": "Selisih: {amount}",
+    "balanced": "Total seimbang. Periksa juga setiap transaksi.",
+    "unbalanced": "Total tidak seimbang. Periksa selisih.",
+    "incomplete": "Isi empat nominal yang sah.",
+    "reset": "Atur ulang",
+    "download": "Unduh templat Excel",
+    "privacy": "Nominal hanya di memori halaman. Tanpa unggah, akun atau pelacakan nominal.",
+    "templateNote": "Mata uang sama, maksimal dua desimal. Isi sel berwarna; rumus diperbarui otomatis.",
+    "statusLabel": "Hasil pemeriksaan"
+  },
+  "Benchmark": {
+    "title": "Hasil sampel publik",
+    "summary": "{layouts} format, {pages} halaman: {reference} transaksi referensi dan {rows} baris ekstraksi; {ok} OK ({percentage}). Ini bukan tingkat akurasi.",
+    "caption": "Urutan: OK / DISCREPANCY / UNVERIFIABLE. Hanya halaman terpilih.",
+    "sample": "Sampel",
+    "reference": "Transaksi referensi",
+    "extracted": "Baris ekstraksi",
+    "statuses": "Status",
+    "missing": "Referensi tak cocok",
+    "extra": "Baris tambahan",
+    "mismatches": "Perbedaan kolom",
+    "findings": "Carson: 11 uraian kehilangan spasi antara ACH dan DEBIT meski OK. BHW: saldo akhir sebagai baris ekstra UNVERIFIABLE. Tidak ada kegagalan halaman dikembalikan untuk input ini.",
+    "matching": "Dicocokkan berdasarkan tanggal, nominal dan arah, tiap baris sekali. Referensi tak cocok belum tentu membuktikan transaksi hilang. Hanya spasi dinormalisasi. Rincian di unduhan.",
+    "measured": "Diukur: {date} (UTC)",
+    "download": "Unduh hasil ukur (JSON)"
+  },
+  "Comparison": {
+    "criterion": "Kriteria",
+    "caption": "Deskripsi resmi; perbandingan oleh StatementXL. Tanpa uji langsung.",
+    "labels": {
+      "workflow": "Alur",
+      "exports": "Ekspor",
+      "integration": "Integrasi",
+      "pricing": "Satuan harga"
+    },
+    "statementxl": {
+      "workflow": "Satu PDF, risiko baris dan sumber.",
+      "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; tanpa QBO.",
+      "integration": "Impor manual; tanpa bank atau API ekstraksi publik.",
+      "pricing": "Mulai US${price}/bulan untuk {pages} halaman PDF; lihat paket terkini."
+    },
+    "docuclipper": {
+      "workflow": "Dokumen keuangan, batch dan penerimaan luas.",
+      "exports": "Ekspor bank termasuk Excel, CSV dan QBO.",
+      "integration": "Menawarkan API, webhook dan alur akuntansi; periksa paket.",
+      "pricing": "Paket per halaman; lihat ketentuan terkini."
+    },
+    "nanonets": {
+      "workflow": "Alur dokumen yang dapat dikonfigurasi.",
+      "exports": "Rekening ke Excel; pastikan keluaran yang diperlukan.",
+      "integration": "Menawarkan API, email, cloud dan ERP tingkat atas.",
+      "pricing": "Kredit blok, tidak setara kuota halaman PDF bulanan."
+    }
+  },
+  "Resources": {
+    "title": "Panduan dan alat rekening bank",
+    "intro": "Temukan bantuan konversi, panduan bank, impor akuntansi manual, perbandingan, alat gratis dan hasil pengukuran sampel publik.",
+    "featuredTitle": "Panduan dan alat gratis",
+    "featuredDescription": "Bantuan praktis untuk konversi PDF, impor akuntansi dan pemeriksaan saldo.",
+    "relatedTitle": "Panduan dan alat terkait",
+    "viewAll": "Lihat semua panduan dan alat",
+    "groups": {
+      "conversion": "Dasar konversi",
+      "banks": "Panduan per bank",
+      "accounting": "Panduan impor akuntansi",
+      "bookkeeping": "Pembukuan dan dokumen",
+      "comparisons": "Perbandingan produk",
+      "tools": "Alat dan laporan sampel"
+    },
+    "links": {
+      "pdf": "Panduan PDF ke Excel",
+      "scanned": "Panduan rekening pindai",
+      "chase": "Rekening Chase",
+      "bofa": "Rekening Bank of America",
+      "wellsFargo": "Rekening Wells Fargo",
+      "hsbc": "Rekening HSBC UK",
+      "quickbooks": "Panduan impor QuickBooks",
+      "xero": "Panduan impor Xero",
+      "wave": "Panduan impor Wave",
+      "sage": "Impor Sage Accounting UK",
+      "loan": "Dokumen permohonan pinjaman",
+      "tax": "Dokumen persiapan pajak",
+      "catchup": "Mengejar pembukuan",
+      "docuclipper": "StatementXL dan DocuClipper",
+      "alternatives": "Alternatif DocuClipper",
+      "nanonets": "StatementXL dan Nanonets",
+      "checker": "Pemeriksa saldo dan templat Excel",
+      "benchmark": "Laporan sampel publik"
+    }
   }
 }

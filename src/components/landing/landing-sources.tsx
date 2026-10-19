@@ -3,12 +3,14 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import type { LandingContent } from "@/lib/seo/landing-content";
 
 export async function LandingSources({ content }: { content: LandingContent }) {
-  const [t, format] = await Promise.all([getTranslations("Landing"), getFormatter()]);
+  const [t, editorial, format] = await Promise.all([getTranslations("Landing"), getTranslations("Editorial"), getFormatter()]);
   const date = format.dateTime(new Date(`${content.page.checkedOn}T12:00:00Z`), { dateStyle: "long", timeZone: "UTC" });
   return (
     <section className="border-t border-border" aria-label={t("sourcesTitle")}>
       <div className="mx-auto w-full max-w-4xl px-5 py-8 text-sm leading-6 text-muted-foreground sm:px-8">
-        <p>{t("updated", { date })}</p>
+        <p>
+          {editorial("byline", { author: "StatementXL" })} · {t("updated", { date })}
+        </p>
         {content.bank && <p className="mt-3">{t("disclaimer", { bank: content.bank })}</p>}
         {content.page.sources.length > 0 && (
           <>

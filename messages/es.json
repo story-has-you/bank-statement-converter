@@ -377,7 +377,9 @@
     "twelveTools": "Twelve Tools",
     "contactUs": "Contáctanos",
     "productHuntBadge": "Ver StatementXL en Product Hunt",
-    "tinyLaunchBadge": "Próximamente en TinyLaunch"
+    "tinyLaunchBadge": "Próximamente en TinyLaunch",
+    "about": "Acerca de StatementXL",
+    "resources": "Guías y herramientas"
   },
   "LegalCommon": {
     "lastUpdated": "Última actualización: 19 de octubre de 2026"
@@ -678,9 +680,6 @@
     "backToPlans": "Volver a los planes"
   },
   "Landing": {
-    "relatedTitle": "Guías para convertir extractos bancarios",
-    "relatedDescription": "Consulta cómo descargar el PDF de tu banco y cómo convertirlo. Estas guías no garantizan la compatibilidad con todos los diseños de extractos.",
-    "homeLabel": "Volver al inicio de StatementXL",
     "stepsTitle": "Convierte un extracto en tres pasos",
     "uploadTitle": "Sube tu PDF",
     "uploadText": "Sube un extracto PDF original de hasta {megabytes} MB y {pages} páginas. El uso anónimo y los planes gratuito y Standard requieren una capa de texto. No se admiten archivos protegidos con contraseña.",
@@ -801,8 +800,419 @@
           "credit": "Credit",
           "debit": "Debit"
         }
+      },
+      "hsbc": {
+        "label": "Extracto HSBC UK a Excel",
+        "title": "Convertir extracto personal GBP de HSBC UK a Excel",
+        "intro": "Revise el PDF británico junto al original. Basado en la explicación oficial de HSBC; no certifica compatibilidad del analizador.",
+        "availability": "Cuentas corrientes personales GBP de HSBC UK, no otros países, empresas o tarjetas. Los formatos varían: compruebe original y filas.",
+        "download": "Descargue el PDF original desde banca en línea o app HSBC y conserve todas las hojas numeradas en orden. Prefiera exportación nativa adecuada.",
+        "detailsTitle": "Resumen, hojas y abreviaturas",
+        "details": "HSBC describe arriba a la derecha saldos inicial/final, entradas, salidas, límite de descubierto e identificadores. Los totales no son transacciones. Sheet number ordena páginas. CR: crédito; DR: débito; DD: adeudo directo; SO: orden permanente; TRF: transferencia. Revise descripciones divididas; no deduzca un orden fijo de columnas.",
+        "bank": "HSBC UK"
       }
     },
     "breadcrumbLabel": "Ruta de navegación"
+  },
+  "Editorial": {
+    "byline": "Por {author}",
+    "updated": "Actualizado: {date}",
+    "faq": "Preguntas y respuestas",
+    "sources": "Fuentes",
+    "convert": "Convertir extracto",
+    "officialProfiles": "Perfiles oficiales",
+    "pages": {
+      "docuclipper": {
+        "title": "StatementXL o DocuClipper: elegir según el trabajo",
+        "intro": "Comparación escrita por StatementXL con fuentes oficiales: revisión de un PDF frente a una plataforma financiera más amplia. No hemos realizado una prueba comparativa de velocidad o precisión.",
+        "sections": [
+          {
+            "title": "Cuándo encaja DocuClipper",
+            "text": "DocuClipper anuncia extractos bancarios, tarjetas, inversiones, facturas, recibos y cheques, además de QBO, lotes, API y webhooks. Puede convenir para varios documentos o recepción automatizada. Compruebe las funciones y el plan."
+          },
+          {
+            "title": "Cuándo encaja StatementXL",
+            "text": "Un PDF, revisión de filas y exportación a Excel, CSV, TSV, JSON, Markdown o HTML. Conserva motivos de riesgo y posiciones originales. OK, DISCREPANCY y UNVERIFIABLE indican las pruebas de cada fila. No ofrece QBO ni conexión contable."
+          },
+          {
+            "title": "Compare una tarea completa",
+            "text": "Use la misma muestra autorizada y compruebe cantidad, fechas, importes, dirección y descripciones multilínea. Incluya límites y tiempo de revisión. No hay prueba directa y las afirmaciones del proveedor no son resultados independientes."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Sustituye todos los usos de DocuClipper?",
+            "answer": "No. Está pensado para revisar y exportar un PDF cada vez. Lotes, integraciones y otros documentos responden a necesidades distintas."
+          }
+        ]
+      },
+      "alternatives": {
+        "title": "Alternativas a DocuClipper: banco, StatementXL y Nanonets",
+        "intro": "Decida si necesita una hoja, una importación contable o automatización repetible. Pruebe primero la exportación bancaria si sirve para su período.",
+        "sections": [
+          {
+            "title": "Empiece por la exportación bancaria",
+            "text": "Si existe CSV o Excel, revise fechas, descripción, importe, cuenta y divisa. Una descarga de transacciones y un PDF oficial cumplen funciones diferentes: conserve el original como prueba."
+          },
+          {
+            "title": "Diferencie tres procesos",
+            "text": "StatementXL prioriza un PDF con riesgos por fila y referencias. DocuClipper anuncia más documentos financieros, lotes y salidas contables. Nanonets ofrece automatización configurable, API y bloques de trabajo. Un trabajo manual pequeño difiere de una integración de gran volumen."
+          },
+          {
+            "title": "Compruebe la entrega final",
+            "text": "Compare formato de destino, plan, límites, privacidad y revisión. Con StatementXL debe preparar manualmente una copia para importar. Consulte condiciones y precios vigentes en las páginas oficiales."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Qué pruebo primero?",
+            "answer": "La exportación del banco. Si solo dispone de PDF, elija por formato y revisión necesaria y compruébelo con un archivo representativo."
+          }
+        ]
+      },
+      "nanonets": {
+        "title": "StatementXL o Nanonets: ¿exportar o automatizar?",
+        "intro": "StatementXL se centra en exportaciones verificables; Nanonets, en procesamiento y automatización. Comparación basada en descripciones oficiales, sin prueba de precisión entre ambos.",
+        "sections": [
+          {
+            "title": "Ventajas de Nanonets",
+            "text": "Anuncia extracción, API, correo y conectores de almacenamiento. Los niveles superiores incluyen ERP, bases de datos y bloques configurables. Sirve cuando extraer es parte de un proceso mayor. Confirme disponibilidad y condiciones."
+          },
+          {
+            "title": "Uso de StatementXL",
+            "text": "Un PDF cada vez a Excel, CSV y otros formatos, con riesgos y posiciones para revisión. Los escaneos exigen plan apto y cuota restante. No hay API pública de extracción, recepción masiva ni automatización equivalente."
+          },
+          {
+            "title": "Compare las unidades correctas",
+            "text": "Nanonets describe créditos por ejecución de bloques; StatementXL, cuotas mensuales de páginas PDF. Créditos, ejecuciones y páginas no son equivalentes. Compare una tarea completa, incluida la revisión manual."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Está demostrado que StatementXL es más preciso?",
+            "answer": "No. No hicimos una comparación controlada. El informe público evalúa solo el analizador local en las muestras indicadas."
+          }
+        ]
+      },
+      "xero": {
+        "title": "PDF bancario a Xero: preparar y revisar un CSV",
+        "intro": "Procedimiento manual cuando solo tiene PDF. Prefiera un CSV bancario adecuado. StatementXL no se conecta a Xero ni crea asientos.",
+        "sections": [
+          {
+            "title": "Separe revisión e importación",
+            "text": "Compare con el PDF y guarde el archivo completo con riesgos y fuentes. Use la plantilla regional de Xero: Date y Amount obligatorios. Ingresos positivos y gastos negativos en una columna Amount; sin coma decimal."
+          },
+          {
+            "title": "Asigne, previsualice y concilie",
+            "text": "En Accounting → Bank accounts elija Import a Statement de la cuenta correcta. Confirme CSV, columnas y fechas. Quite saldos, número de cuenta y filas vacías de la copia. Revise, importe y concilie con operaciones existentes."
+          },
+          {
+            "title": "Evite solapamientos",
+            "text": "Separe cuentas y divisas, mantenga fechas coherentes y referencias útiles. Compruebe conexiones bancarias e importaciones previas. CSV es una opción; no afirmamos que Xero no pueda recibir PDF."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Puedo importar directamente el CSV?",
+            "answer": "No necesariamente. Se conservan columnas originales y de revisión. Prepare una copia para Xero y confirme la asignación."
+          }
+        ]
+      },
+      "wave": {
+        "title": "PDF bancario a Wave: revisar y cargar transacciones",
+        "intro": "Procedimiento CSV manual para Wave en Estados Unidos y Canadá. Convierta si no hay exportación bancaria adecuada y revise cuenta y dirección de importes.",
+        "sections": [
+          {
+            "title": "Conserve dos copias",
+            "text": "Compare fechas, descripción, importes y riesgos con el PDF. Guarde el archivo completo y quite saldos, vacíos y campos de riesgo/fuente de la copia de importación. No mezcle cuentas o divisas."
+          },
+          {
+            "title": "Use la vista previa de Wave",
+            "text": "Accounting → Transactions → More → Upload transactions: elija archivo y cuenta. Confirme fecha, importe y descripción antes de Upload my statement. La selección distingue depósitos de cuenta corriente y cargos de tarjeta: compruebe el sentido."
+          },
+          {
+            "title": "Revise lo ya registrado",
+            "text": "Compare conexiones e importaciones anteriores para evitar duplicados; después clasifique y concilie. No se añade conexión Wave, categorización automática ni exportación dedicada."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Se envía el PDF directamente a Wave?",
+            "answer": "No. Descargue, revise y prepare el CSV; cárguelo y confirme los campos en Wave."
+          }
+        ]
+      },
+      "sage": {
+        "title": "PDF bancario a Sage Accounting UK: preparar un CSV",
+        "intro": "Para importar extractos en Sage Accounting del Reino Unido, no para Sage 50 US, Sage Intacct ni conexión directa.",
+        "sections": [
+          {
+            "title": "Elija el formato de cuatro columnas",
+            "text": "Sage usa Date, Description, Money in, Money out en ese orden. Prepare una copia y conserve el archivo completo con riesgos y fuentes. No convierta un saldo en importe de transacción."
+          },
+          {
+            "title": "Revise dirección y cuenta",
+            "text": "Separe entradas y salidas según el original, unifique fechas y siga los requisitos oficiales enlazados. En Banking elija la cuenta y revise importación, vista previa y asignaciones."
+          },
+          {
+            "title": "Termine la revisión contable",
+            "text": "Busque solapamientos con conexiones e importaciones y clasifique y concilie en Sage. StatementXL no asigna códigos contables ni garantiza una salida sin preparar lista para importar."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Sirve para todos los Sage?",
+            "answer": "No. Solo Sage Accounting UK. Consulte la documentación exacta del producto y la región."
+          }
+        ]
+      },
+      "loan": {
+        "title": "Organizar extractos para una solicitud de préstamo",
+        "intro": "Una hoja ayuda a ordenar y revisar; conserve los PDF emitidos por el banco. El prestamista decide documentos, períodos y explicaciones aceptables.",
+        "sections": [
+          {
+            "title": "Parta de la solicitud del prestamista",
+            "text": "Liste cuentas, divisas y períodos; obtenga PDF con todas sus páginas. Registre faltantes y consulte cómo resolverlos. Una hoja auxiliar no sustituye la prueba original requerida."
+          },
+          {
+            "title": "Cree una revisión trazable",
+            "text": "Convierta por separado y compruebe fechas, descripción, cantidad, dirección y saldos. Conserve fuentes e investigue riesgos. Explique transferencias en notas aparte sin modificar el texto original."
+          },
+          {
+            "title": "Separe prueba y explicación",
+            "text": "Guarde originales, exportaciones revisadas y notas, y comparta por el canal autorizado. No altere u oculte operaciones para mejorar ingresos aparentes. StatementXL no evalúa solvencia ni garantiza aprobación."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Aceptará el prestamista mi hoja?",
+            "answer": "Depende de él. Confirme originales y anexos requeridos; convertir no es certificar ni aprobar."
+          }
+        ]
+      },
+      "tax": {
+        "title": "Organizar transacciones bancarias para preparar impuestos",
+        "intro": "Procedimiento con las pautas documentales del IRS de EE. UU. como referencia. Una transacción no demuestra una deducción ni sustituye recibos.",
+        "sections": [
+          {
+            "title": "Reúna por cuenta y período",
+            "text": "Junte extractos, recibos y facturas; distinga cuentas personales y comerciales y registre faltantes. El IRS recomienda registros claros de ingresos/gastos y pruebas complementarias."
+          },
+          {
+            "title": "Revise antes de clasificar",
+            "text": "Convierta un PDF cada vez y compruebe fechas, descripción, dirección y riesgos. Guarde fuentes y clasifique una copia. Separe transferencias, devoluciones y préstamos de los ingresos/gastos ordinarios antes de sumar."
+          },
+          {
+            "title": "Consulte las dudas fiscales",
+            "text": "Relacione comprobantes y concilie totales. No deduzca automáticamente lo no aclarado. Reglas y conservación varían por jurisdicción. StatementXL no presenta declaraciones, calcula impuestos ni ofrece asesoramiento fiscal."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Todo gasto es deducible?",
+            "answer": "No. Depende de la operación, prueba y reglas aplicables. Consulte a un profesional cualificado."
+          }
+        ]
+      },
+      "catchup": {
+        "title": "Poner la contabilidad al día: una lista de períodos pendientes",
+        "intro": "Identifique primero cuentas y meses faltantes. Convertir prepara los datos; conciliar y decidir su tratamiento son pasos separados.",
+        "sections": [
+          {
+            "title": "Cree una lista cuenta-mes",
+            "text": "Anote cuentas, divisas, períodos, extractos disponibles, páginas faltantes y operaciones ya importadas. Obtenga originales, sin reconstruir de memoria. Empiece en el último saldo conciliado."
+          },
+          {
+            "title": "Trabaje un extracto cada vez",
+            "text": "Conserve el PDF, convierta y revise riesgos, cantidad, fechas, importes y dirección. Mantenga fuentes; separe categorías y normalización de comercios del texto bancario. No hay procesamiento de carpetas por lotes."
+          },
+          {
+            "title": "Cierre antes de avanzar",
+            "text": "Revise duplicados, solapamientos y transferencias internas antes de importar. Concilie el saldo final y páselo al período siguiente. Documente pendientes sin inventar movimientos de ajuste."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Convertir completa la contabilidad?",
+            "answer": "No. Duplicados, clasificación, pruebas y conciliación requieren revisión independiente."
+          }
+        ]
+      },
+      "about": {
+        "title": "Acerca de StatementXL",
+        "intro": "StatementXL convierte PDF bancarios en hojas con riesgos por fila y posiciones de origen para cotejar las transacciones con el original.",
+        "sections": [
+          {
+            "title": "Funciones del producto",
+            "text": "Un PDF a Excel, CSV, TSV, JSON, Markdown o HTML. OK, DISCREPANCY y UNVERIFIABLE describen filas; OK no garantiza integridad ni ausencia de errores. Límites y cuotas se muestran en el convertidor y los planes."
+          },
+          {
+            "title": "Procesamiento y límites",
+            "text": "El contenido no se conserva como historial documental. Los escaneos aptos pueden utilizar IA externa bajo la política de privacidad. Metadatos de cuenta, pagos y operación son distintos. Sin conexión bancaria, API pública de extracción ni importación contable directa."
+          },
+          {
+            "title": "Quién publica",
+            "text": "StatementXL es marca, autor y editor de guías, comparaciones e informe público. Se muestran fuentes, fechas reales de revisión y afiliación. Solo se enlazan perfiles confirmados, sin biografías de fundador o identidad jurídica no verificadas."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Dónde están las pruebas?",
+            "answer": "En las fuentes de cada guía y la metodología y resultados descargables del informe. Contacte con soporte para preguntas del producto."
+          }
+        ]
+      },
+      "checker": {
+        "title": "Comprobador gratuito de saldo bancario y plantilla Excel",
+        "intro": "Compruebe si saldo inicial + entradas − salidas = saldo final. Cálculo en el navegador, sin cargar archivos ni iniciar sesión.",
+        "sections": [
+          {
+            "title": "Use totales del mismo extracto",
+            "text": "Una cuenta, divisa y período. Introduzca saldos y totales de entradas/salidas. Se permiten saldos negativos por descubierto; totales no negativos y hasta dos decimales."
+          },
+          {
+            "title": "Interprete la diferencia",
+            "text": "Saldo calculado = inicial + entradas − salidas. Diferencia = calculado − indicado. Positivo: calculado superior; negativo: inferior. Revise comisiones, intereses, transferencias, duplicados y períodos."
+          },
+          {
+            "title": "Cuadrar es solo una comprobación",
+            "text": "Los errores pueden compensarse. La igualdad no prueba integridad ni clasificación. Revise cada operación y conserve el original. La plantilla usa las mismas fórmulas para divisas de dos decimales."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Se transmiten los importes?",
+            "answer": "No. Permanecen en la memoria de la página. La plantilla descargada es un archivo local bajo su control."
+          }
+        ]
+      },
+      "benchmark": {
+        "title": "Informe público: dos formatos de extracto en el analizador local",
+        "intro": "Comprobación reproducible de la muestra Carson Bank y el extracto simulado BHW de la página 12 de su guía. Solo describe esos dos formatos.",
+        "sections": [
+          {
+            "title": "Método y referencia",
+            "text": "Se renderizaron los PDF oficiales y transcribieron las transacciones fechadas antes de comparar. Carson: páginas originales 1–2; BHW: 12 por separado. Saldos inicial/final excluidos. Python local, sin IA, cuentas de usuario ni cuota."
+          },
+          {
+            "title": "Separe etiquetas y cotejo",
+            "text": "OK, DISCREPANCY y UNVERIFIABLE son marcas del analizador. Una fila OK puede perder espacios y un saldo aparecer como fila adicional. Revise diferencias de campos y filas extra además de los estados."
+          },
+          {
+            "title": "Límites y reproducción",
+            "text": "Demostraciones públicas: formato antiguo Carson y contrato de ahorro-vivienda simulado BHW, páginas seleccionadas. No es muestra aleatoria, OCR ni comparación comercial. La descarga incluye URL, hashes, páginas, versión y medidas."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿El porcentaje OK es precisión?",
+            "answer": "No. Solo refleja filas extraídas no marcadas. Omisiones, filas extra y diferencias exigen cotejo con el original."
+          }
+        ]
+      }
+    }
+  },
+  "PublicAccount": {
+    "loading": "Cargando cuenta…",
+    "error": "No se pudo cargar la cuenta. Recargue la página."
+  },
+  "BalanceChecker": {
+    "title": "Comprobar saldo",
+    "opening": "Saldo inicial",
+    "incoming": "Total de entradas",
+    "outgoing": "Total de salidas",
+    "closing": "Saldo final",
+    "format": "Una divisa; hasta 12 dígitos y 2 decimales, sin separadores de miles.",
+    "invalid": "Importe válido de hasta 12 dígitos y 2 decimales; entradas/salidas no negativas.",
+    "expected": "Saldo final calculado: {amount}",
+    "difference": "Diferencia: {amount}",
+    "balanced": "Los totales cuadran. Revise también cada transacción.",
+    "unbalanced": "Los totales no cuadran. Revise la diferencia.",
+    "incomplete": "Complete los cuatro importes válidos.",
+    "reset": "Restablecer",
+    "download": "Descargar plantilla Excel",
+    "privacy": "Importes solo en la memoria de la página. Sin envío, cuenta ni seguimiento de importes.",
+    "templateNote": "Misma divisa, dos decimales máximo. Rellene las celdas coloreadas; las fórmulas se actualizan.",
+    "statusLabel": "Resultado"
+  },
+  "Benchmark": {
+    "title": "Resultados de muestras públicas",
+    "summary": "{layouts} formatos, {pages} páginas: {reference} transacciones de referencia y {rows} filas extraídas; {ok} OK ({percentage}). No es una tasa de precisión.",
+    "caption": "Orden: OK / DISCREPANCY / UNVERIFIABLE. Solo páginas seleccionadas.",
+    "sample": "Muestra",
+    "reference": "Transacciones de referencia",
+    "extracted": "Filas extraídas",
+    "statuses": "Estados",
+    "missing": "Referencias sin correspondencia",
+    "extra": "Filas extra",
+    "mismatches": "Diferencias de campos",
+    "findings": "Carson: 11 descripciones perdieron el espacio entre ACH y DEBIT pese a OK. BHW: saldo final como fila extra UNVERIFIABLE. Sin fallos de página devueltos para estas entradas.",
+    "matching": "Correspondencia por fecha, importe y dirección, cada fila una vez. Referencias sin correspondencia no prueban necesariamente omisiones. Solo se normalizan espacios. Detalles en la descarga.",
+    "measured": "Medido: {date} (UTC)",
+    "download": "Descargar medidas (JSON)"
+  },
+  "Comparison": {
+    "criterion": "Criterio",
+    "caption": "Descripciones oficiales; comparación escrita por StatementXL. Sin prueba directa.",
+    "labels": {
+      "workflow": "Proceso",
+      "exports": "Exportaciones",
+      "integration": "Integración",
+      "pricing": "Unidad de precio"
+    },
+    "statementxl": {
+      "workflow": "Un PDF cada vez, riesgos y fuentes por fila.",
+      "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; sin QBO.",
+      "integration": "Importación manual; sin banco ni API pública de extracción.",
+      "pricing": "Desde US${price}/mes para {pages} páginas PDF; consulte planes actuales."
+    },
+    "docuclipper": {
+      "workflow": "Documentos financieros, lotes y recepción más amplia.",
+      "exports": "Exportación bancaria Excel, CSV y QBO.",
+      "integration": "Anuncia API, webhooks y procesos contables; compruebe el plan.",
+      "pricing": "Planes por páginas; consulte condiciones vigentes."
+    },
+    "nanonets": {
+      "workflow": "Procesos documentales configurables.",
+      "exports": "Extracto a Excel; confirme salidas necesarias.",
+      "integration": "Anuncia API, correo, nube y ERP superiores.",
+      "pricing": "Créditos de bloques, no equivalentes a cuota de páginas PDF."
+    }
+  },
+  "Resources": {
+    "title": "Guías y herramientas de extractos bancarios",
+    "intro": "Encuentre ayuda de conversión, guías por banco, importación contable manual, comparaciones, herramientas gratuitas y resultados medidos con muestras públicas.",
+    "featuredTitle": "Guías y herramientas gratuitas",
+    "featuredDescription": "Ayuda práctica para convertir PDF, importar en contabilidad y comprobar saldos.",
+    "relatedTitle": "Guías y herramientas relacionadas",
+    "viewAll": "Ver todas las guías y herramientas",
+    "groups": {
+      "conversion": "Conceptos de conversión",
+      "banks": "Guías por banco",
+      "accounting": "Guías de importación contable",
+      "bookkeeping": "Contabilidad y documentos",
+      "comparisons": "Comparaciones de productos",
+      "tools": "Herramientas e informe de muestras"
+    },
+    "links": {
+      "pdf": "Guía de PDF a Excel",
+      "scanned": "Extractos escaneados",
+      "chase": "Extractos Chase",
+      "bofa": "Extractos Bank of America",
+      "wellsFargo": "Extractos Wells Fargo",
+      "hsbc": "Extractos HSBC UK",
+      "quickbooks": "Guía de importación a QuickBooks",
+      "xero": "Guía de importación a Xero",
+      "wave": "Guía de importación a Wave",
+      "sage": "Importación a Sage Accounting UK",
+      "loan": "Documentos para préstamos",
+      "tax": "Documentos para impuestos",
+      "catchup": "Poner la contabilidad al día",
+      "docuclipper": "StatementXL y DocuClipper",
+      "alternatives": "Alternativas a DocuClipper",
+      "nanonets": "StatementXL y Nanonets",
+      "checker": "Comprobador de saldo y plantilla Excel",
+      "benchmark": "Informe de muestras públicas"
+    }
   }
 }

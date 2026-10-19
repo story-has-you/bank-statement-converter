@@ -1,9 +1,11 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { CheckoutConfig } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
 import { SubscriptionButton } from "./subscription-button";
 
-export async function SubscriptionOptions({
+export function SubscriptionOptions({
   checkouts,
   tier,
   signedIn,
@@ -12,7 +14,7 @@ export async function SubscriptionOptions({
   tier: MembershipTier;
   signedIn: boolean;
 }) {
-  const t = await getTranslations("Billing");
+  const t = useTranslations("Billing");
   if (!signedIn) {
     return <p className="text-sm text-muted-foreground">{t("signInRequired")}</p>;
   }

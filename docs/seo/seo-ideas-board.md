@@ -1,10 +1,11 @@
-# StatementXL（bankstatementconverter.xyz）SEO/AEO 选题看板（2026-10-14 更新）
+# StatementXL（bankstatementconverter.xyz）SEO/AEO 选题看板（2026-10-19 更新）
 
-> 说明：本看板只围绕我们自己的网站和产品，不做竞品对比类内容。没有使用任何搜索量、难度或排名数字。“搜索结果观察”一栏只记录这些词搜出来的页面类型，作为中性参考。首批页面覆盖现有 12 种语言；本看板以英文目标词描述选题，各语言正文和 metadata 分别本地化。
+> 说明：本看板的前两批围绕自有产品。2026-10-19 起按曦的新要求增加有官方来源的客观对比、用途页、工具和公开样本报告，详见 [第三批实施与验证](seo-third-wave-verification.md)。未核实的银行页保持未发布。没有使用任何搜索量、难度或排名数字。“搜索结果观察”一栏只记录这些词搜出来的页面类型，作为中性参考。首批页面覆盖现有 12 种语言；本看板以英文目标词描述选题，各语言正文和 metadata 分别本地化。
 
 ## 网站现状
 
 - 实施前的 sitemap 已包含首页、隐私、条款和 AI 文档的语言版本；第一批新增核心落地页和 3 个银行页，共 48 个 URL；第二批新增扫描件与 QuickBooks 教程共 24 个 URL，合计 72 个内容页 URL。
+- 第三批新增 13 个主题 × 12 语，共 156 个页面 URL，新增资源目录后当前构建 sitemap 共 360 个 URL；六个待核实银行页不发布，详见第三批验证记录。
 - 已有 llms.txt、llms-full.txt 和 /ai/en/*.md（产品、价格、隐私、FAQ），AEO 基础不错；新页面上线后要同步加进去。
 - 首页 Title、页眉页脚、结构化数据和 AI 文档中的产品品牌统一为 StatementXL；域名与法律主体不变。
 
@@ -16,7 +17,7 @@
 | 2    | 美国大银行专页：Chase、Bank of America、Wells Fargo       | chase / bank of america / wells fargo statement to excel                               | 美国个人、记账员               | 交易型    | 用户已经拿着某家银行的 PDF，离转换最近。内容可以用银行官方帮助页做依据，用一套模板批量复制。搜索结果以单个银行的转换页和下载教程为主。 | 已实现、待部署 |
 | 3    | 扫描件流水转 Excel（AI 处理）                             | scanned bank statement to excel; bank statement ocr                                    | 手里只有扫描件或纸质账单的用户 | 交易型    | 对应 Professional/Enterprise 的 AI 兜底功能，直接带动高档套餐。搜索结果多为工具页。                                                    | 已实现、待部署 |
 | 4    | 转 QuickBooks 教程（Excel → 3/4 列 CSV）                  | convert bank statement to quickbooks; pdf bank statement to quickbooks online          | 记账员、QuickBooks Online 用户 | 信息+交易 | 记账员是付费主力。搜索结果以操作教程为主。当前可下载 Excel 或 CSV，但需要按 QBO 要求整理列；不能宣称直接生成 QBO 专用文件或自动导入。  | 已实现、待部署 |
-| 5    | 更多银行专页：Capital One、Citi                           | capital one / citi statement to excel                                                  | 美国个人                       | 交易型    | 直接复用第 2 条的模板。                                                                                                                | idea           |
+| 5    | 更多银行专页：Capital One、Citi                           | capital one / citi statement to excel                                                  | 美国个人                       | 交易型    | 先取得对应个人账户版式资料，再按实际列、摘要与余额特点撰写。                                                                           | idea           |
 | 6    | 信用卡账单转 Excel（Amex、Apple Card、Chase 卡）          | credit card statement to excel; amex statement to excel                                | 个人、报销用户                 | 交易型    | 很多信用卡只提供 PDF 账单；可以和银行页互相内链。                                                                                      | idea           |
 | 7    | PDF 流水转 CSV（Excel → CSV 的操作说明）                  | pdf bank statement to csv; convert bank statement to csv                               | 记账员、开发者                 | 交易/信息 | 需求和 Excel 很接近。当前已支持 CSV 下载；CSV/TSV 每个逻辑表单独导出，包含风险和来源字段。教程应解释如何检查和使用结果。               | idea           |
 | 8    | 如何去掉流水 PDF 的密码再转换                             | password protected bank statement pdf; unlock bank statement pdf                       | 被加密 PDF 卡住的用户          | 信息型    | 我们不支持加密 PDF；这篇教程能减少转换失败，也能带来流量。                                                                             | idea           |

@@ -33,6 +33,7 @@
 - [Wells Fargo 写作 brief](seo/seo-brief-wells-fargo-statement-to-excel.md)
 - [第一批实施与验证](seo/seo-first-wave-verification.md)
 - [第二批实施与验证](seo/seo-second-wave-verification.md)
+- [第三批内容、工具、实测及静态渲染](seo/seo-third-wave-verification.md)
 
 ## 推广与发布
 

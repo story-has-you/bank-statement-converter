@@ -6,15 +6,18 @@ import { useRouter } from "next/navigation";
 import { useConversion } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
+import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 
-type AuthControlProps = { configured: boolean; email: string | null; signedIn: boolean; imageUrl: string | null };
-
-export function AuthControl({ configured, email, signedIn, imageUrl }: AuthControlProps) {
+export function AuthControl() {
+  const { status, configured, summary } = usePublicAccount();
+  const email = summary.user?.email ?? null;
+  const imageUrl = summary.user?.avatarUrl ?? null;
+  const signedIn = Boolean(summary.user);
   const t = useTranslations("AuthControl");
   const locale = useLocale();
   const router = useRouter();
@@ -92,7 +95,12 @@ export function AuthControl({ configured, email, signedIn, imageUrl }: AuthContr
             </Tooltip>
           </>
         ) : (
-          <Button variant="outline" disabled={pending || !configured} onClick={signIn} title={!configured ? t("unavailable") : undefined}>
+          <Button
+            variant="outline"
+            disabled={pending || !configured || status === "loading"}
+            onClick={signIn}
+            title={!configured ? t("unavailable") : undefined}
+          >
             <LogInIcon data-icon="inline-start" />
             {t("signInWithGoogle")}
           </Button>

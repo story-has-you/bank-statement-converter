@@ -43,6 +43,12 @@ export function HomeFooter() {
               <Link className="hover:text-foreground" href="/#faq">
                 {t("faq")}
               </Link>
+              <Link className="hover:text-foreground" href="/about">
+                {t("about")}
+              </Link>
+              <Link className="hover:text-foreground" href="/resources">
+                {t("resources")}
+              </Link>
               <Link className="hover:text-foreground" href="/terms">
                 {t("terms")}
               </Link>

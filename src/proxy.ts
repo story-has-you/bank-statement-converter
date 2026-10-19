@@ -4,7 +4,7 @@ import { hasLocale } from "next-intl";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
-import { conversionPages } from "./config/conversion-pages";
+import { publicPaths } from "./config/public-pages";
 import { getSupabaseConfig } from "./lib/supabase/config";
 import { getAgentDocumentUrl } from "./lib/geo/links";
 
@@ -18,8 +18,7 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
     segments.shift();
   }
   const path = segments.join("/");
-  const isConversionPage = conversionPages.some((page) => page.path === `/${path}`);
-  if (!["", "privacy", "terms"].includes(path) && !isConversionPage) {
+  if (!publicPaths.includes(`/${path}`)) {
     return response;
   }
   const links = [`<${getAgentDocumentUrl(locale, "llms.txt")}>; rel="describedby"`];
@@ -31,6 +30,14 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
 }
 
 export default async function proxy(request: NextRequest) {
+  const segments = request.nextUrl.pathname.split("/").filter(Boolean);
+  if (hasLocale(routing.locales, segments[0])) {
+    segments.shift();
+  }
+  const path = `/${segments.join("/")}`;
+  if (publicPaths.includes(path)) {
+    return withAgentLinks(handleLocale(request), request);
+  }
   const config = getSupabaseConfig();
   if (!config) {
     return withAgentLinks(handleLocale(request), request);

@@ -377,7 +377,9 @@
     "twelveTools": "Twelve Tools",
     "contactUs": "Contact us",
     "productHuntBadge": "Find StatementXL on Product Hunt",
-    "tinyLaunchBadge": "Launching soon on TinyLaunch"
+    "tinyLaunchBadge": "Launching soon on TinyLaunch",
+    "about": "About StatementXL",
+    "resources": "Guides & tools"
   },
   "LegalCommon": {
     "lastUpdated": "Last updated: October 19, 2026"
@@ -678,9 +680,6 @@
     "backToPlans": "Back to plans"
   },
   "Landing": {
-    "relatedTitle": "Bank statement conversion guides",
-    "relatedDescription": "Find PDF download instructions for your bank, or read the full conversion guide. These guides do not certify every statement layout.",
-    "homeLabel": "Back to StatementXL",
     "stepsTitle": "Convert a statement in three steps",
     "uploadTitle": "Upload your PDF",
     "uploadText": "Upload one original statement PDF, up to {megabytes} MB and {pages} pages. Use a PDF with a text layer on anonymous, free and Standard plans. Password-protected files are not supported.",
@@ -801,8 +800,419 @@
           "credit": "Credit",
           "debit": "Debit"
         }
+      },
+      "hsbc": {
+        "label": "HSBC UK statement to Excel",
+        "title": "Convert an HSBC UK personal GBP statement to Excel",
+        "intro": "Review a UK personal current-account PDF with the original alongside the export. This guide uses HSBC’s official statement explanation; it is not a verified parser-support claim.",
+        "availability": "This page concerns HSBC UK personal GBP current accounts, not other HSBC countries, business accounts or credit cards. Statement formats vary; inspect your own file and the extracted rows.",
+        "download": "Download the original PDF through HSBC online banking or its app. Keep all numbered sheets in order and retain the original for comparison. Use a native transaction export instead if it already meets your needs.",
+        "detailsTitle": "Account summary, sheet numbers and abbreviations",
+        "details": "HSBC describes a summary at the top right with opening balance, payments in, payments out, closing balance and overdraft limit, alongside account identifiers. These totals are not individual transactions. Sheet numbers help keep a multi-page statement in order. CR means credit, DR debit, DD Direct Debit, SO standing order and TRF transfer. Match abbreviations and wrapped descriptions to the original; do not infer a fixed transaction-column order from this guide.",
+        "bank": "HSBC UK"
       }
     },
     "breadcrumbLabel": "Breadcrumb"
+  },
+  "Editorial": {
+    "byline": "By {author}",
+    "updated": "Updated {date}",
+    "faq": "Questions and answers",
+    "sources": "Sources",
+    "convert": "Convert a statement",
+    "officialProfiles": "Official profiles",
+    "pages": {
+      "docuclipper": {
+        "title": "StatementXL vs DocuClipper: choose by the work you need to finish",
+        "intro": "Compare a focused PDF-to-spreadsheet workflow with a broader financial-document platform. This is a source-based comparison written by StatementXL, not an independent speed or accuracy test.",
+        "sections": [
+          {
+            "title": "When DocuClipper is a better fit",
+            "text": "DocuClipper advertises bank, credit-card and brokerage statements, invoices, receipts and checks, plus QBO export, batch processing, API and webhooks. Those capabilities are useful when a firm needs several document types or an automated intake pipeline. Verify the required integration and plan with DocuClipper before purchasing."
+          },
+          {
+            "title": "When StatementXL is a better fit",
+            "text": "Choose StatementXL when you want to upload one PDF, inspect the extracted rows and download a spreadsheet. Exports retain risk reasons and source locations; OK, DISCREPANCY and UNVERIFIABLE describe the evidence available for each row. Excel, CSV, TSV, JSON, Markdown and HTML are available. The service has no QBO export or accounting connection."
+          },
+          {
+            "title": "Compare a representative file before deciding",
+            "text": "Use the same permitted sample and review transaction count, dates, amounts, direction and multiline descriptions. Compare the total workflow cost, including review time and each plan’s limits. We have not run a head-to-head benchmark and do not repeat a vendor’s accuracy claim as an independently established result."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Does StatementXL replace every DocuClipper workflow?",
+            "answer": "No. It is a narrower option for reviewing and exporting one statement PDF at a time. DocuClipper’s advertised document coverage, batch processing and integrations may suit a different workload."
+          }
+        ]
+      },
+      "alternatives": {
+        "title": "DocuClipper alternatives: compare native exports, StatementXL and Nanonets",
+        "intro": "The useful alternative depends on whether you need a spreadsheet, an accounting import file or a repeatable document-processing workflow. Start with the bank’s own export when it is available.",
+        "sections": [
+          {
+            "title": "Try a native transaction download first",
+            "text": "If online banking offers a CSV or Excel download for the required period, use it before converting a PDF. Check whether it includes the booked date, description, amount and required account or currency. A native export and an official PDF statement serve different purposes; keep the original PDF when supporting evidence is needed."
+          },
+          {
+            "title": "Compare three different workflows",
+            "text": "StatementXL focuses on one-PDF conversion with row-level risk and source references. DocuClipper advertises broader financial-document extraction, batch processing and accounting-oriented exports. Nanonets offers configurable automation, API access and workflow blocks. A small manual job and a high-volume integration have different requirements."
+          },
+          {
+            "title": "Evaluate the complete handoff",
+            "text": "Check the output required by your destination software, the available plan, file limits, privacy terms and review effort. StatementXL exports require manual preparation for accounting imports. Vendor features and prices can change; the linked official pages are the source for current commercial terms."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Which alternative should I try first?",
+            "answer": "Try the bank’s native export first. If only a PDF is available, choose a tool by the required output and review workflow, then check it with a representative file."
+          }
+        ]
+      },
+      "nanonets": {
+        "title": "StatementXL vs Nanonets: a statement export or an automation workflow?",
+        "intro": "StatementXL focuses on inspectable statement exports. Nanonets offers document-processing and automation workflows. This comparison uses official descriptions; it is not a comparative accuracy test.",
+        "sections": [
+          {
+            "title": "Where Nanonets has an advantage",
+            "text": "Nanonets advertises data extraction, API access, email integration and cloud-storage connectors. Higher-tier offerings include ERP and database integrations and configurable workflow blocks. This breadth can matter when extraction is one step in a larger business process. Confirm the capabilities and terms for your specific workflow."
+          },
+          {
+            "title": "Where StatementXL fits",
+            "text": "StatementXL is designed for one PDF at a time and downloadable Excel, CSV and other review formats. Risk labels and original source positions help you inspect uncertain rows. Scanned statements require an eligible plan and available quota. There is no public extraction API, bulk intake or direct Nanonets-style workflow automation."
+          },
+          {
+            "title": "Compare costs using the right unit",
+            "text": "Nanonets describes credit-based pricing for workflow block runs, while StatementXL’s paid plans use monthly PDF-page quotas. Credits, block runs and pages are not interchangeable units. Evaluate a complete job, including manual review, rather than deriving a per-page comparison from unlike plan units."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Has StatementXL been proven more accurate than Nanonets?",
+            "answer": "No. We have not run a controlled head-to-head evaluation. The public sample report only measures our local parser on the stated samples."
+          }
+        ]
+      },
+      "xero": {
+        "title": "Bank statement PDF to Xero: prepare and review a CSV import",
+        "intro": "Use this manual workflow when the statement you need is a PDF. Prefer the bank’s native CSV if available. StatementXL does not connect to Xero or create accounting entries.",
+        "sections": [
+          {
+            "title": "Prepare a separate import copy",
+            "text": "Convert the PDF and compare the result against the original. Keep the full export with risk and source columns as your review copy. For the import copy, use Xero’s regional template: Date and Amount are required. Put income and expenses in one Amount column, with income positive and expenses negative; a decimal comma is not accepted for amounts."
+          },
+          {
+            "title": "Map, preview and reconcile",
+            "text": "In Xero, open Accounting → Bank accounts and choose Import a Statement for the correct account. Upload the CSV, map the fields and confirm the date format. Remove opening/closing balance columns, account numbers and blank rows from the import copy. Review the preview, complete the import, then reconcile statement lines with existing transactions."
+          },
+          {
+            "title": "Avoid account and period overlap",
+            "text": "Create one file per bank account and currency. Keep consistent dates, preserve useful payee/description/reference fields, and inspect overlaps with bank feeds or earlier imports. Xero also has other statement-import options; CSV is a reviewable option, not a claim that Xero cannot accept PDFs."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is the downloaded CSV immediately ready for Xero?",
+            "answer": "No. StatementXL retains original columns and adds review fields. Prepare a copy in Xero’s required format and confirm the column mapping before importing."
+          }
+        ]
+      },
+      "wave": {
+        "title": "Bank statement PDF to Wave: review and upload transactions",
+        "intro": "A manual CSV workflow for Wave users in the United States and Canada. Convert only when a usable native bank export is unavailable, then verify the account and amount direction in Wave.",
+        "sections": [
+          {
+            "title": "Keep a review copy and an import copy",
+            "text": "Check the extracted dates, descriptions, amounts and risk flags against the PDF. Keep the original export for review. In an import copy, remove balance summaries, blank rows and risk/source columns that are not transaction fields. Do not combine different accounts or currencies."
+          },
+          {
+            "title": "Use Wave’s import preview",
+            "text": "In Wave, go to Accounting → Transactions → More → Upload transactions. Select the statement and destination account. Confirm the date, amount and description columns in the preview before selecting Upload my statement. Wave distinguishes checking deposits from credit-card charges during amount selection; verify the direction rather than assuming one mapping fits both."
+          },
+          {
+            "title": "Check existing transactions first",
+            "text": "Compare the period with any connected bank feed and earlier uploads. Avoid importing the same transaction twice, then categorize and reconcile the imported transactions. This guide does not add a Wave connection, automatic categorization or a dedicated Wave export to StatementXL."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Should I upload a PDF directly through StatementXL to Wave?",
+            "answer": "No. These are separate services. Download and review the data, prepare a CSV copy, then perform the upload and field confirmation inside Wave."
+          }
+        ]
+      },
+      "sage": {
+        "title": "Bank statement PDF to Sage Accounting UK: prepare a CSV",
+        "intro": "This guide covers the UK Sage Accounting bank-statement import. It does not describe Sage 50 US, Sage Intacct or a direct StatementXL integration.",
+        "sections": [
+          {
+            "title": "Choose the four-column layout deliberately",
+            "text": "Sage’s four-column CSV format uses Date, Description, Money in, Money out in that order. After conversion, prepare a separate import copy with those columns. Keep the full export and its risk/source information for review; do not rename a balance column as a transaction amount."
+          },
+          {
+            "title": "Check amounts and import into the right bank account",
+            "text": "Separate incoming and outgoing money according to the actual account statement. Use consistent dates and follow the current Sage format requirements linked below. In Banking, select the relevant account and import statement, then check the preview and map fields where prompted."
+          },
+          {
+            "title": "Complete the accounting review",
+            "text": "Check overlapping periods and transactions already received through a bank feed. Review categories and reconciliation in Sage after importing. StatementXL does not assign Sage nominal codes, connect accounts or guarantee that a raw conversion is ready to import."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Does this CSV work for every Sage product?",
+            "answer": "No. This page is for UK Sage Accounting. Use the documentation for your exact product and region before preparing an import."
+          }
+        ]
+      },
+      "loan": {
+        "title": "Organize bank statements for a loan application",
+        "intro": "Use a spreadsheet to organize and check statement transactions while retaining the original bank-issued PDFs. The lender decides which documents, periods and explanations it accepts.",
+        "sections": [
+          {
+            "title": "Start with the lender’s document request",
+            "text": "List the requested accounts, statement periods and currencies. Obtain complete bank-issued PDFs, including all pages. Record any missing period and ask the lender how to address it. A converted spreadsheet is a working aid and does not replace the lender’s requested statement evidence."
+          },
+          {
+            "title": "Build a traceable review sheet",
+            "text": "Convert each PDF separately and check dates, descriptions, amount direction, transaction count and opening/closing balances. Preserve source references and investigate flagged rows. Use a separate notes column to explain transfers or unusual entries without changing the original transaction text."
+          },
+          {
+            "title": "Keep evidence and explanations separate",
+            "text": "Keep the original PDFs, reviewed exports and supporting explanations together. Share only through the lender’s approved channel. Do not edit records to improve apparent income or conceal transactions. StatementXL does not assess creditworthiness or guarantee application approval."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Will a StatementXL spreadsheet be accepted by my lender?",
+            "answer": "Acceptance depends on the lender. Ask which original statements and supporting files are required; conversion alone is not verification or approval."
+          }
+        ]
+      },
+      "tax": {
+        "title": "Organize bank statement transactions for tax preparation",
+        "intro": "A review workflow for preparing records, with US IRS recordkeeping guidance as the reference. A bank transaction alone does not establish a tax deduction or replace supporting receipts.",
+        "sections": [
+          {
+            "title": "Collect records by account and period",
+            "text": "Gather complete statements, receipts, invoices and other relevant records. Keep business and personal accounts identifiable, and note missing periods. The IRS recommends a recordkeeping system that clearly shows income and expenses and retains supporting documents."
+          },
+          {
+            "title": "Review the extraction before categorizing",
+            "text": "Convert one PDF at a time. Check dates, description, amount direction and flagged rows against the original. Keep the full export with source information, and categorize transactions in a separate working copy. Distinguish transfers, refunds and loan proceeds from ordinary revenue or spending before calculating totals."
+          },
+          {
+            "title": "Resolve questions with a tax professional",
+            "text": "Match entries to supporting evidence and compare totals with the original statements. Retain unresolved items instead of treating them as automatically deductible. Tax rules and retention duties vary by jurisdiction; StatementXL provides extraction, not a tax return, tax calculation or tax advice."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Can I treat every outgoing transaction as a deduction?",
+            "answer": "No. Eligibility depends on the transaction, supporting evidence and applicable tax rules. Review uncertain items with a qualified tax professional."
+          }
+        ]
+      },
+      "catchup": {
+        "title": "Catch-up bookkeeping: turn missing statement periods into a review queue",
+        "intro": "When months of records need attention, first establish which accounts and periods are missing. Conversion helps prepare transaction data; reconciliation and accounting decisions still need review.",
+        "sections": [
+          {
+            "title": "Make an account-by-month checklist",
+            "text": "List the accounts, currencies and periods to complete. Mark available statements, missing pages and transactions already imported through bank feeds. Obtain the missing original statements before attempting to fill gaps from memory. Start from the last reconciled closing balance."
+          },
+          {
+            "title": "Work one statement at a time",
+            "text": "Convert each PDF separately, keep the original and review flagged rows. Compare transaction counts, dates, amounts and direction. Store a reviewed copy with source references; keep category decisions and merchant normalization separate from the bank’s original wording. StatementXL does not process a folder as a batch."
+          },
+          {
+            "title": "Close each period before moving on",
+            "text": "Check for overlaps, duplicate uploads and internal transfers, then import a prepared copy into the destination system. Reconcile the ending balance to the statement and carry that verified balance into the next period. Track unresolved items explicitly rather than inventing balancing transactions."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Does converting the statements complete the bookkeeping?",
+            "answer": "No. Extraction prepares data. Duplicate checks, categorization, evidence review and reconciliation are separate steps."
+          }
+        ]
+      },
+      "about": {
+        "title": "About StatementXL",
+        "intro": "StatementXL converts bank statement PDFs to spreadsheets with row-level risk flags and source references, so extracted transactions can be checked against the original document.",
+        "sections": [
+          {
+            "title": "What the product does",
+            "text": "Upload one PDF and inspect the extracted tables before downloading Excel, CSV, TSV, JSON, Markdown or HTML. Rows are marked OK, DISCREPANCY or UNVERIFIABLE according to the available evidence. OK is not a guarantee of complete or error-free extraction. Current file limits, free allowances and subscription quotas are shown in the converter and plans."
+          },
+          {
+            "title": "Processing and product boundaries",
+            "text": "The site does not persist statement contents as a document history. Eligible scanned-statement conversions may use an external AI provider under the published privacy policy. Account, billing and operational metadata are separate from statement contents. The product has no direct accounting import, bank connection or public extraction API."
+          },
+          {
+            "title": "Who publishes these guides",
+            "text": "StatementXL is the product brand and the author/publisher of these guides, comparisons and the public sample report. Sources and actual review dates are shown on each page. Comparisons disclose this affiliation. The official profiles below refer to this brand; no personal founder biography or unverified legal status is asserted."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Where can I check the evidence behind a claim?",
+            "answer": "Follow the source links on the relevant guide and the sample report’s methodology and downloadable results. Contact support for product questions."
+          }
+        ]
+      },
+      "checker": {
+        "title": "Free bank statement balance checker and Excel template",
+        "intro": "Check whether opening balance plus incoming money minus outgoing money equals the closing balance. The calculation runs in your browser without uploading a statement or signing in.",
+        "sections": [
+          {
+            "title": "Use totals from the same statement",
+            "text": "Enter the opening and closing balances and the total incoming and outgoing money for one account, one currency and one period. Overdrawn balances can be negative. Enter incoming and outgoing totals as non-negative numbers, with no more than two decimal places."
+          },
+          {
+            "title": "Understand what a difference means",
+            "text": "Expected closing balance = opening balance + incoming total − outgoing total. Difference = expected closing balance − stated closing balance. A positive difference means the expected balance is higher; a negative difference means it is lower. Check missing fees, interest, transfers, duplicates and period boundaries."
+          },
+          {
+            "title": "A balanced total is only one check",
+            "text": "Equal totals do not prove that every transaction is present or correctly categorized; errors can offset each other. Compare individual entries and keep the bank-issued statement. The downloadable Excel template uses the same inputs and formulas and is intended for currencies with two decimal places."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Are the amounts sent to StatementXL?",
+            "answer": "No. This checker keeps inputs only in page memory. The downloaded template is a separate local file that you control."
+          }
+        ]
+      },
+      "benchmark": {
+        "title": "Public sample report: two statement layouts through the local parser",
+        "intro": "A reproducible check of the Carson Bank public sample and the BHW simulated statement on page 12 of its official guide. These results describe two specific layouts, not general bank support or product-wide accuracy.",
+        "sections": [
+          {
+            "title": "Method and reference data",
+            "text": "We downloaded the official PDFs, rendered the selected pages, and transcribed the dated transaction rows before comparing the parser output. Carson uses original pages 1–2; BHW uses original page 12 as a separate input. Opening and closing balance rows are excluded from the reference transaction count. The local Python parser runs directly without AI fallback, user accounts or quota usage."
+          },
+          {
+            "title": "What the row labels do and do not prove",
+            "text": "OK, DISCREPANCY and UNVERIFIABLE are the parser’s own evidence labels. We report those separately from the manual reference comparison. A row can be marked OK while its description has lost a space, and a balance summary can be returned as an extra row. Review the field checks and extra-row count as well as the status distribution."
+          },
+          {
+            "title": "Limits and reproducibility",
+            "text": "The samples are public demonstrations, including an older Carson layout and a simulated BHW savings-contract statement. The evaluated pages are a subset of the source documents. This is not a random sample, a scan/OCR test or a comparison against another vendor. The download records source URLs, hashes, selected pages, parser revision and actual measured counts."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Does a high OK percentage mean the extraction is accurate?",
+            "answer": "No. It only means the parser did not flag those extracted rows. Missing rows, extra rows and field mismatches require a separate comparison with the original."
+          }
+        ]
+      }
+    }
+  },
+  "PublicAccount": {
+    "loading": "Loading account status…",
+    "error": "Account status could not be loaded. Reload to try again."
+  },
+  "BalanceChecker": {
+    "title": "Balance checker",
+    "opening": "Opening balance",
+    "incoming": "Incoming total",
+    "outgoing": "Outgoing total",
+    "closing": "Closing balance",
+    "format": "Use one currency; up to 12 digits and 2 decimals. No grouping separators.",
+    "invalid": "Enter a valid amount (up to 12 digits and 2 decimals); incoming/outgoing totals must not be negative.",
+    "expected": "Expected closing balance: {amount}",
+    "difference": "Difference: {amount}",
+    "balanced": "The totals balance. Check individual transactions as well.",
+    "unbalanced": "The totals do not balance. Review the difference.",
+    "incomplete": "Complete all four valid amounts to see the result.",
+    "reset": "Reset",
+    "download": "Download Excel template",
+    "privacy": "Amounts stay in this page’s memory. No upload, account or amount tracking.",
+    "templateNote": "Same-currency amounts, maximum two decimals. Fill the shaded input cells; formulas update automatically.",
+    "statusLabel": "Check result"
+  },
+  "Benchmark": {
+    "title": "Public sample results",
+    "summary": "{layouts} layouts, {pages} selected pages: {reference} reference transactions and {rows} extracted rows; {ok} rows were OK ({percentage} of extracted rows). This is not an accuracy rate.",
+    "caption": "Status order: OK / DISCREPANCY / UNVERIFIABLE. Counts refer only to the selected pages.",
+    "sample": "Sample",
+    "reference": "Reference transactions",
+    "extracted": "Extracted rows",
+    "statuses": "Row statuses",
+    "missing": "Unmatched reference rows",
+    "extra": "Extra rows",
+    "mismatches": "Field mismatches",
+    "findings": "Carson: 11 descriptions lost the space between ACH and DEBIT despite OK status. BHW: the closing-balance summary was returned as one extra UNVERIFIABLE row. No page failures were returned for these selected inputs.",
+    "matching": "Rows are matched on date, amount and direction, consuming each extracted row once; unmatched reference rows are not necessarily proven omissions. Matched fields normalize whitespace only. The full findings are in the download.",
+    "measured": "Measured {date} (UTC)",
+    "download": "Download measured results (JSON)"
+  },
+  "Comparison": {
+    "criterion": "Criterion",
+    "caption": "Official product descriptions; StatementXL wrote this comparison. We did not run a head-to-head test.",
+    "labels": {
+      "workflow": "Workflow",
+      "exports": "Exports",
+      "integration": "Integration",
+      "pricing": "Pricing basis"
+    },
+    "statementxl": {
+      "workflow": "One PDF at a time; row risk and source references.",
+      "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; no QBO.",
+      "integration": "Manual accounting import; no bank connection or public extraction API.",
+      "pricing": "From US${price}/month for {pages} PDF pages; see current plans."
+    },
+    "docuclipper": {
+      "workflow": "Financial documents, batch processing and broader intake.",
+      "exports": "Bank statement exports include Excel, CSV and QBO.",
+      "integration": "Advertises API, webhooks and accounting-oriented workflows; check plan.",
+      "pricing": "Page-based plans; check current official pricing and conditions."
+    },
+    "nanonets": {
+      "workflow": "Configurable document-processing workflows.",
+      "exports": "Bank statement to Excel offering; confirm required outputs for the workflow.",
+      "integration": "Advertises API, email, cloud connectors and higher-tier ERP integrations.",
+      "pricing": "Workflow-block credits; not equivalent to a monthly PDF-page allowance."
+    }
+  },
+  "Resources": {
+    "title": "Bank statement guides & tools",
+    "intro": "Find conversion help, bank statement guides, manual accounting imports, comparisons, free tools and measured sample results.",
+    "featuredTitle": "Guides & free tools",
+    "featuredDescription": "Practical help with PDF conversion, accounting imports and balance checks.",
+    "relatedTitle": "Related guides & tools",
+    "viewAll": "View all guides & tools",
+    "groups": {
+      "conversion": "Conversion basics",
+      "banks": "Bank statement guides",
+      "accounting": "Accounting import guides",
+      "bookkeeping": "Bookkeeping & records",
+      "comparisons": "Product comparisons",
+      "tools": "Tools & sample report"
+    },
+    "links": {
+      "pdf": "PDF to Excel guide",
+      "scanned": "Scanned statement guide",
+      "chase": "Chase statements",
+      "bofa": "Bank of America statements",
+      "wellsFargo": "Wells Fargo statements",
+      "hsbc": "HSBC UK statements",
+      "quickbooks": "QuickBooks import guide",
+      "xero": "Xero import guide",
+      "wave": "Wave import guide",
+      "sage": "Sage Accounting UK import guide",
+      "loan": "Loan application records",
+      "tax": "Tax preparation records",
+      "catchup": "Catch-up bookkeeping",
+      "docuclipper": "StatementXL vs DocuClipper",
+      "alternatives": "DocuClipper alternatives",
+      "nanonets": "StatementXL vs Nanonets",
+      "checker": "Balance checker & Excel template",
+      "benchmark": "Public sample report"
+    }
   }
 }

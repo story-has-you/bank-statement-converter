@@ -1,5 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { brandConfig } from "@/config/brand";
 import { subscriptionConfig } from "@/config/plans";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -14,7 +15,11 @@ export async function HomeStructuredData() {
     getTranslations({ locale, namespace: "Geo" }),
     getHomeFaq(locale),
   ]);
-  const questions = faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }));
+  const questions = faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  }));
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -24,6 +29,7 @@ export async function HomeStructuredData() {
       url: getLocalizedAlternates("/", locale).canonical,
       description: metadataT("description"),
       applicationCategory: "FinanceApplication",
+      publisher: { "@id": brandConfig.organizationId },
       operatingSystem: "Web",
       inLanguage: locale,
       availableLanguage: routing.locales,
@@ -41,12 +47,23 @@ export async function HomeStructuredData() {
       }),
     },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: questions },
-    { "@context": "https://schema.org", "@type": "WebSite", name: metadataT("brand"), url: getLocalizedAlternates("/", locale).canonical, inLanguage: locale },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      publisher: { "@id": brandConfig.organizationId },
+      name: metadataT("brand"),
+      url: getLocalizedAlternates("/", locale).canonical,
+      inLanguage: locale,
+    },
   ];
   return (
     <>
       {schemas.map((schema) => (
-        <script key={schema["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+        <script
+          key={schema["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+        />
       ))}
     </>
   );

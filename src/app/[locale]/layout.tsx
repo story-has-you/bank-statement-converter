@@ -7,6 +7,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { OrganizationStructuredData } from "@/components/shared/organization-structured-data";
+import { PublicAccountProvider } from "@/components/account/public-account-provider";
 import { ConversionProvider } from "@/components/conversion/conversion-provider";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,7 +28,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
-  return { metadataBase: new URL(siteConfig.url), title: t("title"), description: t("description") };
+  return {
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+      other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : {},
+    },
+    metadataBase: new URL(siteConfig.url),
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function RootLayout({ children, params }: LocaleLayoutProps) {
@@ -38,10 +48,13 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
+        <OrganizationStructuredData />
         <NextIntlClientProvider>
           <ThemeProvider>
             <TooltipProvider>
-              <ConversionProvider>{children}</ConversionProvider>
+              <PublicAccountProvider>
+                <ConversionProvider>{children}</ConversionProvider>
+              </PublicAccountProvider>
             </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

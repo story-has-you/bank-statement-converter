@@ -377,7 +377,9 @@
     "twelveTools": "Twelve Tools",
     "contactUs": "Neem contact op",
     "productHuntBadge": "Bekijk StatementXL op Product Hunt",
-    "tinyLaunchBadge": "Binnenkort op TinyLaunch"
+    "tinyLaunchBadge": "Binnenkort op TinyLaunch",
+    "about": "Over StatementXL",
+    "resources": "Gidsen en hulpmiddelen"
   },
   "LegalCommon": {
     "lastUpdated": "Laatst bijgewerkt: 19 oktober 2026"
@@ -678,9 +680,6 @@
     "backToPlans": "Terug naar abonnementen"
   },
   "Landing": {
-    "relatedTitle": "Handleidingen voor bankafschriften",
-    "relatedDescription": "Bekijk hoe u de PDF van uw bank downloadt en omzet. Deze handleidingen garanderen geen ondersteuning voor alle afschriftindelingen.",
-    "homeLabel": "Terug naar StatementXL",
     "stepsTitle": "Een afschrift omzetten in drie stappen",
     "uploadTitle": "Upload uw PDF",
     "uploadText": "Upload één oorspronkelijk PDF-afschrift van maximaal {megabytes} MB en {pages} pagina's. Zonder aanmelding en bij het gratis en Standard-abonnement is een tekstlaag nodig. Bestanden met wachtwoordbeveiliging worden niet ondersteund.",
@@ -801,8 +800,419 @@
           "credit": "Credit",
           "debit": "Debit"
         }
+      },
+      "hsbc": {
+        "label": "HSBC UK-afschrift naar Excel",
+        "title": "Persoonlijk GBP-afschrift HSBC UK naar Excel",
+        "intro": "Controleer de Britse PDF naast het origineel. Gebaseerd op HSBC’s officiële uitleg, geen bevestigde parserondersteuning.",
+        "availability": "Persoonlijke GBP-betaalrekeningen bij HSBC UK, niet andere landen, zakelijke rekeningen of kaarten. Formaten variëren; controleer origineel en regels.",
+        "download": "Download originele PDF via HSBC-internetbankieren of app; bewaar alle genummerde bladen op volgorde. Geef geschikte native export voorrang.",
+        "detailsTitle": "Overzicht, bladnummers en afkortingen",
+        "details": "HSBC beschrijft rechtsboven begin-/eindsaldo, inkomsten, uitgaven, roodstandlimiet en rekeninggegevens. Totalen zijn geen transacties. Sheet number ordent pagina’s. CR: credit; DR: debet; DD: incasso; SO: vaste opdracht; TRF: overboeking. Controleer afgebroken omschrijvingen; leid geen vaste kolomvolgorde af.",
+        "bank": "HSBC UK"
       }
     },
     "breadcrumbLabel": "Navigatiepad"
+  },
+  "Editorial": {
+    "byline": "Door {author}",
+    "updated": "Bijgewerkt: {date}",
+    "faq": "Vragen en antwoorden",
+    "sources": "Bronnen",
+    "convert": "Afschrift converteren",
+    "officialProfiles": "Officiële profielen",
+    "pages": {
+      "docuclipper": {
+        "title": "StatementXL of DocuClipper: kies op basis van uw werk",
+        "intro": "Vergelijking door StatementXL op basis van officiële bronnen: één PDF controleren of een breder financieel platform. Geen onderlinge snelheids- of nauwkeurigheidstest.",
+        "sections": [
+          {
+            "title": "Wanneer DocuClipper past",
+            "text": "DocuClipper noemt bank-, kaart- en beleggingsafschriften, facturen, bonnen en cheques, met QBO, batchverwerking, API en webhooks. Nuttig voor meerdere documenten of automatische ontvangst. Controleer functies en abonnement."
+          },
+          {
+            "title": "Wanneer StatementXL past",
+            "text": "Eén PDF controleren en uitvoeren als Excel, CSV, TSV, JSON, Markdown of HTML. Risicoredenen en bronposities blijven behouden. OK, DISCREPANCY en UNVERIFIABLE beschrijven het bewijs per regel. Geen QBO of directe boekhoudkoppeling."
+          },
+          {
+            "title": "Vergelijk een volledige taak",
+            "text": "Gebruik hetzelfde toegestane voorbeeld en controleer aantal, datums, bedragen, richting en meerregelige omschrijvingen. Tel limieten en controletijd mee. Leveranciersclaims zijn geen onafhankelijke meetresultaten; wij hebben geen rechtstreekse test uitgevoerd."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Vervangt dit alle DocuClipper-processen?",
+            "answer": "Nee. StatementXL is bedoeld voor één PDF tegelijk. Batches, koppelingen en andere documentsoorten stellen andere eisen."
+          }
+        ]
+      },
+      "alternatives": {
+        "title": "DocuClipper-alternatieven: bankexport, StatementXL en Nanonets",
+        "intro": "Bepaal of u een tabel, boekhoudimport of herhaalbare automatisering nodig hebt. Probeer eerst een geschikte export van de bank.",
+        "sections": [
+          {
+            "title": "Begin bij de bank",
+            "text": "Controleer bij beschikbare CSV of Excel datum, omschrijving, bedrag, rekening en valuta. Transactiedata en een officieel PDF-afschrift hebben verschillende doelen; bewaar het origineel als bewijs."
+          },
+          {
+            "title": "Drie werkwijzen onderscheiden",
+            "text": "StatementXL richt zich op één PDF met regelrisico’s en bronnen. DocuClipper noemt meer financiële documenten, batches en boekhouduitvoer. Nanonets biedt configureerbare automatisering, API en workflowblokken. Een kleine handmatige taak verschilt van een grote integratie."
+          },
+          {
+            "title": "Controleer de overdracht",
+            "text": "Vergelijk doelformaat, abonnement, limieten, privacy en controlewerk. Bij StatementXL bereidt u een importkopie handmatig voor. Actuele functies en prijzen staan op officiële pagina’s."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Wat probeer ik eerst?",
+            "answer": "De bankexport. Is alleen PDF beschikbaar, kies dan op doelformaat en controleproces en test een representatief bestand."
+          }
+        ]
+      },
+      "nanonets": {
+        "title": "StatementXL of Nanonets: exporteren of automatiseren?",
+        "intro": "StatementXL biedt controleerbare afschriftexport, Nanonets documentverwerking en automatisering. Dit is een vergelijking van officiële beschrijvingen, geen nauwkeurigheidstest.",
+        "sections": [
+          {
+            "title": "Sterke punten van Nanonets",
+            "text": "Het noemt extractie, API, e-mail en cloudopslagkoppelingen. Hogere aanbiedingen omvatten ERP, databases en configureerbare blokken. Dat past wanneer extractie onderdeel van een groter proces is. Controleer voorwaarden en beschikbaarheid."
+          },
+          {
+            "title": "Gebruik van StatementXL",
+            "text": "Eén PDF tegelijk naar Excel, CSV en andere formaten, met risico’s en bronposities. Scans vereisen een geschikt abonnement en resterend quotum. Geen openbare extractie-API, batchinname of vergelijkbare workflowautomatisering."
+          },
+          {
+            "title": "Vergelijk dezelfde eenheden",
+            "text": "Nanonets beschrijft credits per blokuitvoering; StatementXL maandelijkse PDF-paginaquota. Credits, uitvoeringen en pagina’s zijn niet uitwisselbaar. Vergelijk een complete taak inclusief handmatige controle."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is StatementXL aantoonbaar nauwkeuriger?",
+            "answer": "Nee. Er is geen gecontroleerde onderlinge test. Het openbare rapport betreft alleen de lokale parser en genoemde voorbeelden."
+          }
+        ]
+      },
+      "xero": {
+        "title": "Bankafschrift-PDF naar Xero: CSV voorbereiden en controleren",
+        "intro": "Handmatige werkwijze als alleen PDF beschikbaar is. Gebruik liever een geschikte bank-CSV. StatementXL koppelt niet met Xero en maakt geen boekingen.",
+        "sections": [
+          {
+            "title": "Controle- en importkopie scheiden",
+            "text": "Vergelijk met de PDF en bewaar de volledige uitvoer met risico’s en bronnen. Gebruik Xero’s regionale sjabloon: Date en Amount verplicht. Inkomsten positief en uitgaven negatief in één Amount-kolom, zonder decimale komma."
+          },
+          {
+            "title": "Toewijzen, bekijken en afstemmen",
+            "text": "Kies Accounting → Bank accounts → Import a Statement bij de juiste rekening. Bevestig CSV, kolommen en datumformaat. Verwijder saldi, rekeningnummer en lege regels uit de kopie. Controleer, importeer en stem af met bestaande transacties."
+          },
+          {
+            "title": "Overlap vermijden",
+            "text": "Scheid rekeningen en valuta, houd datums consistent en behoud nuttige omschrijvingen en referenties. Controleer bankfeeds en eerdere imports. CSV is één mogelijkheid; dit betekent niet dat Xero geen PDF accepteert."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is de CSV direct importeerbaar?",
+            "answer": "Niet automatisch. Originele kolommen en controlevelden blijven behouden. Maak een Xero-kopie en controleer de toewijzing."
+          }
+        ]
+      },
+      "wave": {
+        "title": "Bankafschrift-PDF naar Wave: transacties controleren en uploaden",
+        "intro": "Handmatige CSV-route voor Wave in de VS en Canada. Converteer zonder geschikte bankexport en controleer rekening en bedragrichting.",
+        "sections": [
+          {
+            "title": "Twee kopieën bewaren",
+            "text": "Vergelijk datums, omschrijving, bedragen en risico’s met de PDF. Bewaar alles; verwijder saldi, lege regels en risico-/bronkolommen uit de importkopie. Meng geen rekeningen of valuta."
+          },
+          {
+            "title": "Wave-voorbeeld gebruiken",
+            "text": "Accounting → Transactions → More → Upload transactions: kies bestand en rekening. Bevestig datum, bedrag en omschrijving vóór Upload my statement. Stortingen op een betaalrekening en kaartuitgaven vragen verschillende selecties; controleer de richting."
+          },
+          {
+            "title": "Bestaande transacties controleren",
+            "text": "Vergelijk feeds en eerdere uploads om dubbelen te vermijden; categoriseer en stem daarna af. Geen Wave-koppeling, automatische classificatie of speciaal exportformaat wordt toegevoegd."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Gaat de PDF direct naar Wave?",
+            "answer": "Nee. Download en controleer, maak een CSV en upload en bevestig de velden binnen Wave."
+          }
+        ]
+      },
+      "sage": {
+        "title": "Bankafschrift-PDF voor Sage Accounting UK: CSV voorbereiden",
+        "intro": "Voor Britse Sage Accounting-import, niet voor Sage 50 US, Sage Intacct of directe koppeling.",
+        "sections": [
+          {
+            "title": "Vier kolommen kiezen",
+            "text": "Sage vereist Date, Description, Money in, Money out in die volgorde. Maak een kopie en bewaar de volledige uitvoer met risico’s en bronnen. Hernoem geen saldo tot transactiebedrag."
+          },
+          {
+            "title": "Richting en rekening controleren",
+            "text": "Scheid inkomsten en uitgaven volgens het origineel, gebruik consistente datums en de officiële vereisten hieronder. Kies in Banking de rekening en controleer importvoorbeeld en toewijzing."
+          },
+          {
+            "title": "Boekhoudcontrole afronden",
+            "text": "Controleer overlap met feeds en imports, categoriseer en stem af in Sage. StatementXL kent geen grootboekcodes toe en garandeert geen onbewerkte importklare uitvoer."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Geldt dit voor elk Sage-product?",
+            "answer": "Nee. Alleen Sage Accounting UK. Raadpleeg het juiste product en de juiste regio."
+          }
+        ]
+      },
+      "loan": {
+        "title": "Bankafschriften ordenen voor een leningaanvraag",
+        "intro": "Een tabel helpt ordenen en controleren; bewaar de originele bank-PDF’s. De geldverstrekker bepaalt documenten, perioden en geaccepteerde uitleg.",
+        "sections": [
+          {
+            "title": "Begin bij de aanvraagvereisten",
+            "text": "Noteer rekeningen, valuta en perioden en verzamel volledige PDF’s. Registreer hiaten en vraag hoe ze op te lossen. Een werktabel vervangt geen gevraagd origineel bewijs."
+          },
+          {
+            "title": "Een navolgbare controle maken",
+            "text": "Converteer apart en vergelijk datum, omschrijving, aantal, richting en saldi. Bewaar bronnen en onderzoek risico’s. Verklaar overboekingen in aparte notities zonder banktekst te veranderen."
+          },
+          {
+            "title": "Bewijs en uitleg scheiden",
+            "text": "Bewaar originelen, gecontroleerde exports en notities en deel via het goedgekeurde kanaal. Verander of verberg geen transacties om inkomsten beter te laten lijken. StatementXL beoordeelt geen kredietwaardigheid en garandeert geen goedkeuring."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Accepteert de geldverstrekker de tabel?",
+            "answer": "Dat bepaalt de geldverstrekker. Vraag welke originelen en bijlagen nodig zijn; conversie is geen certificering of goedkeuring."
+          }
+        ]
+      },
+      "tax": {
+        "title": "Banktransacties ordenen voor belastingvoorbereiding",
+        "intro": "Controleproces met Amerikaanse IRS-bewaaradviezen als referentie. Een banktransactie alleen bewijst geen aftrek en vervangt geen bon.",
+        "sections": [
+          {
+            "title": "Verzamel per rekening en periode",
+            "text": "Verzamel afschriften, bonnen en facturen, onderscheid privé en zakelijk en noteer hiaten. De IRS adviseert duidelijke inkomsten-/uitgavenregistratie en bewijsstukken."
+          },
+          {
+            "title": "Controleer vóór categoriseren",
+            "text": "Converteer één PDF tegelijk en vergelijk datum, omschrijving, richting en risico’s. Bewaar bronnen en categoriseer een kopie. Scheid overboekingen, terugbetalingen en leningen van gewone inkomsten en uitgaven vóór totaliseren."
+          },
+          {
+            "title": "Fiscale vragen oplossen",
+            "text": "Koppel bewijs en stem totalen af. Trek onduidelijke uitgaven niet automatisch af. Regels en bewaarplichten verschillen per land. StatementXL doet geen aangifte, belastingberekening of fiscaal advies."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is elke uitgave aftrekbaar?",
+            "answer": "Nee. Dat hangt af van transactie, bewijs en regels. Vraag een gekwalificeerde belastingadviseur."
+          }
+        ]
+      },
+      "catchup": {
+        "title": "Achterstallige boekhouding: maak ontbrekende perioden controleerbaar",
+        "intro": "Bepaal eerst ontbrekende rekeningen en maanden. Conversie bereidt gegevens voor; afstemming en boekhoudkeuzes blijven aparte stappen.",
+        "sections": [
+          {
+            "title": "Een rekening-maand-lijst maken",
+            "text": "Noteer rekeningen, valuta, perioden, beschikbare afschriften, ontbrekende pagina’s en reeds geïmporteerde transacties. Verzamel originelen, vul niet uit het geheugen aan. Begin met het laatste afgestemde eindsaldo."
+          },
+          {
+            "title": "Eén afschrift tegelijk",
+            "text": "Bewaar de PDF, converteer en controleer risico’s, aantal, datums, bedragen en richting. Bewaar bronnen; houd categorieën en handelaarsnormalisatie los van originele banktekst. Geen batchverwerking van mappen."
+          },
+          {
+            "title": "Afronden vóór doorgaan",
+            "text": "Controleer dubbelen, overlap en interne overboekingen vóór import. Stem het eindsaldo af en neem het over naar de volgende periode. Documenteer open punten zonder sluitposten te verzinnen."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is conversie voldoende?",
+            "answer": "Nee. Dubbelen, categorieën, bewijscontrole en afstemming vereisen afzonderlijk werk."
+          }
+        ]
+      },
+      "about": {
+        "title": "Over StatementXL",
+        "intro": "StatementXL zet bankafschrift-PDF’s om in tabellen met regelrisico’s en bronposities om transacties aan het origineel te toetsen.",
+        "sections": [
+          {
+            "title": "Productfuncties",
+            "text": "Eén PDF naar Excel, CSV, TSV, JSON, Markdown of HTML. OK, DISCREPANCY en UNVERIFIABLE geven regelstatus aan; OK garandeert geen volledigheid of foutloosheid. Limieten en quota staan bij de converter en abonnementen."
+          },
+          {
+            "title": "Verwerking en grenzen",
+            "text": "Inhoud wordt niet als documentgeschiedenis blijvend bewaard. Geschikte scans kunnen externe AI gebruiken volgens het privacybeleid. Account-, betaal- en operationele metadata zijn apart. Geen bankkoppeling, openbare extractie-API of directe boekhoudimport."
+          },
+          {
+            "title": "Wie publiceert",
+            "text": "StatementXL is merk, auteur en uitgever van gidsen, vergelijkingen en rapport. Bronnen, echte controledatums en betrokkenheid worden vermeld. Alleen bevestigde merkprofielen, geen onbevestigde oprichtersbiografie of rechtsvorm."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Waar staat het bewijs?",
+            "answer": "In de bronnen van gidsen en de methode en downloadbare rapportresultaten. Neem bij productvragen contact op met support."
+          }
+        ]
+      },
+      "checker": {
+        "title": "Gratis saldocontrole en Excel-sjabloon",
+        "intro": "Controleer beginsaldo + inkomsten − uitgaven = eindsaldo. Berekening in de browser zonder upload of aanmelding.",
+        "sections": [
+          {
+            "title": "Gebruik totalen van hetzelfde afschrift",
+            "text": "Eén rekening, valuta en periode. Voer saldi en inkomende/uitgaande totalen in. Negatieve saldi mogen; totalen niet negatief, maximaal twee decimalen."
+          },
+          {
+            "title": "Het verschil begrijpen",
+            "text": "Berekend eindsaldo = begin + inkomsten − uitgaven. Verschil = berekend − vermeld saldo. Positief: berekend hoger; negatief: lager. Controleer kosten, rente, overboekingen, dubbelen en perioden."
+          },
+          {
+            "title": "Gelijkheid is één controle",
+            "text": "Fouten kunnen elkaar opheffen. Gelijkheid bewijst geen volledigheid of juiste categorieën. Controleer afzonderlijke transacties en bewaar het origineel. Het sjabloon gebruikt dezelfde formules voor valuta met twee decimalen."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Worden bedragen verzonden?",
+            "answer": "Nee. Ze blijven in het paginageheugen. Het sjabloon is een lokaal bestand onder uw controle."
+          }
+        ]
+      },
+      "benchmark": {
+        "title": "Openbaar voorbeeldrapport: twee afschriftformaten lokaal geparseerd",
+        "intro": "Reproduceerbare controle van Carson Bank en het gesimuleerde BHW-afschrift op pagina 12 van de officiële gids. Alleen die twee formaten.",
+        "sections": [
+          {
+            "title": "Methode en referentie",
+            "text": "Officiële PDF’s weergegeven en gedateerde transacties overgeschreven vóór vergelijking. Carson: originele pagina’s 1–2; BHW: 12 apart. Begin-/eindsaldi tellen niet als referentietransactie. Lokale Python zonder AI, account of quotum."
+          },
+          {
+            "title": "Labels en broncontrole scheiden",
+            "text": "OK, DISCREPANCY en UNVERIFIABLE zijn parserlabels. Een OK-regel kan spaties verliezen en een saldo kan een extra regel worden. Bekijk veldverschillen en extra regels naast statussen."
+          },
+          {
+            "title": "Grenzen en herhaling",
+            "text": "Openbare demonstraties: oud Carson-formaat en gesimuleerd BHW-bouwspaarcontract, geselecteerde pagina’s. Geen willekeurige steekproef, OCR of concurrentietest. Download bevat URL’s, hashes, pagina’s, versie en meetwaarden."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is het OK-percentage de nauwkeurigheid?",
+            "answer": "Nee. Het betreft alleen ongemarkeerde geëxtraheerde regels. Ontbrekende, extra regels en veldverschillen vereisen vergelijking met het origineel."
+          }
+        ]
+      }
+    }
+  },
+  "PublicAccount": {
+    "loading": "Account wordt geladen…",
+    "error": "Accountstatus niet beschikbaar. Laad opnieuw."
+  },
+  "BalanceChecker": {
+    "title": "Saldocontrole",
+    "opening": "Beginsaldo",
+    "incoming": "Inkomend totaal",
+    "outgoing": "Uitgaand totaal",
+    "closing": "Eindsaldo",
+    "format": "Eén valuta; tot 12 cijfers en 2 decimalen, zonder duizendtalscheiding.",
+    "invalid": "Geldig bedrag tot 12 cijfers en 2 decimalen; in-/uitgaande totalen niet negatief.",
+    "expected": "Berekend eindsaldo: {amount}",
+    "difference": "Verschil: {amount}",
+    "balanced": "Totalen kloppen. Controleer ook losse transacties.",
+    "unbalanced": "Totalen verschillen. Controleer het verschil.",
+    "incomplete": "Vul vier geldige bedragen in.",
+    "reset": "Wissen",
+    "download": "Excel-sjabloon downloaden",
+    "privacy": "Bedragen blijven in paginageheugen. Geen upload, account of bedragregistratie.",
+    "templateNote": "Dezelfde valuta, maximaal twee decimalen. Vul gekleurde invoercellen in; formules werken bij.",
+    "statusLabel": "Controleresultaat"
+  },
+  "Benchmark": {
+    "title": "Openbare voorbeeldresultaten",
+    "summary": "{layouts} formaten, {pages} pagina’s: {reference} referentietransacties en {rows} geëxtraheerde regels; {ok} OK ({percentage}). Dit is geen nauwkeurigheidspercentage.",
+    "caption": "Volgorde: OK / DISCREPANCY / UNVERIFIABLE. Alleen geselecteerde pagina’s.",
+    "sample": "Voorbeeld",
+    "reference": "Referentietransacties",
+    "extracted": "Geëxtraheerde regels",
+    "statuses": "Statussen",
+    "missing": "Niet gekoppelde referenties",
+    "extra": "Extra regels",
+    "mismatches": "Veldverschillen",
+    "findings": "Carson: 11 omschrijvingen verloren de spatie tussen ACH en DEBIT ondanks OK. BHW: eindsaldo als extra UNVERIFIABLE-regel. Geen paginafouten voor deze invoer geretourneerd.",
+    "matching": "Koppeling op datum, bedrag en richting, iedere regel eenmaal. Niet gekoppelde referenties bewijzen niet noodzakelijk weglating. Alleen witruimte wordt genormaliseerd. Details in download.",
+    "measured": "Gemeten: {date} (UTC)",
+    "download": "Meetresultaten downloaden (JSON)"
+  },
+  "Comparison": {
+    "criterion": "Criterium",
+    "caption": "Officiële beschrijvingen; vergelijking door StatementXL. Geen directe test.",
+    "labels": {
+      "workflow": "Werkwijze",
+      "exports": "Uitvoer",
+      "integration": "Koppeling",
+      "pricing": "Prijseenheid"
+    },
+    "statementxl": {
+      "workflow": "Eén PDF tegelijk, regelrisico’s en bronnen.",
+      "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; geen QBO.",
+      "integration": "Handmatige import; geen bank of openbare extractie-API.",
+      "pricing": "Vanaf US${price}/maand voor {pages} PDF-pagina’s; zie huidige plannen."
+    },
+    "docuclipper": {
+      "workflow": "Financiële documenten, batches en bredere intake.",
+      "exports": "Bankuitvoer Excel, CSV en QBO.",
+      "integration": "Noemt API, webhooks en boekhoudprocessen; controleer plan.",
+      "pricing": "Paginaplannen; zie actuele voorwaarden."
+    },
+    "nanonets": {
+      "workflow": "Configureerbare documentprocessen.",
+      "exports": "Afschrift naar Excel; bevestig nodige uitvoer.",
+      "integration": "Noemt API, e-mail, cloud en hogere ERP-koppelingen.",
+      "pricing": "Blokcredits, niet gelijk aan maandelijkse PDF-paginaquota."
+    }
+  },
+  "Resources": {
+    "title": "Gidsen en hulpmiddelen voor bankafschriften",
+    "intro": "Vind conversiehulp, bankgidsen, handmatige boekhoudimports, vergelijkingen, gratis hulpmiddelen en gemeten resultaten van openbare voorbeelden.",
+    "featuredTitle": "Gidsen en gratis hulpmiddelen",
+    "featuredDescription": "Praktische hulp bij PDF-conversie, boekhoudimport en saldocontrole.",
+    "relatedTitle": "Gerelateerde gidsen en hulpmiddelen",
+    "viewAll": "Alle gidsen en hulpmiddelen bekijken",
+    "groups": {
+      "conversion": "Conversiebasis",
+      "banks": "Gidsen per bank",
+      "accounting": "Boekhoudimportgidsen",
+      "bookkeeping": "Boekhouding en documenten",
+      "comparisons": "Productvergelijkingen",
+      "tools": "Hulpmiddelen en voorbeeldrapport"
+    },
+    "links": {
+      "pdf": "PDF naar Excel: gids",
+      "scanned": "Gescande afschriften",
+      "chase": "Chase-afschriften",
+      "bofa": "Bank of America-afschriften",
+      "wellsFargo": "Wells Fargo-afschriften",
+      "hsbc": "HSBC UK-afschriften",
+      "quickbooks": "QuickBooks-importgids",
+      "xero": "Xero-importgids",
+      "wave": "Wave-importgids",
+      "sage": "Sage Accounting UK-importgids",
+      "loan": "Documenten voor leningaanvragen",
+      "tax": "Documenten voor belastingvoorbereiding",
+      "catchup": "Achterstallige boekhouding",
+      "docuclipper": "StatementXL en DocuClipper",
+      "alternatives": "DocuClipper-alternatieven",
+      "nanonets": "StatementXL en Nanonets",
+      "checker": "Saldocontrole en Excel-sjabloon",
+      "benchmark": "Openbaar voorbeeldrapport"
+    }
   }
 }
