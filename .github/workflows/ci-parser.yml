@@ -39,6 +39,9 @@ jobs:
       - name: TypeScript check
         run: pnpm exec tsc --noEmit
 
+      - name: Test public account summary refresh
+        run: pnpm test:account
+
       - name: Test spreadsheet export safety
         run: pnpm test:exports
 

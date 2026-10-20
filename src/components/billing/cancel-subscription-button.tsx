@@ -4,6 +4,7 @@ import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { usePublicAccount } from "@/components/account/public-account-provider";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -45,6 +46,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
   const locale = useLocale();
   const format = useFormatter();
   const router = useRouter();
+  const { refresh: refreshAccount } = usePublicAccount();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<CancellationState>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -80,6 +82,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
             return;
           }
           if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
+            void refreshAccount();
             router.refresh();
             return;
           }
@@ -102,7 +105,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       clearTimeout(timer);
       controller.abort();
     };
-  }, [state, provider, subscriptionId, locale, router]);
+  }, [state, provider, subscriptionId, locale, router, refreshAccount]);
 
   async function cancel() {
     if (state !== "idle") {
@@ -131,6 +134,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       setOpen(false);
       setState("syncing");
       if (payload.status === "CANCELLED") {
+        void refreshAccount();
         router.refresh();
       }
     } catch {
@@ -158,6 +162,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         return;
       }
       if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
+        void refreshAccount();
         router.refresh();
       }
     } catch {

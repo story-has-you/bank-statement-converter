@@ -4,6 +4,7 @@ import { useEffect, useState, type FC } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
+import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
 import { readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
@@ -18,6 +19,7 @@ const CheckoutReturnStatus: FC<{
   const t = useTranslations("BillingReturn");
   const locale = useLocale();
   const router = useRouter();
+  const { refresh: refreshAccount } = usePublicAccount();
   const [state, setState] = useState<ReturnState>("pending");
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
@@ -40,6 +42,7 @@ const CheckoutReturnStatus: FC<{
         }
         if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
           setState("active");
+          void refreshAccount();
           router.refresh();
           return;
         }
@@ -64,7 +67,7 @@ const CheckoutReturnStatus: FC<{
       controller.abort();
       clearTimeout(timer);
     };
-  }, [provider, checkoutId, tier, locale, retry, router, t]);
+  }, [provider, checkoutId, tier, locale, retry, router, t, refreshAccount]);
   return (
     <div className="grid gap-4">
       <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>
