@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:account": "node --import tsx --test tests/account-summary.test.ts",
     "test:exports": "node --import tsx --test tests/conversion-spreadsheet-export.test.tsx",
     "test:merchants": "node --import tsx --test tests/merchant-normalization.test.ts",
     "test:exports:calc": "node --import tsx --test tests/conversion-spreadsheet-export.calc.test.ts",
