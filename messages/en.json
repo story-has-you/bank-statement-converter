@@ -277,6 +277,8 @@
     "signedInDescription": "Convert up to {pages, plural, one {# PDF page} other {# PDF pages}} per day.",
     "perDay": "/ day",
     "perMonth": "/ month",
+    "renewalNote": "Subscriptions renew automatically each month. You can cancel automatic renewal in your <account>account</account>. See the <terms>subscription and payment terms</terms>.",
+    "waffoTaxNote": "When paying through Waffo, the prices above exclude tax. Applicable taxes and the final total are shown at checkout.",
     "planQuota": "{pages, plural, one {# page} other {# pages}} per month",
     "current": "Current plan",
     "cancelledPeriodActive": "The subscription is cancelled. Benefits remain available until {date} (UTC).",

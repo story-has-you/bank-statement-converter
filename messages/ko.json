@@ -277,6 +277,8 @@
     "signedInDescription": "하루에 PDF를 최대 {pages, number}페이지까지 변환할 수 있습니다.",
     "perDay": "/ 일",
     "perMonth": "/ 월",
+    "renewalNote": "구독은 매월 자동 갱신됩니다. <account>내 계정</account>에서 자동 갱신을 취소할 수 있습니다. <terms>구독 및 결제 약관</terms>을 확인하세요.",
+    "waffoTaxNote": "Waffo로 결제하는 경우 위 가격은 세금 별도 금액입니다. 적용 세금과 최종 총액은 결제 화면에 표시됩니다.",
     "planQuota": "월별 {pages, number} 페이지",
     "current": "현재 요금제",
     "cancelledPeriodActive": "구독이 취소되었습니다. 이번 기간의 혜택은 {date}(UTC)까지 이용할 수 있습니다.",

@@ -277,6 +277,8 @@
     "signedInDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
     "perDay": "/ hari",
     "perMonth": "/ bulan",
+    "renewalNote": "Langganan diperpanjang secara otomatis setiap bulan. Anda dapat membatalkan perpanjangan otomatis melalui <account>akun</account> Anda. Lihat <terms>ketentuan langganan dan pembayaran</terms>.",
+    "waffoTaxNote": "Untuk pembayaran melalui Waffo, harga di atas belum termasuk pajak. Pajak yang berlaku dan total akhir ditampilkan saat checkout.",
     "planQuota": "{pages, number} halaman per bulan",
     "current": "Paket saat ini",
     "cancelledPeriodActive": "Langganan sudah dibatalkan. Manfaat tetap tersedia hingga {date} (UTC).",

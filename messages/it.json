@@ -277,6 +277,8 @@
     "signedInDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
     "perDay": "/ giorno",
     "perMonth": "/ mese",
+    "renewalNote": "Gli abbonamenti si rinnovano automaticamente ogni mese. Puoi annullare il rinnovo automatico dal tuo <account>account</account>. Consulta le <terms>condizioni di abbonamento e pagamento</terms>.",
+    "waffoTaxNote": "Per i pagamenti tramite Waffo, i prezzi sopra indicati sono al netto delle imposte. Le imposte applicabili e il totale finale vengono mostrati al momento del pagamento.",
     "planQuota": "{pages, plural, one {# pagina} other {# pagine}} al mese",
     "current": "Piano attuale",
     "cancelledPeriodActive": "L’abbonamento è annullato. I vantaggi restano disponibili fino al {date} (UTC).",

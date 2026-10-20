@@ -277,6 +277,8 @@
     "signedInDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
     "perDay": "/ dia",
     "perMonth": "/ mês",
+    "renewalNote": "As assinaturas são renovadas automaticamente a cada mês. Você pode cancelar a renovação automática na sua <account>conta</account>. Consulte os <terms>termos de assinatura e pagamento</terms>.",
+    "waffoTaxNote": "Ao pagar pelo Waffo, os preços acima não incluem impostos. Os impostos aplicáveis e o total final são exibidos na finalização da compra.",
     "planQuota": "{pages, plural, one {# página} other {# páginas}} por mês",
     "current": "Plano atual",
     "cancelledPeriodActive": "A assinatura está cancelada. Os benefícios continuam disponíveis até {date} (UTC).",

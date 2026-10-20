@@ -2,6 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 
 import { PublicPlanState } from "@/components/billing/public-plan-state";
 import { subscriptionConfig } from "@/config/plans";
+import { Link } from "@/i18n/navigation";
 import { membershipTiers } from "@/lib/billing/config";
 import { getCheckoutConfigs } from "@/lib/billing/providers";
 import { usageQuotaConfig } from "@/lib/usage/config";
@@ -42,26 +43,47 @@ export async function UsageTiers() {
 
         <PublicPlanState />
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {membershipTiers.map((tier) => (
-            <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
-              <div className="flex items-start justify-between gap-3">
-                <div className="grid gap-1">
-                  <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
-                  <p className="text-3xl font-semibold">
-                    {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
-                    <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
-                  </p>
+        <p className="mt-8 text-sm leading-6 text-muted-foreground">
+          {t.rich("renewalNote", {
+            account: (chunks) => (
+              <Link href="/account" className="text-primary underline underline-offset-4">
+                {chunks}
+              </Link>
+            ),
+            terms: (chunks) => (
+              <Link href="/terms#subscription" className="text-primary underline underline-offset-4">
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
+
+        <div className="mt-4 grid gap-4 lg:grid-cols-3">
+          {membershipTiers.map((tier) => {
+            const waffoAvailable = checkouts.some(
+              (checkout) => checkout.provider === "waffo" && checkout.available && checkout.availableTiers.includes(tier),
+            );
+            return (
+              <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="grid gap-1">
+                    <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
+                    <p className="text-3xl font-semibold">
+                      {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
+                      <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
-              <p className="text-sm leading-6 text-muted-foreground">
-                {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
-              </p>
-              <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
-              <PublicPlanState checkouts={checkouts} tier={tier} />
-            </article>
-          ))}
+                <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
+                <p className="text-sm leading-6 text-muted-foreground">
+                  {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
+                </p>
+                <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
+                {waffoAvailable && <p className="text-sm leading-6 text-muted-foreground">{t("waffoTaxNote")}</p>}
+                <PublicPlanState checkouts={checkouts} tier={tier} />
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

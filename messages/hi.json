@@ -277,6 +277,8 @@
     "signedInDescription": "रोज़ अधिकतम {pages, plural, one {# PDF पृष्ठ} other {# PDF पृष्ठ}} बदलें।",
     "perDay": "/ दिन",
     "perMonth": "/ महीना",
+    "renewalNote": "सदस्यता हर महीने अपने आप नवीनीकृत होती है। आप अपने <account>खाते</account> से स्वचालित नवीनीकरण रद्द कर सकते हैं। <terms>सदस्यता और भुगतान की शर्तें</terms> देखें।",
+    "waffoTaxNote": "Waffo से भुगतान करने पर ऊपर दी गई कीमतों में कर शामिल नहीं हैं। लागू कर और अंतिम कुल राशि चेकआउट पर दिखाई जाती है।",
     "planQuota": "हर महीने {pages, plural, one {# पृष्ठ} other {# पृष्ठ}}",
     "current": "वर्तमान प्लान",
     "cancelledPeriodActive": "सदस्यता रद्द है। लाभ {date} (UTC) तक उपलब्ध रहेंगे।",
