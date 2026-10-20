@@ -38,9 +38,9 @@ export PARSER_SHARED_SECRET=local-development-secret
 
 ## Cloudflare Containers 部署
 
-生产解析服务通过 Cloudflare Worker `bank-statement-parser` 转发到 Python 容器，正式入口为 `https://parser.bankstatementconverter.xyz`。Worker Custom Domain 管理该域名的 DNS 和 TLS；不需要 EC2 回源、端口转发或 Flexible SSL 规则。
+解析服务通过 Cloudflare Worker 转发到 Python 容器。部署前将 Worker 配置中的名称和域名调整为自己的资源，使用 Worker Custom Domain 管理域名的 DNS 和 TLS。
 
-Dockerfile 使用 Python 3.14，安装 `requirements.lock` 和本包，Uvicorn 监听 `0.0.0.0:8080`。Worker 使用已有的 `ParserContainer` Durable Object，固定实例名为 `parser`，空闲 10 分钟后休眠，请求到达时等待 8080 端口就绪。容器无需访问公网。
+Dockerfile 使用 Python 3.14，安装 `requirements.lock` 和本包，Uvicorn 监听 `0.0.0.0:8080`。Worker 使用 Durable Object 管理容器，空闲 10 分钟后休眠，请求到达时等待 8080 端口就绪。容器无需访问公网。
 
 在本目录安装 Worker 依赖并验证：
 
@@ -62,9 +62,9 @@ Worker 将已有 `PARSER_SHARED_SECRET` 作为启动环境变量传入容器，�
 
 仓库的 GitHub Actions 在 Pull Request 和 `master` 推送时执行质量检查，仅在 `master` 推送且检查通过后部署 Worker 和容器。仓库 Secrets 需要配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
 
-Vercel Production 和 Preview 均设置 `PARSER_SERVICE_URL=https://parser.bankstatementconverter.xyz`，共享密钥与 Worker 一致，修改环境变量后分别重新部署。`GET /health` 必须实际到达容器；健康响应 200 后，还需验证 `/parse` 未认证返回 401、正确认证上传无效 PDF 返回 `INVALID_PDF`、有效电子版 PDF 返回预期交易数据。Worker 打包 dry-run 不会构建或部署容器，也不能证明线上转换成功。
+在需要启用解析服务的 Vercel 环境中设置 `PARSER_SERVICE_URL` 为自己的解析服务 HTTPS 地址，共享密钥与 Worker 一致，修改环境变量后重新部署。`GET /health` 必须实际到达容器；健康响应 200 后，还需验证 `/parse` 未认证返回 401、正确认证上传无效 PDF 返回 `INVALID_PDF`、有效电子版 PDF 返回预期交易数据。Worker 打包 dry-run 不会构建或部署容器，也不能证明线上转换成功。
 
-`deploy/` 中的 EC2 安装脚本保留用于回退，不是当前生产发布流程。
+`deploy/` 中另有 EC2 安装脚本，可按自己的部署环境选择使用。
 
 服务的文件大小和页数上限统一配置在 [`app/conversion-limits.json`](app/conversion-limits.json)，当前为单文件 4 MB、50 页。Next.js 和 Python 读取同一份配置，修改后需同步发布两个服务；Python 进程重启后加载新值。`pageCount` 始终是原始 PDF 页数；相邻且表头兼容的表格可以合并为一个逻辑表，表格范围和 `rows[].source.page` 保留原始页码，方便核对。响应中的 `tables[].columns` 保留表头顺序，`rows[].values` 保留原始单元格文本，并提供原始页码和行号。部分行无法对齐时仍返回已识别数据，并将结果标记为 `partial`。
 
@@ -79,4 +79,4 @@ Vercel Production 和 Preview 均设置 `PARSER_SERVICE_URL=https://parser.banks
 
 这些结果只证明所列电子版样本及对应版式通过了人工核对，不代表支持上述银行的所有账单版本或其他国家的任意账单。
 
-公开样本报告、逐行核对及复现方法见 [第三批 SEO/GEO 实测记录](../../docs/seo/seo-third-wave-verification.md)。行状态比例不代表准确率。
+样本基准脚本依赖未随开源仓库发布的本地核对数据。行状态比例不代表准确率。

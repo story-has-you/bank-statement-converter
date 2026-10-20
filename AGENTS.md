@@ -34,12 +34,12 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ### Issue tracker
 
-Issues and specs live in GitHub Issues via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+Issues and specs live in GitHub Issues via the `gh` CLI.
 
 ### Triage labels
 
-Use the default five canonical triage labels. See `docs/agents/triage-labels.md`.
+Use the five canonical triage labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`.
 
 ### Domain docs
 
-This is a single-context repo; use the root `GLOSSARY.md` and `docs/adr/`. See `docs/agents/domain.md`.
+This is a single-context repo; use the root `GLOSSARY.md`. Internal documentation in `docs/`, including ADRs, is local and ignored by Git; consult it when available.

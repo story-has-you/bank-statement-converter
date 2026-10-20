@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-项目文档见 [文档目录](docs/README.md)，产品当前功能范围见 [产品边界](docs/product/product-boundary.md)。
+银行对账单 PDF 解析与导出工具。内部文档保存在本地 `docs/` 目录，不纳入版本控制。
 
 ## Getting Started
 
@@ -52,7 +52,7 @@ pnpm dev --port 3000
 
 订阅已接入 Creem、PayPal 和 Waffo，可用渠道以购买入口和环境配置为准。三档套餐均按月自动续费；Waffo 展示税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
 
-这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 不会自动修改渠道的实际扣款金额；若今后改价，需要同步调整所有已启用渠道的产品或计划价格及其环境变量映射，付款校验也使用该月价。仅修改页数额度不需要调整渠道产品价格或 ID。接入代码和配置不代表真实付款、权益入库与生产运行已完成验收，分别参阅各渠道验收记录。
+这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 不会自动修改渠道的实际扣款金额；若今后改价，需要同步调整所有已启用渠道的产品或计划价格及其环境变量映射，付款校验也使用该月价。仅修改页数额度不需要调整渠道产品价格或 ID。部署后需分别验证真实付款、权益入库与运行结果。
 
 ## 单文件转换限制
 
@@ -62,13 +62,13 @@ Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、
 
 ## 订阅配置
 
-订阅支持 Creem、PayPal 和 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，接口与付款验收说明见 [Creem 支付接入](docs/billing/creem-billing.md)、[PayPal 支付接入](docs/billing/paypal-billing.md) 和 [Waffo 测试支付接入](docs/billing/waffo-billing.md)。Waffo 当前仅本地测试，价格为税前价，适用税费在结账时计算。
+订阅支持 Creem、PayPal 和 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，各渠道需配置自己的凭据、产品及 Webhook。Waffo 价格为税前价，适用税费在结账时计算。
 
 `CREEM_PAYMENT_ENABLED` 控制是否接受新建支付：未设置时默认开启；已设置时仅 `true` 开启（忽略首尾空白和大小写），其他值关闭。关闭时隐藏购买按钮，新建订阅返回 HTTP 503。开启但凭据或套餐配置不完整时显示禁用按钮，通过无障碍标签和 title 提示不可用原因。已有订阅的确认、回调与取消继续处理。
 
 新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/creem`，本地联调需要公开 HTTPS 地址。
 
-本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。发布前的数据库约束调整见 [计费切换与验收](docs/billing/billing-provider-cutover.md)。
+本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -91,18 +91,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Production deployment
 
-生产环境使用两个服务：根目录 Next.js 部署到 Vercel，`services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers，通过 Worker Custom Domain 提供 HTTPS 解析入口。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
-
-正式地址：
-
-```text
-https://bankstatementconverter.xyz
-https://parser.bankstatementconverter.xyz
-```
+可将根目录 Next.js 部署到 Vercel，将 `services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers，通过自己的域名提供 HTTPS 解析入口。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
 
 ### Cloudflare Containers parser
 
-在 `services/parser/` 安装独立 Worker 依赖，使用 Docker 构建 Python 3.14 镜像，由 Wrangler 部署 Worker 与容器。复用现有的 `bank-statement-parser` Worker 和 `ParserContainer`，正式 Custom Domain 为 `parser.bankstatementconverter.xyz`；容器内 Uvicorn 监听 8080。
+在 `services/parser/` 安装独立 Worker 依赖，使用 Docker 构建 Python 3.14 镜像，由 Wrangler 部署 Worker 与容器。部署前将 Worker 配置中的名称和域名调整为自己的资源；容器内 Uvicorn 监听 8080。
 
 共享密钥使用 Worker Secret `PARSER_SHARED_SECRET`，由 Worker 在容器启动时传入，与 Vercel Production、Preview 保持一致；部署不自动生成或轮换密钥。构建、部署命令与验收方式见 [Python 服务部署说明](services/parser/README.md#cloudflare-containers-部署)。
 
@@ -125,20 +118,20 @@ CREEM_PRODUCT_ID_STANDARD
 CREEM_PRODUCT_ID_PROFESSIONAL
 CREEM_PRODUCT_ID_ENTERPRISE
 CREEM_WEBHOOK_SECRET
-PARSER_SERVICE_URL=https://parser.bankstatementconverter.xyz
+PARSER_SERVICE_URL=https://parser.example.com
 PARSER_SHARED_SECRET
 ```
 
-将 `bankstatementconverter.xyz` 添加为 Vercel Production Domain。Supabase Auth 回调地址为：
+将自己的域名添加为 Vercel Production Domain。Supabase Auth 回调地址示例：
 
 ```text
-https://bankstatementconverter.xyz/api/auth/callback
+https://example.com/api/auth/callback
 ```
 
-Creem Webhook 地址为：
+Creem Webhook 地址示例：
 
 ```text
-https://bankstatementconverter.xyz/api/billing/webhooks/creem
+https://example.com/api/billing/webhooks/creem
 ```
 
 不要把 `SUPABASE_SERVICE_ROLE_KEY`、`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
