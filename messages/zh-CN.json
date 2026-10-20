@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "正在读取账户状态…",
-    "error": "账户状态读取失败，请刷新重试。"
+    "error": "账户资料暂时无法读取，请重试。",
+    "retry": "重试"
   },
   "BalanceChecker": {
     "title": "余额核对",

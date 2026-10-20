@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Carregando conta…",
-    "error": "Não foi possível carregar a conta. Recarregue a página."
+    "error": "Os dados da conta estão temporariamente indisponíveis. Tente novamente.",
+    "retry": "Tentar novamente"
   },
   "BalanceChecker": {
     "title": "Conferência de saldo",

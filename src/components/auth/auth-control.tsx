@@ -7,6 +7,7 @@ import { useConversion } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
+import { PublicAccountStatus } from "@/components/account/public-account-status";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
@@ -14,10 +15,10 @@ import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 
 export function AuthControl() {
-  const { status, configured, summary } = usePublicAccount();
-  const email = summary.user?.email ?? null;
-  const imageUrl = summary.user?.avatarUrl ?? null;
-  const signedIn = Boolean(summary.user);
+  const { status, configured, user } = usePublicAccount();
+  const email = user?.email ?? null;
+  const imageUrl = user?.avatarUrl ?? null;
+  const signedIn = Boolean(user);
   const t = useTranslations("AuthControl");
   const locale = useLocale();
   const router = useRouter();
@@ -106,6 +107,11 @@ export function AuthControl() {
           </Button>
         )}
       </div>
+      {signedIn && status !== "ready" && (
+        <div className="max-w-36 text-right sm:max-w-48">
+          <PublicAccountStatus />
+        </div>
+      )}
       {error && (
         <p role="alert" className="max-w-48 text-right text-xs text-destructive">
           {error}

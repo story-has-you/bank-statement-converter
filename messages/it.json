@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Caricamento account…",
-    "error": "Stato account non disponibile. Ricaricare la pagina."
+    "error": "I dati dell’account sono temporaneamente non disponibili. Riprova.",
+    "retry": "Riprova"
   },
   "BalanceChecker": {
     "title": "Controllo saldo",

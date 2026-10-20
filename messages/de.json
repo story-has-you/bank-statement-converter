@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Kontostatus wird geladen…",
-    "error": "Kontostatus nicht verfügbar. Bitte neu laden."
+    "error": "Die Kontodaten sind vorübergehend nicht verfügbar. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen"
   },
   "BalanceChecker": {
     "title": "Saldoprüfung",

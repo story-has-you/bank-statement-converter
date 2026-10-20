@@ -2,17 +2,22 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
+import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { anonymousAccountSummary } from "@/lib/account/summary";
 import { createAccountSummaryLoader, type PublicAccountState } from "@/lib/account/summary-loader";
 import { createClient } from "@/lib/supabase/browser";
 
 type AccountState = PublicAccountState & { configured: boolean };
-type AccountContext = AccountState & { refresh: () => Promise<void> };
+type AccountContext = AccountState & {
+  user: { id: string; email: string | null; avatarUrl: string | null } | null;
+  refresh: () => Promise<void>;
+};
 const PublicAccountContext = createContext<AccountContext | null>(null);
 
 /** One session subscription and a refreshable summary shared by public page controls. */
 export function PublicAccountProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AccountState>({ status: "loading", configured: false, summary: anonymousAccountSummary });
+  const [user, setUser] = useState<AccountContext["user"]>(null);
   const refreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
   const refresh = useCallback(() => refreshRef.current(), []);
   useEffect(() => {
@@ -31,6 +36,11 @@ export function PublicAccountProvider({ children }: { children: ReactNode }) {
     const loader = createAccountSummaryLoader((next) => setState({ ...next, configured: true }));
     refreshRef.current = loader.refresh;
     const { data } = client.auth.onAuthStateChange((_event, session) => {
+      setUser(
+        session
+          ? { id: session.user.id, email: session.user.email ?? null, avatarUrl: getUserAvatarUrl(session.user.user_metadata) }
+          : null,
+      );
       loader.setUser(session?.user.id ?? null);
     });
     return () => {
@@ -39,7 +49,7 @@ export function PublicAccountProvider({ children }: { children: ReactNode }) {
       data.subscription.unsubscribe();
     };
   }, []);
-  return <PublicAccountContext.Provider value={{ ...state, refresh }}>{children}</PublicAccountContext.Provider>;
+  return <PublicAccountContext.Provider value={{ ...state, user, refresh }}>{children}</PublicAccountContext.Provider>;
 }
 
 export function usePublicAccount(): AccountContext {
