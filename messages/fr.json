@@ -204,7 +204,9 @@
       "downloadTable": "Télécharger le tableau {index} · {format}",
       "loading": "Chargement du téléchargement des feuilles de calcul…",
       "loadFailed": "Impossible de charger le téléchargement des feuilles de calcul. Veuillez réessayer.",
-      "retry": "Réessayer"
+      "retry": "Réessayer",
+      "safetyNotice": "Les fichiers CSV et TSV ajoutent une apostrophe (') aux textes ressemblant à une formule ; elle peut rester visible. Téléchargez le JSON pour conserver les valeurs originales.",
+      "safetyCompatibility": "CSV/TSV vérifié dans LibreOffice Calc 26.8 ; importez le TSV avec une tabulation comme séparateur et des guillemets doubles comme délimiteur de texte. Ailleurs, privilégiez Excel (.xlsx). Vérifiez les CSV/TSV après réenregistrement."
     },
     "restoring": "Restauration du résultat de conversion…",
     "review": {

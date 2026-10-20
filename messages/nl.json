@@ -204,7 +204,9 @@
       "downloadTable": "Tabel {index} downloaden · {format}",
       "loading": "Downloads van spreadsheets laden…",
       "loadFailed": "Downloads van spreadsheets konden niet worden geladen. Probeer het opnieuw.",
-      "retry": "Opnieuw proberen"
+      "retry": "Opnieuw proberen",
+      "safetyNotice": "CSV en TSV plaatsen een apostrof (') voor tekst die op een formule lijkt; deze kan zichtbaar blijven. Download JSON voor de ongewijzigde oorspronkelijke waarden.",
+      "safetyCompatibility": "CSV/TSV getest in LibreOffice Calc 26.8; importeer TSV met tabs als veldscheiding en dubbele aanhalingstekens als tekstscheiding. Gebruik voor andere apps Excel (.xlsx). Controleer CSV/TSV na opnieuw opslaan."
     },
     "restoring": "Conversieresultaat herstellen…",
     "review": {

@@ -204,7 +204,9 @@
       "downloadTable": "下载表格 {index} · {format}",
       "loading": "正在加载表格下载功能……",
       "loadFailed": "表格下载功能加载失败，请重试。",
-      "retry": "重试"
+      "retry": "重试",
+      "safetyNotice": "CSV 和 TSV 会给疑似公式文本添加单引号（'），显示时可能保留此前缀；未转义原文请下载 JSON。",
+      "safetyCompatibility": "CSV/TSV 已在 LibreOffice Calc 26.8 验证；TSV 导入需选择制表符分隔、双引号文本分隔符。其他软件建议使用 Excel（.xlsx），重新保存 CSV/TSV 后需重新核对。"
     },
     "restoring": "正在恢复转换结果……",
     "review": {
