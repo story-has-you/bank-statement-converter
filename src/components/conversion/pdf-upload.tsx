@@ -5,7 +5,7 @@ import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, Upload
 import { useFormatter, useTranslations } from "next-intl";
 
 import { conversionLimits, maxUploadBytes } from "@/config/conversion";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -186,7 +186,15 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             onChange={handleInputChange}
           />
           <FieldDescription id="pdf-help">{t("help")}</FieldDescription>
-          <p className="text-xs leading-5 text-muted-foreground">{t("aiNotice")}</p>
+          <p className="text-xs leading-5 text-muted-foreground">
+            {t.rich("aiNotice", {
+              link: (chunks) => (
+                <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
         </Field>
       </FieldGroup>
 

@@ -86,7 +86,7 @@
     "emptyFile": "Berkas PDF yang diunggah kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
     "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
-    "aiNotice": "Untuk Professional dan Enterprise, jika penguraian biasa gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, PDF lengkap dan nama berkas dikirim ke penyedia penguraian AI berdasarkan ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan isi konversi secara permanen; retensi dan penggunaan oleh penyedia mengikuti kebijakannya.",
+    "aiNotice": "Untuk Professional dan Enterprise, jika penguraian biasa gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, PDF lengkap dan nama berkas dikirim ke Qwen AI Platform berdasarkan ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan isi konversi secara permanen; retensi dan penggunaan oleh penyedia mengikuti kebijakannya. Lihat <link>rincian penyedia dan kebijakannya</link>.",
     "checking": "Memeriksa PDF dan kuota",
     "retryCheck": "Periksa lagi",
     "pageCount": "{pageCount, number} halaman",
@@ -398,7 +398,7 @@
     "resources": "Panduan dan alat"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 19 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 20 Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -522,6 +522,7 @@
     },
     "aiParsing": {
       "title": "Penguraian AI dan pemrosesan pihak ketiga",
+      "provider": "Penyedia penguraian AI adalah Qwen AI Platform, yang dioperasikan oleh 通义云启（杭州）信息技术有限公司 (nama badan hukum terdaftar). Berlaku <terms>Perjanjian Layanan Produk</terms> serta <privacy>Pemberitahuan Hukum dan Kebijakan Privasi</privacy> penyedia.",
       "body": "Professional dan Enterprise dengan hak penggunaan yang masih berlaku memulai dengan penguraian biasa. Jika penguraian gagal, tidak tersedia, atau tidak menghasilkan transaksi yang dapat diperiksa, sistem otomatis mengirim PDF lengkap dan nama berkas ke penyedia penguraian AI untuk mengekstrak transaksi pada konversi ini, termasuk mencoba memproses hasil pindai. Hasil sebagian yang berguna tidak memicu peralihan. Berkas dapat berisi nama, nomor rekening, dan transaksi yang sensitif. Pemrosesan penyedia penguraian AI tunduk pada ketentuan dan kebijakan privasinya. Situs ini tidak menyimpan PDF, transaksi yang diekstrak, keluaran model, atau isi ekspor sebagai riwayat permanen. Ini tidak berarti penyedia penguraian AI tidak menyimpan data; kami tidak memberi jaminan tambahan tentang masa retensi atau penggunaan data untuk pelatihan model oleh penyedia penguraian AI."
     }
   },

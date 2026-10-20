@@ -1,6 +1,7 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 import { cache } from "react";
 
+import { aiProvider } from "@/config/ai-provider";
 import { subscriptionConfig } from "@/config/plans";
 import { publicContentPages } from "@/config/public-pages";
 import { siteConfig } from "@/config/site";
@@ -116,6 +117,10 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
       processing: privacy("documents.body"),
       documents: privacy("retention.documents"),
       aiTitle: privacy("aiParsing.title"),
+      aiProvider: privacy.markup("aiParsing.provider", {
+        terms: (chunks) => `[${chunks}](${aiProvider.termsUrl})`,
+        privacy: (chunks) => `[${chunks}](${aiProvider.privacyUrl})`,
+      }),
       aiAnswer: privacy("aiParsing.body"),
       providersTitle: privacy("providers.title"),
       providersAnswer: privacy("providers.body"),

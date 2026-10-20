@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { LegalSection } from "@/components/legal/legal-section";
+import { aiProvider } from "@/config/ai-provider";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 
@@ -31,6 +32,20 @@ export function PrivacyContent() {
       </LegalSection>
 
       <LegalSection id="ai-parsing" title={t("aiParsing.title")}>
+        <p>
+          {t.rich("aiParsing.provider", {
+            terms: (chunks) => (
+              <a className="text-primary underline underline-offset-4" href={aiProvider.termsUrl}>
+                {chunks}
+              </a>
+            ),
+            privacy: (chunks) => (
+              <a className="text-primary underline underline-offset-4" href={aiProvider.privacyUrl}>
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
         <p>{t("aiParsing.body")}</p>
       </LegalSection>
 

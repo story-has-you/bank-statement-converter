@@ -44,7 +44,7 @@ export async function getAgentDocumentResponse(locale: string, document: string)
       `## ${c.pricing.refundsTitle}\n\n${c.pricing.refunds.join("\n\n")}`,
     "privacy.md":
       `## ${c.privacy.title}\n\n${c.privacy.answer}\n\n${c.privacy.processing}\n\n${c.privacy.documents}\n\n` +
-      `## ${c.privacy.aiTitle}\n\n${c.privacy.aiAnswer}\n\n` +
+      `## ${c.privacy.aiTitle}\n\n${c.privacy.aiProvider}\n\n${c.privacy.aiAnswer}\n\n` +
       `## ${c.privacy.providersTitle}\n\n${c.privacy.providersAnswer}\n\n` +
       `## ${c.privacy.browserTitle}\n\n${c.privacy.browserAnswer}\n\n` +
       `## ${c.privacy.metadataTitle}\n\n${c.privacy.metadataAnswer}\n\n${c.privacy.metadataRetention}\n\n${c.privacy.technicalData}`,
