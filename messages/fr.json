@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "Le service de conversion a renvoyé des données dans un format invalide.",
         "interrupted": "La connexion a été interrompue avant la fin. Veuillez relancer la conversion.",
-        "request": "Aucune réponse à la demande de conversion n’a pu être reçue.",
-        "storage": "La conversion est terminée, mais le navigateur n’a pas pu enregistrer le résultat."
+        "request": "Aucune réponse à la demande de conversion n’a pu être reçue."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "{aliases, number} noms mis à jour pour {rows, number} transactions.",
       "undone": "Attributions supprimées pour {aliases, number} noms et {rows, number} transactions.",
       "cleared": "Toutes les attributions ont été effacées. Les colonnes sources restent sélectionnées.",
-      "changeSourceConfirm": "Changer de colonne source effacera les noms de commerçants confirmés dans ce tableau. Continuer ?",
-      "storageFailed": "Le navigateur n’a pas pu enregistrer les attributions. Elles peuvent être perdues au rechargement, mais restent consultables et exportables sur cette page."
+      "changeSourceConfirm": "Changer de colonne source effacera les noms de commerçants confirmés dans ce tableau. Continuer ?"
+    },
+    "storage": {
+      "title": "Le résultat n’a pas pu être enregistré dans le navigateur",
+      "description": "Vous pouvez toujours consulter et télécharger le résultat sur cette page. Après une actualisation ou si vous quittez la page, le résultat et les modifications des commerçants pourraient être perdus. Téléchargez d’abord les fichiers nécessaires."
     }
   },
   "HomeFeatures": {

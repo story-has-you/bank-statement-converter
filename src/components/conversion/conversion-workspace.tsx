@@ -17,15 +17,15 @@ import { hasMerchantNames, type MerchantNormalization } from "@/lib/merchant-nor
 import { getParseErrorKey } from "@/lib/parse-issues";
 import type { ConversionPayload, SummaryStatus } from "@/lib/conversion-types";
 
-type ConversionWorkspaceProps = { payload: ConversionPayload; onReset: () => void };
+type ConversionWorkspaceProps = { payload: ConversionPayload; initialStorageFailed: boolean; onReset: () => void };
 
-export function ConversionWorkspace({ payload, onReset }: ConversionWorkspaceProps) {
+export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: ConversionWorkspaceProps) {
   const t = useTranslations("ConversionResult");
   const format = useFormatter();
   const { result } = payload;
   const [normalization, setNormalization] = useState<MerchantNormalization>(payload.merchantNormalization ?? {});
   const [exportRevision, setExportRevision] = useState(0);
-  const [storageFailed, setStorageFailed] = useState(false);
+  const [storageFailed, setStorageFailed] = useState(initialStorageFailed);
   const merchants: MerchantExport | undefined = hasMerchantNames(normalization)
     ? {
         normalization,
@@ -74,6 +74,14 @@ export function ConversionWorkspace({ payload, onReset }: ConversionWorkspacePro
         </div>
         <ConversionDownloads key={exportRevision} filename={payload.filename} result={result} merchants={merchants} />
       </div>
+
+      {storageFailed && (
+        <Alert>
+          <CircleAlertIcon aria-hidden="true" />
+          <AlertTitle>{t("storage.title")}</AlertTitle>
+          <AlertDescription>{t("storage.description")}</AlertDescription>
+        </Alert>
+      )}
 
       {hasRiskRows && (
         <Alert>
@@ -144,12 +152,7 @@ export function ConversionWorkspace({ payload, onReset }: ConversionWorkspacePro
       </dl>
 
       {canDownloadResult(result) && (
-        <MerchantNormalizationPanel
-          result={result}
-          normalization={normalization}
-          onChange={updateNormalization}
-          storageFailed={storageFailed}
-        />
+        <MerchantNormalizationPanel result={result} normalization={normalization} onChange={updateNormalization} />
       )}
       <ConversionReview result={result} merchants={merchants} />
 

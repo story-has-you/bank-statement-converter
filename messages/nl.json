@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
         "interrupted": "De verbinding is verbroken voordat het resultaat klaar was. Converteer opnieuw.",
-        "request": "Er kon geen antwoord op de conversieaanvraag worden ontvangen.",
-        "storage": "De conversie is voltooid, maar de browser kon het resultaat niet opslaan."
+        "request": "Er kon geen antwoord op de conversieaanvraag worden ontvangen."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "{aliases, number} namen bijgewerkt voor {rows, number} transacties.",
       "undone": "Toewijzingen verwijderd voor {aliases, number} namen en {rows, number} transacties.",
       "cleared": "Alle toewijzingen gewist. De bronkolommen blijven geselecteerd.",
-      "changeSourceConfirm": "Een andere bronkolom kiezen wist de bevestigde winkelnamen in deze tabel. Doorgaan?",
-      "storageFailed": "De browser kon de toewijzingen niet opslaan. Ze kunnen bij vernieuwen verloren gaan, maar blijven op deze pagina beschikbaar voor voorbeeld en export."
+      "changeSourceConfirm": "Een andere bronkolom kiezen wist de bevestigde winkelnamen in deze tabel. Doorgaan?"
+    },
+    "storage": {
+      "title": "Het resultaat kon niet in de browser worden opgeslagen",
+      "description": "Je kunt het huidige resultaat op deze pagina nog steeds bekijken en downloaden. Na het vernieuwen of verlaten van de pagina zijn het resultaat en wijzigingen aan verkopers mogelijk niet te herstellen. Download eerst de bestanden die je nodig hebt."
     }
   },
   "HomeFeatures": {

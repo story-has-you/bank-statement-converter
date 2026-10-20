@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
         "interrupted": "Koneksi terputus sebelum hasil selesai. Silakan konversi ulang.",
-        "request": "Respons atas permintaan konversi tidak dapat diterima.",
-        "storage": "Konversi selesai, tetapi browser tidak dapat menyimpan hasilnya."
+        "request": "Respons atas permintaan konversi tidak dapat diterima."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "{aliases, number} nama diperbarui dalam {rows, number} transaksi.",
       "undone": "Penetapan {aliases, number} nama dihapus dari {rows, number} transaksi.",
       "cleared": "Semua penetapan nama dihapus. Pilihan kolom sumber tetap dipertahankan.",
-      "changeSourceConfirm": "Mengubah kolom sumber akan menghapus nama merchant yang telah dikonfirmasi pada tabel ini. Lanjutkan?",
-      "storageFailed": "Browser tidak dapat menyimpan penetapan nama merchant. Perubahan dapat hilang saat halaman dimuat ulang, tetapi masih dapat dipratinjau dan diekspor di halaman ini."
+      "changeSourceConfirm": "Mengubah kolom sumber akan menghapus nama merchant yang telah dikonfirmasi pada tabel ini. Lanjutkan?"
+    },
+    "storage": {
+      "title": "Hasil tidak dapat disimpan di browser",
+      "description": "Anda tetap dapat melihat pratinjau dan mengunduh hasil di halaman ini. Setelah memuat ulang atau meninggalkan halaman, hasil dan perubahan nama merchant mungkin tidak dapat dipulihkan. Unduh file yang diperlukan terlebih dahulu."
     }
   },
   "HomeFeatures": {

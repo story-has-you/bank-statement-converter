@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "The conversion service returned data in an invalid format.",
         "interrupted": "The connection ended before the result was complete. Please convert again.",
-        "request": "No response to the conversion request could be received.",
-        "storage": "Conversion completed, but the browser could not save the result."
+        "request": "No response to the conversion request could be received."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "Updated {aliases, number} names across {rows, number} transactions.",
       "undone": "Removed normalization for {aliases, number} names across {rows, number} transactions.",
       "cleared": "All normalization cleared. Source column selections are kept.",
-      "changeSourceConfirm": "Changing the source column will clear this table’s confirmed merchant names. Continue?",
-      "storageFailed": "The browser could not save merchant normalization. Changes may be lost on refresh, but you can still preview and export them on this page."
+      "changeSourceConfirm": "Changing the source column will clear this table’s confirmed merchant names. Continue?"
+    },
+    "storage": {
+      "title": "Result could not be saved in this browser",
+      "description": "You can still preview and download the current result on this page. The result and merchant changes may not be recoverable after refreshing or leaving. Download the files you need first."
     }
   },
   "HomeFeatures": {
