@@ -12,6 +12,7 @@ import { HomeStructuredData } from "@/components/home/home-structured-data";
 import { PdfUpload } from "@/components/conversion/pdf-upload";
 import { UsageTiers } from "@/components/home/usage-tiers";
 import { RelatedConversionPages } from "@/components/landing/related-conversion-pages";
+import { ClientMessages } from "@/components/shared/client-messages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
@@ -52,7 +53,9 @@ export default function HomePage() {
       <main id="main" className="flex-1">
         <section className="mx-auto w-full max-w-4xl px-5 pb-16 pt-10 sm:px-8 sm:pb-8 sm:pt-8">
           <HomeIntro />
-          <PdfUpload />
+          <ClientMessages namespaces={["PdfUpload"]}>
+            <PdfUpload />
+          </ClientMessages>
         </section>
 
         <HomeFeatures />

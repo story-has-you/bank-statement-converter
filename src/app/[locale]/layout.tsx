@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { OrganizationStructuredData } from "@/components/shared/organization-structured-data";
@@ -45,11 +45,15 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
     notFound();
   }
 
+  const { LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult } = await getMessages();
+
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <OrganizationStructuredData />
-        <NextIntlClientProvider>
+        <NextIntlClientProvider
+          messages={{ LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult: { stream: ConversionResult.stream } }}
+        >
           <ThemeProvider>
             <TooltipProvider>
               <PublicAccountProvider>

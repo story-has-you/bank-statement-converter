@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { getRenderAuthContext } from "@/lib/supabase/server";
+import { ClientMessages } from "@/components/shared/client-messages";
 import { BillingReturnStatus } from "./return-status";
 
 export async function BillingReturnContent() {
@@ -13,7 +14,9 @@ export async function BillingReturnContent() {
       </h1>
       <p className="text-sm text-muted-foreground">{t("description")}</p>
       <Suspense fallback={<p role="status">{t("pending")}</p>}>
-        <BillingReturnStatus signedIn={Boolean(user)} />
+        <ClientMessages namespaces={["BillingReturn"]}>
+          <BillingReturnStatus signedIn={Boolean(user)} />
+        </ClientMessages>
       </Suspense>
     </section>
   );

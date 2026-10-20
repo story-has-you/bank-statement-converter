@@ -4,6 +4,7 @@ import { PdfUpload } from "@/components/conversion/pdf-upload";
 import { UsageTiers } from "@/components/home/usage-tiers";
 import { HomeFooter } from "@/components/shared/home-footer";
 import { HomeHeader } from "@/components/shared/home-header";
+import { ClientMessages } from "@/components/shared/client-messages";
 import { LandingFaq } from "@/components/landing/landing-faq";
 import { LandingGuide } from "@/components/landing/landing-guide";
 import { LandingIntro } from "@/components/landing/landing-intro";
@@ -29,7 +30,9 @@ export async function ConversionLandingPage({ id }: { id: ConversionPageId }) {
         <section className="mx-auto w-full max-w-4xl px-5 pb-12 pt-10 sm:px-8">
           <LandingIntro content={content} />
           <LandingPlanLink id={id} />
-          <PdfUpload showFreeQuota={id !== "scanned"} />
+          <ClientMessages namespaces={["PdfUpload"]}>
+            <PdfUpload showFreeQuota={id !== "scanned"} />
+          </ClientMessages>
         </section>
         <LandingGuide content={content} />
         <LandingSteps content={content} />

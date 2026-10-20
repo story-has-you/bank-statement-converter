@@ -1,20 +1,16 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-
 import { Button } from "@/components/ui/button";
 import { AiProviderIcon } from "@/components/shared/ai-provider-icon";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { getAiChatLinks } from "@/lib/geo/links";
 
-type AiChatLinksProps = { prompt: string };
+type AiChatLinksProps = { prompt: string; description: string; showPromptLabel: string };
 
-export function AiChatLinks({ prompt }: AiChatLinksProps) {
-  const t = useTranslations("Geo");
-
+export function AiChatLinks({ prompt, description, showPromptLabel }: AiChatLinksProps) {
   return (
     <div className="flex min-w-0 flex-col gap-4">
-      <p className="max-w-xl text-sm leading-6">{t("chatDescription")}</p>
+      <p className="max-w-xl text-sm leading-6">{description}</p>
       <div className="flex items-center gap-3">
         {getAiChatLinks(prompt).map((provider) => (
           <Button
@@ -31,11 +27,13 @@ export function AiChatLinks({ prompt }: AiChatLinksProps) {
         ))}
       </div>
       <details className="text-xs">
-        <summary className="w-fit cursor-pointer rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring">{t("showPrompt")}</summary>
+        <summary className="w-fit cursor-pointer rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring">
+          {showPromptLabel}
+        </summary>
         <FieldGroup className="mt-3">
           <Field>
             <FieldLabel htmlFor="ai-default-prompt" className="sr-only">
-              {t("showPrompt")}
+              {showPromptLabel}
             </FieldLabel>
             <textarea
               id="ai-default-prompt"
