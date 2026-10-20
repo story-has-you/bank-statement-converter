@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Dieses Konto hat bereits ein ausgesetztes Abonnement.",
       "billingPeriodEnded": "Der aktuelle Abrechnungszeitraum dieses Abonnements ist beendet.",
       "invalidProvider": "Der ausgewählte Zahlungsanbieter ist ungültig.",
-      "existingFailedSubscription": "Für Ihr Abonnement ist eine Zahlung offen. Klären Sie diese oder kündigen Sie das Abonnement."
+      "existingFailedSubscription": "Für Ihr Abonnement ist eine Zahlung offen. Klären Sie diese oder kündigen Sie das Abonnement.",
+      "checkoutCreating": "Der Checkout wird erstellt. Bitte versuche es gleich erneut. Wende dich an den Support, falls dies anhält.",
+      "checkoutUnknown": "Der vorherige Checkout konnte nicht überprüft werden. Kontaktiere vor einer weiteren Zahlung den Support.",
+      "checkoutAwaitingPayment": "Die Zahlung des vorherigen Checkouts wird verarbeitet oder wartet auf Bestätigung. Bitte versuche es gleich erneut.",
+      "checkoutAlreadyPending": "Ein Checkout ist bereits offen. Kehre zu diesem Tarif zurück und wähle den ursprünglichen Zahlungsanbieter.",
+      "checkoutClosed": "Der vorherige Checkout ist geschlossen. Kehre zu den Tarifen zurück und versuche es erneut."
     },
     "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Mit {provider} abonnieren",
-    "openingProvider": "{provider} wird geöffnet"
+    "openingProvider": "{provider} wird geöffnet",
+    "pendingCheckout": "Offener Checkout: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "Was sollte ich vor der Konvertierung wissen?",

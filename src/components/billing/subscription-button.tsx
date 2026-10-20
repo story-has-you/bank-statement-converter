@@ -15,6 +15,7 @@ type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier 
 
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
+  const plans = useTranslations("UsageTiers.plans");
   const locale = useLocale();
   const providerName = t(`providers.${checkout.provider}`);
   const [failure, setFailure] = useState<string | null>(null);
@@ -36,7 +37,14 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
       const payload: unknown = await response.json().catch(() => null);
       if (!response.ok || !isCheckoutResult(payload)) {
         if (mounted.current) {
-          setFailure(readBillingResponse(payload).error ?? t("api.createFailed"));
+          const failure = readBillingResponse(payload);
+          const message = failure.error ?? t("api.createFailed");
+          const pending = failure.pendingCheckout;
+          setFailure(
+            pending
+              ? `${message} ${t("pendingCheckout", { provider: t(`providers.${pending.provider}`), tier: plans(`${pending.tier}.name`) })}`
+              : message,
+          );
         }
         throw new Error("Subscription creation failed");
       }

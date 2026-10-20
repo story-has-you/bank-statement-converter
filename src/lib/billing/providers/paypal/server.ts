@@ -1,9 +1,8 @@
 import "server-only";
 
-import { randomUUID } from "node:crypto";
 import { subscriptionConfig } from "@/config/plans";
 import { BillingError } from "@/lib/billing/errors";
-import type { CheckoutResult, CheckoutUser } from "@/lib/billing/provider";
+import type { CheckoutAttempt, CheckoutState, CheckoutUser, CreatedCheckout } from "@/lib/billing/provider";
 import type { MembershipTier, SubscriptionStatus } from "@/lib/billing/types";
 import { getPayPalConfig, getPayPalEnvironment, getPayPalPlanId } from "./config";
 
@@ -44,7 +43,7 @@ export type PayPalTransaction = {
 };
 
 /** Keep credentials and provider responses on the server; report no raw response bodies. */
-export async function requestPayPal<T>(path: string, init: RequestInit = {}): Promise<T> {
+export async function requestPayPal<T>(path: string, init: RequestInit = {}, onDispatch?: () => void): Promise<T> {
   const config = getPayPalConfig();
   if (!config) {
     throw new BillingError("configurationMissing", 503);
@@ -63,6 +62,7 @@ export async function requestPayPal<T>(path: string, init: RequestInit = {}): Pr
     throw new Error(`PayPal authentication failed (${tokenResponse.status})`);
   }
   const token = (await tokenResponse.json()) as { access_token: string };
+  onDispatch?.();
   const response = await fetch(`${config.apiUrl}${path}`, {
     ...init,
     headers: {
@@ -108,27 +108,36 @@ export async function getPayPalPlan(tier: MembershipTier): Promise<PayPalPlan> {
   return plan;
 }
 
-export async function createPayPalCheckout(tier: MembershipTier, user: CheckoutUser, returnUrl: string): Promise<CheckoutResult> {
+export async function createPayPalCheckout(
+  tier: MembershipTier,
+  user: CheckoutUser,
+  returnUrl: string,
+  attempt: CheckoutAttempt,
+): Promise<CreatedCheckout> {
   const plan = await getPayPalPlan(tier);
   const successUrl = new URL(returnUrl);
   successUrl.searchParams.set("provider", "paypal");
   const cancelUrl = new URL(successUrl);
   cancelUrl.searchParams.set("cancelled", "true");
-  const subscription = await requestPayPal<{ id: string; links: { rel: string; href: string }[] }>("/v1/billing/subscriptions", {
-    method: "POST",
-    headers: { "PayPal-Request-Id": randomUUID() },
-    body: JSON.stringify({
-      plan_id: plan.id,
-      custom_id: user.id,
-      application_context: {
-        brand_name: "StatementXL",
-        shipping_preference: "NO_SHIPPING",
-        user_action: "SUBSCRIBE_NOW",
-        return_url: successUrl.href,
-        cancel_url: cancelUrl.href,
-      },
-    }),
-  });
+  const subscription = await requestPayPal<{ id: string; links: { rel: string; href: string }[] }>(
+    "/v1/billing/subscriptions",
+    {
+      method: "POST",
+      headers: { "PayPal-Request-Id": attempt.id },
+      body: JSON.stringify({
+        plan_id: plan.id,
+        custom_id: user.id,
+        application_context: {
+          brand_name: "StatementXL",
+          shipping_preference: "NO_SHIPPING",
+          user_action: "SUBSCRIBE_NOW",
+          return_url: successUrl.href,
+          cancel_url: cancelUrl.href,
+        },
+      }),
+    },
+    attempt.onDispatch,
+  );
   const approve = subscription.links.find((link) => link.rel === "approve");
   if (!isPayPalSubscriptionId(subscription.id) || !approve) {
     throw new Error("PayPal checkout response is incomplete");
@@ -138,7 +147,7 @@ export async function createPayPalCheckout(tier: MembershipTier, user: CheckoutU
   if (url.protocol !== "https:" || url.hostname !== host) {
     throw new Error("PayPal approval URL is invalid");
   }
-  return { provider: "paypal", checkoutId: subscription.id, checkoutUrl: url.href };
+  return { provider: "paypal", checkoutId: subscription.id, checkoutUrl: url.href, expiresAt: null };
 }
 
 export async function getPayPalSubscription(id: string): Promise<PayPalSubscription> {
@@ -149,7 +158,7 @@ export async function getPayPalSubscription(id: string): Promise<PayPalSubscript
   return subscription;
 }
 
-export async function resolvePayPalCheckout(id: string, tier: MembershipTier, userId: string): Promise<string | null> {
+export async function resolvePayPalCheckout(id: string, tier: MembershipTier, userId: string): Promise<CheckoutState> {
   if (!isPayPalSubscriptionId(id)) {
     throw new BillingError("invalidRequest", 400);
   }
@@ -160,7 +169,16 @@ export async function resolvePayPalCheckout(id: string, tier: MembershipTier, us
   if (subscription.plan_id !== getPayPalPlanId(tier)) {
     throw new BillingError("planMismatch", 409);
   }
-  return ["APPROVAL_PENDING", "APPROVED"].includes(subscription.status) ? null : id;
+  if (subscription.status === "APPROVAL_PENDING") {
+    return { status: "pending" };
+  }
+  if (subscription.status === "APPROVED") {
+    return { status: "processing" };
+  }
+  if (["CANCELLED", "EXPIRED"].includes(subscription.status) && !subscription.billing_info?.last_payment) {
+    return { status: "closed" };
+  }
+  return { status: "completed", subscriptionId: id };
 }
 
 export async function cancelPayPalSubscription(id: string): Promise<void> {

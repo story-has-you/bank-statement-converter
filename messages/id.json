@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Akun ini sudah memiliki langganan yang ditangguhkan.",
       "billingPeriodEnded": "Periode penagihan saat ini untuk langganan ini telah berakhir.",
       "invalidProvider": "Penyedia pembayaran yang dipilih tidak valid.",
-      "existingFailedSubscription": "Ada pembayaran yang belum selesai. Selesaikan pembayaran atau batalkan langganan Anda."
+      "existingFailedSubscription": "Ada pembayaran yang belum selesai. Selesaikan pembayaran atau batalkan langganan Anda.",
+      "checkoutCreating": "Checkout sedang dibuat. Coba lagi sebentar; hubungi dukungan jika ini berlanjut.",
+      "checkoutUnknown": "Checkout sebelumnya tidak dapat diverifikasi. Hubungi dukungan sebelum membayar lagi.",
+      "checkoutAwaitingPayment": "Pembayaran checkout sebelumnya sedang diproses atau menunggu konfirmasi. Coba lagi sebentar.",
+      "checkoutAlreadyPending": "Sudah ada checkout yang tertunda. Kembali ke paket tersebut dan pilih penyedia pembayaran semula untuk melanjutkan.",
+      "checkoutClosed": "Checkout sebelumnya sudah ditutup. Kembali ke pilihan paket dan coba lagi."
     },
     "providerUnavailable": "Pembayaran melalui {provider} saat ini tidak tersedia.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Berlangganan dengan {provider}",
-    "openingProvider": "Membuka {provider}"
+    "openingProvider": "Membuka {provider}",
+    "pendingCheckout": "Checkout tertunda: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",

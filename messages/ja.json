@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "このアカウントにはすでに一時停止中のサブスクリプションがあります。",
       "billingPeriodEnded": "このサブスクリプションの現在の請求期間は終了しています。",
       "invalidProvider": "選択された決済サービスは無効です。",
-      "existingFailedSubscription": "未解決の支払いがあります。支払いを解決するか購読を解約してください。"
+      "existingFailedSubscription": "未解決の支払いがあります。支払いを解決するか購読を解約してください。",
+      "checkoutCreating": "決済ページを作成中です。しばらくしてから再試行してください。続く場合はサポートへお問い合わせください。",
+      "checkoutUnknown": "前の決済状況を確認できません。再度支払う前にサポートへお問い合わせください。",
+      "checkoutAwaitingPayment": "前の決済を処理中、または確認待ちです。しばらくしてから再試行してください。",
+      "checkoutAlreadyPending": "未完了の決済があります。該当プランに戻り、元の決済サービスを選択して続行してください。",
+      "checkoutClosed": "前の決済は終了しています。プラン一覧に戻り、再試行してください。"
     },
     "providerUnavailable": "{provider} での支払いは現在利用できません。",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "{provider} で契約",
-    "openingProvider": "{provider} を開いています"
+    "openingProvider": "{provider} を開いています",
+    "pendingCheckout": "未完了の決済：{provider} / {tier}。"
   },
   "HomeFaq": {
     "title": "変換前に知っておくべきことは？",

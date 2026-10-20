@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Ce compte possède déjà un abonnement suspendu.",
       "billingPeriodEnded": "La période de facturation actuelle de cet abonnement est terminée.",
       "invalidProvider": "Le prestataire de paiement sélectionné est invalide.",
-      "existingFailedSubscription": "Un paiement reste en attente. Régularisez-le ou résiliez votre abonnement."
+      "existingFailedSubscription": "Un paiement reste en attente. Régularisez-le ou résiliez votre abonnement.",
+      "checkoutCreating": "Le paiement est en cours de création. Réessayez dans un instant ; contactez le support si cela persiste.",
+      "checkoutUnknown": "Le paiement précédent n’a pas pu être vérifié. Contactez le support avant de payer à nouveau.",
+      "checkoutAwaitingPayment": "Le paiement précédent est en cours de traitement ou attend une confirmation. Réessayez dans un instant.",
+      "checkoutAlreadyPending": "Un paiement est déjà en attente. Revenez à cette formule et sélectionnez le prestataire de paiement initial pour continuer.",
+      "checkoutClosed": "Le paiement précédent est fermé. Revenez aux formules et réessayez."
     },
     "providerUnavailable": "Les paiements via {provider} sont actuellement indisponibles.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "S’abonner avec {provider}",
-    "openingProvider": "Ouverture de {provider}"
+    "openingProvider": "Ouverture de {provider}",
+    "pendingCheckout": "Paiement en attente : {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "Que savoir avant de convertir ?",

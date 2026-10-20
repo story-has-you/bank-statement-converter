@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "当前账号已有暂停的订阅。",
       "billingPeriodEnded": "该订阅的本期计费周期已结束。",
       "invalidProvider": "所选支付渠道无效。",
-      "existingFailedSubscription": "当前订阅有待处理的付款，请先解决付款问题或取消订阅。"
+      "existingFailedSubscription": "当前订阅有待处理的付款，请先解决付款问题或取消订阅。",
+      "checkoutCreating": "正在创建结账，请稍后重试；若持续出现，请联系客服核对。",
+      "checkoutUnknown": "无法确认原结账状态，请联系客服核对后再付款。",
+      "checkoutAwaitingPayment": "原结账正在处理付款或等待确认，请稍后重试。",
+      "checkoutAlreadyPending": "已有待付款结账。请回到对应套餐，选择原支付渠道继续。",
+      "checkoutClosed": "原结账已关闭，请返回套餐页重试。"
     },
     "providerUnavailable": "{provider} 支付暂不可用。",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "通过 {provider} 订阅",
-    "openingProvider": "正在打开 {provider}"
+    "openingProvider": "正在打开 {provider}",
+    "pendingCheckout": "待处理结账：{provider} / {tier}。"
   },
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",

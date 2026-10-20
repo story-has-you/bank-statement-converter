@@ -43,7 +43,7 @@ WAFFO_RETURN_BASE_URL=https://l6sscc6p-3000.jpe1.devtunnels.ms
 ## 结账与权益
 
 - create 请求为 `{ provider: "waffo", tier }`，响应仍为 `{ provider, checkoutId, checkoutUrl }`。服务端选商品、USD 和登录用户，调用 `checkout.authenticated.create`，以 Supabase 用户 ID 作为 buyerIdentity；邮箱仅用于预填。
-- 每次结账生成 `wco_<UUID>` 作为业务引用，设置 orderMerchantExternalId，并作为本项目 checkoutId；渠道 checkout session ID 不用于账号归属。相同引用用于 SDK 结账请求幂等键。结账禁止试用，会话有效期一小时。
+- 每次新尝试使用持久化账户占位的 `attempt_id` 生成 `wco_<UUID>` 作为业务引用，设置 orderMerchantExternalId，并作为本项目 checkoutId；同渠道同套餐重试复用原结账。渠道 checkout session ID 不用于账号归属。相同引用用于 SDK 结账请求幂等键。结账禁止试用，会话有效期一小时。
 - 复用当前页跳转。成功地址保留语言路径、tier、provider 和 checkout_id，使用上述公网 HTTPS 基址。Waffo 成功页需要用户点击 Done 才返回，放弃付款不会跳转回网站，也不产生付款回调。
 - activate 按业务引用查询远端订单，并核对账号、店铺、环境和产品。数据库 provider_subscription_id 保存 `ORD_…`。浏览器返回仅确认回调已写入状态，尚未确认时返回 202 PENDING，不能创建权益。
 - 只支持三档固定月付，不提供试用、折扣、退款、套餐切换或门户入口。
@@ -79,6 +79,8 @@ canceling 映射 CANCELLED，保留已付周期；past_due 映射 PAYMENT_FAILED
 实际 Waffo GraphQL 已接受适配器使用的字段与筛选。测试商品、商品组和回调已回读。已有 3000 服务完成 8 项 HTTP 检查：未登录 create/activate/cancel 返回 401，跨域创建返回 403，本地及 devtunnel 对缺失／错误签名返回 JSON 400。浏览器检查匿名中文首页及 Waffo 返回页；登录后的三渠道入口通过真实组件静态渲染验证，未执行登录浏览器验收。
 
 真实测试付款、Waffo 签名投递、付款后数据库写入和账户额度、真实续费及取消仍未验证。由曦在同一 devtunnel 域名登录专用测试账号后选择 Waffo，使用官方成功测试卡 `4576750000000110`（未来有效期、任意 CVC），检查最终税额并完成付款；付款后点击 Done 返回网站，再核对 provider=waffo 的单条订阅、实际扣款和套餐额度。随后由曦发起取消，核对 CANCELLED、保留本期权益及阻止重订。不能使用已有开放订阅的账号测试新购，也不要手动插入权益记录绕过付款。
+
+2026-10-20 更新：按曦授权，已使用专用验收账号在 3000 服务及既有 devtunnel 完成上述首次测试付款、真实签名投递、权益及 500 页额度、取消与阻止重订验收；订单与付款均回读 `testMode=true`，未发生正式环境扣款。已修复隧道返回时的来源判断。具体结账、订单、付款及数据库证据见 [首次付款前结账占位验收](checkout-intents.md#真实数据库与-sandbox-验收2026-10-20)。真实续费和失败扣款仍未执行，上段未验证状态仅代表此前记录。
 
 ## Vercel Production 配置（2026-10-18）
 

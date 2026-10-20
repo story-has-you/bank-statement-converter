@@ -1,10 +1,9 @@
 import "server-only";
 
-import { randomUUID } from "node:crypto";
 import { Creem } from "creem";
 import type { SubscriptionEntity } from "creem/models/components";
 import { BillingError } from "@/lib/billing/errors";
-import type { CheckoutUser, CheckoutResult } from "@/lib/billing/provider";
+import type { CheckoutAttempt, CheckoutState, CheckoutUser, CreatedCheckout } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
 import { getCreemConfig, getCreemProductId } from "./config";
 
@@ -25,18 +24,25 @@ export function isCreemId(value: unknown, prefix: "sub" | "ch"): value is string
   return typeof value === "string" && new RegExp(`^${prefix}_[A-Za-z0-9]{1,64}$`).test(value);
 }
 
-export async function createCreemCheckout(tier: MembershipTier, user: CheckoutUser, returnUrl: string): Promise<CheckoutResult> {
+export async function createCreemCheckout(
+  tier: MembershipTier,
+  user: CheckoutUser,
+  returnUrl: string,
+  attempt: CheckoutAttempt,
+): Promise<CreatedCheckout> {
   const productId = getCreemProductId(tier);
   if (!productId) {
     throw new BillingError("configurationMissing", 503);
   }
-  const checkout = await createCreemClient().checkouts.create({
+  const client = createCreemClient();
+  attempt.onDispatch();
+  const checkout = await client.checkouts.create({
     productId,
     units: 1,
-    requestId: randomUUID(),
+    requestId: attempt.id,
     successUrl: returnUrl,
     customer: { email: user.email },
-    metadata: { referenceId: user.id, tier },
+    metadata: { referenceId: user.id, tier, checkoutAttemptId: attempt.id },
   });
   if (!isCreemId(checkout.id, "ch") || !checkout.checkoutUrl) {
     throw new Error("Creem checkout response is incomplete");
@@ -45,10 +51,10 @@ export async function createCreemCheckout(tier: MembershipTier, user: CheckoutUs
   if (url.protocol !== "https:" || !["creem.io", "www.creem.io", "test.creem.io"].includes(url.hostname)) {
     throw new Error("Creem checkout URL is invalid");
   }
-  return { provider: "creem", checkoutId: checkout.id, checkoutUrl: url.href };
+  return { provider: "creem", checkoutId: checkout.id, checkoutUrl: url.href, expiresAt: null };
 }
 
-export async function resolveCreemCheckout(checkoutId: string, tier: MembershipTier, userId: string): Promise<string | null> {
+export async function resolveCreemCheckout(checkoutId: string, tier: MembershipTier, userId: string): Promise<CheckoutState> {
   if (!isCreemId(checkoutId, "ch")) {
     throw new BillingError("invalidRequest", 400);
   }
@@ -60,14 +66,20 @@ export async function resolveCreemCheckout(checkoutId: string, tier: MembershipT
   if (productId !== getCreemProductId(tier) || checkout.metadata?.tier !== tier || checkout.units !== 1) {
     throw new BillingError("planMismatch", 409);
   }
-  if (checkout.status !== "completed" || !checkout.subscription) {
-    return null;
+  if (checkout.status === "expired") {
+    return { status: "closed" };
+  }
+  if (checkout.status === "pending" || checkout.status === "processing") {
+    return { status: checkout.status };
+  }
+  if (!checkout.subscription) {
+    return { status: "unknown" };
   }
   const subscriptionId = typeof checkout.subscription === "string" ? checkout.subscription : checkout.subscription.id;
   if (!isCreemId(subscriptionId, "sub")) {
     throw new Error("Creem checkout subscription is invalid");
   }
-  return subscriptionId;
+  return { status: "completed", subscriptionId };
 }
 
 export async function getCreemSubscription(id: string): Promise<SubscriptionEntity> {

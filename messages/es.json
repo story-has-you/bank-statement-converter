@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Esta cuenta ya tiene una suscripción suspendida.",
       "billingPeriodEnded": "El periodo de facturación actual de esta suscripción ha terminado.",
       "invalidProvider": "El proveedor de pagos seleccionado no es válido.",
-      "existingFailedSubscription": "Hay un pago sin resolver. Resuélvalo o cancele su suscripción."
+      "existingFailedSubscription": "Hay un pago sin resolver. Resuélvalo o cancele su suscripción.",
+      "checkoutCreating": "Se está creando el pago. Inténtalo de nuevo en breve; contacta con soporte si continúa.",
+      "checkoutUnknown": "No se pudo verificar el pago anterior. Contacta con soporte antes de volver a pagar.",
+      "checkoutAwaitingPayment": "El pago anterior se está procesando o espera confirmación. Inténtalo de nuevo en breve.",
+      "checkoutAlreadyPending": "Ya hay un pago pendiente. Vuelve a ese plan y selecciona el proveedor de pago original para continuar.",
+      "checkoutClosed": "El pago anterior está cerrado. Vuelve a los planes e inténtalo de nuevo."
     },
     "providerUnavailable": "Los pagos con {provider} no están disponibles en este momento.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Suscribirse con {provider}",
-    "openingProvider": "Abriendo {provider}"
+    "openingProvider": "Abriendo {provider}",
+    "pendingCheckout": "Pago pendiente: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "¿Qué debo saber antes de convertir?",

@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Dit account heeft al een opgeschort abonnement.",
       "billingPeriodEnded": "De huidige factureringsperiode van dit abonnement is afgelopen.",
       "invalidProvider": "De geselecteerde betalingsprovider is ongeldig.",
-      "existingFailedSubscription": "Er is een onopgeloste betaling. Los deze op of zeg uw abonnement op."
+      "existingFailedSubscription": "Er is een onopgeloste betaling. Los deze op of zeg uw abonnement op.",
+      "checkoutCreating": "De checkout wordt aangemaakt. Probeer het zo opnieuw; neem contact op met support als dit aanhoudt.",
+      "checkoutUnknown": "De vorige checkout kon niet worden geverifieerd. Neem contact op met support voordat je opnieuw betaalt.",
+      "checkoutAwaitingPayment": "De betaling van de vorige checkout wordt verwerkt of wacht op bevestiging. Probeer het zo opnieuw.",
+      "checkoutAlreadyPending": "Er staat al een checkout open. Ga terug naar dat abonnement en kies de oorspronkelijke betaalprovider om door te gaan.",
+      "checkoutClosed": "De vorige checkout is gesloten. Ga terug naar de abonnementen en probeer het opnieuw."
     },
     "providerUnavailable": "Betalingen via {provider} zijn momenteel niet beschikbaar.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Abonneren via {provider}",
-    "openingProvider": "{provider} openen"
+    "openingProvider": "{provider} openen",
+    "pendingCheckout": "Openstaande checkout: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",

@@ -17,6 +17,14 @@ export type CheckoutResult = {
   checkoutUrl: string;
 };
 
+export type CreatedCheckout = CheckoutResult & { expiresAt: string | null };
+
+export type CheckoutAttempt = { id: string; onDispatch: () => void };
+
+export type CheckoutState = { status: "pending" | "processing" | "closed" | "unknown" } | { status: "completed"; subscriptionId: string };
+
+export type PendingCheckout = { provider: PaymentProviderId; tier: MembershipTier };
+
 export type CheckoutUser = { id: string; email: string };
 
 export type ProviderSubscription = {
@@ -69,8 +77,8 @@ export interface PaymentProvider {
   isConfigured(): boolean;
   getPlanId(tier: MembershipTier): string | null;
   isSubscriptionId(value: unknown): value is string;
-  createCheckout(tier: MembershipTier, user: CheckoutUser, returnUrl: string): Promise<CheckoutResult>;
-  resolveCheckout(checkoutId: string, tier: MembershipTier, userId: string): Promise<string | null>;
+  createCheckout(tier: MembershipTier, user: CheckoutUser, returnUrl: string, attempt: CheckoutAttempt): Promise<CreatedCheckout>;
+  resolveCheckout(checkoutId: string, tier: MembershipTier, userId: string, expiresAt?: string | null): Promise<CheckoutState>;
   getSubscription(subscriptionId: string): Promise<ProviderSubscription>;
   cancelSubscription(subscriptionId: string): Promise<void>;
   parseWebhook(headers: Headers, body: string): Promise<BillingNotification | null>;

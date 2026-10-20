@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "Questo account ha già un abbonamento sospeso.",
       "billingPeriodEnded": "Il periodo di fatturazione attuale di questo abbonamento è terminato.",
       "invalidProvider": "Il fornitore di pagamento selezionato non è valido.",
-      "existingFailedSubscription": "Un pagamento è irrisolto. Risolvilo o annulla il tuo abbonamento."
+      "existingFailedSubscription": "Un pagamento è irrisolto. Risolvilo o annulla il tuo abbonamento.",
+      "checkoutCreating": "Il checkout è in fase di creazione. Riprova tra poco; contatta l’assistenza se il problema persiste.",
+      "checkoutUnknown": "Non è stato possibile verificare il checkout precedente. Contatta l’assistenza prima di pagare di nuovo.",
+      "checkoutAwaitingPayment": "Il checkout precedente sta elaborando il pagamento o attende conferma. Riprova tra poco.",
+      "checkoutAlreadyPending": "Un checkout è già in sospeso. Torna a quel piano e seleziona il fornitore di pagamento originale per continuare.",
+      "checkoutClosed": "Il checkout precedente è chiuso. Torna ai piani e riprova."
     },
     "providerUnavailable": "I pagamenti tramite {provider} non sono al momento disponibili.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Abbonati con {provider}",
-    "openingProvider": "Apertura di {provider}"
+    "openingProvider": "Apertura di {provider}",
+    "pendingCheckout": "Checkout in sospeso: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "Cosa sapere prima della conversione?",

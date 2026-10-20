@@ -9,7 +9,8 @@ import { createClient } from "@/lib/supabase/server";
 import { isMembershipTier } from "./config";
 import { BillingError } from "./errors";
 import { getPaymentProvider } from "./providers";
-import { cancelSubscription, confirmSubscription, createSubscription, requireConfiguredProvider } from "./subscriptions";
+import { cancelSubscription, confirmSubscription, requireConfiguredProvider } from "./subscriptions";
+import { createSubscription } from "./checkouts";
 import { applyBillingEvent } from "./events";
 
 type SubscriptionAction = "create" | "activate" | "cancel";
@@ -18,15 +19,24 @@ function getApiTranslations(request: Request) {
   return getTranslations({ locale: resolveLocale(request.headers.get("x-app-locale")), namespace: "Billing.api" });
 }
 
+function requireSameOrigin(request: Request): void {
+  const origin = request.headers.get("origin");
+  const originHost = origin && URL.canParse(origin) ? new URL(origin).host : null;
+  // 与 Next.js 的代理来源检查一致；devtunnel 可能把 Origin 改写为内部 Host。
+  const host = request.headers.get("host") ?? new URL(request.url).host;
+  const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0].trim();
+  if (!originHost || (originHost !== host && originHost !== forwardedHost)) {
+    throw new BillingError("cancelInvalidOrigin", 403);
+  }
+}
+
 /** 订阅路由共用认证、输入和响应处理。 */
 export async function handleSubscriptionRequest(request: Request, action: SubscriptionAction): Promise<Response> {
   const t = await getApiTranslations(request);
-  const headers = action === "cancel" ? { "Cache-Control": "no-store" } : undefined;
-  const errorResponse = (code: Parameters<typeof t>[0], status: number) => NextResponse.json({ error: t(code) }, { status, headers });
+  const headers = { "Cache-Control": "no-store" };
+  const errorResponse = (code: Parameters<typeof t>[0], status: number) => NextResponse.json({ error: t(code), code }, { status, headers });
   try {
-    if ((action === "cancel" || action === "create") && request.headers.get("origin") !== new URL(request.url).origin) {
-      throw new BillingError("cancelInvalidOrigin", 403);
-    }
+    requireSameOrigin(request);
     const supabase = await createClient();
     if (!supabase) {
       throw new BillingError("loginUnavailable", 503);
@@ -58,20 +68,21 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);
       returnUrl.searchParams.set("tier", input.tier);
       const result = await createSubscription(provider, input.tier, { id: data.user.id, email: data.user.email! }, returnUrl.href);
-      return NextResponse.json(result);
+      return NextResponse.json(result, { headers });
     }
     if (action === "activate") {
-      if (request.headers.get("origin") !== new URL(request.url).origin) {
-        throw new BillingError("cancelInvalidOrigin", 403);
-      }
       if (!isMembershipTier(input.tier) || typeof input.checkoutId !== "string") {
         throw new BillingError("invalidRequest", 400);
       }
       requireConfiguredProvider(provider, input.tier);
-      const subscriptionId = await provider.resolveCheckout(input.checkoutId, input.tier, data.user.id);
-      if (!subscriptionId) {
+      const checkout = await provider.resolveCheckout(input.checkoutId, input.tier, data.user.id);
+      if (checkout.status === "closed") {
+        throw new BillingError("checkoutClosed", 409);
+      }
+      if (checkout.status !== "completed") {
         return NextResponse.json({ status: "PENDING" }, { status: 202, headers: { "Cache-Control": "no-store" } });
       }
+      const subscriptionId = checkout.subscriptionId;
       const remote = await provider.getSubscription(subscriptionId);
       if (remote.userId !== data.user.id) {
         throw new BillingError("subscriptionBelongsToAnotherAccount", 409);
@@ -88,7 +99,10 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
     return NextResponse.json(await cancelSubscription(provider, input.subscriptionId, data.user.id), { headers });
   } catch (error) {
     if (error instanceof BillingError) {
-      return errorResponse(error.code, error.status);
+      return NextResponse.json(
+        { error: t(error.code), code: error.code, ...(error.pendingCheckout ? { pendingCheckout: error.pendingCheckout } : {}) },
+        { status: error.status, headers },
+      );
     }
     console.error("Billing subscription request failed", { action });
     const codes = { create: "createFailed", activate: "activationFailed", cancel: "cancelFailed" } as const;

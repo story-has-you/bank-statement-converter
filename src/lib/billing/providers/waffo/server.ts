@@ -1,9 +1,8 @@
 import "server-only";
 
-import { randomUUID } from "node:crypto";
 import { WaffoPancake, type PaymentStatus, type SubscriptionOrderStatus } from "@waffo/pancake-ts";
 import { BillingError } from "@/lib/billing/errors";
-import type { CheckoutResult, CheckoutUser } from "@/lib/billing/provider";
+import type { CheckoutAttempt, CheckoutState, CheckoutUser, CreatedCheckout } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
 import { getWaffoConfig, getWaffoProductId } from "./config";
 
@@ -113,15 +112,22 @@ export async function getWaffoCurrentPayment(remote: WaffoSubscription): Promise
   return result.payments[0];
 }
 
-export async function createWaffoCheckout(tier: MembershipTier, user: CheckoutUser, returnUrl: string): Promise<CheckoutResult> {
+export async function createWaffoCheckout(
+  tier: MembershipTier,
+  user: CheckoutUser,
+  returnUrl: string,
+  attempt: CheckoutAttempt,
+): Promise<CreatedCheckout> {
   const config = requireWaffoConfig();
   const productId = getWaffoProductId(tier)!;
-  const checkoutId = `wco_${randomUUID()}`;
+  const checkoutId = `wco_${attempt.id}`;
   const original = new URL(returnUrl);
   const successUrl = new URL(original.pathname + original.search, config.returnBaseUrl);
   successUrl.searchParams.set("provider", "waffo");
   successUrl.searchParams.set("checkout_id", checkoutId);
-  const session = await createWaffoClient().checkout.authenticated.create(
+  const client = createWaffoClient();
+  attempt.onDispatch();
+  const session = await client.checkout.authenticated.create(
     {
       productId,
       currency: "USD",
@@ -134,10 +140,15 @@ export async function createWaffoCheckout(tier: MembershipTier, user: CheckoutUs
     },
     { idempotencyKey: checkoutId },
   );
-  return { provider: "waffo", checkoutId, checkoutUrl: session.checkoutUrl };
+  return { provider: "waffo", checkoutId, checkoutUrl: session.checkoutUrl, expiresAt: session.expiresAt };
 }
 
-export async function resolveWaffoCheckout(checkoutId: string, tier: MembershipTier, userId: string): Promise<string | null> {
+export async function resolveWaffoCheckout(
+  checkoutId: string,
+  tier: MembershipTier,
+  userId: string,
+  expiresAt?: string | null,
+): Promise<CheckoutState> {
   if (!/^wco_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(checkoutId)) {
     throw new BillingError("invalidRequest", 400);
   }
@@ -150,7 +161,8 @@ export async function resolveWaffoCheckout(checkoutId: string, tier: MembershipT
     { storeId: requireWaffoConfig().storeId, reference: checkoutId },
   );
   if (!result.subscriptionOrders.length) {
-    return null;
+    // 会话过期不证明旧订单不可付款；无订单也不能据此释放账户占位。
+    return { status: expiresAt && Date.parse(expiresAt) <= Date.now() ? "unknown" : "pending" };
   }
   const [remote] = result.subscriptionOrders;
   if (result.subscriptionOrders.length !== 1 || remote.merchantProvidedBuyerIdentity !== userId) {
@@ -159,7 +171,13 @@ export async function resolveWaffoCheckout(checkoutId: string, tier: MembershipT
   if (remote.subscriptionProduct?.id !== getWaffoProductId(tier) || remote.orderMerchantExternalId !== checkoutId) {
     throw new BillingError("planMismatch", 409);
   }
-  return remote.id;
+  if (remote.currentPeriodStart) {
+    return { status: "completed", subscriptionId: remote.id };
+  }
+  if (["canceled", "closed", "expired"].includes(remote.status)) {
+    return { status: expiresAt && Date.parse(expiresAt) <= Date.now() ? "closed" : "unknown" };
+  }
+  return { status: remote.status === "pending" ? "pending" : "processing" };
 }
 
 export async function cancelWaffoSubscription(orderId: string): Promise<void> {

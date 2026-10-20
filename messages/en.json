@@ -324,7 +324,12 @@
       "existingSuspendedSubscription": "This account already has a suspended subscription.",
       "billingPeriodEnded": "The current billing period for this subscription has ended.",
       "invalidProvider": "The selected payment provider is invalid.",
-      "existingFailedSubscription": "Your subscription has an unresolved payment. Cancel it or resolve the payment before subscribing again."
+      "existingFailedSubscription": "Your subscription has an unresolved payment. Cancel it or resolve the payment before subscribing again.",
+      "checkoutCreating": "Checkout is being created. Try again shortly; contact support if this continues.",
+      "checkoutUnknown": "The previous checkout could not be verified. Contact support before paying again.",
+      "checkoutAwaitingPayment": "The previous checkout is processing payment or awaiting confirmation. Try again shortly.",
+      "checkoutAlreadyPending": "A checkout is already pending. Return to that plan and select the original payment provider to continue.",
+      "checkoutClosed": "The previous checkout is closed. Return to the plans and try again."
     },
     "providerUnavailable": "{provider} payments are currently unavailable.",
     "providers": {
@@ -333,7 +338,8 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Subscribe with {provider}",
-    "openingProvider": "Opening {provider}"
+    "openingProvider": "Opening {provider}",
+    "pendingCheckout": "Pending checkout: {provider} / {tier}."
   },
   "HomeFaq": {
     "title": "What should I know before converting?",

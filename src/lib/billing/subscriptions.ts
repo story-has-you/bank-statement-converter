@@ -2,15 +2,14 @@ import "server-only";
 
 import { BillingError } from "./errors";
 import type { MembershipTier } from "./types";
-import type { CheckoutUser, PaymentProvider, ProviderSubscription } from "./provider";
+import type { PaymentProvider, ProviderSubscription } from "./provider";
 import {
   findBillingSubscriptionByProviderId,
-  findEntitledBillingSubscription,
   findOpenBillingSubscription,
   updateBillingSubscriptionStatus,
   type BillingSubscription,
 } from "./server";
-import { getPaymentProvider, isPaymentProviderEnabled } from "./providers";
+import { getPaymentProvider } from "./providers";
 
 export function requireConfiguredProvider(provider: PaymentProvider, tier?: MembershipTier): void {
   if (!provider.isConfigured() || (tier && !provider.getPlanId(tier))) {
@@ -28,32 +27,6 @@ export function checkSubscriptionIdentity(existing: BillingSubscription, remote:
   if (remote.planId !== existing.provider_plan_id || remote.tier !== existing.tier) {
     throw new BillingError("planMismatch", 409);
   }
-}
-
-export async function createSubscription(provider: PaymentProvider, tier: MembershipTier, user: CheckoutUser, returnUrl: string) {
-  if (!isPaymentProviderEnabled(provider.id)) {
-    throw new BillingError("paymentDisabled", 503);
-  }
-  const userId = user.id;
-  requireConfiguredProvider(provider, tier);
-  const open = await findOpenBillingSubscription(userId);
-  if (open) {
-    if (open.status === "ACTIVE") {
-      throw new BillingError("existingActiveSubscription", 409);
-    }
-    if (open.status === "PAYMENT_FAILED") {
-      throw new BillingError("existingFailedSubscription", 409);
-    }
-    if (open.status === "SUSPENDED") {
-      throw new BillingError("existingSuspendedSubscription", 409);
-    }
-    throw new BillingError("existingPendingSubscription", 409);
-  }
-  const entitled = await findEntitledBillingSubscription(userId);
-  if (entitled?.status === "CANCELLED") {
-    throw new BillingError("cancelledPeriodActive", 409);
-  }
-  return provider.createCheckout(tier, user, returnUrl);
 }
 
 /** 前端确认只读取验签回调已写入的状态，不创建记录或授予权益。 */
