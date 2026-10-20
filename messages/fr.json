@@ -133,7 +133,12 @@
       "sourceRow": "Ligne dans la page",
       "visibleRowCount": "{visible, number} sur {total, plural, one {# ligne} other {# lignes}}",
       "noRiskRows": "Aucune ligne de ce tableau ne nécessite de vérification.",
-      "scrollRegion": "{title} : tableau à défilement horizontal"
+      "scrollRegion": "{title} : tableau à défilement horizontal",
+      "rowRange": "Lignes {start, number}–{end, number} sur {filtered, number} lignes correspondantes ({total, number} au total)",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page {page, number} sur {pages, number}",
+      "pagination": "{title} : pagination"
     },
     "partial": {
       "title": "Certains éléments doivent être vérifiés",
@@ -180,14 +185,15 @@
         "extracting": "Génération des tableaux",
         "finalizing": "Vérification du résultat et du quota"
       },
-      "previewNotice": "Les tableaux sont en cours de génération. Le téléchargement sera disponible après les vérifications finales.",
+      "previewNotice": "Aperçu provisoire : seules les {limit, number} premières lignes, tous tableaux confondus, sont affichées. Toutes les lignes pourront être vérifiées et téléchargées après les contrôles finaux.",
       "cancel": "Annuler la conversion",
       "failedTitle": "Conversion non terminée",
       "errors": {
         "invalid": "Le service de conversion a renvoyé des données dans un format invalide.",
         "interrupted": "La connexion a été interrompue avant la fin. Veuillez relancer la conversion.",
         "request": "Aucune réponse à la demande de conversion n’a pu être reçue."
-      }
+      },
+      "previewCount": "{tables, number} tableaux et {rows, number} lignes reçus à ce stade."
     },
     "export": {
       "moreFormats": "Autres formats",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Chargement du compte…",
-    "error": "Les informations du compte sont temporairement indisponibles. Veuillez réessayer.",
-    "retry": "Réessayer"
   },
   "BalanceChecker": {
     "title": "Vérification du solde",

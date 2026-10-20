@@ -133,7 +133,12 @@
       "sourceRow": "ページ内の行",
       "visibleRowCount": "{visible, number} / {total, number} 行",
       "noRiskRows": "この表に確認が必要な行はありません。",
-      "scrollRegion": "{title}：横にスクロールできる表"
+      "scrollRegion": "{title}：横にスクロールできる表",
+      "rowRange": "対象 {filtered, number} 行中 {start, number}–{end, number} 行（全 {total, number} 行）",
+      "previous": "前へ",
+      "next": "次へ",
+      "page": "{page, number} / {pages, number} ページ",
+      "pagination": "{title}：ページ切り替え"
     },
     "partial": {
       "title": "確認が必要な内容があります",
@@ -180,14 +185,15 @@
         "extracting": "表を生成中",
         "finalizing": "結果と利用枠を確認中"
       },
-      "previewNotice": "表を生成中です。最終確認が完了するとダウンロードできます。",
+      "previewNotice": "一時プレビュー：すべての表を合わせて先頭 {limit, number} 行のみ表示します。最終確認後に全行を確認・ダウンロードできます。",
       "cancel": "変換をキャンセル",
       "failedTitle": "変換が完了しませんでした",
       "errors": {
         "invalid": "変換サービスから返されたデータの形式が無効です。",
         "interrupted": "結果が完成する前に接続が切れました。もう一度変換してください。",
         "request": "変換リクエストへの応答を受信できませんでした。"
-      }
+      },
+      "previewCount": "現在までに {tables, number} 個の表、{rows, number} 行を受信しました。"
     },
     "export": {
       "moreFormats": "その他の形式",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "アカウントを確認中…",
-    "error": "アカウント情報を一時的に取得できません。もう一度お試しください。",
-    "retry": "再試行"
   },
   "BalanceChecker": {
     "title": "残高確認",

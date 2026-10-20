@@ -3,7 +3,6 @@
 import { useFormatter, useTranslations } from "next-intl";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
-import { PublicAccountStatus } from "@/components/account/public-account-status";
 import { SubscriptionOptions } from "@/components/billing/subscription-options";
 import type { CheckoutConfig } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
@@ -13,7 +12,7 @@ export function PublicPlanState({ tier, checkouts }: { tier?: MembershipTier; ch
   const t = useTranslations("UsageTiers");
   const format = useFormatter();
   if (status !== "ready") {
-    return tier ? <PublicAccountStatus /> : null;
+    return null;
   }
   if (!tier) {
     return summary.cancelledPeriodEnd ? (

@@ -133,7 +133,12 @@
       "sourceRow": "页内行号",
       "visibleRowCount": "{visible, number} / {total, number} 行",
       "noRiskRows": "此表没有需要核对的行。",
-      "scrollRegion": "{title}：可横向滚动的表格"
+      "scrollRegion": "{title}：可横向滚动的表格",
+      "rowRange": "第 {start, number}–{end, number} 行，当前范围共 {filtered, number} 行（原表共 {total, number} 行）",
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第 {page, number} / {pages, number} 页",
+      "pagination": "{title}：分页"
     },
     "partial": {
       "title": "有些内容需要核对",
@@ -180,14 +185,15 @@
         "extracting": "正在生成表格",
         "finalizing": "正在检查结果和额度"
       },
-      "previewNotice": "表格正在生成，最终检查完成后才能下载。",
+      "previewNotice": "临时预览：所有表格合计仅显示前 {limit, number} 行。最终检查完成后可核对全部交易并下载。",
       "cancel": "取消转换",
       "failedTitle": "转换未完成",
       "errors": {
         "invalid": "转换服务返回的数据格式异常。",
         "interrupted": "连接已中断，未收到完整结果。请重新转换。",
         "request": "未能收到转换请求的响应。"
-      }
+      },
+      "previewCount": "已累计 {tables, number} 个表格、{rows, number} 行交易。"
     },
     "export": {
       "moreFormats": "更多格式",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "正在读取账户状态…",
-    "error": "账户资料暂时无法读取，请重试。",
-    "retry": "重试"
   },
   "BalanceChecker": {
     "title": "余额核对",

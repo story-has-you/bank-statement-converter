@@ -133,7 +133,12 @@
       "sourceRow": "Regel op pagina",
       "visibleRowCount": "{visible, number} van {total, plural, one {# rij} other {# rijen}}",
       "noRiskRows": "Geen rijen in deze tabel hoeven te worden gecontroleerd.",
-      "scrollRegion": "{title}: horizontaal verschuifbare tabel"
+      "scrollRegion": "{title}: horizontaal verschuifbare tabel",
+      "rowRange": "Rijen {start, number}–{end, number} van {filtered, number} overeenkomende rijen ({total, number} in totaal)",
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Pagina {page, number} van {pages, number}",
+      "pagination": "{title}: paginering"
     },
     "partial": {
       "title": "Sommige gegevens moeten worden gecontroleerd",
@@ -180,14 +185,15 @@
         "extracting": "Tabellen worden opgebouwd",
         "finalizing": "Resultaat en tegoed worden gecontroleerd"
       },
-      "previewNotice": "De tabellen worden nog gegenereerd. Downloaden is mogelijk na de laatste controles.",
+      "previewNotice": "Tijdelijk voorbeeld: alleen de eerste {limit, number} rijen van alle tabellen samen worden getoond. Na de laatste controles kun je alle rijen bekijken en downloaden.",
       "cancel": "Conversie annuleren",
       "failedTitle": "Conversie niet voltooid",
       "errors": {
         "invalid": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
         "interrupted": "De verbinding is verbroken voordat het resultaat klaar was. Converteer opnieuw.",
         "request": "Er kon geen antwoord op de conversieaanvraag worden ontvangen."
-      }
+      },
+      "previewCount": "Tot nu toe {tables, number} tabellen en {rows, number} rijen ontvangen."
     },
     "export": {
       "moreFormats": "Meer formaten",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Account wordt geladen…",
-    "error": "De accountgegevens zijn tijdelijk niet beschikbaar. Probeer het opnieuw.",
-    "retry": "Opnieuw proberen"
   },
   "BalanceChecker": {
     "title": "Saldocontrole",

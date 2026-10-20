@@ -133,7 +133,12 @@
       "sourceRow": "Riga nella pagina",
       "visibleRowCount": "{visible, number} di {total, plural, one {# riga} other {# righe}}",
       "noRiskRows": "Nessuna riga di questa tabella richiede una verifica.",
-      "scrollRegion": "{title}: tabella a scorrimento orizzontale"
+      "scrollRegion": "{title}: tabella a scorrimento orizzontale",
+      "rowRange": "Righe {start, number}–{end, number} di {filtered, number} righe corrispondenti ({total, number} in totale)",
+      "previous": "Precedente",
+      "next": "Successiva",
+      "page": "Pagina {page, number} di {pages, number}",
+      "pagination": "{title}: paginazione"
     },
     "partial": {
       "title": "Alcuni dati vanno controllati",
@@ -180,14 +185,15 @@
         "extracting": "Generazione delle tabelle",
         "finalizing": "Verifica del risultato e della quota"
       },
-      "previewNotice": "Le tabelle sono ancora in fase di generazione. Il download sarà disponibile dopo i controlli finali.",
+      "previewNotice": "Anteprima temporanea: vengono mostrate solo le prime {limit, number} righe complessive di tutte le tabelle. Dopo i controlli finali potrai verificare e scaricare tutte le righe.",
       "cancel": "Annulla conversione",
       "failedTitle": "Conversione non completata",
       "errors": {
         "invalid": "Il servizio di conversione ha restituito dati in un formato non valido.",
         "interrupted": "La connessione è terminata prima del completamento. Ripeti la conversione.",
         "request": "Non è stato possibile ricevere una risposta alla richiesta di conversione."
-      }
+      },
+      "previewCount": "Finora sono state ricevute {tables, number} tabelle e {rows, number} righe."
     },
     "export": {
       "moreFormats": "Altri formati",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Caricamento account…",
-    "error": "I dati dell’account sono temporaneamente non disponibili. Riprova.",
-    "retry": "Riprova"
   },
   "BalanceChecker": {
     "title": "Controllo saldo",

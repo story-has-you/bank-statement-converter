@@ -133,7 +133,12 @@
       "sourceRow": "Baris pada halaman",
       "visibleRowCount": "{visible, number} dari {total, number} baris",
       "noRiskRows": "Tidak ada baris dalam tabel ini yang perlu diperiksa.",
-      "scrollRegion": "{title}: tabel yang dapat digulir secara horizontal"
+      "scrollRegion": "{title}: tabel yang dapat digulir secara horizontal",
+      "rowRange": "Baris {start, number}–{end, number} dari {filtered, number} baris yang sesuai (total {total, number})",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya",
+      "page": "Halaman {page, number} dari {pages, number}",
+      "pagination": "{title}: navigasi halaman"
     },
     "partial": {
       "title": "Sebagian data perlu diperiksa",
@@ -180,14 +185,15 @@
         "extracting": "Membuat tabel",
         "finalizing": "Memeriksa hasil dan kuota"
       },
-      "previewNotice": "Tabel masih dibuat. Unduhan tersedia setelah pemeriksaan akhir.",
+      "previewNotice": "Pratinjau sementara: hanya {limit, number} baris pertama dari seluruh tabel yang ditampilkan. Setelah pemeriksaan akhir, Anda dapat meninjau dan mengunduh semua baris.",
       "cancel": "Batalkan konversi",
       "failedTitle": "Konversi belum selesai",
       "errors": {
         "invalid": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
         "interrupted": "Koneksi terputus sebelum hasil selesai. Silakan konversi ulang.",
         "request": "Respons atas permintaan konversi tidak dapat diterima."
-      }
+      },
+      "previewCount": "Sejauh ini, {tables, number} tabel dan {rows, number} baris telah diterima."
     },
     "export": {
       "moreFormats": "Format lainnya",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Memuat akun…",
-    "error": "Detail akun untuk sementara tidak tersedia. Silakan coba lagi.",
-    "retry": "Coba lagi"
   },
   "BalanceChecker": {
     "title": "Pemeriksa saldo",

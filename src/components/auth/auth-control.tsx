@@ -7,7 +7,6 @@ import { useConversion } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
-import { PublicAccountStatus } from "@/components/account/public-account-status";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
@@ -107,11 +106,6 @@ export function AuthControl() {
           </Button>
         )}
       </div>
-      {signedIn && status !== "ready" && (
-        <div className="max-w-36 text-right sm:max-w-48">
-          <PublicAccountStatus />
-        </div>
-      )}
       {error && (
         <p role="alert" className="max-w-48 text-right text-xs text-destructive">
           {error}
