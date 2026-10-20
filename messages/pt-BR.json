@@ -687,7 +687,13 @@
     "analyticsAnswer": "Google Analytics e Pageview podem processar informações técnicas de visita. Extratos, transações extraídas e conteúdo Excel não são enviados a esses serviços.",
     "parsingHeader": "Capacidade de análise",
     "merchantTitle": "Como padronizar os nomes dos estabelecimentos?",
-    "merchantAnswer": "Em cada tabela do resultado final, selecione uma coluna de nomes ou descrições. Textos originais exatamente iguais são agrupados entre as tabelas deste arquivo para confirmar, renomear ou remover aliases manualmente. O texto original, a ordem, as fontes e os riscos de extração permanecem intactos; a identidade do estabelecimento não é inferida e não há chamadas adicionais ao modelo. Os nomes confirmados e um status separado aparecem na prévia e nos seis formatos de exportação. No JSON, os campos são merchantName e merchantNormalizationStatus: nomes não atribuídos são null com status unassigned e nomes atribuídos têm status confirmed. Os mapeamentos ficam temporariamente com o resultado na sessão desta aba e não são reutilizados em outro arquivo. Remover todos restaura os campos originais da exportação."
+    "merchantAnswer": "Em cada tabela do resultado final, selecione uma coluna de nomes ou descrições. Textos originais exatamente iguais são agrupados entre as tabelas deste arquivo para confirmar, renomear ou remover aliases manualmente. O texto original, a ordem, as fontes e os riscos de extração permanecem intactos; a identidade do estabelecimento não é inferida e não há chamadas adicionais ao modelo. Os nomes confirmados e um status separado aparecem na prévia e nos seis formatos de exportação. No JSON, os campos são merchantName e merchantNormalizationStatus: nomes não atribuídos são null com status unassigned e nomes atribuídos têm status confirmed. Os mapeamentos ficam temporariamente com o resultado na sessão desta aba e não são reutilizados em outro arquivo. Remover todos restaura os campos originais da exportação.",
+    "linkInstructions": "O link inclui o prompt",
+    "pasteInstructions": "1. Copie o prompt. 2. Abra um serviço e cole em uma nova conversa. Confira e envie por conta própria.",
+    "copyPrompt": "Copiar prompt",
+    "copying": "Copiando…",
+    "copied": "Copiado. Abra um serviço abaixo e cole o prompt.",
+    "copyFailed": "Não foi possível copiar. Selecione e copie manualmente o prompt abaixo; depois abra um serviço e cole."
   },
   "BillingReturn": {
     "title": "Confirmação da assinatura",
