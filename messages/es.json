@@ -133,7 +133,12 @@
       "sourceRow": "Fila en la página",
       "visibleRowCount": "{visible, number} de {total, plural, one {# fila} other {# filas}}",
       "noRiskRows": "Ninguna fila de esta tabla necesita revisión.",
-      "scrollRegion": "{title}: tabla con desplazamiento horizontal"
+      "scrollRegion": "{title}: tabla con desplazamiento horizontal",
+      "rowRange": "Filas {start, number}–{end, number} de {filtered, number} filas coincidentes ({total, number} en total)",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página {page, number} de {pages, number}",
+      "pagination": "{title}: paginación"
     },
     "partial": {
       "title": "Algunos contenidos necesitan revisión",
@@ -180,14 +185,15 @@
         "extracting": "Generando tablas",
         "finalizing": "Comprobando el resultado y la cuota"
       },
-      "previewNotice": "Las tablas se están generando. La descarga estará disponible después de las comprobaciones finales.",
+      "previewNotice": "Vista previa temporal: solo se muestran las primeras {limit, number} filas entre todas las tablas. Podrás revisar y descargar todas las filas tras las comprobaciones finales.",
       "cancel": "Cancelar conversión",
       "failedTitle": "Conversión sin completar",
       "errors": {
         "invalid": "El servicio de conversión devolvió datos en un formato no válido.",
         "interrupted": "La conexión se interrumpió antes de completar el resultado. Vuelve a convertir el archivo.",
         "request": "No se pudo recibir una respuesta a la solicitud de conversión."
-      }
+      },
+      "previewCount": "Se han recibido {tables, number} tablas y {rows, number} filas."
     },
     "export": {
       "moreFormats": "Más formatos",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Cargando cuenta…",
-    "error": "Los datos de la cuenta no están disponibles temporalmente. Inténtalo de nuevo.",
-    "retry": "Reintentar"
   },
   "BalanceChecker": {
     "title": "Comprobar saldo",

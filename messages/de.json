@@ -133,7 +133,12 @@
       "sourceRow": "Zeile auf der Seite",
       "visibleRowCount": "{visible, number} von {total, plural, one {# Zeile} other {# Zeilen}}",
       "noRiskRows": "In dieser Tabelle müssen keine Zeilen geprüft werden.",
-      "scrollRegion": "{title}: horizontal scrollbare Tabelle"
+      "scrollRegion": "{title}: horizontal scrollbare Tabelle",
+      "rowRange": "Zeilen {start, number}–{end, number} von {filtered, number} passenden Zeilen ({total, number} insgesamt)",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite {page, number} von {pages, number}",
+      "pagination": "{title}: Seitennavigation"
     },
     "partial": {
       "title": "Einige Inhalte müssen überprüft werden",
@@ -180,14 +185,15 @@
         "extracting": "Tabellen werden erstellt",
         "finalizing": "Ergebnis und Kontingent werden geprüft"
       },
-      "previewNotice": "Die Tabellen werden noch erstellt. Downloads sind nach den abschließenden Prüfungen verfügbar.",
+      "previewNotice": "Vorläufige Vorschau: Über alle Tabellen werden nur die ersten {limit, number} Zeilen angezeigt. Nach der abschließenden Prüfung können Sie alle Zeilen prüfen und herunterladen.",
       "cancel": "Konvertierung abbrechen",
       "failedTitle": "Konvertierung nicht abgeschlossen",
       "errors": {
         "invalid": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
         "interrupted": "Die Verbindung wurde vor Abschluss getrennt. Bitte erneut konvertieren.",
         "request": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden."
-      }
+      },
+      "previewCount": "Bisher {tables, number} Tabellen und {rows, number} Zeilen empfangen."
     },
     "export": {
       "moreFormats": "Weitere Formate",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Kontostatus wird geladen…",
-    "error": "Die Kontodaten sind vorübergehend nicht verfügbar. Bitte versuchen Sie es erneut.",
-    "retry": "Erneut versuchen"
   },
   "BalanceChecker": {
     "title": "Saldoprüfung",

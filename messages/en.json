@@ -133,7 +133,12 @@
       "sourceRow": "Row on page",
       "visibleRowCount": "{visible, number} of {total, plural, one {# row} other {# rows}}",
       "noRiskRows": "No rows in this table need review.",
-      "scrollRegion": "{title}: horizontally scrollable table"
+      "scrollRegion": "{title}: horizontally scrollable table",
+      "rowRange": "Rows {start, number}–{end, number} of {filtered, number} matching rows ({total, number} total)",
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {page, number} of {pages, number}",
+      "pagination": "{title}: pagination"
     },
     "partial": {
       "title": "Some content needs review",
@@ -180,14 +185,15 @@
         "extracting": "Generating tables",
         "finalizing": "Checking results and quota"
       },
-      "previewNotice": "Tables are still being generated. Downloads are available after the final checks.",
+      "previewNotice": "Temporary preview: only the first {limit, number} rows across all tables are shown. Download and review all rows after the final checks.",
       "cancel": "Cancel conversion",
       "failedTitle": "Conversion not completed",
       "errors": {
         "invalid": "The conversion service returned data in an invalid format.",
         "interrupted": "The connection ended before the result was complete. Please convert again.",
         "request": "No response to the conversion request could be received."
-      }
+      },
+      "previewCount": "Received {tables, number} tables and {rows, number} rows so far."
     },
     "export": {
       "moreFormats": "More formats",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Loading account status…",
-    "error": "Account details are temporarily unavailable. Please try again.",
-    "retry": "Retry"
   },
   "BalanceChecker": {
     "title": "Balance checker",

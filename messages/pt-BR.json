@@ -133,7 +133,12 @@
       "sourceRow": "Linha na página",
       "visibleRowCount": "{visible, number} de {total, plural, one {# linha} other {# linhas}}",
       "noRiskRows": "Nenhuma linha desta tabela precisa de revisão.",
-      "scrollRegion": "{title}: tabela com rolagem horizontal"
+      "scrollRegion": "{title}: tabela com rolagem horizontal",
+      "rowRange": "Linhas {start, number}–{end, number} de {filtered, number} linhas correspondentes ({total, number} no total)",
+      "previous": "Anterior",
+      "next": "Próxima",
+      "page": "Página {page, number} de {pages, number}",
+      "pagination": "{title}: paginação"
     },
     "partial": {
       "title": "Alguns dados precisam de conferência",
@@ -180,14 +185,15 @@
         "extracting": "Gerando tabelas",
         "finalizing": "Verificando o resultado e a cota"
       },
-      "previewNotice": "As tabelas ainda estão sendo geradas. O download estará disponível após as verificações finais.",
+      "previewNotice": "Prévia temporária: apenas as primeiras {limit, number} linhas de todas as tabelas são exibidas. Após as verificações finais, você poderá conferir e baixar todas as linhas.",
       "cancel": "Cancelar conversão",
       "failedTitle": "Conversão não concluída",
       "errors": {
         "invalid": "O serviço de conversão retornou dados em um formato inválido.",
         "interrupted": "A conexão foi interrompida antes de concluir o resultado. Converta o arquivo novamente.",
         "request": "Não foi possível receber uma resposta à solicitação de conversão."
-      }
+      },
+      "previewCount": "Até agora, foram recebidas {tables, number} tabelas e {rows, number} linhas."
     },
     "export": {
       "moreFormats": "Mais formatos",
@@ -1129,11 +1135,6 @@
         ]
       }
     }
-  },
-  "PublicAccount": {
-    "loading": "Carregando conta…",
-    "error": "Os dados da conta estão temporariamente indisponíveis. Tente novamente.",
-    "retry": "Tentar novamente"
   },
   "BalanceChecker": {
     "title": "Conferência de saldo",
