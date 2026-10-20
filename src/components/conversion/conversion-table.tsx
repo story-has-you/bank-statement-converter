@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import type { MerchantExport } from "@/lib/conversion-export";
-import { getRowRiskCode, type ParsedTable, type RowStatus } from "@/lib/conversion-types";
+import { getColumnLabel, getRowRiskCode, type ParsedTable, type RowStatus } from "@/lib/conversion-types";
 import { getMerchantName } from "@/lib/merchant-normalization";
 import { getParseIssueKey } from "@/lib/parse-issues";
 import { cn } from "@/lib/utils";
@@ -101,7 +101,7 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
                     scope="col"
                     className={`${columnWidthClass(column.index)} whitespace-nowrap border-b border-border px-3 py-2 font-medium`}
                   >
-                    {column.label}
+                    {getColumnLabel(column, (column) => t("table.unnamedColumn", { column }))}
                   </th>
                 ))}
                 {merchants?.headers.map((header, index) => (

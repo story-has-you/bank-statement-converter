@@ -4,6 +4,7 @@ export type ParseIssueTranslationKey =
   | "issues.repeatedHeader"
   | "issues.summaryRow"
   | "issues.extraCells"
+  | "issues.missingHeader"
   | "issues.missingDate"
   | "issues.invalidDate"
   | "issues.missingDescription"
@@ -20,6 +21,8 @@ export function getParseIssueKey(issue: ParseIssue): ParseIssueTranslationKey {
       return "issues.summaryRow";
     case "EXTRA_CELLS":
       return "issues.extraCells";
+    case "MISSING_HEADER":
+      return "issues.missingHeader";
     case "MISSING_DATE":
       return "issues.missingDate";
     case "INVALID_DATE":

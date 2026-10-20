@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Colonne sans nom {column}",
       "title": "Tableau {id}",
       "singleTitle": "Opérations sur relevé bancaire",
       "pages": "Pages {start, number} à {end, number}",
@@ -149,6 +150,7 @@
       "description": "Cette page ne contient aucun résultat de conversion lisible."
     },
     "issues": {
+      "missingHeader": "La colonne {column} ne comporte pas d’en-tête d’origine. Ses données ont été conservées ; vérifiez le PDF d’origine.",
       "repeatedHeader": "La ligne {row} répète l'en-tête du tableau et a été ignorée.",
       "summaryRow": "La ligne {row} a été identifiée comme une ligne de total et ignorée.",
       "extraCells": "Cette ligne contient plus de cellules que l'en-tête. Les cellules supplémentaires ont été conservées.",

@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "名称未設定の列 {column}",
       "title": "表 {id}",
       "singleTitle": "銀行明細",
       "pages": "{start, number}〜{end, number}ページ",
@@ -149,6 +150,7 @@
       "description": "このページには読み取れる変換結果がありません。"
     },
     "issues": {
+      "missingHeader": "列 {column} の元の見出しは空欄です。データは保持されています。元の PDF を確認してください。",
       "repeatedHeader": "{row}行目は重複した見出しのためスキップしました。",
       "summaryRow": "第{row}行は合計行と判定され、除外されました。",
       "extraCells": "この行には見出しより多いセルがあります。余分なセルも保持しました。",

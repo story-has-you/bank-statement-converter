@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
-import type { ParseResponse } from "@/lib/conversion-types";
+import { getColumnLabel, type ParseResponse } from "@/lib/conversion-types";
 import {
   assignMerchantAliases,
   getMerchantAliases,
@@ -29,6 +29,7 @@ const PAGE_SIZE = 50;
 export function MerchantNormalizationPanel({ result, normalization, onChange, storageFailed }: MerchantNormalizationPanelProps) {
   const t = useTranslations("ConversionResult.merchant");
   const tableT = useTranslations("ConversionResult.excel");
+  const columnT = useTranslations("ConversionResult.table");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -123,7 +124,7 @@ export function MerchantNormalizationPanel({ result, normalization, onChange, st
                     <NativeSelectOption value="">{t("skipTable")}</NativeSelectOption>
                     {table.columns.map((column) => (
                       <NativeSelectOption key={column.key} value={column.key}>
-                        {column.label}
+                        {getColumnLabel(column, (column) => columnT("unnamedColumn", { column }))}
                       </NativeSelectOption>
                     ))}
                   </NativeSelect>

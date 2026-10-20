@@ -1,4 +1,4 @@
-import { getRowRiskCode, type ParseIssue, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
+import { getColumnLabel, getRowRiskCode, type ParseIssue, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 import { getMerchantName, type MerchantNormalization } from "@/lib/merchant-normalization";
 
 export type TextExportFormat = "json" | "markdown" | "html";
@@ -11,6 +11,7 @@ export type ExportLabels = {
   pageRisks: string;
   tableWarnings: string;
   tableTitle: (index: number) => string;
+  unnamedColumn: (column: number) => string;
   issue: (issue: ParseIssue) => string;
   error: (error: ParseResponse["errors"][number]) => string;
 };
@@ -38,7 +39,7 @@ export function getExportFilename(filename: string, defaultFilename: string, ext
 }
 
 export function getTableHeaders(table: ParsedTable, labels: ExportLabels, merchants?: MerchantExport): string[] {
-  return [...table.columns.map((column) => column.label), ...(merchants?.headers ?? []), ...labels.headers];
+  return [...table.columns.map((column) => getColumnLabel(column, labels.unnamedColumn)), ...(merchants?.headers ?? []), ...labels.headers];
 }
 
 export function getTableRows(table: ParsedTable, issue: ExportLabels["issue"], merchants?: MerchantExport): ExportCell[][] {

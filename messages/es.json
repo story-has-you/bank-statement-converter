@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Columna sin nombre {column}",
       "title": "Tabla {id}",
       "singleTitle": "Transacciones de extractos bancarios",
       "pages": "Páginas {start, number} a {end, number}",
@@ -149,6 +150,7 @@
       "description": "Esta página no contiene ningún resultado de conversión que se pueda leer."
     },
     "issues": {
+      "missingHeader": "La columna {column} no tiene encabezado original. Sus datos se han conservado; compruebe el PDF original.",
       "repeatedHeader": "La fila {row} repite el encabezado de la tabla y se omitió.",
       "summaryRow": "La fila {row} se identificó como una fila de total y se omitió.",
       "extraCells": "Esta fila tiene más celdas que el encabezado. Se conservaron las celdas adicionales.",

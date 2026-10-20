@@ -66,6 +66,7 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
     pageRisks: t("pageRisks.title"),
     tableWarnings: t("export.tableWarnings"),
     tableTitle: (index: number) => t("excel.sheetName", { index }),
+    unnamedColumn: (column: number) => t("table.unnamedColumn", { column }),
     issue: (issue) => t(getParseIssueKey(issue), issue.params),
     error: (error) => t(getParseErrorKey(error.code), { page: error.page ?? "?" }),
   } satisfies ExportLabels;

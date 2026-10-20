@@ -93,6 +93,11 @@ def _to_parsed_table(table: RawTable, table_index: int) -> ParsedTable:
         ColumnModel(key=f"c{index}", label=label, index=index)
         for index, label in enumerate(headers)
     ]
+    header_warnings = [
+        ParseIssue(code="MISSING_HEADER", params={"column": column.index + 1})
+        for column in columns
+        if not column.label
+    ]
     parsed_rows: list[ParsedRow] = []
     for raw_row in table.rows:
         values = {
@@ -124,7 +129,7 @@ def _to_parsed_table(table: RawTable, table_index: int) -> ParsedTable:
         pageEnd=table.page_end,
         columns=columns,
         rows=parsed_rows,
-        warnings=table.warnings,
+        warnings=[*table.warnings, *header_warnings],
     )
 
 

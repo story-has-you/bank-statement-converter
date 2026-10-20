@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "이름 없는 열 {column}",
       "title": "표 {id}",
       "singleTitle": "은행 명세서 거래",
       "pages": "페이지 {start, number} ~ {end, number}",
@@ -149,6 +150,7 @@
       "description": "현재 페이지에 읽을 수 있는 변환 결과가 없습니다."
     },
     "issues": {
+      "missingHeader": "{column}열의 원본 헤더가 비어 있습니다. 데이터는 보존되었으니 원본 PDF를 확인하세요.",
       "repeatedHeader": "{row} 행은 테이블 헤더를 반복하므로 건너뛰었습니다.",
       "summaryRow": "{row}행은 합계 행으로 식별되어 제외되었습니다.",
       "extraCells": "이 행에는 머리글보다 더 많은 셀이 있습니다. 여분의 셀은 유지되었습니다.",
