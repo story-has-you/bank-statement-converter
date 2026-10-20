@@ -113,6 +113,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
   let validRowCount = 0;
   let warningRowCount = 0;
   let failedRowCount = 0;
+  const tableIds = new Set<string>();
   const tablesAreValid = tables.every((rawTable) => {
     if (!isRecord(rawTable)) {
       return false;
@@ -120,6 +121,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     const table = rawTable;
     if (
       typeof table.id !== "string" ||
+      tableIds.has(table.id) ||
       !isPositiveInteger(table.pageStart) ||
       !isPositiveInteger(table.pageEnd) ||
       table.pageStart > table.pageEnd ||
@@ -131,6 +133,7 @@ export function isParseResponse(value: unknown): value is ParseResponse {
     ) {
       return false;
     }
+    tableIds.add(table.id);
 
     const pageStart = table.pageStart;
     const pageEnd = table.pageEnd;
