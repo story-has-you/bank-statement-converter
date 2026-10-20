@@ -1,6 +1,7 @@
 import "server-only";
 
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { usdFromDecimal, usdFromMinorUnits, usdToDecimal } from "@/lib/billing/usd";
 import { BillingError } from "@/lib/billing/errors";
 import type { BillingEvent, BillingNotification } from "@/lib/billing/provider";
 import { subscriptionConfig } from "@/config/plans";
@@ -129,20 +130,20 @@ async function resolveCreemEvent(
   }
   const transaction = await createCreemClient().transactions.getById(transactionId);
   // 套餐价已含税；折扣交易必须使用渠道明确返回的实付金额。
-  const originalCents = Math.round(subscriptionConfig[subscription.tier].monthlyPrice * 100);
+  const originalCents = usdFromDecimal(String(subscriptionConfig[subscription.tier].monthlyPrice));
   // Creem 的 100% 优惠券交易可能返回 discountAmount=0，只在完整全额抵扣证据下补齐优惠快照。
   const fullyDiscounted =
     transaction.amountPaid === 0 &&
     (transaction.discountAmount ?? 0) === 0 &&
-    transaction.amount === originalCents &&
+    usdFromMinorUnits(transaction.amount) === originalCents &&
     remote.discount?.type === "percentage" &&
     remote.discount.amount === 100 &&
     typeof remote.product !== "string" &&
-    remote.product.price === originalCents &&
+    usdFromMinorUnits(remote.product.price) === originalCents &&
     remote.product.currency === "USD" &&
     remote.product.taxMode === "inclusive";
-  const discountCents = fullyDiscounted ? originalCents : (transaction.discountAmount ?? 0);
-  const paidCents = transaction.amountPaid ?? transaction.amount;
+  const discountCents = fullyDiscounted ? originalCents : usdFromMinorUnits(transaction.discountAmount ?? 0);
+  const paidCents = usdFromMinorUnits(transaction.amountPaid ?? transaction.amount);
   const providerDiscountId = discountCents > 0 ? remote.discount?.id?.trim() || null : null;
   if (
     transaction.id !== transactionId ||
@@ -151,10 +152,6 @@ async function resolveCreemEvent(
     transaction.subscription !== subscriptionId ||
     transaction.customer !== subscription.payerId ||
     transaction.currency !== "USD" ||
-    !Number.isSafeInteger(paidCents) ||
-    paidCents < 0 ||
-    !Number.isSafeInteger(discountCents) ||
-    discountCents < 0 ||
     discountCents > originalCents ||
     paidCents + discountCents !== originalCents ||
     (remote.discount !== undefined && transaction.amountPaid == null) ||
@@ -181,9 +178,9 @@ async function resolveCreemEvent(
   return {
     ...base,
     type,
-    amount: (paidCents / 100).toFixed(2),
-    originalAmount: (originalCents / 100).toFixed(2),
-    discountAmount: (discountCents / 100).toFixed(2),
+    amount: usdToDecimal(paidCents),
+    originalAmount: usdToDecimal(originalCents),
+    discountAmount: usdToDecimal(discountCents),
     providerDiscountId,
     currencyCode: transaction.currency,
     paidAt: new Date(paidAt).toISOString(),
