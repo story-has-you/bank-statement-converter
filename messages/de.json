@@ -86,7 +86,7 @@
     "emptyFile": "Die hochgeladene PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "aiNotice": "Wenn die reguläre Analyse bei Professional und Enterprise fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, werden die vollständige PDF und ihr Dateiname gemäß den Bedingungen und der Datenschutzrichtlinie an den KI-Analyseanbieter gesendet. Diese Website speichert Umwandlungsinhalte nicht dauerhaft; für Aufbewahrung und Nutzung beim Anbieter gelten dessen Richtlinien.",
+    "aiNotice": "Wenn die reguläre Analyse bei Professional und Enterprise fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, werden die vollständige PDF und ihr Dateiname gemäß den Bedingungen und der Datenschutzrichtlinie an Qwen AI Platform gesendet. Diese Website speichert Umwandlungsinhalte nicht dauerhaft; für Aufbewahrung und Nutzung beim Anbieter gelten dessen Richtlinien. Siehe <link>Anbieterdetails und Richtlinien</link>.",
     "checking": "PDF und Kontingent werden geprüft",
     "retryCheck": "Erneut prüfen",
     "pageCount": "{pageCount, plural, one {# Seite} other {# Seiten}}",
@@ -398,7 +398,7 @@
     "resources": "Anleitungen und Werkzeuge"
   },
   "LegalCommon": {
-    "lastUpdated": "Letzte Aktualisierung: 19. Oktober 2026"
+    "lastUpdated": "Letzte Aktualisierung: 20. Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -522,6 +522,7 @@
     },
     "aiParsing": {
       "title": "KI-Analyse und Verarbeitung durch Dritte",
+      "provider": "Der KI-Analyseanbieter ist Qwen AI Platform, betrieben von 通义云启（杭州）信息技术有限公司 (eingetragener Firmenname). Es gelten die <terms>Produktdienstleistungsvereinbarung</terms> und die <privacy>Rechtshinweise und Datenschutzrichtlinie</privacy> des Anbieters.",
       "body": "Professional und Enterprise mit gültiger Berechtigung beginnen mit der regulären Analyse. Wenn diese fehlschlägt, nicht verfügbar ist oder keine prüfbaren Transaktionen liefert, sendet das System die vollständige PDF und ihren Dateinamen automatisch an den KI-Analyseanbieter, um für diese Umwandlung Transaktionen zu extrahieren, einschließlich Versuchen mit Scans. Nutzbare Teilergebnisse lösen keinen Wechsel aus. Dateien können sensible Namen, Kontonummern und Transaktionen enthalten. Für den KI-Analyseanbieter gelten dessen Bedingungen und Datenschutzrichtlinie. Diese Website speichert PDFs, extrahierte Transaktionen, Modellausgaben und Exportinhalte nicht als dauerhafte Historie. Das bedeutet nicht, dass der KI-Analyseanbieter keine Daten aufbewahrt; wir geben keine zusätzliche Zusicherung zu dessen Aufbewahrungsfristen oder Datennutzung für das Modelltraining."
     }
   },

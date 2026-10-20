@@ -86,7 +86,7 @@
     "emptyFile": "Het geüploade PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar de aanbieder van AI-analyse gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid.",
+    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar Qwen AI Platform gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid. Bekijk de <link>gegevens en beleidsregels van de aanbieder</link>.",
     "checking": "PDF en tegoed controleren",
     "retryCheck": "Opnieuw controleren",
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagina’s}}",
@@ -398,7 +398,7 @@
     "resources": "Gidsen en hulpmiddelen"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 19 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 20 oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -522,6 +522,7 @@
     },
     "aiParsing": {
       "title": "AI-analyse en verwerking door derden",
+      "provider": "De aanbieder van AI-analyse is Qwen AI Platform, beheerd door 通义云启（杭州）信息技术有限公司 (geregistreerde juridische naam). De <terms>Productdienstenovereenkomst</terms> en de <privacy>Juridische kennisgeving en het privacybeleid</privacy> van de aanbieder zijn van toepassing.",
       "body": "Professional en Enterprise met een geldig gebruiksrecht beginnen met de reguliere analyse. Als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, stuurt het systeem de volledige PDF en bestandsnaam automatisch naar de aanbieder van AI-analyse om transacties voor deze conversie te extraheren, inclusief pogingen om scans te verwerken. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling. Bestanden kunnen gevoelige namen, rekeningnummers en transacties bevatten. Voor de aanbieder van AI-analyse gelden zijn voorwaarden en privacybeleid. Deze website bewaart PDF’s, geëxtraheerde transacties, modeluitvoer en exportinhoud niet als permanente geschiedenis. Dit betekent niet dat de aanbieder van AI-analyse geen gegevens bewaart; wij geven geen aanvullende garantie over zijn bewaartermijnen of gebruik van gegevens voor modeltraining."
     }
   },

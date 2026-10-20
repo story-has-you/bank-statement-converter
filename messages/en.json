@@ -86,7 +86,7 @@
     "emptyFile": "The uploaded PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "For Professional and Enterprise, if regular parsing fails, is unavailable or yields no reviewable transactions, the complete PDF and its filename are sent to the AI parsing provider under its terms and privacy policy. This website does not persist conversion content; provider retention and use follow its policies.",
+    "aiNotice": "For Professional and Enterprise, if regular parsing fails, is unavailable or yields no reviewable transactions, the complete PDF and its filename are sent to Qwen AI Platform under its terms and privacy policy. This website does not persist conversion content; provider retention and use follow its policies. See <link>provider details and policies</link>.",
     "checking": "Checking PDF and quota",
     "retryCheck": "Retry check",
     "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
@@ -398,7 +398,7 @@
     "resources": "Guides & tools"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 19, 2026"
+    "lastUpdated": "Last updated: October 20, 2026"
   },
   "Terms": {
     "metadata": {
@@ -522,6 +522,7 @@
     },
     "aiParsing": {
       "title": "AI parsing and third-party processing",
+      "provider": "The AI parsing provider is Qwen AI Platform, operated by 通义云启（杭州）信息技术有限公司 (registered legal name). Its <terms>Product Service Agreement</terms> and <privacy>Legal Notice and Privacy Policy</privacy> apply.",
       "body": "Professional and Enterprise with a valid entitlement start with regular parsing. If it fails, is unavailable or yields no reviewable transactions, the system automatically sends the complete PDF and its filename to the AI parsing provider to extract transactions for this conversion, including attempts to process scans. Usable partial results do not trigger fallback. Files may contain sensitive names, account numbers and transactions. Processing by the AI parsing provider is governed by its terms and privacy policy. This website does not retain PDFs, extracted transactions, model output or export content as persistent history. This boundary does not mean the AI parsing provider retains no data; we make no additional guarantee about its retention periods or use of data for model training."
     }
   },

@@ -86,7 +86,7 @@
     "emptyFile": "O arquivo PDF enviado está vazio.",
     "quotaExhausted": "Você usou todas as páginas disponíveis neste período.",
     "invalidResponse": "O serviço de conversão retornou dados em um formato inválido.",
-    "aiNotice": "Nos planos Professional e Enterprise, se a análise habitual falhar, estiver indisponível ou não gerar transações verificáveis, o PDF completo e seu nome são enviados ao provedor de análise com IA conforme seus termos e sua política de privacidade. Este site não armazena permanentemente o conteúdo convertido; a retenção e o uso pelo fornecedor seguem suas políticas.",
+    "aiNotice": "Nos planos Professional e Enterprise, se a análise habitual falhar, estiver indisponível ou não gerar transações verificáveis, o PDF completo e seu nome são enviados à Qwen AI Platform conforme seus termos e sua política de privacidade. Este site não armazena permanentemente o conteúdo convertido; a retenção e o uso pelo fornecedor seguem suas políticas. Consulte os <link>detalhes e as políticas do provedor</link>.",
     "checking": "Verificando PDF e cota",
     "retryCheck": "Verificar novamente",
     "pageCount": "{pageCount, plural, one {# página} other {# páginas}}",
@@ -398,7 +398,7 @@
     "resources": "Guias e ferramentas"
   },
   "LegalCommon": {
-    "lastUpdated": "Última atualização: 19 de outubro de 2026"
+    "lastUpdated": "Última atualização: 20 de outubro de 2026"
   },
   "Terms": {
     "metadata": {
@@ -522,6 +522,7 @@
     },
     "aiParsing": {
       "title": "Análise com IA e processamento por terceiros",
+      "provider": "O provedor de análise com IA é Qwen AI Platform, operado por 通义云启（杭州）信息技术有限公司 (razão social registrada). Aplicam-se seu <terms>Contrato de Serviços do Produto</terms> e seu <privacy>Aviso Legal e Política de Privacidade</privacy>.",
       "body": "Professional e Enterprise com direito de uso válido começam com a análise habitual. Se ela falhar, estiver indisponível ou não gerar transações verificáveis, o sistema envia automaticamente o PDF completo e seu nome ao provedor de análise com IA para extrair as transações desta conversão, incluindo tentativas com digitalizações. Resultados parciais úteis não acionam a IA. Os arquivos podem conter nomes, números de conta e transações sensíveis. O processamento do provedor de análise com IA segue seus termos e sua política de privacidade. Este site não mantém PDFs, transações extraídas, saídas do modelo ou conteúdos exportados como histórico permanente. Isso não significa que o provedor de análise com IA não retenha dados; não oferecemos garantias adicionais sobre seus prazos de retenção ou uso de dados para treinamento de modelos."
     }
   },
