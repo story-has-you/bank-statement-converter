@@ -91,7 +91,7 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
               <tr>
                 <th
                   scope="col"
-                  className="sticky left-0 z-10 min-w-44 whitespace-nowrap border-r border-b border-border bg-muted px-3 py-2 font-medium"
+                  className="sticky left-0 z-10 whitespace-nowrap border-r border-b border-border bg-muted px-3 py-2 font-medium"
                 >
                   {t("table.status")}
                 </th>
@@ -135,7 +135,7 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
                   >
                     <td
                       className={cn(
-                        "sticky left-0 z-10 min-w-44 border-r border-b border-border bg-card px-3 py-2",
+                        "sticky left-0 z-10 border-r border-b border-border bg-card px-3 py-2",
                         row.status === "warning" && "bg-secondary",
                         row.status === "failed" && "bg-[color-mix(in_oklch,var(--card),var(--destructive)_10%)]",
                       )}
