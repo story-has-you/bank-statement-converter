@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:exports": "node --import tsx --test tests/conversion-spreadsheet-export.test.tsx",
+    "test:exports:calc": "node --import tsx --test tests/conversion-spreadsheet-export.calc.test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -43,6 +45,7 @@
     "eslint-config-next": "16.3.6",
     "prettier": "3.9.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "packageManager": "pnpm@12.6.0"

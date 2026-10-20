@@ -39,6 +39,9 @@ jobs:
       - name: TypeScript check
         run: pnpm exec tsc --noEmit
 
+      - name: Test spreadsheet export safety
+        run: pnpm test:exports
+
       - name: Lint web application
         run: pnpm lint
 

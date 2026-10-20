@@ -204,7 +204,9 @@
       "downloadTable": "Unduh tabel {index} · {format}",
       "loading": "Memuat unduhan spreadsheet…",
       "loadFailed": "Unduhan spreadsheet tidak dapat dimuat. Silakan coba lagi.",
-      "retry": "Coba lagi"
+      "retry": "Coba lagi",
+      "safetyNotice": "CSV dan TSV menambahkan apostrof (') di depan teks yang menyerupai rumus; karakter ini mungkin tetap terlihat. Unduh JSON untuk nilai asli tanpa perubahan.",
+      "safetyCompatibility": "CSV/TSV diuji di LibreOffice Calc 26.8; impor TSV dengan tab sebagai pemisah kolom dan tanda kutip ganda sebagai pembatas teks. Untuk aplikasi lain, gunakan Excel (.xlsx). Periksa CSV/TSV setelah disimpan ulang."
     },
     "restoring": "Memulihkan hasil konversi…",
     "review": {

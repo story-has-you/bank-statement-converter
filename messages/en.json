@@ -204,7 +204,9 @@
       "downloadTable": "Download table {index} · {format}",
       "loading": "Loading spreadsheet downloads…",
       "loadFailed": "Spreadsheet downloads could not be loaded. Please retry.",
-      "retry": "Retry"
+      "retry": "Retry",
+      "safetyNotice": "CSV and TSV prefix formula-like text with an apostrophe ('); it may remain visible. Download JSON for unescaped original values.",
+      "safetyCompatibility": "CSV/TSV checked in LibreOffice Calc 26.8; import TSV with tab and double-quote delimiters. For other apps, prefer Excel (.xlsx). Recheck CSV/TSV after saving it again."
     },
     "restoring": "Restoring the conversion result…",
     "review": {

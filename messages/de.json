@@ -204,7 +204,9 @@
       "downloadTable": "Tabelle {index} herunterladen · {format}",
       "loading": "Tabellendownloads werden geladen…",
       "loadFailed": "Tabellendownloads konnten nicht geladen werden. Bitte erneut versuchen.",
-      "retry": "Erneut versuchen"
+      "retry": "Erneut versuchen",
+      "safetyNotice": "CSV und TSV setzen formelähnlichem Text ein Apostroph (') voran; es kann sichtbar bleiben. JSON enthält die unveränderten Originalwerte.",
+      "safetyCompatibility": "CSV/TSV in LibreOffice Calc 26.8 geprüft; TSV mit Tabulator als Feld- und doppeltem Anführungszeichen als Texttrenner importieren. Für andere Programme Excel (.xlsx) verwenden. Nach erneutem Speichern nochmals prüfen."
     },
     "restoring": "Konvertierungsergebnis wird wiederhergestellt…",
     "review": {
