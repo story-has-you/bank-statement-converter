@@ -245,6 +245,8 @@
       "page": "पृष्ठ {page, number} / {pages, number}",
       "nameRequired": "कृपया गैर-खाली व्यापारी नाम दर्ज करें।",
       "selected": "{rows, number} लेनदेन में {aliases, number} नाम चुने गए।",
+      "hiddenSelected": "{rows, number} लेन-देन के {aliases, number} चुने गए नाम वर्तमान खोज परिणामों या पेज के बाहर हैं। इन्हें भी अपडेट किया जाएगा।",
+      "viewSelected": "सभी {aliases, number} चुने गए मूल नाम देखें",
       "apply": "{aliases, number} नाम · {rows, number} लेनदेन की पुष्टि करें",
       "removeSelected": "चुनी गई नाम मैपिंग हटाएँ",
       "clearSelection": "चयन हटाएँ",

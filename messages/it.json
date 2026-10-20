@@ -245,6 +245,8 @@
       "page": "Pagina {page, number} di {pages, number}",
       "nameRequired": "Inserisci un nome dell’esercente non vuoto.",
       "selected": "{aliases, number} nomi selezionati in {rows, number} transazioni.",
+      "hiddenSelected": "{aliases, number} nomi selezionati relativi a {rows, number} transazioni sono fuori dai risultati di ricerca o dalla pagina attuale. Verranno aggiornati anche questi.",
+      "viewSelected": "Controlla tutti i {aliases, number} nomi originali selezionati",
       "apply": "Conferma {aliases, number} nomi · {rows, number} transazioni",
       "removeSelected": "Rimuovi assegnazioni selezionate",
       "clearSelection": "Deseleziona",

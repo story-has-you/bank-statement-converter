@@ -245,6 +245,8 @@
       "page": "第 {page, number} / {pages, number} 页",
       "nameRequired": "请输入非空的标准商户名。",
       "selected": "已选择 {aliases, number} 个名称，涉及 {rows, number} 笔交易。",
+      "hiddenSelected": "其中 {aliases, number} 个已选名称不在当前搜索结果或页面中，涉及 {rows, number} 笔交易，确认时也会修改。",
+      "viewSelected": "查看全部 {aliases, number} 个已选原始名称",
       "apply": "确认 {aliases, number} 个名称 · {rows, number} 笔交易",
       "removeSelected": "删除所选映射",
       "clearSelection": "取消选择",

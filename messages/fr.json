@@ -245,6 +245,8 @@
       "page": "Page {page, number} sur {pages, number}",
       "nameRequired": "Saisissez un nom de commerçant non vide.",
       "selected": "{aliases, number} noms sélectionnés pour {rows, number} transactions.",
+      "hiddenSelected": "{aliases, number} noms sélectionnés couvrant {rows, number} transactions sont hors des résultats de recherche ou de la page actuelle. Ils seront également modifiés.",
+      "viewSelected": "Voir les {aliases, number} noms d’origine sélectionnés",
       "apply": "Confirmer {aliases, number} noms · {rows, number} transactions",
       "removeSelected": "Supprimer les attributions sélectionnées",
       "clearSelection": "Désélectionner",
