@@ -1,6 +1,7 @@
 import "server-only";
 
 import { verifyWebhook, type WebhookEvent, type WebhookEventData } from "@waffo/pancake-ts";
+import { usdFromDecimal } from "@/lib/billing/usd";
 import { BillingError } from "@/lib/billing/errors";
 import type { BillingEvent, BillingNotification } from "@/lib/billing/provider";
 import { getWaffoCurrentPayment, getWaffoPayment, getWaffoSubscription, isWaffoOrderId, requireWaffoConfig } from "./server";
@@ -79,7 +80,7 @@ async function resolveWaffoEvent(event: WebhookEvent<WebhookEventData>, type: Bi
     event.data.periodNumber !== payment.periodNumber ||
     event.data.currency !== "USD" ||
     event.data.chargedAmount === undefined ||
-    Number(event.data.chargedAmount) !== Number(verified.amount) ||
+    usdFromDecimal(event.data.chargedAmount) !== usdFromDecimal(verified.amount) ||
     event.data.paymentStatus !== "succeeded"
   ) {
     throw new Error("Waffo webhook payment evidence mismatch");

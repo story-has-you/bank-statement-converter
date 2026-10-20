@@ -1,5 +1,6 @@
 import "server-only";
 
+import { usdFromDecimal, usdFromMinorUnits, usdToDecimal } from "@/lib/billing/usd";
 import { subscriptionConfig } from "@/config/plans";
 import type { ProviderSubscription } from "@/lib/billing/provider";
 import type { SubscriptionStatus } from "@/lib/billing/types";
@@ -41,17 +42,10 @@ export function normalizeWaffoSubscription(remote: WaffoSubscription): ProviderS
   };
 }
 
-function usdCents(amount: string): number {
-  if (!/^\d+(?:\.\d{1,2})?$/.test(amount)) {
-    throw new Error("Waffo USD amount is invalid");
-  }
-  return Math.round(Number(amount) * 100);
-}
-
 /** 以渠道实付和订单锁定的税前价、税额核账，避免把报价快照当作付款证据。 */
 export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPayment): { amount: string; paidAt: string } {
   const subscription = normalizeWaffoSubscription(remote);
-  const expected = Math.round(subscriptionConfig[subscription.tier].monthlyPrice * 100);
+  const expected = usdFromDecimal(String(subscriptionConfig[subscription.tier].monthlyPrice));
   const snapshot = remote.priceSnapshot;
   const paid = payment.pspAmountDetails;
   const charged = payment.snapshotAmountDetails;
@@ -62,7 +56,7 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
     remote.isInTrial ||
     !snapshot ||
     snapshot.currency !== "USD" ||
-    usdCents(snapshot.regularPhase.subtotal) !== expected ||
+    usdFromDecimal(snapshot.regularPhase.subtotal) !== expected ||
     !Number.isInteger(remote.currentPeriodNumber) ||
     remote.currentPeriodNumber! <= 0 ||
     payment.periodNumber !== remote.currentPeriodNumber ||
@@ -72,10 +66,10 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
     payment.status !== "succeeded" ||
     paid.currency !== "USD" ||
     charged.currency !== "USD" ||
-    usdCents(charged.subtotal) !== expected ||
-    usdCents(charged.total) !== expected + usdCents(charged.taxAmount) ||
-    usdCents(snapshot.regularPhase.total) !== usdCents(charged.total) ||
-    usdCents(paid.amount) !== usdCents(charged.total) ||
+    usdFromDecimal(charged.subtotal) !== expected ||
+    usdFromDecimal(charged.total) !== usdFromMinorUnits(expected + usdFromDecimal(charged.taxAmount)) ||
+    usdFromDecimal(snapshot.regularPhase.total) !== usdFromDecimal(charged.total) ||
+    usdFromDecimal(paid.amount) !== usdFromDecimal(charged.total) ||
     !Number.isFinite(start) ||
     !Number.isFinite(end) ||
     start >= end ||
@@ -84,5 +78,5 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
   ) {
     throw new Error("Waffo payment evidence is invalid");
   }
-  return { amount: (usdCents(paid.amount) / 100).toFixed(2), paidAt: payment.createdAt };
+  return { amount: usdToDecimal(usdFromDecimal(paid.amount)), paidAt: payment.createdAt };
 }

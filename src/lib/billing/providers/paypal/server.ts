@@ -1,6 +1,7 @@
 import "server-only";
 
 import { subscriptionConfig } from "@/config/plans";
+import { usdFromDecimal, type UsdCents } from "@/lib/billing/usd";
 import { BillingError } from "@/lib/billing/errors";
 import type { CheckoutAttempt, CheckoutState, CheckoutUser, CreatedCheckout } from "@/lib/billing/provider";
 import type { MembershipTier, SubscriptionStatus } from "@/lib/billing/types";
@@ -90,6 +91,14 @@ export async function getPayPalPlan(tier: MembershipTier): Promise<PayPalPlan> {
   }
   const plan = await requestPayPal<PayPalPlan>(`/v1/billing/plans/${encodeURIComponent(planId)}`);
   const cycle = plan.billing_cycles[0];
+  let priceCents: UsdCents;
+  let setupFeeCents: UsdCents;
+  try {
+    priceCents = usdFromDecimal(cycle.pricing_scheme.fixed_price.value);
+    setupFeeCents = usdFromDecimal(plan.payment_preferences.setup_fee?.value ?? "0");
+  } catch {
+    throw new BillingError("configurationMissing", 503);
+  }
   if (
     plan.id !== planId ||
     plan.status !== "ACTIVE" ||
@@ -99,8 +108,8 @@ export async function getPayPalPlan(tier: MembershipTier): Promise<PayPalPlan> {
     cycle.frequency.interval_unit !== "MONTH" ||
     cycle.frequency.interval_count !== 1 ||
     cycle.pricing_scheme.fixed_price.currency_code !== "USD" ||
-    Number(cycle.pricing_scheme.fixed_price.value) !== subscriptionConfig[tier].monthlyPrice ||
-    Number(plan.payment_preferences.setup_fee?.value ?? 0) !== 0 ||
+    priceCents !== usdFromDecimal(String(subscriptionConfig[tier].monthlyPrice)) ||
+    setupFeeCents !== 0 ||
     Number(plan.taxes?.percentage ?? 0) !== 0
   ) {
     throw new BillingError("configurationMissing", 503);

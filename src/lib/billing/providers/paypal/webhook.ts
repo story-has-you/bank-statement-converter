@@ -1,6 +1,7 @@
 import "server-only";
 
 import { subscriptionConfig } from "@/config/plans";
+import { usdFromDecimal, usdToDecimal } from "@/lib/billing/usd";
 import { BillingError } from "@/lib/billing/errors";
 import type { BillingEvent, BillingNotification } from "@/lib/billing/provider";
 import { getPayPalPlan, getPayPalSubscription, getPayPalTransaction, isPayPalSubscriptionId, verifyPayPalWebhook } from "./server";
@@ -84,12 +85,13 @@ async function resolvePayPalEvent(event: PayPalWebhook, type: BillingEvent["type
   await getPayPalPlan(subscription.tier);
   const transaction = await getPayPalTransaction(subscriptionId, sale.id, sale.create_time);
   const amount = transaction.amount_with_breakdown.gross_amount;
-  const price = subscriptionConfig[subscription.tier].monthlyPrice;
+  const priceCents = usdFromDecimal(String(subscriptionConfig[subscription.tier].monthlyPrice));
+  const paidCents = usdFromDecimal(amount.value);
   if (
     amount.currency_code !== "USD" ||
-    Number(amount.value) !== price ||
+    paidCents !== priceCents ||
     sale.amount?.currency !== amount.currency_code ||
-    Number(sale.amount.total) !== price
+    usdFromDecimal(sale.amount.total) !== priceCents
   ) {
     throw new Error("PayPal payment evidence is invalid");
   }
@@ -98,8 +100,8 @@ async function resolvePayPalEvent(event: PayPalWebhook, type: BillingEvent["type
     ...base,
     subscription: { ...subscription, ...period },
     type: "subscription-paid",
-    amount: amount.value,
-    originalAmount: amount.value,
+    amount: usdToDecimal(paidCents),
+    originalAmount: usdToDecimal(paidCents),
     discountAmount: "0",
     providerDiscountId: null,
     currencyCode: amount.currency_code,
