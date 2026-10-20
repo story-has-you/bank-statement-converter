@@ -6,8 +6,15 @@ import { agentDocuments, getAgentDocumentUrl } from "@/lib/geo/links";
 
 export async function AgentsFooter() {
   const locale = (await getLocale()) as AppLocale;
-  const [t, languages] = await Promise.all([getTranslations({ locale, namespace: "Geo" }), getTranslations({ locale, namespace: "LanguageSwitcher" })]);
-  const prompt = t("prompt", { fullUrl: getAgentDocumentUrl(locale, "llms-full.txt"), indexUrl: getAgentDocumentUrl(locale, "llms.txt"), language: languages(locale) });
+  const [t, languages] = await Promise.all([
+    getTranslations({ locale, namespace: "Geo" }),
+    getTranslations({ locale, namespace: "LanguageSwitcher" }),
+  ]);
+  const prompt = t("prompt", {
+    fullUrl: getAgentDocumentUrl(locale, "llms-full.txt"),
+    indexUrl: getAgentDocumentUrl(locale, "llms.txt"),
+    language: languages(locale),
+  });
   return (
     <section className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12" aria-labelledby="agents-title">
       <div className="min-w-0">
@@ -27,7 +34,7 @@ export async function AgentsFooter() {
           ))}
         </nav>
       </div>
-      <AiChatLinks prompt={prompt} />
+      <AiChatLinks prompt={prompt} description={t("chatDescription")} showPromptLabel={t("showPrompt")} />
     </section>
   );
 }

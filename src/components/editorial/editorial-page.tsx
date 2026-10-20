@@ -7,6 +7,7 @@ import { EditorialStructuredData } from "@/components/editorial/editorial-struct
 import { ComparisonTable } from "@/components/editorial/comparison-table";
 import { BalanceChecker } from "@/components/tools/balance-checker";
 import { BenchmarkResults } from "@/components/editorial/benchmark-results";
+import { ClientMessages } from "@/components/shared/client-messages";
 import { brandConfig } from "@/config/brand";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
@@ -34,7 +35,11 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
               </time>
             </p>
           </header>
-          {c.page.kind === "tool" && <BalanceChecker />}
+          {c.page.kind === "tool" && (
+            <ClientMessages namespaces={["BalanceChecker"]}>
+              <BalanceChecker />
+            </ClientMessages>
+          )}
           {c.page.kind === "comparison" && <ComparisonTable id={c.page.id} />}
           {c.page.kind === "research" && <BenchmarkResults />}
           {c.sections.map((s, i) => (
