@@ -37,7 +37,8 @@ export function getParseIssueKey(issue: ParseIssue): ParseIssueTranslationKey {
   }
 }
 
-export type ParseErrorTranslationKey = "pageRisks.pageParseFailed" | "pageRisks.pageUnparsed" | "pageRisks.unknown";
+export type ParseErrorTranslationKey =
+  "pageRisks.pageParseFailed" | "pageRisks.pageUnparsed" | "pageRisks.pageImageUnparsed" | "pageRisks.unknown";
 
 export function getParseErrorKey(code: string): ParseErrorTranslationKey {
   if (code === "PAGE_PARSE_FAILED") {
@@ -45,6 +46,9 @@ export function getParseErrorKey(code: string): ParseErrorTranslationKey {
   }
   if (code === "PAGE_UNPARSED") {
     return "pageRisks.pageUnparsed";
+  }
+  if (code === "PAGE_IMAGE_UNPARSED") {
+    return "pageRisks.pageImageUnparsed";
   }
   return "pageRisks.unknown";
 }

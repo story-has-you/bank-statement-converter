@@ -165,6 +165,7 @@
       "item": "Página {page}: {code}",
       "pageParseFailed": "Não foi possível ler a página {page}.",
       "pageUnparsed": "A página {page} contém indícios de transações, mas não foi possível reconstruir uma tabela confiável.",
+      "pageImageUnparsed": "A página {page} contém imagens sem uma camada de texto extraível. O conteúdo das imagens não foi extraído; confira a página original.",
       "unknown": "A página {page} precisa de conferência."
     },
     "excel": {

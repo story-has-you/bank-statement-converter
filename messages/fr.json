@@ -165,6 +165,7 @@
       "item": "Page {page} : {code}",
       "pageParseFailed": "La page {page} n’a pas pu être lue.",
       "pageUnparsed": "La page {page} contient des indices de transaction, mais aucune table fiable n’a pu être reconstruite.",
+      "pageImageUnparsed": "La page {page} contient des images sans couche de texte extractible. Leur contenu n’a pas été extrait ; vérifiez la page d’origine.",
       "unknown": "La page {page} doit être vérifiée."
     },
     "excel": {

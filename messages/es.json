@@ -165,6 +165,7 @@
       "item": "Página {page}: {code}",
       "pageParseFailed": "No se pudo leer la página {page}.",
       "pageUnparsed": "La página {page} contiene indicios de transacciones, pero no se pudo reconstruir una tabla fiable.",
+      "pageImageUnparsed": "La página {page} contiene imágenes sin una capa de texto extraíble. No se extrajo su contenido; revisa la página original.",
       "unknown": "La página {page} necesita revisión."
     },
     "excel": {

@@ -165,6 +165,7 @@
       "item": "Pagina {page}: {code}",
       "pageParseFailed": "Pagina {page} kon niet worden gelezen.",
       "pageUnparsed": "Pagina {page} bevat aanwijzingen voor transacties, maar er kon geen betrouwbare tabel worden opgebouwd.",
+      "pageImageUnparsed": "Pagina {page} bevat afbeeldingen zonder extraheerbare tekstlaag. De inhoud van de afbeeldingen is niet geëxtraheerd; controleer de oorspronkelijke pagina.",
       "unknown": "Pagina {page} moet worden gecontroleerd."
     },
     "excel": {

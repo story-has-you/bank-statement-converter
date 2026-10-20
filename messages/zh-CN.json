@@ -165,6 +165,7 @@
       "item": "第 {page} 页：{code}",
       "pageParseFailed": "第 {page} 页读取失败。",
       "pageUnparsed": "第 {page} 页包含交易证据，但未能可靠还原表格。",
+      "pageImageUnparsed": "第 {page} 页包含无可提取文字层的图像，图像内容未提取，请核对原始页面。",
       "unknown": "第 {page} 页需要核对。"
     },
     "excel": {

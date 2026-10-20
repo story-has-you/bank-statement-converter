@@ -165,6 +165,7 @@
       "item": "Halaman {page}: {code}",
       "pageParseFailed": "Halaman {page} tidak dapat dibaca.",
       "pageUnparsed": "Halaman {page} berisi bukti transaksi, tetapi tabel yang dapat dipercaya tidak berhasil disusun.",
+      "pageImageUnparsed": "Halaman {page} berisi gambar tanpa lapisan teks yang dapat diekstrak. Isi gambar belum diekstrak; periksa halaman aslinya.",
       "unknown": "Halaman {page} perlu diperiksa."
     },
     "excel": {

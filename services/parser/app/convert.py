@@ -41,6 +41,8 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
                 continue
             page_words.append(words)
             if not words:
+                if page.images:
+                    errors.append(ParseError(code="PAGE_IMAGE_UNPARSED", page=page_number))
                 continue
             try:
                 page_tables = extract_page_tables(page, page_number)

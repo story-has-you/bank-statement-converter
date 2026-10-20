@@ -165,6 +165,7 @@
       "item": "{page}페이지: {code}",
       "pageParseFailed": "{page}페이지를 읽을 수 없습니다.",
       "pageUnparsed": "{page}페이지에 거래 증거가 있지만 신뢰할 수 있는 표를 만들지 못했습니다.",
+      "pageImageUnparsed": "{page}페이지에 추출 가능한 텍스트 레이어가 없는 이미지가 있습니다. 이미지 내용은 추출되지 않았으므로 원본 페이지를 확인해 주세요.",
       "unknown": "{page}페이지를 확인하세요."
     },
     "excel": {

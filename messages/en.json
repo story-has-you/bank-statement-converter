@@ -165,6 +165,7 @@
       "item": "Page {page}: {code}",
       "pageParseFailed": "Page {page} could not be read.",
       "pageUnparsed": "Page {page} contains transaction evidence but no reliable table was reconstructed.",
+      "pageImageUnparsed": "Page {page} contains images without an extractable text layer. The image content was not extracted; review the original page.",
       "unknown": "Page {page} needs review."
     },
     "excel": {

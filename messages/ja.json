@@ -165,6 +165,7 @@
       "item": "ページ {page}: {code}",
       "pageParseFailed": "ページ {page} を読み取れませんでした。",
       "pageUnparsed": "{page}ページには取引を示す情報がありますが、表を正確に再構成できませんでした。",
+      "pageImageUnparsed": "{page}ページには抽出可能なテキスト層のない画像が含まれています。画像の内容は抽出されていないため、元のページを確認してください。",
       "unknown": "ページ {page} を確認してください。"
     },
     "excel": {

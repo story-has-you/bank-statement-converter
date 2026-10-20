@@ -165,6 +165,7 @@
       "item": "Pagina {page}: {code}",
       "pageParseFailed": "Impossibile leggere la pagina {page}.",
       "pageUnparsed": "La pagina {page} contiene tracce di movimenti, ma non è stato possibile ricostruire una tabella affidabile.",
+      "pageImageUnparsed": "La pagina {page} contiene immagini prive di un livello di testo estraibile. Il contenuto delle immagini non è stato estratto; controlla la pagina originale.",
       "unknown": "La pagina {page} va controllata."
     },
     "excel": {

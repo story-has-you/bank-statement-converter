@@ -165,6 +165,7 @@
       "item": "Seite {page}: {code}",
       "pageParseFailed": "Seite {page} konnte nicht gelesen werden.",
       "pageUnparsed": "Seite {page} enthält Transaktionshinweise, aber es konnte keine zuverlässige Tabelle erstellt werden.",
+      "pageImageUnparsed": "Seite {page} enthält Bilder ohne extrahierbare Textebene. Der Bildinhalt wurde nicht extrahiert; bitte prüfen Sie die Originalseite.",
       "unknown": "Seite {page} muss geprüft werden."
     },
     "excel": {
