@@ -1,5 +1,6 @@
 .agents/
 .codex/
+/worktrees/
 AGENTS.md
 **/pnpm-lock.yaml
 skills-lock.json

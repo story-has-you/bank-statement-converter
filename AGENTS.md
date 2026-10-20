@@ -9,6 +9,13 @@
 - 今后开发或修改功能和页面时，所有面向用户的文案都使用 `next-intl` 国际化，包括可见文字、提示、错误信息、无障碍标签和页面 metadata。
 - 中文文案统一写入 `messages/zh-CN.json`，组件和业务代码中不要硬编码面向用户的中文文案。
 
+# Git 工作树
+
+- 新建工作树默认放在主仓库根目录的 `worktrees/<名称>/`，创建前确认 `/worktrees/` 已被 Git 忽略；已处于工作树时复用当前工作区。
+- 原生工作树工具无法指定该目录时，使用 `git worktree add`。
+- 新建工作树后、安装依赖和运行检查前，将主仓库根目录的 `.env.local` 复制到新工作树根目录；保持 Git 忽略，不输出文件内容。
+- 工作树首次启动前，安装根目录 pnpm 依赖，并在 `services/parser/` 创建独立 `.venv`，执行 `.venv/bin/python -m pip install -r requirements.lock -e .` 安装解析依赖。
+
 # 其他说明
 - 服务都会启动在 3000 端口，Python 服务也会自动在 8000 端口，不需要启动新的服务。
 - Supabase 操作使用 CLI：优先使用 `supabase`，未全局安装时使用 `npx supabase`；执行前通过 `--help` 确认命令和参数。
