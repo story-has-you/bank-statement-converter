@@ -6,6 +6,7 @@ import { ConversionError } from "@/lib/conversion-errors";
 import { isPreviewTable, type EmitConversionEvent } from "@/lib/conversion-events";
 import { isParseResponse, type ParsedRow, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 import { MAX_RESPONSE_BYTES, requireUsableResult } from "@/lib/conversion/parser";
+import { validateRowEvidence } from "./row-validation";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -169,7 +170,14 @@ export class QwenJsonStream {
       if (!isPreviewTable(candidate)) {
         throw new ConversionError("INVALID_QWEN_RESPONSE");
       }
-      rows.push(candidate.rows[0]);
+      const row = candidate.rows[0];
+      const evidenceIssues = validateRowEvidence(table.columns, row.values);
+      if (evidenceIssues.length > 0) {
+        // The final document retains this row object, so SSE and summary agree.
+        row.status = "failed";
+        row.warnings.push(...evidenceIssues.filter((issue) => !row.warnings.some((warning) => warning.code === issue.code)));
+      }
+      rows.push(row);
       pending.delete(startIndex + rows.length - 1);
     }
     if (rows.length === 0) {
