@@ -79,7 +79,14 @@ export function ConversionResult() {
     );
   }
 
-  return <ConversionWorkspace key={conversion.revision} payload={payload} onReset={conversion.reset} />;
+  return (
+    <ConversionWorkspace
+      key={conversion.revision}
+      payload={payload}
+      initialStorageFailed={conversion.state.phase === "complete" && conversion.state.storageFailed}
+      onReset={conversion.reset}
+    />
+  );
 }
 
 ConversionResult.displayName = "ConversionResult";

@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 
 import { MerchantAliasList } from "@/components/conversion/merchant-alias-list";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -21,12 +20,11 @@ type MerchantNormalizationPanelProps = {
   result: ParseResponse;
   normalization: MerchantNormalization;
   onChange: (normalization: MerchantNormalization) => void;
-  storageFailed: boolean;
 };
 
 const PAGE_SIZE = 50;
 
-export function MerchantNormalizationPanel({ result, normalization, onChange, storageFailed }: MerchantNormalizationPanelProps) {
+export function MerchantNormalizationPanel({ result, normalization, onChange }: MerchantNormalizationPanelProps) {
   const t = useTranslations("ConversionResult.merchant");
   const tableT = useTranslations("ConversionResult.excel");
   const columnT = useTranslations("ConversionResult.table");
@@ -105,11 +103,6 @@ export function MerchantNormalizationPanel({ result, normalization, onChange, st
         <AccordionContent>
           <div className="flex flex-col gap-5 py-2">
             <p className="text-sm text-muted-foreground">{t("description")}</p>
-            {storageFailed && (
-              <Alert variant="destructive">
-                <AlertDescription>{t("storageFailed")}</AlertDescription>
-              </Alert>
-            )}
             <FieldGroup className="grid gap-4 sm:grid-cols-2">
               {result.tables.map((table, index) => (
                 <Field key={table.id}>

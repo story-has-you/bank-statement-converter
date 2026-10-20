@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
         "interrupted": "Die Verbindung wurde vor Abschluss getrennt. Bitte erneut konvertieren.",
-        "request": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden.",
-        "storage": "Die Konvertierung ist abgeschlossen, aber der Browser konnte das Ergebnis nicht speichern."
+        "request": "Es konnte keine Antwort auf die Konvertierungsanfrage empfangen werden."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "{aliases, number} Namen für {rows, number} Transaktionen aktualisiert.",
       "undone": "Zuordnungen für {aliases, number} Namen und {rows, number} Transaktionen aufgehoben.",
       "cleared": "Alle Zuordnungen gelöscht. Die Quellspalten bleiben ausgewählt.",
-      "changeSourceConfirm": "Ein Wechsel der Quellspalte löscht die bestätigten Händlernamen dieser Tabelle. Fortfahren?",
-      "storageFailed": "Der Browser konnte die Zuordnungen nicht speichern. Beim Neuladen können sie verloren gehen; Vorschau und Export sind auf dieser Seite weiterhin möglich."
+      "changeSourceConfirm": "Ein Wechsel der Quellspalte löscht die bestätigten Händlernamen dieser Tabelle. Fortfahren?"
+    },
+    "storage": {
+      "title": "Ergebnis konnte nicht im Browser gespeichert werden",
+      "description": "Auf dieser Seite können Sie das aktuelle Ergebnis weiterhin ansehen und herunterladen. Nach dem Neuladen oder Verlassen lassen sich das Ergebnis und Änderungen an Händlern möglicherweise nicht wiederherstellen. Laden Sie zuerst die benötigten Dateien herunter."
     }
   },
   "HomeFeatures": {

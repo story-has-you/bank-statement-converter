@@ -186,8 +186,7 @@
       "errors": {
         "invalid": "O serviço de conversão retornou dados em um formato inválido.",
         "interrupted": "A conexão foi interrompida antes de concluir o resultado. Converta o arquivo novamente.",
-        "request": "Não foi possível receber uma resposta à solicitação de conversão.",
-        "storage": "A conversão foi concluída, mas o navegador não conseguiu salvar o resultado."
+        "request": "Não foi possível receber uma resposta à solicitação de conversão."
       }
     },
     "export": {
@@ -246,8 +245,11 @@
       "applied": "{aliases, number} nomes atualizados em {rows, number} transações.",
       "undone": "Atribuições removidas de {aliases, number} nomes em {rows, number} transações.",
       "cleared": "Todas as atribuições foram removidas. As colunas de origem continuam selecionadas.",
-      "changeSourceConfirm": "Alterar a coluna de origem apagará os nomes confirmados desta tabela. Continuar?",
-      "storageFailed": "O navegador não conseguiu salvar as atribuições. Elas podem ser perdidas ao atualizar a página, mas ainda podem ser visualizadas e exportadas nesta página."
+      "changeSourceConfirm": "Alterar a coluna de origem apagará os nomes confirmados desta tabela. Continuar?"
+    },
+    "storage": {
+      "title": "Não foi possível salvar o resultado no navegador",
+      "description": "Você ainda pode visualizar e baixar o resultado nesta página. Ao atualizar ou sair, talvez não seja possível recuperar o resultado e as alterações de comerciantes. Baixe primeiro os arquivos necessários."
     }
   },
   "HomeFeatures": {

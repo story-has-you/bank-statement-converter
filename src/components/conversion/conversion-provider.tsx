@@ -12,7 +12,7 @@ import type { ParseResponse } from "@/lib/conversion-types";
 type ConversionState =
   | { phase: "idle" }
   | { phase: "pending"; filename: string; preview: ConversionPreview }
-  | { phase: "complete"; filename: string; result: ParseResponse }
+  | { phase: "complete"; filename: string; result: ParseResponse; storageFailed: boolean }
   | { phase: "error"; filename: string; message: string };
 type ConversionContextValue = { state: ConversionState; revision: number; start: (file: File) => void; reset: () => void };
 const ConversionContext = createContext<ConversionContextValue | null>(null);
@@ -114,13 +114,13 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
         if (active.current !== controller || controller.signal.aborted) {
           return;
         }
+        let storageFailed = false;
         try {
           saveConversionPayload(file.name, result);
         } catch {
-          setState({ phase: "error", filename: file.name, message: t("errors.storage") });
-          return;
+          storageFailed = true;
         }
-        setState({ phase: "complete", filename: file.name, result });
+        setState({ phase: "complete", filename: file.name, result, storageFailed });
       } catch (error) {
         if (active.current !== controller || controller.signal.aborted) {
           return;
