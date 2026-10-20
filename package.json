@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:exports": "node --import tsx --test tests/conversion-spreadsheet-export.test.tsx",
+    "test:merchants": "node --import tsx --test tests/merchant-normalization.test.ts",
     "test:exports:calc": "node --import tsx --test tests/conversion-spreadsheet-export.calc.test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

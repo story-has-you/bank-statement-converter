@@ -42,6 +42,9 @@ jobs:
       - name: Test spreadsheet export safety
         run: pnpm test:exports
 
+      - name: Test merchant normalization safeguards
+        run: pnpm test:merchants
+
       - name: Lint web application
         run: pnpm lint
 
