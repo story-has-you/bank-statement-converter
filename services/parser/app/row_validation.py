@@ -60,6 +60,18 @@ def is_date_column(headers: list[str], index: int) -> bool:
     return index in _indexes(headers, DATE_HEADERS)
 
 
+def is_description_column(headers: list[str], index: int) -> bool:
+    return index in _description_indexes(headers)
+
+
+def is_amount_column(headers: list[str], index: int) -> bool:
+    return index in _amount_indexes(headers)
+
+
+def is_balance_column(headers: list[str], index: int) -> bool:
+    return index in _indexes(headers, BALANCE_HEADERS)
+
+
 def _valid_date(value: str) -> bool:
     token = value.split()[0] if value else ""
     if not DATE_SHAPE.match(value):
@@ -100,7 +112,7 @@ def _valid_date(value: str) -> bool:
     return False
 
 
-def _valid_amount(value: str) -> bool:
+def is_amount_value(value: str) -> bool:
     amount = value.strip()
     if amount.startswith("(") != amount.endswith(")"):
         return False
@@ -136,11 +148,11 @@ def validate_row(headers: list[str], cells: list[str | None]) -> list[ParseIssue
 
     amount_indexes = _amount_indexes(headers)
     amount_values = [_cell(cells, index) for index in amount_indexes]
-    if not any(_valid_amount(value) for value in amount_values):
+    if not any(is_amount_value(value) for value in amount_values):
         balance_indexes = set(_indexes(headers, BALANCE_HEADERS))
         date_indexes = set(_indexes(headers, DATE_HEADERS))
         other_amount = any(
-            _valid_amount(_cell(cells, index))
+            is_amount_value(_cell(cells, index))
             for index in range(len(cells))
             if index not in amount_indexes and index not in balance_indexes
             and index not in date_indexes
