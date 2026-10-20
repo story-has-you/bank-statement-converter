@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Coluna sem nome {column}",
       "title": "Tabela {id}",
       "singleTitle": "Transações do extrato bancário",
       "pages": "Páginas {start, number} a {end, number}",
@@ -149,6 +150,7 @@
       "description": "Esta página não contém um resultado de conversão que possa ser lido."
     },
     "issues": {
+      "missingHeader": "A coluna {column} não tem cabeçalho original. Os dados foram preservados; confira o PDF original.",
       "repeatedHeader": "A linha {row} repete o cabeçalho da tabela e foi ignorada.",
       "summaryRow": "A linha {row} foi identificada como uma linha de total e ignorada.",
       "extraCells": "Esta linha tem mais células que o cabeçalho. As células extras foram mantidas.",

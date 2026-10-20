@@ -16,6 +16,10 @@ export type SummaryStatus = "success" | "partial" | "failed";
 
 export type ParseColumn = { key: string; label: string; index: number };
 
+export function getColumnLabel(column: ParseColumn, unnamedColumn: (column: number) => string): string {
+  return column.label || unnamedColumn(column.index + 1);
+}
+
 export type ParsedRow = {
   values: Record<string, string | null>;
   source: { page: number; row: number };

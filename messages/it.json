@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Colonna senza nome {column}",
       "title": "Tabella {id}",
       "singleTitle": "Movimenti dell'estratto conto",
       "pages": "Pagine da {start, number} a {end, number}",
@@ -149,6 +150,7 @@
       "description": "Questa pagina non contiene un risultato di conversione leggibile."
     },
     "issues": {
+      "missingHeader": "La colonna {column} non ha un’intestazione originale. I dati sono stati conservati; verifica il PDF originale.",
       "repeatedHeader": "La riga {row} ripete l'intestazione della tabella ed è stata ignorata.",
       "summaryRow": "La riga {row} è stata identificata come una riga di totale e ignorata.",
       "extraCells": "Questa riga ha più celle dell'intestazione. Le celle aggiuntive sono state conservate.",

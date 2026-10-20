@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Kolom tanpa nama {column}",
       "title": "Tabel {id}",
       "singleTitle": "Transaksi rekening koran",
       "pages": "Halaman {start, number} sampai {end, number}",
@@ -149,6 +150,7 @@
       "description": "Halaman ini tidak memiliki hasil konversi yang dapat dibaca."
     },
     "issues": {
+      "missingHeader": "Kolom {column} tidak memiliki judul asli. Datanya telah dipertahankan; periksa PDF asli.",
       "repeatedHeader": "Baris {row} mengulang judul kolom dan dilewati.",
       "summaryRow": "Baris {row} diidentifikasi sebagai baris total dan dilewati.",
       "extraCells": "Baris ini memiliki lebih banyak sel daripada judul kolom. Sel tambahan tetap disertakan.",

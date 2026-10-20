@@ -122,6 +122,7 @@
       "failed": "UNVERIFIABLE"
     },
     "table": {
+      "unnamedColumn": "Unnamed column {column}",
       "title": "Table {id}",
       "singleTitle": "Bank statement transactions",
       "pages": "Pages {start, number} to {end, number}",
@@ -149,6 +150,7 @@
       "description": "There is no readable conversion result on this page."
     },
     "issues": {
+      "missingHeader": "Column {column} has no original header. Its data has been preserved; check the original PDF.",
       "repeatedHeader": "Row {row} repeats the table header and was skipped.",
       "summaryRow": "Row {row} was identified as a total row and skipped.",
       "extraCells": "This row has more cells than the header. The extra cells were kept.",

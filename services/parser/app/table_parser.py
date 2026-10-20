@@ -171,9 +171,7 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         return None
     kept_columns = []
     for index, cell in enumerate(cleaned_rows[header_index]):
-        if cell is None:
-            continue
-        if cell == "*" and all(
+        if cell in (None, "*") and all(
             index >= len(row) or row[index] is None
             for row in cleaned_rows[header_index + 1 :]
         ):
@@ -181,14 +179,17 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         kept_columns.append(index)
     if len(kept_columns) < 3:
         return None
-    headers = _ensure_header_labels([cleaned_rows[header_index][index] for index in kept_columns])
+    cleaned_rows = [
+        [row[index] if index < len(row) else None for index in kept_columns]
+        for row in cleaned_rows
+    ]
+    headers = _ensure_header_labels(cleaned_rows[header_index])
     data_start = _find_data_start(cleaned_rows, header_index + 1, headers)
     if data_start is None:
         return None
     parsed_rows: list[RawRow] = []
     table_warnings: list[ParseIssue] = []
     for offset, cells in enumerate(cleaned_rows[data_start:], start=data_start + 1):
-        cells = [cells[index] if index < len(cells) else None for index in kept_columns]
         if _is_repeated_header(cells, headers):
             table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": offset}))
             continue
@@ -437,11 +438,7 @@ def _header_score(row: list[str | None]) -> int:
 
 
 def _ensure_header_labels(row: list[str | None]) -> list[str]:
-    labels: list[str] = []
-    for index, cell in enumerate(row):
-        label = cell or f"未命名列 {index + 1}"
-        labels.append(label)
-    return labels
+    return [cell or "" for cell in row]
 
 
 def _is_repeated_header(row: list[str | None], headers: list[str]) -> bool:
