@@ -1,8 +1,19 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 
 import { MerchantAliasList } from "@/components/conversion/merchant-alias-list";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -11,6 +22,7 @@ import { getColumnLabel, type ParseResponse } from "@/lib/conversion-types";
 import {
   assignMerchantAliases,
   getMerchantAliases,
+  getMerchantMappingCounts,
   getMerchantTable,
   hasMerchantNames,
   type MerchantNormalization,
@@ -34,6 +46,9 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
   const [notice, setNotice] = useState("");
+  const [clearAllOpen, setClearAllOpen] = useState(false);
+  const cancelClearRef = useRef<HTMLButtonElement>(null);
+  const clearCounts = getMerchantMappingCounts(result, normalization);
   const aliases = getMerchantAliases(result, normalization);
   const filtered = aliases.filter((alias) => alias.value.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -84,14 +99,15 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
     setNameError(false);
   }
 
-  function undoSelected(): void {
+  function removeSelectedMappings(): void {
     onChange(assignMerchantAliases(normalization, selectedAliases, null));
-    setNotice(t("undone", counts));
+    setNotice(t("removed", counts));
     setSelected(new Set());
   }
 
   function clearAll(): void {
     onChange(Object.fromEntries(Object.entries(normalization).map(([id, table]) => [id, { ...table, aliases: {} }])));
+    setClearAllOpen(false);
     setSelected(new Set());
     setNotice(t("cleared"));
   }
@@ -190,13 +206,40 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
                   type="button"
                   variant="outline"
                   disabled={!selectedAliases.some((alias) => alias.names.some((name) => name !== null))}
-                  onClick={undoSelected}
+                  onClick={removeSelectedMappings}
                 >
-                  {t("undo")}
+                  {t("removeSelected")}
                 </Button>
-                <Button type="button" variant="ghost" disabled={!hasMerchantNames(normalization)} onClick={clearAll}>
-                  {t("clearAll")}
+                <Button
+                  type="button"
+                  variant="ghost"
+                  disabled={selectedAliases.length === 0}
+                  onClick={() => {
+                    setSelected(new Set());
+                    setNotice("");
+                  }}
+                >
+                  {t("clearSelection")}
                 </Button>
+                <AlertDialog open={clearAllOpen} onOpenChange={setClearAllOpen}>
+                  <AlertDialogTrigger render={<Button type="button" variant="ghost" disabled={!hasMerchantNames(normalization)} />}>
+                    {t("clearAll")}
+                  </AlertDialogTrigger>
+                  <AlertDialogContent initialFocus={cancelClearRef}>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>{t("clearAllTitle")}</AlertDialogTitle>
+                      <AlertDialogDescription>{t("clearAllDescription", clearCounts)}</AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel ref={cancelClearRef} type="button">
+                        {t("clearAllCancel")}
+                      </AlertDialogCancel>
+                      <AlertDialogAction type="button" variant="destructive" onClick={clearAll}>
+                        {t("clearAllConfirm")}
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
               <p role="status" className="text-sm text-muted-foreground">
                 {notice}

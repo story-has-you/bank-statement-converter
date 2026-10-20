@@ -19,6 +19,16 @@ export function hasMerchantNames(normalization: MerchantNormalization): boolean 
   return Object.values(normalization).some((table) => Object.keys(table.aliases).length > 0);
 }
 
+/** Count every per-table mapping and only rows with a confirmed name, across the entire file. */
+export function getMerchantMappingCounts(result: ParseResponse, normalization: MerchantNormalization): { mappings: number; rows: number } {
+  const mappings = Object.values(normalization).reduce((total, table) => total + Object.keys(table.aliases).length, 0);
+  const rows = result.tables.reduce(
+    (total, table) => total + table.rows.filter((row) => getMerchantName(normalization, table.id, row) !== null).length,
+    0,
+  );
+  return { mappings, rows };
+}
+
 /** Exact source text groups aliases across the selected columns of this file only. */
 export function getMerchantAliases(result: ParseResponse, normalization: MerchantNormalization): MerchantAlias[] {
   const aliases = new Map<string, MerchantAlias>();
