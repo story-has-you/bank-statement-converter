@@ -259,12 +259,30 @@ def _rebuild_table_from_words(
     if len(lines) < 2:
         return []
 
-    header_index = next(
-        (index for index in range(len(lines) - 1) if _is_coordinate_header(lines, index)),
-        None,
-    )
-    if header_index is None:
-        return []
+    header_indexes = [
+        index for index in range(len(lines) - 1) if _is_coordinate_header(lines, index)
+    ]
+    boundaries = [*header_indexes, len(lines)]
+    tables: list[RawTable] = []
+    for header_index, end_index in zip(boundaries, boundaries[1:]):
+        table = _rebuild_table_segment(lines, header_index, end_index, page_number)
+        if table is None:
+            continue
+        if tables and _same_headers(tables[-1].headers, table.headers):
+            tables[-1].warnings.append(
+                ParseIssue(code="REPEATED_HEADER", params={"row": header_index + 1})
+            )
+        tables.append(table)
+    return tables
+
+
+def _rebuild_table_segment(
+    lines: list[_WordLine],
+    header_index: int,
+    end_index: int,
+    page_number: int,
+) -> RawTable | None:
+    """Reconstruct rows with the anchors from this segment's own header."""
 
     header_cells = _cluster_words(lines[header_index].words)
     headers = _ensure_header_labels([str(cell["text"]) for cell in header_cells])
@@ -279,7 +297,9 @@ def _rebuild_table_from_words(
     seen_data = False
     last_data_top: float | None = None
 
-    for line_index, line in enumerate(lines[header_index + 1 :], start=header_index + 2):
+    for line_index, line in enumerate(
+        lines[header_index + 1 : end_index], start=header_index + 2
+    ):
         cells = _assign_words_to_anchors(line.words, anchors, amount_edges)
         source_row = line_index
         if _is_section_end(line.words):
@@ -312,8 +332,8 @@ def _rebuild_table_from_words(
         last_data_top = line.top
 
     if not parsed_rows:
-        return []
-    return [RawTable(page_number, page_number, headers, parsed_rows, warnings)]
+        return None
+    return RawTable(page_number, page_number, headers, parsed_rows, warnings)
 
 
 def _group_words_into_lines(words: list[dict[str, object]]) -> list[_WordLine]:
