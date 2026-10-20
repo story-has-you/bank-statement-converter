@@ -278,7 +278,6 @@
     "perDay": "/ jour",
     "perMonth": "/ mois",
     "renewalNote": "Les abonnements se renouvellent automatiquement chaque mois. Vous pouvez annuler le renouvellement automatique dans votre <account>compte</account>. Consultez les <terms>conditions d’abonnement et de paiement</terms>.",
-    "waffoTaxNote": "Pour les paiements via Waffo, les prix ci-dessus sont hors taxes. Les taxes applicables et le montant total définitif sont affichés lors du paiement.",
     "planQuota": "{pages, plural, one {# page} other {# pages}} par mois",
     "current": "Forfait actuel",
     "cancelledPeriodActive": "L’abonnement est résilié. Les avantages restent disponibles jusqu’au {date} (UTC).",

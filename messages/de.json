@@ -278,7 +278,6 @@
     "perDay": "/ Tag",
     "perMonth": "/ Monat",
     "renewalNote": "Abonnements verlängern sich jeden Monat automatisch. Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen. Weitere Informationen finden Sie in den <terms>Abonnement- und Zahlungsbedingungen</terms>.",
-    "waffoTaxNote": "Bei Zahlung über Waffo verstehen sich die oben genannten Preise ohne Steuern. Anfallende Steuern und der endgültige Gesamtbetrag werden beim Checkout angezeigt.",
     "planQuota": "{pages, plural, one {# Seite} other {# Seiten}} pro Monat",
     "current": "Aktueller Plan",
     "cancelledPeriodActive": "Das Abonnement ist gekündigt. Die Leistungen bleiben bis {date} (UTC) verfügbar.",

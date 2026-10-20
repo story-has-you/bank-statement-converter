@@ -278,7 +278,6 @@
     "perDay": "/ dag",
     "perMonth": "/ maand",
     "renewalNote": "Abonnementen worden elke maand automatisch verlengd. Je kunt de automatische verlenging opzeggen in je <account>account</account>. Bekijk de <terms>abonnements- en betalingsvoorwaarden</terms>.",
-    "waffoTaxNote": "Bij betaling via Waffo zijn de bovenstaande prijzen exclusief belasting. De toepasselijke belastingen en het definitieve totaalbedrag worden bij het afrekenen getoond.",
     "planQuota": "{pages, plural, one {# pagina} other {# pagina's}} per maand",
     "current": "Huidig abonnement",
     "cancelledPeriodActive": "Het abonnement is opgezegd. De voordelen blijven beschikbaar tot {date} (UTC).",

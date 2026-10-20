@@ -278,7 +278,6 @@
     "perDay": "/ 日",
     "perMonth": "/ 月",
     "renewalNote": "サブスクリプションは毎月自動更新されます。<account>アカウント</account>から自動更新を停止できます。<terms>サブスクリプションとお支払いの規約</terms>をご確認ください。",
-    "waffoTaxNote": "Waffo でお支払いの場合、上記の価格は税抜きです。適用される税金と最終的な合計金額は決済画面に表示されます。",
     "planQuota": "月{pages, number}ページ",
     "current": "現在のプラン",
     "cancelledPeriodActive": "サブスクリプションはキャンセルされています。今期の特典は{date}（UTC）まで利用できます。",

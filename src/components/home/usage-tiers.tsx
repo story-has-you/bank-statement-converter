@@ -59,31 +59,25 @@ export async function UsageTiers() {
         </p>
 
         <div className="mt-4 grid gap-4 lg:grid-cols-3">
-          {membershipTiers.map((tier) => {
-            const waffoAvailable = checkouts.some(
-              (checkout) => checkout.provider === "waffo" && checkout.available && checkout.availableTiers.includes(tier),
-            );
-            return (
-              <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="grid gap-1">
-                    <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
-                    <p className="text-3xl font-semibold">
-                      {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
-                      <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
-                    </p>
-                  </div>
+          {membershipTiers.map((tier) => (
+            <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div className="grid gap-1">
+                  <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
+                  <p className="text-3xl font-semibold">
+                    {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
+                    <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
+                  </p>
                 </div>
-                <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
-                </p>
-                <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
-                {waffoAvailable && <p className="text-sm leading-6 text-muted-foreground">{t("waffoTaxNote")}</p>}
-                <PublicPlanState checkouts={checkouts} tier={tier} />
-              </article>
-            );
-          })}
+              </div>
+              <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
+              <p className="text-sm leading-6 text-muted-foreground">
+                {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
+              </p>
+              <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
+              <PublicPlanState checkouts={checkouts} tier={tier} />
+            </article>
+          ))}
         </div>
       </div>
     </section>

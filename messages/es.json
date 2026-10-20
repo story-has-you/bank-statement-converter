@@ -278,7 +278,6 @@
     "perDay": "/ día",
     "perMonth": "/ mes",
     "renewalNote": "Las suscripciones se renuevan automáticamente cada mes. Puedes cancelar la renovación automática en tu <account>cuenta</account>. Consulta las <terms>condiciones de suscripción y pago</terms>.",
-    "waffoTaxNote": "Al pagar a través de Waffo, los precios anteriores no incluyen impuestos. Los impuestos aplicables y el total final se muestran al finalizar la compra.",
     "planQuota": "{pages, plural, one {# página} other {# páginas}} por mes",
     "current": "Plan actual",
     "cancelledPeriodActive": "La suscripción está cancelada. Los beneficios siguen disponibles hasta {date} (UTC).",

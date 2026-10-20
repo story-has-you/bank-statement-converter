@@ -278,7 +278,6 @@
     "perDay": "/ 天",
     "perMonth": "/ 月",
     "renewalNote": "订阅按月自动续费，可在<account>个人账户</account>中取消自动续费。查看<terms>订阅与付款条款</terms>。",
-    "waffoTaxNote": "通过 Waffo 付款时，上述价格为税前价；适用税费及最终总额以结账页为准。",
     "planQuota": "每月 {pages, number} 页",
     "current": "当前方案",
     "cancelledPeriodActive": "订阅已取消，本期权益有效至 {date}（UTC）。",
