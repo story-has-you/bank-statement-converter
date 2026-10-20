@@ -97,7 +97,11 @@ export async function readConversionStream(response: Response, onPreview: (previ
           throw new ConversionStreamError("invalid");
         }
         const candidate = { ...data.table, rows: [] };
-        if (!isPreviewTable(candidate) || candidate.columns.length === 0) {
+        if (
+          !isPreviewTable(candidate) ||
+          candidate.columns.length === 0 ||
+          tables.some((table, tableIndex) => tableIndex !== index && table.id === candidate.id)
+        ) {
           throw new ConversionStreamError("invalid");
         }
         const previous = tables[index];

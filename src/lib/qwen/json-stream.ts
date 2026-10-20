@@ -12,6 +12,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+// Provider IDs may repeat; indexes keep preview and final table identities aligned.
+function getTableId(tableIndex: number): string {
+  return `table-${tableIndex + 1}`;
+}
+
 // The parser emits closed values only. A row may arrive before its table metadata.
 export class QwenJsonStream {
   private readonly parser = new JSONParser();
@@ -46,11 +51,11 @@ export class QwenJsonStream {
       if (stack.length === 3 && isRecord(parent)) {
         // The columns array must be closed before exposing it to the browser.
         const columnsPath = JSON.stringify([undefined, "tables", tableIndex, "columns"]);
-        if (!this.completedPaths.has(columnsPath)) {
+        if (!this.completedPaths.has(columnsPath) || typeof parent.id !== "string") {
           return;
         }
         const candidate = {
-          id: parent.id,
+          id: getTableId(tableIndex),
           pageStart: parent.pageStart,
           pageEnd: parent.pageEnd,
           columns: parent.columns,
@@ -103,8 +108,10 @@ export class QwenJsonStream {
     }
     // Match Python's defaults for absent optional risk arrays. Explicitly invalid
     // values still go through contract validation instead of being discarded.
-    const tables: unknown[] = this.result.tables.map((table) =>
-      isRecord(table) && table.warnings === undefined ? { ...table, warnings: [] } : table,
+    const tables: unknown[] = this.result.tables.map((table, tableIndex) =>
+      isRecord(table) && typeof table.id === "string"
+        ? { ...table, id: getTableId(tableIndex), warnings: table.warnings === undefined ? [] : table.warnings }
+        : table,
     );
     const errors = this.result.errors === undefined ? [] : this.result.errors;
     let rowCount = 0;
