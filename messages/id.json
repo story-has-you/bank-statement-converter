@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Memuat akun…",
-    "error": "Status akun tidak tersedia. Muat ulang halaman."
+    "error": "Detail akun untuk sementara tidak tersedia. Silakan coba lagi.",
+    "retry": "Coba lagi"
   },
   "BalanceChecker": {
     "title": "Pemeriksa saldo",

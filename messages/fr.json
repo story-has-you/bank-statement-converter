@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Chargement du compte…",
-    "error": "État du compte indisponible. Rechargez la page."
+    "error": "Les informations du compte sont temporairement indisponibles. Veuillez réessayer.",
+    "retry": "Réessayer"
   },
   "BalanceChecker": {
     "title": "Vérification du solde",

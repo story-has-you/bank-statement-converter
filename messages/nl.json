@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Account wordt geladen…",
-    "error": "Accountstatus niet beschikbaar. Laad opnieuw."
+    "error": "De accountgegevens zijn tijdelijk niet beschikbaar. Probeer het opnieuw.",
+    "retry": "Opnieuw proberen"
   },
   "BalanceChecker": {
     "title": "Saldocontrole",

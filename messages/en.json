@@ -1132,7 +1132,8 @@
   },
   "PublicAccount": {
     "loading": "Loading account status…",
-    "error": "Account status could not be loaded. Reload to try again."
+    "error": "Account details are temporarily unavailable. Please try again.",
+    "retry": "Retry"
   },
   "BalanceChecker": {
     "title": "Balance checker",
