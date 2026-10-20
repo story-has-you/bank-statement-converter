@@ -70,7 +70,7 @@ function scheduleQuotaConsumption(context: QuotaContext, pageCount: number): voi
   after(async () => {
     try {
       const quota = await consumeConversionQuota(context, pageCount);
-      if (!quota.allowed) {
+      if (quota.status === "exceeded") {
         console.error("Conversion quota deduction rejected", { code: "QUOTA_EXCEEDED" });
       }
     } catch {

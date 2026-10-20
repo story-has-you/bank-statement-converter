@@ -15,7 +15,7 @@ export type UsageActor = { type: UsageActorType; key: string; email: string | nu
 
 export type UsageWindow = { period: UsagePeriod; start: Date; end: Date };
 
-export type QuotaContext = UsageActor & { limitPages: number; window: UsageWindow };
+export type QuotaContext = UsageActor & { subscriptionId: string | null; limitPages: number; window: UsageWindow };
 
 export type UsageRecord = {
   actor_type: UsageActorType;
@@ -28,7 +28,14 @@ export type UsageRecord = {
   updated_at: string;
 };
 
-export type QuotaResult = { allowed: boolean; period: UsagePeriod; usedPages: number; remainingPages: number; limitPages: number };
+export type QuotaResult = {
+  status: "consumed" | "exceeded" | "stale";
+  allowed: boolean;
+  period: UsagePeriod;
+  usedPages: number;
+  remainingPages: number;
+  limitPages: number;
+};
 
 export class UsageUnavailableError extends Error {
   constructor() {
@@ -91,13 +98,13 @@ export function getQuotaContext(actor: UsageActor, subscription: BillingSubscrip
     const config = usageQuotaConfig.subscriptions[subscription.tier];
     const window = getSubscriptionWindow(subscription, now);
     if (window) {
-      return { ...actor, limitPages: config.pages, window };
+      return { ...actor, subscriptionId: subscription.id, limitPages: config.pages, window };
     }
     throw new SubscriptionPeriodUnavailableError();
   }
 
   const config = actor.type === "anonymous" ? usageQuotaConfig.anonymous : usageQuotaConfig.authenticated;
-  return { ...actor, limitPages: config.pages, window: createUtcDayWindow(now) };
+  return { ...actor, subscriptionId: null, limitPages: config.pages, window: createUtcDayWindow(now) };
 }
 
 export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {
@@ -158,17 +165,37 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
   const periodEnd = context.window.end.toISOString();
 
   for (let attempt = 0; attempt < MAX_QUOTA_ATTEMPTS; attempt += 1) {
+    // 先读用量版本，再确认有效权益；并发任务已写入新窗口时，CAS 失败后必须重新确认。
     const record = await getUsageRecord(context);
-    const currentUsedPages = record && isUsageRecordCurrent(record, context) ? record.used_pages : 0;
+    const subscription = context.type === "user" ? await getEntitledSubscription(context.key) : null;
+    const currentContext = getQuotaContext(context, subscription);
+    const stale =
+      context.subscriptionId !== currentContext.subscriptionId ||
+      context.window.period !== currentContext.window.period ||
+      context.window.start.valueOf() !== currentContext.window.start.valueOf() ||
+      context.window.end.valueOf() !== currentContext.window.end.valueOf();
+    const currentRecord = stale ? await getUsageRecord(context) : record;
+    const currentUsedPages = currentRecord && isUsageRecordCurrent(currentRecord, currentContext) ? currentRecord.used_pages : 0;
+    const currentQuota = {
+      period: currentContext.window.period,
+      usedPages: currentUsedPages,
+      remainingPages: Math.max(currentContext.limitPages - currentUsedPages, 0),
+      limitPages: currentContext.limitPages,
+    };
+    if (stale) {
+      // 失效窗口不再结算，也不占用新权益的额度；已交付结果不受影响。
+      return { ...currentQuota, status: "stale", allowed: false };
+    }
+
     const nextUsedPages = currentUsedPages + pageCount;
-    const allowed = nextUsedPages <= context.limitPages;
+    const allowed = nextUsedPages <= currentContext.limitPages;
     const usedPages = allowed ? nextUsedPages : currentUsedPages;
     const quota: QuotaResult = {
+      ...currentQuota,
+      status: allowed ? "consumed" : "exceeded",
       allowed,
-      period: context.window.period,
       usedPages,
-      remainingPages: Math.max(context.limitPages - usedPages, 0),
-      limitPages: context.limitPages,
+      remainingPages: Math.max(currentContext.limitPages - usedPages, 0),
     };
     if (!allowed) {
       return quota;
