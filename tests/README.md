@@ -24,9 +24,8 @@ metadata-only rows, passes through the same export-only policy:
   original values and source references. XLSX stores formula-shaped values with
   string type `t: 's'` and no formula property `f`.
 
-The download area explains the visible apostrophe and JSON's original values in
-all supported UI languages. Compatibility is limited to the verified import
-paths below. Other spreadsheet applications should use the XLSX download. Saving
+Compatibility is limited to the verified import paths below. Other spreadsheet
+applications should use the XLSX download. Saving
 and reopening CSV/TSV can remove protective prefixes and is outside this guarantee.
 
 Sources:
@@ -71,7 +70,7 @@ Recorded 2026-10-20:
   delimiter, with formula evaluation both OFF and ON. In this build a fresh
   profile's automatic `.tsv` opening chooses comma and produces incorrect
   columns/rows. That path is recorded separately and excluded from supported
-  import modes; the download UI tells users which delimiters to select.
+  import modes; use the delimiters recorded below.
 - Formula-enabled import: `--infilter="Text - txt - csv (StarCalc):44,34,76,1,,1033,false,false,false,false,false,0,true"`.
   TSV uses `9` instead of `44`. This selects UTF-8, the actual delimiter, double
   quote text delimiters, Standard columns, English (US), quoted-as-text OFF,

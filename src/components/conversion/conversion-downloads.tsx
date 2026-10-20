@@ -138,12 +138,6 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      {canDownload && (
-        <div className="grid max-w-sm gap-1 text-xs text-muted-foreground sm:text-right">
-          <p>{t("export.safetyNotice")}</p>
-          <p>{t("export.safetyCompatibility")}</p>
-        </div>
-      )}
       {canDownload && !spreadsheet && (
         <div className="grid max-w-sm gap-2">
           <p role={loadFailed ? "alert" : "status"} className="text-sm text-muted-foreground">

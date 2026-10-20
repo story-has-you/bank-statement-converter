@@ -204,9 +204,7 @@
       "downloadTable": "Baixar tabela {index} · {format}",
       "loading": "Carregando os downloads de planilhas…",
       "loadFailed": "Não foi possível carregar os downloads de planilhas. Tente novamente.",
-      "retry": "Tentar novamente",
-      "safetyNotice": "CSV e TSV adicionam um apóstrofo (') ao texto que parece uma fórmula; ele pode ficar visível. Baixe JSON para obter os valores originais sem alterações.",
-      "safetyCompatibility": "CSV/TSV verificado no LibreOffice Calc 26.8; importe TSV com tabulação e aspas duplas como delimitadores. Em outros aplicativos, prefira Excel (.xlsx). Confira os CSV/TSV após salvá-los outra vez."
+      "retry": "Tentar novamente"
     },
     "restoring": "Restaurando o resultado da conversão…",
     "review": {

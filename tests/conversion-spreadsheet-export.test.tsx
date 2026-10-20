@@ -1,11 +1,7 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
 import * as XLSX from "@e965/xlsx";
-import { NextIntlClientProvider } from "next-intl";
-import { renderToStaticMarkup } from "react-dom/server";
 
-import { ConversionDownloads } from "@/components/conversion/conversion-downloads";
 import { buildTextExportFiles } from "@/lib/conversion-export";
 import { buildDelimitedExportFiles, buildExcelWorkbook } from "@/lib/conversion-spreadsheet-export";
 
@@ -110,24 +106,4 @@ test("XLSX formula-shaped text keeps string cell types and no formulas after ser
       assert.equal(cell.f, undefined);
     }
   });
-});
-
-test("every locale provides the delimited safety notice and verified spreadsheet scope", () => {
-  for (const file of readdirSync("messages").filter((name) => name.endsWith(".json"))) {
-    const messages = JSON.parse(readFileSync(`messages/${file}`, "utf8"));
-    assert.equal(typeof messages.ConversionResult.export.safetyNotice, "string", file);
-    assert.equal(typeof messages.ConversionResult.export.safetyCompatibility, "string", file);
-  }
-});
-
-test("download UI renders the original-value notice and TSV import guidance", () => {
-  const { result } = createExportFixture();
-  const messages = JSON.parse(readFileSync("messages/zh-CN.json", "utf8"));
-  const html = renderToStaticMarkup(
-    <NextIntlClientProvider locale="zh-CN" timeZone="UTC" messages={messages}>
-      <ConversionDownloads filename="statement.pdf" result={result} />
-    </NextIntlClientProvider>,
-  );
-  assert.ok(html.includes("未转义原文请下载 JSON"));
-  assert.ok(html.includes("制表符分隔、双引号文本分隔符"));
 });
