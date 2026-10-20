@@ -8,7 +8,14 @@ from typing import Any
 
 from .models import ParseIssue
 from .pdf_reader import filter_watermark_page
-from .row_validation import is_date_column, is_transaction_candidate
+from .row_validation import (
+    is_amount_column,
+    is_amount_value,
+    is_balance_column,
+    is_date_column,
+    is_description_column,
+    is_transaction_candidate,
+)
 
 
 HEADER_TERMS = (
@@ -62,6 +69,9 @@ MONEY_PATTERN = re.compile(
     re.ASCII,
 )
 OPENING_BALANCE_TERMS = ("previous balance", "opening balance", "saldovortrag", "anfangssaldo")
+OPENING_BALANCE_LABELS = frozenset(
+    re.sub(r"\s+", "", term).lower() for term in OPENING_BALANCE_TERMS
+)
 SECTION_END_TERMS = ("checks", "daily balance summary", "fees", "interest charged")
 ROW_Y_TOLERANCE = 3.0
 HEADER_CELL_GAP = 6.0
@@ -196,9 +206,9 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
         if _is_summary_row(cells, headers):
             table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": offset}))
             continue
-        if _is_opening_balance(cells):
+        if _is_opening_balance(cells, headers):
             continue
-        if not is_transaction_candidate(headers, cells):
+        if not _is_data_candidate(headers, cells):
             continuation_index = _continuation_column(cells, headers)
             if parsed_rows and continuation_index is not None:
                 previous = parsed_rows[-1].cells[continuation_index]
@@ -313,9 +323,9 @@ def _rebuild_table_segment(
             continue
         if _is_page_number(cells):
             continue
-        if _is_opening_balance(cells):
+        if _is_opening_balance(cells, headers):
             continue
-        if not is_transaction_candidate(headers, cells):
+        if not _is_data_candidate(headers, cells):
             continuation_index = _continuation_column(cells, headers)
             if (
                 seen_data
@@ -362,9 +372,9 @@ def _is_coordinate_header(lines: list[_WordLine], index: int) -> bool:
     following = lines[index + 1 : index + 7]
     for line in following:
         row = _assign_words_to_anchors(line.words, anchors, amount_edges)
-        if _is_summary_row(row, headers) or _is_opening_balance(row):
+        if _is_summary_row(row, headers) or _is_opening_balance(row, headers):
             continue
-        if is_transaction_candidate(headers, row):
+        if _is_data_candidate(headers, row):
             return True
     return False
 
@@ -472,9 +482,9 @@ def _find_data_start(
     rows: list[list[str | None]], start: int, headers: list[str]
 ) -> int | None:
     for index in range(start, len(rows)):
-        if _is_summary_row(rows[index], headers) or _is_opening_balance(rows[index]):
+        if _is_summary_row(rows[index], headers) or _is_opening_balance(rows[index], headers):
             continue
-        if is_transaction_candidate(headers, rows[index]):
+        if _is_data_candidate(headers, rows[index]):
             return index
     return None
 
@@ -508,9 +518,40 @@ def _is_amount_header(label: str) -> bool:
     )
 
 
-def _is_opening_balance(row: list[str | None]) -> bool:
-    text = " ".join(cell or "" for cell in row).lower()
-    return any(term in text for term in OPENING_BALANCE_TERMS)
+def _is_opening_balance(row: list[str | None], headers: list[str]) -> bool:
+    """Skip only standalone opening labels backed by a balance-only value."""
+
+    has_label = False
+    has_balance = False
+    for index, cell in enumerate(row):
+        if not cell:
+            continue
+        if is_amount_column(headers, index):
+            return False
+        if is_balance_column(headers, index):
+            if not is_amount_value(cell):
+                return False
+            has_balance = True
+        elif (
+            (is_date_column(headers, index) or is_description_column(headers, index))
+            and _normalize_for_match(cell) in OPENING_BALANCE_LABELS
+        ):
+            has_label = True
+        else:
+            return False
+    return has_label and has_balance
+
+
+def _is_data_candidate(headers: list[str], cells: list[str | None]) -> bool:
+    """Keep uncertain opening-balance rows for the existing evidence validation."""
+
+    if is_transaction_candidate(headers, cells):
+        return True
+    text = _normalize_for_match(" ".join(cell or "" for cell in cells))
+    return any(term in text for term in OPENING_BALANCE_LABELS) and any(
+        cell and not is_date_column(headers, index) and is_amount_value(cell)
+        for index, cell in enumerate(cells)
+    )
 
 
 def _is_section_end(words: list[dict[str, object]]) -> bool:
