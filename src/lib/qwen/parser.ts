@@ -35,7 +35,7 @@ export async function parseWithQwen(file: File, signal: AbortSignal, emit: EmitC
   const upstreamSignal = AbortSignal.any([signal, timeout]);
   const openai = new OpenAI({ apiKey, baseURL: "https://maas.qianwenaiapi.com/compatible-mode/v1", maxRetries: 0, timeout: 230_000 });
   const body: ChatCompletionCreateParamsStreaming & { include_tool_usage: boolean; enable_thinking: boolean } = {
-    model: "qwen3.8-flash",
+    model: process.env.QWEN_MODEL ?? "qwen3.8-flash",
     stream: true,
     response_format: { type: "json_object" },
     stream_options: { include_usage: true },
