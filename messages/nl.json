@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
     "title": "Zet je bankafschrift om van PDF naar Excel",
-    "description": "Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis."
+    "description": "Zet een bankafschrift-PDF om naar Excel of CSV en controleer transacties en risicomeldingen in de voorvertoning vóór het downloaden."
   },
   "PdfUpload": {
     "title": "Bankafschrift uploaden",
     "description": "Verwerk één PDF tegelijk",
     "fileLabel": "Bankafschrift in PDF",
     "dropzone": "Kies een PDF of sleep die hierheen",
-    "dropzoneHint": "Upload een PDF die normaal opent, maximaal {megabytes, number} MB en {pages, number} pagina’s. Professional en Enterprise kunnen ook gescande PDF’s proberen.",
-    "help": "Na het kiezen verschijnt de bestandsnaam. Je kunt het bestand op elk moment verwijderen.",
+    "dropzoneHint": "Eén leesbare PDF tegelijk, maximaal {megabytes, number} MB · {pages, number} pagina’s.",
     "errorTitle": "Deze handeling kon niet worden voltooid",
     "invalidPdf": "Het geüploade bestand is geen PDF.",
     "multipleFiles": "Upload één PDF tegelijk.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "removeFile": "Bestand verwijderen",
     "quota": "Gratis tegoed: {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag zonder inloggen, {authenticatedPages, plural, one {# pagina} other {# pagina's}} per dag na inloggen",
-    "serviceReady": "We gebruiken de bestanden alleen voor deze conversie en slaan ze niet op.",
+    "serviceReady": "Deze website bewaart geen permanente bestandsgeschiedenis.",
     "status": "Klaar om te uploaden",
     "converting": "Bezig met converteren",
     "start": "Converteren en controleren",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagina’s}}",
     "tooManyPages": "Deze PDF overschrijdt de limiet van {pages, number} pagina’s per bestand.",
     "unreadablePdf": "De PDF kon niet worden gelezen. Kies een PDF die normaal kan worden geopend.",
-    "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord voordat je het bestand uploadt."
+    "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord voordat je het bestand uploadt.",
+    "aiSummary": "Professional en Enterprise kunnen scans proberen. Bij AI-terugval gaan de volledige PDF en bestandsnaam naar de aanbieder.",
+    "aiDetails": "Details over AI-verwerking"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "Wat kan deze converter?",
-    "securityTitle": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
-    "securityDescription": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
-    "banksTitle": "Behoudt Excel de tabelstructuur?",
-    "banksDescription": "De converter leest tabelkoppen en celtekst uit de PDF en toont ze in tabellen die je met het origineel kunt vergelijken.",
-    "accuracyTitle": "Waarom moet ik het resultaat controleren?",
-    "accuracyDescription": "Regels met onvolledige gegevens of uitlijningsproblemen krijgen vóór het downloaden de markering DISCREPANCY of UNVERIFIABLE."
+    "title": "Functies voor bankafschriften",
+    "securityTitle": "Bestandsprivacy",
+    "securityDescription": "Geen permanente PDF-, Excel- of transactiehistorie; bij AI-terugval gaat de PDF naar de aanbieder.",
+    "banksTitle": "Tabellen uitlezen",
+    "banksDescription": "Kopteksten en celtekst uit het bankafschrift verschijnen in tabellen om met het origineel te vergelijken.",
+    "accuracyTitle": "Risico’s controleren",
+    "accuracyDescription": "DISCREPANCY en UNVERIFIABLE markeren onvolledige gegevens of verschoven rijen vóór het downloaden."
   },
   "UsageTiers": {
-    "title": "Wat kosten de plannen en wat bieden ze?",
-    "description": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem, PayPal of Waffo abonneert.",
+    "title": "Bankafschrift-abonnementen en quota",
+    "description": "Gratis quota per dag, abonnementen per factuurperiode. Log in om via Creem, PayPal of Waffo te abonneren.",
     "anonymous": "Zonder inloggen",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
-    "anonymousDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
     "signedIn": "Ingelogd",
     "signedInAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
-    "signedInDescription": "Converteer maximaal {pages, plural, one {# PDF-pagina} other {# PDF-pagina's}} per dag.",
     "perDay": "/ dag",
     "perMonth": "/ maand",
     "renewalNote": "Abonnementen worden elke maand automatisch verlengd. Je kunt de automatische verlenging opzeggen in je <account>account</account>. Bekijk de <terms>abonnements- en betalingsvoorwaarden</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Standaard",
-        "description": "Voor wie bankafschriften voor persoonlijk gebruik verwerkt."
+        "description": "Voor persoonlijke bankafschriften."
       },
       "professional": {
         "name": "Professioneel",
-        "description": "Voor wie regelmatig meerdere bankafschriften verwerkt."
+        "description": "Voor regelmatige verwerking van bankafschriften."
       },
       "enterprise": {
         "name": "Zakelijk",
-        "description": "Voor gebruikers die elke maand meer pagina’s moeten converteren."
+        "description": "Voor grote aantallen bankafschriften."
       }
     },
     "aiParsing": "Automatisch overschakelen naar AI; gescande PDF’s proberen",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Waarom moet ik het resultaat controleren?",
-      "answer": "De converter behoudt tabelkoppen en celtekst waar mogelijk. Complexe indelingen, onduidelijke tekst of ongelijke kolommen kunnen regels met DISCREPANCY of UNVERIFIABLE opleveren. Vergelijk Excel met de originele PDF voordat je het gebruikt."
+      "answer": "De bankafschrift-conversie bewaart kopteksten en celtekst waar mogelijk. Complexe opmaak, onscherpe tekst of verschoven kolommen kunnen DISCREPANCY of UNVERIFIABLE opleveren. Vergelijk vóór boeking, aangifte of indiening met de originele PDF."
     },
     "quota": {
       "question": "Hoeveel pagina's kan ik per dag converteren?",
-      "answer": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren, na inloggen {authenticatedPages, plural, one {# pagina} other {# pagina's}}. Maandabonnementen bevatten {standardPages, plural, one {# pagina} other {# pagina's}} voor Standaard, {professionalPages, number} voor Professioneel en {enterprisePages, number} voor Zakelijk. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
+      "answer": "Gratis bankafschrift-conversie: dagelijks {anonymousPages, number} pagina’s zonder login, {authenticatedPages, number} met login. Per maand: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagina’s. PDF-pagina’s tellen. De voorcontrole leest pagina’s lokaal en vraagt het quota op, zonder PDF-upload of verbruik. Upload volgt bij de start; de server valideert bestand, pagina’s en quota."
     },
     "scans": {
       "question": "Kan ik gescande of versleutelde PDF's converteren?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "Wat gebeurt er als de conversie mislukt?",
-      "answer": "De pagina toont een fout en biedt geen ongeldig Excel-bestand aan. Mislukte conversies kosten geen tegoed. Gedeeltelijke resultaten worden gerekend op basis van het aantal PDF-pagina's."
+      "answer": "Bij een mislukte bankafschrift-conversie verschijnt een fout, zonder ongeldige Excel-download of quotaverbruik. Gedeeltelijke resultaten tellen alle PDF-pagina’s."
     },
     "ai": {
       "question": "Wanneer wordt AI-analyse gebruikt?",

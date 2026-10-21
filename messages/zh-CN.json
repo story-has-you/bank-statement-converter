@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "把银行流水 PDF 整理成 Excel",
-    "description": "银行流水 PDF 转 Excel，支持逐步预览与风险标记。专业和企业套餐可通过 AI 回退尝试转换扫描件；文件不作为本站持久化历史保存。"
+    "description": "银行流水 PDF 转 Excel、CSV，预览交易明细并核对风险标记后下载。"
   },
   "PdfUpload": {
     "title": "上传对账单",
     "description": "一次处理一份 PDF",
     "fileLabel": "银行流水 PDF",
     "dropzone": "选择 PDF，或拖放到这里",
-    "dropzoneHint": "上传可正常打开的 PDF，最多 {megabytes, number} MB、{pages, number} 页。专业和企业套餐可尝试转换扫描件。",
-    "help": "选择后会显示文件名，可随时移除。",
+    "dropzoneHint": "一次一个可正常打开的 PDF，最多 {megabytes, number} MB · {pages, number} 页。",
     "errorTitle": "本次操作未完成",
     "invalidPdf": "上传的文件不是 PDF。",
     "multipleFiles": "一次只能处理一份 PDF。",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "未能确认当前可用的转换额度。",
     "removeFile": "移除文件",
     "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
-    "serviceReady": "文件仅用于本次转换，不会保存。",
+    "serviceReady": "本站不保存文件的持久化历史。",
     "status": "可以上传",
     "converting": "正在处理",
     "start": "转换并查看结果",
@@ -92,7 +91,9 @@
     "pageCount": "共 {pageCount, number} 页",
     "tooManyPages": "这份 PDF 超过了单个文件最多 {pages, number} 页的限制。",
     "unreadablePdf": "无法读取这份 PDF，请选择可正常打开的 PDF 文件。",
-    "passwordProtectedPdf": "这份 PDF 已加密，请移除密码后重新上传。"
+    "passwordProtectedPdf": "这份 PDF 已加密，请移除密码后重新上传。",
+    "aiSummary": "专业、企业套餐可尝试扫描件；AI 回退会将完整 PDF 和文件名发送给提供方。",
+    "aiDetails": "AI 处理详情"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "这个转换器能做什么？",
-    "securityTitle": "PDF、Excel 和流水明细会保存吗？",
-    "securityDescription": "本站不将 PDF、Excel 和流水明细保存为持久化历史；高阶套餐回退时会将 PDF 交由 AI 解析服务提供方处理。使用结果前请对照原 PDF 核对。",
-    "banksTitle": "Excel 会保留原始表格结构吗？",
-    "banksDescription": "读取 PDF 中的表头和单元格文字，以表格展示，方便对照原文件核对。",
-    "accuracyTitle": "为什么还要核对转换结果？",
-    "accuracyDescription": "识别不完整或未能对齐的行会标为 DISCREPANCY 或 UNVERIFIABLE，可在下载前查看。"
+    "title": "银行流水转换功能",
+    "securityTitle": "文件隐私",
+    "securityDescription": "本站不保存 PDF、Excel 和流水明细的持久化历史；AI 回退会将 PDF 发送给提供方。",
+    "banksTitle": "表格提取",
+    "banksDescription": "读取银行流水 PDF 的表头与单元格文字，方便对照原件核对。",
+    "accuracyTitle": "风险核对",
+    "accuracyDescription": "流水明细不完整或未对齐的行标为 DISCREPANCY 或 UNVERIFIABLE，下载前可核对。"
   },
   "UsageTiers": {
-    "title": "套餐价格和转换额度是多少？",
-    "description": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem、PayPal 或 Waffo 订阅所需档位。",
+    "title": "银行流水转换套餐与额度",
+    "description": "免费额度每日重置；登录后可通过 Creem、PayPal 或 Waffo 订阅，按计费周期获取转换额度。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages, number} 页",
-    "anonymousDescription": "每天累计可转换 {pages, number} 页 PDF。",
     "signedIn": "登录后",
     "signedInAmount": "{pages, number} 页",
-    "signedInDescription": "每天累计可转换 {pages, number} 页 PDF。",
     "perDay": "/ 天",
     "perMonth": "/ 月",
     "renewalNote": "订阅按月自动续费，可在<account>个人账户</account>中取消自动续费。查看<terms>订阅与付款条款</terms>。",
@@ -300,7 +299,7 @@
       },
       "enterprise": {
         "name": "企业",
-        "description": "适合每月需要转换较多页数的用户。"
+        "description": "适合每月大量转换银行流水。"
       }
     },
     "aiParsing": "自动回退至 AI 解析，可尝试转换扫描件",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "为什么还要核对转换结果？",
-      "answer": "系统会尽量保留 PDF 中的表头和单元格文字。版式复杂、文字模糊或表格对齐异常时，部分行可能会标为 DISCREPANCY 或 UNVERIFIABLE；记账、申报或提交前，请对照原 PDF 检查。"
+      "answer": "银行流水转换尽量保留 PDF 表头和单元格文字。版式复杂、文字模糊或对齐异常时，可能标为 DISCREPANCY 或 UNVERIFIABLE；记账、申报或提交前请核对原 PDF。"
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "不登录每天可转换 {anonymousPages, number} 页，登录后每天可转换 {authenticatedPages, number} 页，按 PDF 页数累计。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。 上传前，浏览器会在本地读取 PDF 页数，并向本站查询剩余额度，此时不发送 PDF，也不扣减额度。开始转换后才上传文件，服务端仍负责文件、页数和额度的最终校验。"
+      "answer": "免费银行流水转换：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页；标准每月 {standardPages, number} 页，专业 {professionalPages, number} 页，企业 {enterprisePages, number} 页。按 PDF 页数累计。本地预检读取页数并查询额度，不发送 PDF、不扣额度；开始转换才上传，服务端最终校验文件、页数和额度。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -384,11 +383,11 @@
     },
     "failure": {
       "question": "转换失败会怎样？",
-      "answer": "转换失败时，页面会提示错误，不会提供无效的 Excel 文件，也不会扣减额度。部分结果仍按 PDF 页数计入用量。"
+      "answer": "银行流水转换失败会提示错误，不提供无效 Excel、不扣额度；部分结果仍按全部 PDF 页数计入用量。"
     },
     "ai": {
       "question": "什么时候会使用 AI 解析？",
-      "answer": "所有转换优先使用常规解析。仅专业和企业套餐在有效权益期内，常规解析失败、不可用或没有可核对交易时，才自动回退至 AI 解析；已有可用部分结果时不回退。回退会发送完整 PDF 和文件名给 AI 解析服务提供方，处理方式见隐私政策。扫描件和 AI 结果仍需对照原文件核对。"
+      "answer": "银行流水转换优先使用常规解析。仅专业、企业套餐在有效权益期内，常规解析失败、不可用或无可核对交易时回退至 AI；有可用部分结果时不回退。完整 PDF 和文件名会发送给 AI 提供方，处理方式见隐私政策。扫描件和 AI 结果仍需核对原件。"
     }
   },
   "HomeFooter": {

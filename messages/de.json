@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge von PDF in Excel umwandeln",
-    "description": "Kontoauszug-PDFs in Excel umwandeln, mit Vorschau und Risikohinweisen. Professional und Enterprise können Scans per KI-Ausweichverfahren versuchen. Keine dauerhafte Dateihistorie."
+    "description": "Kontoauszug-PDF in Excel oder CSV umwandeln, Transaktionen und Risikohinweise vor dem Download mit dem Original prüfen."
   },
   "PdfUpload": {
     "title": "Laden Sie einen Kontoauszug hoch",
     "description": "Verarbeiten Sie jeweils ein PDF",
     "fileLabel": "Kontoauszug PDF",
     "dropzone": "Wählen Sie ein PDF oder legen Sie es hier ab",
-    "dropzoneHint": "Laden Sie eine lesbare PDF mit höchstens {megabytes, number} MB und {pages, number} Seiten hoch. Professional und Enterprise können auch gescannte PDFs versuchen.",
-    "help": "Nach der Auswahl erscheint hier der Dateiname. Sie können die Datei jederzeit entfernen.",
+    "dropzoneHint": "Eine normal lesbare PDF, maximal {megabytes, number} MB · {pages, number} Seiten.",
     "errorTitle": "Dieser Vorgang konnte nicht abgeschlossen werden",
     "invalidPdf": "Die hochgeladene Datei ist keine PDF-Datei.",
     "multipleFiles": "Es kann jeweils nur ein PDF verarbeitet werden.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
     "removeFile": "Datei entfernen",
     "quota": "Kostenloses Kontingent: {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag ohne Anmeldung, {authenticatedPages, plural, one {# Seite} other {# Seiten}} pro Tag nach Anmeldung",
-    "serviceReady": "Dateien werden nur für diese Konvertierung verwendet und nicht gespeichert.",
+    "serviceReady": "Diese Website speichert keine dauerhafte Dateihistorie.",
     "status": "Bereit zum Hochladen",
     "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# Seite} other {# Seiten}}",
     "tooManyPages": "Diese PDF überschreitet das Limit von {pages, number} Seiten pro Datei.",
     "unreadablePdf": "Die PDF konnte nicht gelesen werden. Bitte wählen Sie eine PDF, die sich normal öffnen lässt.",
-    "passwordProtectedPdf": "Diese PDF ist passwortgeschützt. Entfernen Sie das Passwort vor dem Hochladen."
+    "passwordProtectedPdf": "Diese PDF ist passwortgeschützt. Entfernen Sie das Passwort vor dem Hochladen.",
+    "aiSummary": "Professional und Enterprise können Scans versuchen. Beim KI-Fallback werden die vollständige PDF und der Dateiname an den Anbieter gesendet.",
+    "aiDetails": "Details zur KI-Verarbeitung"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "Was kann dieser Konverter?",
-    "securityTitle": "Werden mein PDF, meine Excel-Datei oder meine Transaktionsdaten gespeichert?",
-    "securityDescription": "Diese Website speichert PDFs, Excel-Dateien und Transaktionen nicht als dauerhafte Historie. Beim KI-Wechsel in höheren Tarifen wird die PDF an den KI-Analyseanbieter gesendet. Prüfen Sie Ergebnisse am Original.",
-    "banksTitle": "Behält Excel die Tabellenstruktur bei?",
-    "banksDescription": "Der Konverter liest Tabellenüberschriften und Zelltexte aus dem PDF und zeigt sie als Tabellen an. So können Sie das Ergebnis mit dem Original vergleichen.",
-    "accuracyTitle": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
-    "accuracyDescription": "Zeilen mit unvollständigen Belegen oder Zuordnungsproblemen werden vor dem Download als „DISCREPANCY“ oder „UNVERIFIABLE“ markiert."
+    "title": "Funktionen für Kontoauszüge",
+    "securityTitle": "Dateidatenschutz",
+    "securityDescription": "Keine dauerhafte PDF-, Excel- oder Transaktionshistorie; beim KI-Fallback geht die PDF an den Anbieter.",
+    "banksTitle": "Tabellen aus PDF",
+    "banksDescription": "Kopfzeilen und Zelltexte aus dem Kontoauszug werden als Tabellen zum Abgleich mit dem Original angezeigt.",
+    "accuracyTitle": "Risikohinweise",
+    "accuracyDescription": "DISCREPANCY und UNVERIFIABLE markieren unvollständige Belege oder verschobene Zeilen zur Prüfung vor dem Download."
   },
   "UsageTiers": {
-    "title": "Was kosten die Tarife und was enthalten sie?",
-    "description": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem, PayPal oder Waffo-Abo an.",
+    "title": "Kontoauszug-Tarife und Kontingente",
+    "description": "Gratisseiten werden täglich, Aboseiten je Abrechnungszeitraum erneuert. Nach Anmeldung über Creem, PayPal oder Waffo abonnieren.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
-    "anonymousDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
     "signedIn": "Angemeldet",
     "signedInAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
-    "signedInDescription": "Konvertieren Sie bis zu {pages, plural, one {# PDF-Seite} other {# PDF-Seiten}} pro Tag.",
     "perDay": "/ Tag",
     "perMonth": "/ Monat",
     "renewalNote": "Abonnements verlängern sich jeden Monat automatisch. Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen. Weitere Informationen finden Sie in den <terms>Abonnement- und Zahlungsbedingungen</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Für die Verarbeitung eigener Kontoauszüge."
+        "description": "Für persönliche Kontoauszüge."
       },
       "professional": {
         "name": "Professional",
-        "description": "Für die regelmäßige Verarbeitung mehrerer Kontoauszüge."
+        "description": "Für regelmäßige Kontoauszug-Konvertierungen."
       },
       "enterprise": {
         "name": "Unternehmen",
-        "description": "Für Nutzer, die jeden Monat mehr Seiten konvertieren müssen."
+        "description": "Für viele Kontoauszüge pro Monat."
       }
     },
     "aiParsing": "Automatischer KI-Wechsel; Scans können versucht werden",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Warum sollte ich das Konvertierungsergebnis überprüfen?",
-      "answer": "Der Konverter übernimmt Tabellenüberschriften und Zelltexte, soweit möglich. Komplexe Layouts, unscharfer Text oder ungleichmäßige Spalten können Zeilen als „DISCREPANCY“ oder „UNVERIFIABLE“ markieren. Vergleichen Sie die Excel-Datei vor der Verwendung mit dem Original-PDF."
+      "answer": "Die Kontoauszug-Konvertierung erhält PDF-Kopfzeilen und Zelltexte soweit möglich. Komplexe Layouts, unscharfer Text oder verschobene Spalten können DISCREPANCY oder UNVERIFIABLE auslösen. Vor Buchung, Erklärung oder Einreichung mit dem Original abgleichen."
     },
     "quota": {
       "question": "Wie viele Seiten kann ich pro Tag konvertieren?",
-      "answer": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, nach der Anmeldung {authenticatedPages, plural, one {# Seite} other {# Seiten}}. Die Monatstarife umfassen {standardPages, plural, one {# Seite} other {# Seiten}} für Standard, {professionalPages, plural, one {# Seite} other {# Seiten}} für Professional und {enterprisePages, plural, one {# Seite} other {# Seiten}} für Unternehmen. Vor dem Hochladen liest Ihr Browser die PDF-Seitenzahl lokal aus und fragt bei dieser Website Ihr Restkontingent ab. Dabei wird weder das PDF übertragen noch Kontingent verbraucht. Erst beim Start der Konvertierung wird die Datei hochgeladen; der Server prüft Datei, Seitenzahl und Kontingent abschließend."
+      "answer": "Kostenlose Kontoauszug-Konvertierung: {anonymousPages, number} Seiten täglich ohne Anmeldung, {authenticatedPages, number} mit Anmeldung. Monatlich: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} Seiten. Gezählt werden PDF-Seiten. Die Vorprüfung liest Seiten lokal und fragt das Restkontingent ab, ohne PDF-Upload oder Verbrauch. Erst der Konvertierungsstart lädt die PDF hoch; der Server prüft Datei, Seiten und Kontingent abschließend."
     },
     "scans": {
       "question": "Kann ich gescannte oder verschlüsselte PDFs konvertieren?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "Was passiert, wenn die Konvertierung fehlschlägt?",
-      "answer": "Bei einem Fehler zeigt die Seite eine Meldung und bietet keine ungültige Excel-Datei an. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse werden nach der Seitenzahl des PDFs berechnet."
+      "answer": "Scheitert die Kontoauszug-Konvertierung, erscheint ein Fehler; es gibt keinen ungültigen Excel-Download und keinen Kontingentverbrauch. Teilergebnisse zählen alle PDF-Seiten."
     },
     "ai": {
       "question": "Wann wird KI zur Analyse verwendet?",

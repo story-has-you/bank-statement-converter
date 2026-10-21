@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
     "title": "Ubah rekening koran PDF menjadi Excel",
-    "description": "Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI cadangan. Tanpa riwayat berkas permanen."
+    "description": "Ubah rekening koran PDF ke Excel atau CSV, lalu periksa transaksi dan penanda risiko di pratinjau sebelum mengunduh."
   },
   "PdfUpload": {
     "title": "Unggah rekening koran",
     "description": "Proses satu PDF setiap kali",
     "fileLabel": "Rekening koran PDF",
     "dropzone": "Pilih PDF atau seret ke sini",
-    "dropzoneHint": "Unggah PDF yang dapat dibuka, maksimal {megabytes, number} MB dan {pages, number} halaman. Professional dan Enterprise dapat mencoba PDF hasil pindai.",
-    "help": "Nama berkas muncul setelah dipilih. Anda dapat menghapusnya kapan saja.",
+    "dropzoneHint": "Satu PDF yang dapat dibuka, maksimal {megabytes, number} MB · {pages, number} halaman.",
     "errorTitle": "Operasi ini tidak dapat diselesaikan",
     "invalidPdf": "Berkas yang diunggah bukan PDF.",
     "multipleFiles": "Unggah satu PDF setiap kali.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Kuota konversi yang tersedia tidak dapat ditentukan.",
     "removeFile": "Hapus berkas",
     "quota": "Kuota gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} halaman per hari setelah login",
-    "serviceReady": "Berkas hanya digunakan untuk konversi ini dan tidak disimpan.",
+    "serviceReady": "Situs ini tidak menyimpan riwayat berkas permanen.",
     "status": "Siap diunggah",
     "converting": "Mengonversi",
     "start": "Konversi dan periksa",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, number} halaman",
     "tooManyPages": "PDF ini melebihi batas {pages, number} halaman per file.",
     "unreadablePdf": "PDF tidak dapat dibaca. Pilih PDF yang dapat dibuka dengan normal.",
-    "passwordProtectedPdf": "PDF ini dilindungi kata sandi. Hapus kata sandinya sebelum mengunggah."
+    "passwordProtectedPdf": "PDF ini dilindungi kata sandi. Hapus kata sandinya sebelum mengunggah.",
+    "aiSummary": "Professional dan Enterprise dapat mencoba hasil pindai. AI cadangan mengirim PDF lengkap dan nama berkas ke penyedia.",
+    "aiDetails": "Rincian pemrosesan AI"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "Apa yang dapat dilakukan konverter ini?",
-    "securityTitle": "Apakah PDF, Excel, atau transaksi saya disimpan?",
-    "securityDescription": "Situs ini tidak menyimpan PDF, Excel, atau transaksi sebagai riwayat permanen. Saat paket tingkat atas beralih ke AI, PDF dikirim ke penyedia penguraian AI. Periksa hasil dengan PDF asli.",
-    "banksTitle": "Apakah Excel mempertahankan struktur tabel?",
-    "banksDescription": "Konverter membaca judul kolom dan teks sel dari PDF, lalu menampilkannya sebagai tabel agar dapat dibandingkan dengan aslinya.",
-    "accuracyTitle": "Mengapa hasil perlu diperiksa?",
-    "accuracyDescription": "Baris dengan bukti tidak lengkap atau kolom yang tidak selaras diberi penanda DISCREPANCY atau UNVERIFIABLE sebelum diunduh."
+    "title": "Fitur konversi rekening koran",
+    "securityTitle": "Privasi berkas",
+    "securityDescription": "Tanpa riwayat permanen PDF, Excel, atau transaksi; penguraian AI cadangan mengirim PDF ke penyedia.",
+    "banksTitle": "Ekstraksi tabel",
+    "banksDescription": "Judul kolom dan teks sel rekening koran PDF ditampilkan dalam tabel untuk dibandingkan dengan aslinya.",
+    "accuracyTitle": "Pemeriksaan risiko",
+    "accuracyDescription": "DISCREPANCY dan UNVERIFIABLE menandai data tidak lengkap atau baris tidak selaras sebelum diunduh."
   },
   "UsageTiers": {
-    "title": "Berapa harga paket dan apa yang termasuk?",
-    "description": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo.",
+    "title": "Paket dan kuota rekening koran",
+    "description": "Kuota gratis direset harian, langganan per periode tagihan. Masuk untuk berlangganan melalui Creem, PayPal atau Waffo.",
     "anonymous": "Tanpa login",
     "anonymousAmount": "{pages, number} halaman",
-    "anonymousDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
     "signedIn": "Sudah login",
     "signedInAmount": "{pages, number} halaman",
-    "signedInDescription": "Konversi hingga {pages, number} halaman PDF per hari.",
     "perDay": "/ hari",
     "perMonth": "/ bulan",
     "renewalNote": "Langganan diperpanjang secara otomatis setiap bulan. Anda dapat membatalkan perpanjangan otomatis melalui <account>akun</account> Anda. Lihat <terms>ketentuan langganan dan pembayaran</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Standar",
-        "description": "Untuk mengonversi rekening koran pribadi."
+        "description": "Untuk rekening koran pribadi."
       },
       "professional": {
         "name": "Profesional",
-        "description": "Untuk yang rutin memproses beberapa rekening koran."
+        "description": "Untuk pemrosesan rekening koran rutin."
       },
       "enterprise": {
         "name": "Perusahaan",
-        "description": "Untuk pengguna yang perlu mengonversi lebih banyak halaman setiap bulan."
+        "description": "Untuk rekening koran berjumlah besar."
       }
     },
     "aiParsing": "AI cadangan otomatis; dapat mencoba PDF hasil pindai",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Mengapa hasil perlu diperiksa?",
-      "answer": "Konverter mempertahankan judul kolom dan teks sel bila memungkinkan. Tata letak rumit, teks buram, atau kolom tidak rata dapat menghasilkan baris DISCREPANCY atau UNVERIFIABLE. Bandingkan Excel dengan PDF asli sebelum digunakan."
+      "answer": "Konversi rekening koran mempertahankan judul kolom dan teks sel bila memungkinkan. Tata letak rumit, teks buram, atau kolom tidak selaras dapat memunculkan DISCREPANCY atau UNVERIFIABLE. Periksa PDF asli sebelum pembukuan, pelaporan, atau pengajuan."
     },
     "quota": {
       "question": "Berapa halaman yang dapat dikonversi per hari?",
-      "answer": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman per hari; setelah login, {authenticatedPages, number} halaman. Paket bulanan mencakup {standardPages, number} halaman untuk Standar, {professionalPages, number} untuk Profesional, dan {enterprisePages, number} untuk Perusahaan. Sebelum unggah, browser membaca jumlah halaman PDF secara lokal dan meminta sisa kuota Anda ke situs ini, tanpa mengirim PDF atau memakai kuota. File diunggah saat Anda memulai konversi; server tetap memvalidasi file, halaman, dan kuota."
+      "answer": "Konversi rekening koran gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} setelah login. Bulanan: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} halaman. Dihitung per halaman PDF. Pemeriksaan awal membaca halaman secara lokal dan mengecek kuota tanpa mengirim PDF atau memakai kuota. Unggah dilakukan saat mulai; server memvalidasi berkas, halaman, dan kuota."
     },
     "scans": {
       "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "Apa yang terjadi jika konversi gagal?",
-      "answer": "Halaman menampilkan kesalahan dan tidak menyediakan Excel yang tidak valid. Konversi gagal tidak memakai kuota. Hasil sebagian memakai kuota berdasarkan jumlah halaman PDF."
+      "answer": "Jika konversi rekening koran gagal, muncul kesalahan tanpa Excel tidak valid atau pemakaian kuota. Hasil parsial menghitung semua halaman PDF."
     },
     "ai": {
       "question": "Kapan penguraian AI digunakan?",

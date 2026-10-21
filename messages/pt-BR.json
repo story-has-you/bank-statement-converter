@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversão de extratos bancários em PDF",
     "title": "Converta seu extrato bancário de PDF para Excel",
-    "description": "Converta extratos PDF em Excel com prévia e alertas de risco. Professional e Enterprise podem tentar converter digitalizações com IA. Sem histórico permanente de arquivos."
+    "description": "Converta extrato bancário PDF para Excel ou CSV e confira as transações e os alertas na prévia antes de baixar."
   },
   "PdfUpload": {
     "title": "Enviar um extrato bancário",
     "description": "Processe um PDF por vez",
     "fileLabel": "Extrato bancário em PDF",
     "dropzone": "Escolha um PDF ou arraste-o para cá",
-    "dropzoneHint": "Envie um PDF que abra normalmente, com até {megabytes, number} MB e {pages, number} páginas. Professional e Enterprise podem tentar converter PDFs digitalizados.",
-    "help": "O nome aparece após você escolher o arquivo. Você pode removê-lo a qualquer momento.",
+    "dropzoneHint": "Um PDF legível por vez, até {megabytes, number} MB · {pages, number} páginas.",
     "errorTitle": "Não foi possível concluir esta operação",
     "invalidPdf": "O arquivo enviado não é um PDF.",
     "multipleFiles": "Envie um PDF por vez.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Não foi possível determinar sua cota de conversão disponível.",
     "removeFile": "Remover arquivo",
     "quota": "Cota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} por dia sem login e {authenticatedPages, plural, one {# página} other {# páginas}} por dia com login",
-    "serviceReady": "Usamos os arquivos apenas nesta conversão e não os salvamos.",
+    "serviceReady": "Este site não mantém histórico permanente dos arquivos.",
     "status": "Pronto para enviar",
     "converting": "Convertendo",
     "start": "Converter e conferir",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# página} other {# páginas}}",
     "tooManyPages": "Este PDF excede o limite de {pages, number} páginas por arquivo.",
     "unreadablePdf": "Não foi possível ler o PDF. Escolha um PDF que abra normalmente.",
-    "passwordProtectedPdf": "Este PDF está protegido por senha. Remova a senha antes de enviá-lo."
+    "passwordProtectedPdf": "Este PDF está protegido por senha. Remova a senha antes de enviá-lo.",
+    "aiSummary": "Professional e Enterprise podem tentar digitalizações. O recurso de IA envia o PDF completo e o nome do arquivo ao provedor.",
+    "aiDetails": "Detalhes do processamento por IA"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "O que este conversor faz?",
-    "securityTitle": "Vocês salvam meu PDF, Excel ou as transações?",
-    "securityDescription": "Este site não mantém um histórico permanente de PDFs, Excel ou transações. O recurso de IA dos planos superiores envia o PDF ao provedor de análise com IA. Confira os resultados com o original.",
-    "banksTitle": "O Excel mantém a estrutura das tabelas?",
-    "banksDescription": "O conversor lê os cabeçalhos e o texto das células do PDF e os exibe em tabelas para você comparar com o original.",
-    "accuracyTitle": "Por que preciso conferir o resultado?",
-    "accuracyDescription": "Linhas com informações incompletas ou problemas de alinhamento recebem a marca DISCREPANCY ou UNVERIFIABLE antes do download."
+    "title": "Conversão de extratos bancários",
+    "securityTitle": "Privacidade dos arquivos",
+    "securityDescription": "Sem histórico permanente de PDF, Excel ou transações; o recurso de IA envia o PDF ao provedor.",
+    "banksTitle": "Extração de tabelas",
+    "banksDescription": "Cabeçalhos e células do extrato bancário PDF aparecem em tabelas para comparação com o original.",
+    "accuracyTitle": "Verificação de riscos",
+    "accuracyDescription": "DISCREPANCY e UNVERIFIABLE sinalizam dados incompletos ou linhas desalinhadas antes do download."
   },
   "UsageTiers": {
-    "title": "Quanto custam os planos e o que incluem?",
-    "description": "As cotas gratuitas reiniciam diariamente e as assinaturas fornecem páginas por período de cobrança. Compare os planos e entre antes de assinar pelo Creem, PayPal ou Waffo.",
+    "title": "Planos e cotas de extratos bancários",
+    "description": "Cotas grátis diárias e assinaturas por período de cobrança. Entre para assinar pelo Creem, PayPal ou Waffo.",
     "anonymous": "Sem login",
     "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
-    "anonymousDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
     "signedIn": "Com login",
     "signedInAmount": "{pages, plural, one {# página} other {# páginas}}",
-    "signedInDescription": "Converta até {pages, plural, one {# página} other {# páginas}} de PDF por dia.",
     "perDay": "/ dia",
     "perMonth": "/ mês",
     "renewalNote": "As assinaturas são renovadas automaticamente a cada mês. Você pode cancelar a renovação automática na sua <account>conta</account>. Consulte os <terms>termos de assinatura e pagamento</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Padrão",
-        "description": "Para quem precisa converter extratos bancários para uso pessoal."
+        "description": "Para extratos bancários pessoais."
       },
       "professional": {
         "name": "Profissional",
-        "description": "Para quem converte vários extratos bancários regularmente."
+        "description": "Para processar extratos bancários regularmente."
       },
       "enterprise": {
         "name": "Empresarial",
-        "description": "Para usuários que precisam converter mais páginas por mês."
+        "description": "Para grandes volumes de extratos bancários."
       }
     },
     "aiParsing": "Recurso automático de IA; pode tentar converter PDFs digitalizados",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Por que preciso conferir o resultado?",
-      "answer": "O conversor preserva os cabeçalhos e o texto das células quando possível. Formatos complexos, texto pouco nítido ou colunas desalinhadas podem gerar linhas DISCREPANCY ou UNVERIFIABLE. Compare o Excel com o PDF original antes de usá-lo."
+      "answer": "A conversão de extratos bancários preserva cabeçalhos e células quando possível. Layouts complexos, texto borrado ou colunas desalinhadas podem gerar DISCREPANCY ou UNVERIFIABLE. Confira o PDF antes de contabilizar, declarar ou enviar dados."
     },
     "quota": {
       "question": "Quantas páginas posso converter por dia?",
-      "answer": "Sem login, você pode converter {anonymousPages, plural, one {# página} other {# páginas}} por dia. Com login, são {authenticatedPages, plural, one {# página} other {# páginas}} por dia. Os planos mensais incluem {standardPages, plural, one {# página} other {# páginas}} no Padrão, {professionalPages, number} no Profissional e {enterprisePages, number} no Empresarial. Antes do envio, o navegador lê localmente o número de páginas do PDF e consulta a cota restante no site, sem enviar o PDF nem consumir cota. O arquivo é enviado ao iniciar a conversão; o servidor continua responsável por validar o arquivo, as páginas e a cota."
+      "answer": "Conversão grátis de extratos bancários: {anonymousPages, number} páginas por dia sem login, {authenticatedPages, number} com login. Por mês: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} páginas. Contam as páginas PDF. A pré-verificação lê páginas localmente e consulta a cota, sem enviar o PDF nem consumir páginas. O envio ocorre ao iniciar; o servidor valida arquivo, páginas e cota."
     },
     "scans": {
       "question": "Posso converter PDFs digitalizados ou criptografados?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "O que acontece se a conversão falhar?",
-      "answer": "A página mostra um erro e não oferece um Excel inválido. Conversões que falham não consomem cota. Resultados parciais consomem cota pelo número de páginas do PDF."
+      "answer": "Se a conversão do extrato bancário falhar, aparece um erro, sem Excel inválido nem consumo de cota. Resultados parciais contam todas as páginas PDF."
     },
     "ai": {
       "question": "Quando a análise com IA é usada?",

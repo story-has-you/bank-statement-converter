@@ -25,21 +25,19 @@ export async function UsageTiers() {
           </div>
 
           <div className="mt-7 grid border-y border-border sm:grid-cols-2 sm:divide-x sm:divide-border">
-            <div className="flex flex-col gap-3 py-5 sm:pr-6">
+            <div className="flex items-center justify-between gap-4 py-4 sm:pr-6">
               <p className="text-sm font-medium text-muted-foreground">{t("anonymous")}</p>
-              <p className="text-3xl font-semibold">
+              <p className="text-2xl font-semibold">
                 {t("anonymousAmount", { pages: usageQuotaConfig.anonymous.pages })}
                 <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
               </p>
-              <p className="text-sm text-muted-foreground">{t("anonymousDescription", { pages: usageQuotaConfig.anonymous.pages })}</p>
             </div>
-            <div className="flex flex-col gap-3 border-t border-border py-5 sm:border-t-0 sm:pl-6">
+            <div className="flex items-center justify-between gap-4 border-t border-border py-4 sm:border-t-0 sm:pl-6">
               <p className="text-sm font-medium text-muted-foreground">{t("signedIn")}</p>
-              <p className="text-3xl font-semibold">
+              <p className="text-2xl font-semibold">
                 {t("signedInAmount", { pages: usageQuotaConfig.authenticated.pages })}
                 <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perDay")}</span>
               </p>
-              <p className="text-sm text-muted-foreground">{t("signedInDescription", { pages: usageQuotaConfig.authenticated.pages })}</p>
             </div>
           </div>
 

@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "銀行明細PDFの変換",
     "title": "銀行明細PDFをExcelに変換",
-    "description": "銀行明細PDFをExcelに変換し、生成中のプレビューとリスク表示で確認できます。ProfessionalとEnterpriseはAIへの切り替えでスキャンの変換を試せます。ファイル履歴は永続保存しません。"
+    "description": "銀行明細PDFをExcel・CSVに変換。取引プレビューとリスク表示を原本と照合してからダウンロード。"
   },
   "PdfUpload": {
     "title": "銀行明細をアップロード",
     "description": "一度に1つのPDFを処理します",
     "fileLabel": "銀行明細PDF",
     "dropzone": "PDFを選ぶか、ここにドロップ",
-    "dropzoneHint": "正常に開ける{megabytes, number} MB以下、{pages, number}ページ以下のPDFをアップロードしてください。ProfessionalとEnterpriseではスキャンPDFも試せます。",
-    "help": "ファイルを選ぶと名前が表示されます。選択はいつでも解除できます。",
+    "dropzoneHint": "正常に開けるPDFを1件ずつ、最大{megabytes, number} MB・{pages, number}ページ。",
     "errorTitle": "今回の操作を完了できませんでした",
     "invalidPdf": "アップロードされたファイルはPDFではありません。",
     "multipleFiles": "一度に処理できるPDFは1つです。",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "現在利用できる変換枠を確認できませんでした。",
     "removeFile": "ファイルの選択を解除",
     "quota": "無料枠：匿名は1日{anonymousPages, number}ページ、ログイン後は1日{authenticatedPages, number}ページ",
-    "serviceReady": "ファイルは今回の変換にだけ使い、保存しません。",
+    "serviceReady": "本サイトはファイル履歴を永続保存しません。",
     "status": "アップロードできます",
     "converting": "変換中",
     "start": "変換して確認",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, number} ページ",
     "tooManyPages": "この PDF は、1 ファイルあたり {pages, number} ページの上限を超えています。",
     "unreadablePdf": "PDF を読み取れませんでした。正常に開ける PDF を選択してください。",
-    "passwordProtectedPdf": "この PDF はパスワードで保護されています。パスワードを解除してからアップロードしてください。"
+    "passwordProtectedPdf": "この PDF はパスワードで保護されています。パスワードを解除してからアップロードしてください。",
+    "aiSummary": "Professional・Enterpriseはスキャンも試せます。AIへの切り替え時はPDF全体とファイル名を提供者に送信します。",
+    "aiDetails": "AI処理の詳細"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "この変換ツールで何ができますか？",
-    "securityTitle": "PDF、Excel、取引内容は保存されますか？",
-    "securityDescription": "本サイトはPDF、Excel、取引明細を永続的な履歴として保存しません。上位プランでAIに切り替える際はPDFをAI解析サービス提供者に送信します。結果は元のPDFと照合してください。",
-    "banksTitle": "Excel は元の表構造を保ちますか？",
-    "banksDescription": "PDFの表見出しとセルの文字を読み取り、元のファイルと照合できるように表で表示します。",
-    "accuracyTitle": "なぜ変換結果を確認する必要がありますか？",
-    "accuracyDescription": "根拠が足りない行や位置を合わせにくい行には“DISCREPANCY”または“UNVERIFIABLE”を付けます。"
+    "title": "銀行明細変換の機能",
+    "securityTitle": "ファイルのプライバシー",
+    "securityDescription": "PDF・Excel・取引明細の履歴は永続保存しません。AIへの切り替え時はPDFを提供者に送信します。",
+    "banksTitle": "表データの抽出",
+    "banksDescription": "銀行明細PDFの表見出しとセルの文字を表で表示し、原本との照合を助けます。",
+    "accuracyTitle": "リスクの確認",
+    "accuracyDescription": "根拠不足や位置のずれた行はDISCREPANCY・UNVERIFIABLEで表示。ダウンロード前に確認できます。"
   },
   "UsageTiers": {
-    "title": "プランの料金と利用枠は？",
-    "description": "無料枠は毎日リセットされ、有料枠は請求期間ごとに付与されます。プランを比較し、ログインして Creem、PayPal または Waffo で申し込んでください。",
+    "title": "銀行明細変換のプランと利用枠",
+    "description": "無料枠は毎日、有料枠は請求期間ごとに更新。ログイン後、Creem・PayPal・Waffoで申し込めます。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages, number}ページ",
-    "anonymousDescription": "1日に{pages, number}ページまで変換できます。",
     "signedIn": "ログイン済み",
     "signedInAmount": "{pages, number}ページ",
-    "signedInDescription": "1日に{pages, number}ページまで変換できます。",
     "perDay": "/ 日",
     "perMonth": "/ 月",
     "renewalNote": "サブスクリプションは毎月自動更新されます。<account>アカウント</account>から自動更新を停止できます。<terms>サブスクリプションとお支払いの規約</terms>をご確認ください。",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "スタンダード",
-        "description": "銀行明細を個人で処理する方に。"
+        "description": "個人の銀行明細変換に。"
       },
       "professional": {
         "name": "プロフェッショナル",
-        "description": "複数の明細を定期的に処理する方に。"
+        "description": "複数の銀行明細を定期的に処理する方に。"
       },
       "enterprise": {
         "name": "エンタープライズ",
-        "description": "毎月多くのページを変換するユーザー向け。"
+        "description": "毎月大量の銀行明細を処理する方に。"
       }
     },
     "aiParsing": "AIに自動切り替え、スキャンPDFの変換を試行可能",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "なぜ変換結果を確認する必要がありますか？",
-      "answer": "PDFの見出しとセルの文字をできるだけ保ちますが、複雑なレイアウトやぼやけた文字、ずれた列では“DISCREPANCY”または“UNVERIFIABLE”になることがあります。利用前に元のPDFと照合してください。"
+      "answer": "銀行明細変換ではPDFの表見出しとセルの文字を可能な限り保持します。複雑なレイアウト、不鮮明な文字、列のずれにはDISCREPANCY・UNVERIFIABLEが付く場合があります。記帳・申告・提出前に原本と照合してください。"
     },
     "quota": {
       "question": "1日に何ページ変換できますか？",
-      "answer": "ログインなしでは1日{anonymousPages, number}ページ、ログイン後は1日{authenticatedPages, number}ページまで変換できます。月額プランは、スタンダードが{standardPages, number}ページ、プロフェッショナルが{professionalPages, number}ページ、エンタープライズが{enterprisePages, number}ページです。 アップロード前に、ブラウザーが PDF のページ数をローカルで読み取り、当サイトに残りの利用枠を照会します。この時点では PDF の送信や利用枠の消費はありません。変換を開始するとファイルがアップロードされ、サーバーがファイル、ページ数、利用枠を最終確認します。"
+      "answer": "無料の銀行明細変換は匿名で1日{anonymousPages, number}ページ、ログイン後は{authenticatedPages, number}ページ。月間枠はStandard {standardPages, number}、Professional {professionalPages, number}、Enterprise {enterprisePages, number}ページです。PDFページ数で集計します。事前確認は端末でページ数を読み取り、残り枠を照会するだけで、PDF送信も枠の消費もしません。変換開始後にアップロードし、サーバーがファイル・ページ数・枠を最終確認します。"
     },
     "scans": {
       "question": "スキャンPDFや暗号化PDFは変換できますか？",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "変換に失敗するとどうなりますか？",
-      "answer": "変換に失敗するとエラーを表示し、無効なExcelファイルは提供しません。失敗した変換は利用枠を消費しません。一部の結果を提供できる場合は、PDFのページ数を利用枠から差し引きます。"
+      "answer": "銀行明細変換に失敗するとエラーを表示し、無効なExcelは提供せず、利用枠も消費しません。一部結果が得られた場合はPDF全ページを計上します。"
     },
     "ai": {
       "question": "AI解析はいつ使われますか？",

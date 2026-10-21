@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversión de extractos bancarios en PDF",
     "title": "Convierte tu extracto bancario de PDF a Excel",
-    "description": "Convierte extractos PDF a Excel con vista previa y avisos de riesgo. Professional y Enterprise pueden intentar convertir escaneos con IA. Sin historial permanente de archivos."
+    "description": "Convierte tu extracto bancario PDF a Excel o CSV y revisa las transacciones y alertas antes de descargar."
   },
   "PdfUpload": {
     "title": "Subir un extracto bancario",
     "description": "Un PDF a la vez",
     "fileLabel": "Extracto bancario PDF",
     "dropzone": "Elige un PDF o arrástralo aquí",
-    "dropzoneHint": "Sube un PDF que se abra correctamente, de hasta {megabytes, number} MB y {pages, number} páginas. Professional y Enterprise pueden intentar convertir PDF escaneados.",
-    "help": "El nombre del archivo aparece después de seleccionarlo. Puedes quitarlo cuando quieras.",
+    "dropzoneHint": "Un PDF legible a la vez, hasta {megabytes, number} MB · {pages, number} páginas.",
     "errorTitle": "No se pudo completar esta operación",
     "invalidPdf": "El archivo subido no es un PDF.",
     "multipleFiles": "Solo puedes procesar un PDF a la vez.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "No se pudo determinar tu cuota de conversión disponible.",
     "removeFile": "Quitar archivo",
     "quota": "Cuota gratuita: {anonymousPages, plural, one {# página} other {# páginas}} al día sin iniciar sesión, {authenticatedPages, plural, one {# página} other {# páginas}} al día al iniciar sesión",
-    "serviceReady": "Los archivos se utilizan únicamente para esta conversión y no se guardan.",
+    "serviceReady": "Este sitio no guarda un historial permanente de archivos.",
     "status": "Listo para cargar",
     "converting": "Convirtiendo",
     "start": "Convertir y revisar",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# página} other {# páginas}}",
     "tooManyPages": "Este PDF supera el límite de {pages, number} páginas por archivo.",
     "unreadablePdf": "No se pudo leer el PDF. Elige un PDF que se abra correctamente.",
-    "passwordProtectedPdf": "Este PDF está protegido con contraseña. Elimínala antes de subirlo."
+    "passwordProtectedPdf": "Este PDF está protegido con contraseña. Elimínala antes de subirlo.",
+    "aiSummary": "Professional y Enterprise pueden intentar convertir escaneos. El respaldo con IA envía el PDF completo y su nombre al proveedor.",
+    "aiDetails": "Detalles del tratamiento con IA"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "¿Qué puede hacer este convertidor?",
-    "securityTitle": "¿Se guardan mis archivos PDF, Excel o transacciones?",
-    "securityDescription": "Este sitio no conserva un historial permanente de PDF, Excel ni transacciones. El respaldo de los planes superiores envía el PDF al proveedor de análisis con IA. Revisa los resultados con el original.",
-    "banksTitle": "¿Excel conserva la estructura de las tablas?",
-    "banksDescription": "El convertidor lee los encabezados y el texto de las celdas del PDF y los muestra en tablas para que puedas compararlos con el original.",
-    "accuracyTitle": "¿Por qué debo revisar el resultado de la conversión?",
-    "accuracyDescription": "Las filas con datos incompletos o problemas de alineación se marcan como \"DISCREPANCY\" o \"UNVERIFIABLE\" antes de la descarga."
+    "title": "Conversión de extractos bancarios",
+    "securityTitle": "Privacidad de archivos",
+    "securityDescription": "Sin historial permanente de PDF, Excel ni transacciones; el respaldo con IA envía el PDF al proveedor.",
+    "banksTitle": "Extracción de tablas",
+    "banksDescription": "Muestra los encabezados y celdas del extracto bancario PDF en tablas para comparar con el original.",
+    "accuracyTitle": "Revisión de riesgos",
+    "accuracyDescription": "DISCREPANCY y UNVERIFIABLE señalan datos incompletos o filas desalineadas antes de descargar."
   },
   "UsageTiers": {
-    "title": "¿Cuánto cuestan los planes y qué incluyen?",
-    "description": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Creem, PayPal o Waffo.",
+    "title": "Planes y cuotas de extractos bancarios",
+    "description": "Cuotas gratuitas diarias y suscripciones por periodo de facturación. Inicia sesión para suscribirte con Creem, PayPal o Waffo.",
     "anonymous": "Sin iniciar sesión",
     "anonymousAmount": "{pages, plural, one {# página} other {# páginas}}",
-    "anonymousDescription": "Convierte hasta {pages, plural, one {# página} other {# páginas}} de PDF al día.",
     "signedIn": "Con sesión iniciada",
     "signedInAmount": "{pages, plural, one {# página} other {# páginas}}",
-    "signedInDescription": "Convierte hasta {pages, plural, one {# página} other {# páginas}} de PDF al día.",
     "perDay": "/ día",
     "perMonth": "/ mes",
     "renewalNote": "Las suscripciones se renuevan automáticamente cada mes. Puedes cancelar la renovación automática en tu <account>cuenta</account>. Consulta las <terms>condiciones de suscripción y pago</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Estándar",
-        "description": "Para convertir tus propios extractos bancarios."
+        "description": "Para tus extractos bancarios personales."
       },
       "professional": {
         "name": "Profesional",
-        "description": "Para procesar varios extractos bancarios con regularidad."
+        "description": "Para procesar extractos bancarios con frecuencia."
       },
       "enterprise": {
         "name": "Empresa",
-        "description": "Para usuarios que necesitan convertir más páginas cada mes."
+        "description": "Para grandes volúmenes de extractos bancarios."
       }
     },
     "aiParsing": "Respaldo automático de IA; puede intentar convertir PDF escaneados",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "¿Por qué debo revisar el resultado de la conversión?",
-      "answer": "El convertidor conserva los encabezados y el texto de las celdas cuando puede. Los diseños complejos, el texto borroso o las columnas desalineadas pueden marcar filas como \"DISCREPANCY\" o \"UNVERIFIABLE\". Compara el archivo Excel con el PDF original antes de usarlo."
+      "answer": "La conversión de extractos bancarios conserva encabezados y celdas cuando es posible. Los diseños complejos, el texto borroso o las columnas desalineadas pueden generar DISCREPANCY o UNVERIFIABLE. Comprueba el PDF antes de contabilizar, declarar o presentar datos."
     },
     "quota": {
       "question": "¿Cuántas páginas puedo convertir cada día?",
-      "answer": "Sin iniciar sesión puedes convertir {anonymousPages, plural, one {# página} other {# páginas}} al día; con sesión iniciada, {authenticatedPages, plural, one {# página} other {# páginas}}. Los planes mensuales incluyen {standardPages, plural, one {# página} other {# páginas}} en Estándar, {professionalPages, number} en Profesional y {enterprisePages, number} en Empresa. Antes de subir el archivo, el navegador lee localmente el número de páginas del PDF y consulta al sitio la cuota restante, sin enviar el PDF ni consumir cuota. El archivo se sube al iniciar la conversión; el servidor sigue validando el archivo, las páginas y la cuota."
+      "answer": "Conversión gratuita de extractos bancarios: {anonymousPages, number} páginas al día sin sesión, {authenticatedPages, number} con sesión. Al mes: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} páginas. Se cuentan páginas PDF. La comprobación local cuenta páginas y consulta la cuota sin enviar el PDF ni consumir páginas. El archivo se sube al iniciar; el servidor valida archivo, páginas y cuota."
     },
     "scans": {
       "question": "¿Puedo convertir archivos PDF escaneados o cifrados?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "¿Qué sucede si la conversión falla?",
-      "answer": "Si la conversión falla, la página muestra un error y no ofrece un archivo Excel no válido. Las conversiones fallidas no consumen cuota. Los resultados parciales consumen cuota según el número de páginas del PDF."
+      "answer": "Si falla la conversión del extracto bancario, se muestra un error sin Excel inválido ni consumo de cuota. Los resultados parciales cuentan todas las páginas PDF."
     },
     "ai": {
       "question": "¿Cuándo se utiliza el análisis con IA?",

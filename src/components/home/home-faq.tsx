@@ -14,7 +14,7 @@ export async function HomeFaq() {
         <h2 id="faq-title" className="text-xl font-semibold sm:text-2xl">
           {t("title")}
         </h2>
-        <Accordion defaultValue={["quota"]} className="mt-5 border-t border-border">
+        <Accordion className="mt-5 border-t border-border">
           {questions.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
               <AccordionTrigger className="py-4">{item.question}</AccordionTrigger>

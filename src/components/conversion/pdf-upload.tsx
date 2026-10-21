@@ -9,7 +9,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useConversion } from "@/components/conversion/conversion-provider";
@@ -150,7 +150,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            aria-describedby="pdf-help"
+            aria-describedby="pdf-help pdf-ai-summary"
             onDragEnter={(event) => {
               event.preventDefault();
               setIsDragging(true);
@@ -173,7 +173,9 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
               <UploadIcon className="size-5" aria-hidden="true" />
             </span>
             <span className="text-sm font-medium">{t("dropzone")}</span>
-            <span className="text-xs font-normal text-muted-foreground">{t("dropzoneHint", conversionLimits)}</span>
+            <span id="pdf-help" className="text-xs font-normal text-muted-foreground">
+              {t("dropzoneHint", conversionLimits)}
+            </span>
           </button>
           <Input
             ref={inputRef}
@@ -181,20 +183,27 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             type="file"
             accept=".pdf,application/pdf"
             aria-invalid={Boolean(errorMessage)}
-            aria-describedby="pdf-help"
+            aria-describedby="pdf-help pdf-ai-summary"
             className="hidden"
             onChange={handleInputChange}
           />
-          <FieldDescription id="pdf-help">{t("help")}</FieldDescription>
-          <p className="text-xs leading-5 text-muted-foreground">
-            {t.rich("aiNotice", {
-              link: (chunks) => (
-                <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
+          <div className="grid gap-1 text-xs leading-5 text-muted-foreground">
+            <p id="pdf-ai-summary">{t("aiSummary")}</p>
+            <details>
+              <summary className="w-fit cursor-pointer rounded-sm text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
+                {t("aiDetails")}
+              </summary>
+              <p className="mt-2">
+                {t.rich("aiNotice", {
+                  link: (chunks) => (
+                    <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </p>
+            </details>
+          </div>
         </Field>
       </FieldGroup>
 

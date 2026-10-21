@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversion de relevés bancaires PDF",
     "title": "Convertir un relevé bancaire PDF en Excel",
-    "description": "Convertissez vos relevés PDF en Excel avec aperçu et alertes. Professional et Enterprise peuvent essayer les scans avec un relais IA. Aucun historique permanent de fichiers."
+    "description": "Convertissez un relevé bancaire PDF en Excel ou CSV, puis vérifiez les transactions et alertes dans l’aperçu avant de télécharger."
   },
   "PdfUpload": {
     "title": "Importer un relevé bancaire",
     "description": "Traitez un PDF à la fois",
     "fileLabel": "Relevé bancaire PDF",
     "dropzone": "Choisissez un PDF ou déposez-le ici",
-    "dropzoneHint": "Importez un PDF qui s’ouvre normalement, limité à {megabytes, number} Mo et {pages, number} pages. Professional et Enterprise peuvent aussi essayer les PDF numérisés.",
-    "help": "Le nom du fichier apparaît après la sélection. Vous pouvez retirer le fichier à tout moment.",
+    "dropzoneHint": "Un PDF lisible à la fois, jusqu’à {megabytes, number} Mo · {pages, number} pages.",
     "errorTitle": "Cette opération n’a pas pu être terminée",
     "invalidPdf": "Le fichier téléversé n’est pas un PDF.",
     "multipleFiles": "Un seul PDF peut être traité à la fois.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Votre quota de conversion disponible n’a pas pu être déterminé.",
     "removeFile": "Retirer le fichier",
     "quota": "Quota gratuit : {anonymousPages, plural, one {# page} other {# pages}} par jour sans connexion, {authenticatedPages, plural, one {# page} other {# pages}} par jour après connexion",
-    "serviceReady": "Les fichiers sont utilisés uniquement pour cette conversion et ne sont pas enregistrés.",
+    "serviceReady": "Ce site ne conserve aucun historique permanent des fichiers.",
     "status": "Prêt à importer",
     "converting": "Conversion en cours",
     "start": "Convertir et vérifier",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
     "tooManyPages": "Ce PDF dépasse la limite de {pages, number} pages par fichier.",
     "unreadablePdf": "Impossible de lire ce PDF. Veuillez choisir un PDF qui s’ouvre normalement.",
-    "passwordProtectedPdf": "Ce PDF est protégé par un mot de passe. Retirez-le avant de téléverser le fichier."
+    "passwordProtectedPdf": "Ce PDF est protégé par un mot de passe. Retirez-le avant de téléverser le fichier.",
+    "aiSummary": "Professional et Enterprise peuvent tenter les scans. Le relais IA transmet le PDF complet et son nom au prestataire.",
+    "aiDetails": "Détails du traitement IA"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "Que permet ce convertisseur ?",
-    "securityTitle": "Mes fichiers PDF, Excel ou mes transactions sont-ils enregistrés ?",
-    "securityDescription": "Ce site ne conserve aucun historique permanent des PDF, fichiers Excel ou transactions. Le relais des forfaits supérieurs envoie le PDF au fournisseur d’analyse IA. Vérifiez les résultats avec le PDF original.",
-    "banksTitle": "Excel conserve-t-il la structure des tableaux ?",
-    "banksDescription": "Le convertisseur lit les en-têtes et le texte des cellules du PDF et les affiche sous forme de tableaux pour faciliter la comparaison avec le fichier original.",
-    "accuracyTitle": "Pourquoi vérifier le résultat de la conversion ?",
-    "accuracyDescription": "Les lignes dont les éléments sont incomplets ou mal alignés sont marquées « DISCREPANCY » ou « UNVERIFIABLE » avant le téléchargement."
+    "title": "Conversion de relevés bancaires",
+    "securityTitle": "Confidentialité des fichiers",
+    "securityDescription": "Aucun historique permanent des PDF, Excel ou transactions ; le relais IA envoie le PDF au prestataire.",
+    "banksTitle": "Extraction des tableaux",
+    "banksDescription": "Les en-têtes et cellules du relevé bancaire PDF sont affichés en tableaux pour comparaison avec l’original.",
+    "accuracyTitle": "Vérification des risques",
+    "accuracyDescription": "DISCREPANCY et UNVERIFIABLE signalent les données incomplètes ou mal alignées à vérifier avant téléchargement."
   },
   "UsageTiers": {
-    "title": "Quels sont les prix et quotas des offres ?",
-    "description": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Creem, PayPal ou Waffo.",
+    "title": "Offres et quotas de relevés bancaires",
+    "description": "Quotas gratuits renouvelés chaque jour, abonnements par période de facturation. Connectez-vous pour souscrire via Creem, PayPal ou Waffo.",
     "anonymous": "Sans vous connecter",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
-    "anonymousDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
     "signedIn": "Connecté",
     "signedInAmount": "{pages, plural, one {# page} other {# pages}}",
-    "signedInDescription": "Convertissez jusqu'à {pages, plural, one {# page} other {# pages}} de PDF par jour.",
     "perDay": "/ jour",
     "perMonth": "/ mois",
     "renewalNote": "Les abonnements se renouvellent automatiquement chaque mois. Vous pouvez annuler le renouvellement automatique dans votre <account>compte</account>. Consultez les <terms>conditions d’abonnement et de paiement</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Pour convertir vos propres relevés bancaires."
+        "description": "Pour vos relevés bancaires personnels."
       },
       "professional": {
         "name": "Professionnel",
-        "description": "Pour traiter régulièrement plusieurs relevés bancaires."
+        "description": "Pour traiter régulièrement des relevés bancaires."
       },
       "enterprise": {
         "name": "Entreprise",
-        "description": "Pour les utilisateurs qui doivent convertir davantage de pages chaque mois."
+        "description": "Pour de gros volumes de relevés bancaires."
       }
     },
     "aiParsing": "Relais IA automatique ; possibilité d’essayer les PDF scannés",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Pourquoi vérifier le résultat de la conversion ?",
-      "answer": "Le convertisseur conserve les en-têtes et le texte des cellules lorsque c’est possible. Une mise en page complexe, un texte flou ou des colonnes décalées peuvent marquer des lignes « DISCREPANCY » ou « UNVERIFIABLE ». Comparez le fichier Excel au PDF original avant de l’utiliser."
+      "answer": "La conversion de relevés bancaires conserve autant que possible les en-têtes et le texte des cellules. Une mise en page complexe, un texte flou ou des colonnes décalées peuvent produire DISCREPANCY ou UNVERIFIABLE. Vérifiez l’original avant toute comptabilisation, déclaration ou transmission."
     },
     "quota": {
       "question": "Combien de pages puis-je convertir chaque jour ?",
-      "answer": "Sans connexion, vous pouvez convertir {anonymousPages, plural, one {# page} other {# pages}} par jour. Après connexion, le quota est de {authenticatedPages, plural, one {# page} other {# pages}} par jour. Les forfaits mensuels comprennent {standardPages, plural, one {# page} other {# pages}} pour Standard, {professionalPages, plural, one {# page} other {# pages}} pour Professionnel et {enterprisePages, plural, one {# page} other {# pages}} pour Entreprise. Avant l’envoi, votre navigateur lit localement le nombre de pages du PDF et demande au site votre quota restant, sans transmettre le PDF ni consommer de quota. Le fichier est envoyé lorsque vous lancez la conversion ; le serveur vérifie toujours le fichier, les pages et le quota."
+      "answer": "Conversion gratuite de relevés bancaires : {anonymousPages, number} pages par jour sans connexion, {authenticatedPages, number} avec connexion. Par mois : Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pages. Le décompte suit les pages PDF. Le contrôle préalable compte les pages localement et consulte le quota sans envoyer le PDF ni consommer de pages. Le fichier est envoyé au lancement ; le serveur valide ensuite fichier, pages et quota."
     },
     "scans": {
       "question": "Puis-je convertir des PDF numérisés ou cryptés ?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "Que se passe-t-il si la conversion échoue ?",
-      "answer": "En cas d'échec, la page affiche une erreur et ne propose pas de fichier Excel invalide. Les conversions échouées ne consomment pas de quota. Pour les résultats partiels, le quota consommé correspond au nombre de pages du PDF."
+      "answer": "Si la conversion du relevé bancaire échoue, une erreur s’affiche sans téléchargement Excel invalide ni consommation de quota. Un résultat partiel compte toutes les pages PDF."
     },
     "ai": {
       "question": "Quand l’analyse IA est-elle utilisée ?",

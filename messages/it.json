@@ -52,15 +52,14 @@
   "HomeIntro": {
     "eyebrow": "Conversione di estratti conto PDF",
     "title": "Converti il tuo estratto conto da PDF a Excel",
-    "description": "Converti estratti conto PDF in Excel con anteprima e avvisi di rischio. Professional ed Enterprise possono provare le scansioni con IA. Nessuna cronologia permanente dei file."
+    "description": "Converti un estratto conto PDF in Excel o CSV e confronta movimenti e avvisi nell’anteprima prima di scaricare."
   },
   "PdfUpload": {
     "title": "Carica un estratto conto",
     "description": "Elabora un PDF alla volta",
     "fileLabel": "Estratto conto PDF",
     "dropzone": "Scegli un PDF o trascinalo qui",
-    "dropzoneHint": "Carica un PDF che si apra normalmente, fino a {megabytes, number} MB e {pages, number} pagine. Professional ed Enterprise possono provare anche i PDF scansionati.",
-    "help": "Il nome del file appare dopo la selezione. Puoi rimuoverlo in qualsiasi momento.",
+    "dropzoneHint": "Un PDF leggibile alla volta, fino a {megabytes, number} MB · {pages, number} pagine.",
     "errorTitle": "Non è stato possibile completare questa operazione",
     "invalidPdf": "Il file caricato non è un PDF.",
     "multipleFiles": "Carica un PDF alla volta.",
@@ -70,7 +69,7 @@
     "quotaUnavailable": "Non è stato possibile determinare la quota di conversione disponibile.",
     "removeFile": "Rimuovi file",
     "quota": "Pagine gratuite: {anonymousPages, number} al giorno senza accesso, {authenticatedPages, number} al giorno dopo l'accesso",
-    "serviceReady": "Usiamo i file solo per questa conversione e non li salviamo.",
+    "serviceReady": "Questo sito non mantiene una cronologia permanente dei file.",
     "status": "Pronto per il caricamento",
     "converting": "Conversione in corso",
     "start": "Converti e controlla",
@@ -92,7 +91,9 @@
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagine}}",
     "tooManyPages": "Questo PDF supera il limite di {pages, number} pagine per file.",
     "unreadablePdf": "Impossibile leggere il PDF. Scegli un PDF che si apra normalmente.",
-    "passwordProtectedPdf": "Questo PDF è protetto da password. Rimuovi la password prima di caricarlo."
+    "passwordProtectedPdf": "Questo PDF è protetto da password. Rimuovi la password prima di caricarlo.",
+    "aiSummary": "Professional ed Enterprise possono tentare le scansioni. Il passaggio all’IA invia il PDF completo e il nome al fornitore.",
+    "aiDetails": "Dettagli del trattamento IA"
   },
   "ConversionResult": {
     "metadata": {
@@ -266,23 +267,21 @@
     }
   },
   "HomeFeatures": {
-    "title": "Cosa può fare questo convertitore?",
-    "securityTitle": "Salvate il mio PDF, il file Excel o i movimenti?",
-    "securityDescription": "Questo sito non conserva PDF, Excel o transazioni in una cronologia permanente. Il passaggio all’IA nei piani superiori invia il PDF al fornitore di analisi IA. Verifica i risultati con l’originale.",
-    "banksTitle": "Excel conserva la struttura delle tabelle?",
-    "banksDescription": "Il convertitore legge intestazioni e testo delle celle dal PDF e li mostra in tabelle da confrontare con l'originale.",
-    "accuracyTitle": "Perché devo controllare il risultato?",
-    "accuracyDescription": "Le righe con dati incompleti o problemi di allineamento sono contrassegnate con DISCREPANCY o UNVERIFIABLE prima del download."
+    "title": "Conversione degli estratti conto",
+    "securityTitle": "Privacy dei file",
+    "securityDescription": "Nessuna cronologia permanente di PDF, Excel o movimenti; il passaggio all’IA invia il PDF al fornitore.",
+    "banksTitle": "Estrazione delle tabelle",
+    "banksDescription": "Intestazioni e celle dell’estratto conto PDF sono mostrate in tabelle da confrontare con l’originale.",
+    "accuracyTitle": "Controllo dei rischi",
+    "accuracyDescription": "DISCREPANCY e UNVERIFIABLE segnalano dati incompleti o righe disallineate prima del download."
   },
   "UsageTiers": {
-    "title": "Quanto costano i piani e cosa includono?",
-    "description": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem, PayPal o Waffo.",
+    "title": "Piani e quote per estratti conto",
+    "description": "Quote gratuite giornaliere e abbonamenti per periodo di fatturazione. Accedi per abbonarti con Creem, PayPal o Waffo.",
     "anonymous": "Senza accesso",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagine}}",
-    "anonymousDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
     "signedIn": "Con accesso",
     "signedInAmount": "{pages, plural, one {# pagina} other {# pagine}}",
-    "signedInDescription": "Converti fino a {pages, plural, one {# pagina} other {# pagine}} PDF al giorno.",
     "perDay": "/ giorno",
     "perMonth": "/ mese",
     "renewalNote": "Gli abbonamenti si rinnovano automaticamente ogni mese. Puoi annullare il rinnovo automatico dal tuo <account>account</account>. Consulta le <terms>condizioni di abbonamento e pagamento</terms>.",
@@ -292,15 +291,15 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Per chi converte estratti conto per uso personale."
+        "description": "Per estratti conto personali."
       },
       "professional": {
         "name": "Professionale",
-        "description": "Per chi elabora regolarmente più estratti conto."
+        "description": "Per elaborare regolarmente estratti conto."
       },
       "enterprise": {
         "name": "Aziendale",
-        "description": "Per chi deve convertire più pagine ogni mese."
+        "description": "Per grandi volumi di estratti conto."
       }
     },
     "aiParsing": "Passaggio automatico all’IA; possibilità di provare PDF scansionati",
@@ -368,11 +367,11 @@
     },
     "accuracy": {
       "question": "Perché devo controllare il risultato?",
-      "answer": "Il convertitore mantiene intestazioni e testo delle celle quando possibile. Formati complessi, testo poco chiaro o colonne disallineate possono produrre righe DISCREPANCY o UNVERIFIABLE. Confronta il file Excel con il PDF originale prima di usarlo."
+      "answer": "La conversione degli estratti conto conserva intestazioni e celle quando possibile. Layout complessi, testo sfocato o colonne disallineate possono produrre DISCREPANCY o UNVERIFIABLE. Confronta il PDF prima di registrare, dichiarare o presentare i dati."
     },
     "quota": {
       "question": "Quante pagine posso convertire al giorno?",
-      "answer": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} al giorno; dopo l'accesso, {authenticatedPages, plural, one {# pagina} other {# pagine}}. I piani mensili includono {standardPages, plural, one {# pagina} other {# pagine}} per Standard, {professionalPages, number} per Professionale e {enterprisePages, number} per Aziendale. Prima del caricamento, il browser legge localmente il numero di pagine del PDF e chiede al sito la quota residua, senza inviare il PDF né consumare quota. Il file viene caricato quando avvii la conversione; il server verifica comunque file, pagine e quota."
+      "answer": "Conversione gratuita degli estratti conto: {anonymousPages, number} pagine al giorno senza accesso, {authenticatedPages, number} con accesso. Al mese: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagine. Si contano le pagine PDF. Il controllo preliminare legge le pagine localmente e consulta la quota senza inviare il PDF né consumare pagine. Il file viene inviato all’avvio; il server convalida file, pagine e quota."
     },
     "scans": {
       "question": "Posso convertire PDF scansionati o crittografati?",
@@ -384,7 +383,7 @@
     },
     "failure": {
       "question": "Cosa succede se la conversione non riesce?",
-      "answer": "La pagina mostra un errore e non propone un file Excel non valido. Le conversioni non riuscite non consumano pagine disponibili. I risultati parziali vengono conteggiati in base al numero di pagine del PDF."
+      "answer": "Se la conversione dell’estratto conto fallisce, compare un errore, senza Excel non valido né consumo di quota. I risultati parziali contano tutte le pagine PDF."
     },
     "ai": {
       "question": "Quando viene usata l’analisi IA?",
