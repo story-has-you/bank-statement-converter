@@ -687,7 +687,13 @@
     "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
     "parsingHeader": "Analysefunktionen",
     "merchantTitle": "Wie lassen sich Händlernamen vereinheitlichen?",
-    "merchantAnswer": "Wählen Sie im Endergebnis für jede Tabelle eine Namens- oder Beschreibungsspalte. Exakt gleiche Originaltexte werden innerhalb dieser Datei tabellenübergreifend gruppiert; Aliase können Sie manuell bestätigen, umbenennen oder aufheben. Originaltext, Reihenfolge, Quellen und Extraktionsrisiken bleiben erhalten. Händleridentitäten werden nicht abgeleitet und es gibt keine zusätzliche Modellanfrage. Bestätigte Namen und ein eigener Zuordnungsstatus erscheinen in der Vorschau und allen sechs Exportformaten. In JSON heißen die Felder merchantName und merchantNormalizationStatus: nicht zugeordnete Namen sind null mit Status unassigned, zugeordnete Namen haben den Status confirmed. Die Zuordnungen bleiben mit dem Ergebnis vorübergehend in der Sitzung dieses Tabs und werden nicht für andere Dateien verwendet. Das Aufheben aller Zuordnungen stellt die ursprünglichen Exportfelder wieder her."
+    "merchantAnswer": "Wählen Sie im Endergebnis für jede Tabelle eine Namens- oder Beschreibungsspalte. Exakt gleiche Originaltexte werden innerhalb dieser Datei tabellenübergreifend gruppiert; Aliase können Sie manuell bestätigen, umbenennen oder aufheben. Originaltext, Reihenfolge, Quellen und Extraktionsrisiken bleiben erhalten. Händleridentitäten werden nicht abgeleitet und es gibt keine zusätzliche Modellanfrage. Bestätigte Namen und ein eigener Zuordnungsstatus erscheinen in der Vorschau und allen sechs Exportformaten. In JSON heißen die Felder merchantName und merchantNormalizationStatus: nicht zugeordnete Namen sind null mit Status unassigned, zugeordnete Namen haben den Status confirmed. Die Zuordnungen bleiben mit dem Ergebnis vorübergehend in der Sitzung dieses Tabs und werden nicht für andere Dateien verwendet. Das Aufheben aller Zuordnungen stellt die ursprünglichen Exportfelder wieder her.",
+    "linkInstructions": "Der Link enthält den Prompt",
+    "pasteInstructions": "1. Prompt kopieren. 2. Einen Dienst öffnen und in einen neuen Chat einfügen. Selbst prüfen und senden.",
+    "copyPrompt": "Prompt kopieren",
+    "copying": "Wird kopiert…",
+    "copied": "Kopiert. Öffnen Sie unten einen Dienst und fügen Sie den Prompt ein.",
+    "copyFailed": "Kopieren fehlgeschlagen. Wählen und kopieren Sie den Prompt unten manuell, öffnen Sie dann einen Dienst und fügen Sie ihn ein."
   },
   "BillingReturn": {
     "title": "Abonnement bestätigen",

@@ -687,7 +687,13 @@
     "analyticsAnswer": "Google Analytics y Pageview pueden procesar información técnica de visitas. Los extractos, transacciones extraídas y contenido Excel no se envían a estos servicios.",
     "parsingHeader": "Capacidad de análisis",
     "merchantTitle": "¿Cómo puedo unificar los nombres de comercios?",
-    "merchantAnswer": "En cada tabla del resultado final, seleccione una columna de nombres o descripciones. Los textos originales exactamente iguales se agrupan entre tablas de este archivo para confirmar, renombrar o retirar sus alias manualmente. El texto original, el orden, las fuentes y los riesgos de extracción permanecen intactos; no se deduce la identidad del comercio ni se realizan llamadas adicionales al modelo. Los nombres confirmados y un estado independiente aparecen en la vista previa y los seis formatos de exportación. En JSON, los campos son merchantName y merchantNormalizationStatus: los nombres sin asignar son null con estado unassigned y los asignados tienen estado confirmed. Las correspondencias permanecen temporalmente con el resultado en la sesión de esta pestaña y no se reutilizan en otro archivo. Al retirarlas todas se recuperan los campos de exportación originales."
+    "merchantAnswer": "En cada tabla del resultado final, seleccione una columna de nombres o descripciones. Los textos originales exactamente iguales se agrupan entre tablas de este archivo para confirmar, renombrar o retirar sus alias manualmente. El texto original, el orden, las fuentes y los riesgos de extracción permanecen intactos; no se deduce la identidad del comercio ni se realizan llamadas adicionales al modelo. Los nombres confirmados y un estado independiente aparecen en la vista previa y los seis formatos de exportación. En JSON, los campos son merchantName y merchantNormalizationStatus: los nombres sin asignar son null con estado unassigned y los asignados tienen estado confirmed. Las correspondencias permanecen temporalmente con el resultado en la sesión de esta pestaña y no se reutilizan en otro archivo. Al retirarlas todas se recuperan los campos de exportación originales.",
+    "linkInstructions": "El enlace incluye la indicación",
+    "pasteInstructions": "1. Copia la indicación. 2. Abre un servicio y pégala en un chat nuevo. Revísala y envíala tú mismo.",
+    "copyPrompt": "Copiar indicación",
+    "copying": "Copiando…",
+    "copied": "Copiado. Abre un servicio de abajo y pega la indicación.",
+    "copyFailed": "No se pudo copiar. Selecciona y copia manualmente la indicación de abajo; después abre un servicio y pégala."
   },
   "BillingReturn": {
     "title": "Confirmación de suscripción",

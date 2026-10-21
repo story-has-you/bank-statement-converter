@@ -687,7 +687,13 @@
     "analyticsAnswer": "Google Analytics en Pageview kunnen technische bezoekgegevens verwerken. Bankafschriften, uitgelezen transacties en Excel-inhoud worden niet naar deze diensten verzonden.",
     "parsingHeader": "Analysemogelijkheden",
     "merchantTitle": "Hoe kan ik handelaarsnamen normaliseren?",
-    "merchantAnswer": "Kies in elke tabel van het eindresultaat een naam- of beschrijvingskolom. Exact gelijke oorspronkelijke teksten worden binnen dit bestand over tabellen heen gegroepeerd om aliassen handmatig te bevestigen, te hernoemen of te verwijderen. Oorspronkelijke tekst, volgorde, bronnen en extractierisico’s blijven intact; er wordt geen identiteit afgeleid en er is geen extra modelaanvraag. Bevestigde namen en een afzonderlijke status verschijnen in het voorbeeld en alle zes exportformaten. In JSON heten de velden merchantName en merchantNormalizationStatus: niet-toegewezen namen zijn null met status unassigned; toegewezen namen hebben status confirmed. Koppelingen blijven tijdelijk met het resultaat in de sessie van dit tabblad en worden niet voor een ander bestand gebruikt. Alle koppelingen verwijderen herstelt de oorspronkelijke exportvelden."
+    "merchantAnswer": "Kies in elke tabel van het eindresultaat een naam- of beschrijvingskolom. Exact gelijke oorspronkelijke teksten worden binnen dit bestand over tabellen heen gegroepeerd om aliassen handmatig te bevestigen, te hernoemen of te verwijderen. Oorspronkelijke tekst, volgorde, bronnen en extractierisico’s blijven intact; er wordt geen identiteit afgeleid en er is geen extra modelaanvraag. Bevestigde namen en een afzonderlijke status verschijnen in het voorbeeld en alle zes exportformaten. In JSON heten de velden merchantName en merchantNormalizationStatus: niet-toegewezen namen zijn null met status unassigned; toegewezen namen hebben status confirmed. Koppelingen blijven tijdelijk met het resultaat in de sessie van dit tabblad en worden niet voor een ander bestand gebruikt. Alle koppelingen verwijderen herstelt de oorspronkelijke exportvelden.",
+    "linkInstructions": "De link bevat de prompt",
+    "pasteInstructions": "1. Kopieer de prompt. 2. Open een dienst en plak deze in een nieuwe chat. Controleer en verstuur zelf.",
+    "copyPrompt": "Prompt kopiëren",
+    "copying": "Bezig met kopiëren…",
+    "copied": "Gekopieerd. Open hieronder een dienst en plak de prompt.",
+    "copyFailed": "Kopiëren mislukt. Selecteer en kopieer de prompt hieronder handmatig, open daarna een dienst en plak deze."
   },
   "BillingReturn": {
     "title": "Abonnement bevestigen",
