@@ -95,7 +95,7 @@ export async function findEntitledBillingSubscription(userId: string): Promise<B
 export async function updateBillingSubscriptionFromWebhook(
   subscription: BillingSubscription,
   event: { id: string; at: string; type?: string },
-  changes: { status: SubscriptionStatus } | { status?: "ACTIVE"; current_period_start: string; current_period_end: string },
+  changes: { status: SubscriptionStatus } | { status?: "ACTIVE" | "CANCELLED"; current_period_start: string; current_period_end: string },
 ): Promise<"applied" | "ignored"> {
   if (subscription.last_webhook_event_id === event.id) {
     return "ignored";
@@ -106,7 +106,13 @@ export async function updateBillingSubscriptionFromWebhook(
     return "ignored";
   }
   const resumingCancellation = event.type === "subscription-resumed" && changes.status === "ACTIVE";
-  if (subscription.status === "EXPIRED" || (subscription.status === "CANCELLED" && !resumingCancellation)) {
+  // 已取消续费不妨碍补齐已核实的新账期，但付款不能撤销取消。
+  const advancingCancelledPeriod =
+    event.type === "subscription-paid" &&
+    changes.status === "CANCELLED" &&
+    "current_period_end" in changes &&
+    Date.parse(changes.current_period_end) > Date.parse(subscription.current_period_end ?? "");
+  if (subscription.status === "EXPIRED" || (subscription.status === "CANCELLED" && !resumingCancellation && !advancingCancelledPeriod)) {
     return "ignored";
   }
 

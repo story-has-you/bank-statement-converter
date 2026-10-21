@@ -20,7 +20,6 @@ from .table_parser import (
     RawTable,
     extract_page_tables,
     merge_compatible_tables,
-    page_contains_transaction_evidence,
 )
 
 
@@ -45,10 +44,9 @@ def parse_statement(data: bytes, filename: str) -> ParseResponse:
                     errors.append(ParseError(code="PAGE_IMAGE_UNPARSED", page=page_number))
                 continue
             try:
-                page_tables = extract_page_tables(page, page_number)
+                page_tables, page_errors = extract_page_tables(page, page_number, words)
                 raw_tables.extend(page_tables)
-                if not page_tables and page_contains_transaction_evidence(words):
-                    errors.append(ParseError(code="PAGE_UNPARSED", page=page_number))
+                errors.extend(page_errors)
             except Exception:
                 errors.append(ParseError(code="PAGE_PARSE_FAILED", page=page_number))
 

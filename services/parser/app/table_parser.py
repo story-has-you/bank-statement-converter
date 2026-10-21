@@ -6,7 +6,9 @@ from dataclasses import dataclass, field
 import re
 from typing import Any
 
-from .models import ParseIssue
+from pdfplumber.utils import objects_to_bbox
+
+from .models import ParseError, ParseIssue
 from .pdf_reader import filter_watermark_page
 from .row_validation import (
     is_amount_column,
@@ -96,6 +98,7 @@ class RawTable:
     page_end: int
     headers: list[str]
     rows: list[RawRow]
+    bbox: tuple[float, float, float, float]
     warnings: list[ParseIssue] = field(default_factory=list)
 
 
@@ -105,15 +108,44 @@ class _WordLine:
     top: float
 
 
-def extract_page_tables(page: Any, page_number: int) -> list[RawTable]:
-    """Extract bordered tables first and use coordinate reconstruction as fallback."""
+def extract_page_tables(
+    page: Any,
+    page_number: int,
+    words: list[dict[str, object]],
+) -> tuple[list[RawTable], list[ParseError]]:
+    """Keep bordered tables and reconstruct the remaining page text."""
 
     page = filter_watermark_page(page)
-    tables = _extract_pdfplumber_tables(page, page_number)
-    if tables:
-        return tables
+    lines = _group_words_into_lines(words)
+    tables = _extract_pdfplumber_tables(page, page_number, lines)
+    covered = [table.bbox for table in tables]
+    # Keep empty line slots so removing a grid does not renumber page sources.
+    remaining_lines = [
+        _WordLine(
+            words=[
+                word for word in line.words
+                if not any(_word_in_bbox(word, bbox) for bbox in covered)
+            ],
+            top=line.top,
+        )
+        for line in lines
+    ]
+    tables.extend(_rebuild_tables_from_lines(remaining_lines, page_number))
+    tables.sort(key=lambda table: (table.bbox[1], table.bbox[0]))
 
-    return _rebuild_table_from_words(page, page_number)
+    uncovered = [word for line in remaining_lines for word in line.words]
+    errors = []
+    if page_contains_transaction_evidence(uncovered):
+        errors.append(ParseError(code="PAGE_UNPARSED", page=page_number))
+    return tables, errors
+
+
+def _word_in_bbox(
+    word: dict[str, object], bbox: tuple[float, float, float, float]
+) -> bool:
+    x = (float(word["x0"]) + float(word["x1"])) / 2
+    y = (float(word["top"]) + float(word["bottom"])) / 2
+    return bbox[0] <= x <= bbox[2] and bbox[1] <= y <= bbox[3]
 
 
 def page_contains_transaction_evidence(words: list[dict[str, object]]) -> bool:
@@ -149,6 +181,7 @@ def merge_compatible_tables(tables: list[RawTable]) -> list[RawTable]:
 def _extract_pdfplumber_tables(
     page: Any,
     page_number: int,
+    lines: list[_WordLine],
 ) -> list[RawTable]:
     try:
         found_tables = page.find_tables()
@@ -161,14 +194,27 @@ def _extract_pdfplumber_tables(
             rows = table.extract()
         except Exception:
             continue
-        parsed = _raw_table_from_rows(rows, page_number)
+        source_rows = [
+            sum(line.top < row.bbox[1] for line in lines) + 1
+            for row in table.rows
+        ]
+        parsed = _raw_table_from_rows(rows, page_number, table.bbox, source_rows)
         if parsed is not None:
             extracted.append(parsed)
     return extracted
 
 
-def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable | None:
+def _raw_table_from_rows(
+    rows: list[list[object]],
+    page_number: int,
+    bbox: tuple[float, float, float, float],
+    source_rows: list[int],
+) -> RawTable | None:
     cleaned_rows = [[_clean_cell(cell) for cell in row] for row in rows]
+    source_rows = [
+        source for cells, source in zip(cleaned_rows, source_rows)
+        if any(cell is not None for cell in cells)
+    ]
     cleaned_rows = [row for row in cleaned_rows if any(cell is not None for cell in row)]
     if not cleaned_rows:
         return None
@@ -200,11 +246,12 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
     parsed_rows: list[RawRow] = []
     table_warnings: list[ParseIssue] = []
     for offset, cells in enumerate(cleaned_rows[data_start:], start=data_start + 1):
+        source_row = source_rows[offset - 1]
         if _is_repeated_header(cells, headers):
-            table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": offset}))
+            table_warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": source_row}))
             continue
         if _is_summary_row(cells, headers):
-            table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": offset}))
+            table_warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": source_row}))
             continue
         if _is_opening_balance(cells, headers):
             continue
@@ -221,52 +268,28 @@ def _raw_table_from_rows(rows: list[list[object]], page_number: int) -> RawTable
                     RawRow(
                         cells=cells,
                         page=page_number,
-                        row=offset,
+                        row=source_row,
                         warnings=[ParseIssue(code="UNVERIFIABLE_ROW")],
                         failed=True,
                     )
                 )
                 continue
             break
-        parsed_rows.append(RawRow(cells=cells, page=page_number, row=offset))
+        parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row))
 
     if not parsed_rows:
         return None
     if _requires_coordinate_rebuild(headers, parsed_rows):
         return None
-    return RawTable(page_number, page_number, headers, parsed_rows, table_warnings)
+    return RawTable(page_number, page_number, headers, parsed_rows, bbox, table_warnings)
 
 
-def _rebuild_table_from_words(
-    page: Any,
+def _rebuild_tables_from_lines(
+    lines: list[_WordLine],
     page_number: int,
-    extracted_words: list[dict[str, object]] | None = None,
 ) -> list[RawTable]:
-    if extracted_words is None:
-        try:
-            words = page.extract_words(
-                x_tolerance=3,
-                y_tolerance=3,
-                keep_blank_chars=False,
-                use_text_flow=False,
-            )
-        except Exception:
-            return []
-    else:
-        words = extracted_words
+    """Reconstruct tables and remove only the lines they actually consumed."""
 
-    normalized_words = [
-        {
-            "text": str(word.get("text", "")).strip(),
-            "x0": float(word.get("x0", 0)),
-            "x1": float(word.get("x1", 0)),
-            "top": float(word.get("top", 0)),
-            "bottom": float(word.get("bottom", 0)),
-        }
-        for word in words
-        if str(word.get("text", "")).strip()
-    ]
-    lines = _group_words_into_lines(normalized_words)
     if len(lines) < 2:
         return []
 
@@ -305,6 +328,7 @@ def _rebuild_table_segment(
     }
     parsed_rows: list[RawRow] = []
     warnings: list[ParseIssue] = []
+    covered_lines = [header_index]
     seen_data = False
     last_data_top: float | None = None
 
@@ -317,34 +341,38 @@ def _rebuild_table_segment(
             break
         if _is_repeated_header(cells, headers):
             warnings.append(ParseIssue(code="REPEATED_HEADER", params={"row": source_row}))
-            continue
-        if _is_summary_row(cells, headers):
+        elif _is_summary_row(cells, headers):
             warnings.append(ParseIssue(code="SUMMARY_ROW", params={"row": source_row}))
-            continue
-        if _is_page_number(cells):
-            continue
-        if _is_opening_balance(cells, headers):
-            continue
-        if not _is_data_candidate(headers, cells):
+        elif _is_page_number(cells) or _is_opening_balance(cells, headers):
+            pass
+        elif not _is_data_candidate(headers, cells):
             continuation_index = _continuation_column(cells, headers)
-            if (
+            if not (
                 seen_data
                 and continuation_index is not None
                 and last_data_top is not None
                 and line.top - last_data_top <= 60
             ):
-                previous = parsed_rows[-1].cells[continuation_index]
-                parsed_rows[-1].cells[continuation_index] = _clean_text(
-                    f"{previous or ''} {cells[continuation_index] or ''}"
-                )
-            continue
-        seen_data = True
-        parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row))
-        last_data_top = line.top
+                continue
+            previous = parsed_rows[-1].cells[continuation_index]
+            parsed_rows[-1].cells[continuation_index] = _clean_text(
+                f"{previous or ''} {cells[continuation_index] or ''}"
+            )
+        else:
+            seen_data = True
+            parsed_rows.append(RawRow(cells=cells, page=page_number, row=source_row))
+            last_data_top = line.top
+        covered_lines.append(line_index - 1)
 
     if not parsed_rows:
         return None
-    return RawTable(page_number, page_number, headers, parsed_rows, warnings)
+    table_words = [word for index in covered_lines for word in lines[index].words]
+    table = RawTable(
+        page_number, page_number, headers, parsed_rows, objects_to_bbox(table_words), warnings
+    )
+    for index in covered_lines:
+        lines[index].words = []
+    return table
 
 
 def _group_words_into_lines(words: list[dict[str, object]]) -> list[_WordLine]:

@@ -83,7 +83,11 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   if (existing?.last_webhook_event_id === notification.id) {
     return "ignored";
   }
-  if (existing?.last_event_at && Date.parse(notification.at) < Date.parse(existing.last_event_at)) {
+  if (
+    notification.type !== "subscription-paid" &&
+    existing?.last_event_at &&
+    Date.parse(notification.at) < Date.parse(existing.last_event_at)
+  ) {
     return "ignored";
   }
   const event = await notification.resolve();
@@ -103,10 +107,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   if (event.type !== "subscription-paid") {
     throw new Error("Unexpected payment notification");
   }
-  if (
-    ["EXPIRED", "SUSPENDED"].includes(remote.status) ||
-    (existing && (["CANCELLED", "EXPIRED"].includes(existing.status) || remote.status === "CANCELLED"))
-  ) {
+  if (["EXPIRED", "SUSPENDED"].includes(remote.status) || existing?.status === "EXPIRED") {
     return "ignored";
   }
   const start = requireTime(remote.periodStart);
@@ -117,6 +118,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
   if (!existing) {
     return insertConfirmedSubscription(event, remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE");
   }
+  const status = existing.status === "CANCELLED" || remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE";
   const previousEnd = requireTime(existing.current_period_end);
   if (end < previousEnd || start < requireTime(existing.current_period_start)) {
     return "ignored";
@@ -125,16 +127,16 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
     if (start !== requireTime(existing.current_period_start)) {
       throw new Error("Paid subscription period changed unexpectedly");
     }
-    if (existing.status === "ACTIVE") {
+    if (existing.status === "ACTIVE" || existing.status === "CANCELLED") {
       return "ignored";
     }
-    return updateBillingSubscriptionFromWebhook(existing, event, { status: "ACTIVE" });
+    return updateBillingSubscriptionFromWebhook(existing, event, { status });
   }
   if (start < previousEnd) {
     throw new Error("Paid subscription period overlaps the previous period");
   }
   return updateBillingSubscriptionFromWebhook(existing, event, {
-    status: "ACTIVE",
+    status,
     current_period_start: remote.periodStart!,
     current_period_end: remote.periodEnd!,
   });
