@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   const requestedLocale = searchParams.get("locale");
   const locale = routing.locales.find((supportedLocale) => supportedLocale === requestedLocale) ?? routing.defaultLocale;
-  const redirectPath = getLocalizedPath(locale, "/") + (searchParams.get("returnTo") === "plans" ? "#plans" : "");
+  const redirectPath = getLocalizedPath(locale, "/");
 
   if (code) {
     const supabase = await createClient();

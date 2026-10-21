@@ -8,7 +8,7 @@ import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/browser";
 
-export function GoogleSignInButton({ returnTo }: { returnTo?: "plans" }) {
+export function GoogleSignInButton() {
   const { status, configured } = usePublicAccount();
   const t = useTranslations("AuthControl");
   const locale = useLocale();
@@ -30,9 +30,6 @@ export function GoogleSignInButton({ returnTo }: { returnTo?: "plans" }) {
     try {
       const callback = new URL("/api/auth/callback", window.location.origin);
       callback.searchParams.set("locale", locale);
-      if (returnTo) {
-        callback.searchParams.set("returnTo", returnTo);
-      }
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: { redirectTo: callback.toString() },

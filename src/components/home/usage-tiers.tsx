@@ -14,7 +14,7 @@ export async function UsageTiers() {
   const checkouts = getCheckoutConfigs();
 
   return (
-    <ClientMessages namespaces={["UsageTiers", "Billing", "AuthControl"]}>
+    <ClientMessages namespaces={["UsageTiers", "Billing"]}>
       <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
         <div className="mx-auto w-full max-w-5xl px-5 py-12 sm:px-8 sm:py-14">
           <div className="flex flex-col gap-2">
@@ -23,8 +23,6 @@ export async function UsageTiers() {
             </h2>
             <p className="text-sm leading-6 text-muted-foreground">{t("description")}</p>
           </div>
-
-          <PublicPlanState />
 
           <div className="mt-7 grid border-y border-border sm:grid-cols-2 sm:divide-x sm:divide-border">
             <div className="flex items-center justify-between gap-4 py-4 sm:pr-6">
@@ -42,6 +40,8 @@ export async function UsageTiers() {
               </p>
             </div>
           </div>
+
+          <PublicPlanState />
 
           <p className="mt-8 text-sm leading-6 text-muted-foreground">
             {t.rich("renewalNote", {
