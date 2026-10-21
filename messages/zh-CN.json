@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "账号",
     "signInWithGoogle": "Google 登录",
+    "signingIn": "正在登录…",
     "signOut": "退出登录",
     "unavailable": "登录服务尚未完成配置。",
     "signInFailed": "未能发起 Google 登录。",

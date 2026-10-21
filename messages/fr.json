@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Compte",
     "signInWithGoogle": "Se connecter avec Google",
+    "signingIn": "Connexion en cours…",
     "signOut": "Se déconnecter",
     "unavailable": "La connexion n’a pas été configurée.",
     "signInFailed": "La connexion Google n’a pas pu être lancée.",

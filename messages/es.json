@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Cuenta",
     "signInWithGoogle": "Iniciar sesión con Google",
+    "signingIn": "Iniciando sesión…",
     "signOut": "Cerrar sesión",
     "unavailable": "El inicio de sesión no está configurado.",
     "signInFailed": "No se pudo iniciar el acceso con Google.",

@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Akun",
     "signInWithGoogle": "Masuk dengan Google",
+    "signingIn": "Sedang masuk…",
     "signOut": "Keluar",
     "unavailable": "Layanan login belum dikonfigurasi.",
     "signInFailed": "Login Google tidak dapat dimulai.",

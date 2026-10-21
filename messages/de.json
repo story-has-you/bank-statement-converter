@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Konto",
     "signInWithGoogle": "Mit Google anmelden",
+    "signingIn": "Anmeldung läuft…",
     "signOut": "Abmelden",
     "unavailable": "Die Anmeldung ist noch nicht konfiguriert.",
     "signInFailed": "Die Google-Anmeldung konnte nicht gestartet werden.",

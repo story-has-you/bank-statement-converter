@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "खाता",
     "signInWithGoogle": "Google से साइन इन करें",
+    "signingIn": "साइन इन हो रहा है…",
     "signOut": "साइन आउट करें",
     "unavailable": "लॉगिन सेवा का कॉन्फ़िगरेशन पूरा नहीं हुआ है।",
     "signInFailed": "Google लॉगिन शुरू नहीं हो सका।",

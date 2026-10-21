@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Account",
     "signInWithGoogle": "Inloggen met Google",
+    "signingIn": "Bezig met inloggen…",
     "signOut": "Uitloggen",
     "unavailable": "Het aanmelden is nog niet ingesteld.",
     "signInFailed": "Het aanmelden met Google kon niet worden gestart.",

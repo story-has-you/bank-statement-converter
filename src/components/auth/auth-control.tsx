@@ -1,12 +1,13 @@
 "use client";
 
-import { LogInIcon, LogOutIcon } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { LogOutIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useConversion } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
@@ -14,39 +15,15 @@ import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/browser";
 
 export function AuthControl() {
-  const { status, configured, user } = usePublicAccount();
+  const { user } = usePublicAccount();
   const email = user?.email ?? null;
   const imageUrl = user?.avatarUrl ?? null;
   const signedIn = Boolean(user);
   const t = useTranslations("AuthControl");
-  const locale = useLocale();
   const router = useRouter();
   const conversion = useConversion();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  async function signIn() {
-    setError(null);
-    const supabase = createClient();
-    if (!supabase) {
-      setError(t("unavailable"));
-      return;
-    }
-
-    setPending(true);
-    try {
-      const { error: authError } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: `${window.location.origin}/api/auth/callback?locale=${encodeURIComponent(locale)}` },
-      });
-      if (authError) {
-        throw authError;
-      }
-    } catch {
-      setError(t("signInFailed"));
-      setPending(false);
-    }
-  }
 
   async function signOut() {
     setError(null);
@@ -95,15 +72,7 @@ export function AuthControl() {
             </Tooltip>
           </>
         ) : (
-          <Button
-            variant="outline"
-            disabled={pending || !configured || status === "loading"}
-            onClick={signIn}
-            title={!configured ? t("unavailable") : undefined}
-          >
-            <LogInIcon data-icon="inline-start" />
-            {t("signInWithGoogle")}
-          </Button>
+          <GoogleSignInButton />
         )}
       </div>
       {error && (

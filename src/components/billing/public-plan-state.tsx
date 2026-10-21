@@ -3,6 +3,7 @@
 import { useFormatter, useTranslations } from "next-intl";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { SubscriptionOptions } from "@/components/billing/subscription-options";
 import type { CheckoutConfig } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
@@ -15,8 +16,15 @@ export function PublicPlanState({ tier, checkouts }: { tier?: MembershipTier; ch
     return null;
   }
   if (!tier) {
+    if (!summary.user) {
+      return (
+        <div className="mt-4">
+          <GoogleSignInButton returnTo="plans" />
+        </div>
+      );
+    }
     return summary.cancelledPeriodEnd ? (
-      <p role="status" className="mt-8 text-sm text-muted-foreground">
+      <p role="status" className="mt-4 text-sm text-muted-foreground">
         {t("cancelledPeriodActive", {
           date: format.dateTime(new Date(summary.cancelledPeriodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }),
         })}

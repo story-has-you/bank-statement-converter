@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "アカウント",
     "signInWithGoogle": "Googleでログイン",
+    "signingIn": "ログイン中…",
     "signOut": "ログアウト",
     "unavailable": "ログインサービスの設定が完了していません。",
     "signInFailed": "Googleログインを開始できませんでした。",

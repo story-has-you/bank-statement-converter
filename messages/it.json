@@ -33,6 +33,7 @@
   "AuthControl": {
     "account": "Account",
     "signInWithGoogle": "Accedi con Google",
+    "signingIn": "Accesso in corso…",
     "signOut": "Esci",
     "unavailable": "L’accesso non è stato configurato.",
     "signInFailed": "Non è stato possibile avviare l’accesso con Google.",
