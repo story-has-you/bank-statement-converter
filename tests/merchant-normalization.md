@@ -72,3 +72,46 @@ build, using only the synthetic `createMerchantFixture()` in
    **4 / 5** mappings and transactions. No browser runtime errors occur.
 
 All checks above passed. No production conversion or real statement was used.
+
+## Hidden selection acceptance — Issue #52
+
+Issue: [#52](https://github.com/story-has-you/bank-statement-converter/issues/52).
+The implementation was already merged: fix `cae4aff`, merge `2e52abd`.
+Revalidated on 2026-10-21 (Asia/Shanghai), at `master` commit `fe422f0`,
+using the existing local Next.js development server on port 3000 and
+Chromium 156.0.0.0 through agent-browser 0.39.1. No application code changes
+were needed.
+
+Use the same `createMerchantFixture()` and session storage key described
+above. These checks exercise the real result page at `/zh-CN/result` and
+`/result`, without PDF uploads, model calls or production conversions.
+
+| Scenario                             | Observed result                                                                                                                                                                                                                                                                                |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Select `Shared`, then search `Other` | Total: one selected name / three transactions. Hidden: one name / three transactions. The expanded selected list shows `Shared`, both existing names and both source tables.                                                                                                                   |
+| Keyboard controls                    | Enter opens the selected list; Space closes it. Focusing **Clear selection** and pressing Enter clears the selection. Search `Other`, unapplied name `UNAPPLIED NAME` and the complete stored payload remain unchanged.                                                                        |
+| Cross-page selection                 | Select `Shared` on page one and `Merchant 51` on page two: total two names / four transactions. Hidden scope is one name / three transactions on page two, and one name / one transaction on page one.                                                                                         |
+| No search matches                    | Search `DOES_NOT_EXIST`: total and hidden scope both remain two names / four transactions. The selected list still contains both names and confirmation stays enabled. Clearing the search restores page one with `Shared` checked and `Merchant 51` retained in the selected list.            |
+| Deselect before confirming           | In the expanded selected list, deselect `Merchant 51`, then confirm `CONFIRMED SHARED`. In both Chinese and English, only the `Shared` mapping in each table changes. `Merchant 51` and `Other` keep their existing mappings; selection and name input clear.                                  |
+| Original data preservation           | Read the actual browser session payload after confirmation and compare it with the fixture using deep equality: the entire parse result is identical, including original values, risks and source positions. The normalization equals the fixture with only the two `Shared` entries replaced. |
+| Responsive layout                    | Chinese and English checked at 1440 × 1000 and 390 × 844. Hidden-scope text, selected names and actions remain usable. Tables scroll inside their containers; the mobile document width stays 390 px and all action buttons fit the viewport.                                                  |
+
+All scenarios passed; the browser reported no uncaught page errors.
+Screenshots are local evidence in the ignored `docs/issue-52-acceptance/`
+directory: `01-zh-desktop-hidden-selection.png`,
+`02-zh-desktop-no-matches.png`, `03-zh-mobile-no-matches.png`,
+`04-zh-mobile-applied.png`, `05-en-mobile-hidden-selection.png`,
+`06-en-desktop-hidden-selection.png` and `07-en-desktop-applied.png`.
+They are not included in Git and do not establish production acceptance.
+
+Additional checks passed: the five existing merchant tests, ten existing
+export tests, ESLint for both merchant components, and Prettier for those
+components and all message files. All 12 locales format `hiddenSelected`,
+`viewSelected` and `clearSelection`, including counts 0, 1, 2 and 54.
+No new unit tests were added.
+
+Repository-wide `pnpm exec tsc --noEmit` remains blocked by an unrelated
+baseline problem: `src/components/editorial/benchmark-results.tsx` imports
+the missing `public/research/bank-statement-parsing-benchmark.json`, causing
+TS2307 and five TS7006 diagnostics. This acceptance does not claim a passing
+repository-wide type check or production build.
