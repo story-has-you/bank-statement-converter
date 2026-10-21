@@ -689,13 +689,7 @@
     "analyticsAnswer": "Google Analytics dan Pageview dapat memproses informasi teknis kunjungan. Rekening koran, transaksi yang diekstrak, dan isi Excel tidak dikirim ke layanan ini.",
     "parsingHeader": "Kemampuan penguraian",
     "merchantTitle": "Bagaimana menyeragamkan nama merchant?",
-    "merchantAnswer": "Pada setiap tabel hasil akhir, pilih kolom nama atau deskripsi. Teks sumber yang persis sama dikelompokkan lintas tabel dalam file ini untuk mengonfirmasi, mengganti nama, atau menghapus alias secara manual. Teks asli, urutan, sumber, dan risiko ekstraksi tetap utuh; identitas merchant tidak disimpulkan dan model tidak dipanggil lagi. Nama yang dikonfirmasi dan status terpisah muncul dalam pratinjau dan keenam format ekspor. Pada JSON, bidangnya adalah merchantName dan merchantNormalizationStatus: nama yang belum ditetapkan bernilai null dengan status unassigned, sedangkan yang sudah ditetapkan berstatus confirmed. Pemetaan disimpan sementara bersama hasil dalam sesi tab ini dan tidak dipakai ulang pada file lain. Menghapus semua pemetaan mengembalikan bidang ekspor asli.",
-    "linkInstructions": "Tautan menyertakan prompt",
-    "pasteInstructions": "1. Salin prompt. 2. Buka layanan dan tempel ke percakapan baru. Periksa dan kirim sendiri.",
-    "copyPrompt": "Salin prompt",
-    "copying": "Menyalin…",
-    "copied": "Disalin. Buka layanan di bawah dan tempel prompt.",
-    "copyFailed": "Tidak dapat menyalin. Pilih dan salin prompt di bawah secara manual, lalu buka layanan dan tempel."
+    "merchantAnswer": "Pada setiap tabel hasil akhir, pilih kolom nama atau deskripsi. Teks sumber yang persis sama dikelompokkan lintas tabel dalam file ini untuk mengonfirmasi, mengganti nama, atau menghapus alias secara manual. Teks asli, urutan, sumber, dan risiko ekstraksi tetap utuh; identitas merchant tidak disimpulkan dan model tidak dipanggil lagi. Nama yang dikonfirmasi dan status terpisah muncul dalam pratinjau dan keenam format ekspor. Pada JSON, bidangnya adalah merchantName dan merchantNormalizationStatus: nama yang belum ditetapkan bernilai null dengan status unassigned, sedangkan yang sudah ditetapkan berstatus confirmed. Pemetaan disimpan sementara bersama hasil dalam sesi tab ini dan tidak dipakai ulang pada file lain. Menghapus semua pemetaan mengembalikan bidang ekspor asli."
   },
   "BillingReturn": {
     "title": "Konfirmasi langganan",

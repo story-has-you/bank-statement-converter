@@ -689,13 +689,7 @@
     "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
     "parsingHeader": "Parsing capability",
     "merchantTitle": "How can I normalize merchant names?",
-    "merchantAnswer": "For each table in the final result, select a name or description column, group identical source text across tables in this file, and manually confirm, rename or remove merchant aliases. Original text, order, source references and extraction risks stay unchanged; no merchant identity is inferred and no additional model request is made. Confirmed names and a separate normalization status appear in the preview and all six export formats. In JSON, these fields are merchantName and merchantNormalizationStatus; unassigned names are null with status unassigned, and assigned names have status confirmed. Mappings stay in this tab’s session with the result and are not reused for another file. Removing all mappings restores the original export fields.",
-    "linkInstructions": "Prompt included in the link",
-    "pasteInstructions": "1. Copy the prompt. 2. Open a service and paste it into a new chat. Review and send it yourself.",
-    "copyPrompt": "Copy prompt",
-    "copying": "Copying…",
-    "copied": "Copied. Open a service below and paste the prompt.",
-    "copyFailed": "Could not copy. Select and copy the prompt below manually, then open a service and paste it."
+    "merchantAnswer": "For each table in the final result, select a name or description column, group identical source text across tables in this file, and manually confirm, rename or remove merchant aliases. Original text, order, source references and extraction risks stay unchanged; no merchant identity is inferred and no additional model request is made. Confirmed names and a separate normalization status appear in the preview and all six export formats. In JSON, these fields are merchantName and merchantNormalizationStatus; unassigned names are null with status unassigned, and assigned names have status confirmed. Mappings stay in this tab’s session with the result and are not reused for another file. Removing all mappings restores the original export fields."
   },
   "BillingReturn": {
     "title": "Confirming your subscription",

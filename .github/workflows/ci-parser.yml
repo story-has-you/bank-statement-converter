@@ -42,9 +42,6 @@ jobs:
       - name: Test public account summary refresh
         run: pnpm test:account
 
-      - name: Test AI prompt handoff
-        run: pnpm test:geo
-
       - name: Test spreadsheet export safety
         run: pnpm test:exports
 

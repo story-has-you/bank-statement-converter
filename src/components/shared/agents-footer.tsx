@@ -34,19 +34,7 @@ export async function AgentsFooter() {
           ))}
         </nav>
       </div>
-      <AiChatLinks
-        prompt={prompt}
-        description={t("chatDescription")}
-        labels={{
-          showPrompt: t("showPrompt"),
-          linkInstructions: t("linkInstructions"),
-          pasteInstructions: t("pasteInstructions"),
-          copyPrompt: t("copyPrompt"),
-          copying: t("copying"),
-          copied: t("copied"),
-          copyFailed: t("copyFailed"),
-        }}
-      />
+      <AiChatLinks prompt={prompt} description={t("chatDescription")} showPromptLabel={t("showPrompt")} />
     </section>
   );
 }

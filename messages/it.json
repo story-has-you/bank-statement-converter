@@ -689,13 +689,7 @@
     "analyticsAnswer": "Google Analytics e Pageview possono elaborare informazioni tecniche sulle visite. Estratti conto, transazioni estratte e contenuti Excel non vengono inviati a questi servizi.",
     "parsingHeader": "Funzioni di analisi",
     "merchantTitle": "Come posso uniformare i nomi degli esercenti?",
-    "merchantAnswer": "In ogni tabella del risultato finale scegli una colonna di nomi o descrizioni. I testi originali identici vengono raggruppati tra le tabelle di questo file per confermare, rinominare o rimuovere manualmente gli alias. Testo originale, ordine, fonti e rischi di estrazione restano invariati; non si deduce l’identità dell’esercente e non si fanno ulteriori richieste al modello. I nomi confermati e uno stato separato compaiono nell’anteprima e in tutti e sei i formati di esportazione. In JSON i campi sono merchantName e merchantNormalizationStatus: i nomi non assegnati sono null con stato unassigned, quelli assegnati hanno stato confirmed. Le associazioni restano temporaneamente con il risultato nella sessione di questa scheda e non sono riutilizzate per un altro file. Rimuoverle tutte ripristina i campi di esportazione originali.",
-    "linkInstructions": "Il link include il prompt",
-    "pasteInstructions": "1. Copia il prompt. 2. Apri un servizio e incollalo in una nuova chat. Verifica e invia personalmente.",
-    "copyPrompt": "Copia prompt",
-    "copying": "Copia in corso…",
-    "copied": "Copiato. Apri un servizio qui sotto e incolla il prompt.",
-    "copyFailed": "Impossibile copiare. Seleziona e copia manualmente il prompt qui sotto, poi apri un servizio e incollalo."
+    "merchantAnswer": "In ogni tabella del risultato finale scegli una colonna di nomi o descrizioni. I testi originali identici vengono raggruppati tra le tabelle di questo file per confermare, rinominare o rimuovere manualmente gli alias. Testo originale, ordine, fonti e rischi di estrazione restano invariati; non si deduce l’identità dell’esercente e non si fanno ulteriori richieste al modello. I nomi confermati e uno stato separato compaiono nell’anteprima e in tutti e sei i formati di esportazione. In JSON i campi sono merchantName e merchantNormalizationStatus: i nomi non assegnati sono null con stato unassigned, quelli assegnati hanno stato confirmed. Le associazioni restano temporaneamente con il risultato nella sessione di questa scheda e non sono riutilizzate per un altro file. Rimuoverle tutte ripristina i campi di esportazione originali."
   },
   "BillingReturn": {
     "title": "Conferma abbonamento",

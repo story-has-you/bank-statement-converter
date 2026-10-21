@@ -15,10 +15,10 @@ export function getAgentDocumentUrl(locale: AppLocale, document: AgentDocument):
 export function getAiChatLinks(prompt: string) {
   const query = encodeURIComponent(prompt);
   return [
-    { name: "ChatGPT", href: `https://chatgpt.com/?q=${query}`, promptMode: "link" },
-    { name: "Claude", href: "https://claude.ai/new", promptMode: "paste" },
-    { name: "Perplexity", href: `https://www.perplexity.ai/search?q=${query}`, promptMode: "link" },
-    { name: "Gemini", href: "https://gemini.google.com/app", promptMode: "paste" },
-    { name: "Grok", href: "https://grok.com/", promptMode: "paste" },
+    { name: "ChatGPT", href: `https://chatgpt.com/?q=${query}` },
+    { name: "Claude", href: "https://claude.ai/new" },
+    { name: "Perplexity", href: `https://www.perplexity.ai/search?q=${query}` },
+    { name: "Gemini", href: "https://gemini.google.com/app" },
+    { name: "Grok", href: "https://grok.com/" },
   ] as const;
 }

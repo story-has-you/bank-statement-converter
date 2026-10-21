@@ -689,13 +689,7 @@
     "analyticsAnswer": "Google Analytics et Pageview peuvent traiter des informations techniques de visite. Les relevés, transactions extraites et contenus Excel ne sont pas envoyés à ces services.",
     "parsingHeader": "Capacité d’analyse",
     "merchantTitle": "Comment uniformiser les noms de commerçants ?",
-    "merchantAnswer": "Dans chaque tableau du résultat final, choisissez une colonne de noms ou de descriptions. Les textes originaux strictement identiques sont regroupés entre les tableaux de ce fichier ; vous pouvez confirmer, renommer ou retirer manuellement leurs alias. Le texte original, l’ordre, les sources et les risques d’extraction restent inchangés. Aucune identité n’est déduite et aucun appel supplémentaire au modèle n’est effectué. Les noms confirmés et un statut distinct apparaissent dans l’aperçu et les six formats d’export. En JSON, les champs sont merchantName et merchantNormalizationStatus : un nom non attribué vaut null avec le statut unassigned, un nom attribué porte le statut confirmed. Les correspondances restent temporairement avec le résultat dans la session de cet onglet, sans réutilisation pour un autre fichier. Les retirer toutes rétablit les champs d’export d’origine.",
-    "linkInstructions": "Le lien contient la consigne",
-    "pasteInstructions": "1. Copiez la consigne. 2. Ouvrez un service et collez-la dans une nouvelle conversation. Vérifiez et envoyez vous-même.",
-    "copyPrompt": "Copier la consigne",
-    "copying": "Copie en cours…",
-    "copied": "Copié. Ouvrez un service ci-dessous et collez la consigne.",
-    "copyFailed": "Échec de la copie. Sélectionnez et copiez manuellement la consigne ci-dessous, puis ouvrez un service et collez-la."
+    "merchantAnswer": "Dans chaque tableau du résultat final, choisissez une colonne de noms ou de descriptions. Les textes originaux strictement identiques sont regroupés entre les tableaux de ce fichier ; vous pouvez confirmer, renommer ou retirer manuellement leurs alias. Le texte original, l’ordre, les sources et les risques d’extraction restent inchangés. Aucune identité n’est déduite et aucun appel supplémentaire au modèle n’est effectué. Les noms confirmés et un statut distinct apparaissent dans l’aperçu et les six formats d’export. En JSON, les champs sont merchantName et merchantNormalizationStatus : un nom non attribué vaut null avec le statut unassigned, un nom attribué porte le statut confirmed. Les correspondances restent temporairement avec le résultat dans la session de cet onglet, sans réutilisation pour un autre fichier. Les retirer toutes rétablit les champs d’export d’origine."
   },
   "BillingReturn": {
     "title": "Confirmation de l’abonnement",

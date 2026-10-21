@@ -689,13 +689,7 @@
     "analyticsAnswer": "Google Analytics 和 Pageview 可能处理访问相关的技术信息。银行流水、提取的交易和 Excel 内容不会发送到这些统计服务。",
     "parsingHeader": "解析能力",
     "merchantTitle": "如何统一商户名称？",
-    "merchantAnswer": "在最终结果中为各表选择名称或描述列，按本次文件内完全相同的原文跨表分组，再手动确认、改名或撤销商户别名。原始文字、顺序、来源和提取风险保持不变，不推断商户身份，也不额外调用模型。确认名称后，预览和六种导出格式会增加标准商户名及独立的归一化状态；JSON 字段为 merchantName 和 merchantNormalizationStatus，未分配名称为 null、状态为 unassigned，已分配状态为 confirmed。映射随结果临时保存在本标签页会话中，不跨文件复用；撤销全部映射后恢复原有导出字段。",
-    "linkInstructions": "提问随链接传递",
-    "pasteInstructions": "1. 复制提示词。2. 打开平台，粘贴到新对话中，自行确认并发送。",
-    "copyPrompt": "复制提示词",
-    "copying": "正在复制…",
-    "copied": "已复制。请打开下方平台并粘贴提示词。",
-    "copyFailed": "复制失败。请手动选中并复制下方提示词，再打开平台粘贴。"
+    "merchantAnswer": "在最终结果中为各表选择名称或描述列，按本次文件内完全相同的原文跨表分组，再手动确认、改名或撤销商户别名。原始文字、顺序、来源和提取风险保持不变，不推断商户身份，也不额外调用模型。确认名称后，预览和六种导出格式会增加标准商户名及独立的归一化状态；JSON 字段为 merchantName 和 merchantNormalizationStatus，未分配名称为 null、状态为 unassigned，已分配状态为 confirmed。映射随结果临时保存在本标签页会话中，不跨文件复用；撤销全部映射后恢复原有导出字段。"
   },
   "BillingReturn": {
     "title": "确认订阅",
