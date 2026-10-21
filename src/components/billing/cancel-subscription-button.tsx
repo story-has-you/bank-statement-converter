@@ -2,7 +2,7 @@
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
 import {
@@ -18,11 +18,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { readBillingResponse } from "@/lib/billing/response";
+import { startStatusPolling, type PollState } from "@/lib/billing/status-polling";
 
 import type { PaymentProviderId } from "@/lib/billing/provider";
 
 type CancelSubscriptionButtonProps = { provider: PaymentProviderId; subscriptionId: string; periodEnd: string | null };
-type CancellationState = "idle" | "submitting" | "syncing" | "delayed" | "checking";
+type CancellationState = "idle" | "submitting" | "syncing" | "delayed" | "checking" | "confirmed";
 
 function hasCancelledSubscription(value: unknown, provider: PaymentProviderId, subscriptionId: string): boolean {
   if (typeof value !== "object" || value === null || !("subscriptions" in value) || !Array.isArray(value.subscriptions)) {
@@ -41,7 +42,12 @@ function hasCancelledSubscription(value: unknown, provider: PaymentProviderId, s
   );
 }
 
-export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }: CancelSubscriptionButtonProps) {
+export function CancelSubscriptionButton(props: CancelSubscriptionButtonProps) {
+  const { user } = usePublicAccount();
+  return <CancelSubscriptionControl key={JSON.stringify([user?.id, props.provider, props.subscriptionId])} {...props} />;
+}
+
+function CancelSubscriptionControl({ provider, subscriptionId, periodEnd }: CancelSubscriptionButtonProps) {
   const t = useTranslations("Account.cancel");
   const locale = useLocale();
   const format = useFormatter();
@@ -50,13 +56,12 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<CancellationState>("idle");
   const [error, setError] = useState<string | null>(null);
-  const manualCheck = useRef<AbortController | null>(null);
+  const [retry, setRetry] = useState(0);
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
-      manualCheck.current?.abort();
     };
   }, []);
   const date =
@@ -64,48 +69,40 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       ? format.dateTime(new Date(periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" })
       : null;
 
-  useEffect(() => {
-    if (state !== "syncing") {
+  const polling = state === "syncing" || state === "checking";
+  const handleState = useEffectEvent((next: PollState) => {
+    if (next.kind === "pending") {
       return;
     }
-    const controller = new AbortController();
-    let timer: ReturnType<typeof setTimeout>;
-    let attempts = 0;
-
-    async function poll() {
-      attempts += 1;
-      try {
-        const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
+    if (next.kind === "done") {
+      setState("confirmed");
+      void refreshAccount();
+      router.refresh();
+      return;
+    }
+    setState("delayed");
+  });
+  useEffect(() => {
+    if (!polling) {
+      return;
+    }
+    return startStatusPolling({
+      initialDelayMs: retry === 0 ? 2_000 : 0,
+      async read(signal) {
+        const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal });
         if (response.ok) {
           const snapshot: unknown = await response.json();
-          if (controller.signal.aborted) {
-            return;
-          }
           if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
-            void refreshAccount();
-            router.refresh();
-            return;
+            return { kind: "done" };
           }
         }
-      } catch {
-        // 网络失败仍等待下一次检查，不把 渠道成功取消误报为失败。
-      }
-      if (controller.signal.aborted) {
-        return;
-      }
-      if (attempts >= 15) {
-        setState("delayed");
-      } else {
-        timer = setTimeout(poll, 2_000);
-      }
-    }
-
-    timer = setTimeout(poll, 2_000);
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [state, provider, subscriptionId, locale, router, refreshAccount]);
+        return { kind: "pending" };
+      },
+      onState(next) {
+        handleState(next);
+      },
+    });
+  }, [polling, provider, subscriptionId, locale, retry]);
 
   async function cancel() {
     if (state !== "idle") {
@@ -132,10 +129,12 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
         throw new Error(t("failed"));
       }
       setOpen(false);
-      setState("syncing");
       if (payload.status === "CANCELLED") {
+        setState("confirmed");
         void refreshAccount();
         router.refresh();
+      } else {
+        setState("syncing");
       }
     } catch {
       if (!mounted.current) {
@@ -146,35 +145,10 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
     }
   }
 
-  async function checkStatus() {
-    manualCheck.current?.abort();
-    const controller = new AbortController();
-    manualCheck.current = controller;
+  function checkStatus(): void {
     setError(null);
     setState("checking");
-    try {
-      const response = await fetch("/api/account", { headers: { "x-app-locale": locale }, cache: "no-store", signal: controller.signal });
-      if (!response.ok) {
-        throw new Error(t("checkFailed"));
-      }
-      const snapshot: unknown = await response.json();
-      if (controller.signal.aborted || manualCheck.current !== controller) {
-        return;
-      }
-      if (hasCancelledSubscription(snapshot, provider, subscriptionId)) {
-        void refreshAccount();
-        router.refresh();
-      }
-    } catch {
-      if (!controller.signal.aborted && manualCheck.current === controller) {
-        setError(t("checkFailed"));
-      }
-    } finally {
-      if (!controller.signal.aborted && manualCheck.current === controller) {
-        manualCheck.current = null;
-        setState("delayed");
-      }
-    }
+    setRetry((value) => value + 1);
   }
 
   return (
@@ -210,7 +184,7 @@ export function CancelSubscriptionButton({ provider, subscriptionId, periodEnd }
       </AlertDialog>
       {state !== "idle" && state !== "submitting" && (
         <p role="status" className="text-xs text-muted-foreground">
-          {t(state === "syncing" ? "syncing" : "delayed")}
+          {t(state)}
         </p>
       )}
       {(state === "delayed" || state === "checking") && (

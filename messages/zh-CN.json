@@ -635,12 +635,13 @@
       "keep": "保留订阅",
       "confirm": "确认取消",
       "submitting": "正在取消…",
-      "syncing": "已停止续费，正在更新账户中的订阅状态。",
-      "delayed": "已停止续费，尚未确认账户中的订阅状态已更新。",
+      "syncing": "取消请求已提交，正在确认账户中的订阅状态。",
+      "delayed": "暂未确认账户中的订阅状态已更新，请重新检查。",
       "check": "检查状态",
-      "checking": "正在检查…",
+      "checking": "正在检查……",
       "failed": "未能确认订阅取消结果。",
-      "checkFailed": "未能读取订阅状态。"
+      "checkFailed": "未能读取订阅状态。",
+      "confirmed": "已确认取消订阅，不再自动续费。"
     }
   },
   "Geo": {
@@ -696,11 +697,11 @@
     "description": "正在核对付款确认及订阅权益。",
     "pending": "正在等待付款确认……",
     "active": "订阅已激活。",
-    "delayed": "尚未收到付款确认，请稍后重新检查。",
+    "delayed": "暂未确认付款结果，请重新检查。",
     "failed": "未能确认订阅状态。",
     "signInRequired": "请登录购买时使用的账号，然后重新检查。",
     "invalidReturn": "付款返回链接无效。",
-    "retry": "重新检查",
+    "retry": "检查状态",
     "account": "查看个人账户",
     "cancelled": "已取消付款审批，此次返回不会激活订阅。",
     "backToPlans": "返回套餐"

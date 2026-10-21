@@ -635,12 +635,13 @@
       "keep": "Abonnement behouden",
       "confirm": "Opzegging bevestigen",
       "submitting": "Opzeggen…",
-      "syncing": "Verlengingen zijn gestopt. Je abonnementsstatus wordt bijgewerkt.",
-      "delayed": "Verlengingen zijn gestopt. De update van de abonnementsstatus in het account is nog niet bevestigd.",
+      "syncing": "Opzegging aangevraagd. De abonnementsstatus in je account wordt gecontroleerd.",
+      "delayed": "De bijgewerkte abonnementsstatus is nog niet bevestigd. Controleer opnieuw.",
       "check": "Status controleren",
       "checking": "Controleren…",
       "failed": "De opzegging van het abonnement kon niet worden bevestigd.",
-      "checkFailed": "De abonnementsstatus kon niet worden gelezen."
+      "checkFailed": "De abonnementsstatus kon niet worden gelezen.",
+      "confirmed": "De opzegging is bevestigd. Het abonnement wordt niet automatisch verlengd."
     }
   },
   "Geo": {
@@ -696,11 +697,11 @@
     "description": "We controleren de betaling en uw toegang.",
     "pending": "Wachten op betalingsbevestiging…",
     "active": "Uw abonnement is actief.",
-    "delayed": "De bevestiging is nog niet ontvangen. Controleer het binnenkort opnieuw.",
+    "delayed": "De betaling is nog niet bevestigd. Controleer opnieuw.",
     "failed": "Uw abonnement kon niet worden bevestigd.",
     "signInRequired": "Log in met het account dat u voor deze aankoop gebruikte en controleer opnieuw.",
     "invalidReturn": "Deze terugkeerlink is ongeldig.",
-    "retry": "Opnieuw controleren",
+    "retry": "Status controleren",
     "account": "Uw account openen",
     "cancelled": "De betalingsgoedkeuring is geannuleerd. Deze terugkeer activeert geen abonnement.",
     "backToPlans": "Terug naar abonnementen"

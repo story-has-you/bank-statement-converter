@@ -635,12 +635,13 @@
       "keep": "Pertahankan langganan",
       "confirm": "Konfirmasi pembatalan",
       "submitting": "Membatalkan…",
-      "syncing": "Perpanjangan telah dihentikan. Status langganan sedang diperbarui.",
-      "delayed": "Perpanjangan sudah dihentikan. Pembaruan status langganan di akun belum dikonfirmasi.",
+      "syncing": "Pembatalan telah diminta. Memeriksa status langganan di akun Anda.",
+      "delayed": "Pembaruan status langganan di akun belum dikonfirmasi. Silakan periksa lagi.",
       "check": "Periksa status",
       "checking": "Memeriksa…",
       "failed": "Pembatalan langganan tidak dapat dikonfirmasi.",
-      "checkFailed": "Status langganan tidak dapat dibaca."
+      "checkFailed": "Status langganan tidak dapat dibaca.",
+      "confirmed": "Pembatalan langganan telah dikonfirmasi. Langganan tidak akan diperpanjang otomatis."
     }
   },
   "Geo": {
@@ -696,11 +697,11 @@
     "description": "Kami sedang memeriksa pembayaran dan akses langganan Anda.",
     "pending": "Menunggu konfirmasi pembayaran…",
     "active": "Langganan Anda aktif.",
-    "delayed": "Konfirmasi pembayaran belum diterima. Periksa lagi sebentar lagi.",
+    "delayed": "Pembayaran belum dikonfirmasi. Silakan periksa lagi.",
     "failed": "Langganan tidak dapat dikonfirmasi.",
     "signInRequired": "Masuk ke akun yang digunakan untuk pembelian, lalu periksa lagi.",
     "invalidReturn": "Tautan kembali pembayaran ini tidak valid.",
-    "retry": "Periksa lagi",
+    "retry": "Periksa status",
     "account": "Buka akun Anda",
     "cancelled": "Persetujuan pembayaran dibatalkan. Kembali ke halaman ini tidak mengaktifkan langganan.",
     "backToPlans": "Kembali ke paket"

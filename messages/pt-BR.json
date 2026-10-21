@@ -635,12 +635,13 @@
       "keep": "Manter assinatura",
       "confirm": "Confirmar cancelamento",
       "submitting": "Cancelando…",
-      "syncing": "As renovações foram interrompidas. Estamos atualizando o status da assinatura.",
-      "delayed": "As renovações foram interrompidas. A atualização do status da assinatura na conta ainda não foi confirmada.",
+      "syncing": "Cancelamento solicitado. Verificando o status da assinatura na sua conta.",
+      "delayed": "A atualização da assinatura na sua conta ainda não foi confirmada. Verifique novamente.",
       "check": "Verificar status",
       "checking": "Verificando…",
       "failed": "Não foi possível confirmar o cancelamento da assinatura.",
-      "checkFailed": "Não foi possível ler o status da assinatura."
+      "checkFailed": "Não foi possível ler o status da assinatura.",
+      "confirmed": "Cancelamento da assinatura confirmado. Ela não será renovada automaticamente."
     }
   },
   "Geo": {
@@ -694,13 +695,13 @@
   "BillingReturn": {
     "title": "Confirmação da assinatura",
     "description": "Estamos verificando o pagamento e seu acesso.",
-    "pending": "Aguardando confirmação do pagamento…",
+    "pending": "Aguardando a confirmação do pagamento…",
     "active": "Sua assinatura está ativa.",
-    "delayed": "A confirmação do pagamento ainda não chegou. Verifique novamente em breve.",
+    "delayed": "O pagamento ainda não foi confirmado. Verifique novamente.",
     "failed": "Não foi possível confirmar sua assinatura.",
     "signInRequired": "Entre na conta usada na compra e verifique novamente.",
     "invalidReturn": "Este link de retorno do pagamento é inválido.",
-    "retry": "Verificar novamente",
+    "retry": "Verificar status",
     "account": "Abrir sua conta",
     "cancelled": "A aprovação do pagamento foi cancelada. Este retorno não ativa uma assinatura.",
     "backToPlans": "Voltar aos planos"

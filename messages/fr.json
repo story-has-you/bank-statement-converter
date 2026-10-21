@@ -635,12 +635,13 @@
       "keep": "Conserver l’abonnement",
       "confirm": "Confirmer la résiliation",
       "submitting": "Résiliation…",
-      "syncing": "Les renouvellements sont arrêtés. Le statut de votre abonnement est en cours de mise à jour.",
-      "delayed": "Les renouvellements sont arrêtés. La mise à jour du statut de l’abonnement dans le compte n’a pas encore été confirmée.",
-      "check": "Vérifier l’état",
+      "syncing": "Résiliation demandée. Vérification du statut de l’abonnement dans votre compte.",
+      "delayed": "La mise à jour de l’abonnement dans votre compte n’est pas encore confirmée. Veuillez vérifier à nouveau.",
+      "check": "Vérifier le statut",
       "checking": "Vérification…",
       "failed": "La résiliation de l’abonnement n’a pas pu être confirmée.",
-      "checkFailed": "Le statut de l’abonnement n’a pas pu être lu."
+      "checkFailed": "Le statut de l’abonnement n’a pas pu être lu.",
+      "confirmed": "La résiliation est confirmée. L’abonnement ne sera pas renouvelé automatiquement."
     }
   },
   "Geo": {
@@ -694,13 +695,13 @@
   "BillingReturn": {
     "title": "Confirmation de l’abonnement",
     "description": "Nous vérifions le paiement et votre accès.",
-    "pending": "En attente de confirmation du paiement…",
+    "pending": "En attente de la confirmation du paiement…",
     "active": "Votre abonnement est actif.",
-    "delayed": "La confirmation du paiement n’est pas encore arrivée. Réessayez dans un instant.",
+    "delayed": "Le paiement n’est pas encore confirmé. Veuillez vérifier à nouveau.",
     "failed": "Impossible de confirmer votre abonnement.",
     "signInRequired": "Connectez-vous au compte utilisé pour cet achat, puis réessayez.",
     "invalidReturn": "Ce lien de retour de paiement est invalide.",
-    "retry": "Vérifier à nouveau",
+    "retry": "Vérifier le statut",
     "account": "Ouvrir votre compte",
     "cancelled": "L’approbation du paiement a été annulée. Ce retour n’active aucun abonnement.",
     "backToPlans": "Retour aux offres"

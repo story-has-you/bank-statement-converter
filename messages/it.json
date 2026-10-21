@@ -635,12 +635,13 @@
       "keep": "Mantieni abbonamento",
       "confirm": "Conferma annullamento",
       "submitting": "Annullamento…",
-      "syncing": "I rinnovi sono stati interrotti. Lo stato dell'abbonamento è in aggiornamento.",
-      "delayed": "I rinnovi sono stati interrotti. L’aggiornamento dello stato dell’abbonamento nell’account non è ancora stato confermato.",
+      "syncing": "Annullamento richiesto. Verifica dello stato dell’abbonamento nel tuo account.",
+      "delayed": "L’aggiornamento dell’abbonamento nel tuo account non è ancora stato confermato. Controlla di nuovo.",
       "check": "Controlla stato",
-      "checking": "Controllo…",
+      "checking": "Verifica in corso…",
       "failed": "Non è stato possibile confermare l’annullamento dell’abbonamento.",
-      "checkFailed": "Non è stato possibile leggere lo stato dell’abbonamento."
+      "checkFailed": "Non è stato possibile leggere lo stato dell’abbonamento.",
+      "confirmed": "Annullamento dell’abbonamento confermato. Non verrà rinnovato automaticamente."
     }
   },
   "Geo": {
@@ -696,11 +697,11 @@
     "description": "Stiamo verificando il pagamento e il tuo accesso.",
     "pending": "In attesa della conferma del pagamento…",
     "active": "Il tuo abbonamento è attivo.",
-    "delayed": "La conferma non è ancora arrivata. Controlla di nuovo tra poco.",
+    "delayed": "Il pagamento non è ancora stato confermato. Controlla di nuovo.",
     "failed": "Impossibile confermare il tuo abbonamento.",
     "signInRequired": "Accedi all’account usato per l’acquisto e controlla di nuovo.",
     "invalidReturn": "Questo link di ritorno dal pagamento non è valido.",
-    "retry": "Controlla di nuovo",
+    "retry": "Controlla stato",
     "account": "Apri il tuo account",
     "cancelled": "L’approvazione del pagamento è stata annullata. Questo ritorno non attiva un abbonamento.",
     "backToPlans": "Torna ai piani"

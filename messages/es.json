@@ -635,12 +635,13 @@
       "keep": "Mantener suscripción",
       "confirm": "Confirmar cancelación",
       "submitting": "Cancelando…",
-      "syncing": "Las renovaciones se han detenido. Estamos actualizando el estado de tu suscripción.",
-      "delayed": "Las renovaciones se han detenido. La actualización del estado de la suscripción en la cuenta aún no se ha confirmado.",
+      "syncing": "Cancelación solicitada. Comprobando el estado de la suscripción en tu cuenta.",
+      "delayed": "La actualización de la suscripción en tu cuenta aún no se ha confirmado. Vuelve a comprobarla.",
       "check": "Comprobar estado",
       "checking": "Comprobando…",
       "failed": "No se pudo confirmar la cancelación de la suscripción.",
-      "checkFailed": "No se pudo leer el estado de la suscripción."
+      "checkFailed": "No se pudo leer el estado de la suscripción.",
+      "confirmed": "Cancelación de la suscripción confirmada. No se renovará automáticamente."
     }
   },
   "Geo": {
@@ -694,13 +695,13 @@
   "BillingReturn": {
     "title": "Confirmación de suscripción",
     "description": "Estamos verificando el pago y su acceso.",
-    "pending": "Esperando confirmación del pago…",
+    "pending": "Esperando la confirmación del pago…",
     "active": "Su suscripción está activa.",
-    "delayed": "La confirmación del pago aún no ha llegado. Vuelva a comprobarlo en breve.",
+    "delayed": "El pago aún no se ha confirmado. Vuelve a comprobarlo.",
     "failed": "No se pudo confirmar la suscripción.",
     "signInRequired": "Inicie sesión en la cuenta utilizada para la compra y vuelva a comprobarlo.",
     "invalidReturn": "Este enlace de retorno del pago no es válido.",
-    "retry": "Comprobar de nuevo",
+    "retry": "Comprobar estado",
     "account": "Abrir su cuenta",
     "cancelled": "Se canceló la aprobación del pago. Este retorno no activa una suscripción.",
     "backToPlans": "Volver a los planes"

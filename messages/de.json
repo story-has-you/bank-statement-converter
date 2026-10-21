@@ -635,12 +635,13 @@
       "keep": "Abonnement behalten",
       "confirm": "Kündigung bestätigen",
       "submitting": "Wird gekündigt…",
-      "syncing": "Automatische Verlängerungen sind gestoppt. Ihr Abonnementstatus wird aktualisiert.",
-      "delayed": "Die Verlängerungen wurden gestoppt. Die Aktualisierung des Abonnementstatus im Konto ist noch nicht bestätigt.",
+      "syncing": "Kündigung angefordert. Der Abonnementstatus Ihres Kontos wird geprüft.",
+      "delayed": "Die Aktualisierung des Abonnementstatus wurde noch nicht bestätigt. Bitte erneut prüfen.",
       "check": "Status prüfen",
       "checking": "Wird geprüft…",
       "failed": "Die Kündigung des Abonnements konnte nicht bestätigt werden.",
-      "checkFailed": "Der Abonnementstatus konnte nicht gelesen werden."
+      "checkFailed": "Der Abonnementstatus konnte nicht gelesen werden.",
+      "confirmed": "Die Kündigung ist bestätigt. Das Abonnement verlängert sich nicht automatisch."
     }
   },
   "Geo": {
@@ -694,13 +695,13 @@
   "BillingReturn": {
     "title": "Abonnement bestätigen",
     "description": "Wir prüfen die Zahlungsbestätigung und Ihren Zugang.",
-    "pending": "Warten auf Zahlungsbestätigung…",
+    "pending": "Zahlungsbestätigung wird abgewartet…",
     "active": "Ihr Abonnement ist aktiv.",
-    "delayed": "Die Zahlungsbestätigung ist noch nicht eingetroffen. Prüfen Sie später erneut.",
+    "delayed": "Die Zahlung wurde noch nicht bestätigt. Bitte erneut prüfen.",
     "failed": "Ihr Abonnement konnte nicht bestätigt werden.",
     "signInRequired": "Melden Sie sich mit dem beim Kauf verwendeten Konto an und prüfen Sie erneut.",
     "invalidReturn": "Dieser Rückkehrlink ist ungültig.",
-    "retry": "Erneut prüfen",
+    "retry": "Status prüfen",
     "account": "Konto öffnen",
     "cancelled": "Die Zahlungsfreigabe wurde abgebrochen. Diese Rückkehr aktiviert kein Abonnement.",
     "backToPlans": "Zurück zu den Tarifen"

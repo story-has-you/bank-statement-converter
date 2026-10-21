@@ -1,21 +1,30 @@
 "use client";
 
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
 import { readBillingResponse } from "@/lib/billing/response";
+import { startStatusPolling, type PollState } from "@/lib/billing/status-polling";
 import type { MembershipTier } from "@/lib/billing/types";
 import type { PaymentProviderId } from "@/lib/billing/provider";
 
 type ReturnState = "pending" | "active" | "delayed" | "failed";
-const CheckoutReturnStatus: FC<{
+type CheckoutReturnStatusProps = {
   provider: PaymentProviderId;
   checkoutId: string;
   tier: MembershipTier;
-}> = ({ provider, checkoutId, tier }) => {
+};
+
+export function CheckoutReturnStatus(props: CheckoutReturnStatusProps) {
+  const { user } = usePublicAccount();
+  const locale = useLocale();
+  return <CheckoutReturnCheck key={JSON.stringify([user?.id, locale, props.provider, props.checkoutId, props.tier])} {...props} />;
+}
+
+function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatusProps) {
   const t = useTranslations("BillingReturn");
   const locale = useLocale();
   const router = useRouter();
@@ -23,51 +32,38 @@ const CheckoutReturnStatus: FC<{
   const [state, setState] = useState<ReturnState>("pending");
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
+  const handleState = useEffectEvent((next: PollState) => {
+    setError(next.kind === "failed" ? next.error : null);
+    setState(next.kind === "done" ? "active" : next.kind);
+    if (next.kind === "done") {
+      void refreshAccount();
+      router.refresh();
+    }
+  });
   useEffect(() => {
-    const controller = new AbortController();
-    let timer: ReturnType<typeof setTimeout>;
-    let attempts = 0;
-    async function check(): Promise<void> {
-      attempts += 1;
-      try {
+    return startStatusPolling({
+      initialDelayMs: 0,
+      async read(signal) {
         const response = await fetch("/api/billing/subscriptions/activate", {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-app-locale": locale },
           body: JSON.stringify({ provider, checkoutId, tier }),
-          signal: controller.signal,
+          signal,
         });
         const payload = readBillingResponse(await response.json());
-        if (controller.signal.aborted) {
-          return;
-        }
         if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
-          setState("active");
-          void refreshAccount();
-          router.refresh();
-          return;
+          return { kind: "done" };
         }
         if (response.status !== 202 || payload.status !== "PENDING") {
-          setError(payload.error ?? t("failed"));
-          setState("failed");
-          return;
+          return { kind: "failed", error: payload.error ?? t("failed") };
         }
-      } catch {
-        if (controller.signal.aborted) {
-          return;
-        }
-      }
-      if (attempts >= 15) {
-        setState("delayed");
-      } else {
-        timer = setTimeout(check, 2_000);
-      }
-    }
-    timer = setTimeout(check, 0);
-    return () => {
-      controller.abort();
-      clearTimeout(timer);
-    };
-  }, [provider, checkoutId, tier, locale, retry, router, t, refreshAccount]);
+        return { kind: "pending" };
+      },
+      onState(next) {
+        handleState(next);
+      },
+    });
+  }, [provider, checkoutId, tier, locale, retry, t]);
   return (
     <div className="grid gap-4">
       <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>
@@ -87,6 +83,4 @@ const CheckoutReturnStatus: FC<{
       </Link>
     </div>
   );
-};
-CheckoutReturnStatus.displayName = "CheckoutReturnStatus";
-export { CheckoutReturnStatus };
+}

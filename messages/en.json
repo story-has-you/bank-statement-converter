@@ -635,12 +635,13 @@
       "keep": "Keep subscription",
       "confirm": "Confirm cancellation",
       "submitting": "Cancelling…",
-      "syncing": "Renewals have stopped. Your subscription status is being updated.",
-      "delayed": "Renewals have stopped. The account subscription status update has not yet been confirmed.",
+      "syncing": "Cancellation requested. Checking your account subscription status.",
+      "delayed": "The account subscription update has not yet been confirmed. Please check again.",
       "check": "Check status",
       "checking": "Checking…",
       "failed": "Subscription cancellation could not be confirmed.",
-      "checkFailed": "Subscription status could not be read."
+      "checkFailed": "Subscription status could not be read.",
+      "confirmed": "Subscription cancellation confirmed. It will not renew automatically."
     }
   },
   "Geo": {
@@ -696,11 +697,11 @@
     "description": "We are checking the payment confirmation and your subscription access.",
     "pending": "Waiting for payment confirmation…",
     "active": "Your subscription is active.",
-    "delayed": "Payment confirmation has not arrived yet. Please check again shortly.",
+    "delayed": "Payment has not yet been confirmed. Please check again.",
     "failed": "Unable to confirm your subscription.",
     "signInRequired": "Please sign in to the account used for this purchase, then check again.",
     "invalidReturn": "This payment return link is invalid.",
-    "retry": "Check again",
+    "retry": "Check status",
     "account": "Open your account",
     "cancelled": "Payment approval was cancelled. No subscription was activated by this return.",
     "backToPlans": "Back to plans"
