@@ -245,6 +245,8 @@
       "page": "Halaman {page, number} dari {pages, number}",
       "nameRequired": "Masukkan nama merchant yang tidak kosong.",
       "selected": "{aliases, number} nama dipilih dalam {rows, number} transaksi.",
+      "hiddenSelected": "{aliases, number} nama terpilih yang mencakup {rows, number} transaksi berada di luar hasil pencarian atau halaman saat ini. Nama tersebut juga akan diperbarui.",
+      "viewSelected": "Tinjau semua {aliases, number} nama asli yang dipilih",
       "apply": "Konfirmasi {aliases, number} nama · {rows, number} transaksi",
       "removeSelected": "Hapus pemetaan terpilih",
       "clearSelection": "Batalkan pilihan",

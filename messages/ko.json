@@ -245,6 +245,8 @@
       "page": "{pages, number}페이지 중 {page, number}페이지",
       "nameRequired": "비어 있지 않은 가맹점 이름을 입력하세요.",
       "selected": "이름 {aliases, number}개, 거래 {rows, number}건 선택됨.",
+      "hiddenSelected": "선택한 이름 {aliases, number}개({rows, number}건의 거래)가 현재 검색 결과 또는 페이지 밖에 있습니다. 이 이름도 변경됩니다.",
+      "viewSelected": "선택한 원래 이름 {aliases, number}개 모두 확인",
       "apply": "이름 {aliases, number}개 · 거래 {rows, number}건 확인",
       "removeSelected": "선택한 매핑 삭제",
       "clearSelection": "선택 해제",

@@ -245,6 +245,8 @@
       "page": "Page {page, number} of {pages, number}",
       "nameRequired": "Enter a non-empty merchant name.",
       "selected": "Selected {aliases, number} names across {rows, number} transactions.",
+      "hiddenSelected": "{aliases, number} selected names across {rows, number} transactions are outside the current search results or page. They will also be updated.",
+      "viewSelected": "Review all {aliases, number} selected original names",
       "apply": "Confirm {aliases, number} names · {rows, number} transactions",
       "removeSelected": "Remove selected mappings",
       "clearSelection": "Clear selection",

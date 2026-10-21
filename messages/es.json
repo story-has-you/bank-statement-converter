@@ -245,6 +245,8 @@
       "page": "Página {page, number} de {pages, number}",
       "nameRequired": "Introduce un nombre de comercio que no esté vacío.",
       "selected": "{aliases, number} nombres seleccionados en {rows, number} transacciones.",
+      "hiddenSelected": "{aliases, number} nombres seleccionados de {rows, number} transacciones están fuera de los resultados de búsqueda o de la página actual. También se actualizarán.",
+      "viewSelected": "Revisar los {aliases, number} nombres originales seleccionados",
       "apply": "Confirmar {aliases, number} nombres · {rows, number} transacciones",
       "removeSelected": "Eliminar asignaciones seleccionadas",
       "clearSelection": "Quitar selección",

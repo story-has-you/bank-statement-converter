@@ -245,6 +245,8 @@
       "page": "Página {page, number} de {pages, number}",
       "nameRequired": "Digite um nome de estabelecimento que não esteja vazio.",
       "selected": "{aliases, number} nomes selecionados em {rows, number} transações.",
+      "hiddenSelected": "{aliases, number} nomes selecionados em {rows, number} transações estão fora dos resultados da busca ou da página atual. Eles também serão atualizados.",
+      "viewSelected": "Conferir todos os {aliases, number} nomes originais selecionados",
       "apply": "Confirmar {aliases, number} nomes · {rows, number} transações",
       "removeSelected": "Remover associações selecionadas",
       "clearSelection": "Limpar seleção",

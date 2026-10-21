@@ -245,6 +245,8 @@
       "page": "Seite {page, number} von {pages, number}",
       "nameRequired": "Gib einen nicht leeren Händlernamen ein.",
       "selected": "{aliases, number} Namen für {rows, number} Transaktionen ausgewählt.",
+      "hiddenSelected": "{aliases, number} ausgewählte Namen mit {rows, number} Transaktionen liegen außerhalb der aktuellen Suchergebnisse oder Seite. Sie werden ebenfalls aktualisiert.",
+      "viewSelected": "Alle {aliases, number} ausgewählten Originalnamen prüfen",
       "apply": "{aliases, number} Namen · {rows, number} Transaktionen bestätigen",
       "removeSelected": "Ausgewählte Zuordnungen löschen",
       "clearSelection": "Auswahl aufheben",

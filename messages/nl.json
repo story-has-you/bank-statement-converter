@@ -245,6 +245,8 @@
       "page": "Pagina {page, number} van {pages, number}",
       "nameRequired": "Voer een winkelnaam in die niet leeg is.",
       "selected": "{aliases, number} namen geselecteerd voor {rows, number} transacties.",
+      "hiddenSelected": "{aliases, number} geselecteerde namen voor {rows, number} transacties vallen buiten de huidige zoekresultaten of pagina. Deze worden ook bijgewerkt.",
+      "viewSelected": "Alle {aliases, number} geselecteerde oorspronkelijke namen bekijken",
       "apply": "{aliases, number} namen · {rows, number} transacties bevestigen",
       "removeSelected": "Geselecteerde toewijzingen verwijderen",
       "clearSelection": "Selectie opheffen",

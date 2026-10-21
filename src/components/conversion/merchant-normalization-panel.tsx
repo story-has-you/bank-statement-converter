@@ -53,9 +53,13 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
   const filtered = aliases.filter((alias) => alias.value.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
+  const visibleAliases = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const visibleValues = new Set(visibleAliases.map((alias) => alias.value));
   const selectedAliases = aliases.filter((alias) => selected.has(alias.value));
   const selectedRows = selectedAliases.reduce((total, alias) => total + alias.rowCount, 0);
   const counts = { aliases: selectedAliases.length, rows: selectedRows };
+  const hiddenAliases = selectedAliases.filter((alias) => !visibleValues.has(alias.value));
+  const hiddenCounts = { aliases: hiddenAliases.length, rows: hiddenAliases.reduce((total, alias) => total + alias.rowCount, 0) };
 
   function changeSource(tableId: string, columnKey: string): void {
     const previous = getMerchantTable(normalization, tableId);
@@ -154,12 +158,7 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
               <FieldDescription>{t("aliasCount", { count: filtered.length })}</FieldDescription>
             </Field>
             {filtered.length > 0 ? (
-              <MerchantAliasList
-                aliases={filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)}
-                result={result}
-                selected={selected}
-                onToggle={toggleAlias}
-              />
+              <MerchantAliasList aliases={visibleAliases} result={result} selected={selected} onToggle={toggleAlias} />
             ) : (
               <p className="text-sm text-muted-foreground">{t(aliases.length === 0 ? "noAliases" : "noMatches")}</p>
             )}
@@ -195,9 +194,24 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
                     }}
                   />
                   {nameError && <FieldError id="merchant-name-error">{t("nameRequired")}</FieldError>}
-                  <FieldDescription id="merchant-selected-count">{t("selected", counts)}</FieldDescription>
+                  <FieldDescription id="merchant-selected-count" role="status">
+                    {t("selected", counts)}
+                    {hiddenAliases.length > 0 && (
+                      <span className="block font-medium text-foreground">{t("hiddenSelected", hiddenCounts)}</span>
+                    )}
+                  </FieldDescription>
                 </Field>
               </FieldGroup>
+              {selectedAliases.length > 0 && (
+                <details className="rounded-md border border-border p-3">
+                  <summary className="cursor-pointer rounded-sm text-sm font-medium focus-visible:outline-2 focus-visible:outline-ring">
+                    {t("viewSelected", counts)}
+                  </summary>
+                  <div className="mt-3 max-h-80 overflow-auto" tabIndex={0} role="region" aria-label={t("viewSelected", counts)}>
+                    <MerchantAliasList aliases={selectedAliases} result={result} selected={selected} onToggle={toggleAlias} />
+                  </div>
+                </details>
+              )}
               <div className="flex flex-wrap gap-2">
                 <Button type="submit" disabled={selectedAliases.length === 0}>
                   {t("apply", counts)}
