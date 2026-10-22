@@ -48,7 +48,7 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 在 [`src/config/plans.ts`](src/config/plans.ts) 统一调整套餐规则：
 
 - `freeQuotaConfig`：匿名与登录免费用户的每日页数，当前分别为 1 页和 5 页，按 UTC 日重置。
-- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `qwenFallback`（是否允许 Python 无法提供可核对交易时回退到 AI 解析）。当前 Standard 为 $19.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
+- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `qwenFallback`（是否允许 Python 无法提供可核对交易时回退到 AI 解析）。当前 Standard 为 $9.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
 
 首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，后台原子扣减 RPC 使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
 
