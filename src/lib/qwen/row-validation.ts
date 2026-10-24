@@ -8,6 +8,7 @@ const DESCRIPTION_HEADERS = [
   "buchung",
   "jahreskontoauszug",
   "摘要",
+  "交易名称",
   "说明",
   "用途",
   "备注",

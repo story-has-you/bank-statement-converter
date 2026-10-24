@@ -149,12 +149,17 @@ def _word_in_bbox(
 
 
 def page_contains_transaction_evidence(words: list[dict[str, object]]) -> bool:
-    """Detect date and amount evidence on a page that failed table reconstruction."""
+    """Detect unparsed transaction rows without combining unrelated page text."""
 
-    texts = [str(word.get("text", "")).strip() for word in words]
-    has_date = any(DATE_PATTERN.match(text) for text in texts)
-    has_amount = any(MONEY_PATTERN.fullmatch(text) for text in texts)
-    return has_date and has_amount
+    for line in _group_words_into_lines(words):
+        texts = [str(word["text"]).strip() for word in line.words]
+        has_date = any(
+            DATE_PATTERN.match(text) and not MONEY_PATTERN.fullmatch(text)
+            for text in texts
+        )
+        if has_date and any(MONEY_PATTERN.fullmatch(text) for text in texts):
+            return True
+    return False
 
 
 def merge_compatible_tables(tables: list[RawTable]) -> list[RawTable]:
@@ -522,7 +527,7 @@ def _is_statement_header(row: list[str | None]) -> bool:
     has_date = any(term in text for term in ("日期", "时间", "date", "time", "datum", "wertstellung"))
     has_description = any(
         term in text
-        for term in ("摘要", "description", "transaction", "buchung", "jahreskontoauszug")
+        for term in ("摘要", "交易名称", "description", "transaction", "buchung", "jahreskontoauszug")
     )
     has_amounts = (
         "余额" in text

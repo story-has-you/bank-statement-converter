@@ -11,7 +11,7 @@ from .models import ParseIssue
 DATE_HEADERS = ("date", "time", "datum", "wertstellung", "日期", "时间")
 DESCRIPTION_HEADERS = (
     "description", "transaction", "buchung", "jahreskontoauszug",
-    "摘要", "说明", "用途", "备注", "memo", "details",
+    "摘要", "交易名称", "说明", "用途", "备注", "memo", "details",
 )
 AMOUNT_HEADERS = (
     "amount", "debit", "credit", "withdrawal", "deposit", "betrag",
