@@ -1,8 +1,13 @@
 import type { CheckoutResult, PendingCheckout } from "@/lib/billing/provider";
 import { isMembershipTier } from "./config";
 
-/** Reads only displayable error/status fields from an untrusted JSON response. */
-export function readBillingResponse(value: unknown): { error?: string; status?: string; pendingCheckout?: PendingCheckout } {
+/** Reads the fields used by billing controls from an untrusted JSON response. */
+export function readBillingResponse(value: unknown): {
+  error?: string;
+  status?: string;
+  subscriptionId?: string;
+  pendingCheckout?: PendingCheckout;
+} {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
     return {};
   }
@@ -16,6 +21,7 @@ export function readBillingResponse(value: unknown): { error?: string; status?: 
   return {
     error: "error" in value && typeof value.error === "string" ? value.error : undefined,
     status: "status" in value && typeof value.status === "string" ? value.status : undefined,
+    subscriptionId: "subscriptionId" in value && typeof value.subscriptionId === "string" ? value.subscriptionId : undefined,
     pendingCheckout,
   };
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { funnelAnalyticsEnabled, trialPendingCookie } from "@/config/analytics";
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { syncBillingSubscriptionStatus } from "@/lib/billing/subscriptions";
@@ -17,18 +18,26 @@ export async function GET(request: Request) {
     if (supabase) {
       const { error } = await supabase.auth.exchangeCodeForSession(code);
       if (!error) {
+        const response = NextResponse.redirect(new URL(redirectPath, origin));
         try {
           const { data, error: userError } = await supabase.auth.getUser();
           if (userError || !data.user) {
             console.error("Failed to verify login user for subscription synchronization");
           } else {
+            if (funnelAnalyticsEnabled) {
+              response.cookies.set(trialPendingCookie, "true", {
+                maxAge: 300,
+                path: "/",
+                sameSite: "lax",
+                secure: process.env.NODE_ENV === "production",
+              });
+            }
             await syncBillingSubscriptionStatus(data.user.id);
           }
         } catch {
           console.error("Failed to verify login user for subscription synchronization");
         }
 
-        const response = NextResponse.redirect(new URL(redirectPath, origin));
         response.headers.set("Cache-Control", "private, no-store");
         return response;
       }

@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { useLocale, useTranslations } from "next-intl";
 
 import { createClient } from "@/lib/supabase/browser";
+import { trackEvent } from "@/lib/analytics";
 import { usePathname } from "@/i18n/navigation";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { ConversionStreamError, readConversionStream, type ConversionPreview } from "@/lib/conversion-stream-client";
@@ -100,6 +101,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
       try {
         const body = new FormData();
         body.append("file", file);
+        trackEvent("file_upload", { locale });
         const response = await fetch("/api/convert", {
           method: "POST",
           body,
@@ -114,6 +116,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
         if (active.current !== controller || controller.signal.aborted) {
           return;
         }
+        trackEvent("conversion_success", { locale, result_status: result.summary.status, page_count: result.pageCount });
         let storageFailed = false;
         try {
           saveConversionPayload(file.name, result);

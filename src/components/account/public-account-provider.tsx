@@ -1,7 +1,9 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { useLocale } from "next-intl";
 
+import { trackTrialStart } from "@/lib/analytics";
 import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { anonymousAccountSummary } from "@/lib/account/summary";
 import { createAccountSummaryLoader, type PublicAccountState } from "@/lib/account/summary-loader";
@@ -16,10 +18,16 @@ const PublicAccountContext = createContext<AccountContext | null>(null);
 
 /** One session subscription and a refreshable summary shared by public page controls. */
 export function PublicAccountProvider({ children }: { children: ReactNode }) {
+  const locale = useLocale();
   const [state, setState] = useState<AccountState>({ status: "loading", configured: false, summary: anonymousAccountSummary });
   const [user, setUser] = useState<AccountContext["user"]>(null);
   const refreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
   const refresh = useCallback(() => refreshRef.current(), []);
+  useEffect(() => {
+    if (user && state.status === "ready" && state.summary.user) {
+      trackTrialStart(user.id, locale, state.summary.activeTier !== null);
+    }
+  }, [user, state.status, state.summary, locale]);
   useEffect(() => {
     const client = createClient();
     let disposed = false;

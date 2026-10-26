@@ -490,7 +490,7 @@
     },
     "technicalData": {
       "title": "Necessary technical information",
-      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. To measure visits, Google Analytics and Pageview may receive access time, IP address, and browser or device information. We do not send bank statements, extracted transactions, or generated Excel content to these analytics services."
+      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. To measure visits, Google Analytics and Pageview may receive access time, IP address, and browser or device information. We do not send bank statements, extracted transactions, or generated Excel content to these analytics services. Google Analytics also receives events for file uploads, completed conversions, starting free account usage, and confirmed subscriptions, along with the page language, conversion status and page count, plan, payment provider, and subscription transaction identifier, to analyze the conversion journey. These events do not include filenames, email addresses, or website account IDs."
     },
     "purposes": {
       "title": "Processing purposes",
@@ -507,7 +507,7 @@
     },
     "storage": {
       "title": "Browser storage",
-      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history. Selected merchant source columns, alias mappings and confirmed merchant names are also stored with the current result in this tab’s session storage. They can be restored on refresh and are cleared with the result when you start another conversion or clear the current one. They are not saved on the server or reused across files; merchant normalization makes no additional model request."
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history. Selected merchant source columns, alias mappings and confirmed merchant names are also stored with the current result in this tab’s session storage. They can be restored on refresh and are cleared with the result when you start another conversion or clear the current one. They are not saved on the server or reused across files; merchant normalization makes no additional model request. To avoid duplicate analytics events, browser local storage also keeps markers for each account or subscription. A pending analytics cookie expires 5 minutes after successful sign-in. These markers contain no statement content."
     },
     "security": {
       "title": "Information security",
