@@ -25,10 +25,12 @@ export const conversionPages = [
   {
     id: "quickbooks",
     path: "/guides/bank-statement-to-quickbooks",
-    checkedOn: "2026-10-14",
+    checkedOn: "2026-10-26",
     sources: [
       "https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US",
       "https://quickbooks.intuit.com/learn-support/en-us/help-article/import-transactions/manually-upload-transactions-quickbooks-online/L0rE9OXBz_US_en_US",
+      "https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-feeds/download-bank-feed-transactions-quickbooks-desktop/L8o0Aw9VM_US_en_US",
+      "https://quickbooks.intuit.com/learn-support/en-us/help-article/invoicing/enter-transactions-batch-quickbooks-desktop/L5eBO2ypV_US_en_US",
     ],
   },
   {

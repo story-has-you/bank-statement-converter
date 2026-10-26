@@ -785,9 +785,9 @@
         }
       },
       "quickbooks": {
-        "label": "Bank statement to QuickBooks: CSV guide",
-        "title": "Prepare bank statement transactions for QuickBooks Online",
-        "intro": "Use StatementXL's bank statement converter to extract PDF transactions, then prepare a three- or four-column CSV for QuickBooks Online. Review the rows before importing. This manual workflow does not connect your QuickBooks account or generate QBO files. QuickBooks also has its own PDF and image import options.",
+        "label": "Convert Bank Statement PDF to QuickBooks CSV",
+        "title": "Convert bank statement PDFs to a QuickBooks-ready CSV",
+        "intro": "Extract transactions from your PDF bank statement and review them against the original. Export your reviewed data, then prepare a separate 3- or 4-column CSV for QuickBooks Online using the guide below.",
         "planNote": "Text PDFs can use the free daily quota; larger workloads can use a subscription. Scanned PDFs require Professional or Enterprise. Compare the configured prices and page quotas below.",
         "planCta": "Compare page quotas and parsing plans",
         "requirementsTitle": "Prepare a clean CSV for QuickBooks",
@@ -796,7 +796,7 @@
         "preparation": "Intuit's US guide recommends dd/mm/yyyy, English files up to 350 KB, and no more than 1,000 transaction lines per upload. Split larger files into non-overlapping batches. For a bank-account three-column CSV, payments are negative and deposits positive. Credit-card statements can use different signs: select the actual credit-card account and check the preview.",
         "limitationsTitle": "Import, check duplicates and reconcile",
         "limitations": "In QuickBooks Online, go to All apps → Accounting → Bank transactions → Upload from file. Choose the correct account, map the columns and date format, review the selected transactions, then confirm the import. Check existing transactions to prevent duplicates; match, categorize and reconcile afterward. Screens and availability may vary by account or region. CSV preparation here is optional: Intuit also documents direct PDF/image uploads.",
-        "stepsTitle": "From statement PDF to a reviewed QuickBooks import",
+        "stepsTitle": "How it works: PDF → reviewed CSV → QuickBooks",
         "steps": {
           "upload": {
             "title": "Convert the statement PDF",
@@ -815,7 +815,7 @@
             "text": "Upload the CSV to the correct account, map the fields and review before confirming. Avoid duplicate transactions, then match, categorize and reconcile in QuickBooks."
           }
         },
-        "examplesTitle": "Three- and four-column CSV examples",
+        "examplesTitle": "QuickBooks Online CSV format",
         "examplesNote": "Synthetic examples follow Intuit's bank-account sample: payment is negative in Amount, or positive in Credit; deposit is positive in Amount, or in Debit. Headers and sample descriptions remain in English for the import file. Empty cells stay blank. Check your target account's preview; do not apply these signs blindly to credit cards.",
         "columnsCaption": "{count}-column CSV example",
         "samplePayment": "Example payment",
@@ -826,6 +826,124 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
+        },
+        "metaDescription": "Convert a PDF bank statement into a 3- or 4-column CSV for QuickBooks Online. Review every row, fix dates and signs, then upload. Free pages daily.",
+        "threeColumnTitle": "3-column: Date, Description, Amount",
+        "fourColumnTitle": "4-column: Date, Description, Credit, Debit",
+        "convertCta": "Convert your statement, then prepare this format",
+        "scopeNote": "These instructions follow Intuit’s US guides. Screens and availability may vary by account or region.",
+        "upload": {
+          "title": "Upload the CSV in QuickBooks Online",
+          "mappingTitle": "Map columns and date format",
+          "mappingText": "Go to All apps → Accounting → Bank transactions → Link account ▼ → Upload from file. Choose the correct account, map the columns, and select the date format used throughout your file.",
+          "signsTitle": "Check signs: Reverse all values for credit cards",
+          "signsText": "Select the actual credit-card account and check the preview. If the signs are reversed, use Reverse all values before confirming.",
+          "reconcileTitle": "Avoid duplicates, then match and reconcile",
+          "reconcileText": "Check existing transactions before importing. Avoid overlapping uploads, then match, categorize and reconcile the imported transactions."
+        },
+        "errors": {
+          "title": "Fix common QuickBooks import errors",
+          "headers": {
+            "symptom": "Symptom",
+            "cause": "Cause",
+            "fix": "How to fix it"
+          },
+          "rows": [
+            {
+              "symptom": "Zero-only amount cells",
+              "cause": "An amount cell contains only 0.",
+              "fix": "Leave zero-only amount cells blank."
+            },
+            {
+              "symptom": "Numbers in descriptions",
+              "cause": "The Description column contains numbers.",
+              "fix": "Edit descriptions in the import copy before uploading; retain the original export."
+            },
+            {
+              "symptom": "Amount in a four-column header",
+              "cause": "A Credit or Debit header includes amount.",
+              "fix": "Use Credit and Debit as the headers."
+            },
+            {
+              "symptom": "CSV saved on a Mac",
+              "cause": "The file needs to be saved as Windows CSV.",
+              "fix": "Save a separate copy as Windows CSV, then upload it."
+            },
+            {
+              "symptom": "Mixed dates or weekdays",
+              "cause": "Dates use different formats or include weekdays.",
+              "fix": "Remove weekdays, use one format throughout, and select the matching format during import. Intuit recommends dd/mm/yyyy."
+            },
+            {
+              "symptom": "File exceeds an upload limit",
+              "cause": "The file exceeds 350 KB or 1,000 transaction lines.",
+              "fix": "Split it into non-overlapping date batches within both limits."
+            },
+            {
+              "symptom": "Amounts are reversed",
+              "cause": "The signs do not match the target account.",
+              "fix": "Check the account and preview. For credit cards, use Reverse all values if needed."
+            },
+            {
+              "symptom": "Transactions appear twice",
+              "cause": "An upload overlaps existing transactions.",
+              "fix": "Check existing transactions and exclude overlapping entries before confirming."
+            },
+            {
+              "symptom": "The file is not in English",
+              "cause": "Intuit’s US guide requires an English upload file.",
+              "fix": "Prepare an English import copy and review it before uploading."
+            }
+          ],
+          "ctaText": "Extract and review your statement with StatementXL, then prepare a separate CSV using the format above."
+        },
+        "desktop": {
+          "title": "QuickBooks Desktop: what works",
+          "text": "QuickBooks Desktop bank-feed imports use Web Connect (.qbo) files. CSV, PDF, QFX and QIF are not accepted through this bank-import path. StatementXL does not generate .qbo files.",
+          "path": "Banking → Bank Feeds → Import Web Connect Files",
+          "batchTitle": "Accountant and Enterprise",
+          "batchText": "Accountant and Enterprise editions can use Batch Enter Transactions to paste transactions from Excel. This is separate from a Web Connect bank import.",
+          "otherEditions": "There is no official CSV bank-import path for Pro or Premier in the sources used here."
+        },
+        "compare": {
+          "title": "Convert first, or use QuickBooks’ own PDF upload?",
+          "convertTitle": "Convert and review first",
+          "convertText": "Use a reviewed Excel working copy when you need row-level risk flags, source references, balance checks or separate import batches. For Desktop, review the edition-specific options above; StatementXL does not create .qbo files.",
+          "directTitle": "Upload directly in QuickBooks Online",
+          "directText": "QuickBooks Online also supports direct English PDF or image uploads. Consider that route for a small workload when you do not need a separate spreadsheet working copy."
+        },
+        "beforeImport": {
+          "title": "Before you import",
+          "balance": "Check your opening and closing balances with the <checker>balance checker</checker>.",
+          "scanned": "Working from a scan? Read the <scanned>scanned statement guide</scanned>. Scanned PDF parsing requires Professional or Enterprise."
+        },
+        "faq": [
+          {
+            "id": "qbo",
+            "question": "Does StatementXL create QBO or Web Connect files?",
+            "answer": "No. StatementXL exports reviewed transaction data but does not generate .qbo or Web Connect files or connect to your QuickBooks account."
+          },
+          {
+            "id": "desktop",
+            "question": "Can I import into QuickBooks Desktop?",
+            "answer": "Desktop bank-feed imports require .qbo files. Accountant and Enterprise can use Batch Enter Transactions to paste from Excel; StatementXL does not provide a .qbo export."
+          },
+          {
+            "id": "signs",
+            "question": "Why are my amounts reversed after upload?",
+            "answer": "Credit-card signs can differ from bank-account signs. Select the correct account and check the preview; use Reverse all values if needed."
+          },
+          {
+            "id": "limits",
+            "question": "How many transactions can I upload at once?",
+            "answer": "Intuit’s US guide allows up to 1,000 transaction lines per upload, with a file size no larger than 350 KB. Split larger files into non-overlapping batches."
+          }
+        ],
+        "samples": {
+          "title": "Download sample CSV templates",
+          "threeColumn": "Download 3-column CSV",
+          "fourColumn": "Download 4-column CSV",
+          "note": "Synthetic examples only. Replace the sample rows with your reviewed transactions before importing."
         }
       },
       "hsbc": {
@@ -1027,7 +1145,8 @@
           },
           {
             "title": "Review the extraction before categorizing",
-            "text": "Convert one PDF at a time. Check dates, description, amount direction and flagged rows against the original. Keep the full export with source information, and categorize transactions in a separate working copy. Distinguish transfers, refunds and loan proceeds from ordinary revenue or spending before calculating totals."
+            "text": "Convert one PDF at a time. Check dates, description, amount direction and flagged rows against the original. Keep the full export with source information, and categorize transactions in a separate working copy. Distinguish transfers, refunds and loan proceeds from ordinary revenue or spending before calculating totals.",
+            "quickbooksLink": "If you keep your books in QuickBooks, use the QuickBooks CSV preparation and import guide after reviewing the extraction."
           },
           {
             "title": "Resolve questions with a tax professional",
@@ -1055,7 +1174,8 @@
           },
           {
             "title": "Close each period before moving on",
-            "text": "Check for overlaps, duplicate uploads and internal transfers, then import a prepared copy into the destination system. Reconcile the ending balance to the statement and carry that verified balance into the next period. Track unresolved items explicitly rather than inventing balancing transactions."
+            "text": "Check for overlaps, duplicate uploads and internal transfers, then import a prepared copy into the destination system. Reconcile the ending balance to the statement and carry that verified balance into the next period. Track unresolved items explicitly rather than inventing balancing transactions.",
+            "quickbooksLink": "Importing the reviewed transactions into QuickBooks? Follow the QuickBooks CSV preparation and import guide."
           }
         ],
         "faq": [

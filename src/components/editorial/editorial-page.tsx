@@ -46,6 +46,13 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
             <section key={i} className="grid gap-3">
               <h2 className="text-xl font-semibold">{s.title}</h2>
               <p className="whitespace-pre-line text-sm leading-8 text-muted-foreground">{s.text}</p>
+              {s.quickbooksLink && (
+                <p className="text-sm leading-8">
+                  <Link href="/guides/bank-statement-to-quickbooks" className="underline underline-offset-4">
+                    {s.quickbooksLink}
+                  </Link>
+                </p>
+              )}
             </section>
           ))}
           {c.page.kind === "about" && (

@@ -8,7 +8,7 @@ import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 
 export type EditorialParams = Promise<{ locale: string; content: string[] }>;
-export type EditorialSection = { title: string; text: string };
+export type EditorialSection = { title: string; text: string; quickbooksLink?: string };
 
 export async function getEditorialContent(params: EditorialParams) {
   const { locale, content } = await params;

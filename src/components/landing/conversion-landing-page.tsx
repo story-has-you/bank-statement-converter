@@ -9,6 +9,7 @@ import { LandingFaq } from "@/components/landing/landing-faq";
 import { LandingGuide } from "@/components/landing/landing-guide";
 import { LandingIntro } from "@/components/landing/landing-intro";
 import { LandingPlanLink } from "@/components/landing/landing-plan-link";
+import { QuickbooksGuide } from "@/components/landing/quickbooks-guide";
 import { QuickbooksCsvExamples } from "@/components/landing/quickbooks-csv-examples";
 import { LandingRequirements } from "@/components/landing/landing-requirements";
 import { LandingSources } from "@/components/landing/landing-sources";
@@ -29,16 +30,24 @@ export async function ConversionLandingPage({ id }: { id: ConversionPageId }) {
       <main id="main" className="flex-1">
         <section className="mx-auto w-full max-w-4xl px-5 pb-12 pt-10 sm:px-8">
           <LandingIntro content={content} />
-          <LandingPlanLink id={id} />
+          {id !== "quickbooks" && <LandingPlanLink id={id} />}
           <ClientMessages namespaces={["PdfUpload"]}>
             <PdfUpload showFreeQuota={id !== "scanned"} />
           </ClientMessages>
+          {id === "quickbooks" && <LandingPlanLink id={id} />}
         </section>
-        <LandingGuide content={content} />
-        <LandingSteps content={content} />
-        {id === "quickbooks" && <QuickbooksCsvExamples />}
-        <LandingRequirements content={content} />
+        {content.quickbooks ? (
+          <QuickbooksGuide content={content} guide={content.quickbooks} />
+        ) : (
+          <>
+            <LandingGuide content={content} />
+            <LandingSteps content={content} />
+            {id === "quickbooks" && <QuickbooksCsvExamples />}
+          </>
+        )}
+        {id !== "quickbooks" && <LandingRequirements content={content} />}
         <UsageTiers />
+        {id === "quickbooks" && <LandingRequirements content={content} />}
         <LandingFaq content={content} />
         <LandingSources content={content} />
         <RelatedConversionPages current={id} />

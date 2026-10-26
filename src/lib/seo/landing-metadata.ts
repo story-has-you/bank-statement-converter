@@ -16,17 +16,17 @@ export async function getLandingMetadata(locale: string, id: ConversionPageId): 
   const alternates = getLocalizedAlternates(c.page.path, locale);
   return {
     title,
-    description: c.intro,
+    description: c.metaDescription,
     alternates,
     openGraph: {
       type: "website",
       siteName: c.geo.brand,
       title,
-      description: c.intro,
+      description: c.metaDescription,
       url: alternates.canonical,
       locale: locale.replace("-", "_"),
     },
-    twitter: { card: "summary_large_image", title, description: c.intro },
+    twitter: { card: "summary_large_image", title, description: c.metaDescription },
     robots: { index: true, follow: true },
   };
 }

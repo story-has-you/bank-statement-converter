@@ -45,20 +45,62 @@ export const getLandingContent = cache(async (locale: AppLocale, id: ConversionP
       steps.push({ id: "import", title: p("steps.import.title"), text: p("steps.import.text") });
     }
   }
-  const faq = [
-    ...(bank ? [{ id: "history", question: t("historyQuestion", { bank }), answer: p("availability") }] : []),
-    ...(id === "scanned" || id === "quickbooks"
-      ? guides.map((guide) => ({ id: guide.id, question: guide.title, answer: guide.text }))
-      : []),
-    { id: "formats", question: t("formatsQuestion"), answer: t("downloadText") },
-    ...geo.faq.items,
-  ];
+  const quickbooks =
+    id === "quickbooks" && p.has("errors.title")
+      ? {
+          scopeNote: p("scopeNote"),
+          upload: {
+            title: p("upload.title"),
+            sections: (["mapping", "signs", "reconcile"] as const).map((section) => ({
+              id: section,
+              title: p(`upload.${section}Title`),
+              text: p(`upload.${section}Text`),
+            })),
+          },
+          errors: {
+            title: p("errors.title"),
+            headers: { symptom: p("errors.headers.symptom"), cause: p("errors.headers.cause"), fix: p("errors.headers.fix") },
+            rows: p.raw("errors.rows") as { symptom: string; cause: string; fix: string }[],
+            ctaText: p("errors.ctaText"),
+          },
+          desktop: p.raw("desktop") as {
+            title: string;
+            text: string;
+            path: string;
+            batchTitle: string;
+            batchText: string;
+            otherEditions: string;
+          },
+          compare: {
+            title: p("compare.title"),
+            sections: (["convert", "direct"] as const).map((section) => ({
+              id: section,
+              title: p(`compare.${section}Title`),
+              text: p(`compare.${section}Text`),
+            })),
+          },
+          beforeImportTitle: p("beforeImport.title"),
+        }
+      : null;
+  const faq = p.has("faq")
+    ? (p.raw("faq") as { id: string; question: string; answer: string }[])
+    : [
+        ...(bank ? [{ id: "history", question: t("historyQuestion", { bank }), answer: p("availability") }] : []),
+        ...(id === "scanned" || id === "quickbooks"
+          ? guides.map((guide) => ({ id: guide.id, question: guide.title, answer: guide.text }))
+          : []),
+        { id: "formats", question: t("formatsQuestion"), answer: t("downloadText") },
+        ...geo.faq.items,
+      ];
+  const intro = p("intro", { anonymousPages: freeQuotaConfig.anonymous.pages, authenticatedPages: freeQuotaConfig.authenticated.pages });
   return {
     page,
     bank,
     label: p("label"),
     title: p("title"),
-    intro: p("intro", { anonymousPages: freeQuotaConfig.anonymous.pages, authenticatedPages: freeQuotaConfig.authenticated.pages }),
+    intro,
+    metaDescription: p.has("metaDescription") ? p("metaDescription") : intro,
+    quickbooks,
     guides,
     steps,
     stepsTitle,
