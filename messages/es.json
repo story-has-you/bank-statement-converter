@@ -734,6 +734,45 @@
         "intro": "Con StatementXL, extrae operaciones del PDF, compara la vista previa con el original y descarga Excel con indicadores de riesgo. Convierte gratis {anonymousPages} página al día sin iniciar sesión o {authenticatedPages} páginas con sesión iniciada. Conserva el original para verificar los datos.",
         "metaDescription": "Convierta extractos PDF a Excel con StatementXL. Revise las operaciones y las alertas de riesgo comparándolas con el PDF original."
       },
+      "csv": {
+        "label": "Convertidor de extractos bancarios PDF a CSV",
+        "title": "Convertir extractos bancarios PDF a CSV",
+        "intro": "Extrae las transacciones de tu extracto PDF, comprueba las filas con el original y descarga el CSV. Prueba {anonymousPages} página al día sin iniciar sesión, o {authenticatedPages} páginas con sesión iniciada.",
+        "metaDescription": "Convierte extractos bancarios PDF a CSV. Revisa transacciones y alertas, descarga un CSV por tabla y adapta las columnas a tu programa contable.",
+        "requirementsTitle": "Elegir CSV o Excel",
+        "requirements": "Elige CSV para preparar datos para una hoja de cálculo o una importación contable. Elige Excel si necesitas un libro con varias hojas. Ambos usan el mismo resultado de conversión revisado.",
+        "preparationTitle": "Un archivo CSV por tabla",
+        "preparation": "Tras convertir, abre el menú de formatos junto al botón de descarga de Excel y elige CSV. Cada tabla lógica se descarga por separado, con sus columnas originales y campos de riesgo y origen.",
+        "limitationsTitle": "Preparar una copia para importar",
+        "limitations": "Conserva la exportación completa para revisarla. En otra copia, elimina los campos de revisión y adapta fechas, descripciones e importes al programa de destino. StatementXL no crea archivos específicos de QBO o Xero ni importa transacciones por ti.",
+        "stepsTitle": "Del extracto bancario PDF al CSV",
+        "steps": {
+          "upload": {
+            "title": "Subir un extracto bancario PDF",
+            "text": "Sube un solo PDF de hasta {megabytes} MB y {pages} páginas. Es preferible el PDF de texto original del banco. Los escaneos requieren un plan compatible con IA y seleccionarla manualmente."
+          },
+          "review": {
+            "title": "Revisar transacciones y alertas",
+            "text": "Compara fechas, descripciones, importes y saldos con el original. Revisa las filas DISCREPANCY y UNVERIFIABLE antes de usar la exportación."
+          },
+          "download": {
+            "title": "Elegir CSV en el menú de descarga",
+            "text": "Abre el menú de formatos junto a Excel y elige CSV. Descarga cada tabla, guarda la copia completa para revisión y prepara otra para importar."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "¿Puedo importar el CSV directamente en QuickBooks o Xero?",
+            "answer": "No es un archivo de importación específico. Incluye columnas originales y campos de revisión. Prepara una copia con las columnas, fechas y signos de los importes requeridos y comprueba la vista previa de importación."
+          },
+          {
+            "id": "tables",
+            "question": "¿Por qué recibo varios archivos CSV?",
+            "answer": "Las exportaciones CSV y TSV generan un archivo por tabla lógica. Descárgalas por separado y no supongas que las cuentas o monedas distintas deben ir en un mismo archivo de importación."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Extracto de Chase a Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Prepare PDF de Wells Fargo para Excel. Compruebe los períodos disponibles por cuenta y revise las operaciones antes de exportar."
       },
       "scanned": {
-        "label": "Extracto escaneado a Excel",
-        "title": "Convierte un extracto bancario escaneado a Excel",
-        "intro": "Professional y Enterprise pueden elegir IA para intentar convertir PDF escaneados. El PDF completo y su nombre se envían a Qwen AI Platform. El análisis habitual se realiza en el navegador de forma predeterminada, sin cambiar automáticamente a IA. Professional y Enterprise pueden elegir IA antes de convertir, también para escaneos. Revisa los resultados con el PDF original.",
+        "label": "OCR de extractos bancarios: PDF escaneado a Excel",
+        "title": "Convertir extractos bancarios escaneados a Excel con IA",
+        "intro": "Prueba el OCR para extraer transacciones de un extracto bancario PDF escaneado. Con Professional o Enterprise puedes elegir IA antes de convertir, revisar el resultado y descargar Excel o CSV. El reconocimiento no está garantizado.",
         "planNote": "Los escaneos requieren Professional o Enterprise y cuota disponible. El uso anónimo, gratuito y Standard exige una capa de texto. Compara los planes abajo.",
         "planCta": "Análisis con IA opcional; permite intentar escaneos",
         "requirementsTitle": "¿Qué planes pueden procesar escaneos?",
-        "requirements": "Professional y Enterprise pueden elegir IA para intentar convertir PDF escaneados. El PDF completo y su nombre se envían a Qwen AI Platform. El análisis habitual se realiza en el navegador de forma predeterminada, sin cambiar automáticamente a IA. Professional y Enterprise pueden elegir IA antes de convertir, también para escaneos. Revisa los resultados con el PDF original.",
+        "requirements": "Inicia sesión con Professional o Enterprise y cuota de páginas disponible; elige IA antes de comenzar. El acceso gratuito y Standard exige un PDF de texto. La IA es opcional y nunca se activa automáticamente.",
         "preparationTitle": "Prepara un PDF escaneado legible",
         "preparation": "Escanea páginas completas en orden, con fechas e importes nítidos. Evita bordes cortados, sombras y rotaciones. Sube un PDF dentro de los límites mostrados. Une primero JPG o PNG en un PDF; prefiere el PDF de texto original del banco cuando exista.",
         "limitationsTitle": "Revisa los resultados y el tratamiento de datos",
-        "limitations": "El análisis habitual se realiza en el navegador de forma predeterminada, sin cambiar automáticamente a IA. Professional y Enterprise pueden elegir IA antes de convertir, también para escaneos. Revisa los resultados con el PDF original. Este sitio no guarda un historial permanente de PDF, transacciones, respuestas del modelo ni exportaciones. El proveedor de IA aplica sus propios términos y política de privacidad; no garantizamos plazos de conservación ni uso para entrenamiento.",
+        "limitations": "El análisis con IA envía el PDF completo y el nombre del archivo a Qwen AI Platform. Compara el resultado con el original; el reconocimiento no está garantizado. StatementXL no conserva un historial permanente de archivos o transacciones. El proveedor procesa los datos según sus condiciones; no garantizamos plazos de conservación ni usos para entrenamiento.",
         "stepsTitle": "Convierte un escaneo en tres pasos",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Descarga Excel u otro formato admitido. Conserva el original y la descarga; StatementXL no guarda un historial permanente."
           }
         },
-        "metaDescription": "Consulte los requisitos para convertir extractos escaneados. Los planes aptos permiten elegir IA Qwen; revise los resultados con el original."
+        "metaDescription": "OCR para extractos bancarios PDF escaneados. Los planes compatibles permiten elegir Qwen AI, revisar transacciones y descargar Excel o CSV, sin garantía de reconocimiento.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "¿El OCR garantiza que todas las transacciones sean correctas?",
+            "answer": "No. La calidad del escaneo y el diseño afectan al reconocimiento. Comprueba fechas, importes, saldos y todas las alertas con el original antes de usar Excel o CSV."
+          },
+          {
+            "id": "images",
+            "question": "¿Puedo subir un extracto bancario JPG o PNG?",
+            "answer": "Este espacio solo acepta PDF. Combina primero imágenes nítidas y completas en un solo PDF y elige IA con un plan Professional o Enterprise compatible."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Preparar extractos para QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "No necesariamente. Se conservan columnas originales y de revisión. Prepare una copia para Xero y confirme la asignación."
           }
         ],
-        "metaDescription": "Prepare operaciones PDF para importarlas manualmente en Xero mediante CSV. Revise fechas, importes y cuenta; prefiera un archivo bancario útil."
+        "metaDescription": "Prepare operaciones PDF para importarlas manualmente en Xero mediante CSV. Revise fechas, importes y cuenta; prefiera un archivo bancario útil.",
+        "planCta": "Comparar planes de conversión"
       },
       "wave": {
         "title": "PDF bancario a Wave: revisar y cargar transacciones",
@@ -1273,10 +1325,11 @@
       "alternatives": "Alternativas a DocuClipper",
       "nanonets": "StatementXL y Nanonets",
       "checker": "Comprobador de saldo y plantilla Excel",
-      "benchmark": "Informe de muestras públicas"
+      "benchmark": "Informe de muestras públicas",
+      "csv": "Convertidor de PDF a CSV"
     },
     "groupDescriptions": {
-      "conversion": "Si puede seleccionar el texto del PDF, empiece por la guía de Excel. Para archivos que solo contienen imágenes, revise los requisitos antes de elegir el análisis con IA.",
+      "conversion": "Elige PDF a Excel o CSV para extractos de texto. Si el PDF solo contiene imágenes, consulta los requisitos de escaneos antes de elegir IA.",
       "banks": "Elija su banco para consultar cómo descargar extractos y los períodos disponibles por cuenta. La guía no demuestra compatibilidad con todos los diseños.",
       "accounting": "Elija el software de destino y compruebe sus requisitos CSV. Estas guías explican importaciones manuales; StatementXL no se conecta a su cuenta contable.",
       "bookkeeping": "Empiece por su tarea: documentación para préstamos, impuestos de EE. UU. o contabilidad atrasada. Guarde los extractos originales y los justificantes junto con la hoja.",

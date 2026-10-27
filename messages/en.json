@@ -734,6 +734,45 @@
         "intro": "Use StatementXL's bank statement converter to extract PDF transactions, check the preview against your original and download Excel with risk flags. Convert {anonymousPages} page per day without signing in, or {authenticatedPages} pages when signed in. Keep the original PDF for verification.",
         "metaDescription": "Convert bank statement PDFs to Excel with StatementXL. Preview transactions, check risk flags and compare the export with your original PDF."
       },
+      "csv": {
+        "label": "PDF Bank Statement to CSV Converter",
+        "title": "Convert bank statement PDFs to CSV",
+        "intro": "Extract transactions from your bank statement PDF, review the rows against the original and download CSV. Try {anonymousPages} page daily without signing in, or {authenticatedPages} pages when signed in.",
+        "metaDescription": "Convert PDF bank statements to CSV. Review transactions and risk flags, download one CSV per table, then prepare columns for your accounting software.",
+        "requirementsTitle": "CSV or Excel: choose your output",
+        "requirements": "Choose CSV for plain rows you can prepare for a spreadsheet or accounting import. Choose Excel when you want a workbook with separate sheets. Both use the same reviewed conversion result.",
+        "preparationTitle": "One CSV file per table",
+        "preparation": "After conversion, open the format menu beside the Excel download button and select CSV. Each logical table downloads separately, with its original columns plus risk and source fields.",
+        "limitationsTitle": "Prepare a separate import copy",
+        "limitations": "Keep the full export for review. In a separate copy, remove review fields and arrange dates, descriptions and amounts for your destination software. StatementXL does not create dedicated QBO or Xero files or import transactions for you.",
+        "stepsTitle": "From bank statement PDF to CSV",
+        "steps": {
+          "upload": {
+            "title": "Upload a bank statement PDF",
+            "text": "Upload one PDF up to {megabytes} MB and {pages} pages. Prefer the bank’s original text PDF; scanned PDFs require an eligible AI plan and manual AI selection."
+          },
+          "review": {
+            "title": "Review transactions and risk flags",
+            "text": "Compare dates, descriptions, amounts and balances with the original. Check DISCREPANCY and UNVERIFIABLE rows before using the export."
+          },
+          "download": {
+            "title": "Choose CSV from the download menu",
+            "text": "Open the format menu next to Excel and choose CSV. Download each table, keep the full review copy and prepare a separate copy for import."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Can I import the downloaded CSV directly into QuickBooks or Xero?",
+            "answer": "Not as a dedicated import file. The export includes original columns and review fields. Prepare a separate copy using your accounting software’s required columns, dates and amount signs, then review its import preview."
+          },
+          {
+            "id": "tables",
+            "question": "Why do I receive more than one CSV file?",
+            "answer": "CSV and TSV exports produce one file per logical table. Download the tables separately; do not assume different accounts or currencies belong in one import file."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase bank statement converter",
@@ -768,17 +807,17 @@
         "metaDescription": "Prepare Wells Fargo statement PDFs for Excel conversion. Check account-specific document availability and review transactions before export."
       },
       "scanned": {
-        "label": "Scanned bank statement converter to Excel",
-        "title": "Convert a scanned bank statement to Excel",
-        "intro": "Professional and Enterprise can choose AI to try scanned PDFs. The complete PDF and filename are sent to Qwen AI Platform. Regular parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Check results against the original PDF.",
+        "label": "Bank Statement OCR: Scanned PDF to Excel",
+        "title": "Convert scanned bank statements to Excel with AI",
+        "intro": "Use bank statement OCR to attempt transaction extraction from a scanned PDF. Professional and Enterprise users can choose AI before conversion, then review the result and download Excel or CSV. Recognition is not guaranteed.",
         "planNote": "Scanned PDFs require Professional or Enterprise and available page quota. Anonymous, free and Standard access requires a text layer. Use the plan comparison below to choose the appropriate parsing capability.",
         "planCta": "Optional AI parsing; can try scanned PDFs",
         "requirementsTitle": "Which plans can attempt scanned statements?",
-        "requirements": "Professional and Enterprise can choose AI to try scanned PDFs. The complete PDF and filename are sent to Qwen AI Platform. Regular parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Check results against the original PDF.",
+        "requirements": "Sign in with Professional or Enterprise and available page quota, then select AI before starting. Free and Standard access requires a text PDF. AI is optional and never turns on automatically.",
         "preparationTitle": "Prepare a readable scanned PDF",
         "preparation": "Scan complete pages in order, keep dates and amounts sharp, and avoid cropped edges, shadows and rotated pages. Upload a single PDF within the displayed limits. JPG or PNG images need to be combined into a PDF first; prefer the bank's original text PDF when available.",
         "limitationsTitle": "Review AI results and data handling",
-        "limitations": "Regular parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Check results against the original PDF. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training.",
+        "limitations": "AI parsing sends the complete PDF and filename to Qwen AI Platform. Compare the result with the original; recognition is not guaranteed. StatementXL keeps no permanent file or transaction history. The provider’s terms govern its processing; we make no additional promise about retention or training use.",
         "stepsTitle": "Convert a scan in three steps",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Download Excel or another supported format. Keep the original and the downloaded file: StatementXL does not provide persistent file history."
           }
         },
-        "metaDescription": "Learn the requirements for scanned statement conversion. Eligible plans can choose Qwen AI parsing; review extracted rows against the original."
+        "metaDescription": "Bank statement OCR for scanned PDFs. Eligible plans can choose Qwen AI, review extracted transactions and download Excel or CSV. Recognition is not guaranteed.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "Does bank statement OCR guarantee every transaction is correct?",
+            "answer": "No. Scan quality and layout affect recognition. Compare dates, amounts and balances with the original and check all risk flags before using Excel or CSV."
+          },
+          {
+            "id": "images",
+            "question": "Can I upload a JPG or PNG bank statement?",
+            "answer": "This upload accepts PDFs only. Combine clear, complete images into one PDF first, then choose AI with an eligible Professional or Enterprise plan."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Convert Bank Statement PDF to QuickBooks CSV",
@@ -1090,7 +1141,8 @@
             "answer": "No. StatementXL retains original columns and adds review fields. Prepare a copy in Xero’s required format and confirm the column mapping before importing."
           }
         ],
-        "metaDescription": "Prepare PDF transactions for a manual Xero CSV import. Check dates, amounts and account selection; use a native bank export when available."
+        "metaDescription": "Prepare PDF transactions for a manual Xero CSV import. Check dates, amounts and account selection; use a native bank export when available.",
+        "planCta": "Compare conversion plans"
       },
       "wave": {
         "title": "Bank statement PDF to Wave: review a CSV import",
@@ -1392,10 +1444,11 @@
       "alternatives": "DocuClipper alternatives",
       "nanonets": "StatementXL vs Nanonets",
       "checker": "Balance checker & Excel template",
-      "benchmark": "Public sample report"
+      "benchmark": "Public sample report",
+      "csv": "PDF to CSV converter"
     },
     "groupDescriptions": {
-      "conversion": "Start with the PDF-to-Excel guide for selectable text. For image-only PDFs, read the scanned-statement requirements before choosing AI parsing.",
+      "conversion": "Choose PDF to Excel or CSV for a text statement. For image-only PDFs, check the scanned-statement requirements before choosing AI parsing.",
       "banks": "Choose your bank to find statement download steps and account-specific limits. A download guide does not establish support for every statement layout.",
       "accounting": "Choose your destination software, then check its CSV requirements. These guides describe manual imports; StatementXL does not connect to your accounting account.",
       "bookkeeping": "Begin with the task: loan records, US tax preparation or missing bookkeeping periods. Keep original statements and supporting documents alongside your spreadsheet.",

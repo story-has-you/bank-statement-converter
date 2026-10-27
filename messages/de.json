@@ -734,6 +734,45 @@
         "intro": "Extrahieren Sie mit StatementXL Buchungen aus Ihrem PDF-Kontoauszug, vergleichen Sie die Vorschau mit dem Original und laden Sie Excel mit Risikomarkierungen herunter. Ohne Anmeldung sind täglich {anonymousPages} Seite, mit Anmeldung {authenticatedPages} Seiten kostenlos. Bewahren Sie das Original zum Prüfen auf.",
         "metaDescription": "Bankauszug-PDFs mit StatementXL in Excel umwandeln. Prüfen Sie Transaktionen und Risikohinweise anhand des Original-PDFs."
       },
+      "csv": {
+        "label": "PDF-Kontoauszüge in CSV umwandeln",
+        "title": "Kontoauszüge aus PDF in CSV konvertieren",
+        "intro": "Extrahieren Sie Buchungen aus Ihrem PDF-Kontoauszug, vergleichen Sie die Zeilen mit dem Original und laden Sie CSV herunter. Ohne Anmeldung können Sie täglich {anonymousPages} Seite testen, angemeldet {authenticatedPages} Seiten.",
+        "metaDescription": "PDF-Kontoauszüge in CSV umwandeln. Buchungen und Risikohinweise prüfen, je Tabelle eine CSV herunterladen und Spalten für die Buchhaltung vorbereiten.",
+        "requirementsTitle": "CSV oder Excel auswählen",
+        "requirements": "Wählen Sie CSV, um Daten für eine Tabellenkalkulation oder einen Buchhaltungsimport aufzubereiten. Excel eignet sich für eine Arbeitsmappe mit mehreren Blättern. Beide nutzen dasselbe geprüfte Konvertierungsergebnis.",
+        "preparationTitle": "Eine CSV-Datei pro Tabelle",
+        "preparation": "Öffnen Sie nach der Konvertierung das Formatmenü neben dem Excel-Download und wählen Sie CSV. Jede logische Tabelle wird separat mit den ursprünglichen Spalten sowie Risiko- und Quellenfeldern heruntergeladen.",
+        "limitationsTitle": "Eine separate Importkopie vorbereiten",
+        "limitations": "Bewahren Sie den vollständigen Export zur Prüfung auf. Entfernen Sie Prüffelder in einer Kopie und passen Sie Datum, Beschreibung und Beträge an die Zielsoftware an. StatementXL erstellt keine speziellen QBO- oder Xero-Dateien und importiert keine Buchungen für Sie.",
+        "stepsTitle": "Vom PDF-Kontoauszug zur CSV",
+        "steps": {
+          "upload": {
+            "title": "PDF-Kontoauszug hochladen",
+            "text": "Laden Sie eine PDF mit bis zu {megabytes} MB und {pages} Seiten hoch. Bevorzugen Sie die Original-Text-PDF der Bank. Scans erfordern einen berechtigten KI-Tarif und die manuelle Auswahl von KI."
+          },
+          "review": {
+            "title": "Buchungen und Risikohinweise prüfen",
+            "text": "Vergleichen Sie Datum, Beschreibung, Beträge und Salden mit dem Original. Prüfen Sie vor der Nutzung Zeilen mit DISCREPANCY und UNVERIFIABLE."
+          },
+          "download": {
+            "title": "CSV im Downloadmenü wählen",
+            "text": "Wählen Sie CSV im Formatmenü neben Excel. Laden Sie jede Tabelle herunter, bewahren Sie die vollständige Prüfkopie auf und erstellen Sie eine separate Importkopie."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Kann ich die CSV direkt in QuickBooks oder Xero importieren?",
+            "answer": "Sie ist keine spezielle Importdatei und enthält Originalspalten sowie Prüffelder. Erstellen Sie eine Kopie mit den erforderlichen Spalten, Datumsformaten und Betragsvorzeichen und prüfen Sie die Importvorschau."
+          },
+          {
+            "id": "tables",
+            "question": "Warum erhalte ich mehrere CSV-Dateien?",
+            "answer": "CSV- und TSV-Exporte erzeugen eine Datei pro logischer Tabelle. Laden Sie diese einzeln herunter und fassen Sie unterschiedliche Konten oder Währungen nicht ungeprüft in einer Importdatei zusammen."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase-Kontoauszug in Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Wells-Fargo-PDFs für Excel vorbereiten. Prüfen Sie kontospezifische Verfügbarkeit und extrahierte Transaktionen vor dem Export."
       },
       "scanned": {
-        "label": "Gescannte Kontoauszüge in Excel",
-        "title": "Gescannte Kontoauszüge in Excel umwandeln",
-        "intro": "Professional und Enterprise können KI für gescannte PDFs wählen. Das vollständige PDF und der Dateiname werden an Qwen AI Platform gesendet. Standardmäßig erfolgt die reguläre Analyse im Browser, ohne automatischen gewählter KI-Analyse. Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Vergleichen Sie das Ergebnis mit dem Original-PDF.",
+        "label": "Kontoauszug-OCR: Scan-PDF in Excel",
+        "title": "Gescannte Kontoauszüge mit KI in Excel umwandeln",
+        "intro": "Mit Kontoauszug-OCR können Sie versuchen, Buchungen aus gescannten PDFs zu extrahieren. Nutzer von Professional und Enterprise wählen vor der Konvertierung KI, prüfen das Ergebnis und laden Excel oder CSV herunter. Die Erkennung ist nicht garantiert.",
         "planNote": "Scans benötigen Professional oder Enterprise und ein verfügbares Seitenkontingent. Anonyme, kostenlose und Standard-Nutzung erfordern eine Textebene. Vergleichen Sie die Tarife unten.",
         "planCta": "KI-Analyse wählbar; Scans können versucht werden",
         "requirementsTitle": "Welche Tarife erlauben die Verarbeitung von Scans?",
-        "requirements": "Professional und Enterprise können KI für gescannte PDFs wählen. Das vollständige PDF und der Dateiname werden an Qwen AI Platform gesendet. Standardmäßig erfolgt die reguläre Analyse im Browser, ohne automatischen gewählter KI-Analyse. Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Vergleichen Sie das Ergebnis mit dem Original-PDF.",
+        "requirements": "Melden Sie sich mit Professional oder Enterprise und verfügbarem Seitenkontingent an und wählen Sie vor dem Start KI. Kostenlose Nutzung und Standard erfordern eine Text-PDF. KI ist optional und wird nie automatisch aktiviert.",
         "preparationTitle": "Ein lesbares Scan-PDF vorbereiten",
         "preparation": "Scannen Sie vollständige Seiten in Reihenfolge und halten Sie Daten und Beträge scharf. Vermeiden Sie abgeschnittene Ränder, Schatten und gedrehte Seiten. Laden Sie ein PDF innerhalb der angezeigten Grenzen hoch. JPG und PNG zuerst zu PDF zusammenfügen; wenn möglich das Original-PDF mit Textebene verwenden.",
         "limitationsTitle": "KI-Ergebnisse und Datenverarbeitung prüfen",
-        "limitations": "Standardmäßig erfolgt die reguläre Analyse im Browser, ohne automatischen gewählter KI-Analyse. Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Vergleichen Sie das Ergebnis mit dem Original-PDF. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung.",
+        "limitations": "Die KI-Analyse sendet die vollständige PDF und den Dateinamen an Qwen AI Platform. Vergleichen Sie das Ergebnis mit dem Original; die Erkennung ist nicht garantiert. StatementXL speichert keinen dauerhaften Datei- oder Buchungsverlauf. Für die Verarbeitung gelten die Bedingungen des Anbieters; wir versprechen keine zusätzlichen Fristen zur Aufbewahrung oder Regeln zur Trainingsnutzung.",
         "stepsTitle": "Scans in drei Schritten umwandeln",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Laden Sie Excel oder ein anderes Format herunter. Bewahren Sie Original und Download auf; es gibt keine dauerhafte Dateihistorie."
           }
         },
-        "metaDescription": "Anforderungen für gescannte Auszüge prüfen. Berechtigte Tarife bieten optionale Qwen-KI-Verarbeitung; gleichen Sie Ergebnisse mit dem Original ab."
+        "metaDescription": "OCR für gescannte Kontoauszüge als PDF. Berechtigte Tarife können Qwen AI wählen, Buchungen prüfen und Excel oder CSV laden. Keine Erkennungsgarantie.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "Garantiert Kontoauszug-OCR korrekte Buchungen?",
+            "answer": "Nein. Scanqualität und Layout beeinflussen die Erkennung. Prüfen Sie Datum, Beträge, Salden und alle Risikohinweise anhand des Originals, bevor Sie Excel oder CSV verwenden."
+          },
+          {
+            "id": "images",
+            "question": "Kann ich einen Kontoauszug als JPG oder PNG hochladen?",
+            "answer": "Dieser Upload akzeptiert nur PDFs. Fassen Sie klare, vollständige Bilder zunächst in einer PDF zusammen und wählen Sie KI mit einem berechtigten Professional- oder Enterprise-Tarif."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Kontoauszüge für QuickBooks vorbereiten",
@@ -973,7 +1024,8 @@
             "answer": "Nicht automatisch. StatementXL erhält Originalspalten und Prüffelder. Eine Xero-Kopie vorbereiten und die Zuordnung kontrollieren."
           }
         ],
-        "metaDescription": "PDF-Transaktionen für einen manuellen CSV-Import in Xero vorbereiten. Prüfen Sie Datum, Beträge und Konto; bevorzugen Sie geeignete Bankexporte."
+        "metaDescription": "PDF-Transaktionen für einen manuellen CSV-Import in Xero vorbereiten. Prüfen Sie Datum, Beträge und Konto; bevorzugen Sie geeignete Bankexporte.",
+        "planCta": "Konvertierungstarife vergleichen"
       },
       "wave": {
         "title": "Kontoauszug-PDF für Wave: Transaktionen prüfen und hochladen",
@@ -1273,10 +1325,11 @@
       "alternatives": "DocuClipper-Alternativen",
       "nanonets": "StatementXL und Nanonets",
       "checker": "Saldoprüfer und Excel-Vorlage",
-      "benchmark": "Öffentlicher Beispielbericht"
+      "benchmark": "Öffentlicher Beispielbericht",
+      "csv": "PDF in CSV konvertieren"
     },
     "groupDescriptions": {
-      "conversion": "Bei PDFs mit auswählbarem Text beginnen Sie mit der Excel-Anleitung. Bei reinen Bilddateien prüfen Sie zuerst die Anforderungen für Scans, bevor Sie die KI-Verarbeitung wählen.",
+      "conversion": "Wählen Sie für Textauszüge PDF in Excel oder CSV. Prüfen Sie bei reinen Bild-PDFs die Anforderungen für Scans, bevor Sie KI wählen.",
       "banks": "Wählen Sie Ihre Bank für Download-Schritte und kontospezifische Zeiträume. Eine Download-Anleitung belegt keine Unterstützung aller Auszugslayouts.",
       "accounting": "Wählen Sie die Zielsoftware und prüfen Sie deren CSV-Vorgaben. Die Anleitungen beschreiben manuelle Importe; StatementXL verbindet sich nicht mit Ihrem Buchhaltungskonto.",
       "bookkeeping": "Beginnen Sie mit Ihrer Aufgabe: Kreditunterlagen, US-Steuervorbereitung oder fehlende Buchungszeiträume. Bewahren Sie Originalauszüge und Belege neben der Tabelle auf.",

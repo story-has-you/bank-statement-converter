@@ -734,6 +734,45 @@
         "intro": "StatementXL で銀行明細 PDF から取引を抽出し、原本とプレビューを照合して、リスク表示付きの Excel をダウンロードできます。未ログインなら 1 日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページまで無料です。確認用に原本を保管してください。",
         "metaDescription": "StatementXLで銀行明細PDFをExcelに変換。取引とリスク表示を確認し、元のPDFと出力を照合できます。"
       },
+      "csv": {
+        "label": "銀行明細PDFをCSVに変換",
+        "title": "銀行明細PDFからCSVを作成",
+        "intro": "銀行明細PDFから取引を抽出し、原本と照合してCSVをダウンロードします。未ログインでは毎日{anonymousPages}ページ、ログイン後は{authenticatedPages}ページを試せます。",
+        "metaDescription": "銀行明細PDFをCSVに変換。取引とリスク表示を確認し、表ごとにCSVを保存して会計ソフト用に列を整えます。",
+        "requirementsTitle": "CSVとExcelの選び方",
+        "requirements": "表計算や会計ソフトへの取り込み用にデータを整えるならCSVを、複数シートを持つブックが必要ならExcelを選びます。どちらも同じ確認済みの変換結果を使います。",
+        "preparationTitle": "表ごとにCSVを保存",
+        "preparation": "変換後、Excelダウンロードボタン横の形式メニューでCSVを選びます。論理的な表ごとに別ファイルとなり、元の列にリスクと出典の項目が付きます。",
+        "limitationsTitle": "取り込み用のコピーを作成",
+        "limitations": "完全なエクスポートは確認用に残します。別のコピーで確認用項目を除き、日付・摘要・金額を取り込み先に合わせます。StatementXLはQBOやXero専用ファイルの作成や取引の取り込みを行いません。",
+        "stepsTitle": "銀行明細PDFからCSVまで",
+        "steps": {
+          "upload": {
+            "title": "銀行明細PDFをアップロード",
+            "text": "{megabytes} MB、{pages}ページ以内のPDFを1つ選びます。銀行の元のテキストPDFを推奨します。スキャンPDFには対象のAIプランと手動でのAI選択が必要です。"
+          },
+          "review": {
+            "title": "取引とリスク表示を確認",
+            "text": "日付、摘要、金額、残高を原本と照合します。利用前にDISCREPANCYとUNVERIFIABLEの行を確認してください。"
+          },
+          "download": {
+            "title": "ダウンロードメニューでCSVを選択",
+            "text": "Excel横の形式メニューからCSVを選びます。各表を保存し、完全な確認用ファイルを残して、取り込み用コピーを別に整えます。"
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "ダウンロードしたCSVをQuickBooksやXeroにそのまま取り込めますか？",
+            "answer": "専用の取り込みファイルではありません。元の列と確認用項目が含まれるため、コピーを作って必要な列、日付、金額の符号を整え、取り込みプレビューを確認してください。"
+          },
+          {
+            "id": "tables",
+            "question": "CSVファイルが複数になるのはなぜですか？",
+            "answer": "CSVとTSVは論理的な表ごとにファイルを作ります。表を個別に保存し、異なる口座や通貨を同じ取り込みファイルにまとめないようにしてください。"
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase 明細を Excel に変換",
@@ -768,17 +807,17 @@
         "metaDescription": "Wells Fargoの明細PDFをExcel変換用に準備。口座ごとの取得範囲と抽出した取引を確認できます。"
       },
       "scanned": {
-        "label": "スキャンした銀行明細を Excel に",
-        "title": "スキャンした銀行明細を Excel に変換",
-        "intro": "ProfessionalとEnterpriseではAIを選択してスキャンPDFの変換を試せます。PDF全体とファイル名を千問AIプラットフォームに送信します。 既定ではブラウザー内で通常解析を行い、AIに自動で切り替えません。ProfessionalとEnterpriseの利用者は変換前にAI解析を選択でき、スキャンも試せます。原本PDFと結果を照合してください。",
+        "label": "銀行明細OCR：スキャンPDFをExcelに変換",
+        "title": "AIでスキャンした銀行明細をExcelに変換",
+        "intro": "銀行明細OCRでスキャンPDFから取引の抽出を試せます。ProfessionalとEnterpriseでは変換前にAIを選び、結果を確認してExcelやCSVを保存できます。認識の成功は保証されません。",
         "planNote": "スキャン PDF には Professional または Enterprise と利用可能なページ枠が必要です。未ログイン、無料、Standard ではテキスト層が必要です。下のプラン比較をご覧ください。",
         "planCta": "AI解析を任意で選択、スキャンPDFも試行可能",
         "requirementsTitle": "スキャンを試せるプランは？",
-        "requirements": "ProfessionalとEnterpriseではAIを選択してスキャンPDFの変換を試せます。PDF全体とファイル名を千問AIプラットフォームに送信します。 既定ではブラウザー内で通常解析を行い、AIに自動で切り替えません。ProfessionalとEnterpriseの利用者は変換前にAI解析を選択でき、スキャンも試せます。原本PDFと結果を照合してください。",
+        "requirements": "利用可能なページ枠があるProfessionalまたはEnterpriseでログインし、開始前にAIを選びます。無料枠とStandardにはテキストPDFが必要です。AIが自動で有効になることはありません。",
         "preparationTitle": "読みやすいスキャン PDF を準備",
         "preparation": "ページ全体を順番にスキャンし、日付と金額を鮮明にしてください。切れた端、影、回転を避け、表示された制限内の PDF を一つアップロードします。JPG や PNG は先に PDF にまとめてください。銀行の元のテキスト PDF があれば優先します。",
         "limitationsTitle": "AI 結果とデータ処理を確認",
-        "limitations": "既定ではブラウザー内で通常解析を行い、AIに自動で切り替えません。ProfessionalとEnterpriseの利用者は変換前にAI解析を選択でき、スキャンも試せます。原本PDFと結果を照合してください。 当サイトはPDF、取引明細、モデル出力、エクスポートを永続的な履歴として保存しません。AI提供者は独自の規約とプライバシーポリシーに従って処理します。保存期間や学習利用について追加の保証はしません。",
+        "limitations": "AI解析ではPDF全体とファイル名がQwen AI Platformに送信されます。認識は保証されないため原本と照合してください。StatementXLはファイルや取引の履歴を永続保存しません。提供元のデータ処理には同社の規約が適用され、保持期間や学習利用について追加の保証はしません。",
         "stepsTitle": "スキャンを変換する 3 ステップ",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Excel または他の対応形式をダウンロードします。永続的なファイル履歴はないため、原本とダウンロードを保管してください。"
           }
         },
-        "metaDescription": "スキャン明細の変換条件を確認。対象プランではQwen AI解析を選択でき、結果は元の明細との照合が必要です。"
+        "metaDescription": "スキャンした銀行明細PDFをOCRで処理。対象プランでQwen AIを選び、取引を確認してExcelやCSVを保存できます。認識は保証されません。",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "銀行明細OCRはすべての取引の正確さを保証しますか？",
+            "answer": "いいえ。スキャン品質やレイアウトが認識に影響します。ExcelやCSVを使う前に日付、金額、残高を原本と照合し、すべてのリスク表示を確認してください。"
+          },
+          {
+            "id": "images",
+            "question": "JPGやPNGの銀行明細をアップロードできますか？",
+            "answer": "この画面ではPDFのみ受け付けます。鮮明で欠けのない画像を1つのPDFにまとめ、対象のProfessionalまたはEnterpriseでAIを選んでください。"
+          }
+        ]
       },
       "quickbooks": {
         "label": "銀行明細から QuickBooks への手順",
@@ -973,7 +1024,8 @@
             "answer": "保証できません。元の列と確認項目を保持するため、Xero 用の副本と列対応の確認が必要です。"
           }
         ],
-        "metaDescription": "PDFの取引をXeroへ手動取込するCSVに整理。日付、金額、口座を確認し、銀行の直接出力も検討できます。"
+        "metaDescription": "PDFの取引をXeroへ手動取込するCSVに整理。日付、金額、口座を確認し、銀行の直接出力も検討できます。",
+        "planCta": "変換プランを比較"
       },
       "wave": {
         "title": "銀行明細 PDF を Wave へ：取引の確認とアップロード",
@@ -1273,10 +1325,11 @@
       "alternatives": "DocuClipper の代替",
       "nanonets": "StatementXL と Nanonets",
       "checker": "残高チェッカーと Excel テンプレート",
-      "benchmark": "公開サンプルの実測レポート"
+      "benchmark": "公開サンプルの実測レポート",
+      "csv": "PDFからCSVへの変換"
     },
     "groupDescriptions": {
-      "conversion": "文字を選択できるPDFは、PDFからExcelへのガイドから始めてください。画像だけのPDFは、AI解析を選ぶ前にスキャン書類の条件を確認してください。",
+      "conversion": "テキスト明細はPDFからExcelまたはCSVへの変換を選びます。画像のみのPDFでは、AI解析を選ぶ前にスキャン明細の要件を確認してください。",
       "banks": "銀行別に明細のダウンロード手順と口座ごとの取得範囲を確認できます。取得方法の案内は、すべてのレイアウトの解析対応を保証するものではありません。",
       "accounting": "取込先のソフトを選び、CSV形式を確認してください。手動取込の案内であり、StatementXLが会計ソフトの口座に接続するものではありません。",
       "bookkeeping": "融資資料、米国の税務準備、過去の記帳という目的から選べます。表計算データとともに元の明細と証憑を保管してください。",

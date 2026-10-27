@@ -3,7 +3,7 @@ import { publicContentPages } from "@/config/public-pages";
 type ResourcePageId = Exclude<(typeof publicContentPages)[number]["id"], "about" | "resources">;
 
 export const resourceGroups = [
-  { id: "conversion", pageIds: ["pdf", "scanned"] },
+  { id: "conversion", pageIds: ["pdf", "csv", "scanned"] },
   { id: "banks", pageIds: ["chase", "bofa", "wellsFargo", "hsbc"] },
   { id: "accounting", pageIds: ["quickbooks", "xero", "wave", "sage"] },
   { id: "bookkeeping", pageIds: ["loan", "tax", "catchup"] },

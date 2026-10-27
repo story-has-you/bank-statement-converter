@@ -734,6 +734,45 @@
         "intro": "Avec StatementXL, extrayez les opérations de votre relevé PDF, comparez l'aperçu à l'original et téléchargez Excel avec les indicateurs de risque. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Conservez l'original pour vos vérifications.",
         "metaDescription": "Convertissez vos relevés PDF en Excel avec StatementXL. Vérifiez les opérations et les alertes en les comparant au PDF original."
       },
+      "csv": {
+        "label": "Convertisseur de relevés bancaires PDF en CSV",
+        "title": "Convertir des relevés bancaires PDF en CSV",
+        "intro": "Extrayez les opérations de votre relevé PDF, vérifiez les lignes avec l’original et téléchargez le CSV. Essayez {anonymousPages} page par jour sans connexion, ou {authenticatedPages} pages une fois connecté.",
+        "metaDescription": "Convertissez vos relevés bancaires PDF en CSV. Vérifiez opérations et alertes, téléchargez un CSV par tableau et adaptez les colonnes à votre logiciel.",
+        "requirementsTitle": "Choisir CSV ou Excel",
+        "requirements": "Choisissez CSV pour préparer des données destinées à un tableur ou à un import comptable. Choisissez Excel pour un classeur à plusieurs feuilles. Les deux formats utilisent le même résultat vérifié.",
+        "preparationTitle": "Un fichier CSV par tableau",
+        "preparation": "Après conversion, ouvrez le menu des formats à côté du téléchargement Excel et choisissez CSV. Chaque tableau logique est téléchargé séparément, avec ses colonnes d’origine et les champs de risque et de source.",
+        "limitationsTitle": "Préparer une copie pour l’import",
+        "limitations": "Conservez l’export complet pour vérification. Dans une copie, retirez les champs de contrôle et adaptez dates, libellés et montants au logiciel cible. StatementXL ne crée pas de fichiers dédiés QBO ou Xero et n’importe pas les opérations à votre place.",
+        "stepsTitle": "Du relevé bancaire PDF au CSV",
+        "steps": {
+          "upload": {
+            "title": "Téléverser un relevé bancaire PDF",
+            "text": "Ajoutez un seul PDF de {megabytes} Mo et {pages} pages maximum. Préférez le PDF texte original de la banque. Les scans nécessitent une offre IA compatible et la sélection manuelle de l’IA."
+          },
+          "review": {
+            "title": "Vérifier les opérations et les alertes",
+            "text": "Comparez dates, libellés, montants et soldes avec l’original. Vérifiez les lignes DISCREPANCY et UNVERIFIABLE avant d’utiliser l’export."
+          },
+          "download": {
+            "title": "Choisir CSV dans le menu de téléchargement",
+            "text": "Ouvrez le menu des formats à côté d’Excel et choisissez CSV. Téléchargez chaque tableau, conservez la version complète et préparez une copie distincte pour l’import."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Puis-je importer directement le CSV dans QuickBooks ou Xero ?",
+            "answer": "Ce n’est pas un fichier d’import dédié. Il contient les colonnes d’origine et les champs de contrôle. Préparez une copie avec les colonnes, dates et signes des montants requis, puis vérifiez l’aperçu d’import."
+          },
+          {
+            "id": "tables",
+            "question": "Pourquoi plusieurs fichiers CSV sont-ils téléchargés ?",
+            "answer": "Les exports CSV et TSV produisent un fichier par tableau logique. Téléchargez-les séparément ; ne regroupez pas sans vérification des comptes ou des devises différents dans un même fichier d’import."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Relevé Chase vers Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Préparez vos PDF Wells Fargo pour Excel. Vérifiez les périodes disponibles selon le compte et les opérations avant l’export."
       },
       "scanned": {
-        "label": "Relevé bancaire numérisé vers Excel",
-        "title": "Convertir un relevé bancaire numérisé en Excel",
-        "intro": "Professional et Enterprise peuvent choisir l’IA pour essayer les PDF numérisés. Le PDF complet et son nom sont envoyés à Qwen AI Platform. Par défaut, l’analyse habituelle se fait dans le navigateur, sans relais automatique vers l’IA. Professional et Enterprise peuvent choisir l’IA avant la conversion, y compris pour les scans. Vérifiez le résultat avec le PDF original.",
+        "label": "OCR de relevé bancaire : PDF numérisé vers Excel",
+        "title": "Convertir des relevés bancaires numérisés en Excel avec l’IA",
+        "intro": "Essayez l’OCR pour extraire les opérations d’un relevé bancaire PDF numérisé. Avec Professional ou Enterprise, choisissez l’IA avant conversion, vérifiez le résultat et téléchargez Excel ou CSV. La reconnaissance n’est pas garantie.",
         "planNote": "Les scans nécessitent Professional ou Enterprise et un quota disponible. L'accès anonyme, gratuit et Standard exige une couche de texte. Comparez les offres ci-dessous.",
         "planCta": "Analyse IA au choix ; essai des PDF numérisés",
         "requirementsTitle": "Quelles offres peuvent traiter les scans ?",
-        "requirements": "Professional et Enterprise peuvent choisir l’IA pour essayer les PDF numérisés. Le PDF complet et son nom sont envoyés à Qwen AI Platform. Par défaut, l’analyse habituelle se fait dans le navigateur, sans relais automatique vers l’IA. Professional et Enterprise peuvent choisir l’IA avant la conversion, y compris pour les scans. Vérifiez le résultat avec le PDF original.",
+        "requirements": "Connectez-vous avec Professional ou Enterprise et un quota de pages disponible, puis choisissez l’IA avant de commencer. L’accès gratuit et Standard exige un PDF texte. L’IA est facultative et ne s’active jamais automatiquement.",
         "preparationTitle": "Préparer un PDF numérisé lisible",
         "preparation": "Numérisez les pages complètes dans l'ordre, avec dates et montants nets. Évitez bords coupés, ombres et rotations. Importez un seul PDF dans les limites affichées. Assemblez d'abord les JPG ou PNG en PDF ; privilégiez le PDF texte original de la banque s'il existe.",
         "limitationsTitle": "Vérifier les résultats IA et le traitement des données",
-        "limitations": "Par défaut, l’analyse habituelle se fait dans le navigateur, sans relais automatique vers l’IA. Professional et Enterprise peuvent choisir l’IA avant la conversion, y compris pour les scans. Vérifiez le résultat avec le PDF original. Ce site ne conserve aucun historique permanent des PDF, transactions, sorties du modèle ou exports. Le fournisseur IA applique ses propres conditions et règles de confidentialité ; nous ne garantissons pas sa durée de conservation ni l’usage pour l’entraînement.",
+        "limitations": "L’analyse IA envoie le PDF complet et son nom à Qwen AI Platform. Vérifiez le résultat avec l’original : la reconnaissance n’est pas garantie. StatementXL ne conserve pas d’historique permanent des fichiers ou opérations. Le traitement du fournisseur relève de ses conditions ; nous ne garantissons ni durée de conservation ni usage pour l’entraînement.",
         "stepsTitle": "Convertir un scan en trois étapes",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Téléchargez Excel ou un autre format. Conservez l'original et le fichier ; StatementXL ne propose pas d'historique permanent."
           }
         },
-        "metaDescription": "Consultez les conditions de conversion des relevés numérisés. Les forfaits éligibles proposent l’IA Qwen ; vérifiez les résultats sur l’original."
+        "metaDescription": "OCR pour relevés bancaires PDF numérisés. Les offres compatibles permettent de choisir Qwen AI et de vérifier les opérations avant export Excel ou CSV, sans garantie de reconnaissance.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "L’OCR garantit-il l’exactitude de toutes les opérations ?",
+            "answer": "Non. La qualité du scan et la mise en page influencent la reconnaissance. Vérifiez dates, montants, soldes et toutes les alertes avec l’original avant d’utiliser Excel ou CSV."
+          },
+          {
+            "id": "images",
+            "question": "Puis-je téléverser un relevé JPG ou PNG ?",
+            "answer": "Cet espace accepte uniquement les PDF. Regroupez d’abord des images nettes et complètes dans un seul PDF, puis choisissez l’IA avec une offre Professional ou Enterprise compatible."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Préparer un relevé pour QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "Pas nécessairement. StatementXL garde les colonnes d’origine et de contrôle. Préparez une copie Xero et vérifiez le mappage."
           }
         ],
-        "metaDescription": "Préparez les opérations PDF pour un import CSV manuel dans Xero. Vérifiez dates, montants et compte ; privilégiez un export bancaire adapté."
+        "metaDescription": "Préparez les opérations PDF pour un import CSV manuel dans Xero. Vérifiez dates, montants et compte ; privilégiez un export bancaire adapté.",
+        "planCta": "Comparer les offres de conversion"
       },
       "wave": {
         "title": "Relevé PDF vers Wave : vérifier et charger les transactions",
@@ -1273,10 +1325,11 @@
       "alternatives": "Alternatives à DocuClipper",
       "nanonets": "StatementXL et Nanonets",
       "checker": "Vérificateur de solde et modèle Excel",
-      "benchmark": "Rapport d’exemples publics"
+      "benchmark": "Rapport d’exemples publics",
+      "csv": "Convertisseur PDF en CSV"
     },
     "groupDescriptions": {
-      "conversion": "Pour un PDF dont le texte est sélectionnable, commencez par le guide Excel. Pour une image numérisée, vérifiez les conditions avant de choisir l’analyse IA.",
+      "conversion": "Choisissez PDF vers Excel ou CSV pour un relevé texte. Pour un PDF composé d’images, consultez les exigences des relevés numérisés avant de choisir l’IA.",
       "banks": "Choisissez votre banque pour consulter les étapes de téléchargement et les périodes propres au compte. Ce guide ne prouve pas la prise en charge de tous les formats.",
       "accounting": "Choisissez le logiciel destinataire, puis vérifiez ses exigences CSV. Ces guides décrivent un import manuel ; StatementXL ne se connecte pas à votre compte comptable.",
       "bookkeeping": "Partez de votre besoin : dossier de prêt, fiscalité américaine ou rattrapage comptable. Conservez les relevés originaux et les justificatifs avec le tableur.",

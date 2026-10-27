@@ -734,6 +734,45 @@
         "intro": "Use o StatementXL para extrair transações do PDF, comparar a prévia com o original e baixar Excel com indicadores de risco. Converta gratuitamente {anonymousPages} página por dia sem entrar na conta ou {authenticatedPages} páginas após entrar. Guarde o original para conferir os dados.",
         "metaDescription": "Converta extratos PDF em Excel com o StatementXL. Revise transações e alertas de risco comparando a exportação com o PDF original."
       },
+      "csv": {
+        "label": "Conversor de extrato bancário PDF para CSV",
+        "title": "Converter extratos bancários PDF para CSV",
+        "intro": "Extraia as transações do extrato PDF, confira as linhas com o original e baixe o CSV. Teste {anonymousPages} página por dia sem entrar, ou {authenticatedPages} páginas após entrar.",
+        "metaDescription": "Converta extratos bancários PDF para CSV. Confira transações e alertas, baixe um CSV por tabela e ajuste as colunas para seu software contábil.",
+        "requirementsTitle": "Escolher CSV ou Excel",
+        "requirements": "Escolha CSV para preparar dados para uma planilha ou importação contábil. Escolha Excel se precisar de uma pasta de trabalho com várias abas. Os dois formatos usam o mesmo resultado revisado.",
+        "preparationTitle": "Um arquivo CSV por tabela",
+        "preparation": "Após a conversão, abra o menu de formatos ao lado do botão de download do Excel e selecione CSV. Cada tabela lógica é baixada separadamente, com as colunas originais e campos de risco e origem.",
+        "limitationsTitle": "Preparar uma cópia para importação",
+        "limitations": "Guarde a exportação completa para conferência. Em outra cópia, remova os campos de revisão e adapte datas, descrições e valores ao software de destino. O StatementXL não cria arquivos específicos de QBO ou Xero nem importa transações por você.",
+        "stepsTitle": "Do extrato bancário PDF ao CSV",
+        "steps": {
+          "upload": {
+            "title": "Enviar um extrato bancário PDF",
+            "text": "Envie um PDF de até {megabytes} MB e {pages} páginas. Prefira o PDF de texto original do banco. PDFs digitalizados exigem um plano compatível com IA e a seleção manual da IA."
+          },
+          "review": {
+            "title": "Revisar transações e alertas",
+            "text": "Compare datas, descrições, valores e saldos com o original. Confira as linhas DISCREPANCY e UNVERIFIABLE antes de usar a exportação."
+          },
+          "download": {
+            "title": "Escolher CSV no menu de download",
+            "text": "Abra o menu de formatos ao lado de Excel e escolha CSV. Baixe cada tabela, mantenha a cópia completa para revisão e prepare outra para importar."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Posso importar o CSV diretamente no QuickBooks ou Xero?",
+            "answer": "Ele não é um arquivo de importação específico. Inclui colunas originais e campos de revisão. Prepare uma cópia com as colunas, datas e sinais dos valores exigidos e confira a prévia da importação."
+          },
+          {
+            "id": "tables",
+            "question": "Por que recebo mais de um arquivo CSV?",
+            "answer": "As exportações CSV e TSV geram um arquivo por tabela lógica. Baixe cada tabela separadamente; não presuma que contas ou moedas diferentes devem ficar no mesmo arquivo de importação."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Extrato Chase para Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Prepare PDFs do Wells Fargo para Excel. Confira os períodos disponíveis por conta e revise as transações antes de exportar."
       },
       "scanned": {
-        "label": "Extrato digitalizado para Excel",
-        "title": "Converta um extrato bancário digitalizado para Excel",
-        "intro": "Professional e Enterprise podem escolher IA para tentar converter PDFs digitalizados. O PDF completo e o nome do arquivo são enviados à Qwen AI Platform. Por padrão, a análise habitual ocorre no navegador, sem mudança automática para IA. Professional e Enterprise podem escolher IA antes da conversão, inclusive para digitalizações. Confira o resultado com o PDF original.",
+        "label": "OCR de extrato bancário: PDF digitalizado para Excel",
+        "title": "Converter extratos bancários digitalizados para Excel com IA",
+        "intro": "Use OCR para tentar extrair transações de um extrato bancário PDF digitalizado. Usuários Professional e Enterprise podem escolher IA antes da conversão, revisar o resultado e baixar Excel ou CSV. O reconhecimento não é garantido.",
         "planNote": "Digitalizações exigem Professional ou Enterprise e cota disponível. O uso anônimo, gratuito e Standard exige uma camada de texto. Compare os planos abaixo.",
         "planCta": "Análise com IA opcional; tentativa de PDFs digitalizados",
         "requirementsTitle": "Quais planos podem processar digitalizações?",
-        "requirements": "Professional e Enterprise podem escolher IA para tentar converter PDFs digitalizados. O PDF completo e o nome do arquivo são enviados à Qwen AI Platform. Por padrão, a análise habitual ocorre no navegador, sem mudança automática para IA. Professional e Enterprise podem escolher IA antes da conversão, inclusive para digitalizações. Confira o resultado com o PDF original.",
+        "requirements": "Entre com Professional ou Enterprise e cota de páginas disponível; selecione IA antes de começar. O acesso gratuito e Standard exige um PDF de texto. A IA é opcional e nunca é ativada automaticamente.",
         "preparationTitle": "Prepare um PDF digitalizado legível",
         "preparation": "Digitalize páginas completas em ordem, com datas e valores nítidos. Evite cortes, sombras e páginas giradas. Envie um PDF dentro dos limites exibidos. Una JPG ou PNG em PDF primeiro; prefira o PDF de texto original do banco quando disponível.",
         "limitationsTitle": "Confira resultados e tratamento de dados",
-        "limitations": "Por padrão, a análise habitual ocorre no navegador, sem mudança automática para IA. Professional e Enterprise podem escolher IA antes da conversão, inclusive para digitalizações. Confira o resultado com o PDF original. Este site não mantém histórico permanente de PDFs, transações, saídas do modelo ou exportações. O provedor de IA aplica seus próprios termos e política de privacidade; não garantimos prazo de retenção nem uso para treinamento.",
+        "limitations": "A análise por IA envia o PDF completo e o nome do arquivo para Qwen AI Platform. Compare o resultado com o original; o reconhecimento não é garantido. O StatementXL não mantém histórico permanente de arquivos ou transações. O processamento do fornecedor segue os termos dele; não garantimos prazos de retenção nem uso para treinamento.",
         "stepsTitle": "Converta uma digitalização em três etapas",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Baixe Excel ou outro formato. Guarde o original e o arquivo; o StatementXL não oferece histórico permanente."
           }
         },
-        "metaDescription": "Confira os requisitos para converter extratos digitalizados. Planos elegíveis permitem escolher a IA Qwen; compare o resultado com o original."
+        "metaDescription": "OCR para extratos bancários PDF digitalizados. Planos compatíveis permitem escolher Qwen AI, revisar transações e baixar Excel ou CSV, sem garantia de reconhecimento.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "O OCR garante que todas as transações estejam corretas?",
+            "answer": "Não. A qualidade da digitalização e o layout afetam o reconhecimento. Confira datas, valores, saldos e todos os alertas com o original antes de usar Excel ou CSV."
+          },
+          {
+            "id": "images",
+            "question": "Posso enviar um extrato bancário em JPG ou PNG?",
+            "answer": "Este envio aceita apenas PDF. Primeiro reúna imagens nítidas e completas em um único PDF e selecione IA com um plano Professional ou Enterprise compatível."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Preparar extratos para QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "Não necessariamente. A StatementXL preserva colunas originais e de revisão. Prepare uma cópia para Xero e confirme o mapeamento."
           }
         ],
-        "metaDescription": "Prepare transações de PDF para importar CSV manualmente no Xero. Confira datas, valores e conta; prefira um arquivo bancário adequado."
+        "metaDescription": "Prepare transações de PDF para importar CSV manualmente no Xero. Confira datas, valores e conta; prefira um arquivo bancário adequado.",
+        "planCta": "Comparar planos de conversão"
       },
       "wave": {
         "title": "PDF bancário para Wave: revisar e enviar transações",
@@ -1273,10 +1325,11 @@
       "alternatives": "Alternativas ao DocuClipper",
       "nanonets": "StatementXL e Nanonets",
       "checker": "Conferidor de saldo e modelo Excel",
-      "benchmark": "Relatório de amostras públicas"
+      "benchmark": "Relatório de amostras públicas",
+      "csv": "Conversor de PDF para CSV"
     },
     "groupDescriptions": {
-      "conversion": "Para PDFs com texto selecionável, comece pelo guia de Excel. Para arquivos só com imagens, confira os requisitos antes de escolher a análise com IA.",
+      "conversion": "Escolha PDF para Excel ou CSV para extratos de texto. Em PDFs compostos por imagens, confira os requisitos de digitalização antes de escolher IA.",
       "banks": "Escolha seu banco para consultar o download dos extratos e os períodos disponíveis por conta. O guia não comprova suporte a todos os layouts.",
       "accounting": "Escolha o software de destino e confira seus requisitos CSV. Os guias descrevem importações manuais; o StatementXL não conecta sua conta contábil.",
       "bookkeeping": "Comece pela tarefa: documentos para empréstimos, impostos dos EUA ou escrituração atrasada. Guarde os extratos originais e comprovantes junto à planilha.",

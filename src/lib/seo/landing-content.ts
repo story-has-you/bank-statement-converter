@@ -29,7 +29,7 @@ export const getLandingContent = cache(async (locale: AppLocale, id: ConversionP
     { id: "download", title: t("downloadTitle"), text: t("downloadText") },
   ];
   let stepsTitle = t("stepsTitle");
-  if (id === "scanned" || id === "quickbooks") {
+  if (id === "csv" || id === "scanned" || id === "quickbooks") {
     guides = (["requirements", "preparation", "limitations"] as const).map((section) => ({
       id: section,
       title: p(`${section}Title`),

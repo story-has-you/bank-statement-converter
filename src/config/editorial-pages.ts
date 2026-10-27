@@ -24,7 +24,7 @@ export const editorialPages = [
     id: "xero",
     path: "/guides/bank-statement-to-xero",
     kind: "guide",
-    checkedOn: "2026-10-19",
+    checkedOn: "2026-10-27",
     sources: ["https://central.xero.com/0/article/Import-a-CSV-bank-statement"],
   },
   {

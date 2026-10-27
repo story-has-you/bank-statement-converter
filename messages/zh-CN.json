@@ -734,6 +734,45 @@
         "intro": "使用 StatementXL 提取银行流水 PDF 中的交易，对照原文件检查预览，再下载带风险标记的 Excel。未登录每天可转换 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。请保留原始账单，以便核对。",
         "metaDescription": "用 StatementXL 将银行流水 PDF 转为 Excel，预览交易明细、查看风险标记，并对照原始 PDF 核验导出结果。"
       },
+      "csv": {
+        "label": "银行流水 PDF 转 CSV",
+        "title": "将银行流水 PDF 转为 CSV",
+        "intro": "从银行流水 PDF 中提取交易，逐行对照原件核对后下载 CSV。未登录每天可试用 {anonymousPages} 页，登录后每天可试用 {authenticatedPages} 页。",
+        "metaDescription": "将银行流水 PDF 转为 CSV，核对交易及风险标记，每张表单独下载，再按记账软件要求整理导入列。",
+        "requirementsTitle": "CSV 与 Excel 怎么选",
+        "requirements": "需要整理纯数据供表格或记账软件导入时选择 CSV；需要在同一工作簿中保留多张工作表时选择 Excel。两种格式均使用同一份已核对的转换结果。",
+        "preparationTitle": "每张表单独导出 CSV",
+        "preparation": "转换后，打开 Excel 下载按钮旁的格式菜单并选择 CSV。每个逻辑表分别下载，保留原始列，并附带风险及来源字段。",
+        "limitationsTitle": "另存一份用于导入的副本",
+        "limitations": "保留完整导出文件用于核对。在另一份副本中移除核对字段，并按目标软件要求整理日期、摘要和金额。StatementXL 不生成 QBO 或 Xero 专用文件，也不会代为导入交易。",
+        "stepsTitle": "从银行流水 PDF 到 CSV",
+        "steps": {
+          "upload": {
+            "title": "上传银行流水 PDF",
+            "text": "每次上传一个 PDF，大小不超过 {megabytes} MB、页数不超过 {pages} 页。优先使用银行原始文本 PDF；扫描件需要支持 AI 的套餐并手动选择 AI。"
+          },
+          "review": {
+            "title": "核对交易与风险标记",
+            "text": "对照原件核对日期、摘要、金额及余额。使用导出数据前，检查 DISCREPANCY 和 UNVERIFIABLE 行。"
+          },
+          "download": {
+            "title": "在下载菜单选择 CSV",
+            "text": "打开 Excel 旁的格式菜单并选择 CSV。分别下载各张表，保留完整核对文件，再另存一份用于导入的副本。"
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "下载的 CSV 能直接导入 QuickBooks 或 Xero 吗？",
+            "answer": "它不是专用导入文件。导出包含原始列和核对字段，需要另存副本，按记账软件要求整理列、日期和金额正负号，并检查导入预览。"
+          },
+          {
+            "id": "tables",
+            "question": "为什么会下载多个 CSV 文件？",
+            "answer": "CSV 和 TSV 按逻辑表分别生成文件。请逐表下载，不要默认把不同账户或币种合并到一个导入文件中。"
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase 账单转 Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "准备 Wells Fargo 账单 PDF 转 Excel，核对不同账户的可用记录范围，并在导出前检查交易明细。"
       },
       "scanned": {
-        "label": "扫描银行流水转 Excel",
-        "title": "把扫描银行流水转为 Excel",
-        "intro": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。",
+        "label": "银行流水 OCR：扫描 PDF 转 Excel",
+        "title": "用 AI 将扫描银行流水转为 Excel",
+        "intro": "通过银行流水 OCR 尝试提取扫描 PDF 中的交易。Professional 和 Enterprise 用户可在转换前选择 AI，核对结果后下载 Excel 或 CSV。识别不保证成功。",
         "planNote": "扫描 PDF 需要专业或企业套餐及可用页数额度。匿名、免费和标准套餐要求文件有文字层。请在下方对比解析能力和套餐。",
         "planCta": "可主动选择 AI 解析，尝试转换扫描件",
         "requirementsTitle": "哪些套餐可尝试处理扫描件？",
-        "requirements": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。",
+        "requirements": "登录拥有可用页数的 Professional 或 Enterprise 账户，并在开始前选择 AI。免费和 Standard 权益要求 PDF 含文本层。AI 为可选项，不会自动开启。",
         "preparationTitle": "准备清晰完整的扫描 PDF",
         "preparation": "按顺序扫描完整页面，确保日期和金额清晰，避免裁切、阴影和页面旋转。每次上传一份符合所示限制的 PDF。JPG、PNG 图片需先合成 PDF；能取得银行原始文字 PDF 时优先使用原件。",
         "limitationsTitle": "核对 AI 结果与数据处理方式",
-        "limitations": "默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。",
+        "limitations": "AI 解析会将完整 PDF 和文件名发送给 Qwen AI Platform。请对照原件核对结果，识别不保证成功。StatementXL 不永久保存文件或交易历史。供应商按其条款处理数据；我们不额外承诺其保留期限或训练用途。",
         "stepsTitle": "三步转换扫描账单",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "下载 Excel 或其他支持的格式。自行保管原件和下载文件，StatementXL 不提供持久化文件历史。"
           }
         },
-        "metaDescription": "了解扫描版银行流水的转换条件。符合条件的套餐可主动选择千问 AI 解析，使用结果前需核对原始账单。"
+        "metaDescription": "对扫描银行流水 PDF 使用 OCR。支持的套餐可选择 Qwen AI，核对提取的交易后下载 Excel 或 CSV；识别不保证成功。",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "银行流水 OCR 能保证每笔交易都正确吗？",
+            "answer": "不能。扫描质量和版式会影响识别。使用 Excel 或 CSV 前，请对照原件核对日期、金额和余额，并检查全部风险标记。"
+          },
+          {
+            "id": "images",
+            "question": "能上传 JPG 或 PNG 银行流水图片吗？",
+            "answer": "此入口只接收 PDF。请先将清晰、完整的图片合成一个 PDF，再使用支持的 Professional 或 Enterprise 套餐选择 AI。"
+          }
+        ]
       },
       "quickbooks": {
         "label": "银行流水 PDF 转 QuickBooks 教程",
@@ -973,7 +1024,8 @@
             "answer": "不能默认如此。StatementXL 保留原始列并附加核对字段；请先按 Xero 格式制作副本并确认映射。"
           }
         ],
-        "metaDescription": "将 PDF 交易整理为可手动导入 Xero 的 CSV，检查日期、金额和目标账户；有合适的银行原生导出时优先使用。"
+        "metaDescription": "将 PDF 交易整理为可手动导入 Xero 的 CSV，检查日期、金额和目标账户；有合适的银行原生导出时优先使用。",
+        "planCta": "比较转换套餐"
       },
       "wave": {
         "title": "银行流水 PDF 转 Wave：核对并上传交易",
@@ -1273,10 +1325,11 @@
       "alternatives": "DocuClipper 替代方案",
       "nanonets": "StatementXL 与 Nanonets",
       "checker": "余额核对器与 Excel 模板",
-      "benchmark": "公开样本实测报告"
+      "benchmark": "公开样本实测报告",
+      "csv": "PDF 转 CSV"
     },
     "groupDescriptions": {
-      "conversion": "文字可以选中的 PDF，先看 PDF 转 Excel 指南；只有图片的文件，先了解扫描件的处理条件，再决定是否选择 AI 解析。",
+      "conversion": "文本型流水可选择 PDF 转 Excel 或 CSV；仅有图片的 PDF，请先查看扫描件要求，再决定是否选择 AI 解析。",
       "banks": "按银行查看账单下载步骤及不同账户的可用记录范围。下载指南不代表每种账单版式都已验证支持。",
       "accounting": "先选择目标软件，再核对 CSV 格式要求。这里介绍手动导入流程，StatementXL 不连接你的会计软件账户。",
       "bookkeeping": "按贷款材料、美国税务资料或历史补账选择指南。整理表格时，同时保留银行原始账单及相关凭证。",

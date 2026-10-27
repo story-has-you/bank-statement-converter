@@ -734,6 +734,45 @@
         "intro": "StatementXL로 은행 명세서 PDF의 거래를 추출하고 원본과 미리보기를 비교한 뒤 위험 표시가 포함된 Excel을 다운로드하세요. 비로그인 시 하루 {anonymousPages}페이지, 로그인 시 {authenticatedPages}페이지가 무료입니다. 검토를 위해 원본을 보관하세요.",
         "metaDescription": "StatementXL로 은행 명세서 PDF를 Excel로 변환하세요. 거래와 위험 표시를 확인하고 원본 PDF와 결과를 비교하세요."
       },
+      "csv": {
+        "label": "은행 명세서 PDF를 CSV로 변환",
+        "title": "은행 명세서 PDF에서 CSV 만들기",
+        "intro": "은행 명세서 PDF에서 거래를 추출하고 원본과 대조한 뒤 CSV를 다운로드하세요. 로그인 없이 매일 {anonymousPages}페이지, 로그인하면 {authenticatedPages}페이지를 사용해 볼 수 있습니다.",
+        "metaDescription": "은행 명세서 PDF를 CSV로 변환하세요. 거래와 위험 표시를 확인하고 표별로 CSV를 받은 뒤 회계 소프트웨어에 맞게 열을 정리하세요.",
+        "requirementsTitle": "CSV와 Excel 중 무엇을 선택하나요?",
+        "requirements": "스프레드시트나 회계 프로그램에 가져올 데이터를 정리하려면 CSV를, 여러 시트가 있는 통합 문서가 필요하면 Excel을 선택하세요. 두 형식은 같은 검토된 변환 결과를 사용합니다.",
+        "preparationTitle": "표마다 별도의 CSV 파일",
+        "preparation": "변환 후 Excel 다운로드 버튼 옆 형식 메뉴에서 CSV를 선택하세요. 논리적 표마다 파일이 생성되며 원래 열에 위험 및 출처 필드가 추가됩니다.",
+        "limitationsTitle": "가져오기용 사본 준비",
+        "limitations": "전체 내보내기 파일은 검토용으로 보관하세요. 별도 사본에서 검토 필드를 제거하고 날짜, 설명, 금액을 대상 소프트웨어에 맞게 정리하세요. StatementXL은 QBO나 Xero 전용 파일을 만들거나 거래를 대신 가져오지 않습니다.",
+        "stepsTitle": "은행 명세서 PDF에서 CSV까지",
+        "steps": {
+          "upload": {
+            "title": "은행 명세서 PDF 업로드",
+            "text": "최대 {megabytes} MB, {pages}페이지인 PDF 한 개를 업로드하세요. 은행의 원본 텍스트 PDF를 권장합니다. 스캔 PDF는 지원되는 AI 요금제에서 AI를 직접 선택해야 합니다."
+          },
+          "review": {
+            "title": "거래와 위험 표시 검토",
+            "text": "날짜, 설명, 금액, 잔액을 원본과 대조하세요. 내보낸 데이터를 사용하기 전에 DISCREPANCY 및 UNVERIFIABLE 행을 확인하세요."
+          },
+          "download": {
+            "title": "다운로드 메뉴에서 CSV 선택",
+            "text": "Excel 옆 형식 메뉴에서 CSV를 선택하세요. 표별로 다운로드하고 전체 검토 파일을 보관한 뒤 가져오기용 사본을 별도로 정리하세요."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "다운로드한 CSV를 QuickBooks나 Xero에 바로 가져올 수 있나요?",
+            "answer": "전용 가져오기 파일은 아닙니다. 원래 열과 검토 필드가 포함되므로 사본을 만들고 회계 소프트웨어가 요구하는 열, 날짜, 금액 부호를 정리한 뒤 가져오기 미리보기를 확인하세요."
+          },
+          {
+            "id": "tables",
+            "question": "CSV 파일이 여러 개인 이유는 무엇인가요?",
+            "answer": "CSV와 TSV는 논리적 표마다 파일 하나를 만듭니다. 표를 각각 다운로드하고 서로 다른 계좌나 통화를 하나의 가져오기 파일로 합치지 마세요."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase 명세서를 Excel로",
@@ -768,17 +807,17 @@
         "metaDescription": "Wells Fargo 명세서 PDF의 Excel 변환을 준비하세요. 계좌별 조회 기간과 내보내기 전 거래 내역을 확인하세요."
       },
       "scanned": {
-        "label": "스캔한 은행 명세서를 Excel로",
-        "title": "스캔한 은행 명세서를 Excel로 변환",
-        "intro": "Professional과 Enterprise는 AI를 선택해 스캔 PDF 변환을 시도할 수 있습니다. 전체 PDF와 파일 이름을 Qwen AI Platform에 전송합니다. 기본값은 브라우저의 일반 분석이며 AI로 자동 전환하지 않습니다. Professional과 Enterprise 사용자는 변환 전에 AI 분석을 선택해 스캔도 시도할 수 있습니다. 결과를 원본 PDF와 대조하세요.",
+        "label": "은행 명세서 OCR: 스캔 PDF를 Excel로",
+        "title": "AI로 스캔 은행 명세서를 Excel로 변환",
+        "intro": "은행 명세서 OCR로 스캔 PDF에서 거래 추출을 시도하세요. Professional 및 Enterprise 사용자는 변환 전에 AI를 선택하고 결과를 검토한 뒤 Excel이나 CSV로 다운로드할 수 있습니다. 인식 성공은 보장되지 않습니다.",
         "planNote": "스캔 PDF에는 Professional 또는 Enterprise와 남은 페이지 할당량이 필요합니다. 비로그인, 무료, Standard는 텍스트 레이어가 필요합니다. 아래 요금제를 비교하세요.",
         "planCta": "AI 분석 선택 가능, 스캔 PDF 변환 시도",
         "requirementsTitle": "어떤 요금제가 스캔을 처리하나요?",
-        "requirements": "Professional과 Enterprise는 AI를 선택해 스캔 PDF 변환을 시도할 수 있습니다. 전체 PDF와 파일 이름을 Qwen AI Platform에 전송합니다. 기본값은 브라우저의 일반 분석이며 AI로 자동 전환하지 않습니다. Professional과 Enterprise 사용자는 변환 전에 AI 분석을 선택해 스캔도 시도할 수 있습니다. 결과를 원본 PDF와 대조하세요.",
+        "requirements": "사용 가능한 페이지가 있는 Professional 또는 Enterprise 계정으로 로그인하고 시작 전에 AI를 선택하세요. 무료 및 Standard는 텍스트 PDF가 필요합니다. AI는 선택 사항이며 자동으로 켜지지 않습니다.",
         "preparationTitle": "읽기 쉬운 스캔 PDF 준비",
         "preparation": "페이지 전체를 순서대로 스캔하고 날짜와 금액을 선명하게 유지하세요. 잘린 가장자리, 그림자, 회전을 피하고 표시된 제한 내의 PDF 한 개를 올리세요. JPG와 PNG는 먼저 PDF로 합치고, 은행의 원본 텍스트 PDF가 있으면 우선 사용하세요.",
         "limitationsTitle": "AI 결과와 데이터 처리 확인",
-        "limitations": "기본값은 브라우저의 일반 분석이며 AI로 자동 전환하지 않습니다. Professional과 Enterprise 사용자는 변환 전에 AI 분석을 선택해 스캔도 시도할 수 있습니다. 결과를 원본 PDF와 대조하세요. 사이트는 PDF, 거래 내역, 모델 출력 또는 내보낸 파일을 영구 이력으로 저장하지 않습니다. AI 제공자는 자체 약관과 개인정보 처리방침에 따라 데이터를 처리하며, 보관 기간이나 학습 사용에 대해 추가로 보장하지 않습니다.",
+        "limitations": "AI 분석은 전체 PDF와 파일명을 Qwen AI Platform으로 전송합니다. 인식은 보장되지 않으므로 원본과 대조하세요. StatementXL은 파일이나 거래 내역을 영구 보관하지 않습니다. 제공자의 처리에는 해당 약관이 적용되며 보관 기간이나 학습 사용 여부를 추가로 보장하지 않습니다.",
         "stepsTitle": "세 단계로 스캔 변환",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Excel 또는 지원 형식으로 다운로드하세요. 영구 파일 기록이 없으므로 원본과 다운로드 파일을 보관하세요."
           }
         },
-        "metaDescription": "스캔 명세서 변환 조건을 확인하세요. 대상 요금제에서 Qwen AI 분석을 선택할 수 있으며 원본 대조가 필요합니다."
+        "metaDescription": "스캔 은행 명세서 PDF용 OCR. 지원 요금제에서 Qwen AI를 선택하고 거래를 검토한 뒤 Excel이나 CSV로 다운로드하세요. 인식은 보장되지 않습니다.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "은행 명세서 OCR은 모든 거래의 정확성을 보장하나요?",
+            "answer": "아니요. 스캔 품질과 레이아웃이 인식에 영향을 줍니다. Excel이나 CSV를 사용하기 전에 날짜, 금액, 잔액을 원본과 대조하고 모든 위험 표시를 확인하세요."
+          },
+          {
+            "id": "images",
+            "question": "JPG나 PNG 은행 명세서를 업로드할 수 있나요?",
+            "answer": "이 업로드는 PDF만 받습니다. 선명하고 잘리지 않은 이미지를 하나의 PDF로 합친 뒤 지원되는 Professional 또는 Enterprise 요금제에서 AI를 선택하세요."
+          }
+        ]
       },
       "quickbooks": {
         "label": "은행 명세서에서 QuickBooks로",
@@ -973,7 +1024,8 @@
             "answer": "보장할 수 없습니다. 원래 열과 검토 필드를 유지하므로 Xero용 사본을 만들고 매핑을 확인하세요."
           }
         ],
-        "metaDescription": "PDF 거래를 Xero 수동 가져오기용 CSV로 정리하세요. 날짜, 금액, 계좌를 확인하고 은행 직접 내보내기를 우선 검토하세요."
+        "metaDescription": "PDF 거래를 Xero 수동 가져오기용 CSV로 정리하세요. 날짜, 금액, 계좌를 확인하고 은행 직접 내보내기를 우선 검토하세요.",
+        "planCta": "변환 요금제 비교"
       },
       "wave": {
         "title": "은행 명세서 PDF를 Wave로: 거래 검토와 업로드",
@@ -1273,10 +1325,11 @@
       "alternatives": "DocuClipper 대안",
       "nanonets": "StatementXL과 Nanonets",
       "checker": "잔액 확인기와 Excel 양식",
-      "benchmark": "공개 표본 측정 보고서"
+      "benchmark": "공개 표본 측정 보고서",
+      "csv": "PDF를 CSV로 변환"
     },
     "groupDescriptions": {
-      "conversion": "텍스트를 선택할 수 있는 PDF는 PDF→Excel 가이드부터 확인하세요. 이미지로만 된 파일은 AI 분석을 선택하기 전에 스캔 명세서의 처리 조건을 확인하세요.",
+      "conversion": "텍스트 명세서는 PDF를 Excel 또는 CSV로 변환하세요. 이미지로만 된 PDF는 AI 분석을 선택하기 전에 스캔 명세서 요구 사항을 확인하세요.",
       "banks": "은행별 명세서 다운로드 방법과 계좌별 조회 기간을 확인하세요. 다운로드 안내가 모든 명세서 형식의 분석 지원을 뜻하지는 않습니다.",
       "accounting": "가져올 회계 소프트웨어를 선택한 다음 CSV 요구 사항을 확인하세요. 수동 가져오기 안내이며 StatementXL은 회계 계정에 연결하지 않습니다.",
       "bookkeeping": "대출 자료, 미국 세무 준비, 누락 기간 기장 중 필요한 작업부터 선택하세요. 스프레드시트와 함께 원본 명세서와 증빙을 보관하세요.",

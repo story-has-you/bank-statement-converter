@@ -734,6 +734,45 @@
         "intro": "Lees transacties uit uw PDF-bankafschrift met StatementXL, vergelijk de voorvertoning met het origineel en download Excel met risicomarkeringen. Zonder aanmelding kunt u dagelijks {anonymousPages} pagina gratis omzetten, na aanmelding {authenticatedPages} pagina's. Bewaar het origineel ter controle.",
         "metaDescription": "Zet afschrift-PDF’s om naar Excel met StatementXL. Controleer transacties en risicomeldingen aan de hand van het originele PDF-bestand."
       },
+      "csv": {
+        "label": "PDF-bankafschrift naar CSV converteren",
+        "title": "Bankafschriften van PDF naar CSV omzetten",
+        "intro": "Haal transacties uit je PDF-bankafschrift, vergelijk de rijen met het origineel en download CSV. Probeer dagelijks {anonymousPages} pagina zonder in te loggen, of {authenticatedPages} pagina’s na het inloggen.",
+        "metaDescription": "Zet PDF-bankafschriften om naar CSV. Controleer transacties en risico’s, download één CSV per tabel en bereid kolommen voor je boekhoudsoftware voor.",
+        "requirementsTitle": "CSV of Excel kiezen",
+        "requirements": "Kies CSV om gegevens voor een spreadsheet of boekhoudimport voor te bereiden. Kies Excel voor een werkmap met meerdere bladen. Beide gebruiken hetzelfde gecontroleerde conversieresultaat.",
+        "preparationTitle": "Eén CSV-bestand per tabel",
+        "preparation": "Open na de conversie het formaatmenu naast de Excel-downloadknop en kies CSV. Elke logische tabel wordt apart gedownload, met de oorspronkelijke kolommen en risico- en bronvelden.",
+        "limitationsTitle": "Een aparte importkopie voorbereiden",
+        "limitations": "Bewaar de volledige export ter controle. Verwijder controlevelden in een aparte kopie en pas datums, omschrijvingen en bedragen aan de doelsoftware aan. StatementXL maakt geen speciale QBO- of Xero-bestanden en importeert geen transacties voor je.",
+        "stepsTitle": "Van PDF-bankafschrift naar CSV",
+        "steps": {
+          "upload": {
+            "title": "Een PDF-bankafschrift uploaden",
+            "text": "Upload één PDF van maximaal {megabytes} MB en {pages} pagina’s. Gebruik bij voorkeur de oorspronkelijke tekst-PDF van de bank. Scans vereisen een geschikt AI-abonnement en handmatige selectie van AI."
+          },
+          "review": {
+            "title": "Transacties en risicomeldingen controleren",
+            "text": "Vergelijk datums, omschrijvingen, bedragen en saldi met het origineel. Controleer rijen met DISCREPANCY en UNVERIFIABLE voordat je de export gebruikt."
+          },
+          "download": {
+            "title": "CSV kiezen in het downloadmenu",
+            "text": "Open het formaatmenu naast Excel en kies CSV. Download elke tabel, bewaar de volledige controlekopie en maak een aparte kopie voor import."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Kan ik de CSV direct in QuickBooks of Xero importeren?",
+            "answer": "Het is geen specifiek importbestand. De export bevat oorspronkelijke kolommen en controlevelden. Maak een kopie met de vereiste kolommen, datums en bedragtekens en controleer het importvoorbeeld."
+          },
+          {
+            "id": "tables",
+            "question": "Waarom krijg ik meerdere CSV-bestanden?",
+            "answer": "CSV- en TSV-exports maken één bestand per logische tabel. Download ze apart en voeg verschillende rekeningen of valuta’s niet zomaar samen in één importbestand."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Chase-afschrift naar Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Bereid Wells Fargo-PDF’s voor op Excel. Controleer beschikbare periodes per rekening en transacties voordat u exporteert."
       },
       "scanned": {
-        "label": "Gescand bankafschrift naar Excel",
-        "title": "Zet een gescand bankafschrift om naar Excel",
-        "intro": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF.",
+        "label": "OCR voor bankafschriften: gescande PDF naar Excel",
+        "title": "Gescande bankafschriften met AI naar Excel omzetten",
+        "intro": "Probeer met OCR transacties uit een gescand PDF-bankafschrift te halen. Gebruikers van Professional en Enterprise kunnen vóór conversie AI kiezen, het resultaat controleren en Excel of CSV downloaden. Herkenning is niet gegarandeerd.",
         "planNote": "Scans vereisen Professional of Enterprise en beschikbare pagina's. Anoniem, gratis en Standard vereisen een tekstlaag. Vergelijk de abonnementen hieronder.",
         "planCta": "AI-analyse naar keuze; gescande PDF’s proberen",
         "requirementsTitle": "Welke abonnementen kunnen scans verwerken?",
-        "requirements": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF.",
+        "requirements": "Log in met Professional of Enterprise en beschikbaar paginategoed en kies vóór de start AI. Gratis gebruik en Standard vereisen een tekst-PDF. AI is optioneel en wordt nooit automatisch ingeschakeld.",
         "preparationTitle": "Een leesbare scan-PDF voorbereiden",
         "preparation": "Scan volledige pagina's in volgorde, met scherpe datums en bedragen. Vermijd afgesneden randen, schaduwen en gedraaide pagina's. Upload één PDF binnen de getoonde grenzen. Voeg JPG of PNG eerst samen tot PDF; gebruik indien mogelijk het oorspronkelijke tekst-PDF van de bank.",
         "limitationsTitle": "AI-resultaten en gegevensverwerking controleren",
-        "limitations": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
+        "limitations": "AI-analyse stuurt de volledige PDF en bestandsnaam naar Qwen AI Platform. Vergelijk het resultaat met het origineel; herkenning is niet gegarandeerd. StatementXL bewaart geen permanente bestands- of transactiegeschiedenis. De aanbieder verwerkt gegevens volgens zijn voorwaarden; we garanderen geen extra bewaartermijn of regels voor trainingsgebruik.",
         "stepsTitle": "Een scan omzetten in drie stappen",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Download Excel of een ander formaat. Bewaar origineel en download; StatementXL heeft geen blijvende bestandsgeschiedenis."
           }
         },
-        "metaDescription": "Bekijk de eisen voor gescande afschriften. Geschikte abonnementen bieden optionele Qwen-AI-verwerking; vergelijk uitkomsten met het origineel."
+        "metaDescription": "OCR voor gescande PDF-bankafschriften. Geschikte abonnementen kunnen Qwen AI kiezen, transacties controleren en Excel of CSV downloaden. Geen herkenningsgarantie.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "Garandeert OCR dat elke transactie klopt?",
+            "answer": "Nee. Scankwaliteit en opmaak beïnvloeden de herkenning. Controleer datums, bedragen, saldi en alle risicomeldingen met het origineel voordat je Excel of CSV gebruikt."
+          },
+          {
+            "id": "images",
+            "question": "Kan ik een bankafschrift als JPG of PNG uploaden?",
+            "answer": "Deze upload accepteert alleen PDF’s. Voeg eerst scherpe, volledige afbeeldingen samen in één PDF en kies AI met een geschikt Professional- of Enterprise-abonnement."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Bankafschrift voorbereiden voor QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "Niet automatisch. Originele kolommen en controlevelden blijven behouden. Maak een Xero-kopie en controleer de toewijzing."
           }
         ],
-        "metaDescription": "Bereid PDF-transacties voor op handmatige CSV-import in Xero. Controleer datums, bedragen en rekening; gebruik zo mogelijk een bankexport."
+        "metaDescription": "Bereid PDF-transacties voor op handmatige CSV-import in Xero. Controleer datums, bedragen en rekening; gebruik zo mogelijk een bankexport.",
+        "planCta": "Conversieabonnementen vergelijken"
       },
       "wave": {
         "title": "Bankafschrift-PDF naar Wave: transacties controleren en uploaden",
@@ -1273,10 +1325,11 @@
       "alternatives": "DocuClipper-alternatieven",
       "nanonets": "StatementXL en Nanonets",
       "checker": "Saldocontrole en Excel-sjabloon",
-      "benchmark": "Openbaar voorbeeldrapport"
+      "benchmark": "Openbaar voorbeeldrapport",
+      "csv": "PDF naar CSV converteren"
     },
     "groupDescriptions": {
-      "conversion": "Begin bij de Excel-handleiding voor PDF’s met selecteerbare tekst. Controleer bij bestanden met alleen afbeeldingen eerst de voorwaarden voor AI-verwerking.",
+      "conversion": "Kies PDF naar Excel of CSV voor tekstafschriften. Controleer bij PDF’s met alleen afbeeldingen de scanvereisten voordat je AI kiest.",
       "banks": "Kies uw bank voor downloadstappen en beschikbare periodes per rekening. Een downloadhandleiding bewijst geen ondersteuning voor elke afschriftindeling.",
       "accounting": "Kies de boekhoudsoftware en controleer de CSV-eisen. De gidsen beschrijven handmatige import; StatementXL maakt geen verbinding met uw boekhoudaccount.",
       "bookkeeping": "Begin bij uw taak: leningdocumenten, Amerikaanse belastingvoorbereiding of achterstallige boekhouding. Bewaar originele afschriften en bewijsstukken bij de tabel.",

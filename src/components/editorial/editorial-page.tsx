@@ -2,6 +2,8 @@ import { getFormatter, getTranslations } from "next-intl/server";
 
 import { HomeHeader } from "@/components/shared/home-header";
 import { HomeFooter } from "@/components/shared/home-footer";
+import { PdfUpload } from "@/components/conversion/pdf-upload";
+import { UsageTiers } from "@/components/home/usage-tiers";
 import { RelatedConversionPages } from "@/components/landing/related-conversion-pages";
 import { EditorialStructuredData } from "@/components/editorial/editorial-structured-data";
 import { ComparisonTable } from "@/components/editorial/comparison-table";
@@ -35,6 +37,16 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
               </time>
             </p>
           </header>
+          {c.page.id === "xero" && (
+            <div className="grid gap-4">
+              <Link href="#plans" className="w-fit text-sm underline underline-offset-4">
+                {t("pages.xero.planCta")}
+              </Link>
+              <ClientMessages namespaces={["PdfUpload"]}>
+                <PdfUpload />
+              </ClientMessages>
+            </div>
+          )}
           {c.page.kind === "tool" && (
             <ClientMessages namespaces={["BalanceChecker"]}>
               <BalanceChecker />
@@ -87,10 +99,14 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
               ))}
             </section>
           )}
-          <Link href="/#workspace" className="w-fit rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground">
+          <Link
+            href={c.page.id === "xero" ? "#workspace" : "/#workspace"}
+            className="w-fit rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
+          >
             {t("convert")}
           </Link>
         </article>
+        {c.page.id === "xero" && <UsageTiers />}
         <RelatedConversionPages current={c.page.id} />
       </main>
       <HomeFooter />

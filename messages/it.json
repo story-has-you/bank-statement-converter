@@ -734,6 +734,45 @@
         "intro": "Usa StatementXL per estrarre le operazioni dal PDF, confrontare l'anteprima con l'originale e scaricare Excel con indicatori di rischio. Puoi convertire gratis {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Conserva l'originale per verificare i dati.",
         "metaDescription": "Converti estratti PDF in Excel con StatementXL. Verifica transazioni e segnalazioni di rischio confrontando l’export con il PDF originale."
       },
+      "csv": {
+        "label": "Convertitore di estratti conto PDF in CSV",
+        "title": "Convertire estratti conto bancari PDF in CSV",
+        "intro": "Estrai le transazioni dal tuo estratto conto PDF, verifica le righe con l’originale e scarica il CSV. Prova {anonymousPages} pagina al giorno senza accedere o {authenticatedPages} pagine dopo l’accesso.",
+        "metaDescription": "Converti estratti conto PDF in CSV. Verifica transazioni e avvisi, scarica un CSV per tabella e adatta le colonne al tuo software contabile.",
+        "requirementsTitle": "Scegliere CSV o Excel",
+        "requirements": "Scegli CSV per preparare dati destinati a un foglio di calcolo o a un’importazione contabile. Scegli Excel per una cartella con più fogli. Entrambi usano lo stesso risultato di conversione verificato.",
+        "preparationTitle": "Un file CSV per tabella",
+        "preparation": "Dopo la conversione, apri il menu dei formati accanto al download Excel e scegli CSV. Ogni tabella logica viene scaricata separatamente, con le colonne originali e i campi di rischio e origine.",
+        "limitationsTitle": "Preparare una copia per l’importazione",
+        "limitations": "Conserva l’esportazione completa per la verifica. In una copia separata, rimuovi i campi di controllo e adatta date, descrizioni e importi al software di destinazione. StatementXL non crea file dedicati QBO o Xero e non importa transazioni per te.",
+        "stepsTitle": "Dall’estratto conto PDF al CSV",
+        "steps": {
+          "upload": {
+            "title": "Caricare un estratto conto PDF",
+            "text": "Carica un PDF fino a {megabytes} MB e {pages} pagine. Preferisci il PDF testuale originale della banca. Le scansioni richiedono un piano IA idoneo e la selezione manuale dell’IA."
+          },
+          "review": {
+            "title": "Verificare transazioni e avvisi",
+            "text": "Confronta date, descrizioni, importi e saldi con l’originale. Controlla le righe DISCREPANCY e UNVERIFIABLE prima di usare l’esportazione."
+          },
+          "download": {
+            "title": "Scegliere CSV nel menu di download",
+            "text": "Apri il menu dei formati accanto a Excel e scegli CSV. Scarica ogni tabella, conserva la copia completa per la verifica e preparane una separata per l’importazione."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Posso importare il CSV direttamente in QuickBooks o Xero?",
+            "answer": "Non è un file di importazione dedicato. Include colonne originali e campi di controllo. Prepara una copia con colonne, date e segni degli importi richiesti e controlla l’anteprima di importazione."
+          },
+          {
+            "id": "tables",
+            "question": "Perché ricevo più file CSV?",
+            "answer": "Le esportazioni CSV e TSV producono un file per ogni tabella logica. Scaricale separatamente e non presumere che conti o valute diversi vadano nello stesso file di importazione."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Estratto conto Chase in Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Prepara i PDF Wells Fargo per Excel. Controlla i periodi disponibili per conto e le transazioni prima di esportare."
       },
       "scanned": {
-        "label": "Estratto conto scansionato in Excel",
-        "title": "Converti un estratto conto scansionato in Excel",
-        "intro": "Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform. Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale.",
+        "label": "OCR estratti conto: da PDF scansionato a Excel",
+        "title": "Convertire estratti conto scansionati in Excel con l’IA",
+        "intro": "Usa l’OCR per tentare di estrarre transazioni da un estratto conto PDF scansionato. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, verificare il risultato e scaricare Excel o CSV. Il riconoscimento non è garantito.",
         "planNote": "Le scansioni richiedono Professional o Enterprise e una quota disponibile. Uso anonimo, gratuito e Standard richiedono testo nel PDF. Confronta i piani qui sotto.",
         "planCta": "Analisi IA facoltativa; tentativo di PDF scansionati",
         "requirementsTitle": "Quali piani possono elaborare scansioni?",
-        "requirements": "Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform. Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale.",
+        "requirements": "Accedi con Professional o Enterprise e una quota di pagine disponibile, poi scegli l’IA prima di iniziare. L’accesso gratuito e Standard richiede un PDF testuale. L’IA è facoltativa e non si attiva automaticamente.",
         "preparationTitle": "Prepara un PDF scansionato leggibile",
         "preparation": "Scansiona pagine complete in ordine, con date e importi nitidi. Evita bordi tagliati, ombre e rotazioni. Carica un PDF entro i limiti mostrati. Unisci prima JPG o PNG in PDF; preferisci il PDF testuale originale della banca quando disponibile.",
         "limitationsTitle": "Controlla risultati IA e trattamento dei dati",
-        "limitations": "Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento.",
+        "limitations": "L’analisi IA invia l’intero PDF e il nome del file a Qwen AI Platform. Confronta il risultato con l’originale: il riconoscimento non è garantito. StatementXL non conserva una cronologia permanente di file o transazioni. Il fornitore tratta i dati secondo i propri termini; non garantiamo tempi di conservazione o utilizzi per l’addestramento.",
         "stepsTitle": "Converti una scansione in tre passaggi",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Scarica Excel o un altro formato. Conserva originale e download: StatementXL non offre una cronologia permanente dei file."
           }
         },
-        "metaDescription": "Verifica i requisiti per convertire estratti scansionati. I piani idonei offrono l’IA Qwen opzionale; confronta i risultati con l’originale."
+        "metaDescription": "OCR per estratti conto PDF scansionati. I piani idonei consentono di scegliere Qwen AI, verificare le transazioni e scaricare Excel o CSV, senza garanzia di riconoscimento.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "L’OCR garantisce che ogni transazione sia corretta?",
+            "answer": "No. La qualità della scansione e il layout influiscono sul riconoscimento. Verifica date, importi, saldi e tutti gli avvisi con l’originale prima di usare Excel o CSV."
+          },
+          {
+            "id": "images",
+            "question": "Posso caricare un estratto conto JPG o PNG?",
+            "answer": "Questo caricamento accetta solo PDF. Riunisci prima immagini nitide e complete in un unico PDF, poi scegli l’IA con un piano Professional o Enterprise idoneo."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Preparare estratti per QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "Non necessariamente. Restano colonne originali e di verifica. Preparare una copia Xero e controllare la mappatura."
           }
         ],
-        "metaDescription": "Prepara transazioni PDF per importare manualmente CSV in Xero. Verifica date, importi e conto; preferisci un export bancario adatto."
+        "metaDescription": "Prepara transazioni PDF per importare manualmente CSV in Xero. Verifica date, importi e conto; preferisci un export bancario adatto.",
+        "planCta": "Confronta i piani di conversione"
       },
       "wave": {
         "title": "PDF bancario per Wave: verificare e caricare operazioni",
@@ -1273,10 +1325,11 @@
       "alternatives": "Alternative a DocuClipper",
       "nanonets": "StatementXL e Nanonets",
       "checker": "Controllo saldo e modello Excel",
-      "benchmark": "Rapporto su campioni pubblici"
+      "benchmark": "Rapporto su campioni pubblici",
+      "csv": "Convertitore da PDF a CSV"
     },
     "groupDescriptions": {
-      "conversion": "Per PDF con testo selezionabile, inizia dalla guida Excel. Per file composti solo da immagini, verifica i requisiti prima di scegliere l’analisi IA.",
+      "conversion": "Scegli PDF in Excel o CSV per gli estratti testuali. Per i PDF composti da immagini, verifica i requisiti delle scansioni prima di scegliere l’IA.",
       "banks": "Scegli la banca per i passaggi di download e i periodi disponibili per conto. La guida non dimostra il supporto di tutti i layout.",
       "accounting": "Scegli il software di destinazione e verifica i requisiti CSV. Le guide descrivono importazioni manuali; StatementXL non si collega al conto contabile.",
       "bookkeeping": "Parti dal compito: documenti per prestiti, imposte statunitensi o contabilità arretrata. Conserva estratti originali e giustificativi insieme al foglio.",

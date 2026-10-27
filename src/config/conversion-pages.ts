@@ -1,5 +1,6 @@
 export const conversionPages = [
   { id: "pdf", path: "/pdf-bank-statement-to-excel", checkedOn: "2026-10-13", sources: [] },
+  { id: "csv", path: "/pdf-bank-statement-to-csv", checkedOn: "2026-10-27", sources: [] },
   {
     id: "chase",
     path: "/banks/chase-statement-to-excel",
@@ -21,7 +22,7 @@ export const conversionPages = [
       "https://www.wellsfargo.com/biz/online-banking/statements/",
     ],
   },
-  { id: "scanned", path: "/scanned-bank-statement-to-excel", checkedOn: "2026-10-14", sources: [] },
+  { id: "scanned", path: "/scanned-bank-statement-to-excel", checkedOn: "2026-10-27", sources: [] },
   {
     id: "quickbooks",
     path: "/guides/bank-statement-to-quickbooks",

@@ -734,6 +734,45 @@
         "intro": "Gunakan StatementXL untuk mengekstrak transaksi dari PDF, membandingkan pratinjau dengan dokumen asli, dan mengunduh Excel dengan penanda risiko. Konversi gratis {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Simpan dokumen asli untuk pemeriksaan.",
         "metaDescription": "Ubah rekening koran PDF ke Excel dengan StatementXL. Tinjau transaksi serta penanda risiko dan bandingkan ekspor dengan PDF asli."
       },
+      "csv": {
+        "label": "Konverter Rekening Koran PDF ke CSV",
+        "title": "Ubah rekening koran PDF menjadi CSV",
+        "intro": "Ekstrak transaksi dari rekening koran PDF, periksa baris dengan dokumen asli, lalu unduh CSV. Coba {anonymousPages} halaman per hari tanpa masuk, atau {authenticatedPages} halaman setelah masuk.",
+        "metaDescription": "Ubah rekening koran PDF ke CSV. Periksa transaksi dan tanda risiko, unduh satu CSV per tabel, lalu siapkan kolom untuk perangkat lunak akuntansi Anda.",
+        "requirementsTitle": "Memilih CSV atau Excel",
+        "requirements": "Pilih CSV untuk menyiapkan data bagi spreadsheet atau impor akuntansi. Pilih Excel jika membutuhkan buku kerja dengan beberapa lembar. Keduanya menggunakan hasil konversi yang sama setelah diperiksa.",
+        "preparationTitle": "Satu file CSV per tabel",
+        "preparation": "Setelah konversi, buka menu format di samping tombol unduh Excel dan pilih CSV. Setiap tabel logis diunduh terpisah, dengan kolom asli serta kolom risiko dan sumber.",
+        "limitationsTitle": "Siapkan salinan terpisah untuk impor",
+        "limitations": "Simpan ekspor lengkap untuk pemeriksaan. Pada salinan terpisah, hapus kolom pemeriksaan dan sesuaikan tanggal, deskripsi, serta jumlah dengan perangkat lunak tujuan. StatementXL tidak membuat file khusus QBO atau Xero dan tidak mengimpor transaksi untuk Anda.",
+        "stepsTitle": "Dari rekening koran PDF ke CSV",
+        "steps": {
+          "upload": {
+            "title": "Unggah rekening koran PDF",
+            "text": "Unggah satu PDF hingga {megabytes} MB dan {pages} halaman. Utamakan PDF teks asli dari bank. PDF hasil pindai memerlukan paket AI yang memenuhi syarat dan pemilihan AI secara manual."
+          },
+          "review": {
+            "title": "Periksa transaksi dan tanda risiko",
+            "text": "Bandingkan tanggal, deskripsi, jumlah, serta saldo dengan dokumen asli. Periksa baris DISCREPANCY dan UNVERIFIABLE sebelum menggunakan ekspor."
+          },
+          "download": {
+            "title": "Pilih CSV di menu unduh",
+            "text": "Buka menu format di samping Excel dan pilih CSV. Unduh setiap tabel, simpan salinan pemeriksaan lengkap, dan siapkan salinan terpisah untuk impor."
+          }
+        },
+        "faq": [
+          {
+            "id": "import",
+            "question": "Bisakah CSV yang diunduh langsung diimpor ke QuickBooks atau Xero?",
+            "answer": "File tersebut bukan file impor khusus. Ekspor memuat kolom asli dan kolom pemeriksaan. Siapkan salinan dengan kolom, tanggal, dan tanda jumlah yang diwajibkan, lalu periksa pratinjau impor."
+          },
+          {
+            "id": "tables",
+            "question": "Mengapa saya menerima lebih dari satu file CSV?",
+            "answer": "Ekspor CSV dan TSV menghasilkan satu file per tabel logis. Unduh tabel secara terpisah; jangan menganggap rekening atau mata uang berbeda boleh digabung dalam satu file impor."
+          }
+        ]
+      },
       "chase": {
         "bank": "Chase",
         "label": "Rekening koran Chase ke Excel",
@@ -768,17 +807,17 @@
         "metaDescription": "Siapkan PDF Wells Fargo untuk Excel. Periksa ketersediaan periode menurut rekening dan transaksi sebelum mengekspor."
       },
       "scanned": {
-        "label": "Rekening koran pindai ke Excel",
-        "title": "Konversi rekening koran hasil pindai ke Excel",
-        "intro": "Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli.",
+        "label": "OCR rekening koran: PDF hasil pindai ke Excel",
+        "title": "Ubah rekening koran hasil pindai ke Excel dengan AI",
+        "intro": "Gunakan OCR rekening koran untuk mencoba mengekstrak transaksi dari PDF hasil pindai. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, memeriksa hasil, lalu mengunduh Excel atau CSV. Pengenalan tidak dijamin berhasil.",
         "planNote": "Hasil pindai memerlukan Professional atau Enterprise dan kuota tersedia. Pengguna anonim, gratis, dan Standard memerlukan lapisan teks. Bandingkan paket di bawah.",
         "planCta": "Penguraian AI opsional; mencoba PDF hasil pindai",
         "requirementsTitle": "Paket mana yang dapat mencoba hasil pindai?",
-        "requirements": "Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli.",
+        "requirements": "Masuk dengan Professional atau Enterprise dan kuota halaman tersedia, lalu pilih AI sebelum memulai. Akses gratis dan Standard memerlukan PDF teks. AI bersifat opsional dan tidak pernah aktif otomatis.",
         "preparationTitle": "Siapkan PDF hasil pindai yang terbaca",
         "preparation": "Pindai halaman lengkap berurutan, dengan tanggal dan angka jelas. Hindari tepi terpotong, bayangan, dan halaman miring. Unggah satu PDF sesuai batas. Gabungkan JPG atau PNG menjadi PDF dahulu; utamakan PDF teks asli dari bank jika tersedia.",
         "limitationsTitle": "Periksa hasil AI dan penanganan data",
-        "limitations": "Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan.",
+        "limitations": "Analisis AI mengirim seluruh PDF dan nama file ke Qwen AI Platform. Bandingkan hasil dengan dokumen asli; pengenalan tidak dijamin. StatementXL tidak menyimpan riwayat file atau transaksi secara permanen. Pemrosesan penyedia mengikuti ketentuannya; kami tidak menjanjikan masa penyimpanan atau penggunaan pelatihan tambahan.",
         "stepsTitle": "Konversi hasil pindai dalam tiga langkah",
         "steps": {
           "upload": {
@@ -794,7 +833,19 @@
             "text": "Unduh Excel atau format lain. Simpan dokumen asli dan unduhan; StatementXL tidak menyediakan riwayat file permanen."
           }
         },
-        "metaDescription": "Periksa persyaratan konversi rekening koran hasil pindai. Paket yang memenuhi syarat dapat memilih AI Qwen; cocokkan hasil dengan dokumen asli."
+        "metaDescription": "OCR untuk rekening koran PDF hasil pindai. Paket yang memenuhi syarat dapat memilih Qwen AI, memeriksa transaksi, dan mengunduh Excel atau CSV. Pengenalan tidak dijamin.",
+        "faq": [
+          {
+            "id": "accuracy",
+            "question": "Apakah OCR rekening koran menjamin setiap transaksi benar?",
+            "answer": "Tidak. Kualitas pindai dan tata letak memengaruhi pengenalan. Cocokkan tanggal, jumlah, saldo, dan semua tanda risiko dengan dokumen asli sebelum menggunakan Excel atau CSV."
+          },
+          {
+            "id": "images",
+            "question": "Bisakah saya mengunggah rekening koran JPG atau PNG?",
+            "answer": "Unggahan ini hanya menerima PDF. Gabungkan gambar yang jelas dan lengkap menjadi satu PDF terlebih dahulu, lalu pilih AI dengan paket Professional atau Enterprise yang memenuhi syarat."
+          }
+        ]
       },
       "quickbooks": {
         "label": "Siapkan rekening koran untuk QuickBooks",
@@ -973,7 +1024,8 @@
             "answer": "Belum tentu. Kolom asli dan pemeriksaan dipertahankan. Siapkan salinan Xero dan konfirmasi pemetaan."
           }
         ],
-        "metaDescription": "Siapkan transaksi PDF untuk impor CSV manual ke Xero. Periksa tanggal, jumlah, dan rekening; utamakan ekspor bank yang sesuai."
+        "metaDescription": "Siapkan transaksi PDF untuk impor CSV manual ke Xero. Periksa tanggal, jumlah, dan rekening; utamakan ekspor bank yang sesuai.",
+        "planCta": "Bandingkan paket konversi"
       },
       "wave": {
         "title": "PDF rekening ke Wave: periksa dan unggah transaksi",
@@ -1273,10 +1325,11 @@
       "alternatives": "Alternatif DocuClipper",
       "nanonets": "StatementXL dan Nanonets",
       "checker": "Pemeriksa saldo dan templat Excel",
-      "benchmark": "Laporan sampel publik"
+      "benchmark": "Laporan sampel publik",
+      "csv": "Konverter PDF ke CSV"
     },
     "groupDescriptions": {
-      "conversion": "Untuk PDF dengan teks yang dapat dipilih, mulai dari panduan Excel. Untuk berkas yang hanya berisi gambar, periksa persyaratan sebelum memilih penguraian AI.",
+      "conversion": "Pilih PDF ke Excel atau CSV untuk rekening koran teks. Untuk PDF berisi gambar saja, periksa persyaratan hasil pindai sebelum memilih AI.",
       "banks": "Pilih bank untuk melihat langkah unduh rekening koran dan periode yang tersedia menurut rekening. Panduan unduh tidak membuktikan dukungan untuk setiap tata letak.",
       "accounting": "Pilih perangkat lunak tujuan lalu periksa persyaratan CSV-nya. Panduan ini menjelaskan impor manual; StatementXL tidak terhubung ke akun akuntansi Anda.",
       "bookkeeping": "Mulai dari tugas: dokumen pinjaman, persiapan pajak AS, atau pembukuan tertunda. Simpan rekening koran asli dan bukti pendukung bersama lembar kerja.",
