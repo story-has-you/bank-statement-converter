@@ -72,10 +72,7 @@ export function usePdfPreflight(file: File | null) {
     return runCheck();
   }, [file, runCheck]);
 
-  useEffect(() => {
-    void runCheck();
-    return cancel;
-  }, [runCheck, cancel]);
+  useEffect(() => cancel, [file, cancel]);
 
   useEffect(() => {
     const client = createClient();
@@ -86,15 +83,16 @@ export function usePdfPreflight(file: File | null) {
     const { data } = client.auth.onAuthStateChange((event, session) => {
       const nextIdentity = session?.user.id ?? null;
       if ((identity !== undefined && nextIdentity !== identity) || (identity === undefined && event === "SIGNED_OUT")) {
-        void check();
+        cancel();
+        setState({ phase: "idle" });
       }
       identity = nextIdentity;
     });
     return () => data.subscription.unsubscribe();
-  }, [check, file]);
+  }, [cancel, file]);
 
   const current = state.phase !== "idle" && state.file === file ? state : null;
-  const isChecking = file !== null && (!current || current.phase === "checking");
+  const isChecking = file !== null && current?.phase === "checking";
   const ready = current?.phase === "ready" ? current : null;
   let error: string | null = null;
   if (current?.phase === "error") {
@@ -113,7 +111,7 @@ export function usePdfPreflight(file: File | null) {
     isChecking,
     pageCount: current?.pageCount ?? null,
     error,
-    canConvert: ready !== null && error === null,
+    canConvert: file !== null && !isChecking && error === null,
     canRetry: current?.phase === "error" && current.error.code === "quotaUnavailable",
     check,
     cancel,
