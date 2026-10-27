@@ -731,7 +731,8 @@
       "pdf": {
         "label": "Relevé bancaire PDF vers Excel",
         "title": "Convertir un relevé bancaire PDF en Excel",
-        "intro": "Avec StatementXL, extrayez les opérations de votre relevé PDF, comparez l'aperçu à l'original et téléchargez Excel avec les indicateurs de risque. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Conservez l'original pour vos vérifications."
+        "intro": "Avec StatementXL, extrayez les opérations de votre relevé PDF, comparez l'aperçu à l'original et téléchargez Excel avec les indicateurs de risque. Vous disposez de {anonymousPages} page gratuite par jour sans connexion, ou de {authenticatedPages} pages après connexion. Conservez l'original pour vos vérifications.",
+        "metaDescription": "Convertissez vos relevés PDF en Excel avec StatementXL. Vérifiez les opérations et les alertes en les comparant au PDF original."
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase donne accès à jusqu'à sept ans de relevés, selon le type de compte. Consultez les années disponibles dans Statements & documents ; tous les comptes ne disposent pas de sept années complètes.",
         "download": "Connectez-vous à chase.com, ouvrez Main Menu puis Statements & documents. Choisissez l'année et le compte, puis l'icône Open ou Save à côté du relevé. Enregistrez le PDF original plutôt qu'une capture d'écran.",
         "detailsTitle": "Chase Mobile et téléchargement des opérations",
-        "details": "Dans Chase Mobile, ouvrez Profile & Settings, sélectionnez Statements & documents sous Document manager, puis Statements. Choisissez le compte, l'année et le relevé pour ouvrir le PDF.\n\nUn téléchargement de l'activité du compte diffère du relevé mensuel PDF. Vérifiez auprès de la banque les formats et périodes actuellement proposés."
+        "details": "Dans Chase Mobile, ouvrez Profile & Settings, sélectionnez Statements & documents sous Document manager, puis Statements. Choisissez le compte, l'année et le relevé pour ouvrir le PDF.\n\nUn téléchargement de l'activité du compte diffère du relevé mensuel PDF. Vérifiez auprès de la banque les formats et périodes actuellement proposés.",
+        "metaDescription": "Téléchargez un relevé Chase en PDF et préparez sa conversion Excel. Suivez les étapes et comparez les opérations extraites à l’original."
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Les relevés avec images de chèques peuvent être consultés, imprimés et téléchargés directement sur une période maximale de 18 mois. Les copies antérieures peuvent être demandées jusqu'à sept ans en arrière. Vérifiez séparément la disponibilité des documents de votre compte de carte de crédit.",
         "download": "Connectez-vous à Online Banking et ouvrez Statements & Documents sous l'onglet Accounts. Choisissez le compte et la période, puis ouvrez et enregistrez le PDF. Pour les copies anciennes, utilisez Request statements au même endroit.",
         "detailsTitle": "Demander d'anciens relevés Bank of America",
-        "details": "Les copies électroniques sont gratuites, généralement disponibles 24–36 heures après la demande et accessibles pendant sept jours. Enregistrez-les dès que possible.\n\nLes copies papier sont généralement expédiées 7–10 jours ouvrés après la demande. Privilégiez le PDF électronique : le papier doit être numérisé, et seuls Professional et Enterprise peuvent tenter de traiter les scans avec le recours à l'IA."
+        "details": "Les copies électroniques sont gratuites, généralement disponibles 24–36 heures après la demande et accessibles pendant sept jours. Enregistrez-les dès que possible.\n\nLes copies papier sont généralement expédiées 7–10 jours ouvrés après la demande. Privilégiez le PDF électronique : le papier doit être numérisé, et seuls Professional et Enterprise peuvent tenter de traiter les scans avec le recours à l'IA.",
+        "metaDescription": "Préparez un relevé Bank of America pour Excel : téléchargement du PDF, demande de copies anciennes et vérification des opérations."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "Jusqu'à sept ans pour les comptes de dépôt, prêts immobiliers, fiducies et investissements gérés ; jusqu'à deux ans pour les cartes de crédit, lignes de crédit sur valeur domiciliaire, prêts personnels et lignes de crédit ; jusqu'à douze mois pour les prêts automobiles. Après clôture, les relevés peuvent rester accessibles environ quatre-vingt-dix jours.",
         "download": "Connectez-vous à Wells Fargo Online et ouvrez Statements & Documents. Sélectionnez le compte et la période disponible, ouvrez le PDF et enregistrez-le sous un nom explicite. Pour les documents indisponibles d'un compte clôturé, demandez des copies à la banque.",
         "detailsTitle": "Relevés professionnels et cartes de crédit Wells Fargo",
-        "details": "Business Online propose des documents pour les comptes professionnels éligibles. La durée annoncée de sept ans reste soumise aux limites de chaque produit ; elle ne vaut pas pour tous les relevés professionnels.\n\nLes relevés de carte de crédit sont disponibles jusqu'à deux ans. Enregistrez-les avant la fin de cette période."
+        "details": "Business Online propose des documents pour les comptes professionnels éligibles. La durée annoncée de sept ans reste soumise aux limites de chaque produit ; elle ne vaut pas pour tous les relevés professionnels.\n\nLes relevés de carte de crédit sont disponibles jusqu'à deux ans. Enregistrez-les avant la fin de cette période.",
+        "metaDescription": "Préparez vos PDF Wells Fargo pour Excel. Vérifiez les périodes disponibles selon le compte et les opérations avant l’export."
       },
       "scanned": {
         "label": "Relevé bancaire numérisé vers Excel",
@@ -789,7 +793,8 @@
             "title": "Télécharger les résultats vérifiés",
             "text": "Téléchargez Excel ou un autre format. Conservez l'original et le fichier ; StatementXL ne propose pas d'historique permanent."
           }
-        }
+        },
+        "metaDescription": "Consultez les conditions de conversion des relevés numérisés. Les forfaits éligibles proposent l’IA Qwen ; vérifiez les résultats sur l’original."
       },
       "quickbooks": {
         "label": "Préparer un relevé pour QuickBooks",
@@ -833,7 +838,8 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
-        }
+        },
+        "metaDescription": "Préparez un CSV à trois ou quatre colonnes pour QuickBooks Online à partir d’un relevé PDF. Vérifiez dates, sens des montants et soldes avant l’import."
       },
       "hsbc": {
         "label": "Relevé HSBC UK vers Excel",
@@ -843,7 +849,8 @@
         "download": "Téléchargez le PDF original dans la banque en ligne ou l’application HSBC, gardez toutes les feuilles numérotées dans l’ordre. Préférez un export natif adapté.",
         "detailsTitle": "Synthèse, numéros de feuilles et abréviations",
         "details": "HSBC décrit en haut à droite soldes initial/final, entrées, sorties, découvert autorisé et identifiants. Ces totaux ne sont pas des transactions. Sheet number ordonne les pages. CR : crédit ; DR : débit ; DD : prélèvement ; SO : virement permanent ; TRF : transfert. Vérifiez les libellés coupés ; n’en déduisez pas un ordre fixe de colonnes.",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "Préparez les relevés personnels en GBP de HSBC UK pour Excel. Résumés et abréviations expliqués ; la prise en charge n’est pas vérifiée."
       }
     },
     "breadcrumbLabel": "Fil d’Ariane"
@@ -871,6 +878,10 @@
           {
             "title": "Comparer une tâche complète",
             "text": "Sur le même fichier autorisé, contrôlez nombre de transactions, dates, montants, sens et libellés sur plusieurs lignes. Incluez le temps de vérification et les limites du forfait. Les promesses de précision d’un fournisseur ne sont pas des résultats indépendants."
+          },
+          {
+            "title": "Vérifier la livraison attendue",
+            "text": "Pour un PDF mensuel, vérifiez que le tableau contient toutes les opérations et les références nécessaires aux lignes incertaines. Si vous devez livrer du QBO, traiter un lot ou utiliser une API, confirmez ces fonctions et le forfait avec DocuClipper.\n\nSur le même échantillon autorisé, comparez nombre de lignes, dates, sens des montants et descriptions sur plusieurs lignes. Rapprochez solde initial plus entrées moins sorties et solde final. Des totaux égaux ne prouvent pas que chaque ligne est correcte."
           }
         ],
         "faq": [
@@ -878,7 +889,8 @@
             "question": "StatementXL remplace-t-il tous les usages de DocuClipper ?",
             "answer": "Non. Il vise la vérification et l’export d’un PDF à la fois. Les lots, intégrations et autres documents répondent à d’autres besoins."
           }
-        ]
+        ],
+        "metaDescription": "Comparez StatementXL et DocuClipper selon les exports, les vérifications et les intégrations pour choisir votre méthode de conversion."
       },
       "alternatives": {
         "title": "Alternatives à DocuClipper : export bancaire, StatementXL et Nanonets",
@@ -895,6 +907,10 @@
           {
             "title": "Vérifier la remise finale",
             "text": "Comparez format cible, forfait, limites, confidentialité et temps de contrôle. Avec StatementXL, préparez manuellement une copie pour l’import comptable. Les pages officielles précisent les fonctions et tarifs actuels."
+          },
+          {
+            "title": "Choisir selon l’étape manquante",
+            "text": "Si la banque fournit un CSV exploitable, vérifiez les dates et colonnes avant de payer une extraction PDF. Si seul le PDF est disponible et qu’un tableau à vérifier suffit, essayez un fichier représentatif dans StatementXL. Pour une réception automatique ou un flux connecté, évaluez les fonctions et forfaits concernés.\n\nNotez la sortie requise, les fichiers par tâche et les corrections manuelles. Conservez le PDF original et comparez la livraison complète plutôt que le nombre de fonctions annoncées."
           }
         ],
         "faq": [
@@ -902,7 +918,8 @@
             "question": "Quelle solution essayer en premier ?",
             "answer": "L’export natif de la banque. S’il ne reste qu’un PDF, choisissez selon le format attendu et le contrôle nécessaire, puis essayez un fichier représentatif."
           }
-        ]
+        ],
+        "metaDescription": "Alternatives à DocuClipper : export bancaire, StatementXL ou Nanonets. Choisissez selon le format requis, l’automatisation et la vérification."
       },
       "nanonets": {
         "title": "StatementXL ou Nanonets : export de relevé ou automatisation ?",
@@ -919,6 +936,10 @@
           {
             "title": "Comparer les bonnes unités",
             "text": "Nanonets décrit des crédits par exécution de blocs, StatementXL des quotas mensuels de pages PDF. Crédits, exécutions et pages ne sont pas interchangeables. Comparez une tâche complète, contrôle manuel compris."
+          },
+          {
+            "title": "Distinguer un tableur d’un projet d’automatisation",
+            "text": "Pour un relevé ponctuel, vérifiez dates, montants, descriptions et alertes avant le téléchargement. Pour un flux récurrent, listez l’origine des fichiers, les champs nécessaires au système suivant et la personne qui contrôle les résultats incertains. Confirmez ces étapes, connecteurs et forfaits avec Nanonets.\n\nComparez une tâche complète : pages, exécutions, corrections et livraison. Les crédits de workflow ne sont pas des pages PDF et le rapport StatementXL sur deux formats n’est pas un comparatif entre produits."
           }
         ],
         "faq": [
@@ -926,7 +947,8 @@
             "question": "StatementXL est-il prouvé plus précis ?",
             "answer": "Non. Aucun essai contrôlé face à Nanonets n’a été réalisé. Le rapport public ne concerne que le parseur local sur les échantillons indiqués."
           }
-        ]
+        ],
+        "metaDescription": "Comparez StatementXL et Nanonets pour la conversion PDF et l’automatisation : vérification manuelle, intégrations et unités de facturation."
       },
       "xero": {
         "title": "Relevé PDF vers Xero : préparer et vérifier un CSV",
@@ -950,7 +972,8 @@
             "question": "Le CSV est-il immédiatement importable ?",
             "answer": "Pas nécessairement. StatementXL garde les colonnes d’origine et de contrôle. Préparez une copie Xero et vérifiez le mappage."
           }
-        ]
+        ],
+        "metaDescription": "Préparez les opérations PDF pour un import CSV manuel dans Xero. Vérifiez dates, montants et compte ; privilégiez un export bancaire adapté."
       },
       "wave": {
         "title": "Relevé PDF vers Wave : vérifier et charger les transactions",
@@ -974,7 +997,8 @@
             "question": "Le PDF est-il envoyé directement à Wave ?",
             "answer": "Non. Téléchargez et contrôlez les données, préparez un CSV puis chargez-le et confirmez les champs dans Wave."
           }
-        ]
+        ],
+        "metaDescription": "Préparez un import CSV manuel dans Wave aux États-Unis ou au Canada. Vérifiez le compte, les dates et le sens des montants."
       },
       "sage": {
         "title": "Relevé PDF vers Sage Accounting UK : préparer un CSV",
@@ -998,7 +1022,8 @@
             "question": "Cela fonctionne-t-il pour tous les produits Sage ?",
             "answer": "Non. Il s’agit de Sage Accounting UK. Consultez la documentation de votre produit et région."
           }
-        ]
+        ],
+        "metaDescription": "Préparez les données bancaires pour un import CSV manuel dans Sage Accounting UK. Vérifiez le format ; les autres éditions sont hors périmètre."
       },
       "loan": {
         "title": "Organiser ses relevés pour une demande de prêt",
@@ -1022,7 +1047,8 @@
             "question": "Le prêteur acceptera-t-il le tableur ?",
             "answer": "Cela dépend de lui. Demandez quels originaux et annexes sont requis. La conversion ne vaut ni authentification ni approbation."
           }
-        ]
+        ],
+        "metaDescription": "Organisez les opérations pour un dossier de prêt en conservant les PDF originaux. Confirmez auprès du prêteur les pièces et périodes requises."
       },
       "tax": {
         "title": "Organiser les transactions pour préparer les impôts",
@@ -1046,7 +1072,8 @@
             "question": "Toute sortie est-elle déductible ?",
             "answer": "Non. Cela dépend de l’opération, des justificatifs et des règles. Consultez un professionnel qualifié en cas de doute."
           }
-        ]
+        ],
+        "metaDescription": "Préparez les opérations pour la revue des pièces fiscales américaines. Gardez les justificatifs ; la conversion ne prouve pas une déduction."
       },
       "catchup": {
         "title": "Rattrapage comptable : transformer les périodes manquantes en liste de contrôle",
@@ -1070,7 +1097,8 @@
             "question": "La conversion termine-t-elle la comptabilité ?",
             "answer": "Non. Détection de doublons, classement, justificatifs et rapprochement sont des étapes séparées."
           }
-        ]
+        ],
+        "metaDescription": "Rattrapez les périodes comptables manquantes avec les relevés PDF. Recensez les comptes, vérifiez les lignes et rapprochez chaque relevé."
       },
       "about": {
         "title": "À propos de StatementXL",
@@ -1094,7 +1122,8 @@
             "question": "Où consulter les preuves ?",
             "answer": "Dans les sources des guides et la méthode et les résultats téléchargeables du rapport. Contactez l’assistance pour le produit."
           }
-        ]
+        ],
+        "metaDescription": "Découvrez StatementXL : conversion de relevés PDF en tableaux, alertes par ligne, références aux sources et limites du fonctionnement."
       },
       "checker": {
         "title": "Vérificateur gratuit de solde bancaire et modèle Excel",
@@ -1118,7 +1147,8 @@
             "question": "Les montants sont-ils transmis ?",
             "answer": "Non. Ils restent dans la mémoire de la page. Le modèle téléchargé est un fichier local sous votre contrôle."
           }
-        ]
+        ],
+        "metaDescription": "Comparez solde initial plus entrées moins sorties au solde final. Sans envoi de fichier ni connexion ; modèle Excel téléchargeable."
       },
       "benchmark": {
         "title": "Rapport public : deux formats de relevés analysés localement",
@@ -1142,7 +1172,8 @@
             "question": "La proportion OK est-elle la précision ?",
             "answer": "Non. Elle indique seulement les lignes extraites non signalées. Omissions, ajouts et écarts exigent un contrôle de l’original."
           }
-        ]
+        ],
+        "metaDescription": "Résultats du parseur local StatementXL sur deux formats publics, avec périmètre et limites de l’échantillon. L’analyse IA n’a pas été testée."
       }
     }
   },
@@ -1243,6 +1274,15 @@
       "nanonets": "StatementXL et Nanonets",
       "checker": "Vérificateur de solde et modèle Excel",
       "benchmark": "Rapport d’exemples publics"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "Pour un PDF dont le texte est sélectionnable, commencez par le guide Excel. Pour une image numérisée, vérifiez les conditions avant de choisir l’analyse IA.",
+      "banks": "Choisissez votre banque pour consulter les étapes de téléchargement et les périodes propres au compte. Ce guide ne prouve pas la prise en charge de tous les formats.",
+      "accounting": "Choisissez le logiciel destinataire, puis vérifiez ses exigences CSV. Ces guides décrivent un import manuel ; StatementXL ne se connecte pas à votre compte comptable.",
+      "bookkeeping": "Partez de votre besoin : dossier de prêt, fiscalité américaine ou rattrapage comptable. Conservez les relevés originaux et les justificatifs avec le tableur.",
+      "comparisons": "Utilisez un comparatif pour choisir entre deux produits, ou le guide des alternatives pour envisager un export bancaire. Comparez le format livré et le travail de vérification.",
+      "tools": "Le vérificateur de solde compare les totaux sans téléverser de fichier. Le rapport présente les résultats mesurés sur deux formats et les limites de ces observations."
+    },
+    "metaDescription": "Guides de conversion de relevés, téléchargements bancaires, imports comptables manuels, comparatifs et vérificateur de solde gratuit."
   }
 }

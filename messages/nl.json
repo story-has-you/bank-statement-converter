@@ -731,7 +731,8 @@
       "pdf": {
         "label": "Bankafschrift van PDF naar Excel",
         "title": "Zet een PDF-bankafschrift om naar Excel",
-        "intro": "Lees transacties uit uw PDF-bankafschrift met StatementXL, vergelijk de voorvertoning met het origineel en download Excel met risicomarkeringen. Zonder aanmelding kunt u dagelijks {anonymousPages} pagina gratis omzetten, na aanmelding {authenticatedPages} pagina's. Bewaar het origineel ter controle."
+        "intro": "Lees transacties uit uw PDF-bankafschrift met StatementXL, vergelijk de voorvertoning met het origineel en download Excel met risicomarkeringen. Zonder aanmelding kunt u dagelijks {anonymousPages} pagina gratis omzetten, na aanmelding {authenticatedPages} pagina's. Bewaar het origineel ter controle.",
+        "metaDescription": "Zet afschrift-PDF’s om naar Excel met StatementXL. Controleer transacties en risicomeldingen aan de hand van het originele PDF-bestand."
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase biedt afhankelijk van het rekeningtype tot zeven jaar aan afschriften. Controleer de beschikbare jaren in Statements & documents; niet elke rekening bevat zeven volledige jaren.",
         "download": "Meld u aan op chase.com en open Main Menu, daarna Statements & documents. Kies jaar en rekening en klik op Open of Save naast het afschrift. Bewaar de oorspronkelijke PDF in plaats van een schermafbeelding.",
         "detailsTitle": "Chase Mobile en transactiedownloads",
-        "details": "Open in Chase Mobile Profile & Settings, kies Statements & documents onder Document manager en daarna Statements. Kies rekening, jaar en afschrift om de PDF te openen.\n\nEen download van rekeningactiviteit verschilt van een maandelijks PDF-afschrift. Controleer bij de bank welke exportformaten en datumbereiken beschikbaar zijn."
+        "details": "Open in Chase Mobile Profile & Settings, kies Statements & documents onder Document manager en daarna Statements. Kies rekening, jaar en afschrift om de PDF te openen.\n\nEen download van rekeningactiviteit verschilt van een maandelijks PDF-afschrift. Controleer bij de bank welke exportformaten en datumbereiken beschikbaar zijn.",
+        "metaDescription": "Download een Chase-afschrift als PDF en bereid Excel-conversie voor. Volg de stappen en vergelijk de transacties met het origineel."
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Afschriften met chequeafbeeldingen zijn tot 18 maanden rechtstreeks te bekijken, af te drukken en te downloaden. Oudere kopieën kunt u tot zeven jaar terug aanvragen. Controleer de beschikbaarheid voor uw creditcardrekening afzonderlijk.",
         "download": "Meld u aan bij Online Banking en open Statements & Documents onder Accounts. Kies rekening en periode, open de PDF en sla deze op. Voor oudere kopieën kiest u daar Request statements.",
         "detailsTitle": "Oudere Bank of America-afschriften aanvragen",
-        "details": "Elektronische kopieën zijn gratis, meestal na 24–36 uur beschikbaar en zeven dagen toegankelijk. Sla ze zo snel mogelijk op.\n\nPapieren kopieën worden doorgaans 7–10 werkdagen na de aanvraag verzonden. Geef de voorkeur aan de elektronische PDF: papier moet worden gescand en alleen Professional en Enterprise kunnen scans proberen te verwerken met de optionele AI-analyse."
+        "details": "Elektronische kopieën zijn gratis, meestal na 24–36 uur beschikbaar en zeven dagen toegankelijk. Sla ze zo snel mogelijk op.\n\nPapieren kopieën worden doorgaans 7–10 werkdagen na de aanvraag verzonden. Geef de voorkeur aan de elektronische PDF: papier moet worden gescand en alleen Professional en Enterprise kunnen scans proberen te verwerken met de optionele AI-analyse.",
+        "metaDescription": "Bereid Bank of America-afschriften voor op Excel. Bekijk PDF-downloads, aanvragen van oudere kopieën en controle van transacties."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "Tot zeven jaar voor deposito-, hypotheek-, trust- en beheerde beleggingsrekeningen; tot twee jaar voor creditcards, kredietlijnen op woningwaarde, persoonlijke leningen en kredietlijnen; tot twaalf maanden voor autoleningen. Na sluiting kunnen afschriften nog ongeveer negentig dagen beschikbaar blijven.",
         "download": "Meld u aan bij Wells Fargo Online en open Statements & Documents. Kies rekening en beschikbare periode, open de PDF en sla deze op met een duidelijke naam. Vraag de bank om kopieën als documenten van een gesloten rekening niet online staan.",
         "detailsTitle": "Zakelijke en creditcardafschriften van Wells Fargo",
-        "details": "Business Online biedt documenten voor in aanmerking komende zakelijke rekeningen. De genoemde zeven jaar blijven onderworpen aan productlimieten; niet alle zakelijke afschriften worden zo lang aangeboden.\n\nCreditcardafschriften zijn tot twee jaar beschikbaar. Sla ze op voordat die periode voorbij is."
+        "details": "Business Online biedt documenten voor in aanmerking komende zakelijke rekeningen. De genoemde zeven jaar blijven onderworpen aan productlimieten; niet alle zakelijke afschriften worden zo lang aangeboden.\n\nCreditcardafschriften zijn tot twee jaar beschikbaar. Sla ze op voordat die periode voorbij is.",
+        "metaDescription": "Bereid Wells Fargo-PDF’s voor op Excel. Controleer beschikbare periodes per rekening en transacties voordat u exporteert."
       },
       "scanned": {
         "label": "Gescand bankafschrift naar Excel",
@@ -789,7 +793,8 @@
             "title": "Download gecontroleerde resultaten",
             "text": "Download Excel of een ander formaat. Bewaar origineel en download; StatementXL heeft geen blijvende bestandsgeschiedenis."
           }
-        }
+        },
+        "metaDescription": "Bekijk de eisen voor gescande afschriften. Geschikte abonnementen bieden optionele Qwen-AI-verwerking; vergelijk uitkomsten met het origineel."
       },
       "quickbooks": {
         "label": "Bankafschrift voorbereiden voor QuickBooks",
@@ -833,7 +838,8 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
-        }
+        },
+        "metaDescription": "Maak van een afschrift-PDF een CSV met drie of vier kolommen voor QuickBooks Online. Controleer datums, bedragrichting en saldi vóór de handmatige import."
       },
       "hsbc": {
         "label": "HSBC UK-afschrift naar Excel",
@@ -843,7 +849,8 @@
         "download": "Download originele PDF via HSBC-internetbankieren of app; bewaar alle genummerde bladen op volgorde. Geef geschikte native export voorrang.",
         "detailsTitle": "Overzicht, bladnummers en afkortingen",
         "details": "HSBC beschrijft rechtsboven begin-/eindsaldo, inkomsten, uitgaven, roodstandlimiet en rekeninggegevens. Totalen zijn geen transacties. Sheet number ordent pagina’s. CR: credit; DR: debet; DD: incasso; SO: vaste opdracht; TRF: overboeking. Controleer afgebroken omschrijvingen; leid geen vaste kolomvolgorde af.",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "Bereid persoonlijke GBP-afschriften van HSBC UK voor op Excel. Uitleg over overzichten en afkortingen; parserondersteuning is niet bevestigd."
       }
     },
     "breadcrumbLabel": "Navigatiepad"
@@ -871,6 +878,10 @@
           {
             "title": "Vergelijk een volledige taak",
             "text": "Gebruik hetzelfde toegestane voorbeeld en controleer aantal, datums, bedragen, richting en meerregelige omschrijvingen. Tel limieten en controletijd mee. Leveranciersclaims zijn geen onafhankelijke meetresultaten; wij hebben geen rechtstreekse test uitgevoerd."
+          },
+          {
+            "title": "Controleer de vereiste overdracht",
+            "text": "Controleer bij één maandelijkse PDF of de tabel alle transacties en brongegevens voor onzekere rijen bewaart. Zijn QBO, batches of een API nodig, bevestig dan de functie en het abonnement bij DocuClipper.\n\nVergelijk met hetzelfde toegestane voorbeeld het aantal rijen, datums, bedragrichting en afgebroken omschrijvingen. Sluit beginsaldo plus bijschrijvingen min afschrijvingen aan op het eindsaldo. Gelijke totalen bewijzen niet dat elke rij klopt."
           }
         ],
         "faq": [
@@ -878,7 +889,8 @@
             "question": "Vervangt dit alle DocuClipper-processen?",
             "answer": "Nee. StatementXL is bedoeld voor één PDF tegelijk. Batches, koppelingen en andere documentsoorten stellen andere eisen."
           }
-        ]
+        ],
+        "metaDescription": "Vergelijk StatementXL en DocuClipper op uitvoer, controlewerk en integraties om een passende afschriftworkflow te kiezen."
       },
       "alternatives": {
         "title": "DocuClipper-alternatieven: bankexport, StatementXL en Nanonets",
@@ -895,6 +907,10 @@
           {
             "title": "Controleer de overdracht",
             "text": "Vergelijk doelformaat, abonnement, limieten, privacy en controlewerk. Bij StatementXL bereidt u een importkopie handmatig voor. Actuele functies en prijzen staan op officiële pagina’s."
+          },
+          {
+            "title": "Kies op basis van de ontbrekende stap",
+            "text": "Biedt de bank een bruikbare CSV, controleer dan periode en kolommen voordat u betaalt voor PDF-extractie. Is alleen een PDF beschikbaar en wilt u een tabel controleren, probeer dan een representatief bestand in StatementXL. Beoordeel voor automatische ontvangst of gekoppelde processen de functies en abonnementen van de aanbieder.\n\nNoteer vereiste uitvoer, bestanden per opdracht en handmatige correcties. Bewaar de originele PDF en vergelijk de hele overdracht in plaats van het aantal geadverteerde functies."
           }
         ],
         "faq": [
@@ -902,7 +918,8 @@
             "question": "Wat probeer ik eerst?",
             "answer": "De bankexport. Is alleen PDF beschikbaar, kies dan op doelformaat en controleproces en test een representatief bestand."
           }
-        ]
+        ],
+        "metaDescription": "Alternatieven voor DocuClipper: bankexport, StatementXL of Nanonets. Kies op uitvoervereisten, automatisering en controlewerk."
       },
       "nanonets": {
         "title": "StatementXL of Nanonets: exporteren of automatiseren?",
@@ -919,6 +936,10 @@
           {
             "title": "Vergelijk dezelfde eenheden",
             "text": "Nanonets beschrijft credits per blokuitvoering; StatementXL maandelijkse PDF-paginaquota. Credits, uitvoeringen en pagina’s zijn niet uitwisselbaar. Vergelijk een complete taak inclusief handmatige controle."
+          },
+          {
+            "title": "Onderscheid een tabeltaak van een automatiseringsproject",
+            "text": "Controleer bij een los afschrift datums, bedragen, omschrijvingen en risico’s vóór het downloaden. Leg voor terugkerende processen vast waar bestanden binnenkomen, welke velden het volgende systeem vereist en wie onzekere resultaten controleert. Bevestig die stappen, koppelingen en het abonnement bij Nanonets.\n\nVergelijk een volledige opdracht: pagina’s, uitvoeringen, correcties en overdracht. Workflowcredits zijn geen PDF-pagina’s; het StatementXL-rapport over twee indelingen is geen onderlinge producttest."
           }
         ],
         "faq": [
@@ -926,7 +947,8 @@
             "question": "Is StatementXL aantoonbaar nauwkeuriger?",
             "answer": "Nee. Er is geen gecontroleerde onderlinge test. Het openbare rapport betreft alleen de lokale parser en genoemde voorbeelden."
           }
-        ]
+        ],
+        "metaDescription": "Vergelijk StatementXL en Nanonets voor PDF-conversie en documentautomatisering: handmatige controle, integraties en rekeneenheden."
       },
       "xero": {
         "title": "Bankafschrift-PDF naar Xero: CSV voorbereiden en controleren",
@@ -950,7 +972,8 @@
             "question": "Is de CSV direct importeerbaar?",
             "answer": "Niet automatisch. Originele kolommen en controlevelden blijven behouden. Maak een Xero-kopie en controleer de toewijzing."
           }
-        ]
+        ],
+        "metaDescription": "Bereid PDF-transacties voor op handmatige CSV-import in Xero. Controleer datums, bedragen en rekening; gebruik zo mogelijk een bankexport."
       },
       "wave": {
         "title": "Bankafschrift-PDF naar Wave: transacties controleren en uploaden",
@@ -974,7 +997,8 @@
             "question": "Gaat de PDF direct naar Wave?",
             "answer": "Nee. Download en controleer, maak een CSV en upload en bevestig de velden binnen Wave."
           }
-        ]
+        ],
+        "metaDescription": "Bereid CSV-import in Wave in de VS of Canada voor. Controleer rekening, datums en de richting van bedragen vóór het importeren."
       },
       "sage": {
         "title": "Bankafschrift-PDF voor Sage Accounting UK: CSV voorbereiden",
@@ -998,7 +1022,8 @@
             "question": "Geldt dit voor elk Sage-product?",
             "answer": "Nee. Alleen Sage Accounting UK. Raadpleeg het juiste product en de juiste regio."
           }
-        ]
+        ],
+        "metaDescription": "Bereid bankgegevens voor op handmatige CSV-import in Sage Accounting UK. Controleer het formaat; andere Sage-edities vallen buiten de gids."
       },
       "loan": {
         "title": "Bankafschriften ordenen voor een leningaanvraag",
@@ -1022,7 +1047,8 @@
             "question": "Accepteert de geldverstrekker de tabel?",
             "answer": "Dat bepaalt de geldverstrekker. Vraag welke originelen en bijlagen nodig zijn; conversie is geen certificering of goedkeuring."
           }
-        ]
+        ],
+        "metaDescription": "Orden banktransacties voor een leningaanvraag en bewaar originele PDF’s. Vraag de kredietgever welke stukken en periodes nodig zijn."
       },
       "tax": {
         "title": "Banktransacties ordenen voor belastingvoorbereiding",
@@ -1046,7 +1072,8 @@
             "question": "Is elke uitgave aftrekbaar?",
             "answer": "Nee. Dat hangt af van transactie, bewijs en regels. Vraag een gekwalificeerde belastingadviseur."
           }
-        ]
+        ],
+        "metaDescription": "Bereid transacties voor op controle van Amerikaanse belastingstukken. Bewaar bewijsstukken; conversie bewijst geen aftrekbaarheid."
       },
       "catchup": {
         "title": "Achterstallige boekhouding: maak ontbrekende perioden controleerbaar",
@@ -1070,7 +1097,8 @@
             "question": "Is conversie voldoende?",
             "answer": "Nee. Dubbelen, categorieën, bewijscontrole en afstemming vereisen afzonderlijk werk."
           }
-        ]
+        ],
+        "metaDescription": "Werk ontbrekende boekhoudperiodes bij met afschrift-PDF’s. Breng rekeningen in kaart, controleer rijen en sluit elk afschrift aan."
       },
       "about": {
         "title": "Over StatementXL",
@@ -1094,7 +1122,8 @@
             "question": "Waar staat het bewijs?",
             "answer": "In de bronnen van gidsen en de methode en downloadbare rapportresultaten. Neem bij productvragen contact op met support."
           }
-        ]
+        ],
+        "metaDescription": "Leer StatementXL kennen: afschrift-PDF’s als tabellen met risicomeldingen per rij, bronverwijzingen en duidelijke functiegrenzen."
       },
       "checker": {
         "title": "Gratis saldocontrole en Excel-sjabloon",
@@ -1118,7 +1147,8 @@
             "question": "Worden bedragen verzonden?",
             "answer": "Nee. Ze blijven in het paginageheugen. Het sjabloon is een lokaal bestand onder uw controle."
           }
-        ]
+        ],
+        "metaDescription": "Vergelijk beginsaldo plus bijschrijvingen min afschrijvingen met het eindsaldo. Zonder upload of account; download een Excel-sjabloon."
       },
       "benchmark": {
         "title": "Openbaar voorbeeldrapport: twee afschriftformaten lokaal geparseerd",
@@ -1142,7 +1172,8 @@
             "question": "Is het OK-percentage de nauwkeurigheid?",
             "answer": "Nee. Het betreft alleen ongemarkeerde geëxtraheerde regels. Ontbrekende, extra regels en veldverschillen vereisen vergelijking met het origineel."
           }
-        ]
+        ],
+        "metaDescription": "Resultaten van de lokale StatementXL-parser voor twee openbare indelingen, met bereik en beperkingen. Optionele AI-verwerking is niet getest."
       }
     }
   },
@@ -1243,6 +1274,15 @@
       "nanonets": "StatementXL en Nanonets",
       "checker": "Saldocontrole en Excel-sjabloon",
       "benchmark": "Openbaar voorbeeldrapport"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "Begin bij de Excel-handleiding voor PDF’s met selecteerbare tekst. Controleer bij bestanden met alleen afbeeldingen eerst de voorwaarden voor AI-verwerking.",
+      "banks": "Kies uw bank voor downloadstappen en beschikbare periodes per rekening. Een downloadhandleiding bewijst geen ondersteuning voor elke afschriftindeling.",
+      "accounting": "Kies de boekhoudsoftware en controleer de CSV-eisen. De gidsen beschrijven handmatige import; StatementXL maakt geen verbinding met uw boekhoudaccount.",
+      "bookkeeping": "Begin bij uw taak: leningdocumenten, Amerikaanse belastingvoorbereiding of achterstallige boekhouding. Bewaar originele afschriften en bewijsstukken bij de tabel.",
+      "comparisons": "Gebruik een vergelijking voor de keuze tussen twee producten, of de alternatievengids voor een bankexport. Vergelijk uitvoerformaten en controlewerk.",
+      "tools": "Controleer totalen zonder bestanden te uploaden met de saldocontrole. Het steekproefrapport toont metingen voor twee indelingen en de grenzen daarvan."
+    },
+    "metaDescription": "Handleidingen voor afschriftconversie, bankdownloads, handmatige boekhoudimport, productvergelijkingen en gratis saldocontrole."
   }
 }

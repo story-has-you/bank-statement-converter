@@ -20,7 +20,12 @@ export function getResourcePage(id: ResourcePageId) {
 /** Keep recommendations small and related; the directory owns the complete list. */
 export function getRelatedResources(current?: string) {
   const group = resourceGroups.find((item) => item.pageIds.some((id) => id === current));
-  const priorityIds = group?.id === "banks" ? ["quickbooks" as const] : [];
+  let priorityIds: ResourcePageId[] = [];
+  if (group?.id === "banks") {
+    priorityIds = ["quickbooks"];
+  } else if (group?.id === "comparisons") {
+    priorityIds = ["benchmark", "checker"];
+  }
   const ids = [...new Set([...priorityIds, ...(group?.pageIds ?? []), ...featuredResourceIds])].filter((id) => id !== current).slice(0, 4);
   return ids.map(getResourcePage);
 }

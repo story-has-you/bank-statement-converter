@@ -12,7 +12,7 @@ export async function getResourcesMetadata(locale: string): Promise<Metadata> {
   }
   const t = await getTranslations({ locale, namespace: "Resources" });
   const title = `${t("title")} | StatementXL`;
-  const description = t("intro");
+  const description = t("metaDescription");
   const alternates = getLocalizedAlternates("/resources", locale);
   return {
     title,

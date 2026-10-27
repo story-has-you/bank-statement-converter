@@ -731,7 +731,8 @@
       "pdf": {
         "label": "Rekening koran PDF ke Excel",
         "title": "Konversi rekening koran PDF ke Excel",
-        "intro": "Gunakan StatementXL untuk mengekstrak transaksi dari PDF, membandingkan pratinjau dengan dokumen asli, dan mengunduh Excel dengan penanda risiko. Konversi gratis {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Simpan dokumen asli untuk pemeriksaan."
+        "intro": "Gunakan StatementXL untuk mengekstrak transaksi dari PDF, membandingkan pratinjau dengan dokumen asli, dan mengunduh Excel dengan penanda risiko. Konversi gratis {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Simpan dokumen asli untuk pemeriksaan.",
+        "metaDescription": "Ubah rekening koran PDF ke Excel dengan StatementXL. Tinjau transaksi serta penanda risiko dan bandingkan ekspor dengan PDF asli."
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase menyediakan rekening koran hingga tujuh tahun, tergantung jenis rekening. Periksa tahun yang tersedia di Statements & documents; tidak semua rekening memiliki tujuh tahun penuh.",
         "download": "Masuk ke chase.com, buka Main Menu lalu Statements & documents. Pilih tahun dan rekening, lalu ikon Open atau Save di samping rekening koran. Simpan PDF asli, bukan tangkapan layar.",
         "detailsTitle": "Chase Mobile dan unduhan transaksi",
-        "details": "Di Chase Mobile, buka Profile & Settings, pilih Statements & documents di bawah Document manager, lalu Statements. Pilih rekening, tahun, dan rekening koran untuk membuka PDF.\n\nUnduhan aktivitas rekening berbeda dari rekening koran bulanan PDF. Periksa format ekspor dan rentang tanggal yang saat ini ditawarkan bank."
+        "details": "Di Chase Mobile, buka Profile & Settings, pilih Statements & documents di bawah Document manager, lalu Statements. Pilih rekening, tahun, dan rekening koran untuk membuka PDF.\n\nUnduhan aktivitas rekening berbeda dari rekening koran bulanan PDF. Periksa format ekspor dan rentang tanggal yang saat ini ditawarkan bank.",
+        "metaDescription": "Unduh rekening koran Chase sebagai PDF dan siapkan konversi Excel. Ikuti langkahnya dan cocokkan transaksi dengan dokumen asli."
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Rekening koran dengan gambar cek dapat dilihat, dicetak, dan diunduh langsung hingga 18 bulan terakhir. Salinan yang lebih lama dapat diminta hingga tujuh tahun ke belakang. Periksa ketersediaan dokumen rekening kartu kredit secara terpisah.",
         "download": "Masuk ke Online Banking dan buka Statements & Documents di tab Accounts. Pilih rekening dan periode, buka PDF, lalu simpan. Untuk salinan lama, gunakan Request statements di bagian yang sama.",
         "detailsTitle": "Meminta rekening koran lama Bank of America",
-        "details": "Salinan elektronik gratis, biasanya tersedia 24–36 jam setelah permintaan, dan dapat diakses selama tujuh hari. Simpan segera setelah tersedia.\n\nSalinan kertas biasanya dikirim 7–10 hari kerja setelah permintaan. Utamakan PDF elektronik: kertas perlu dipindai dan hanya Professional serta Enterprise yang dapat mencoba memproses hasil pindai melalui AI opsional."
+        "details": "Salinan elektronik gratis, biasanya tersedia 24–36 jam setelah permintaan, dan dapat diakses selama tujuh hari. Simpan segera setelah tersedia.\n\nSalinan kertas biasanya dikirim 7–10 hari kerja setelah permintaan. Utamakan PDF elektronik: kertas perlu dipindai dan hanya Professional serta Enterprise yang dapat mencoba memproses hasil pindai melalui AI opsional.",
+        "metaDescription": "Siapkan rekening koran Bank of America untuk Excel: unduhan PDF, permintaan salinan lama, dan pemeriksaan transaksi."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "Hingga tujuh tahun untuk rekening simpanan, hipotek, trust, dan investasi terkelola; hingga dua tahun untuk kartu kredit, kredit berbasis ekuitas rumah, pinjaman pribadi, dan fasilitas kredit; hingga dua belas bulan untuk pinjaman kendaraan. Setelah rekening ditutup, rekening koran mungkin tersedia sekitar sembilan puluh hari.",
         "download": "Masuk ke Wells Fargo Online dan buka Statements & Documents. Pilih rekening dan periode tersedia, buka PDF, lalu simpan dengan nama yang jelas. Jika dokumen rekening yang ditutup tidak tersedia online, mintalah salinan kepada bank.",
         "detailsTitle": "Rekening bisnis dan kartu kredit Wells Fargo",
-        "details": "Business Online menyediakan dokumen untuk rekening bisnis yang memenuhi syarat. Ketersediaan hingga tujuh tahun tetap mengikuti batas tiap produk; tidak semua rekening koran bisnis tersedia selama itu.\n\nRekening koran kartu kredit tersedia hingga dua tahun. Simpan sebelum periode tersebut berakhir."
+        "details": "Business Online menyediakan dokumen untuk rekening bisnis yang memenuhi syarat. Ketersediaan hingga tujuh tahun tetap mengikuti batas tiap produk; tidak semua rekening koran bisnis tersedia selama itu.\n\nRekening koran kartu kredit tersedia hingga dua tahun. Simpan sebelum periode tersebut berakhir.",
+        "metaDescription": "Siapkan PDF Wells Fargo untuk Excel. Periksa ketersediaan periode menurut rekening dan transaksi sebelum mengekspor."
       },
       "scanned": {
         "label": "Rekening koran pindai ke Excel",
@@ -789,7 +793,8 @@
             "title": "Unduh hasil yang diperiksa",
             "text": "Unduh Excel atau format lain. Simpan dokumen asli dan unduhan; StatementXL tidak menyediakan riwayat file permanen."
           }
-        }
+        },
+        "metaDescription": "Periksa persyaratan konversi rekening koran hasil pindai. Paket yang memenuhi syarat dapat memilih AI Qwen; cocokkan hasil dengan dokumen asli."
       },
       "quickbooks": {
         "label": "Siapkan rekening koran untuk QuickBooks",
@@ -833,7 +838,8 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
-        }
+        },
+        "metaDescription": "Siapkan CSV tiga atau empat kolom untuk QuickBooks Online dari rekening koran PDF. Periksa tanggal, arah jumlah, dan saldo sebelum impor manual."
       },
       "hsbc": {
         "label": "Rekening HSBC UK ke Excel",
@@ -843,7 +849,8 @@
         "download": "Unduh PDF asli melalui perbankan daring atau aplikasi HSBC, simpan semua lembar bernomor berurutan. Utamakan ekspor bank yang sesuai.",
         "detailsTitle": "Ringkasan, nomor lembar dan singkatan",
         "details": "HSBC menjelaskan saldo awal/akhir, masuk, keluar, batas cerukan dan identitas di kanan atas. Total bukan transaksi individual. Sheet number mengurutkan halaman. CR kredit, DR debit, DD debit langsung, SO perintah tetap, TRF transfer. Periksa uraian terpotong; jangan menganggap urutan kolom tetap.",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "Siapkan rekening koran pribadi GBP HSBC UK untuk Excel. Pahami ringkasan dan singkatan; dukungan pengurai untuk tata letak ini belum terverifikasi."
       }
     },
     "breadcrumbLabel": "Jalur navigasi"
@@ -871,6 +878,10 @@
           {
             "title": "Bandingkan pekerjaan lengkap",
             "text": "Gunakan sampel berizin yang sama, periksa jumlah, tanggal, nominal, arah dan uraian multibaris. Hitung batas paket dan waktu pemeriksaan. Klaim akurasi vendor bukan hasil independen; kami belum melakukan uji langsung."
+          },
+          {
+            "title": "Periksa hasil akhir yang diperlukan",
+            "text": "Untuk satu PDF bulanan, periksa apakah tabel memuat semua transaksi dan rujukan untuk meninjau baris yang meragukan. Jika perlu QBO, pemrosesan batch, atau API, konfirmasikan fitur dan paket dengan DocuClipper.\n\nGunakan sampel berizin yang sama untuk membandingkan jumlah baris, tanggal, arah jumlah, dan deskripsi beberapa baris. Cocokkan saldo awal ditambah uang masuk dikurangi uang keluar dengan saldo akhir. Total yang cocok tidak membuktikan setiap baris benar."
           }
         ],
         "faq": [
@@ -878,7 +889,8 @@
             "question": "Apakah semua alur DocuClipper dapat diganti?",
             "answer": "Tidak. Fokusnya memeriksa dan mengekspor satu PDF sekaligus. Batch, integrasi dan jenis dokumen lain memiliki kebutuhan berbeda."
           }
-        ]
+        ],
+        "metaDescription": "Bandingkan StatementXL dan DocuClipper berdasarkan ekspor, peninjauan, dan integrasi untuk memilih alur konversi rekening koran."
       },
       "alternatives": {
         "title": "Alternatif DocuClipper: ekspor bank, StatementXL dan Nanonets",
@@ -895,6 +907,10 @@
           {
             "title": "Periksa penyerahan akhir",
             "text": "Bandingkan format tujuan, paket, batas, privasi dan pekerjaan pemeriksaan. Dari StatementXL, siapkan salinan impor secara manual. Fitur dan harga terkini tercantum di halaman resmi."
+          },
+          {
+            "title": "Pilih berdasarkan langkah yang belum terpenuhi",
+            "text": "Jika bank menyediakan CSV yang sesuai, periksa periode dan kolom sebelum membayar ekstraksi PDF. Jika hanya ada PDF dan Anda perlu lembar kerja untuk ditinjau, coba berkas yang mewakili kebutuhan di StatementXL. Untuk penerimaan otomatis atau alur terhubung, evaluasi fitur dan paket penyedia.\n\nCatat keluaran yang diperlukan, berkas per pekerjaan, dan koreksi manual. Simpan PDF asli dan bandingkan penyerahan lengkap, bukan jumlah fitur yang diiklankan."
           }
         ],
         "faq": [
@@ -902,7 +918,8 @@
             "question": "Apa yang dicoba dahulu?",
             "answer": "Ekspor asli bank. Jika hanya PDF, pilih berdasarkan format dan pemeriksaan lalu uji berkas yang mewakili kebutuhan."
           }
-        ]
+        ],
+        "metaDescription": "Alternatif DocuClipper: ekspor bank, StatementXL, atau Nanonets. Pilih berdasarkan keluaran, otomatisasi, dan pekerjaan peninjauan."
       },
       "nanonets": {
         "title": "StatementXL vs Nanonets: ekspor rekening atau otomatisasi?",
@@ -919,6 +936,10 @@
           {
             "title": "Bandingkan satuan yang tepat",
             "text": "Nanonets menjelaskan kredit per eksekusi blok; StatementXL kuota halaman PDF bulanan. Kredit, eksekusi dan halaman tidak setara. Bandingkan tugas lengkap termasuk pemeriksaan manual."
+          },
+          {
+            "title": "Bedakan tugas lembar kerja dan proyek otomatisasi",
+            "text": "Untuk satu rekening koran, periksa tanggal, jumlah, deskripsi, dan risiko sebelum mengunduh. Untuk alur berulang, daftar asal berkas, bidang yang diperlukan sistem berikutnya, dan penanggung jawab peninjauan hasil yang meragukan. Konfirmasikan langkah, konektor, dan paket tersebut dengan Nanonets.\n\nBandingkan satu pekerjaan penuh: halaman, eksekusi alur, koreksi, dan penyerahan. Kredit alur bukan halaman PDF; laporan dua tata letak StatementXL bukan pengujian perbandingan kedua produk."
           }
         ],
         "faq": [
@@ -926,7 +947,8 @@
             "question": "Apakah StatementXL terbukti lebih akurat?",
             "answer": "Tidak. Belum ada uji langsung terkontrol. Laporan publik hanya menilai parser lokal pada sampel yang disebutkan."
           }
-        ]
+        ],
+        "metaDescription": "Bandingkan StatementXL dan Nanonets untuk konversi PDF dan otomatisasi dokumen: tinjauan manual, integrasi, dan satuan biaya."
       },
       "xero": {
         "title": "PDF rekening ke Xero: siapkan dan periksa CSV",
@@ -950,7 +972,8 @@
             "question": "Apakah CSV langsung siap impor?",
             "answer": "Belum tentu. Kolom asli dan pemeriksaan dipertahankan. Siapkan salinan Xero dan konfirmasi pemetaan."
           }
-        ]
+        ],
+        "metaDescription": "Siapkan transaksi PDF untuk impor CSV manual ke Xero. Periksa tanggal, jumlah, dan rekening; utamakan ekspor bank yang sesuai."
       },
       "wave": {
         "title": "PDF rekening ke Wave: periksa dan unggah transaksi",
@@ -974,7 +997,8 @@
             "question": "Apakah PDF langsung dikirim ke Wave?",
             "answer": "Tidak. Unduh dan periksa data, siapkan CSV lalu unggah dan konfirmasi kolom di Wave."
           }
-        ]
+        ],
+        "metaDescription": "Siapkan impor CSV manual ke Wave di AS atau Kanada. Periksa rekening, tanggal, dan arah jumlah sebelum mengimpor."
       },
       "sage": {
         "title": "PDF rekening ke Sage Accounting UK: siapkan CSV",
@@ -998,7 +1022,8 @@
             "question": "Bisa untuk semua produk Sage?",
             "answer": "Tidak. Hanya Sage Accounting UK. Periksa dokumentasi produk dan wilayah yang tepat."
           }
-        ]
+        ],
+        "metaDescription": "Siapkan data bank untuk impor CSV manual ke Sage Accounting UK. Periksa formatnya; edisi Sage lain tidak termasuk dalam panduan ini."
       },
       "loan": {
         "title": "Menata rekening untuk permohonan pinjaman",
@@ -1022,7 +1047,8 @@
             "question": "Apakah spreadsheet diterima pemberi pinjaman?",
             "answer": "Tergantung pemberi pinjaman. Pastikan dokumen asli dan lampiran; konversi bukan autentikasi atau persetujuan."
           }
-        ]
+        ],
+        "metaDescription": "Atur transaksi untuk pengajuan pinjaman sambil menyimpan PDF asli. Konfirmasikan dokumen dan periode yang diperlukan kepada pemberi pinjaman."
       },
       "tax": {
         "title": "Menata transaksi bank untuk persiapan pajak",
@@ -1046,7 +1072,8 @@
             "question": "Apakah semua pengeluaran dapat dikurangkan?",
             "answer": "Tidak. Tergantung transaksi, bukti dan aturan. Konsultasikan dengan ahli pajak yang berkualifikasi."
           }
-        ]
+        ],
+        "metaDescription": "Siapkan transaksi untuk peninjauan dokumen pajak AS. Simpan bukti pendukung; konversi tidak membuktikan kelayakan potongan pajak."
       },
       "catchup": {
         "title": "Mengejar pembukuan: daftar periode rekening yang hilang",
@@ -1070,7 +1097,8 @@
             "question": "Apakah konversi menyelesaikan pembukuan?",
             "answer": "Tidak. Duplikasi, kategori, bukti dan rekonsiliasi memerlukan pemeriksaan tersendiri."
           }
-        ]
+        ],
+        "metaDescription": "Lengkapi periode pembukuan yang tertinggal dengan PDF rekening koran. Daftar rekening, tinjau baris, dan rekonsiliasi setiap laporan."
       },
       "about": {
         "title": "Tentang StatementXL",
@@ -1094,7 +1122,8 @@
             "question": "Di mana bukti klaimnya?",
             "answer": "Pada sumber panduan serta metode dan hasil laporan yang dapat diunduh. Hubungi dukungan untuk pertanyaan produk."
           }
-        ]
+        ],
+        "metaDescription": "Kenali StatementXL: konversi PDF ke lembar kerja dengan penanda risiko per baris, rujukan sumber, dan batas fungsi layanan."
       },
       "checker": {
         "title": "Pemeriksa saldo bank gratis dan templat Excel",
@@ -1118,7 +1147,8 @@
             "question": "Apakah nominal dikirim?",
             "answer": "Tidak. Tetap di memori halaman. Templat unduhan adalah berkas lokal dalam kendali Anda."
           }
-        ]
+        ],
+        "metaDescription": "Bandingkan saldo awal ditambah uang masuk dikurangi uang keluar dengan saldo akhir. Tanpa unggahan atau masuk akun; unduh templat Excel."
       },
       "benchmark": {
         "title": "Laporan sampel publik: dua format rekening dalam parser lokal",
@@ -1142,7 +1172,8 @@
             "question": "Apakah persentase OK berarti akurasi?",
             "answer": "Tidak. Hanya baris hasil ekstraksi yang tidak ditandai. Baris hilang, tambahan dan perbedaan perlu dibandingkan dengan asli."
           }
-        ]
+        ],
+        "metaDescription": "Hasil pengurai lokal StatementXL pada dua tata letak publik, beserta cakupan dan batas sampel. Penguraian AI opsional tidak diuji."
       }
     }
   },
@@ -1243,6 +1274,15 @@
       "nanonets": "StatementXL dan Nanonets",
       "checker": "Pemeriksa saldo dan templat Excel",
       "benchmark": "Laporan sampel publik"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "Untuk PDF dengan teks yang dapat dipilih, mulai dari panduan Excel. Untuk berkas yang hanya berisi gambar, periksa persyaratan sebelum memilih penguraian AI.",
+      "banks": "Pilih bank untuk melihat langkah unduh rekening koran dan periode yang tersedia menurut rekening. Panduan unduh tidak membuktikan dukungan untuk setiap tata letak.",
+      "accounting": "Pilih perangkat lunak tujuan lalu periksa persyaratan CSV-nya. Panduan ini menjelaskan impor manual; StatementXL tidak terhubung ke akun akuntansi Anda.",
+      "bookkeeping": "Mulai dari tugas: dokumen pinjaman, persiapan pajak AS, atau pembukuan tertunda. Simpan rekening koran asli dan bukti pendukung bersama lembar kerja.",
+      "comparisons": "Gunakan perbandingan untuk memilih dua produk atau panduan alternatif untuk mempertimbangkan ekspor bank. Bandingkan format keluaran dan pekerjaan peninjauan.",
+      "tools": "Periksa total tanpa mengunggah berkas dengan pemeriksa saldo. Laporan sampel memuat hasil pengukuran pada dua tata letak dan batas bukti tersebut."
+    },
+    "metaDescription": "Panduan konversi rekening koran, unduhan bank, impor akuntansi manual, perbandingan produk, dan pemeriksa saldo gratis."
   }
 }

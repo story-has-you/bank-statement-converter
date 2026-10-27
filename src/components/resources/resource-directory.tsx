@@ -12,6 +12,7 @@ export async function ResourceDirectory() {
           <h2 id={`resources-${group.id}`} className="text-lg font-semibold">
             {t(`groups.${group.id}`)}
           </h2>
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">{t(`groupDescriptions.${group.id}`)}</p>
           <ul className="mt-4 grid gap-3">
             {group.pageIds.map((id) => (
               <li key={id}>

@@ -274,17 +274,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "Bank statement converter features",
+    "title": "What you can review",
     "securityTitle": "File privacy",
     "securityDescription": "This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training.",
     "banksTitle": "PDF to Excel tables",
-    "banksDescription": "Bank statement converter previews show PDF headers and cell text for comparison.",
+    "banksDescription": "Preview PDF headers and cell text alongside the extracted table.",
     "accuracyTitle": "Transaction checks",
-    "accuracyDescription": "DISCREPANCY and UNVERIFIABLE bank statement converter flags: incomplete evidence or misalignment."
+    "accuracyDescription": "DISCREPANCY and UNVERIFIABLE flags identify rows with incomplete evidence or possible alignment problems."
   },
   "UsageTiers": {
-    "title": "Bank statement converter plans",
-    "description": "Daily free bank statement converter quota; monthly subscriptions via Creem, PayPal or Waffo.",
+    "title": "Plans and page allowances",
+    "description": "Free pages each day, with monthly subscriptions through Creem, PayPal or Waffo.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "signedIn": "Signed in",
@@ -298,15 +298,15 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Bank statement converter for personal use."
+        "description": "For occasional text-based PDF conversion."
       },
       "professional": {
         "name": "Professional",
-        "description": "Bank statement converter for regular use."
+        "description": "For regular use, with optional AI parsing."
       },
       "enterprise": {
         "name": "Enterprise",
-        "description": "Bank statement converter for higher volumes."
+        "description": "For higher monthly page volumes, with optional AI parsing."
       }
     },
     "aiParsing": "Optional AI parsing; can try scanned PDFs",
@@ -369,32 +369,32 @@
   "HomeFaq": {
     "title": "Bank statement converter FAQ",
     "banks": {
-      "question": "Which statements can the bank statement converter process?",
-      "answer": "Bank statement converter support varies by layout. Bank statement converter banks await validation. Compare bank statement converter output with originals; verified bank statement converter variants will be listed."
+      "question": "Which statements can I convert?",
+      "answer": "Support depends on the statement layout. Compare extracted rows with the original PDF; a bank download guide does not mean every layout has been validated. Verified variants will be listed as they become available."
     },
     "accuracy": {
-      "question": "Why check bank statement converter results?",
-      "answer": "Bank statement converter tables retain PDF headers/cells when possible. Complex layouts affect bank statement converter alignment; blur affects bank statement converter extraction. Review DISCREPANCY/UNVERIFIABLE bank statement converter flags. Compare bank statement converter results with originals."
+      "question": "Why should I check the results?",
+      "answer": "Tables retain PDF headers and cell text when possible. Complex layouts, blurred text or misaligned columns can affect extraction. Review DISCREPANCY and UNVERIFIABLE flags, then compare the rows with the original before using the export."
     },
     "quota": {
-      "question": "How many pages does the bank statement converter allow?",
-      "answer": "Daily bank statement converter quota: {anonymousPages, plural, one {# page} other {# pages}} anonymously; {authenticatedPages, plural, one {# page} other {# pages}} signed in. Monthly bank statement converter pages: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number}. Regular parsing runs in your browser. No PDF or transactions are uploaded; only the page count is sent to deduct quota after success. The server accepts this client-reported count without checking the original file."
+      "question": "How many pages can I convert?",
+      "answer": "The daily free allowance is {anonymousPages, plural, one {# page} other {# pages}} without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} when signed in. Monthly subscriptions include Standard {standardPages, number}, Professional {professionalPages, number} and Enterprise {enterprisePages, number} pages. Regular parsing runs in your browser. No PDF or transactions are uploaded; only the page count is sent to deduct quota after success. The server accepts this client-reported count without checking the original file."
     },
     "scans": {
-      "question": "Can the bank statement converter process scans or encrypted PDFs?",
-      "answer": "Professional/Enterprise bank statement converter plans can attempt AI scans. Other bank statement converter plans require text PDFs. Remove passwords before bank statement converter uploads; check scanned bank statement converter results against originals."
+      "question": "Can I convert scans or password-protected PDFs?",
+      "answer": "Professional and Enterprise users can choose AI parsing to try scanned PDFs. Other plans require text-based PDFs. Remove password protection before conversion and compare scanned results with the original."
     },
     "storage": {
-      "question": "Does the bank statement converter retain my data?",
-      "answer": "Bank statement converter servers: no permanent file, export or transaction history. This tab’s bank statement converter session stores filenames, results, selected merchant columns and alias mappings, including confirmed names. Bank statement converter previews/downloads use it; bank statement converter results survive refresh. New bank statement converter jobs or clearing results erase it. Bank statement converter mappings never cross files. Keep originals and bank statement converter exports."
+      "question": "Is my data retained?",
+      "answer": "The website keeps no permanent file, export or transaction history on its servers. This tab’s browser session stores filenames, results, selected merchant columns and alias mappings, including confirmed names, for previews and downloads. Results survive refresh. Starting a new job or clearing results erases them, and mappings never cross files. Keep your original PDFs and downloaded exports."
     },
     "failure": {
-      "question": "What happens when the bank statement converter fails?",
-      "answer": "Failed bank statement converter jobs show errors. No invalid bank statement converter Excel or quota charges; partial bank statement converter results count all PDF pages."
+      "question": "What happens if conversion fails?",
+      "answer": "Failed jobs show an error rather than an invalid Excel file and do not deduct quota. If a conversion returns partial results, all pages in the PDF count toward the allowance."
     },
     "ai": {
-      "question": "When does the bank statement converter use AI?",
-      "answer": "Regular parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Check results against the original PDF. Professional and Enterprise can choose AI to try scanned PDFs. The complete PDF and filename are sent to Qwen AI Platform."
+      "question": "When is AI used?",
+      "answer": "Regular parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. The complete PDF and filename are sent to Qwen AI Platform. Check the results against the original PDF."
     }
   },
   "HomeFooter": {
@@ -731,7 +731,8 @@
       "pdf": {
         "label": "PDF bank statement converter to Excel",
         "title": "Convert bank statement PDFs to Excel",
-        "intro": "Use StatementXL's bank statement converter to extract PDF transactions, check the preview against your original and download Excel with risk flags. Convert {anonymousPages} page per day without signing in, or {authenticatedPages} pages when signed in. Keep the original PDF for verification."
+        "intro": "Use StatementXL's bank statement converter to extract PDF transactions, check the preview against your original and download Excel with risk flags. Convert {anonymousPages} page per day without signing in, or {authenticatedPages} pages when signed in. Keep the original PDF for verification.",
+        "metaDescription": "Convert bank statement PDFs to Excel with StatementXL. Preview transactions, check risk flags and compare the export with your original PDF."
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase provides access to up to seven years of statements, depending on your account type. Check the years available for your account in Statements & documents; this is not a promise that every account has seven years of records.",
         "download": "On chase.com, sign in and open the Main Menu. Choose Statements & documents, select the year and account, then use the Open or Save icon beside the statement. Save the original PDF rather than a screenshot or scan.",
         "detailsTitle": "Chase Mobile and transaction downloads",
-        "details": "In Chase Mobile, open Profile & Settings, select Statements & documents within Document manager, then Statements. Choose your account, year and statement to open the PDF.\n\nAn account activity download is separate from a monthly statement PDF. Check the bank's current export options and available dates; we have not verified a fixed activity export window or a credit card CSV feature."
+        "details": "In Chase Mobile, open Profile & Settings, select Statements & documents within Document manager, then Statements. Choose your account, year and statement to open the PDF.\n\nAn account activity download is separate from a monthly statement PDF. Check the bank's current export options and available dates; we have not verified a fixed activity export window or a credit card CSV feature.",
+        "metaDescription": "Download a Chase statement PDF and prepare it for Excel conversion. Follow the download steps and review extracted rows against the original."
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Bank of America lets you view, print and download up to 18 months of statements with check images directly. Older copies can be requested for up to seven years back. Do not apply these periods to every credit card product without checking the account's available documents.",
         "download": "Sign in to Online Banking. Under the Accounts tab, open Statements & Documents, select the account and statement period, then view and save the statement PDF. For older copies, use Request statements in the same area.",
         "detailsTitle": "Requesting older Bank of America statements",
-        "details": "Requested electronic statement copies are free. They are generally available 24–36 hours after the request and remain accessible for seven days, so save them promptly.\n\nPaper statement copies are mailed 7–10 business days after a request. Prefer the electronic PDF: a paper copy needs scanning, and only Professional and Enterprise can attempt scans through optional AI parsing."
+        "details": "Requested electronic statement copies are free. They are generally available 24–36 hours after the request and remain accessible for seven days, so save them promptly.\n\nPaper statement copies are mailed 7–10 business days after a request. Prefer the electronic PDF: a paper copy needs scanning, and only Professional and Enterprise can attempt scans through optional AI parsing.",
+        "metaDescription": "Prepare Bank of America statement PDFs for Excel conversion. Find download and older-copy steps, then check the extracted transactions."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "Online availability depends on the product: up to seven years for deposit, home mortgage, trust and managed investment accounts; up to two years for credit cards, home equity lines of credit, personal loans and lines of credit; and up to twelve months for auto loans. After account closure, statements may remain available for approximately ninety days.",
         "download": "Sign in to Wells Fargo Online and open Statements & Documents. Choose your account and the available statement period, open the PDF and save it with a clear filename. If a closed account's documents are unavailable online, contact Wells Fargo for copies.",
         "detailsTitle": "Wells Fargo business and credit card statements",
-        "details": "Business Online provides documents for eligible business accounts. The advertised availability of up to seven years is subject to product-specific limits; it does not mean all business statements are retained that long.\n\nCredit card statements are available for up to two years, so save them before they leave the online window."
+        "details": "Business Online provides documents for eligible business accounts. The advertised availability of up to seven years is subject to product-specific limits; it does not mean all business statements are retained that long.\n\nCredit card statements are available for up to two years, so save them before they leave the online window.",
+        "metaDescription": "Prepare Wells Fargo statement PDFs for Excel conversion. Check account-specific document availability and review transactions before export."
       },
       "scanned": {
         "label": "Scanned bank statement converter to Excel",
@@ -789,7 +793,8 @@
             "title": "Download the reviewed results",
             "text": "Download Excel or another supported format. Keep the original and the downloaded file: StatementXL does not provide persistent file history."
           }
-        }
+        },
+        "metaDescription": "Learn the requirements for scanned statement conversion. Eligible plans can choose Qwen AI parsing; review extracted rows against the original."
       },
       "quickbooks": {
         "label": "Convert Bank Statement PDF to QuickBooks CSV",
@@ -961,7 +966,8 @@
         "download": "Download the original PDF through HSBC online banking or its app. Keep all numbered sheets in order and retain the original for comparison. Use a native transaction export instead if it already meets your needs.",
         "detailsTitle": "Account summary, sheet numbers and abbreviations",
         "details": "HSBC describes a summary at the top right with opening balance, payments in, payments out, closing balance and overdraft limit, alongside account identifiers. These totals are not individual transactions. Sheet numbers help keep a multi-page statement in order. CR means credit, DR debit, DD Direct Debit, SO standing order and TRF transfer. Match abbreviations and wrapped descriptions to the original; do not infer a fixed transaction-column order from this guide.",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "Prepare HSBC UK personal GBP statements for Excel conversion. Understand summaries and abbreviations; parser support for this layout is unverified."
       }
     },
     "breadcrumbLabel": "Breadcrumb"
@@ -989,6 +995,10 @@
           {
             "title": "Compare a representative file before deciding",
             "text": "Use the same permitted sample and review transaction count, dates, amounts, direction and multiline descriptions. Compare the total workflow cost, including review time and each plan’s limits. We have not run a head-to-head benchmark and do not repeat a vendor’s accuracy claim as an independently established result."
+          },
+          {
+            "title": "Check the handoff your job requires",
+            "text": "For one monthly PDF, check that the spreadsheet contains every transaction and keeps the evidence needed to review uncertain rows. If your handoff requires QBO, a batch of files or an API, confirm that requirement and the applicable plan with DocuClipper.\n\nBefore choosing, use the same permitted sample to check row count, dates, amount direction and wrapped descriptions. Reconcile opening balance plus incoming money minus outgoing money with the closing balance. Matching totals do not prove every row is correct."
           }
         ],
         "faq": [
@@ -996,7 +1006,8 @@
             "question": "Does StatementXL replace every DocuClipper workflow?",
             "answer": "No. It is a narrower option for reviewing and exporting one statement PDF at a time. DocuClipper’s advertised document coverage, batch processing and integrations may suit a different workload."
           }
-        ]
+        ],
+        "metaDescription": "Compare StatementXL and DocuClipper by exports, review work and integrations. Check which workflow fits your statement conversion needs."
       },
       "alternatives": {
         "title": "DocuClipper alternatives for bank statement conversion",
@@ -1013,6 +1024,10 @@
           {
             "title": "Evaluate the complete handoff",
             "text": "Check the output required by your destination software, the available plan, file limits, privacy terms and review effort. StatementXL exports require manual preparation for accounting imports. Vendor features and prices can change; the linked official pages are the source for current commercial terms."
+          },
+          {
+            "title": "Choose an alternative by the missing step",
+            "text": "If the bank already supplies a usable CSV, check its date range and columns before paying for PDF extraction. If only a PDF is available and you need a reviewed spreadsheet, try a representative file in StatementXL. If the missing step is automated intake or a connected workflow, evaluate the relevant vendor features and plan.\n\nFor each option, write down the required output, files per job and manual corrections. Keep the original PDF and compare a complete handoff rather than the number of advertised features."
           }
         ],
         "faq": [
@@ -1020,7 +1035,8 @@
             "question": "Which alternative should I try first?",
             "answer": "Try the bank’s native export first. If only a PDF is available, choose a tool by the required output and review workflow, then check it with a representative file."
           }
-        ]
+        ],
+        "metaDescription": "Explore DocuClipper alternatives: a native bank export, StatementXL or Nanonets. Choose by output requirements, automation and review effort."
       },
       "nanonets": {
         "title": "StatementXL vs Nanonets: bank statement conversion",
@@ -1037,6 +1053,10 @@
           {
             "title": "Compare costs using the right unit",
             "text": "Nanonets describes credit-based pricing for workflow block runs, while StatementXL’s paid plans use monthly PDF-page quotas. Credits, block runs and pages are not interchangeable units. Evaluate a complete job, including manual review, rather than deriving a per-page comparison from unlike plan units."
+          },
+          {
+            "title": "Separate a spreadsheet task from an automation project",
+            "text": "For a one-off statement, check extracted dates, amounts, descriptions and risk flags before downloading. For a recurring pipeline, first list where files arrive, the fields required by the next system and who reviews uncertain results. Confirm that Nanonets supports those steps and connectors under the proposed plan.\n\nCompare one complete job: input pages, workflow runs, corrections and delivery. Do not treat workflow credits as PDF pages, or the two-layout StatementXL sample report as a head-to-head benchmark."
           }
         ],
         "faq": [
@@ -1044,7 +1064,8 @@
             "question": "Has StatementXL been proven more accurate than Nanonets?",
             "answer": "No. We have not run a controlled head-to-head evaluation. The public sample report only measures our local parser on the stated samples."
           }
-        ]
+        ],
+        "metaDescription": "Compare StatementXL and Nanonets for PDF conversion and document automation. Understand manual review, integrations and different pricing units."
       },
       "xero": {
         "title": "Bank statement PDF to Xero: prepare a CSV import",
@@ -1068,7 +1089,8 @@
             "question": "Is the downloaded CSV immediately ready for Xero?",
             "answer": "No. StatementXL retains original columns and adds review fields. Prepare a copy in Xero’s required format and confirm the column mapping before importing."
           }
-        ]
+        ],
+        "metaDescription": "Prepare PDF transactions for a manual Xero CSV import. Check dates, amounts and account selection; use a native bank export when available."
       },
       "wave": {
         "title": "Bank statement PDF to Wave: review a CSV import",
@@ -1092,7 +1114,8 @@
             "question": "Should I upload a PDF directly through StatementXL to Wave?",
             "answer": "No. These are separate services. Download and review the data, prepare a CSV copy, then perform the upload and field confirmation inside Wave."
           }
-        ]
+        ],
+        "metaDescription": "Prepare statement transactions for manual CSV import into Wave in the US or Canada. Check the account, dates and amount direction before importing."
       },
       "sage": {
         "title": "Bank statement PDF to Sage Accounting UK: CSV guide",
@@ -1116,7 +1139,8 @@
             "question": "Does this CSV work for every Sage product?",
             "answer": "No. This page is for UK Sage Accounting. Use the documentation for your exact product and region before preparing an import."
           }
-        ]
+        ],
+        "metaDescription": "Prepare bank statement data for manual CSV import into Sage Accounting UK. Review the required format; other Sage editions are outside this guide."
       },
       "loan": {
         "title": "Bank statements for loan applications: PDF review",
@@ -1140,7 +1164,8 @@
             "question": "Will a StatementXL spreadsheet be accepted by my lender?",
             "answer": "Acceptance depends on the lender. Ask which original statements and supporting files are required; conversion alone is not verification or approval."
           }
-        ]
+        ],
+        "metaDescription": "Organize bank statement transactions for a loan application while keeping original PDFs. Confirm the records and periods your lender requires."
       },
       "tax": {
         "title": "Bank statements for tax preparation: review PDF data",
@@ -1165,7 +1190,8 @@
             "question": "Can I treat every outgoing transaction as a deduction?",
             "answer": "No. Eligibility depends on the transaction, supporting evidence and applicable tax rules. Review uncertain items with a qualified tax professional."
           }
-        ]
+        ],
+        "metaDescription": "Prepare bank statement transactions for US tax record review. Keep receipts and supporting evidence; conversion does not establish deductions."
       },
       "catchup": {
         "title": "Catch-up bookkeeping with bank statement PDFs",
@@ -1190,7 +1216,8 @@
             "question": "Does converting the statements complete the bookkeeping?",
             "answer": "No. Extraction prepares data. Duplicate checks, categorization, evidence review and reconciliation are separate steps."
           }
-        ]
+        ],
+        "metaDescription": "Work through missing bookkeeping periods with bank statement PDFs. Track accounts, review extracted rows and reconcile each statement."
       },
       "about": {
         "title": "About StatementXL, the bank statement converter",
@@ -1214,7 +1241,8 @@
             "question": "Where can I check the evidence behind a claim?",
             "answer": "Follow the source links on the relevant guide and the sample report’s methodology and downloadable results. Contact support for product questions."
           }
-        ]
+        ],
+        "metaDescription": "Learn how StatementXL converts statement PDFs for spreadsheet review, with row-level risk flags, source references and clear workflow limits."
       },
       "checker": {
         "title": "Free bank statement balance checker and Excel template",
@@ -1238,7 +1266,8 @@
             "question": "Are the amounts sent to StatementXL?",
             "answer": "No. This checker keeps inputs only in page memory. The downloaded template is a separate local file that you control."
           }
-        ]
+        ],
+        "metaDescription": "Check opening balance plus incoming money minus outgoing money against the closing balance. No upload or sign-in; download an Excel template."
       },
       "benchmark": {
         "title": "Bank statement converter sample report: two layouts",
@@ -1262,7 +1291,8 @@
             "question": "Does a high OK percentage mean the extraction is accurate?",
             "answer": "No. It only means the parser did not flag those extracted rows. Missing rows, extra rows and field mismatches require a separate comparison with the original."
           }
-        ]
+        ],
+        "metaDescription": "Read StatementXL’s local parser results for two public statement layouts, including the sample scope and limits. Optional AI parsing was not tested."
       }
     }
   },
@@ -1363,6 +1393,15 @@
       "nanonets": "StatementXL vs Nanonets",
       "checker": "Balance checker & Excel template",
       "benchmark": "Public sample report"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "Start with the PDF-to-Excel guide for selectable text. For image-only PDFs, read the scanned-statement requirements before choosing AI parsing.",
+      "banks": "Choose your bank to find statement download steps and account-specific limits. A download guide does not establish support for every statement layout.",
+      "accounting": "Choose your destination software, then check its CSV requirements. These guides describe manual imports; StatementXL does not connect to your accounting account.",
+      "bookkeeping": "Begin with the task: loan records, US tax preparation or missing bookkeeping periods. Keep original statements and supporting documents alongside your spreadsheet.",
+      "comparisons": "Use a product comparison for a two-tool decision, or the alternatives guide to consider a native bank export. Compare output requirements and review effort.",
+      "tools": "Use the balance checker to compare statement totals without uploading a file. Read the sample report for measured results on two layouts and the limits of that evidence."
+    },
+    "metaDescription": "Find bank statement conversion guides, bank download steps, manual accounting imports, product comparisons and a free balance checker."
   }
 }

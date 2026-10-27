@@ -22,6 +22,7 @@ export async function getEditorialContent(params: EditorialParams) {
     locale,
     title: t("title"),
     intro: t("intro"),
+    metaDescription: t("metaDescription"),
     sections: t.raw("sections") as EditorialSection[],
     faq: t.raw("faq") as { question: string; answer: string }[],
   };
@@ -32,16 +33,16 @@ export async function getEditorialMetadata(params: EditorialParams): Promise<Met
   const title = `${c.title} | StatementXL`;
   return {
     title,
-    description: c.intro,
+    description: c.metaDescription,
     alternates: getLocalizedAlternates(c.page.path, c.locale),
     openGraph: {
       title,
-      description: c.intro,
+      description: c.metaDescription,
       type: "website",
       siteName: "StatementXL",
       url: getLocalizedAlternates(c.page.path, c.locale).canonical,
     },
-    twitter: { card: "summary_large_image", title, description: c.intro },
+    twitter: { card: "summary_large_image", title, description: c.metaDescription },
   };
 }
 

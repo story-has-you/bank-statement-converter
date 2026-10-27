@@ -731,7 +731,8 @@
       "pdf": {
         "label": "Estratto conto da PDF a Excel",
         "title": "Converti un estratto conto PDF in Excel",
-        "intro": "Usa StatementXL per estrarre le operazioni dal PDF, confrontare l'anteprima con l'originale e scaricare Excel con indicatori di rischio. Puoi convertire gratis {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Conserva l'originale per verificare i dati."
+        "intro": "Usa StatementXL per estrarre le operazioni dal PDF, confrontare l'anteprima con l'originale e scaricare Excel con indicatori di rischio. Puoi convertire gratis {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Conserva l'originale per verificare i dati.",
+        "metaDescription": "Converti estratti PDF in Excel con StatementXL. Verifica transazioni e segnalazioni di rischio confrontando l’export con il PDF originale."
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase offre fino a sette anni di estratti conto, a seconda del tipo di conto. Verifica gli anni disponibili in Statements & documents; non tutti i conti includono sette anni completi.",
         "download": "Accedi a chase.com, apri Main Menu e scegli Statements & documents. Seleziona anno e conto, poi Open o Save accanto all'estratto. Salva il PDF originale invece di uno screenshot.",
         "detailsTitle": "Chase Mobile e download delle operazioni",
-        "details": "In Chase Mobile, apri Profile & Settings, scegli Statements & documents sotto Document manager e poi Statements. Seleziona conto, anno ed estratto per aprire il PDF.\n\nIl download dei movimenti del conto è distinto dall'estratto mensile PDF. Controlla i formati e gli intervalli di date attualmente offerti dalla banca."
+        "details": "In Chase Mobile, apri Profile & Settings, scegli Statements & documents sotto Document manager e poi Statements. Seleziona conto, anno ed estratto per aprire il PDF.\n\nIl download dei movimenti del conto è distinto dall'estratto mensile PDF. Controlla i formati e gli intervalli di date attualmente offerti dalla banca.",
+        "metaDescription": "Scarica un estratto Chase in PDF e prepara la conversione Excel. Segui i passaggi e verifica le transazioni rispetto all’originale."
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Puoi visualizzare, stampare e scaricare direttamente fino a 18 mesi di estratti con immagini degli assegni. Le copie più vecchie possono essere richieste fino a sette anni indietro. Verifica separatamente i documenti disponibili per il conto della carta di credito.",
         "download": "Accedi a Online Banking e apri Statements & Documents nella scheda Accounts. Scegli conto e periodo, apri il PDF e salvalo. Per le copie precedenti, usa Request statements nella stessa sezione.",
         "detailsTitle": "Richiedere vecchi estratti Bank of America",
-        "details": "Le copie elettroniche sono gratuite, di solito disponibili 24–36 ore dopo la richiesta e accessibili per sette giorni. Salvale appena possibile.\n\nLe copie cartacee vengono normalmente spedite dopo 7–10 giorni lavorativi. Preferisci il PDF elettronico: la carta richiede una scansione e solo Professional ed Enterprise possono tentare di elaborare scansioni tramite il analisi IA facoltativa."
+        "details": "Le copie elettroniche sono gratuite, di solito disponibili 24–36 ore dopo la richiesta e accessibili per sette giorni. Salvale appena possibile.\n\nLe copie cartacee vengono normalmente spedite dopo 7–10 giorni lavorativi. Preferisci il PDF elettronico: la carta richiede una scansione e solo Professional ed Enterprise possono tentare di elaborare scansioni tramite il analisi IA facoltativa.",
+        "metaDescription": "Prepara estratti Bank of America per Excel: download PDF, richiesta di copie precedenti e verifica delle transazioni."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "Fino a sette anni per depositi, mutui, trust e investimenti gestiti; fino a due anni per carte di credito, linee garantite dal valore dell'immobile, prestiti personali e linee di credito; fino a dodici mesi per prestiti auto. Dopo la chiusura del conto gli estratti possono restare disponibili per circa novanta giorni.",
         "download": "Accedi a Wells Fargo Online e apri Statements & Documents. Seleziona conto e periodo disponibile, apri il PDF e salvalo con un nome chiaro. Se i documenti di un conto chiuso non sono online, richiedi copie alla banca.",
         "detailsTitle": "Estratti aziendali e carte Wells Fargo",
-        "details": "Business Online offre documenti per i conti aziendali idonei. Il periodo pubblicizzato di sette anni è soggetto ai limiti del singolo prodotto e non vale per tutti gli estratti aziendali.\n\nGli estratti delle carte di credito sono disponibili fino a due anni. Salvali prima che scada questo periodo."
+        "details": "Business Online offre documenti per i conti aziendali idonei. Il periodo pubblicizzato di sette anni è soggetto ai limiti del singolo prodotto e non vale per tutti gli estratti aziendali.\n\nGli estratti delle carte di credito sono disponibili fino a due anni. Salvali prima che scada questo periodo.",
+        "metaDescription": "Prepara i PDF Wells Fargo per Excel. Controlla i periodi disponibili per conto e le transazioni prima di esportare."
       },
       "scanned": {
         "label": "Estratto conto scansionato in Excel",
@@ -789,7 +793,8 @@
             "title": "Scarica i risultati controllati",
             "text": "Scarica Excel o un altro formato. Conserva originale e download: StatementXL non offre una cronologia permanente dei file."
           }
-        }
+        },
+        "metaDescription": "Verifica i requisiti per convertire estratti scansionati. I piani idonei offrono l’IA Qwen opzionale; confronta i risultati con l’originale."
       },
       "quickbooks": {
         "label": "Preparare estratti per QuickBooks",
@@ -833,7 +838,8 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
-        }
+        },
+        "metaDescription": "Prepara un CSV a tre o quattro colonne per QuickBooks Online da un estratto PDF. Verifica date, direzione degli importi e saldi prima dell’importazione."
       },
       "hsbc": {
         "label": "Estratto HSBC UK in Excel",
@@ -843,7 +849,8 @@
         "download": "Scaricare il PDF originale da banca online o app HSBC, conservare tutti i fogli numerati in ordine. Preferire un export nativo adeguato.",
         "detailsTitle": "Riepilogo, fogli e abbreviazioni",
         "details": "HSBC descrive in alto a destra saldi iniziale/finale, entrate, uscite, scoperto e identificativi. I totali non sono transazioni. Sheet number ordina le pagine. CR: credito; DR: debito; DD: addebito diretto; SO: ordine permanente; TRF: trasferimento. Verificare descrizioni spezzate senza dedurre un ordine fisso delle colonne.",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "Prepara estratti personali GBP di HSBC UK per Excel. Riepiloghi e abbreviazioni spiegati; il supporto del layout non è verificato."
       }
     },
     "breadcrumbLabel": "Percorso di navigazione"
@@ -871,6 +878,10 @@
           {
             "title": "Confrontare un lavoro completo",
             "text": "Usare lo stesso campione autorizzato e controllare numero, date, importi, direzione e descrizioni multilinea. Includere limiti e tempo di verifica. Le dichiarazioni del fornitore non sono risultati indipendenti; nessuna prova diretta è stata svolta."
+          },
+          {
+            "title": "Verifica cosa devi consegnare",
+            "text": "Per un PDF mensile, verifica che il foglio contenga tutte le transazioni e i riferimenti per controllare le righe incerte. Se servono QBO, lotti o API, conferma funzione e piano con DocuClipper.\n\nUsa lo stesso campione autorizzato per confrontare righe, date, direzione degli importi e descrizioni su più righe. Riconcilia saldo iniziale più entrate meno uscite con il saldo finale. Totali uguali non provano che ogni riga sia corretta."
           }
         ],
         "faq": [
@@ -878,7 +889,8 @@
             "question": "Sostituisce ogni uso di DocuClipper?",
             "answer": "No. Serve a verificare ed esportare un PDF alla volta. Lotti, integrazioni e altri documenti hanno esigenze diverse."
           }
-        ]
+        ],
+        "metaDescription": "Confronta StatementXL e DocuClipper per export, verifiche e integrazioni e scegli il flusso adatto alla conversione degli estratti."
       },
       "alternatives": {
         "title": "Alternative a DocuClipper: banca, StatementXL e Nanonets",
@@ -895,6 +907,10 @@
           {
             "title": "Verificare la consegna finale",
             "text": "Confrontare formato, piano, limiti, riservatezza e revisione. Per importare da StatementXL occorre preparare manualmente una copia. Le condizioni correnti sono nelle pagine ufficiali."
+          },
+          {
+            "title": "Scegli in base al passaggio mancante",
+            "text": "Se la banca offre un CSV utilizzabile, verifica periodo e colonne prima di pagare l’estrazione PDF. Se hai solo un PDF e ti serve una tabella da controllare, prova un file rappresentativo in StatementXL. Per acquisizione automatica o flussi collegati, valuta le funzioni e i piani del fornitore.\n\nAnnota output richiesto, file per lavoro e correzioni manuali. Conserva il PDF originale e confronta la consegna completa anziché il numero di funzionalità pubblicizzate."
           }
         ],
         "faq": [
@@ -902,7 +918,8 @@
             "question": "Cosa provare prima?",
             "answer": "L’esportazione della banca. Se esiste solo un PDF, scegliere per formato e controllo richiesti e verificare un file rappresentativo."
           }
-        ]
+        ],
+        "metaDescription": "Alternative a DocuClipper: export bancario, StatementXL o Nanonets. Scegli in base a formato, automazione e lavoro di verifica."
       },
       "nanonets": {
         "title": "StatementXL o Nanonets: esportazione o automazione?",
@@ -919,6 +936,10 @@
           {
             "title": "Confrontare unità coerenti",
             "text": "Nanonets descrive crediti per esecuzioni di blocchi; StatementXL quote mensili di pagine PDF. Crediti, esecuzioni e pagine non sono intercambiabili. Confrontare un’attività completa con revisione manuale."
+          },
+          {
+            "title": "Distingui un foglio da un progetto di automazione",
+            "text": "Per un estratto occasionale, verifica date, importi, descrizioni e rischi prima del download. Per un processo ricorrente, elenca origine dei file, campi richiesti dal sistema successivo e responsabile della verifica dei risultati incerti. Conferma passaggi, connettori e piano con Nanonets.\n\nConfronta il lavoro completo: pagine, esecuzioni, correzioni e consegna. I crediti di workflow non sono pagine PDF; il rapporto StatementXL su due layout non è un test fra prodotti."
           }
         ],
         "faq": [
@@ -926,7 +947,8 @@
             "question": "È dimostrato che StatementXL è più preciso?",
             "answer": "No. Non esiste un nostro confronto controllato. Il rapporto pubblico riguarda solo il parser locale e i campioni indicati."
           }
-        ]
+        ],
+        "metaDescription": "Confronta StatementXL e Nanonets per PDF e automazione documentale: revisione manuale, integrazioni e unità di fatturazione."
       },
       "xero": {
         "title": "PDF bancario per Xero: preparare e verificare un CSV",
@@ -950,7 +972,8 @@
             "question": "Il CSV è già pronto?",
             "answer": "Non necessariamente. Restano colonne originali e di verifica. Preparare una copia Xero e controllare la mappatura."
           }
-        ]
+        ],
+        "metaDescription": "Prepara transazioni PDF per importare manualmente CSV in Xero. Verifica date, importi e conto; preferisci un export bancario adatto."
       },
       "wave": {
         "title": "PDF bancario per Wave: verificare e caricare operazioni",
@@ -974,7 +997,8 @@
             "question": "Il PDF viene inviato direttamente a Wave?",
             "answer": "No. Scaricare e verificare, preparare il CSV, poi caricare e confermare i campi in Wave."
           }
-        ]
+        ],
+        "metaDescription": "Prepara CSV per l’importazione manuale in Wave negli USA o in Canada. Verifica conto, date e direzione degli importi."
       },
       "sage": {
         "title": "PDF bancario per Sage Accounting UK: preparare un CSV",
@@ -998,7 +1022,8 @@
             "question": "Funziona per ogni prodotto Sage?",
             "answer": "No. Solo Sage Accounting UK. Consultare la documentazione esatta di prodotto e regione."
           }
-        ]
+        ],
+        "metaDescription": "Prepara dati bancari per importare CSV in Sage Accounting UK. Verifica il formato; le altre edizioni Sage non sono coperte."
       },
       "loan": {
         "title": "Organizzare estratti per una richiesta di prestito",
@@ -1022,7 +1047,8 @@
             "question": "Il finanziatore accetterà il foglio?",
             "answer": "Dipende dal finanziatore. Confermare originali e allegati: convertire non equivale a certificare o approvare."
           }
-        ]
+        ],
+        "metaDescription": "Organizza transazioni per una richiesta di prestito conservando i PDF originali. Conferma con il creditore documenti e periodi richiesti."
       },
       "tax": {
         "title": "Organizzare transazioni per preparare le imposte",
@@ -1046,7 +1072,8 @@
             "question": "Ogni uscita è deducibile?",
             "answer": "No. Dipende dall’operazione, prove e regole. Consultare un professionista qualificato."
           }
-        ]
+        ],
+        "metaDescription": "Prepara transazioni per verificare documenti fiscali statunitensi. Conserva i giustificativi; la conversione non dimostra una deduzione."
       },
       "catchup": {
         "title": "Recupero contabile: una lista dei periodi mancanti",
@@ -1070,7 +1097,8 @@
             "question": "La conversione conclude la contabilità?",
             "answer": "No. Duplicati, classificazione, prove e riconciliazione richiedono passaggi separati."
           }
-        ]
+        ],
+        "metaDescription": "Recupera periodi contabili mancanti con estratti PDF. Elenca i conti, verifica le righe e riconcilia ogni estratto."
       },
       "about": {
         "title": "Informazioni su StatementXL",
@@ -1094,7 +1122,8 @@
             "question": "Dove sono le prove?",
             "answer": "Nelle fonti delle guide e nel metodo e risultati scaricabili del rapporto. Per il prodotto contattare l’assistenza."
           }
-        ]
+        ],
+        "metaDescription": "Scopri StatementXL: estratti PDF in fogli di calcolo, segnalazioni per riga, riferimenti alle fonti e limiti del servizio."
       },
       "checker": {
         "title": "Controllo gratuito del saldo bancario e modello Excel",
@@ -1118,7 +1147,8 @@
             "question": "Gli importi vengono trasmessi?",
             "answer": "No. Restano nella memoria della pagina. Il modello scaricato è un file locale sotto il proprio controllo."
           }
-        ]
+        ],
+        "metaDescription": "Confronta saldo iniziale più entrate meno uscite con il saldo finale. Senza upload o accesso; modello Excel scaricabile."
       },
       "benchmark": {
         "title": "Rapporto pubblico: due formati di estratto nel parser locale",
@@ -1142,7 +1172,8 @@
             "question": "La percentuale OK è la precisione?",
             "answer": "No. Indica soltanto righe estratte non segnalate. Omissioni, righe extra e differenze vanno confrontate con l’originale."
           }
-        ]
+        ],
+        "metaDescription": "Risultati del parser locale StatementXL su due layout pubblici, con ambito e limiti del campione. L’analisi IA non è stata testata."
       }
     }
   },
@@ -1243,6 +1274,15 @@
       "nanonets": "StatementXL e Nanonets",
       "checker": "Controllo saldo e modello Excel",
       "benchmark": "Rapporto su campioni pubblici"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "Per PDF con testo selezionabile, inizia dalla guida Excel. Per file composti solo da immagini, verifica i requisiti prima di scegliere l’analisi IA.",
+      "banks": "Scegli la banca per i passaggi di download e i periodi disponibili per conto. La guida non dimostra il supporto di tutti i layout.",
+      "accounting": "Scegli il software di destinazione e verifica i requisiti CSV. Le guide descrivono importazioni manuali; StatementXL non si collega al conto contabile.",
+      "bookkeeping": "Parti dal compito: documenti per prestiti, imposte statunitensi o contabilità arretrata. Conserva estratti originali e giustificativi insieme al foglio.",
+      "comparisons": "Usa il confronto per scegliere fra due prodotti o la guida alle alternative per valutare l’export della banca. Confronta formati e lavoro di verifica.",
+      "tools": "Il controllo saldi confronta i totali senza caricare file. Il rapporto campione presenta misurazioni su due layout e i limiti dei risultati."
+    },
+    "metaDescription": "Guide alla conversione degli estratti, download bancari, importazioni contabili manuali, confronti e controllo gratuito dei saldi."
   }
 }

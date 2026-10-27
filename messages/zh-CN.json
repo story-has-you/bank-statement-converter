@@ -731,7 +731,8 @@
       "pdf": {
         "label": "银行流水 PDF 转 Excel",
         "title": "把银行流水 PDF 转为 Excel",
-        "intro": "使用 StatementXL 提取银行流水 PDF 中的交易，对照原文件检查预览，再下载带风险标记的 Excel。未登录每天可转换 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。请保留原始账单，以便核对。"
+        "intro": "使用 StatementXL 提取银行流水 PDF 中的交易，对照原文件检查预览，再下载带风险标记的 Excel。未登录每天可转换 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。请保留原始账单，以便核对。",
+        "metaDescription": "用 StatementXL 将银行流水 PDF 转为 Excel，预览交易明细、查看风险标记，并对照原始 PDF 核验导出结果。"
       },
       "chase": {
         "bank": "Chase",
@@ -741,7 +742,8 @@
         "availability": "Chase 可提供最多七年的账单，具体取决于账户类型。在 Statements & documents 中查看该账户可用的年份；这不代表每个账户都提供完整的七年记录。",
         "download": "登录 chase.com，打开 Main Menu，选择 Statements & documents。选择年份和账户，再点击对应账单旁的 Open 或 Save 图标。保存原始 PDF，避免用截图或扫描件替代。",
         "detailsTitle": "Chase Mobile 与交易记录下载",
-        "details": "在 Chase Mobile 中打开 Profile & Settings，在 Document manager 下选择 Statements & documents，再进入 Statements。选择账户、年份和账单，打开 PDF。\n\n账户 Activity 页面下载的交易记录与月度 PDF 账单是不同资料。请以银行当前提供的导出选项和日期范围为准；此处不提供未经核实的固定下载期限，也不声称信用卡具备 CSV 导出功能。"
+        "details": "在 Chase Mobile 中打开 Profile & Settings，在 Document manager 下选择 Statements & documents，再进入 Statements。选择账户、年份和账单，打开 PDF。\n\n账户 Activity 页面下载的交易记录与月度 PDF 账单是不同资料。请以银行当前提供的导出选项和日期范围为准；此处不提供未经核实的固定下载期限，也不声称信用卡具备 CSV 导出功能。",
+        "metaDescription": "了解 Chase 账单 PDF 的下载步骤，准备 Excel 转换文件，并对照原始账单核验提取的交易明细。"
       },
       "bofa": {
         "bank": "Bank of America",
@@ -751,7 +753,8 @@
         "availability": "Bank of America 可直接查看、打印和下载最近最多 18 个月的账单及支票图像；更早的副本可申请至最多七年前。信用卡产品的期限需以对应账户资料为准，不能直接套用这些年限。",
         "download": "登录 Online Banking，在 Accounts 标签下打开 Statements & Documents。选择账户和账单周期，查看并保存 PDF。更早的账单可在同一区域通过 Request statements 申请。",
         "detailsTitle": "申请 Bank of America 的旧账单",
-        "details": "申请电子账单副本免费，通常在申请后 24–36 小时提供，之后可下载七天，建议取得后尽快保存。\n\n纸质副本通常在申请后 7–10 个工作日寄出。优先获取电子 PDF；纸质账单需扫描，只有专业和企业套餐可主动选择 AI 尝试处理扫描件。"
+        "details": "申请电子账单副本免费，通常在申请后 24–36 小时提供，之后可下载七天，建议取得后尽快保存。\n\n纸质副本通常在申请后 7–10 个工作日寄出。优先获取电子 PDF；纸质账单需扫描，只有专业和企业套餐可主动选择 AI 尝试处理扫描件。",
+        "metaDescription": "了解 Bank of America 账单下载及历史副本申请步骤，准备 PDF 转 Excel，并核验提取的交易记录。"
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -761,7 +764,8 @@
         "availability": "在线账单期限按产品区分：存款、房贷、信托和托管投资账户最多七年；信用卡、房屋净值信用额度、个人贷款及信用额度最多两年；车贷最多十二个月。关闭账户后，账单可能仍可在线获取约九十天。",
         "download": "登录 Wells Fargo Online，打开 Statements & Documents。选择账户和可用账单周期，打开 PDF 后用便于识别的文件名保存。关闭账户的文件若已无法在线获取，可联系 Wells Fargo 申请副本。",
         "detailsTitle": "Wells Fargo 商业与信用卡账单",
-        "details": "Business Online 为符合条件的商业账户提供文件。“最多七年”仍受具体产品期限限制，不代表所有商业账单都保存七年。\n\n信用卡账单最多可在线获取两年，请在到期前下载保存。"
+        "details": "Business Online 为符合条件的商业账户提供文件。“最多七年”仍受具体产品期限限制，不代表所有商业账单都保存七年。\n\n信用卡账单最多可在线获取两年，请在到期前下载保存。",
+        "metaDescription": "准备 Wells Fargo 账单 PDF 转 Excel，核对不同账户的可用记录范围，并在导出前检查交易明细。"
       },
       "scanned": {
         "label": "扫描银行流水转 Excel",
@@ -789,7 +793,8 @@
             "title": "下载核对后的结果",
             "text": "下载 Excel 或其他支持的格式。自行保管原件和下载文件，StatementXL 不提供持久化文件历史。"
           }
-        }
+        },
+        "metaDescription": "了解扫描版银行流水的转换条件。符合条件的套餐可主动选择千问 AI 解析，使用结果前需核对原始账单。"
       },
       "quickbooks": {
         "label": "银行流水 PDF 转 QuickBooks 教程",
@@ -833,7 +838,8 @@
           "amount": "Amount",
           "credit": "Credit",
           "debit": "Debit"
-        }
+        },
+        "metaDescription": "将银行流水 PDF 整理为 QuickBooks Online 的三列或四列 CSV，核对日期、金额方向和余额后手动导入。"
       },
       "hsbc": {
         "label": "HSBC 英国流水转 Excel",
@@ -843,7 +849,8 @@
         "download": "通过 HSBC 网银或 App 下载原始 PDF，保留全部按页码排序的页面和原件。若原生交易导出已经合用，可优先使用。",
         "detailsTitle": "账户汇总、页码和缩写",
         "details": "HSBC 说明右上方账户汇总包含期初余额、收入、支出、期末余额及透支限额，并列出账户标识。这些总额不是逐笔交易。Sheet number 用于整理跨页账单。CR 表示贷记、DR 借记、DD 直接扣款、SO 定期付款指令、TRF 转账。对照原件核实缩写及换行摘要，不根据本文推断固定交易列序。",
-        "bank": "HSBC UK"
+        "bank": "HSBC UK",
+        "metaDescription": "准备 HSBC UK 个人英镑账户账单转 Excel，了解汇总区与缩写；该版式尚未确立已验证的解析支持。"
       }
     },
     "breadcrumbLabel": "当前位置"
@@ -871,6 +878,10 @@
           {
             "title": "用代表性文件比较完整成本",
             "text": "用同一份获准使用的样本核对交易数、日期、金额方向和换行摘要。除套餐和文件限制外，也计算人工核对时间。我们没有运行两款产品的对照测试，不把供应商自述的准确率当作独立结论。"
+          },
+          {
+            "title": "先确认交付环节需要什么",
+            "text": "如果任务是一份月度 PDF，检查表格是否包含全部交易，并保留足以复核不确定行的来源依据。如果交付需要 QBO、批量文件或 API，先向 DocuClipper 确认对应能力与适用套餐。\n\n选择前，用同一份允许使用的样本核对行数、日期、金额方向和跨行描述。检查期初余额加收入减支出是否等于期末余额；汇总金额相符，也不能证明每一行都正确。"
           }
         ],
         "faq": [
@@ -878,7 +889,8 @@
             "question": "StatementXL 能替代所有 DocuClipper 工作流吗？",
             "answer": "不能。它主要用于逐份核对并导出流水 PDF；DocuClipper 宣传的文档范围、批量处理和集成适用于不同需求。"
           }
-        ]
+        ],
+        "metaDescription": "按导出格式、人工核对和集成需求比较 StatementXL 与 DocuClipper，选择适合现有银行流水转换任务的流程。"
       },
       "alternatives": {
         "title": "DocuClipper 替代方案：原生导出、StatementXL 与 Nanonets",
@@ -895,6 +907,10 @@
           {
             "title": "检查最终交付是否合用",
             "text": "比较目标软件格式、套餐限制、隐私条款及人工复核成本。StatementXL 导出后仍需手工整理会计导入副本。功能和价格可能变化，以各产品官方页面的当前条款为准。"
+          },
+          {
+            "title": "按流程中缺少的环节选择替代方案",
+            "text": "银行已有可用 CSV 时，先检查时间范围和列字段，再决定是否需要 PDF 提取。只有 PDF 且需要人工复核表格时，可在 StatementXL 中尝试一份有代表性的文件。如果缺少的是自动收件或系统衔接，应评估供应商对应功能及套餐。\n\n逐项写清所需输出、每次处理的文件数和人工修正工作。保留原始 PDF，比较完整交付流程，而不是广告中的功能数量。"
           }
         ],
         "faq": [
@@ -902,7 +918,8 @@
             "question": "应该先试哪种替代方案？",
             "answer": "先试银行原生导出。只有 PDF 时，再根据目标格式和核对流程选择工具，用一份代表性文件验证。"
           }
-        ]
+        ],
+        "metaDescription": "了解 DocuClipper 的替代方案：银行原生导出、StatementXL 或 Nanonets，按格式、自动化和核对工作选择。"
       },
       "nanonets": {
         "title": "StatementXL 与 Nanonets：流水导出还是自动化工作流？",
@@ -919,6 +936,10 @@
           {
             "title": "用相同任务比较费用",
             "text": "Nanonets 按工作流模块运行使用积分，StatementXL 付费套餐按月度 PDF 页数计额。积分、模块运行次数和页数不能直接换算；应比较完整任务及人工复核成本。"
+          },
+          {
+            "title": "区分一次表格整理与自动化项目",
+            "text": "处理单份账单时，下载前核对日期、金额、描述和风险标记。搭建重复运行的流程时，先列清文件从哪里进入、下游系统需要哪些字段，以及由谁复核不确定结果，再向 Nanonets 确认相关步骤、连接器和套餐。\n\n比较一次完整任务的输入页数、流程运行次数、修正和交付工作。不要把流程积分当作 PDF 页数，也不要把 StatementXL 的两版式样本报告当成双方对比测试。"
           }
         ],
         "faq": [
@@ -926,7 +947,8 @@
             "question": "StatementXL 已证明比 Nanonets 更准确吗？",
             "answer": "没有。我们未进行受控对照测试；公开样本报告只描述本地解析器在指定样本上的结果。"
           }
-        ]
+        ],
+        "metaDescription": "比较 StatementXL 的 PDF 转换与 Nanonets 的文档自动化，了解人工复核、集成及计费单位的差异。"
       },
       "xero": {
         "title": "银行流水 PDF 转 Xero：整理并核对 CSV 导入文件",
@@ -950,7 +972,8 @@
             "question": "下载的 CSV 可以直接导入 Xero 吗？",
             "answer": "不能默认如此。StatementXL 保留原始列并附加核对字段；请先按 Xero 格式制作副本并确认映射。"
           }
-        ]
+        ],
+        "metaDescription": "将 PDF 交易整理为可手动导入 Xero 的 CSV，检查日期、金额和目标账户；有合适的银行原生导出时优先使用。"
       },
       "wave": {
         "title": "银行流水 PDF 转 Wave：核对并上传交易",
@@ -974,7 +997,8 @@
             "question": "StatementXL 会把 PDF 直接传到 Wave 吗？",
             "answer": "不会。先下载并核对数据，制作 CSV 副本，再到 Wave 内上传并确认字段。"
           }
-        ]
+        ],
+        "metaDescription": "整理美国或加拿大 Wave 的手动 CSV 导入数据，在导入前核对目标账户、日期及金额方向。"
       },
       "sage": {
         "title": "银行流水 PDF 转英国 Sage Accounting：整理 CSV",
@@ -998,7 +1022,8 @@
             "question": "这份 CSV 适用于所有 Sage 产品吗？",
             "answer": "不适用。本文仅针对英国 Sage Accounting，制作文件前请确认实际产品和地区的文档。"
           }
-        ]
+        ],
+        "metaDescription": "整理可手动导入 Sage Accounting UK 的银行流水 CSV，核对格式要求；本指南不覆盖其他 Sage 版本。"
       },
       "loan": {
         "title": "为贷款申请整理银行流水",
@@ -1022,7 +1047,8 @@
             "question": "贷款机构会接受 StatementXL 表格吗？",
             "answer": "取决于机构。请确认它要求的原始流水和附件；转换本身不等于认证或审批。"
           }
-        ]
+        ],
+        "metaDescription": "为贷款申请整理银行流水交易，同时保留原始 PDF，并向贷款机构确认所需材料和账期。"
       },
       "tax": {
         "title": "为报税整理银行流水交易",
@@ -1046,7 +1072,8 @@
             "question": "所有支出都能作为税务扣除吗？",
             "answer": "不能。取决于交易性质、凭证和适用规则；不确定项目应咨询合格税务专业人士。"
           }
-        ]
+        ],
+        "metaDescription": "整理银行流水以核对美国税务资料，同时保留收据及相关凭证；转换结果本身不能证明可抵扣项目。"
       },
       "catchup": {
         "title": "补账：把缺失流水期间变成可核对清单",
@@ -1070,7 +1097,8 @@
             "question": "转换完就算补账完成了吗？",
             "answer": "不是。转换准备交易数据；查重、分类、凭证复核和对账是独立步骤。"
           }
-        ]
+        ],
+        "metaDescription": "用银行流水 PDF 梳理缺失记账期间，按账户检查提取记录，并逐份核对账单余额。"
       },
       "about": {
         "title": "关于 StatementXL",
@@ -1094,7 +1122,8 @@
             "question": "在哪里查看产品说法的依据？",
             "answer": "查看指南来源链接，以及样本报告的方法和可下载结果。产品问题可以联系支持邮箱。"
           }
-        ]
+        ],
+        "metaDescription": "了解 StatementXL 的银行流水 PDF 转表格流程、逐行风险标记、来源位置及现有功能边界。"
       },
       "checker": {
         "title": "免费银行流水余额核对器与 Excel 模板",
@@ -1118,7 +1147,8 @@
             "question": "金额会发送到 StatementXL 吗？",
             "answer": "不会。输入只保留在页面内存。下载的模板是由你控制的独立本地文件。"
           }
-        ]
+        ],
+        "metaDescription": "免费核对期初余额加收入减支出是否等于期末余额，无需上传或登录，并可下载 Excel 模板。"
       },
       "benchmark": {
         "title": "公开样本报告：两种流水版式的本地解析结果",
@@ -1142,7 +1172,8 @@
             "question": "OK 比例高就代表提取准确吗？",
             "answer": "不代表。它只表示解析器没有标记这些已提取行；漏行、多行和字段差异仍需对照原件核查。"
           }
-        ]
+        ],
+        "metaDescription": "查看 StatementXL 对两种公开账单版式的本地解析结果及样本局限；报告不包含可选 AI 解析测试。"
       }
     }
   },
@@ -1243,6 +1274,15 @@
       "nanonets": "StatementXL 与 Nanonets",
       "checker": "余额核对器与 Excel 模板",
       "benchmark": "公开样本实测报告"
-    }
+    },
+    "groupDescriptions": {
+      "conversion": "文字可以选中的 PDF，先看 PDF 转 Excel 指南；只有图片的文件，先了解扫描件的处理条件，再决定是否选择 AI 解析。",
+      "banks": "按银行查看账单下载步骤及不同账户的可用记录范围。下载指南不代表每种账单版式都已验证支持。",
+      "accounting": "先选择目标软件，再核对 CSV 格式要求。这里介绍手动导入流程，StatementXL 不连接你的会计软件账户。",
+      "bookkeeping": "按贷款材料、美国税务资料或历史补账选择指南。整理表格时，同时保留银行原始账单及相关凭证。",
+      "comparisons": "两款产品之间做选择时，查看对应比较页；也可从替代方案指南了解银行原生导出。重点比较交付格式及人工核对工作。",
+      "tools": "无需上传文件，即可用余额核对器比较账单汇总金额。样本报告列出两种版式的实测结果及其适用边界。"
+    },
+    "metaDescription": "查找银行流水转换指南、账单下载步骤、会计软件手动导入说明、产品比较和免费余额核对工具。"
   }
 }
