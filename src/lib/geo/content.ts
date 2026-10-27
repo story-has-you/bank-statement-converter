@@ -44,7 +44,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     pages: quota.subscriptions[tier].pages,
     formattedPrice: format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" }),
     period: t("billingPeriod"),
-    parsing: subscriptionConfig[tier].qwenFallback ? usage("aiParsing") : usage("textParsing"),
+    parsing: subscriptionConfig[tier].aiParsing ? usage("aiParsing") : usage("textParsing"),
   }));
   return {
     locale,

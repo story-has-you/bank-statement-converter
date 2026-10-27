@@ -1,4 +1,4 @@
-name: Validate and deploy parser
+name: Validate application
 
 on:
   push:
@@ -10,12 +10,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-web-parser-${{ github.ref }}
+  group: ci-web-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   quality:
-    name: Validate application and parser
+    name: Validate application
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -48,71 +48,13 @@ jobs:
       - name: Test merchant normalization safeguards
         run: pnpm test:merchants
 
+      - name: Verify PDF.js parsing and conversion routes
+        run: |
+          pnpm verify:pdfjs
+          pnpm verify:conversion
+
       - name: Lint web application
         run: pnpm lint
 
       - name: Build web application
         run: pnpm build
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.14"
-
-      - name: Install locked parser dependencies
-        working-directory: services/parser
-        run: |
-          python -m pip install --requirement requirements.lock
-          python -m pip install --no-deps .
-
-      - name: Compile parser Python sources
-        working-directory: services/parser
-        run: python -m compileall -q app
-
-      - name: Install parser Worker dependencies
-        working-directory: services/parser
-        run: pnpm install --frozen-lockfile
-
-      - name: Check parser Worker types and bundle
-        working-directory: services/parser
-        run: |
-          pnpm exec wrangler types
-          pnpm exec tsc --noEmit
-          pnpm exec wrangler deploy --dry-run --containers-rollout=none
-
-  deploy:
-    name: Deploy parser to Cloudflare Containers
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: quality
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    concurrency:
-      group: cloudflare-parser-production
-      cancel-in-progress: false
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 12.6.0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-
-      - name: Install parser Worker dependencies
-        working-directory: services/parser
-        run: pnpm install --frozen-lockfile
-
-      - name: Deploy parser Worker and container
-        working-directory: services/parser
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: pnpm exec wrangler deploy
-
-      - name: Verify public parser health
-        run: curl --fail --silent --show-error --retry 12 --retry-all-errors --retry-delay 5 --max-time 60 https://parser.bankstatementconverter.xyz/health

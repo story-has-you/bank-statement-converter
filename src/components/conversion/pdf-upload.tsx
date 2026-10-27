@@ -10,8 +10,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { usePublicAccount } from "@/components/account/public-account-provider";
+import type { ConversionMethod } from "@/lib/conversion-types";
+import { subscriptionConfig } from "@/config/plans";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
 import { useConversion } from "@/components/conversion/conversion-provider";
 import { usePdfPreflight } from "@/components/conversion/use-pdf-preflight";
 import { clearConversionPayload } from "@/lib/conversion-storage";
@@ -22,6 +26,11 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   const format = useFormatter();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const account = usePublicAccount();
+  const tier = account.summary.activeTier;
+  const allowAi = account.status === "ready" && tier !== null && subscriptionConfig[tier].aiParsing;
+  const [selection, setSelection] = useState<{ method: ConversionMethod; userId: string | null }>({ method: "code", userId: null });
+  const method = allowAi && selection.userId === account.user?.id ? selection.method : "code";
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<"invalidPdf" | "emptyFile" | "fileTooLarge" | "multipleFiles" | "browserStorageUnavailable" | null>(
     null,
@@ -125,7 +134,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
       return;
     }
     if (await preflight.check()) {
-      conversion.start(file);
+      conversion.start(file, method);
       router.push("/result");
     }
   }
@@ -188,6 +197,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             onChange={handleInputChange}
           />
           <div className="grid gap-1 text-xs leading-5 text-muted-foreground">
+            <p>{t("localNotice")}</p>
             <p id="pdf-ai-summary">{t("aiSummary")}</p>
             <details>
               <summary className="w-fit cursor-pointer rounded-sm text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
@@ -251,20 +261,36 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
           )}
           <p className="text-xs text-muted-foreground">{t("serviceReady")}</p>
         </div>
-        <Button
-          type="button"
-          size="lg"
-          disabled={!preflight.canConvert || isPending || Boolean(error)}
-          onClick={startConversion}
-          className="w-full sm:w-auto"
-        >
-          {isPending || preflight.isChecking ? (
-            <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />
-          ) : (
-            <ArrowRightIcon data-icon="inline-start" />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+          {allowAi && (
+            <Field orientation="horizontal" className="w-auto" data-disabled={isPending}>
+              <Switch
+                id="conversion-ai"
+                checked={method === "llm"}
+                disabled={isPending}
+                onCheckedChange={(checked) => setSelection({ method: checked ? "llm" : "code", userId: account.user?.id ?? null })}
+                aria-describedby="pdf-ai-summary"
+                nativeButton
+                render={<button type="button" />}
+              />
+              <FieldLabel htmlFor="conversion-ai">{t("aiMethod")}</FieldLabel>
+            </Field>
           )}
-          {actionLabel}
-        </Button>
+          <Button
+            type="button"
+            size="lg"
+            disabled={!preflight.canConvert || isPending || Boolean(error)}
+            onClick={startConversion}
+            className="w-full sm:w-auto"
+          >
+            {isPending || preflight.isChecking ? (
+              <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />
+            ) : (
+              <ArrowRightIcon data-icon="inline-start" />
+            )}
+            {actionLabel}
+          </Button>
+        </div>
       </div>
     </section>
   );

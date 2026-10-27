@@ -45,7 +45,7 @@ export function usePdfPreflight(file: File | null) {
     active.current = controller;
     const previousCount = cachedPages.current?.file === file ? cachedPages.current.count : null;
     try {
-      const pages = previousCount === null ? readPageCount(file) : Promise.resolve(previousCount);
+      const pages = previousCount === null ? readPageCount(file, controller.signal) : Promise.resolve(previousCount);
       const [pageCount, quota] = await Promise.all([pages, fetchQuota(locale, controller.signal)]);
       if (controller.signal.aborted) {
         return false;
@@ -120,18 +120,17 @@ export function usePdfPreflight(file: File | null) {
   };
 }
 
-async function readPageCount(file: File): Promise<number> {
-  const { PDFDocument, EncryptedPDFError } = await import("pdf-lib");
+async function readPageCount(file: File, signal: AbortSignal): Promise<number> {
+  const { openPdf } = await import("@/lib/conversion/local/pdf-reader");
   try {
-    const document = await PDFDocument.load(await file.arrayBuffer(), { updateMetadata: false });
-    const count = document.getPageCount();
-    if (count === 0) {
-      throw new PreflightError("unreadablePdf");
+    const { document, close } = await openPdf(file, signal);
+    try {
+      return document.numPages;
+    } finally {
+      await close();
     }
-    return count;
   } catch (error) {
-    // pdf-lib's ES5 Error subclasses do not preserve instanceof checks.
-    const encrypted = error instanceof Error && error.message === new EncryptedPDFError().message;
+    const encrypted = error instanceof Error && error.message === "PASSWORD_PROTECTED_PDF";
     throw new PreflightError(encrypted ? "passwordProtectedPdf" : "unreadablePdf");
   }
 }

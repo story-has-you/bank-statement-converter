@@ -4,27 +4,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-首次开发先安装 Python 解析服务依赖：
-
-```bash
-cd services/parser
-python3.14 -m venv .venv
-.venv/bin/python -m pip install -e .
-cd ../..
-```
-
 ```bash
 pnpm install
-pnpm dev --port 3000
+pnpm dev
 ```
 
-在仓库根目录 `.env.local` 配置 `PARSER_SHARED_SECRET`，本地 `PARSER_SERVICE_URL` 使用 `http://127.0.0.1:8000`。`pnpm dev` 会自动加载根目录开发环境配置，启动 8000 端口的 Python 解析服务，确认服务和认证就绪后启动 3000 端口的 Next.js。已有可用的解析服务会直接复用；退出开发命令会关闭本次启动的两个服务。配置远程解析地址时只启动 Next.js。
+开发和构建命令自动从锁定版本的 `pdfjs-dist` 准备 Worker、CMaps、字体和 WASM 静态资源，不使用 CDN。开发服务只需 Next.js，默认端口 3000。
 
 打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
 
-浏览器只请求 Next.js 的同源 `/api/convert`，Next.js 服务端再调用 Python 的 `http://127.0.0.1:8000/parse`，因此不需要为 Python 服务开放浏览器 CORS。默认解析地址可以通过仅服务端使用的 `PARSER_SERVICE_URL` 覆盖。
+选择文件后本地读取页数，通过 `/api/convert/quota` 查询额度，不上传 PDF、不扣额度。默认常规解析在浏览器内执行，生成可用结果后只向 `POST /api/convert/quota` 提交 `{ pageCount }` 扣额，成功后开放下载。服务端不接收或核实 PDF 与流水内容，页数采用客户端报告值；修改客户端可绕过此计费边界。额度接口保留正整数及现有身份、周期、余额约束，扣额失败不交付最终结果。
 
-选择文件后，浏览器在本地读取 PDF 页数，并向同源 `/api/convert/quota` 查询剩余额度；此检查不上传 PDF，也不扣额。点击转换后才上传文件，服务端仍负责最终文件、页数与额度校验。
+Professional 和 Enterprise 可在转换前主动选择 AI。只有 AI 模式通过 `/api/convert` 上传原始 PDF，并由服务端复核使用资格；常规失败或部分成功均不自动请求 AI。
 
 当前标签页的会话存储临时保存文件名、最终解析结果和商户归一化映射，供预览、刷新恢复和下载；重新转换或清理结果时一并清除，不跨文件复用。PDF、解析结果和所有导出文件不写入数据库、对象存储或持久化文件历史。multipart 请求解析可能短暂使用内存或系统临时文件，处理结束后关闭并清理，不提供再次下载的文件。
 
@@ -48,9 +39,9 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 在 [`src/config/plans.ts`](src/config/plans.ts) 统一调整套餐规则：
 
 - `freeQuotaConfig`：匿名与登录免费用户的每日页数，当前分别为 1 页和 5 页，按 UTC 日重置。
-- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `qwenFallback`（是否允许 Python 无法提供可核对交易时回退到 AI 解析）。当前 Standard 为 $9.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
+- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `aiParsing`（是否允许用户主动选择 AI 解析）。当前 Standard 为 $9.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
 
-首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，后台原子扣减 RPC 使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
+首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，现有 CAS 扣减使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
 
 订阅已接入 Creem、PayPal 和 Waffo，可用渠道以购买入口和环境配置为准。三档套餐均按月自动续费；Waffo 展示税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
 
@@ -58,9 +49,7 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 
 ## 单文件转换限制
 
-在 [`services/parser/app/conversion-limits.json`](services/parser/app/conversion-limits.json) 统一调整 `megabytes`（单文件大小，按 1 MB = 1024 × 1024 字节校验）和 `pages`（原始 PDF 最大页数），当前为 4 MB、50 页。
-
-Next.js 上传校验、Python 文件与页数校验、Qwen 返回页数检查、浏览器流式结果校验、上传提示和错误文案、GEO 说明都读取同一配置。JSON 随 Python 包的 `app` 目录发布；修改后需重新发布 Next.js 和 Python 服务，Python 进程重启后加载新值。解析响应的 4 MB 上限独立于上传文件大小，不随此配置变化。
+在 [`src/config/conversion.ts`](src/config/conversion.ts) 统一调整 `megabytes` 和 `pages`，当前为 4 MB、50 页。客户端常规解析、AI 上传校验、Qwen 返回页数检查、预览校验和国际化说明共用配置。解析结果的 4 MB 上限独立于文件大小。
 
 ## 订阅配置
 
@@ -93,17 +82,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Production deployment
 
-可将根目录 Next.js 部署到 Vercel，将 `services/parser/` 的 Python 3.14 FastAPI 服务部署到 Cloudflare Containers，通过自己的域名提供 HTTPS 解析入口。浏览器只请求 Next.js 的同源 API，Next.js 服务端再通过共享密钥调用 parser。
+根目录 Next.js 可部署到 Vercel，不再需要 Python 服务或 Cloudflare Containers。现有线上容器、域名和密钥资源不由本次代码改动删除，切换部署后可由管理员另行清理。
 
-### Cloudflare Containers parser
-
-在 `services/parser/` 安装独立 Worker 依赖，使用 Docker 构建 Python 3.14 镜像，由 Wrangler 部署 Worker 与容器。部署前将 Worker 配置中的名称和域名调整为自己的资源；容器内 Uvicorn 监听 8080。
-
-共享密钥使用 Worker Secret `PARSER_SHARED_SECRET`，由 Worker 在容器启动时传入，与 Vercel Production、Preview 保持一致；部署不自动生成或轮换密钥。构建、部署命令与验收方式见 [Python 服务部署说明](services/parser/README.md#cloudflare-containers-部署)。
-
-#### GitHub Actions 质量检查与部署
-
-[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时检查 Web 类型、Lint、构建、Python 安装与编译，以及 Worker 类型与打包。仅 `master` 推送且检查通过后执行 Cloudflare Containers 部署，并检查公开健康接口。仓库 Secrets 使用现有 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
+[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时检查类型、既有集成检查、Lint 和构建，不再部署解析容器。
 
 ### Vercel Next.js
 
@@ -120,8 +101,6 @@ CREEM_PRODUCT_ID_STANDARD
 CREEM_PRODUCT_ID_PROFESSIONAL
 CREEM_PRODUCT_ID_ENTERPRISE
 CREEM_WEBHOOK_SECRET
-PARSER_SERVICE_URL=https://parser.example.com
-PARSER_SHARED_SECRET
 ```
 
 将自己的域名添加为 Vercel Production Domain。Supabase Auth 回调地址示例：
@@ -136,18 +115,30 @@ Creem Webhook 地址示例：
 https://example.com/api/billing/webhooks/creem
 ```
 
-不要把 `SUPABASE_SERVICE_ROLE_KEY`、`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 或 `PARSER_SHARED_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
+不要把 `SUPABASE_SERVICE_ROLE_KEY`、`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
 
-### Qwen 自动回退与流式预览
+### 主动选择 Qwen 与流式预览
 
-Professional 和 Enterprise 使用资格有效时，转换优先调用 Python；Python 服务不可用或无法产出可核对交易时，Next.js 使用 `openai` 官方 SDK 的 Chat Completions 调用 `qwen3.8-flash`。有效计费周期内已取消续费的高阶订阅也保留此能力。扫描件可进入大模型回退，匿名、免费和 Standard 仍只支持文字型 PDF。Python 的可用部分结果直接返回，不触发二次解析。
+Professional 和 Enterprise 使用资格有效时可主动选择 AI 解析，包括尝试扫描件。有效计费周期内已取消续费的高阶订阅也保留此能力。默认常规解析不请求 AI，匿名、免费和 Standard 只可使用常规解析。
 
-在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响回退，不影响 Python 正常转换。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
+在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响 AI，不影响浏览器常规解析。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
 
-浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`，开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和请求开始时的剩余额度检查通过后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
+浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`（multipart 中显式携带 `method=llm`），开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和请求开始时的剩余额度检查通过后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
 
-模型调用设置 `enable_thinking: false`、`include_tool_usage: true` 和 `stream_options.include_usage: true`。Qwen 的权威扣减页数来自 `usage.x_tools.pdf_page_parser.count`，覆盖模型内容中的 `pageCount`；缺失或无效页数、超过 50 页、无可核对交易、截断或无效 JSON 都不进入扣减。文件仍限制 4 MB，解析内容限制 4 MB。接口时限为 300 秒，Python 为 55 秒，Qwen 为 230 秒，SDK 不自动重试。
+模型调用设置 `enable_thinking: false`、`include_tool_usage: true` 和 `stream_options.include_usage: true`。Qwen 的权威扣减页数来自 `usage.x_tools.pdf_page_parser.count`，覆盖模型内容中的 `pageCount`；缺失或无效页数、超过 50 页、无可核对交易、截断或无效 JSON 都不进入扣减。文件仍限制 4 MB，解析内容限制 4 MB。接口时限为 300 秒，Qwen 为 230 秒，SDK 不自动重试。
 
-流式表格仅存在于当前页面内存，下载在最终校验和已知剩余额度检查通过后开放。额度通过 Next.js `after()` 在响应结束后异步扣减，只调用一次原子 RPC；仅保留后台扣额拒绝和失败的错误码日志。并发快照可能过期，后台拒绝或失败不撤回已返回结果、不自动重试，且受接口最大时长与进程生命周期限制。完成后沿用浏览器会话结果交接，生成途中刷新、离开结果页或切换语言会中断，不恢复后台转换。成功扣减后若浏览器断开或无法保存结果，不增加自动回滚或重试机制。
+流式表格仅存在于当前页面内存，下载在最终校验和已知剩余额度检查通过后开放。额度通过 Next.js `after()` 在响应结束后异步扣减，执行现有 CAS 扣减；仅保留后台扣额拒绝和失败的错误码日志。并发快照可能过期，后台拒绝或失败不撤回已返回结果、不自动重试，且受接口最大时长与进程生命周期限制。完成后沿用浏览器会话结果交接，生成途中刷新、离开结果页或切换语言会中断，不恢复后台转换。成功扣减后若浏览器断开或无法保存结果，不增加自动回滚或重试机制。
 
-高阶套餐回退会将对账单发送至千问处理，适用千问的服务条款和隐私政策。本网站不持久化 PDF、Excel 或交易明细，也不对供应商的数据保存政策作额外承诺。真实千问效果及额度写入需要使用获准的脱敏样本单独验收。
+用户主动选择 AI 后会将对账单发送至千问处理，适用千问的服务条款和隐私政策。本网站不持久化 PDF、Excel 或交易明细，也不对供应商的数据保存政策作额外承诺。真实千问效果及额度写入需要使用获准的脱敏样本单独验收。
+
+## 迁移验证
+
+`pnpm verify:pdfjs` 使用内存生成的 PDF 验证自动表格提取和异常场景；`pnpm verify:conversion` 使用隔离接口替身验证扣额及 AI 请求资格，不连接真实数据库或模型。两项均在 CI 执行，不新增单元测试。
+
+可使用本地获准样本和已有 Python 对照 JSON 执行逐单元格比较：
+
+```bash
+pnpm verify:pdfjs /absolute/path/statement.pdf /absolute/path/python-baseline.json
+```
+
+此可选对照使用迁移时的 8 页、112 行样本；真实 PDF 和对照结果仅保存在忽略的本地目录中，不提交 Git。历史公开基准保留原解析器及测量时间，不代表 PDF.js 当前效果。

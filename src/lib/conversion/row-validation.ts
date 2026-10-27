@@ -1,8 +1,7 @@
 import type { ParseColumn, ParseIssue, ParsedRow } from "@/lib/conversion-types";
 
-// Keep evidence rules aligned with services/parser/app/row_validation.py.
-const DATE_HEADERS = ["date", "time", "datum", "wertstellung", "日期", "时间"];
-const DESCRIPTION_HEADERS = [
+export const DATE_HEADERS = ["date", "time", "datum", "wertstellung", "日期", "时间"];
+export const DESCRIPTION_HEADERS = [
   "description",
   "transaction",
   "buchung",
@@ -14,8 +13,13 @@ const DESCRIPTION_HEADERS = [
   "备注",
   "memo",
   "details",
+  "check number",
+  "cheque number",
+  "reference number",
+  "security name",
+  "payee",
 ];
-const AMOUNT_HEADERS = [
+export const AMOUNT_HEADERS = [
   "amount",
   "debit",
   "credit",
@@ -30,12 +34,43 @@ const AMOUNT_HEADERS = [
   "贷",
   "收入",
   "支出",
+  "paid out",
+  "paid in",
+  "money out",
+  "money in",
+  "transaction total",
 ];
-const BALANCE_HEADERS = ["balance", "saldo", "余额"];
+export const BALANCE_HEADERS = ["balance", "saldo", "余额"];
 const DATE_SHAPE = /^(?:\d{8}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2}(?:[-/.]\d{2,4})?)(?:\s|$)/;
-const AMOUNT_SHAPE = /^(?:(?:[A-Z]{3}|[€$£¥])\s*)?[+-]?(?:\d{1,3}(?:[ ,.]\d{3})+|\d+)(?:[,.]\d{1,2})?(?:\s*(?:[A-Z]{3}|[€$£¥]))?$/;
+const AMOUNT_SHAPE =
+  /^(?:(?:[A-Z]{3}|[€$£¥])\s*)?[+−-]?(?:(?:\d{1,3}(?:[ ,.]\d{3})+|\d+)(?:[,.]\d{1,2})?|[,.]\d{1,2})(?:\s*(?:[A-Z]{3}|[€$£¥]))?$/;
+const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+export function hasDateShape(value: string): boolean {
+  return (
+    DATE_SHAPE.test(value) || /^(?:\d{1,2}\s+[A-Za-z]{3,9}(?:\s+\d{2,4})?|[A-Za-z]{3,9}\s+\d{1,2}(?:,?\s+\d{2,4})?)(?:\s|$)/.test(value)
+  );
+}
+export function isDateHeader(label: string): boolean {
+  return DATE_HEADERS.some((term) => label.toLowerCase().includes(term));
+}
+export function isBalanceHeader(label: string): boolean {
+  return BALANCE_HEADERS.some((term) => label.toLowerCase().includes(term));
+}
+export function isAmountHeader(label: string): boolean {
+  if (/^(?:in|out)$/i.test(label.trim())) {
+    return true;
+  }
+  return !isBalanceHeader(label) && AMOUNT_HEADERS.some((term) => label.toLowerCase().replace(/\s+/g, " ").includes(term));
+}
+export function isDescriptionHeader(label: string): boolean {
+  return (
+    !isDateHeader(label) &&
+    !isAmountHeader(label) &&
+    (/^(?:number|check num\.?)$/i.test(label.trim()) || DESCRIPTION_HEADERS.some((term) => label.toLowerCase().includes(term)))
+  );
+}
 
-function matchesHeader(column: ParseColumn, terms: string[]): boolean {
+export function matchesHeader(column: ParseColumn, terms: readonly string[]): boolean {
   const label = column.label.toLowerCase();
   return terms.some((term) => label.includes(term));
 }
@@ -49,7 +84,17 @@ function isCalendarDate(year: number, month: number, day: number): boolean {
   return day <= days[month - 1];
 }
 
-function isValidDate(value: string): boolean {
+export function isValidDate(value: string): boolean {
+  value = value.trim().replace(/\s*([-/.])\s*/g, "$1");
+  const named = value.match(/^(?:(\d{1,2})\s+([A-Za-z]{3,9})|([A-Za-z]{3,9})\s+(\d{1,2}))(?:,?\s+(\d{2,4}))?(?:\s|$)/);
+  if (named) {
+    const month = MONTHS.indexOf((named[2] ?? named[3]).slice(0, 3).toLowerCase()) + 1;
+    let year = named[5] ? Number(named[5]) : 2000;
+    if (year < 100) {
+      year += 2000;
+    }
+    return isCalendarDate(year, month, Number(named[1] ?? named[4]));
+  }
   if (!DATE_SHAPE.test(value)) {
     return false;
   }
@@ -72,20 +117,24 @@ function isValidDate(value: string): boolean {
   return isCalendarDate(year, first, second) || isCalendarDate(year, second, first);
 }
 
-function isValidAmount(value: string): boolean {
+export function isValidAmount(value: string): boolean {
   if (value.startsWith("(") !== value.endsWith(")")) {
     return false;
   }
-  const amount = value.startsWith("(") ? value.slice(1, -1).trim() : value;
+  let amount = value.startsWith("(") ? value.slice(1, -1).trim() : value;
+  if (/[\d][ ]*[-−]$/.test(amount)) {
+    amount = "-" + amount.replace(/[ ]*[-−]$/, "");
+  }
+  amount = amount.replace(/^([+−-])\s*([€$£¥]|[A-Z]{3})\s*/, "$2$1");
   return AMOUNT_SHAPE.test(amount);
 }
 
 export function validateRowEvidence(columns: ParseColumn[], values: ParsedRow["values"]): ParseIssue[] {
   const dateColumns = columns.filter((column) => matchesHeader(column, DATE_HEADERS));
   const balanceColumns = columns.filter((column) => matchesHeader(column, BALANCE_HEADERS));
-  const amountColumns = columns.filter((column) => matchesHeader(column, AMOUNT_HEADERS) && !balanceColumns.includes(column));
+  const amountColumns = columns.filter((column) => isAmountHeader(column.label));
   const descriptionColumns = columns.filter(
-    (column) => matchesHeader(column, DESCRIPTION_HEADERS) && !dateColumns.includes(column) && !amountColumns.includes(column),
+    (column) => isDescriptionHeader(column.label) && !dateColumns.includes(column) && !amountColumns.includes(column),
   );
   const cell = (column: ParseColumn): string => (values[column.key] ?? "").trim();
   const issues: ParseIssue[] = [];

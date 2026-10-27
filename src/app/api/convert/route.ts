@@ -1,4 +1,5 @@
-import { maxUploadBytes } from "@/config/conversion";
+import { PDFDocument, EncryptedPDFError } from "pdf-lib";
+import { conversionLimits, maxUploadBytes } from "@/config/conversion";
 import { createConversionResponse, errorResponse } from "@/lib/conversion/response";
 import { canUseQwen } from "@/lib/conversion/parser";
 import { type QuotaContext, SubscriptionPeriodUnavailableError, UsageUnavailableError } from "@/lib/usage/server";
@@ -15,6 +16,10 @@ export async function POST(request: Request): Promise<Response> {
   try {
     formData = await request.formData();
   } catch {
+    return errorResponse("INVALID_REQUEST", 400, locale);
+  }
+
+  if (formData.get("method") !== "llm") {
     return errorResponse("INVALID_REQUEST", 400, locale);
   }
 
@@ -43,13 +48,14 @@ export async function POST(request: Request): Promise<Response> {
 
   let anonymousCookie: string | null;
   let context: QuotaContext;
-  let allowQwen = false;
   let availablePages: number;
   try {
     const resolved = await getRequestQuota(request);
     context = resolved.context;
     anonymousCookie = resolved.anonymousCookie;
-    allowQwen = canUseQwen(resolved.subscription?.tier);
+    if (!canUseQwen(resolved.subscription?.tier)) {
+      return setAnonymousCookie(errorResponse("AI_NOT_ALLOWED", 403, locale), anonymousCookie);
+    }
     availablePages = resolved.quota.remainingPages;
     if (availablePages === 0) {
       return setAnonymousCookie(
@@ -69,6 +75,22 @@ export async function POST(request: Request): Promise<Response> {
     const code = error instanceof SubscriptionPeriodUnavailableError ? "QUOTA_PERIOD_UNAVAILABLE" : "QUOTA_UNAVAILABLE";
     return errorResponse(code, 503, locale);
   }
-  const response = await createConversionResponse(request, entry, context, allowQwen, locale, availablePages);
+  try {
+    const document = await PDFDocument.load(await entry.arrayBuffer(), { updateMetadata: false });
+    const pageCount = document.getPageCount();
+    if (!pageCount) {
+      return setAnonymousCookie(errorResponse("INVALID_PDF", 400, locale), anonymousCookie);
+    }
+    if (pageCount > conversionLimits.pages) {
+      return setAnonymousCookie(errorResponse("TOO_MANY_PAGES", 413, locale), anonymousCookie);
+    }
+    if (pageCount > availablePages) {
+      return setAnonymousCookie(errorResponse("QUOTA_EXCEEDED", 429, locale), anonymousCookie);
+    }
+  } catch (error) {
+    const encrypted = error instanceof Error && error.message === new EncryptedPDFError().message;
+    return setAnonymousCookie(errorResponse(encrypted ? "PASSWORD_PROTECTED_PDF" : "INVALID_PDF", 400, locale), anonymousCookie);
+  }
+  const response = await createConversionResponse(request, entry, context, locale, availablePages);
   return setAnonymousCookie(response, anonymousCookie);
 }

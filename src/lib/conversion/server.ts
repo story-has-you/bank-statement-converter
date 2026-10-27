@@ -3,24 +3,16 @@ import "server-only";
 import { after } from "next/server";
 
 import { ConversionError } from "@/lib/conversion-errors";
-import { emitParsedTables, type EmitConversionEvent } from "@/lib/conversion-events";
+import type { EmitConversionEvent } from "@/lib/conversion-events";
 import type { ParseResponse } from "@/lib/conversion-types";
 import { parseWithQwen } from "@/lib/qwen/parser";
 import { consumeConversionQuota, type QuotaContext } from "@/lib/usage/server";
-import { MAX_RESPONSE_BYTES, parseWithPython, shouldFallback } from "./parser";
-import {
-  createParseRecord,
-  getParseErrorCode,
-  recordLlmFallback,
-  recordPythonFailure,
-  scheduleParseRecord,
-  type ConversionParseRecord,
-} from "./records";
+import { MAX_RESPONSE_BYTES } from "@/config/conversion";
+import { createParseRecord, getParseErrorCode, scheduleParseRecord } from "./records";
 
 export async function convertStatement(
   file: File,
   context: QuotaContext,
-  allowQwen: boolean,
   signal: AbortSignal,
   emit: EmitConversionEvent,
   availablePages: number,
@@ -29,7 +21,8 @@ export async function convertStatement(
   emit({ type: "status", data: { stage: "reading" } });
   const record = createParseRecord(context);
   try {
-    const result = await parseStatement(file, allowQwen, signal, emit, record);
+    emit({ type: "status", data: { stage: "extracting" } });
+    const result = await parseWithQwen(file, signal, emit);
     const responseBytes = Buffer.byteLength(JSON.stringify(result), "utf8");
     if (responseBytes > MAX_RESPONSE_BYTES) {
       throw new ConversionError("PARSER_RESPONSE_TOO_LARGE");
@@ -77,33 +70,4 @@ function scheduleQuotaConsumption(context: QuotaContext, pageCount: number): voi
       console.error("Conversion quota deduction failed", { code: "QUOTA_RECORD_FAILED" });
     }
   });
-}
-
-async function parseStatement(
-  file: File,
-  allowQwen: boolean,
-  signal: AbortSignal,
-  emit: EmitConversionEvent,
-  record: ConversionParseRecord | null,
-): Promise<ParseResponse> {
-  let result: ParseResponse;
-  try {
-    result = await parseWithPython(file, signal);
-  } catch (error) {
-    signal.throwIfAborted();
-    if (record) {
-      recordPythonFailure(record, error);
-    }
-    if (!allowQwen || !(error instanceof ConversionError) || !shouldFallback(error)) {
-      throw error;
-    }
-    emit({ type: "status", data: { stage: "extracting" } });
-    if (record) {
-      recordLlmFallback(record);
-    }
-    return parseWithQwen(file, signal, emit);
-  }
-
-  emitParsedTables(result, emit);
-  return result;
 }

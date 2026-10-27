@@ -14,10 +14,10 @@
 - 新建工作树默认放在主仓库根目录的 `worktrees/<名称>/`，创建前确认 `/worktrees/` 已被 Git 忽略；已处于工作树时复用当前工作区。
 - 原生工作树工具无法指定该目录时，使用 `git worktree add`。
 - 新建工作树后、安装依赖和运行检查前，将主仓库根目录的 `.env.local` 复制到新工作树根目录；保持 Git 忽略，不输出文件内容。
-- 工作树首次启动前，安装根目录 pnpm 依赖，并在 `services/parser/` 创建独立 `.venv`，执行 `.venv/bin/python -m pip install -r requirements.lock -e .` 安装解析依赖。
+- 工作树首次启动前安装根目录 pnpm 依赖；开发和构建命令会准备同版本 PDF.js 静态资源。
 
 # 其他说明
-- 服务都会启动在 3000 端口，Python 服务也会自动在 8000 端口，不需要启动新的服务。
+- 复用已有 3000 端口的 Next.js 服务；常规解析在浏览器执行，AI 解析由 Next.js 服务端处理。
 - Supabase 操作使用 CLI：优先使用 `supabase`，未全局安装时使用 `npx supabase`；执行前通过 `--help` 确认命令和参数。
 
 <!-- BEGIN:nextjs-agent-rules -->

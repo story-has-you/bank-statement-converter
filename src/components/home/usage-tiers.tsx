@@ -72,7 +72,7 @@ export async function UsageTiers() {
                 </div>
                 <p className="text-sm leading-6 text-muted-foreground">{t(`plans.${tier}.description`)}</p>
                 <p className="text-sm leading-6 text-muted-foreground">
-                  {subscriptionConfig[tier].qwenFallback ? t("aiParsing") : t("textParsing")}
+                  {subscriptionConfig[tier].aiParsing ? t("aiParsing") : t("textParsing")}
                 </p>
                 <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
                 <PublicPlanState checkouts={checkouts} tier={tier} />

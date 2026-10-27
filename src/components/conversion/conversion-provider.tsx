@@ -1,26 +1,34 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale, useTranslations, type AppConfig } from "next-intl";
+import { conversionLimits } from "@/config/conversion";
+import { ConversionError } from "@/lib/conversion-errors";
 
 import { createClient } from "@/lib/supabase/browser";
 import { trackEvent } from "@/lib/analytics";
 import { usePathname } from "@/i18n/navigation";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { ConversionStreamError, readConversionStream, type ConversionPreview } from "@/lib/conversion-stream-client";
-import type { ParseResponse } from "@/lib/conversion-types";
+import type { ConversionMethod, ParseResponse } from "@/lib/conversion-types";
 
 type ConversionState =
   | { phase: "idle" }
   | { phase: "pending"; filename: string; preview: ConversionPreview }
   | { phase: "complete"; filename: string; result: ParseResponse; storageFailed: boolean }
   | { phase: "error"; filename: string; message: string };
-type ConversionContextValue = { state: ConversionState; revision: number; start: (file: File) => void; reset: () => void };
+type ConversionContextValue = {
+  state: ConversionState;
+  revision: number;
+  start: (file: File, method: ConversionMethod) => void;
+  reset: () => void;
+};
 const ConversionContext = createContext<ConversionContextValue | null>(null);
 
 export function ConversionProvider({ children }: { children: ReactNode }) {
   const locale = useLocale();
   const t = useTranslations("ConversionResult.stream");
+  const apiErrors = useTranslations("ApiErrors");
   const pathname = usePathname();
   const [state, setState] = useState<ConversionState>({ phase: "idle" });
   const [revision, setRevision] = useState(0);
@@ -86,7 +94,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  function start(file: File): void {
+  function start(file: File, method: ConversionMethod): void {
     active.current?.abort();
     const controller = new AbortController();
     active.current = controller;
@@ -99,20 +107,40 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     setState({ phase: "pending", filename: file.name, preview: { tables: [], stage: "reading" } });
     void (async () => {
       try {
-        const body = new FormData();
-        body.append("file", file);
-        trackEvent("file_upload", { locale });
-        const response = await fetch("/api/convert", {
-          method: "POST",
-          body,
-          headers: { "x-app-locale": locale, Accept: "text/event-stream" },
-          signal: controller.signal,
-        });
-        const result = await readConversionStream(response, (preview) => {
+        function onPreview(preview: ConversionPreview): void {
           if (active.current === controller && !controller.signal.aborted) {
             setState({ phase: "pending", filename: file.name, preview });
           }
-        });
+        }
+        let result: ParseResponse;
+        if (method === "code") {
+          const { parseWithPdfJs } = await import("@/lib/conversion/local/parser");
+          result = await parseWithPdfJs(file, controller.signal, onPreview);
+          controller.signal.throwIfAborted();
+          onPreview({ stage: "finalizing", tables: result.tables });
+          const response = await fetch("/api/convert/quota", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-app-locale": locale },
+            body: JSON.stringify({ pageCount: result.pageCount }),
+            signal: controller.signal,
+          });
+          if (!response.ok) {
+            const payload = await response.json();
+            throw new ConversionStreamError("request", payload.message);
+          }
+        } else {
+          const body = new FormData();
+          body.append("file", file);
+          body.append("method", "llm");
+          trackEvent("file_upload", { locale });
+          const response = await fetch("/api/convert", {
+            method: "POST",
+            body,
+            headers: { "x-app-locale": locale, Accept: "text/event-stream" },
+            signal: controller.signal,
+          });
+          result = await readConversionStream(response, onPreview);
+        }
         if (active.current !== controller || controller.signal.aborted) {
           return;
         }
@@ -128,7 +156,13 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
         if (active.current !== controller || controller.signal.aborted) {
           return;
         }
-        const message = error instanceof ConversionStreamError ? (error.serverMessage ?? t(`errors.${error.reason}`)) : t("errors.request");
+        const code = error instanceof ConversionError ? (error.code as keyof AppConfig["Messages"]["ApiErrors"]) : null;
+        let message = t("errors.request");
+        if (code && apiErrors.has(code)) {
+          message = apiErrors(code, conversionLimits);
+        } else if (error instanceof ConversionStreamError) {
+          message = error.serverMessage ?? t(`errors.${error.reason}`);
+        }
         setState({ phase: "error", filename: file.name, message });
       } finally {
         if (active.current === controller) {

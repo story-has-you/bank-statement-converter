@@ -11,6 +11,8 @@ export type ParseIssueTranslationKey =
   | "issues.missingAmount"
   | "issues.invalidAmount"
   | "issues.amountColumnMismatch"
+  | "issues.inheritedDate"
+  | "issues.unresolvedCharacters"
   | "issues.unknown";
 
 export function getParseIssueKey(issue: ParseIssue): ParseIssueTranslationKey {
@@ -23,6 +25,10 @@ export function getParseIssueKey(issue: ParseIssue): ParseIssueTranslationKey {
       return "issues.extraCells";
     case "MISSING_HEADER":
       return "issues.missingHeader";
+    case "INHERITED_DATE":
+      return "issues.inheritedDate";
+    case "UNRESOLVED_CHARACTERS":
+      return "issues.unresolvedCharacters";
     case "MISSING_DATE":
       return "issues.missingDate";
     case "INVALID_DATE":

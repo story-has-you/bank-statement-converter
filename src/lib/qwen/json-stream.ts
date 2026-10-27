@@ -6,7 +6,7 @@ import { ConversionError } from "@/lib/conversion-errors";
 import { isPreviewTable, type EmitConversionEvent } from "@/lib/conversion-events";
 import { isParseResponse, type ParsedRow, type ParsedTable, type ParseResponse } from "@/lib/conversion-types";
 import { MAX_RESPONSE_BYTES, requireUsableResult } from "@/lib/conversion/parser";
-import { validateRowEvidence } from "./row-validation";
+import { validateRowEvidence } from "@/lib/conversion/row-validation";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -106,7 +106,7 @@ export class QwenJsonStream {
     if (!isRecord(this.result) || !Array.isArray(this.result.tables)) {
       throw new ConversionError("INVALID_QWEN_RESPONSE", 502, undefined, "invalid_document");
     }
-    // Match Python's defaults for absent optional risk arrays. Explicitly invalid
+    // Keep defaults for absent optional risk arrays. Explicitly invalid
     // values still go through contract validation instead of being discarded.
     const tables: unknown[] = this.result.tables.map((table, tableIndex) =>
       isRecord(table) && typeof table.id === "string"

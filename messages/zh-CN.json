@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "StatementXL | 银行流水 PDF 转 Excel",
-    "description": "StatementXL: 银行流水 PDF 转 Excel，支持逐步预览与风险标记。专业和企业套餐可通过 AI 回退尝试转换扫描件；文件不作为本站持久化历史保存。",
+    "description": "StatementXL: 银行流水 PDF 转 Excel，支持逐步预览与风险标记。专业和企业套餐可主动选择 AI 尝试转换扫描件；文件不作为本站持久化历史保存。",
     "keywords": "银行流水转换, 银行流水 PDF 转 Excel, PDF 转 Excel, 银行交易提取, AI 银行流水解析, 扫描银行流水 PDF 转 Excel",
     "brand": "StatementXL",
     "alternateName": "银行流水 PDF 转 Excel"
@@ -86,15 +86,19 @@
     "emptyFile": "上传的 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
     "invalidResponse": "转换服务返回的数据格式异常。",
-    "aiNotice": "专业和企业套餐在常规解析失败、不可用或没有可核对交易时，会将完整 PDF 和文件名发送至千问 AI 平台处理，适用其服务条款和隐私政策。本站不持久化保存转换内容；供应商的数据留存与使用规则以其政策为准。查看<link>处理方详情、协议与隐私政策</link>。",
+    "aiNotice": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。 查看<link>处理方详情、协议与隐私政策</link>。",
     "checking": "正在检查 PDF 和额度",
     "retryCheck": "重新检查",
     "pageCount": "共 {pageCount, number} 页",
     "tooManyPages": "这份 PDF 超过了单个文件最多 {pages, number} 页的限制。",
     "unreadablePdf": "无法读取这份 PDF，请选择可正常打开的 PDF 文件。",
     "passwordProtectedPdf": "这份 PDF 已加密，请移除密码后重新上传。",
-    "aiSummary": "专业、企业套餐可尝试扫描件；AI 回退会将完整 PDF 和文件名发送给提供方。",
-    "aiDetails": "AI 处理详情"
+    "aiSummary": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。",
+    "aiDetails": "AI 处理详情",
+    "methodLabel": "解析方式",
+    "regularMethod": "常规解析",
+    "aiMethod": "AI 解析",
+    "localNotice": "常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。"
   },
   "ConversionResult": {
     "metadata": {
@@ -167,7 +171,9 @@
       "missingDescription": "未识别出交易描述。",
       "missingAmount": "未识别出交易金额。",
       "invalidAmount": "交易金额格式无效。",
-      "amountColumnMismatch": "金额出现在非交易金额列，无法确认对应关系。"
+      "amountColumnMismatch": "金额出现在非交易金额列，无法确认对应关系。",
+      "inheritedDate": "日期沿用第 {page} 页第 {row} 行的 {date}；原始日期单元格为空，请核对。",
+      "unresolvedCharacters": "部分字符无法从 PDF 字体可靠恢复，请核对原件。"
     },
     "pageRisks": {
       "title": "页面风险",
@@ -270,7 +276,7 @@
   "HomeFeatures": {
     "title": "银行流水转换功能",
     "securityTitle": "文件隐私",
-    "securityDescription": "本站不保存 PDF、Excel 和流水明细的持久化历史；AI 回退会将 PDF 发送给提供方。",
+    "securityDescription": "本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。",
     "banksTitle": "表格提取",
     "banksDescription": "读取银行流水 PDF 的表头与单元格文字，方便对照原件核对。",
     "accuracyTitle": "风险核对",
@@ -303,7 +309,7 @@
         "description": "适合每月大量转换银行流水。"
       }
     },
-    "aiParsing": "自动回退至 AI 解析，可尝试转换扫描件",
+    "aiParsing": "可主动选择 AI 解析，尝试转换扫描件",
     "textParsing": "文字型 PDF 解析"
   },
   "Billing": {
@@ -372,7 +378,7 @@
     },
     "quota": {
       "question": "每天可以转换多少页？",
-      "answer": "免费银行流水转换：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页；标准每月 {standardPages, number} 页，专业 {professionalPages, number} 页，企业 {enterprisePages, number} 页。按 PDF 页数累计。本地预检读取页数并查询额度，不发送 PDF、不扣额度；开始转换才上传，服务端最终校验文件、页数和额度。"
+      "answer": "免费银行流水转换：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页；标准每月 {standardPages, number} 页，专业 {professionalPages, number} 页，企业 {enterprisePages, number} 页。按 PDF 页数累计。 常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。"
     },
     "scans": {
       "question": "扫描件或加密 PDF 能转换吗？",
@@ -388,7 +394,7 @@
     },
     "ai": {
       "question": "什么时候会使用 AI 解析？",
-      "answer": "银行流水转换优先使用常规解析。仅专业、企业套餐在有效权益期内，常规解析失败、不可用或无可核对交易时回退至 AI；有可用部分结果时不回退。完整 PDF 和文件名会发送给 AI 提供方，处理方式见隐私政策。扫描件和 AI 结果仍需核对原件。"
+      "answer": "默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。 专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。"
     }
   },
   "HomeFooter": {
@@ -419,7 +425,7 @@
     "availability": "PDF 转 Excel 和 Creem、PayPal 或 Waffo 订阅服务按页面当前状态提供；套餐价格和可用状态可能因服务配置变化而调整。",
     "service": {
       "title": "服务范围",
-      "body": "服务用于将受支持的银行对账单 PDF 中的流水信息整理为 Excel，供您下载和核对。支持的银行、文件类型及处理限制以服务页面届时公布的信息为准。我们不提供银行账户连接、银行业务或财务、税务、法律建议。所有转换优先使用常规解析。专业和企业套餐在有效权益期内，可在常规解析失败、不可用或没有可核对交易时自动回退至 AI 解析，并尝试转换扫描件；已有可用部分结果时不回退。"
+      "body": "服务用于将受支持的银行对账单 PDF 中的流水信息整理为 Excel，供您下载和核对。支持的银行、文件类型及处理限制以服务页面届时公布的信息为准。我们不提供银行账户连接、银行业务或财务、税务、法律建议。 默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。"
     },
     "authorization": {
       "title": "上传文件的授权",
@@ -431,7 +437,7 @@
     },
     "quota": {
       "title": "转换额度",
-      "body": "不登录每天累计可转换 {anonymousPages, number} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages, number} 页 PDF。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。每日额度按 UTC 重置，订阅额度按 Creem、PayPal 或 Waffo 当前计费周期计算。转换失败不扣额度；部分结果按 PDF 页数扣减额度。 上传前，浏览器会在本地读取 PDF 页数，并向本站查询剩余额度，此时不发送 PDF，也不扣减额度。开始转换后才上传文件，服务端仍负责文件、页数和额度的最终校验。"
+      "body": "不登录每天累计可转换 {anonymousPages, number} 页 PDF，已登录的免费用户每天累计可转换 {authenticatedPages, number} 页 PDF。标准套餐每月 {standardPages, number} 页，专业套餐每月 {professionalPages, number} 页，企业套餐每月 {enterprisePages, number} 页。每日额度按 UTC 重置，订阅额度按 Creem、PayPal 或 Waffo 当前计费周期计算。转换失败不扣额度；部分结果按 PDF 页数扣减额度。 常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。"
     },
     "subscription": {
       "title": "订阅与付款",
@@ -482,11 +488,11 @@
     "availability": "本政策适用于当前开放的 PDF 转 Excel、账号登录和 Creem、PayPal 或 Waffo 订阅功能。",
     "documents": {
       "title": "银行对账单与转换内容",
-      "body": "您上传的 PDF 可能包含姓名、账号、交易日期、金额、余额和交易说明等敏感信息。我们仅为完成您请求的转换与下载处理 PDF、提取的流水明细及导出内容，不将这些内容用于广告或其他无关目的。AI 回退涉及的第三方处理见下文。 上传前，浏览器会在本地读取 PDF 页数，并向本站查询剩余额度，此时不发送 PDF，也不扣减额度。开始转换后才上传文件，服务端仍负责文件、页数和额度的最终校验。"
+      "body": "您上传的 PDF 可能包含姓名、账号、交易日期、金额、余额和交易说明等敏感信息。我们仅为完成您请求的转换与下载处理 PDF、提取的流水明细及导出内容，不将这些内容用于广告或其他无关目的。 常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。 专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。"
     },
     "accountData": {
       "title": "账号、额度与计费信息",
-      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、Creem、PayPal 或 Waffo 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。Creem、PayPal 或 Waffo 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。 对已登录用户，我们还会保存每次解析尝试的账号 ID、邮箱快照、记录时间、最后选择的解析方式、转换状态，以及解析失败和大模型回退的原因，用于排查故障。这些记录不包含文件名、文件内容、流水明细或模型输出。 创建结账时，我们会向所选支付渠道传递所选套餐和账号关联标识；Creem 与 Waffo 还会接收网站账号邮箱，PayPal 通过其自身账户流程处理付款资料。计费元数据还可能包括渠道计划和支付方标识、实付金额与币种、原价、优惠金额与优惠标识，以及付款事件标识。"
+      "body": "使用 Google 登录时，我们通过 Supabase 保存提供账号服务所必需的身份标识和账号资料。订阅激活后，我们会保存订阅状态、套餐、Creem、PayPal 或 Waffo 订阅标识、计费周期、支付方邮箱，以及购买时的网站账号邮箱快照。Creem、PayPal 或 Waffo 负责处理付款信息；这些记录不包含 PDF 原文、提取的流水明细或 Excel 内容。 对已登录用户，仅为主动选择的 AI 解析保存账号 ID、邮箱快照、记录时间、转换状态和安全错误码，用于故障排查。常规解析仅记录页数用量，不上传或记录 PDF 与流水内容。解析记录不包含文件名、文件内容、流水明细或模型输出。 创建结账时，我们会向所选支付渠道传递所选套餐和账号关联标识；Creem 与 Waffo 还会接收网站账号邮箱，PayPal 通过其自身账户流程处理付款资料。计费元数据还可能包括渠道计划和支付方标识、实付金额与币种、原价、优惠金额与优惠标识，以及付款事件标识。"
     },
     "technicalData": {
       "title": "必要的技术信息",
@@ -532,7 +538,7 @@
     "aiParsing": {
       "title": "AI 解析与第三方处理",
       "provider": "当前 AI 解析服务提供方为千问 AI 平台，运营主体为通义云启（杭州）信息技术有限公司，适用其<terms>《千问AI平台产品服务协议》</terms>和<privacy>《千问AI平台法律声明及隐私权政策》</privacy>。",
-      "body": "专业和企业套餐在有效权益期内优先使用常规解析；解析失败、不可用或没有可核对交易时，系统会自动将完整 PDF 和文件名发送至 AI 解析服务提供方，用于本次交易提取，包括尝试处理扫描件。常规解析已有可用部分结果时不会回退。文件可能包含姓名、账号及交易等敏感信息。AI 解析服务提供方的处理适用其服务条款和隐私政策。本网站不将 PDF、提取的流水明细、模型输出或导出文件内容保存为持久化历史；这一保存边界不代表 AI 解析服务提供方也不留存数据，我们不对其留存期限或是否用于模型训练作额外保证。"
+      "body": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。"
     }
   },
   "ThemeToggle": {
@@ -555,7 +561,7 @@
     "UNSUPPORTED_SCANNED_PDF": "未能从这份 PDF 中提取到文字，无法转换。",
     "TABLE_NOT_FOUND": "没有识别到可用的银行流水表格。",
     "NO_VERIFIABLE_TRANSACTIONS": "没有识别出日期、描述和金额均可核对的交易行。",
-    "PARSE_FAILED": "服务端未能完成 PDF 解析。",
+    "PARSE_FAILED": "浏览器未能完成 PDF 解析。",
     "UNKNOWN": "未能获取具体失败原因。",
     "PARSER_RESPONSE_TOO_LARGE": "转换结果超过了可返回的数据大小上限。",
     "MISSING_FILE": "未收到上传文件。",
@@ -575,7 +581,8 @@
     "INVALID_LLM_RESPONSE": "转换服务返回的数据格式异常。",
     "LLM_RESPONSE_TOO_LARGE": "转换结果超过了可返回的数据大小上限。",
     "LLM_PAGE_COUNT_UNAVAILABLE": "未收到有效的 PDF 解析页数，无法完成转换。",
-    "LLM_INCOMPLETE_RESPONSE": "AI 解析输出未完成，本次未扣减额度。请尝试页数更少的 PDF。"
+    "LLM_INCOMPLETE_RESPONSE": "AI 解析输出未完成，本次未扣减额度。请尝试页数更少的 PDF。",
+    "AI_NOT_ALLOWED": "AI 解析仅供有效的专业和企业套餐使用。"
   },
   "Account": {
     "title": "我的页面",
@@ -646,18 +653,18 @@
   },
   "Geo": {
     "glance": "关键结论",
-    "conversionSummary": "StatementXL 将银行流水 PDF 转为可核对的 Excel；专业和企业套餐可通过 AI 回退尝试转换扫描件。 支持风险筛选、手动统一商户名称，以及 Excel、CSV、JSON、Markdown、TSV 和 HTML 六种格式导出。",
+    "conversionSummary": "StatementXL 将银行流水 PDF 转为可核对的 Excel；专业和企业套餐可主动选择 AI 尝试转换扫描件。 支持风险筛选、手动统一商户名称，以及 Excel、CSV、JSON、Markdown、TSV 和 HTML 六种格式导出。",
     "limitsSummary": "每次上传一个不超过 {megabytes} MB、{pages} 页的银行流水 PDF。匿名、免费和标准套餐要求文字层；专业和企业套餐可尝试扫描件。所有套餐均不支持密码保护文件。",
     "quotaSummary": "匿名用户每日可转换 {anonymousPages} 页，登录用户每日 {authenticatedPages} 页，月订阅从 {price} 美元起。",
-    "privacySummary": "本站不将 PDF、Excel 和流水明细保存为持久化历史；高阶套餐回退时会将 PDF 交由 AI 解析服务提供方处理。使用结果前请对照原 PDF 核对。",
-    "featuresAnswer": "先使用常规解析；专业和企业套餐在常规解析失败、不可用或没有可核对交易时自动回退至 AI 解析。常规解析已有可用部分结果时直接保留。AI 解析可逐步预览表格，最终结果通过校验后才能下载，使用前仍需对照原 PDF 核对。",
+    "privacySummary": "常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。 专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。",
+    "featuresAnswer": "默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。 常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。",
     "riskTitle": "转换结果的风险标记是什么意思？",
     "riskAnswer": "风险标记说明提取交易行的证据情况。使用结果前，请对照原始银行流水 PDF 核对所有标记为有风险的行。 风险筛选只改变预览范围，商户归一化与导出仍覆盖结果中的全部交易。",
     "okDefinition": "未检测到问题，但不保证完全准确或没有遗漏。",
     "discrepancyDefinition": "证据存在冲突，或检测到需要核对的问题。",
     "unverifiableDefinition": "缺少关键证据，或无法可靠核对该行。",
     "limitsTitle": "可以上传哪些银行流水 PDF？",
-    "limitsAnswer": "每次上传一个不超过 {megabytes} MB、{pages} 页的银行流水 PDF。匿名、免费和标准套餐要求文字层；专业和企业套餐可尝试扫描件。所有套餐均不支持密码保护文件。 上传前，浏览器会在本地读取 PDF 页数，并向本站查询剩余额度，此时不发送 PDF，也不扣减额度。开始转换后才上传文件，服务端仍负责文件、页数和额度的最终校验。",
+    "limitsAnswer": "每次上传一个不超过 {megabytes} MB、{pages} 页的银行流水 PDF。匿名、免费和标准套餐要求文字层；专业和企业套餐可尝试扫描件。所有套餐均不支持密码保护文件。 常规解析在浏览器中完成，不上传 PDF 或流水内容；成功后只上报页数并扣减额度。页数由客户端提供，服务端不核实原文件。",
     "pricingAnswer": "免费额度按日重置，订阅额度按计费周期提供。请对比下方套餐，登录账号后通过 Creem、PayPal 或 Waffo 订阅所需档位。 实际可用的支付渠道以网站当前显示的购买入口为准。",
     "faqAnswer": "这些答案说明文件要求、转换额度和结果风险。转换前，请阅读与你的问题相关的答案，并检查银行流水 PDF。",
     "planHeader": "套餐",
@@ -744,7 +751,7 @@
         "availability": "Bank of America 可直接查看、打印和下载最近最多 18 个月的账单及支票图像；更早的副本可申请至最多七年前。信用卡产品的期限需以对应账户资料为准，不能直接套用这些年限。",
         "download": "登录 Online Banking，在 Accounts 标签下打开 Statements & Documents。选择账户和账单周期，查看并保存 PDF。更早的账单可在同一区域通过 Request statements 申请。",
         "detailsTitle": "申请 Bank of America 的旧账单",
-        "details": "申请电子账单副本免费，通常在申请后 24–36 小时提供，之后可下载七天，建议取得后尽快保存。\n\n纸质副本通常在申请后 7–10 个工作日寄出。优先获取电子 PDF；纸质账单需扫描，只有专业和企业套餐可通过 AI 回退尝试处理扫描件。"
+        "details": "申请电子账单副本免费，通常在申请后 24–36 小时提供，之后可下载七天，建议取得后尽快保存。\n\n纸质副本通常在申请后 7–10 个工作日寄出。优先获取电子 PDF；纸质账单需扫描，只有专业和企业套餐可主动选择 AI 尝试处理扫描件。"
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -759,15 +766,15 @@
       "scanned": {
         "label": "扫描银行流水转 Excel",
         "title": "把扫描银行流水转为 Excel",
-        "intro": "使用 StatementXL 尝试将纸质或扫描账单 PDF 整理成可核对的交易。专业和企业套餐在常规解析无法提供可用交易时可回退至 AI 处理。转换不保证成功；下载 Excel 前，请对照原始账单核对结果。",
+        "intro": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。",
         "planNote": "扫描 PDF 需要专业或企业套餐及可用页数额度。匿名、免费和标准套餐要求文件有文字层。请在下方对比解析能力和套餐。",
-        "planCta": "查看支持 AI 兜底的套餐",
+        "planCta": "可主动选择 AI 解析，尝试转换扫描件",
         "requirementsTitle": "哪些套餐可尝试处理扫描件？",
-        "requirements": "专业和企业套餐具备 AI 兜底资格。先进行常规解析，符合条件的失败才触发 AI；常规解析已有可用部分结果时直接保留。购买套餐不保证某份扫描件一定能识别。",
+        "requirements": "专业和企业套餐可主动选择 AI，尝试转换扫描件；完整 PDF 和文件名将发送至千问 AI 平台。 默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。",
         "preparationTitle": "准备清晰完整的扫描 PDF",
         "preparation": "按顺序扫描完整页面，确保日期和金额清晰，避免裁切、阴影和页面旋转。每次上传一份符合所示限制的 PDF。JPG、PNG 图片需先合成 PDF；能取得银行原始文字 PDF 时优先使用原件。",
         "limitationsTitle": "核对 AI 结果与数据处理方式",
-        "limitations": "对照原始账单检查交易数量、日期、金额方向和余额。OK 只表示未检测到问题，不保证准确。AI 兜底会将完整 PDF 和文件名发送至外部解析服务，适用其数据政策。所有套餐均不支持密码保护文件。失败不扣额度，部分结果按 PDF 页数计费。",
+        "limitations": "默认在浏览器中执行常规解析，不自动调用 AI。Professional 和 Enterprise 用户可在转换前主动选择 AI 解析，尝试处理扫描件。使用结果前请核对原始 PDF。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。",
         "stepsTitle": "三步转换扫描账单",
         "steps": {
           "upload": {

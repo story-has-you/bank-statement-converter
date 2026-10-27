@@ -1,5 +1,7 @@
 import type { MerchantNormalization } from "@/lib/merchant-normalization";
 
+export type ConversionMethod = "code" | "llm";
+
 export type RowStatus = "valid" | "warning" | "failed";
 
 export function getRowRiskCode(status: RowStatus): "OK" | "DISCREPANCY" | "UNVERIFIABLE" {

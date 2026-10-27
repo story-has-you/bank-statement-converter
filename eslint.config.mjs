@@ -18,7 +18,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "worktrees/**",
     "next-env.d.ts",
-    "services/parser/worker-configuration.d.ts",
+    "public/pdfjs/**",
   ]),
 ]);
 

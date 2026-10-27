@@ -86,15 +86,19 @@
     "emptyFile": "Het geüploade PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "aiNotice": "Als de reguliere analyse bij Professional en Enterprise mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, worden de volledige PDF en bestandsnaam naar Qwen AI Platform gestuurd volgens zijn voorwaarden en privacybeleid. Deze website bewaart conversie-inhoud niet permanent; bewaring en gebruik door de aanbieder volgen zijn beleid. Bekijk de <link>gegevens en beleidsregels van de aanbieder</link>.",
+    "aiNotice": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik. Bekijk <link>de aanbieder, voorwaarden en het privacybeleid</link>.",
     "checking": "PDF en tegoed controleren",
     "retryCheck": "Opnieuw controleren",
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagina’s}}",
     "tooManyPages": "Deze PDF overschrijdt de limiet van {pages, number} pagina’s per bestand.",
     "unreadablePdf": "De PDF kon niet worden gelezen. Kies een PDF die normaal kan worden geopend.",
     "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord voordat je het bestand uploadt.",
-    "aiSummary": "Professional en Enterprise kunnen scans proberen. Bij AI-terugval gaan de volledige PDF en bestandsnaam naar de aanbieder.",
-    "aiDetails": "Details over AI-verwerking"
+    "aiSummary": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform.",
+    "aiDetails": "Details over AI-verwerking",
+    "methodLabel": "Analysemethode",
+    "regularMethod": "Reguliere analyse",
+    "aiMethod": "AI-analyse",
+    "localNotice": "De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken."
   },
   "ConversionResult": {
     "metadata": {
@@ -167,7 +171,9 @@
       "missingDescription": "Er is geen transactieomschrijving herkend.",
       "missingAmount": "Er is geen transactiebedrag herkend.",
       "invalidAmount": "Het transactiebedrag is ongeldig.",
-      "amountColumnMismatch": "Er staat een bedrag buiten de bedragkolom dat niet betrouwbaar kan worden gekoppeld."
+      "amountColumnMismatch": "Er staat een bedrag buiten de bedragkolom dat niet betrouwbaar kan worden gekoppeld.",
+      "inheritedDate": "Datum {date} overgenomen van pagina {page}, rij {row}; de oorspronkelijke datumcel is leeg. Controleer dit.",
+      "unresolvedCharacters": "Sommige tekens konden niet betrouwbaar uit het PDF-lettertype worden hersteld. Controleer het origineel."
     },
     "pageRisks": {
       "title": "Problemen per pagina",
@@ -270,7 +276,7 @@
   "HomeFeatures": {
     "title": "Functies voor bankafschriften",
     "securityTitle": "Bestandsprivacy",
-    "securityDescription": "Geen permanente PDF-, Excel- of transactiehistorie; bij AI-terugval gaat de PDF naar de aanbieder.",
+    "securityDescription": "Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
     "banksTitle": "Tabellen uitlezen",
     "banksDescription": "Kopteksten en celtekst uit het bankafschrift verschijnen in tabellen om met het origineel te vergelijken.",
     "accuracyTitle": "Risico’s controleren",
@@ -303,7 +309,7 @@
         "description": "Voor grote aantallen bankafschriften."
       }
     },
-    "aiParsing": "Automatisch overschakelen naar AI; gescande PDF’s proberen",
+    "aiParsing": "AI-analyse naar keuze; gescande PDF’s proberen",
     "textParsing": "Verwerking van PDF’s met tekst"
   },
   "Billing": {
@@ -372,7 +378,7 @@
     },
     "quota": {
       "question": "Hoeveel pagina's kan ik per dag converteren?",
-      "answer": "Gratis bankafschrift-conversie: dagelijks {anonymousPages, number} pagina’s zonder login, {authenticatedPages, number} met login. Per maand: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagina’s. PDF-pagina’s tellen. De voorcontrole leest pagina’s lokaal en vraagt het quota op, zonder PDF-upload of verbruik. Upload volgt bij de start; de server valideert bestand, pagina’s en quota."
+      "answer": "Gratis bankafschrift-conversie: dagelijks {anonymousPages, number} pagina’s zonder login, {authenticatedPages, number} met login. Per maand: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagina’s. PDF-pagina’s tellen. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren."
     },
     "scans": {
       "question": "Kan ik gescande of versleutelde PDF's converteren?",
@@ -388,7 +394,7 @@
     },
     "ai": {
       "question": "Wanneer wordt AI-analyse gebruikt?",
-      "answer": "Elke conversie begint met de reguliere analyse. Alleen Professional en Enterprise met een geldig gebruiksrecht schakelen automatisch over naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling. De volledige PDF en bestandsnaam worden naar de aanbieder van AI-analyse gestuurd; zie het privacybeleid. Scans en AI-resultaten moeten met het origineel worden gecontroleerd."
+      "answer": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform."
     }
   },
   "HomeFooter": {
@@ -419,7 +425,7 @@
     "availability": "De conversie van PDF naar Excel en Creem, PayPal of Waffo-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
     "service": {
       "title": "Omvang van de dienst",
-      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise met een geldig gebruiksrecht kunnen automatisch overschakelen naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, inclusief pogingen om scans te converteren. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling."
+      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF."
     },
     "authorization": {
       "title": "Toestemming om bestanden te uploaden",
@@ -431,7 +437,7 @@
     },
     "quota": {
       "title": "Conversietegoed",
-      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
+      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren."
     },
     "subscription": {
       "title": "Abonnementen en betaling",
@@ -482,11 +488,11 @@
     "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en Creem, PayPal of Waffo-abonnementen.",
     "documents": {
       "title": "Bankafschriften en conversiegegevens",
-      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. Verwerking door derden bij overschakeling naar AI wordt hieronder uitgelegd. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum."
+      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform."
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers bewaren we ook per parsepoging het account-ID, een momentopname van het e-mailadres, het tijdstip van registratie, de laatst gekozen parsemethode, de conversiestatus en de redenen voor parsefouten en de overstap naar een AI-model, om problemen te onderzoeken. Deze records bevatten geen bestandsnamen, bestandsinhoud, transactiegegevens of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Creem en Waffo ontvangen ook het e-mailadres van het websiteaccount; PayPal verwerkt betaalgegevens via de eigen accountprocedure. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De reguliere analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Creem en Waffo ontvangen ook het e-mailadres van het websiteaccount; PayPal verwerkt betaalgegevens via de eigen accountprocedure. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -532,7 +538,7 @@
     "aiParsing": {
       "title": "AI-analyse en verwerking door derden",
       "provider": "De aanbieder van AI-analyse is Qwen AI Platform, beheerd door 通义云启（杭州）信息技术有限公司 (geregistreerde juridische naam). De <terms>Productdienstenovereenkomst</terms> en de <privacy>Juridische kennisgeving en het privacybeleid</privacy> van de aanbieder zijn van toepassing.",
-      "body": "Professional en Enterprise met een geldig gebruiksrecht beginnen met de reguliere analyse. Als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert, stuurt het systeem de volledige PDF en bestandsnaam automatisch naar de aanbieder van AI-analyse om transacties voor deze conversie te extraheren, inclusief pogingen om scans te verwerken. Bruikbare gedeeltelijke resultaten leiden niet tot overschakeling. Bestanden kunnen gevoelige namen, rekeningnummers en transacties bevatten. Voor de aanbieder van AI-analyse gelden zijn voorwaarden en privacybeleid. Deze website bewaart PDF’s, geëxtraheerde transacties, modeluitvoer en exportinhoud niet als permanente geschiedenis. Dit betekent niet dat de aanbieder van AI-analyse geen gegevens bewaart; wij geven geen aanvullende garantie over zijn bewaartermijnen of gebruik van gegevens voor modeltraining."
+      "body": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik."
     }
   },
   "ThemeToggle": {
@@ -555,7 +561,7 @@
     "UNSUPPORTED_SCANNED_PDF": "Er kon geen tekst uit deze PDF worden gehaald, waardoor conversie niet mogelijk is.",
     "TABLE_NOT_FOUND": "Geen bruikbare bankafschrifttabel gevonden.",
     "NO_VERIFIABLE_TRANSACTIONS": "Er is geen transactierij gevonden waarvan de datum, omschrijving en het bedrag allemaal controleerbaar zijn.",
-    "PARSE_FAILED": "De server kon de PDF-analyse niet voltooien.",
+    "PARSE_FAILED": "De browser kon de PDF-analyse niet voltooien.",
     "UNKNOWN": "De specifieke oorzaak van de fout kon niet worden vastgesteld.",
     "PARSER_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
     "MISSING_FILE": "Er is geen geüpload bestand ontvangen.",
@@ -575,7 +581,8 @@
     "INVALID_LLM_RESPONSE": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
     "LLM_RESPONSE_TOO_LARGE": "Het conversieresultaat overschrijdt de maximale antwoordgrootte.",
     "LLM_PAGE_COUNT_UNAVAILABLE": "Er is geen geldig aantal PDF-pagina’s ontvangen. De conversie kan niet worden voltooid.",
-    "LLM_INCOMPLETE_RESPONSE": "De AI-uitvoer stopte voordat de conversie klaar was. Er zijn geen pagina’s afgetrokken. Probeer een kortere PDF."
+    "LLM_INCOMPLETE_RESPONSE": "De AI-uitvoer stopte voordat de conversie klaar was. Er zijn geen pagina’s afgetrokken. Probeer een kortere PDF.",
+    "AI_NOT_ALLOWED": "AI-analyse vereist geldige Professional- of Enterprise-rechten."
   },
   "Account": {
     "title": "Mijn account",
@@ -649,15 +656,15 @@
     "conversionSummary": "StatementXL zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren. Filter risico’s, normaliseer handelaarsnamen handmatig en exporteer naar Excel, CSV, JSON, Markdown, TSV of HTML.",
     "limitsSummary": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
-    "privacySummary": "Deze website bewaart PDF’s, Excel-bestanden en transacties niet als permanente geschiedenis. Bij overschakeling in hogere abonnementen wordt de PDF naar de aanbieder van AI-analyse gestuurd. Controleer resultaten met het origineel.",
-    "featuresAnswer": "Eerst wordt de reguliere analyse gebruikt. Professional en Enterprise schakelen over naar AI-analyse als deze mislukt, niet beschikbaar is of geen controleerbare transacties oplevert. Bruikbare gedeeltelijke resultaten blijven behouden zonder overschakeling. AI-tabellen zijn tijdens het genereren zichtbaar; downloaden vereist de definitieve validatie. Controleer resultaten aan de hand van de originele PDF.",
+    "privacySummary": "De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
+    "featuresAnswer": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren.",
     "riskTitle": "Wat betekenen de risicolabels?",
     "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt. Risicofilters wijzigen alleen het voorbeeld; naamnormalisatie en exports omvatten nog steeds alle transacties in het resultaat.",
     "okDefinition": "Geen probleem gedetecteerd; dit garandeert geen juistheid of volledigheid.",
     "discrepancyDefinition": "Tegenstrijdig bewijs of een punt ter controle is gedetecteerd.",
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
     "limitsTitle": "Welke PDF’s kan ik uploaden?",
-    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord. Voor het uploaden leest uw browser het aantal PDF-pagina’s lokaal en vraagt deze website om uw resterende quotum, zonder de PDF te verzenden of quotum te verbruiken. Het bestand wordt pas bij het starten van de conversie geüpload; de server controleert nog steeds het bestand, de pagina’s en het quotum.",
+    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren.",
     "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem, PayPal of Waffo abonneert. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
@@ -744,7 +751,7 @@
         "availability": "Afschriften met chequeafbeeldingen zijn tot 18 maanden rechtstreeks te bekijken, af te drukken en te downloaden. Oudere kopieën kunt u tot zeven jaar terug aanvragen. Controleer de beschikbaarheid voor uw creditcardrekening afzonderlijk.",
         "download": "Meld u aan bij Online Banking en open Statements & Documents onder Accounts. Kies rekening en periode, open de PDF en sla deze op. Voor oudere kopieën kiest u daar Request statements.",
         "detailsTitle": "Oudere Bank of America-afschriften aanvragen",
-        "details": "Elektronische kopieën zijn gratis, meestal na 24–36 uur beschikbaar en zeven dagen toegankelijk. Sla ze zo snel mogelijk op.\n\nPapieren kopieën worden doorgaans 7–10 werkdagen na de aanvraag verzonden. Geef de voorkeur aan de elektronische PDF: papier moet worden gescand en alleen Professional en Enterprise kunnen scans proberen te verwerken met de AI-terugvaloptie."
+        "details": "Elektronische kopieën zijn gratis, meestal na 24–36 uur beschikbaar en zeven dagen toegankelijk. Sla ze zo snel mogelijk op.\n\nPapieren kopieën worden doorgaans 7–10 werkdagen na de aanvraag verzonden. Geef de voorkeur aan de elektronische PDF: papier moet worden gescand en alleen Professional en Enterprise kunnen scans proberen te verwerken met de optionele AI-analyse."
       },
       "wellsFargo": {
         "bank": "Wells Fargo",
@@ -759,15 +766,15 @@
       "scanned": {
         "label": "Gescand bankafschrift naar Excel",
         "title": "Zet een gescand bankafschrift om naar Excel",
-        "intro": "Probeer met StatementXL transacties uit een gescand PDF-afschrift te halen. Professional en Enterprise kunnen AI gebruiken als de gewone analyse geen bruikbare transacties oplevert. Succes is niet gegarandeerd; vergelijk de resultaten met het origineel voordat u Excel downloadt.",
+        "intro": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF.",
         "planNote": "Scans vereisen Professional of Enterprise en beschikbare pagina's. Anoniem, gratis en Standard vereisen een tekstlaag. Vergelijk de abonnementen hieronder.",
-        "planCta": "Abonnementen met AI-terugval vergelijken",
+        "planCta": "AI-analyse naar keuze; gescande PDF’s proberen",
         "requirementsTitle": "Welke abonnementen kunnen scans verwerken?",
-        "requirements": "Professional en Enterprise bieden AI-terugval. De gewone analyse gaat eerst; alleen geschikte fouten activeren AI. Bruikbare gedeeltelijke resultaten blijven behouden. Een abonnement garandeert niet dat elke scan leesbaar is.",
+        "requirements": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF.",
         "preparationTitle": "Een leesbare scan-PDF voorbereiden",
         "preparation": "Scan volledige pagina's in volgorde, met scherpe datums en bedragen. Vermijd afgesneden randen, schaduwen en gedraaide pagina's. Upload één PDF binnen de getoonde grenzen. Voeg JPG of PNG eerst samen tot PDF; gebruik indien mogelijk het oorspronkelijke tekst-PDF van de bank.",
         "limitationsTitle": "AI-resultaten en gegevensverwerking controleren",
-        "limitations": "Controleer aantallen, datums, bedragrichting en saldi met het origineel. OK betekent alleen dat geen probleem is gevonden. AI verstuurt het volledige PDF en de bestandsnaam naar een externe aanbieder onder diens beleid. Wachtwoordbestanden worden niet ondersteund. Fouten gebruiken geen quota; gedeeltelijke resultaten tellen de PDF-pagina's.",
+        "limitations": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
         "stepsTitle": "Een scan omzetten in drie stappen",
         "steps": {
           "upload": {

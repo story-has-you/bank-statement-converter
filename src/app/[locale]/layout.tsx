@@ -45,14 +45,14 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
     notFound();
   }
 
-  const { LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult } = await getMessages();
+  const { LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult, ApiErrors } = await getMessages();
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <OrganizationStructuredData />
         <NextIntlClientProvider
-          messages={{ LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult: { stream: ConversionResult.stream } }}
+          messages={{ LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult: { stream: ConversionResult.stream }, ApiErrors }}
         >
           <ThemeProvider>
             <TooltipProvider>
