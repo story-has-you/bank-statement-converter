@@ -1,13 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import { getResourcePage, resourceGroups } from "@/config/resources";
+import { getResourcePage, getResourceGroups } from "@/config/resources";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function ResourceDirectory() {
-  const t = await getTranslations("Resources");
+  const [locale, t] = await Promise.all([getLocale(), getTranslations("Resources")]);
   return (
     <div className="mx-auto grid w-full max-w-4xl gap-x-12 gap-y-10 px-5 pb-14 sm:grid-cols-2 sm:px-8">
-      {resourceGroups.map((group) => (
+      {getResourceGroups(locale as AppLocale).map((group) => (
         <section key={group.id} aria-labelledby={`resources-${group.id}`}>
           <h2 id={`resources-${group.id}`} className="text-lg font-semibold">
             {t(`groups.${group.id}`)}

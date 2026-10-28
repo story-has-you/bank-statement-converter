@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { getRelatedResources } from "@/config/resources";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function RelatedConversionPages({ current }: { current?: string }) {
-  const t = await getTranslations("Resources");
+  const [locale, t] = await Promise.all([getLocale(), getTranslations("Resources")]);
   return (
     <section className="border-t border-border" aria-labelledby="related-pages-title">
       <div className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
@@ -13,7 +14,7 @@ export async function RelatedConversionPages({ current }: { current?: string }) 
         </h2>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{t("featuredDescription")}</p>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-          {getRelatedResources(current).map((page) => (
+          {getRelatedResources(locale as AppLocale, current).map((page) => (
             <li key={page.id}>
               <Link
                 href={page.path}

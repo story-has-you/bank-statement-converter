@@ -4,6 +4,7 @@ import { cache } from "react";
 import { aiProvider } from "@/config/ai-provider";
 import { subscriptionConfig } from "@/config/plans";
 import { publicContentPages } from "@/config/public-pages";
+import { getResourceGroups, getResourcePage } from "@/config/resources";
 import { siteConfig } from "@/config/site";
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -35,7 +36,15 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
   const officialPages = [
     { name: metadata("brand"), href: pageUrl("/") },
     { name: footer("privacy"), href: pageUrl("/privacy") },
-    ...publicContentPages.map((page) => ({ name: pageT(page.messageKey), href: pageUrl(page.path) })),
+    ...getResourceGroups(locale).flatMap((group) =>
+      group.pageIds.map((id) => {
+        const page = getResourcePage(id);
+        return { name: pageT(`Resources.links.${id}`), href: pageUrl(page.path) };
+      }),
+    ),
+    ...publicContentPages
+      .filter((page) => page.id === "about" || page.id === "resources")
+      .map((page) => ({ name: pageT(page.messageKey), href: pageUrl(page.path) })),
   ];
   const plans = membershipTiers.map((tier) => ({
     tier,

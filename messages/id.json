@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "StatementXL | Rekening koran PDF ke Excel",
-    "description": "StatementXL: Ubah rekening koran PDF ke Excel dengan pratinjau dan penanda risiko. Professional dan Enterprise dapat mencoba hasil pindai dengan AI opsional. Tanpa riwayat berkas permanen.",
-    "keywords": "Bank Statement Converter, rekening koran PDF ke Excel, konverter PDF ke Excel, ekstraksi transaksi bank, analisis AI rekening koran, PDF rekening koran hasil pindai ke Excel",
+    "title": "Konversi rekening koran PDF ke Excel & CSV | StatementXL",
+    "description": "Konversi rekening koran PDF ke Excel atau CSV, secara default lokal di browser tanpa unggahan berkas. AI opsional untuk Professional dan Enterprise. Tinjau sebelum mengunduh.",
+    "keywords": "rekening koran PDF ke Excel, rekening koran PDF ke CSV, konverter rekening koran, OCR rekening koran",
     "brand": "StatementXL",
-    "alternateName": "Konverter rekening koran PDF ke Excel"
+    "alternateName": "Ubah rekening koran PDF menjadi Excel atau CSV"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -52,26 +52,26 @@
   },
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
-    "title": "Ubah rekening koran PDF menjadi Excel",
-    "description": "Ubah rekening koran PDF ke Excel atau CSV, lalu periksa transaksi dan penanda risiko di pratinjau sebelum mengunduh."
+    "title": "Ubah rekening koran PDF menjadi Excel atau CSV",
+    "description": "Konversi rekening koran PDF ke Excel atau CSV, secara default di browser tanpa mengunggah berkas. Tinjau transaksi dan penanda risiko sebelum mengunduh. Professional dan Enterprise menawarkan penguraian AI opsional."
   },
   "PdfUpload": {
-    "title": "Unggah rekening koran",
+    "title": "Pilih rekening koran",
     "description": "Proses satu PDF setiap kali",
     "fileLabel": "Rekening koran PDF",
     "dropzone": "Pilih PDF atau seret ke sini",
     "dropzoneHint": "Satu PDF yang dapat dibuka, maksimal {megabytes, number} MB · {pages, number} halaman.",
     "errorTitle": "Operasi ini tidak dapat diselesaikan",
-    "invalidPdf": "Berkas yang diunggah bukan PDF.",
-    "multipleFiles": "Unggah satu PDF setiap kali.",
+    "invalidPdf": "Berkas yang dipilih bukan PDF.",
+    "multipleFiles": "Pilih satu PDF setiap kali.",
     "conversionFailed": "Penyebab spesifik kegagalan tidak dapat ditentukan.",
     "parserUnavailable": "Layanan konversi tidak dapat dihubungi.",
     "quotaExceeded": "PDF ini memiliki {pageCount, number} halaman, tetapi kuota konversi Anda hanya tersisa {remainingPages, number} halaman.",
     "quotaUnavailable": "Kuota konversi yang tersedia tidak dapat ditentukan.",
     "removeFile": "Hapus berkas",
     "quota": "Kuota gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} halaman per hari setelah login",
-    "serviceReady": "Situs ini tidak menyimpan riwayat berkas permanen.",
-    "status": "Siap diunggah",
+    "serviceReady": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. PDF lengkap dan nama berkas hanya dikirim ke server kami dan Qwen AI Platform jika Anda memilih AI.",
+    "status": "Siap dikonversi",
     "converting": "Mengonversi",
     "start": "Konversi dan periksa",
     "fileTooLarge": "Ukuran PDF ini melebihi {megabytes, number} MB.",
@@ -83,22 +83,22 @@
     "requestFailed": "Respons atas permintaan konversi tidak dapat diterima.",
     "resultStorageFailed": "Konversi selesai, tetapi browser tidak dapat menyimpan hasilnya.",
     "browserStorageUnavailable": "Penyimpanan browser tidak tersedia.",
-    "emptyFile": "Berkas PDF yang diunggah kosong.",
+    "emptyFile": "Berkas PDF yang dipilih kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
     "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
-    "aiNotice": "Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan. Lihat <link>penyedia, ketentuan, dan kebijakan privasi</link>.",
+    "aiNotice": "Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan. Lihat <link>penyedia, ketentuan, dan kebijakan privasi</link>.",
     "checking": "Memeriksa PDF dan kuota",
     "retryCheck": "Periksa lagi",
     "pageCount": "{pageCount, number} halaman",
     "tooManyPages": "PDF ini melebihi batas {pages, number} halaman per file.",
     "unreadablePdf": "PDF tidak dapat dibaca. Pilih PDF yang dapat dibuka dengan normal.",
-    "passwordProtectedPdf": "PDF ini dilindungi kata sandi. Hapus kata sandinya sebelum mengunggah.",
-    "aiSummary": "Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform.",
+    "passwordProtectedPdf": "PDF ini dilindungi kata sandi. Hapus kata sandinya, lalu pilih kembali berkasnya.",
+    "aiSummary": "Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform.",
     "aiDetails": "Rincian pemrosesan AI",
     "methodLabel": "Metode penguraian",
-    "regularMethod": "Penguraian biasa",
+    "regularMethod": "Penguraian lokal",
     "aiMethod": "Penguraian AI",
-    "localNotice": "Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota."
+    "localNotice": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota."
   },
   "ConversionResult": {
     "metadata": {
@@ -274,13 +274,13 @@
     }
   },
   "HomeFeatures": {
-    "title": "Fitur konversi rekening koran",
-    "securityTitle": "Privasi berkas",
-    "securityDescription": "Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan.",
-    "banksTitle": "Ekstraksi tabel",
-    "banksDescription": "Judul kolom dan teks sel rekening koran PDF ditampilkan dalam tabel untuk dibandingkan dengan aslinya.",
-    "accuracyTitle": "Pemeriksaan risiko",
-    "accuracyDescription": "DISCREPANCY dan UNVERIFIABLE menandai data tidak lengkap atau baris tidak selaras sebelum diunduh."
+    "title": "Rekap transaksi yang bisa ditelusuri",
+    "securityTitle": "Penguraian lokal secara default",
+    "securityDescription": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. PDF lengkap dan nama berkas hanya dikirim ke server kami dan Qwen AI Platform jika Anda memilih AI.",
+    "banksTitle": "Periksa unduhan dari bank lebih dulu",
+    "banksDescription": "Jika bank menyediakan Excel atau CSV untuk periode dan kolom yang diperlukan, gunakan unduhan itu. Konversi PDF berguna saat hanya rekening koran PDF yang tersedia.",
+    "accuracyTitle": "Cocokkan debit, kredit dan saldo",
+    "accuracyDescription": "Periksa tanggal, keterangan yang terpotong baris, jumlah dan saldo pada dokumen asli. Posisi halaman dan baris membantu menelusuri transaksi yang meragukan."
   },
   "UsageTiers": {
     "title": "Paket dan kuota rekening koran",
@@ -369,32 +369,32 @@
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",
     "banks": {
-      "question": "Rekening koran apa yang didukung?",
-      "answer": "Kami sedang memeriksa konverter dengan beberapa format rekening koran elektronik. Bank dan format akan kami cantumkan setelah diverifikasi."
+      "question": "Apakah semua format rekening koran bank Indonesia sudah diuji?",
+      "answer": "Belum semua bank dan format rekening Indonesia diuji. Gunakan unduhan Excel atau CSV bank bila sesuai; jika hanya ada PDF, coba dokumen teks asli lalu cocokkan hasilnya. Nama bank pada suatu panduan bukan bukti dukungan semua formatnya."
     },
     "accuracy": {
-      "question": "Mengapa hasil perlu diperiksa?",
-      "answer": "Konversi rekening koran mempertahankan judul kolom dan teks sel bila memungkinkan. Tata letak rumit, teks buram, atau kolom tidak selaras dapat memunculkan DISCREPANCY atau UNVERIFIABLE. Periksa PDF asli sebelum pembukuan, pelaporan, atau pengajuan."
+      "question": "Bagaimana mencocokkan debit, kredit dan saldo?",
+      "answer": "Cocokkan tanggal, keterangan, debit, kredit dan saldo yang tersedia dengan PDF asli. OK, DISCREPANCY dan UNVERIFIABLE menunjukkan bukti tiap baris, bukan audit atau jaminan kebenaran."
     },
     "quota": {
-      "question": "Berapa halaman yang dapat dikonversi per hari?",
-      "answer": "Konversi rekening koran gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} setelah login. Bulanan: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} halaman. Dihitung per halaman PDF. Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli."
+      "question": "Berapa halaman gratis setiap hari?",
+      "answer": "Konversi rekening koran gratis: {anonymousPages, number} halaman per hari tanpa login, {authenticatedPages, number} setelah login. Bulanan: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} halaman. Dihitung per halaman PDF. Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota."
     },
     "scans": {
-      "question": "Bisakah saya mengonversi PDF hasil pindai atau terenkripsi?",
-      "answer": "Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI. Paket lain memerlukan lapisan teks. Semua paket tidak mendukung berkas yang dilindungi kata sandi."
+      "question": "Bisakah rekening koran hasil scan dikonversi?",
+      "answer": "Penguraian biasa memerlukan lapisan teks. Dengan Professional atau Enterprise dan kuota tersedia, pilih AI secara aktif untuk mencoba PDF scan. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform; hasil tetap harus diperiksa."
     },
     "storage": {
-      "question": "Apakah PDF, Excel, atau transaksi saya disimpan?",
-      "answer": "Server tidak menyimpan riwayat permanen PDF, ekspor, atau transaksi. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda."
+      "question": "Bisakah hasil konversi lama diunduh kembali?",
+      "answer": "Penguraian lokal adalah mode default. PDF lengkap dan nama berkas hanya dikirim melalui server kami ke Qwen AI Platform jika Anda memilih AI. Server tidak menyimpan riwayat permanen PDF, ekspor, atau transaksi. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda."
     },
     "failure": {
-      "question": "Apa yang terjadi jika konversi gagal?",
+      "question": "Apa yang dilakukan jika transaksi hilang?",
       "answer": "Jika konversi rekening koran gagal, muncul kesalahan tanpa Excel tidak valid atau pemakaian kuota. Hasil parsial menghitung semua halaman PDF."
     },
     "ai": {
-      "question": "Kapan penguraian AI digunakan?",
-      "answer": "Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli. Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform."
+      "question": "Data apa yang dikirim ke Qwen saat memilih AI?",
+      "answer": "Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Cocokkan hasil dengan PDF asli sebelum digunakan."
     }
   },
   "HomeFooter": {
@@ -413,7 +413,7 @@
     "resources": "Panduan dan alat"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 20 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 28 Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -425,11 +425,11 @@
     "availability": "Konversi PDF ke Excel dan langganan Creem, PayPal atau Waffo disediakan sesuai keadaan halaman saat ini. Harga dan ketersediaan paket dapat berubah mengikuti konfigurasi layanan.",
     "service": {
       "title": "Cakupan layanan",
-      "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum. Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli."
+      "body": "Layanan menyusun informasi transaksi dari rekening koran PDF yang didukung menjadi Excel untuk diunduh dan diperiksa. Bank, jenis berkas, dan batas pemrosesan yang didukung dijelaskan di halaman layanan. Kami tidak menyediakan koneksi rekening bank, layanan perbankan, atau nasihat keuangan, pajak, maupun hukum. Secara default, penguraian lokal berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli."
     },
     "authorization": {
-      "title": "Izin mengunggah berkas",
-      "body": "Unggah hanya rekening koran yang boleh Anda gunakan dan proses. Pastikan pengunggahan dan pemrosesan informasi pribadi atau keuangan sesuai hukum yang berlaku dan kewajiban Anda kepada orang lain. Jangan unggah berkas yang diperoleh tanpa izin."
+      "title": "Izin untuk memproses berkas",
+      "body": "Pilih hanya rekening koran yang berhak Anda gunakan dan proses. Pemrosesan informasi pribadi atau keuangan harus sesuai hukum yang berlaku dan kewajiban Anda kepada orang lain. Jika memilih AI, Anda juga harus berhak mengirim PDF lengkap dan nama berkas ke server kami dan Qwen AI Platform. Jangan memproses berkas yang diperoleh tanpa izin."
     },
     "accuracy": {
       "title": "Memeriksa hasil konversi",
@@ -437,7 +437,7 @@
     },
     "quota": {
       "title": "Kuota konversi",
-      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem, PayPal atau Waffo saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF. Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli."
+      "body": "Tanpa login, Anda dapat mengonversi {anonymousPages, number} halaman PDF per hari. Pengguna gratis yang login dapat mengonversi {authenticatedPages, number} halaman per hari. Standar mencakup {standardPages, number} halaman per bulan, Profesional {professionalPages, number}, dan Perusahaan {enterprisePages, number}. Kuota harian direset menurut UTC dan kuota paket mengikuti periode tagihan Creem, PayPal atau Waffo saat ini. Konversi gagal tidak memakai kuota; hasil sebagian menghitung halaman PDF. Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota."
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
@@ -451,7 +451,7 @@
     },
     "files": {
       "title": "Berkas dan unduhan",
-      "body": "Excel, CSV, JSON, Markdown, TSV, dan HTML dibuat di browser dari hasil akhir saat ini, termasuk nama merchant yang dikonfirmasi. Server tidak menyimpan riwayat permanen PDF, transaksi yang diekstrak, atau file ekspor. Nama file, hasil, dan pemetaan merchant disimpan sementara dalam sesi tab ini untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Simpan laporan asli dan unduhan Anda; layanan tidak menyediakan unduhan ulang file historis setelah alur saat ini berakhir."
+      "body": "Penguraian lokal adalah mode default. PDF lengkap dan nama berkas hanya dikirim melalui server kami ke Qwen AI Platform jika Anda memilih AI. Excel, CSV, JSON, Markdown, TSV, dan HTML dibuat di browser dari hasil akhir saat ini, termasuk nama merchant yang dikonfirmasi. Server tidak menyimpan riwayat permanen PDF, transaksi yang diekstrak, atau file ekspor. Nama file, hasil, dan pemetaan merchant disimpan sementara dalam sesi tab ini untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Simpan laporan asli dan unduhan Anda; layanan tidak menyediakan unduhan ulang file historis setelah alur saat ini berakhir."
     },
     "prohibited": {
       "title": "Penyalahgunaan yang dilarang",
@@ -459,7 +459,7 @@
     },
     "rights": {
       "title": "Kepemilikan",
-      "body": "Anda tetap memiliki hak atas berkas dan isinya. Pengunggahan hanya memberi kami izin untuk memproses konversi saat ini, bukan memindahkan kepemilikan. Hak atas perangkat lunak, antarmuka, dan merek situs tetap pada pemilik sahnya."
+      "body": "Anda tetap memiliki hak atas berkas dan isinya. Penggunaan konverter hanya mengizinkan pemrosesan yang diperlukan untuk konversi saat ini dan tidak memindahkan kepemilikan. Penguraian lokal tidak memerlukan unggahan berkas. Hak atas perangkat lunak, antarmuka, dan merek tetap berada pada pemilik yang sah."
     },
     "liability": {
       "title": "Ketersediaan dan tanggung jawab",
@@ -481,18 +481,18 @@
   "Privacy": {
     "metadata": {
       "title": "Kebijakan privasi | StatementXL",
-      "description": "Pemrosesan rekening koran, penguraian AI, hasil sementara di browser, serta data akun, operasional penguraian, kuota, dan penagihan."
+      "description": "Cara menangani penguraian lokal di browser, unggahan AI opsional, hasil browser sementara, serta data akun, analitik, kuota, dan penagihan."
     },
     "title": "Kebijakan privasi",
     "intro": "ReAvid Ltd mengelola <site>{domain}</site>. Kebijakan ini menjelaskan penanganan informasi saat Anda menggunakan konversi dan langganan Creem, PayPal atau Waffo.",
     "availability": "Kebijakan ini berlaku untuk fitur konversi PDF ke Excel, login akun, dan langganan Creem, PayPal atau Waffo yang tersedia saat ini.",
     "documents": {
       "title": "Rekening koran dan isi konversi",
-      "body": "PDF Anda dapat berisi nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan keterangan transaksi yang sensitif. Kami memproses PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan yang diminta, bukan untuk iklan atau tujuan lain yang tidak terkait. Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli. Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform."
+      "body": "Rekening koran dapat memuat nama, nomor rekening, tanggal transaksi, jumlah, saldo, dan deskripsi sensitif. Isinya hanya digunakan untuk konversi, peninjauan, dan unduhan yang Anda minta, bukan untuk iklan atau tujuan lain yang tidak terkait. Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota. Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform."
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem, PayPal atau Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem, PayPal atau Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian biasa hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Creem dan Waffo juga menerima email akun situs; PayPal menangani rincian pembayaran melalui alur akunnya sendiri. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Creem, PayPal atau Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Creem, PayPal atau Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian lokal hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Creem dan Waffo juga menerima email akun situs; PayPal menangani rincian pembayaran melalui alur akunnya sendiri. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -504,7 +504,7 @@
     },
     "retention": {
       "title": "Penyimpanan",
-      "documents": "Situs ini menggunakan PDF, transaksi yang diekstrak, dan isi ekspor hanya untuk konversi dan unduhan saat ini, tanpa menuliskannya ke basis data permanen, penyimpanan objek, atau riwayat berkas. Setelah pemrosesan, tidak ada berkas yang disimpan untuk unduhan berikutnya. Data yang diterima penyedia penguraian AI tunduk pada aturan retensi dan pemrosesannya sendiri.",
+      "documents": "Dalam penguraian lokal, PDF dan transaksi diproses hanya di browser Anda. Jika Anda memilih AI, server kami memproses konten yang diunggah untuk konversi saat ini tanpa menyimpan PDF, transaksi, keluaran model, atau ekspor ke basis data permanen, penyimpanan objek, atau riwayat berkas server. Penyedia AI menerapkan aturan retensi dan pemrosesannya sendiri pada data yang diterima. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda.",
       "metadata": "Metadata akun, kuota, dan tagihan disimpan hanya selama diperlukan untuk layanan atau kewajiban hukum. Saat tidak diperlukan lagi, data dihapus atau dianonimkan sesuai sistem dan persyaratan hukum. Email akun saat pembelian merupakan bagian dari catatan langganan. Metadata operasional parsing mengikuti prinsip penyimpanan yang sama; catatan parsing terkait dihapus saat akun dihapus."
     },
     "providers": {
@@ -538,7 +538,7 @@
     "aiParsing": {
       "title": "Penguraian AI dan pemrosesan pihak ketiga",
       "provider": "Penyedia penguraian AI adalah Qwen AI Platform, yang dioperasikan oleh 通义云启（杭州）信息技术有限公司 (nama badan hukum terdaftar). Berlaku <terms>Perjanjian Layanan Produk</terms> serta <privacy>Pemberitahuan Hukum dan Kebijakan Privasi</privacy> penyedia.",
-      "body": "Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan."
+      "body": "Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan."
     }
   },
   "ThemeToggle": {
@@ -652,19 +652,19 @@
     }
   },
   "Geo": {
-    "glance": "Ringkasan utama",
-    "conversionSummary": "StatementXL mengubah rekening koran PDF menjadi Excel untuk ditinjau. Professional dan Enterprise dapat mencoba PDF hasil pindai dengan AI opsional. Filter risiko, seragamkan nama merchant secara manual, dan ekspor ke Excel, CSV, JSON, Markdown, TSV, atau HTML.",
-    "limitsSummary": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
+    "glance": "Susun tanggal, keterangan, debit, kredit, dan saldo untuk dicocokkan dengan PDF asli. Penguraian biasa berjalan di browser; periksa transaksi sebelum mengunduh Excel atau CSV.",
+    "conversionSummary": "Susun tanggal, keterangan, debit, kredit, dan saldo untuk dicocokkan dengan PDF asli. Penguraian biasa berjalan di browser; periksa transaksi sebelum mengunduh Excel atau CSV.",
+    "limitsSummary": "Pilih satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "quotaSummary": "Konversikan {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk; paket bulanan mulai {price} USD.",
-    "privacySummary": "Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli. Professional dan Enterprise dapat memilih AI untuk mencoba PDF hasil pindai. PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan.",
-    "featuresAnswer": "Secara default, penguraian biasa berjalan di browser tanpa beralih otomatis ke AI. Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Cocokkan hasil dengan PDF asli. Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli.",
+    "privacySummary": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota. Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan.",
+    "featuresAnswer": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota. Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Cocokkan hasil dengan PDF asli sebelum digunakan.",
     "riskTitle": "Apa arti label risiko?",
     "riskAnswer": "Label menjelaskan bukti yang tersedia pada setiap baris hasil ekstraksi. Cocokkan baris bertanda dengan PDF asli sebelum menggunakan hasil. Filter risiko hanya mengubah pratinjau; penyeragaman dan ekspor tetap mencakup semua transaksi dalam hasil.",
     "okDefinition": "Tidak ada masalah terdeteksi; ini tidak menjamin ketepatan atau kelengkapan.",
     "discrepancyDefinition": "Bukti yang bertentangan atau masalah yang perlu ditinjau terdeteksi.",
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
-    "limitsTitle": "PDF apa yang dapat diunggah?",
-    "limitsAnswer": "Unggah satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket. Penguraian biasa berjalan di browser. PDF dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman yang dikirim untuk memotong kuota. Server menerima jumlah dari klien tanpa memeriksa berkas asli.",
+    "limitsTitle": "PDF apa yang dapat dipilih?",
+    "limitsAnswer": "Pilih satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Enterprise dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
     "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Creem, PayPal atau Waffo. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
@@ -676,7 +676,7 @@
     "billingPeriod": "Periode tagihan",
     "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Creem, PayPal atau Waffo. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs. Harga Waffo belum termasuk pajak; pajak yang berlaku dan total akhir ditampilkan saat checkout.",
     "privacyTitle": "Bagaimana data saya diproses?",
-    "privacyAnswer": "Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
+    "privacyAnswer": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. PDF lengkap dan nama berkas hanya dikirim ke server kami dan Qwen AI Platform jika Anda memilih AI. Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
     "browserTitle": "Apa yang disimpan sementara di browser?",
     "browserAnswer": "Server tidak menyimpan riwayat permanen PDF, ekspor, atau transaksi. Penyimpanan sesi tab ini menampung sementara nama file, hasil ekstraksi, kolom merchant yang dipilih, dan pemetaan alias beserta nama yang dikonfirmasi untuk pratinjau, pemulihan setelah memuat ulang, dan unduhan. Memulai konversi baru atau membersihkan hasil akan menghapus data tersebut; pemetaan tidak dipakai ulang antarfile. Simpan PDF asli dan unduhan Anda.",
     "metadataTitle": "Data akun dan tagihan apa yang disimpan?",
@@ -715,8 +715,8 @@
   },
   "Landing": {
     "stepsTitle": "Konversi rekening koran dalam tiga langkah",
-    "uploadTitle": "Unggah PDF Anda",
-    "uploadText": "Unggah satu PDF rekening koran asli, maksimal {megabytes} MB dan {pages} halaman. Pengguna anonim serta paket gratis dan Standard memerlukan lapisan teks. File yang dilindungi kata sandi tidak didukung.",
+    "uploadTitle": "Pilih PDF Anda",
+    "uploadText": "Pilih satu PDF rekening koran asli, maksimal {megabytes} MB dan {pages} halaman. Pengguna anonim serta paket gratis dan Standard memerlukan lapisan teks. File yang dilindungi kata sandi tidak didukung.",
     "reviewTitle": "Periksa transaksi yang diekstrak",
     "downloadTitle": "Unduh hasil",
     "downloadText": "Unduh Excel atau pilih CSV, JSON, Markdown, TSV, atau HTML. CSV dan TSV menghasilkan satu file per tabel dengan kolom risiko dan sumber. Sesuaikan kolom dengan kebutuhan perangkat lunak akuntansi sebelum mengimpor; file ini bukan format khusus QBO atau Xero.",
@@ -730,46 +730,79 @@
     "pages": {
       "pdf": {
         "label": "Rekening koran PDF ke Excel",
-        "title": "Konversi rekening koran PDF ke Excel",
-        "intro": "Gunakan StatementXL untuk mengekstrak transaksi dari PDF, membandingkan pratinjau dengan dokumen asli, dan mengunduh Excel dengan penanda risiko. Konversi gratis {anonymousPages} halaman per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Simpan dokumen asli untuk pemeriksaan.",
-        "metaDescription": "Ubah rekening koran PDF ke Excel dengan StatementXL. Tinjau transaksi serta penanda risiko dan bandingkan ekspor dengan PDF asli."
-      },
-      "csv": {
-        "label": "Konverter Rekening Koran PDF ke CSV",
-        "title": "Ubah rekening koran PDF menjadi CSV",
-        "intro": "Ekstrak transaksi dari rekening koran PDF, periksa baris dengan dokumen asli, lalu unduh CSV. Coba {anonymousPages} halaman per hari tanpa masuk, atau {authenticatedPages} halaman setelah masuk.",
-        "metaDescription": "Ubah rekening koran PDF ke CSV. Periksa transaksi dan tanda risiko, unduh satu CSV per tabel, lalu siapkan kolom untuk perangkat lunak akuntansi Anda.",
-        "requirementsTitle": "Memilih CSV atau Excel",
-        "requirements": "Pilih CSV untuk menyiapkan data bagi spreadsheet atau impor akuntansi. Pilih Excel jika membutuhkan buku kerja dengan beberapa lembar. Keduanya menggunakan hasil konversi yang sama setelah diperiksa.",
-        "preparationTitle": "Satu file CSV per tabel",
-        "preparation": "Setelah konversi, buka menu format di samping tombol unduh Excel dan pilih CSV. Setiap tabel logis diunduh terpisah, dengan kolom asli serta kolom risiko dan sumber.",
-        "limitationsTitle": "Siapkan salinan terpisah untuk impor",
-        "limitations": "Simpan ekspor lengkap untuk pemeriksaan. Pada salinan terpisah, hapus kolom pemeriksaan dan sesuaikan tanggal, deskripsi, serta jumlah dengan perangkat lunak tujuan. StatementXL tidak membuat file khusus QBO atau Xero dan tidak mengimpor transaksi untuk Anda.",
-        "stepsTitle": "Dari rekening koran PDF ke CSV",
+        "title": "Jadikan rekening koran PDF lembar Excel untuk diperiksa",
+        "intro": "Siapkan rekap transaksi tanpa menyalin satu per satu. Cocokkan keterangan, debit dan kredit dengan PDF, lalu simpan Excel dengan satu sheet per tabel logis. Kuota gratis harian adalah {anonymousPages} halaman tanpa masuk atau {authenticatedPages} halaman setelah masuk.",
+        "metaDescription": "Konversi rekening koran PDF ke Excel dan cocokkan tanggal, keterangan, debit, kredit serta saldo. Simpan sumber baris dan catatan pemeriksaan.",
+        "requirementsTitle": "Gunakan PDF asli dari internet banking",
+        "requirements": "Teks yang bisa dipilih dapat diurai di browser. Hindari mencetak lalu memindai PDF digital; hasil scan memerlukan paket yang sesuai dan pemilihan AI secara aktif.",
+        "preparationTitle": "Pisahkan rekening dan periode",
+        "preparation": "Periksa rekening, mata uang dan periode rekening koran. Simpan dokumen asli bersama rekap, lalu cocokkan keterangan panjang serta transaksi di pergantian halaman.",
+        "limitationsTitle": "Rekap Excel bukan rekonsiliasi otomatis",
+        "limitations": "Hasil adalah salinan kerja, bukan rekening koran resmi atau pemeriksaan keaslian. StatementXL tidak terhubung langsung ke bank maupun software akuntansi dan tidak menjamin semua format bank.",
+        "stepsTitle": "Dari rekening koran ke rekap Excel",
         "steps": {
           "upload": {
-            "title": "Unggah rekening koran PDF",
-            "text": "Unggah satu PDF hingga {megabytes} MB dan {pages} halaman. Utamakan PDF teks asli dari bank. PDF hasil pindai memerlukan paket AI yang memenuhi syarat dan pemilihan AI secara manual."
+            "title": "Pilih rekening koran PDF",
+            "text": "Pilih satu PDF hingga {megabytes} MB dan {pages} halaman. Utamakan dokumen asli dengan lapisan teks."
           },
           "review": {
-            "title": "Periksa transaksi dan tanda risiko",
-            "text": "Bandingkan tanggal, deskripsi, jumlah, serta saldo dengan dokumen asli. Periksa baris DISCREPANCY dan UNVERIFIABLE sebelum menggunakan ekspor."
+            "title": "Cocokkan mutasi dan saldo",
+            "text": "Periksa tanggal, keterangan, debit, kredit dan saldo pada dokumen asli, termasuk semua baris bertanda risiko."
           },
           "download": {
-            "title": "Pilih CSV di menu unduh",
-            "text": "Buka menu format di samping Excel dan pilih CSV. Unduh setiap tabel, simpan salinan pemeriksaan lengkap, dan siapkan salinan terpisah untuk impor."
+            "title": "Simpan Excel beserta rujukan",
+            "text": "Setiap tabel logis menjadi satu sheet. Simpan ekspor lengkap dan siapkan salinan tersendiri bila perlu impor ke sistem lain."
+          }
+        },
+        "faq": [
+          {
+            "id": "banks",
+            "question": "Apakah pasti bisa untuk BCA, Mandiri, BRI atau BNI?",
+            "answer": "Tidak ada jaminan untuk setiap format bank tersebut. Coba sampel yang boleh Anda proses dan cocokkan semua transaksi. Format rekening dapat berubah."
+          },
+          {
+            "id": "reconcile",
+            "question": "Apakah Excel sudah berarti transaksi direkonsiliasi?",
+            "answer": "Belum. Cocokkan dengan catatan pembukuan dan rekening koran asli. Tanda risiko menunjukkan bukti per baris, bukan hasil rekonsiliasi atau audit."
+          }
+        ]
+      },
+      "csv": {
+        "label": "Rekening koran PDF ke CSV",
+        "title": "Ekstrak mutasi rekening koran ke CSV per tabel",
+        "intro": "Perlu baris transaksi untuk diolah lagi? Periksa hasil dari PDF lalu unduh satu CSV untuk setiap tabel logis. Kolom asli, keterangan, catatan pemeriksaan dan posisi sumber tetap disertakan. Kuota gratis harian adalah {anonymousPages} halaman tanpa masuk atau {authenticatedPages} halaman setelah masuk.",
+        "metaDescription": "Ubah rekening koran PDF ke CSV per tabel. Periksa debit, kredit, tanggal dan angka sebelum menyiapkan salinan untuk impor pembukuan.",
+        "requirementsTitle": "CSV umum untuk pengolahan lanjutan",
+        "requirements": "Excel dan CSV memakai hasil yang sama. CSV memuat kolom risiko dan sumber; bukan templat impor khusus untuk software akuntansi tertentu.",
+        "preparationTitle": "Periksa kolom dan format angka",
+        "preparation": "Buat salinan sesuai kolom, tanggal, tanda jumlah dan pemisah desimal yang diminta tujuan. Periksa pratinjau impor dan transaksi ganda, lalu simpan ekspor lengkap sebagai rujukan.",
+        "limitationsTitle": "Tabel berbeda tidak otomatis digabung",
+        "limitations": "Setiap tabel logis memiliki berkas CSV sendiri. Jangan mencampur rekening atau mata uang tanpa pemeriksaan. Spreadsheet dapat menafsirkan ulang tanggal dan nomor panjang.",
+        "stepsTitle": "Periksa mutasi lalu simpan CSV",
+        "steps": {
+          "upload": {
+            "title": "Pilih rekening koran PDF",
+            "text": "Pilih satu PDF hingga {megabytes} MB dan {pages} halaman. Utamakan PDF teks asli dari bank. PDF hasil pindai memerlukan paket AI yang memenuhi syarat dan pemilihan AI secara manual."
+          },
+          "review": {
+            "title": "Cocokkan keterangan dan jumlah",
+            "text": "Periksa debit, kredit dan keterangan yang bersambung ke baris lain pada dokumen asli."
+          },
+          "download": {
+            "title": "Unduh CSV tiap tabel",
+            "text": "Pilih CSV melalui menu format hasil atau tombol tabel. Gunakan salinan yang disesuaikan untuk impor ke aplikasi lain."
           }
         },
         "faq": [
           {
             "id": "import",
-            "question": "Bisakah CSV yang diunduh langsung diimpor ke QuickBooks atau Xero?",
-            "answer": "File tersebut bukan file impor khusus. Ekspor memuat kolom asli dan kolom pemeriksaan. Siapkan salinan dengan kolom, tanggal, dan tanda jumlah yang diwajibkan, lalu periksa pratinjau impor."
+            "question": "Bisa langsung diimpor ke aplikasi akuntansi?",
+            "answer": "Jangan menganggapnya siap impor. Sesuaikan salinan dengan kolom dan format aplikasi tujuan, lalu periksa rekening, tanda jumlah dan duplikasi pada pratinjau."
           },
           {
             "id": "tables",
-            "question": "Mengapa saya menerima lebih dari satu file CSV?",
-            "answer": "Ekspor CSV dan TSV menghasilkan satu file per tabel logis. Unduh tabel secara terpisah; jangan menganggap rekening atau mata uang berbeda boleh digabung dalam satu file impor."
+            "question": "Mengapa ada beberapa CSV dari satu PDF?",
+            "answer": "Setiap tabel logis diekspor terpisah agar strukturnya tetap jelas. Periksa rekening serta mata uang sebelum menggabungkan data."
           }
         ]
       },
@@ -777,7 +810,7 @@
         "bank": "Chase",
         "label": "Rekening koran Chase ke Excel",
         "title": "Konversi rekening koran Chase ke Excel",
-        "intro": "Unduh PDF rekening koran Chase dan unggah ke StatementXL untuk memeriksa transaksi serta mengunduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Cocokkan hasil dengan dokumen asli.",
+        "intro": "Unduh PDF rekening koran Chase dan pilih di StatementXL untuk memeriksa transaksi serta mengunduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Cocokkan hasil dengan dokumen asli.",
         "availability": "Chase menyediakan rekening koran hingga tujuh tahun, tergantung jenis rekening. Periksa tahun yang tersedia di Statements & documents; tidak semua rekening memiliki tujuh tahun penuh.",
         "download": "Masuk ke chase.com, buka Main Menu lalu Statements & documents. Pilih tahun dan rekening, lalu ikon Open atau Save di samping rekening koran. Simpan PDF asli, bukan tangkapan layar.",
         "detailsTitle": "Chase Mobile dan unduhan transaksi",
@@ -788,7 +821,7 @@
         "bank": "Bank of America",
         "label": "Rekening koran Bank of America ke Excel",
         "title": "Konversi rekening koran Bank of America ke Excel",
-        "intro": "Unggah PDF Bank of America ke StatementXL, periksa transaksi, dan unduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Segera simpan rekening koran lama yang diminta.",
+        "intro": "Pilih PDF Bank of America di StatementXL, periksa transaksi, dan unduh Excel. Anda mendapat {anonymousPages} halaman gratis per hari tanpa masuk atau {authenticatedPages} halaman setelah masuk. Segera simpan rekening koran lama yang diminta.",
         "availability": "Rekening koran dengan gambar cek dapat dilihat, dicetak, dan diunduh langsung hingga 18 bulan terakhir. Salinan yang lebih lama dapat diminta hingga tujuh tahun ke belakang. Periksa ketersediaan dokumen rekening kartu kredit secara terpisah.",
         "download": "Masuk ke Online Banking dan buka Statements & Documents di tab Accounts. Pilih rekening dan periode, buka PDF, lalu simpan. Untuk salinan lama, gunakan Request statements di bagian yang sama.",
         "detailsTitle": "Meminta rekening koran lama Bank of America",
@@ -807,43 +840,43 @@
         "metaDescription": "Siapkan PDF Wells Fargo untuk Excel. Periksa ketersediaan periode menurut rekening dan transaksi sebelum mengekspor."
       },
       "scanned": {
-        "label": "OCR rekening koran: PDF hasil pindai ke Excel",
-        "title": "Ubah rekening koran hasil pindai ke Excel dengan AI",
-        "intro": "Gunakan OCR rekening koran untuk mencoba mengekstrak transaksi dari PDF hasil pindai. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, memeriksa hasil, lalu mengunduh Excel atau CSV. Pengenalan tidak dijamin berhasil.",
+        "label": "OCR rekening koran hasil scan",
+        "title": "Baca rekening koran hasil pindai dengan AI, lalu cocokkan",
+        "intro": "PDF berupa gambar tidak dapat dibaca penguraian biasa. Professional dan Enterprise dapat memilih Qwen AI untuk mencoba ekstraksi, lalu memeriksa tanggal, debit, kredit dan saldo sebelum menyimpan Excel atau CSV.",
         "planNote": "Hasil pindai memerlukan Professional atau Enterprise dan kuota tersedia. Pengguna anonim, gratis, dan Standard memerlukan lapisan teks. Bandingkan paket di bawah.",
         "planCta": "Penguraian AI opsional; mencoba PDF hasil pindai",
-        "requirementsTitle": "Paket mana yang dapat mencoba hasil pindai?",
-        "requirements": "Masuk dengan Professional atau Enterprise dan kuota halaman tersedia, lalu pilih AI sebelum memulai. Akses gratis dan Standard memerlukan PDF teks. AI bersifat opsional dan tidak pernah aktif otomatis.",
-        "preparationTitle": "Siapkan PDF hasil pindai yang terbaca",
-        "preparation": "Pindai halaman lengkap berurutan, dengan tanggal dan angka jelas. Hindari tepi terpotong, bayangan, dan halaman miring. Unggah satu PDF sesuai batas. Gabungkan JPG atau PNG menjadi PDF dahulu; utamakan PDF teks asli dari bank jika tersedia.",
+        "requirementsTitle": "Scan memerlukan pilihan AI dan kuota",
+        "requirements": "Gunakan Professional atau Enterprise dengan kuota tersedia dan pilih AI sebelum mulai. Penguraian biasa memerlukan teks dan tidak beralih ke AI secara otomatis.",
+        "preparationTitle": "Pastikan kolom mutasi utuh",
+        "preparation": "Jangan potong tanggal, keterangan, debit, kredit atau saldo. Hindari bayangan dan halaman miring. Gabungkan foto menjadi PDF; utamakan dokumen teks asli bila tersedia.",
         "limitationsTitle": "Periksa hasil AI dan penanganan data",
         "limitations": "Analisis AI mengirim seluruh PDF dan nama file ke Qwen AI Platform. Bandingkan hasil dengan dokumen asli; pengenalan tidak dijamin. StatementXL tidak menyimpan riwayat file atau transaksi secara permanen. Pemrosesan penyedia mengikuti ketentuannya; kami tidak menjanjikan masa penyimpanan atau penggunaan pelatihan tambahan.",
-        "stepsTitle": "Konversi hasil pindai dalam tiga langkah",
+        "stepsTitle": "Baca scan dan cocokkan transaksi",
         "steps": {
           "upload": {
             "title": "Pilih paket yang sesuai dan unggah",
             "text": "Masuk dengan Professional atau Enterprise aktif dan kuota tersedia, lalu unggah satu PDF hasil pindai maksimal {megabytes} MB dan {pages} halaman."
           },
           "review": {
-            "title": "Periksa transaksi yang diekstrak",
-            "text": "Tunggu pemeriksaan akhir, cocokkan semua transaksi dengan PDF, dan periksa DISCREPANCY serta UNVERIFIABLE sebelum digunakan."
+            "title": "Periksa angka pudar pada gambar",
+            "text": "Cocokkan seluruh transaksi, terutama tanda jumlah dan keterangan panjang. Pengenalan dapat salah membaca atau melewatkan baris."
           },
           "download": {
-            "title": "Unduh hasil yang diperiksa",
-            "text": "Unduh Excel atau format lain. Simpan dokumen asli dan unduhan; StatementXL tidak menyediakan riwayat file permanen."
+            "title": "Simpan hasil dan scan asli",
+            "text": "Unduh Excel atau CSV dan simpan dokumen asli. Tidak tersedia riwayat berkas permanen untuk mengunduh ulang."
           }
         },
-        "metaDescription": "OCR untuk rekening koran PDF hasil pindai. Paket yang memenuhi syarat dapat memilih Qwen AI, memeriksa transaksi, dan mengunduh Excel atau CSV. Pengenalan tidak dijamin.",
+        "metaDescription": "OCR rekening koran hasil scan dengan AI opsional pada paket yang sesuai. PDF lengkap dan nama berkas dikirim ke Qwen; hasil perlu diperiksa.",
         "faq": [
           {
             "id": "accuracy",
-            "question": "Apakah OCR rekening koran menjamin setiap transaksi benar?",
-            "answer": "Tidak. Kualitas pindai dan tata letak memengaruhi pengenalan. Cocokkan tanggal, jumlah, saldo, dan semua tanda risiko dengan dokumen asli sebelum menggunakan Excel atau CSV."
+            "question": "Apakah OCR menjamin saldo dan semua mutasi benar?",
+            "answer": "Tidak. Cocokkan transaksi serta saldo yang tersedia dengan dokumen asli. Label risiko membantu pemeriksaan, bukan jaminan akurasi."
           },
           {
-            "id": "images",
-            "question": "Bisakah saya mengunggah rekening koran JPG atau PNG?",
-            "answer": "Unggahan ini hanya menerima PDF. Gabungkan gambar yang jelas dan lengkap menjadi satu PDF terlebih dahulu, lalu pilih AI dengan paket Professional atau Enterprise yang memenuhi syarat."
+            "id": "processing",
+            "question": "Apakah scan diproses hanya di perangkat saya?",
+            "answer": "Saat AI dipilih, PDF lengkap dan nama berkas dikirim ke Qwen AI Platform. Ketentuan penyedia berlaku; kami tidak menambah janji tentang retensi atau pelatihan."
           }
         ]
       },
@@ -863,7 +896,7 @@
         "steps": {
           "upload": {
             "title": "Konversi PDF rekening koran",
-            "text": "Unggah satu PDF maksimal {megabytes} MB dan {pages} halaman. Gratis dan Standard memerlukan teks; Professional dan Enterprise dapat mencoba hasil pindai."
+            "text": "Pilih satu PDF maksimal {megabytes} MB dan {pages} halaman. Gratis dan Standard memerlukan teks; Professional dan Enterprise dapat mencoba hasil pindai."
           },
           "review": {
             "title": "Periksa dan ekspor transaksi",
@@ -916,7 +949,7 @@
     "pages": {
       "docuclipper": {
         "title": "StatementXL vs DocuClipper: pilih sesuai pekerjaan",
-        "intro": "Pilih StatementXL untuk memeriksa satu PDF dan mengekspor Excel atau CSV dengan penguraian biasa di browser. Pertimbangkan DocuClipper untuk pemrosesan massal, QBO, atau integrasi QuickBooks/Xero. StatementXL menulis perbandingan ini dari deskripsi resmi; kami tidak melakukan uji kecepatan atau akurasi independen.",
+        "intro": "Pilih StatementXL untuk memeriksa satu PDF dan mengekspor Excel atau CSV dengan penguraian lokal di browser. Pertimbangkan DocuClipper untuk pemrosesan massal, QBO, atau integrasi QuickBooks/Xero. StatementXL menulis perbandingan ini dari deskripsi resmi; kami tidak melakukan uji kecepatan atau akurasi independen.",
         "sections": [
           {
             "title": "Kapan DocuClipper lebih sesuai",
@@ -924,11 +957,11 @@
           },
           {
             "title": "Kapan StatementXL sesuai",
-            "text": "StatementXL cocok untuk satu PDF, pemeriksaan per baris, dan unduhan Excel atau CSV. Penguraian biasa berjalan di browser tanpa mengunggah PDF atau transaksi; setelah berhasil, hanya jumlah halaman dikirim untuk mengurangi kuota. Alasan risiko dan posisi sumber membantu pemeriksaan. AI opsional memerlukan Professional atau Enterprise dan mengirim seluruh PDF serta nama berkas ke Qwen AI Platform. Tidak ada QBO, penerimaan massal, API ekstraksi publik, atau koneksi akuntansi."
+            "text": "StatementXL cocok untuk satu PDF, pemeriksaan per baris, dan unduhan Excel atau CSV. Penguraian lokal berjalan di browser tanpa mengunggah PDF atau transaksi; setelah berhasil, hanya jumlah halaman dikirim untuk mengurangi kuota. Alasan risiko dan posisi sumber membantu pemeriksaan. AI opsional memerlukan Professional atau Enterprise dan mengirim seluruh PDF serta nama berkas ke Qwen AI Platform. Tidak ada QBO, penerimaan massal, API ekstraksi publik, atau koneksi akuntansi."
           },
           {
             "title": "Bandingkan penagihan dan biaya pemeriksaan",
-            "text": "Keduanya menerbitkan paket per halaman dengan fitur dan batas berbeda. StatementXL membedakan penguraian biasa dan AI opsional berdasarkan paket. DocuClipper menyatakan uji coba dapat menampilkan transaksi hasil ekstraksi, tetapi ekspor atau sinkronisasi memerlukan peningkatan paket. Bandingkan paket untuk berkas dan serah terima Anda, termasuk koreksi manual. Periksa ketentuan saat ini tanpa menganggap uji coba sudah mencakup ekspor yang dapat digunakan."
+            "text": "Keduanya menerbitkan paket per halaman dengan fitur dan batas berbeda. StatementXL membedakan penguraian lokal dan AI opsional berdasarkan paket. DocuClipper menyatakan uji coba dapat menampilkan transaksi hasil ekstraksi, tetapi ekspor atau sinkronisasi memerlukan peningkatan paket. Bandingkan paket untuk berkas dan serah terima Anda, termasuk koreksi manual. Periksa ketentuan saat ini tanpa menganggap uji coba sudah mencakup ekspor yang dapat digunakan."
           },
           {
             "title": "Periksa hasil akhir yang diperlukan",
@@ -974,7 +1007,7 @@
       },
       "nanonets": {
         "title": "StatementXL vs Nanonets: ekspor rekening atau otomatisasi?",
-        "intro": "Pilih StatementXL untuk memeriksa satu PDF dan mengunduh Excel atau CSV dengan penguraian biasa di browser. Pertimbangkan Nanonets jika ekstraksi perlu terhubung ke email, penyimpanan cloud, atau alur otomatis lebih luas. StatementXL menulis perbandingan ini berdasarkan deskripsi resmi; ini tidak membuktikan layanan mana lebih akurat.",
+        "intro": "Pilih StatementXL untuk memeriksa satu PDF dan mengunduh Excel atau CSV dengan penguraian lokal di browser. Pertimbangkan Nanonets jika ekstraksi perlu terhubung ke email, penyimpanan cloud, atau alur otomatis lebih luas. StatementXL menulis perbandingan ini berdasarkan deskripsi resmi; ini tidak membuktikan layanan mana lebih akurat.",
         "sections": [
           {
             "title": "Keunggulan Nanonets untuk kebutuhan tertentu",
@@ -982,7 +1015,7 @@
           },
           {
             "title": "Kegunaan StatementXL",
-            "text": "StatementXL menangani satu PDF sekaligus dan mengekspor Excel, CSV, serta format lain dengan risiko per baris dan posisi sumber. Penguraian biasa berjalan di browser tanpa mengunggah PDF atau transaksi; setelah berhasil, hanya jumlah halaman dikirim untuk mengurangi kuota. Professional dan Enterprise dapat aktif memilih AI termasuk untuk hasil pindai, yang mengirim seluruh PDF dan nama berkas ke Qwen AI Platform. Tidak ada API ekstraksi publik, masukan massal, QBO, atau koneksi akuntansi langsung."
+            "text": "StatementXL menangani satu PDF sekaligus dan mengekspor Excel, CSV, serta format lain dengan risiko per baris dan posisi sumber. Penguraian lokal berjalan di browser tanpa mengunggah PDF atau transaksi; setelah berhasil, hanya jumlah halaman dikirim untuk mengurangi kuota. Professional dan Enterprise dapat aktif memilih AI termasuk untuk hasil pindai, yang mengirim seluruh PDF dan nama berkas ke Qwen AI Platform. Tidak ada API ekstraksi publik, masukan massal, QBO, atau koneksi akuntansi langsung."
           },
           {
             "title": "Bandingkan satuan yang tepat",
@@ -1162,7 +1195,7 @@
           },
           {
             "title": "Pemrosesan dan batas",
-            "text": "Isi tidak disimpan permanen sebagai riwayat dokumen. Pindaian yang memenuhi syarat dapat memakai AI eksternal menurut kebijakan privasi. Metadata akun, pembayaran dan operasi terpisah. Tanpa koneksi bank, API ekstraksi publik atau impor akuntansi langsung."
+            "text": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. Setelah penguraian berhasil, hanya jumlah halaman yang dikirim ke API kuota. Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Metadata akun, pembayaran dan operasi terpisah. Tanpa koneksi bank, API ekstraksi publik atau impor akuntansi langsung."
           },
           {
             "title": "Siapa penerbitnya",
@@ -1238,7 +1271,7 @@
           },
           {
             "title": "Untuk memeriksa satu PDF sekaligus: StatementXL",
-            "text": "StatementXL mengubah satu PDF menjadi tabel yang dapat diperiksa dan mengekspor Excel atau CSV dengan risiko per baris dan posisi sumber. Penguraian biasa berjalan di browser tanpa mengunggah PDF atau transaksi. Setelah berhasil, hanya jumlah halaman yang dikirim untuk mengurangi kuota. Pengguna Professional dan Enterprise dapat memilih AI secara aktif untuk hasil pindai; seluruh PDF dan nama berkas dikirim ke Qwen AI Platform. Cocokkan hasil dengan aslinya. Tidak tersedia penerimaan massal, ekspor QBO, API ekstraksi publik, atau koneksi akuntansi langsung."
+            "text": "StatementXL mengubah satu PDF menjadi tabel yang dapat diperiksa dan mengekspor Excel atau CSV dengan risiko per baris dan posisi sumber. Penguraian lokal berjalan di browser tanpa mengunggah PDF atau transaksi. Setelah berhasil, hanya jumlah halaman yang dikirim untuk mengurangi kuota. Pengguna Professional dan Enterprise dapat memilih AI secara aktif untuk hasil pindai; seluruh PDF dan nama berkas dikirim ke Qwen AI Platform. Cocokkan hasil dengan aslinya. Tidak tersedia penerimaan massal, ekspor QBO, API ekstraksi publik, atau koneksi akuntansi langsung."
           },
           {
             "title": "Untuk pemrosesan massal dan QBO: pertimbangkan DocuClipper",
@@ -1256,7 +1289,7 @@
         "faq": [
           {
             "question": "Apakah ada pilihan gratis?",
-            "answer": "Gunakan CSV atau Excel dari bank jika mencakup periode dan kolom yang dibutuhkan. StatementXL juga menyediakan kuota gratis terbatas untuk penguraian biasa PDF teks. Periksa kuota saat ini sebelum mengonversi. Akses gratis tidak mencakup penguraian AI untuk rekening koran hasil pindai."
+            "answer": "Gunakan CSV atau Excel dari bank jika mencakup periode dan kolom yang dibutuhkan. StatementXL juga menyediakan kuota gratis terbatas untuk penguraian lokal PDF teks. Periksa kuota saat ini sebelum mengonversi. Akses gratis tidak mencakup penguraian AI untuk rekening koran hasil pindai."
           },
           {
             "question": "Apa yang dipilih untuk rekening koran hasil pindai?",
@@ -1315,7 +1348,7 @@
       "pricing": "Satuan harga"
     },
     "statementxl": {
-      "workflow": "Satu PDF sekaligus; penguraian biasa di browser, risiko per baris dan sumber. AI opsional mengirim seluruh PDF ke Qwen.",
+      "workflow": "Satu PDF sekaligus; penguraian lokal di browser, risiko per baris dan sumber. AI opsional mengirim seluruh PDF ke Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; tanpa QBO.",
       "integration": "Impor manual; tanpa bank atau API ekstraksi publik.",
       "pricing": "Mulai US${price}/bulan untuk {pages} halaman PDF; lihat paket terkini."
@@ -1334,50 +1367,50 @@
     }
   },
   "Resources": {
-    "title": "Panduan dan alat rekening bank",
-    "intro": "Temukan bantuan konversi, panduan bank, impor akuntansi manual, perbandingan, alat gratis dan hasil pengukuran sampel publik.",
-    "featuredTitle": "Panduan dan alat gratis",
-    "featuredDescription": "Bantuan praktis untuk konversi PDF, impor akuntansi dan pemeriksaan saldo.",
+    "title": "Panduan konversi dan pemeriksaan rekening koran",
+    "intro": "Mulai dari format yang diperlukan, lalu cocokkan mutasi dengan dokumen asli. Panduan bank dan software luar negeri mencantumkan wilayahnya agar tidak tertukar dengan prosedur di Indonesia.",
+    "featuredTitle": "Pilih langkah untuk rekap rekening koran",
+    "featuredDescription": "Mulai dengan Excel, periksa total saldo secara terpisah, atau gunakan CSV untuk mengolah baris. Baca syarat AI bila dokumen berupa scan.",
     "relatedTitle": "Panduan dan alat terkait",
     "viewAll": "Lihat semua panduan dan alat",
     "groups": {
-      "conversion": "Dasar konversi",
-      "banks": "Panduan per bank",
-      "accounting": "Panduan impor akuntansi",
-      "bookkeeping": "Pembukuan dan dokumen",
-      "comparisons": "Perbandingan produk",
-      "tools": "Alat dan laporan sampel"
+      "conversion": "Konversi rekening koran",
+      "banks": "Bank AS dan HSBC UK",
+      "accounting": "Impor manual software luar negeri",
+      "bookkeeping": "Susun periode dan bukti",
+      "comparisons": "Pilih cara konversi",
+      "tools": "Periksa saldo dan sampel"
     },
     "links": {
-      "pdf": "Panduan PDF ke Excel",
-      "scanned": "Panduan rekening pindai",
-      "chase": "Rekening Chase",
-      "bofa": "Rekening Bank of America",
-      "wellsFargo": "Rekening Wells Fargo",
-      "hsbc": "Rekening HSBC UK",
-      "quickbooks": "Panduan impor QuickBooks",
+      "pdf": "Rekening koran PDF ke Excel",
+      "scanned": "Scan rekening koran: syarat AI",
+      "chase": "Chase (AS)",
+      "bofa": "Bank of America (AS)",
+      "wellsFargo": "Wells Fargo (AS)",
+      "hsbc": "HSBC pribadi GBP (Inggris)",
+      "quickbooks": "QuickBooks CSV (sumber AS)",
       "xero": "Panduan impor Xero",
-      "wave": "Panduan impor Wave",
-      "sage": "Impor Sage Accounting UK",
+      "wave": "Impor manual Wave",
+      "sage": "Sage Accounting (Inggris)",
       "loan": "Dokumen permohonan pinjaman",
-      "tax": "Dokumen persiapan pajak",
+      "tax": "Bukti pajak (IRS AS)",
       "catchup": "Mengejar pembukuan",
       "docuclipper": "StatementXL dan DocuClipper",
       "alternatives": "Alternatif DocuClipper",
       "nanonets": "StatementXL dan Nanonets",
       "checker": "Pemeriksa saldo dan templat Excel",
       "benchmark": "Laporan sampel publik",
-      "csv": "Konverter PDF ke CSV",
+      "csv": "Mutasi PDF ke CSV",
       "bestConverters": "Konverter rekening koran terbaik (2026)"
     },
     "groupDescriptions": {
-      "conversion": "Pilih PDF ke Excel atau CSV untuk rekening koran teks. Untuk PDF berisi gambar saja, periksa persyaratan hasil pindai sebelum memilih AI.",
-      "banks": "Pilih bank untuk melihat langkah unduh rekening koran dan periode yang tersedia menurut rekening. Panduan unduh tidak membuktikan dukungan untuk setiap tata letak.",
-      "accounting": "Pilih perangkat lunak tujuan lalu periksa persyaratan CSV-nya. Panduan ini menjelaskan impor manual; StatementXL tidak terhubung ke akun akuntansi Anda.",
-      "bookkeeping": "Mulai dari tugas: dokumen pinjaman, persiapan pajak AS, atau pembukuan tertunda. Simpan rekening koran asli dan bukti pendukung bersama lembar kerja.",
-      "comparisons": "Mulai dari panduan pemilihan sesuai tugas, lalu bandingkan StatementXL dengan DocuClipper atau Nanonets. Halaman alternatif juga membahas ekspor bank. Periksa keluaran, integrasi, dan pekerjaan pemeriksaan.",
-      "tools": "Periksa total tanpa mengunggah berkas dengan pemeriksa saldo. Laporan sampel memuat hasil pengukuran pada dua tata letak dan batas bukti tersebut."
+      "conversion": "PDF teks diurai di browser; scan memerlukan AI opsional. Excel dan CSV adalah hasil umum untuk diperiksa, bukan rekonsiliasi otomatis.",
+      "banks": "Petunjuk Chase, Bank of America dan Wells Fargo di AS serta rekening HSBC UK yang disebutkan. Bukan prosedur internet banking bank Indonesia.",
+      "accounting": "Panduan manual sesuai sumber: QuickBooks memakai dokumentasi AS, Sage edisi Inggris. Tidak ada koneksi langsung ke aplikasi pembukuan Indonesia.",
+      "bookkeeping": "Catat rekening dan periode yang belum lengkap. Panduan pajak memakai sumber IRS AS, bukan aturan pelaporan pajak Indonesia.",
+      "comparisons": "Bedakan unduhan bank, pemeriksaan satu PDF dan pemrosesan banyak berkas. Klaim penyedia bukan pengujian akurasi independen.",
+      "tools": "Pemeriksa membandingkan total yang diketik tanpa unggah berkas. Laporan publik hanya mencakup sampel tertentu, bukan seluruh format bank Indonesia."
     },
-    "metaDescription": "Panduan konversi rekening koran, unduhan bank, impor akuntansi manual, perbandingan produk, dan pemeriksa saldo gratis."
+    "metaDescription": "Rekening koran PDF ke Excel atau CSV, OCR scan dan pemeriksaan saldo. Panduan bank AS, pajak IRS dan software edisi Inggris diberi batas wilayah."
   }
 }

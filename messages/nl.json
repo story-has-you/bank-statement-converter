@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "StatementXL | Bankafschriften van PDF naar Excel",
-    "description": "StatementXL: Zet bankafschrift-PDF’s om naar Excel met voorvertoning en risicomeldingen. Professional en Enterprise kunnen scans met AI proberen. Geen permanente bestandsgeschiedenis.",
-    "keywords": "Bank Statement Converter, bankafschrift PDF naar Excel, PDF naar Excel converter, banktransacties uitlezen, AI bankafschriften analyseren, gescande bankafschrift PDF naar Excel",
+    "title": "Bankafschrift PDF naar Excel of CSV omzetten | StatementXL",
+    "description": "Zet bankafschrift-PDF’s om naar Excel of CSV, standaard lokaal in de browser zonder bestanden te uploaden. Optionele AI met Professional en Enterprise. Controleer vóór het downloaden.",
+    "keywords": "bankafschrift PDF Excel, bankafschrift PDF CSV omzetten, bankafschrift converter, bankafschrift scan en herken",
     "brand": "StatementXL",
-    "alternateName": "Converter voor bankafschriften van PDF naar Excel"
+    "alternateName": "Bankafschrift van PDF naar Excel of CSV"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -52,26 +52,26 @@
   },
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
-    "title": "Zet je bankafschrift om van PDF naar Excel",
-    "description": "Zet een bankafschrift-PDF om naar Excel of CSV en controleer transacties en risicomeldingen in de voorvertoning vóór het downloaden."
+    "title": "Bankafschrift van PDF naar Excel of CSV",
+    "description": "Zet bankafschrift-PDF’s om naar Excel of CSV, standaard lokaal in de browser zonder bestanden te uploaden. Controleer transacties en risicomarkeringen vóór het downloaden. Professional en Enterprise bieden optionele AI-analyse."
   },
   "PdfUpload": {
-    "title": "Bankafschrift uploaden",
+    "title": "Bankafschrift selecteren",
     "description": "Verwerk één PDF tegelijk",
     "fileLabel": "Bankafschrift in PDF",
     "dropzone": "Kies een PDF of sleep die hierheen",
     "dropzoneHint": "Eén leesbare PDF tegelijk, maximaal {megabytes, number} MB · {pages, number} pagina’s.",
     "errorTitle": "Deze handeling kon niet worden voltooid",
-    "invalidPdf": "Het geüploade bestand is geen PDF.",
-    "multipleFiles": "Upload één PDF tegelijk.",
+    "invalidPdf": "Het geselecteerde bestand is geen PDF.",
+    "multipleFiles": "Selecteer één PDF tegelijk.",
     "conversionFailed": "De specifieke oorzaak van de fout kon niet worden vastgesteld.",
     "parserUnavailable": "De conversieservice kon niet worden bereikt.",
     "quotaExceeded": "Deze PDF bevat {pageCount, plural, one {# pagina} other {# pagina’s}}, maar je kunt nog maar {remainingPages, plural, one {# pagina} other {# pagina’s}} converteren.",
     "quotaUnavailable": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "removeFile": "Bestand verwijderen",
     "quota": "Gratis tegoed: {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag zonder inloggen, {authenticatedPages, plural, one {# pagina} other {# pagina's}} per dag na inloggen",
-    "serviceReady": "Deze website bewaart geen permanente bestandsgeschiedenis.",
-    "status": "Klaar om te uploaden",
+    "serviceReady": "Lokale analyse gebeurt standaard in uw browser zonder de PDF, bestandsnaam of transacties te uploaden. De volledige PDF en bestandsnaam worden alleen naar onze server en Qwen AI Platform gestuurd als u AI kiest.",
+    "status": "Klaar voor conversie",
     "converting": "Bezig met converteren",
     "start": "Converteren en controleren",
     "fileTooLarge": "Deze PDF is groter dan {megabytes, number} MB.",
@@ -83,22 +83,22 @@
     "requestFailed": "Er kon geen antwoord op de conversieaanvraag worden ontvangen.",
     "resultStorageFailed": "De conversie is voltooid, maar de browser kon het resultaat niet opslaan.",
     "browserStorageUnavailable": "Browseropslag is niet beschikbaar.",
-    "emptyFile": "Het geüploade PDF-bestand is leeg.",
+    "emptyFile": "Het geselecteerde PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
-    "aiNotice": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik. Bekijk <link>de aanbieder, voorwaarden en het privacybeleid</link>.",
+    "aiNotice": "AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik. Bekijk <link>de aanbieder, voorwaarden en het privacybeleid</link>.",
     "checking": "PDF en tegoed controleren",
     "retryCheck": "Opnieuw controleren",
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagina’s}}",
     "tooManyPages": "Deze PDF overschrijdt de limiet van {pages, number} pagina’s per bestand.",
     "unreadablePdf": "De PDF kon niet worden gelezen. Kies een PDF die normaal kan worden geopend.",
-    "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord voordat je het bestand uploadt.",
-    "aiSummary": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform.",
+    "passwordProtectedPdf": "Deze PDF is beveiligd met een wachtwoord. Verwijder het wachtwoord en selecteer het bestand opnieuw.",
+    "aiSummary": "AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd.",
     "aiDetails": "Details over AI-verwerking",
     "methodLabel": "Analysemethode",
-    "regularMethod": "Reguliere analyse",
+    "regularMethod": "Lokale analyse",
     "aiMethod": "AI-analyse",
-    "localNotice": "De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken."
+    "localNotice": "Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd."
   },
   "ConversionResult": {
     "metadata": {
@@ -274,13 +274,13 @@
     }
   },
   "HomeFeatures": {
-    "title": "Functies voor bankafschriften",
-    "securityTitle": "Bestandsprivacy",
-    "securityDescription": "Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
-    "banksTitle": "Tabellen uitlezen",
-    "banksDescription": "Kopteksten en celtekst uit het bankafschrift verschijnen in tabellen om met het origineel te vergelijken.",
-    "accuracyTitle": "Risico’s controleren",
-    "accuracyDescription": "DISCREPANCY en UNVERIFIABLE markeren onvolledige gegevens of verschoven rijen vóór het downloaden."
+    "title": "Transacties voorbereiden voor controle",
+    "securityTitle": "Standaard lokale analyse",
+    "securityDescription": "Lokale analyse gebeurt standaard in uw browser zonder de PDF, bestandsnaam of transacties te uploaden. De volledige PDF en bestandsnaam worden alleen naar onze server en Qwen AI Platform gestuurd als u AI kiest.",
+    "banksTitle": "Controleer eerst de bankdownload",
+    "banksDescription": "Biedt de bank de juiste periode en kolommen als CSV of Excel, gebruik dan die download. PDF-conversie helpt wanneer alleen het afschrift beschikbaar is.",
+    "accuracyTitle": "Bij, af en omschrijving vergelijken",
+    "accuracyDescription": "Controleer datums, bedragtekens, afgebroken omschrijvingen en beschikbare saldi. Bronpagina en regelpositie helpen om twijfelachtige transacties terug te vinden."
   },
   "UsageTiers": {
     "title": "Bankafschrift-abonnementen en quota",
@@ -369,32 +369,32 @@
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",
     "banks": {
-      "question": "Welke bankafschriften worden ondersteund?",
-      "answer": "We testen de converter met verschillende indelingen van elektronische bankafschriften. We publiceren banken en indelingen zodra we ze hebben gecontroleerd."
+      "question": "Kan ik beter de download van mijn bank gebruiken?",
+      "answer": "Gebruik de CSV- of Excel-download van uw bank als periode en velden passen. Probeer anders de originele tekst-PDF en controleer de uitkomst. Niet alle Nederlandse banken en rekeningindelingen zijn getest; er is geen MT940- of CAMT.053-export."
     },
     "accuracy": {
-      "question": "Waarom moet ik het resultaat controleren?",
-      "answer": "De bankafschrift-conversie bewaart kopteksten en celtekst waar mogelijk. Complexe opmaak, onscherpe tekst of verschoven kolommen kunnen DISCREPANCY of UNVERIFIABLE opleveren. Vergelijk vóór boeking, aangifte of indiening met de originele PDF."
+      "question": "Hoe controleer ik bij- en afschrijvingen?",
+      "answer": "Vergelijk datums, bij- en afschrijvingen, omschrijvingen en aanwezige saldi met het origineel. OK, DISCREPANCY en UNVERIFIABLE geven het beschikbare bewijs per regel weer, geen accountantscontrole of juistheidsgarantie."
     },
     "quota": {
-      "question": "Hoeveel pagina's kan ik per dag converteren?",
-      "answer": "Gratis bankafschrift-conversie: dagelijks {anonymousPages, number} pagina’s zonder login, {authenticatedPages, number} met login. Per maand: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagina’s. PDF-pagina’s tellen. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren."
+      "question": "Hoeveel pagina’s kan ik dagelijks gratis omzetten?",
+      "answer": "Gratis bankafschrift-conversie: dagelijks {anonymousPages, number} pagina’s zonder login, {authenticatedPages, number} met login. Per maand: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagina’s. PDF-pagina’s tellen. Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd."
     },
     "scans": {
-      "question": "Kan ik gescande of versleutelde PDF's converteren?",
-      "answer": "Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren. Andere abonnementen vereisen een tekstlaag. Geen enkel abonnement ondersteunt bestanden met een wachtwoord."
+      "question": "Kan ik een gescand afschrift laten herkennen?",
+      "answer": "Gewone verwerking vereist een tekstlaag. Met Professional of Enterprise en resterend tegoed kunt u AI kiezen om een gescande PDF te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform; controle blijft nodig."
     },
     "storage": {
-      "question": "Slaan jullie mijn PDF, Excel-bestand of transacties op?",
-      "answer": "De server bewaart geen permanente geschiedenis van PDF’s, exports of transacties. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf."
+      "question": "Kan ik een oud resultaat opnieuw downloaden?",
+      "answer": "Lokale analyse is de standaard. Alleen als u AI kiest, worden de volledige PDF en bestandsnaam via onze server naar Qwen AI Platform gestuurd. De server bewaart geen permanente geschiedenis van PDF’s, exports of transacties. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf."
     },
     "failure": {
-      "question": "Wat gebeurt er als de conversie mislukt?",
+      "question": "Wat moet ik doen als transacties ontbreken?",
       "answer": "Bij een mislukte bankafschrift-conversie verschijnt een fout, zonder ongeldige Excel-download of quotaverbruik. Gedeeltelijke resultaten tellen alle PDF-pagina’s."
     },
     "ai": {
-      "question": "Wanneer wordt AI-analyse gebruikt?",
-      "answer": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform."
+      "question": "Wat ontvangt Qwen wanneer ik AI kies?",
+      "answer": "AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Controleer de resultaten vóór gebruik aan de hand van de originele PDF."
     }
   },
   "HomeFooter": {
@@ -413,7 +413,7 @@
     "resources": "Gidsen en hulpmiddelen"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 20 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 28 oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -425,11 +425,11 @@
     "availability": "De conversie van PDF naar Excel en Creem, PayPal of Waffo-abonnementen worden aangeboden volgens de huidige paginastatus. Prijzen en beschikbaarheid kunnen veranderen met de instellingen van de dienst.",
     "service": {
       "title": "Omvang van de dienst",
-      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF."
+      "body": "De dienst zet transactiegegevens uit ondersteunde bankafschriften in PDF om in Excel-bestanden om te downloaden en te controleren. Ondersteunde banken, bestandstypen en verwerkingslimieten staan op de dienstpagina. We bieden geen bankrekeningkoppelingen, bankdiensten of financieel, fiscaal of juridisch advies. Standaard gebeurt de lokale analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF."
     },
     "authorization": {
-      "title": "Toestemming om bestanden te uploaden",
-      "body": "Upload alleen afschriften die je mag gebruiken en verwerken. Zorg dat het uploaden en verwerken van persoonlijke of financiële informatie voldoet aan de toepasselijke wetgeving en je verplichtingen tegenover anderen. Upload geen bestanden die zonder toestemming zijn verkregen."
+      "title": "Toestemming voor bestandsverwerking",
+      "body": "Selecteer alleen afschriften die u mag gebruiken en verwerken. De verwerking van persoonlijke of financiële informatie moet voldoen aan de toepasselijke wetgeving en uw verplichtingen tegenover anderen. Als u AI kiest, moet u ook bevoegd zijn om de volledige PDF en bestandsnaam naar onze server en Qwen AI Platform te sturen. Verwerk geen onbevoegd verkregen bestanden."
     },
     "accuracy": {
       "title": "Resultaten controleren",
@@ -437,7 +437,7 @@
     },
     "quota": {
       "title": "Conversietegoed",
-      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren."
+      "body": "Zonder inloggen kun je {anonymousPages, plural, one {# pagina} other {# pagina's}} per dag converteren; ingelogde gratis gebruikers kunnen {authenticatedPages, plural, one {# pagina} other {# pagina's}} converteren. Standaard bevat {standardPages, plural, one {# pagina} other {# pagina's}} per maand, Professioneel {professionalPages, number} en Zakelijk {enterprisePages, number}. Het dagtegoed wordt volgens UTC vernieuwd en abonnementstegoed volgt de huidige Creem, PayPal of Waffo-factuurperiode. Mislukte conversies kosten geen tegoed; gedeeltelijke resultaten tellen de PDF-pagina's. Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd."
     },
     "subscription": {
       "title": "Abonnementen en betaling",
@@ -451,7 +451,7 @@
     },
     "files": {
       "title": "Bestanden en downloads",
-      "body": "Excel, CSV, JSON, Markdown, TSV en HTML worden in uw browser gemaakt uit het huidige eindresultaat, inclusief bevestigde handelaarsnamen. De server bewaart geen permanente geschiedenis van PDF’s, geëxtraheerde transacties of exportbestanden. Bestandsnaam, resultaat en handelaarskoppelingen blijven tijdelijk in de sessie van dit tabblad voor het voorbeeld, herstel na vernieuwen en downloaden. Bewaar originele afschriften en downloads zelf; na afloop van het huidige proces kunt u historische bestanden niet opnieuw downloaden."
+      "body": "Lokale analyse is de standaard. Alleen als u AI kiest, worden de volledige PDF en bestandsnaam via onze server naar Qwen AI Platform gestuurd. Excel, CSV, JSON, Markdown, TSV en HTML worden in uw browser gemaakt uit het huidige eindresultaat, inclusief bevestigde handelaarsnamen. De server bewaart geen permanente geschiedenis van PDF’s, geëxtraheerde transacties of exportbestanden. Bestandsnaam, resultaat en handelaarskoppelingen blijven tijdelijk in de sessie van dit tabblad voor het voorbeeld, herstel na vernieuwen en downloaden. Bewaar originele afschriften en downloads zelf; na afloop van het huidige proces kunt u historische bestanden niet opnieuw downloaden."
     },
     "prohibited": {
       "title": "Verboden gebruik",
@@ -459,7 +459,7 @@
     },
     "rights": {
       "title": "Eigendom",
-      "body": "Je behoudt de rechten die je op bestanden en hun inhoud hebt. Het uploaden geeft ons alleen toestemming voor de huidige conversie en draagt geen eigendom over. Rechten op software, interface en merk blijven bij de rechtmatige eigenaren."
+      "body": "U behoudt uw rechten op bestanden en hun inhoud. Gebruik van de converter staat alleen de verwerking toe die nodig is voor de huidige conversie en draagt geen eigendom over. Voor lokale analyse is geen bestandsupload nodig. Rechten op de software, interface en het merk blijven bij de rechtmatige houders."
     },
     "liability": {
       "title": "Beschikbaarheid en aansprakelijkheid",
@@ -481,18 +481,18 @@
   "Privacy": {
     "metadata": {
       "title": "Privacybeleid | StatementXL",
-      "description": "Verwerking van bankafschriften, AI-analyse, tijdelijke browserresultaten en gegevens over accounts, analysebeheer, quota en facturering."
+      "description": "Hoe lokale browseranalyse, optionele AI-uploads, tijdelijke browserresultaten en account-, statistiek-, quotum- en factureringsgegevens worden verwerkt."
     },
     "title": "Privacybeleid",
     "intro": "ReAvid Ltd beheert <site>{domain}</site>. Dit beleid legt uit hoe we informatie behandelen wanneer je de conversie en Creem, PayPal of Waffo-abonnementen gebruikt.",
     "availability": "Dit beleid geldt voor de momenteel beschikbare conversie van PDF naar Excel, accountaanmelding en Creem, PayPal of Waffo-abonnementen.",
     "documents": {
       "title": "Bankafschriften en conversiegegevens",
-      "body": "Uw PDF kan gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. We verwerken PDF’s, geëxtraheerde transacties en exportinhoud alleen voor uw aangevraagde conversie en download, niet voor reclame of andere doeleinden. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform."
+      "body": "Bankafschriften kunnen gevoelige namen, rekeningnummers, transactiedatums, bedragen, saldi en omschrijvingen bevatten. De inhoud wordt alleen gebruikt voor de gevraagde conversie, controle en download, niet voor reclame of andere doeleinden. Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd. AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd."
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De reguliere analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Creem en Waffo ontvangen ook het e-mailadres van het websiteaccount; PayPal verwerkt betaalgegevens via de eigen accountprocedure. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Creem, PayPal of Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Creem, PayPal of Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De lokale analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Creem en Waffo ontvangen ook het e-mailadres van het websiteaccount; PayPal verwerkt betaalgegevens via de eigen accountprocedure. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -504,7 +504,7 @@
     },
     "retention": {
       "title": "Bewaartermijnen",
-      "documents": "Deze website gebruikt PDF’s, geëxtraheerde transacties en exportinhoud alleen voor de huidige conversie en download, zonder ze in een permanente database, objectopslag of bestandsgeschiedenis vast te leggen. Na verwerking blijven geen bestanden beschikbaar voor latere downloads. Voor gegevens die de aanbieder van AI-analyse ontvangt gelden zijn eigen bewaar- en verwerkingsregels.",
+      "documents": "Bij lokale analyse worden PDF’s en transacties alleen in uw browser verwerkt. Als u AI kiest, verwerkt onze server de geüploade inhoud voor de huidige conversie zonder PDF’s, transacties, modeluitvoer of exports op te slaan in een permanente database, objectopslag of bestandsgeschiedenis op de server. De AI-aanbieder past eigen bewaar- en verwerkingsregels toe op ontvangen gegevens. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf.",
       "metadata": "Account-, tegoed- en factuurmetadata worden alleen bewaard zolang dat nodig is voor de dienst of wettelijke verplichtingen. Wanneer ze niet meer nodig zijn, worden ze verwijderd of geanonimiseerd volgens het systeem en de wettelijke eisen. Het e-mailadres van het account bij aankoop maakt deel uit van de abonnementsregistratie. Voor operationele parsemetadata gelden dezelfde bewaarbeginselen; bij het verwijderen van het account worden ook de bijbehorende parserecords verwijderd."
     },
     "providers": {
@@ -538,7 +538,7 @@
     "aiParsing": {
       "title": "AI-analyse en verwerking door derden",
       "provider": "De aanbieder van AI-analyse is Qwen AI Platform, beheerd door 通义云启（杭州）信息技术有限公司 (geregistreerde juridische naam). De <terms>Productdienstenovereenkomst</terms> en de <privacy>Juridische kennisgeving en het privacybeleid</privacy> van de aanbieder zijn van toepassing.",
-      "body": "Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik."
+      "body": "AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik."
     }
   },
   "ThemeToggle": {
@@ -652,19 +652,19 @@
     }
   },
   "Geo": {
-    "glance": "In één oogopslag",
-    "conversionSummary": "StatementXL zet bankafschrift-PDF’s om naar Excel ter controle. Professional en Enterprise kunnen gescande PDF’s met AI proberen te converteren. Filter risico’s, normaliseer handelaarsnamen handmatig en exporteer naar Excel, CSV, JSON, Markdown, TSV of HTML.",
-    "limitsSummary": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
+    "glance": "Maak van uw PDF-bankafschrift een tabel om te controleren. Vergelijk bij- en afschrijvingen, omschrijvingen en saldi met het origineel; de gewone verwerking gebeurt in uw browser.",
+    "conversionSummary": "Maak van uw PDF-bankafschrift een tabel om te controleren. Vergelijk bij- en afschrijvingen, omschrijvingen en saldi met het origineel; de gewone verwerking gebeurt in uw browser.",
+    "limitsSummary": "Selecteer één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "quotaSummary": "Converteer dagelijks {anonymousPages} pagina zonder account of {authenticatedPages} pagina’s na aanmelden; maandabonnementen beginnen bij {price} USD.",
-    "privacySummary": "De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren. Professional en Enterprise kunnen AI kiezen om gescande PDF’s te proberen. De volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
-    "featuresAnswer": "Standaard gebeurt de reguliere analyse in de browser, zonder automatische overstap naar AI. Professional en Enterprise kunnen vóór conversie AI kiezen, ook voor scans. Vergelijk resultaten met de originele PDF. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren.",
+    "privacySummary": "Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd. AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik.",
+    "featuresAnswer": "Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd. AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Controleer de resultaten vóór gebruik aan de hand van de originele PDF.",
     "riskTitle": "Wat betekenen de risicolabels?",
     "riskAnswer": "De labels beschrijven het bewijs voor elke uitgelezen rij. Vergelijk gemarkeerde rijen met de oorspronkelijke PDF voordat u het resultaat gebruikt. Risicofilters wijzigen alleen het voorbeeld; naamnormalisatie en exports omvatten nog steeds alle transacties in het resultaat.",
     "okDefinition": "Geen probleem gedetecteerd; dit garandeert geen juistheid of volledigheid.",
     "discrepancyDefinition": "Tegenstrijdig bewijs of een punt ter controle is gedetecteerd.",
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
-    "limitsTitle": "Welke PDF’s kan ik uploaden?",
-    "limitsAnswer": "Upload één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord. De reguliere analyse gebeurt in de browser. PDF en transacties worden niet geüpload; na succes wordt alleen het aantal pagina’s verstuurd om tegoed af te trekken. De server accepteert dit gemelde aantal zonder het originele bestand te controleren.",
+    "limitsTitle": "Welke PDF’s kan ik selecteren?",
+    "limitsAnswer": "Selecteer één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Enterprise kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
     "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Creem, PayPal of Waffo abonneert. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
@@ -676,7 +676,7 @@
     "billingPeriod": "factuurperiode",
     "billingNote": "Abonnementen verlengen maandelijks via Creem, PayPal of Waffo. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan. Waffo-prijzen zijn exclusief belasting; de toepasselijke belasting en het definitieve totaal staan bij het afrekenen.",
     "privacyTitle": "Hoe worden mijn gegevens verwerkt?",
-    "privacyAnswer": "Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
+    "privacyAnswer": "Lokale analyse gebeurt standaard in uw browser zonder de PDF, bestandsnaam of transacties te uploaden. De volledige PDF en bestandsnaam worden alleen naar onze server en Qwen AI Platform gestuurd als u AI kiest. Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
     "browserTitle": "Wat wordt tijdelijk in mijn browser bewaard?",
     "browserAnswer": "De server bewaart geen permanente geschiedenis van PDF’s, exports of transacties. De sessieopslag van dit tabblad bewaart tijdelijk de bestandsnaam, het geëxtraheerde resultaat, gekozen handelaarskolommen en aliaskoppelingen met bevestigde namen voor het voorbeeld, herstel na vernieuwen en downloaden. Een nieuwe conversie of het wissen van het resultaat verwijdert deze gegevens; koppelingen worden niet tussen bestanden hergebruikt. Bewaar originele PDF’s en downloads zelf.",
     "metadataTitle": "Welke account- en factuurgegevens worden bewaard?",
@@ -715,8 +715,8 @@
   },
   "Landing": {
     "stepsTitle": "Een afschrift omzetten in drie stappen",
-    "uploadTitle": "Upload uw PDF",
-    "uploadText": "Upload één oorspronkelijk PDF-afschrift van maximaal {megabytes} MB en {pages} pagina's. Zonder aanmelding en bij het gratis en Standard-abonnement is een tekstlaag nodig. Bestanden met wachtwoordbeveiliging worden niet ondersteund.",
+    "uploadTitle": "Selecteer uw PDF",
+    "uploadText": "Selecteer één oorspronkelijk PDF-afschrift van maximaal {megabytes} MB en {pages} pagina's. Zonder aanmelding en bij het gratis en Standard-abonnement is een tekstlaag nodig. Bestanden met wachtwoordbeveiliging worden niet ondersteund.",
     "reviewTitle": "Controleer de uitgelezen transacties",
     "downloadTitle": "Download de resultaten",
     "downloadText": "Download Excel of kies CSV, JSON, Markdown, TSV of HTML. CSV en TSV leveren één bestand per tabel, met risico- en bronvelden. Pas de kolommen aan uw boekhoudsoftware aan voordat u importeert; dit zijn geen speciale QBO- of Xero-bestanden.",
@@ -729,47 +729,80 @@
     "disclaimer": "{bank} is een handelsmerk van de rechthebbende. StatementXL is niet verbonden aan de bank. Deze handleiding helpt bij het ophalen en controleren van afschriften en garandeert niet dat elke indeling kan worden omgezet.",
     "pages": {
       "pdf": {
-        "label": "Bankafschrift van PDF naar Excel",
-        "title": "Zet een PDF-bankafschrift om naar Excel",
-        "intro": "Lees transacties uit uw PDF-bankafschrift met StatementXL, vergelijk de voorvertoning met het origineel en download Excel met risicomarkeringen. Zonder aanmelding kunt u dagelijks {anonymousPages} pagina gratis omzetten, na aanmelding {authenticatedPages} pagina's. Bewaar het origineel ter controle.",
-        "metaDescription": "Zet afschrift-PDF’s om naar Excel met StatementXL. Controleer transacties en risicomeldingen aan de hand van het originele PDF-bestand."
-      },
-      "csv": {
-        "label": "PDF-bankafschrift naar CSV converteren",
-        "title": "Bankafschriften van PDF naar CSV omzetten",
-        "intro": "Haal transacties uit je PDF-bankafschrift, vergelijk de rijen met het origineel en download CSV. Probeer dagelijks {anonymousPages} pagina zonder in te loggen, of {authenticatedPages} pagina’s na het inloggen.",
-        "metaDescription": "Zet PDF-bankafschriften om naar CSV. Controleer transacties en risico’s, download één CSV per tabel en bereid kolommen voor je boekhoudsoftware voor.",
-        "requirementsTitle": "CSV of Excel kiezen",
-        "requirements": "Kies CSV om gegevens voor een spreadsheet of boekhoudimport voor te bereiden. Kies Excel voor een werkmap met meerdere bladen. Beide gebruiken hetzelfde gecontroleerde conversieresultaat.",
-        "preparationTitle": "Eén CSV-bestand per tabel",
-        "preparation": "Open na de conversie het formaatmenu naast de Excel-downloadknop en kies CSV. Elke logische tabel wordt apart gedownload, met de oorspronkelijke kolommen en risico- en bronvelden.",
-        "limitationsTitle": "Een aparte importkopie voorbereiden",
-        "limitations": "Bewaar de volledige export ter controle. Verwijder controlevelden in een aparte kopie en pas datums, omschrijvingen en bedragen aan de doelsoftware aan. StatementXL maakt geen speciale QBO- of Xero-bestanden en importeert geen transacties voor je.",
-        "stepsTitle": "Van PDF-bankafschrift naar CSV",
+        "label": "Bankafschrift PDF naar Excel",
+        "title": "Zet een PDF-bankafschrift om naar een controleerbaar Excelbestand",
+        "intro": "Bereid transacties voor om met uw administratie te vergelijken. Controleer het PDF-afschrift en sla Excel op met één werkblad per logische tabel. Dagelijks zijn {anonymousPages} pagina zonder inloggen of {authenticatedPages} pagina’s met inloggen gratis.",
+        "metaDescription": "Zet bankafschrift PDF om naar Excel. Controleer bij, af, omschrijvingen en saldi en bewaar bronregels en controleopmerkingen in de werkmap.",
+        "requirementsTitle": "Gebruik de originele tekst-PDF",
+        "requirements": "Download het digitale afschrift via internetbankieren. Selecteerbare tekst kan in de browser worden verwerkt; een scan vereist een geschikt abonnement en een bewuste AI-keuze.",
+        "preparationTitle": "Leg rekening en periode vast",
+        "preparation": "Controleer rekening, valuta en afschriftperiode. Bewaar het origineel naast de werkmap en vergelijk omschrijvingen die over meerdere regels lopen.",
+        "limitationsTitle": "Excel is geen MT940-bankbestand",
+        "limitations": "De werkmap is een werkkopie, geen officieel afschrift. StatementXL maakt geen MT940 of CAMT.053 en koppelt niet rechtstreeks met uw boekhoudpakket.",
+        "stepsTitle": "Van afschrift naar gecontroleerde werkmap",
         "steps": {
           "upload": {
-            "title": "Een PDF-bankafschrift uploaden",
-            "text": "Upload één PDF van maximaal {megabytes} MB en {pages} pagina’s. Gebruik bij voorkeur de oorspronkelijke tekst-PDF van de bank. Scans vereisen een geschikt AI-abonnement en handmatige selectie van AI."
+            "title": "Selecteer de bank-PDF",
+            "text": "Kies één PDF van maximaal {megabytes} MB en {pages} pagina’s, bij voorkeur het digitale origineel met tekst."
           },
           "review": {
-            "title": "Transacties en risicomeldingen controleren",
-            "text": "Vergelijk datums, omschrijvingen, bedragen en saldi met het origineel. Controleer rijen met DISCREPANCY en UNVERIFIABLE voordat je de export gebruikt."
+            "title": "Vergelijk bij en af met de bron",
+            "text": "Controleer datums, tekens, omschrijvingen en saldi, inclusief alle regels met een risicomelding."
           },
           "download": {
-            "title": "CSV kiezen in het downloadmenu",
-            "text": "Open het formaatmenu naast Excel en kies CSV. Download elke tabel, bewaar de volledige controlekopie en maak een aparte kopie voor import."
+            "title": "Sla Excel met broninformatie op",
+            "text": "Elke logische tabel krijgt een werkblad. Maak voor boekhoudimport een aparte kopie met de vereiste kolommen."
           }
         },
         "faq": [
           {
-            "id": "import",
-            "question": "Kan ik de CSV direct in QuickBooks of Xero importeren?",
-            "answer": "Het is geen specifiek importbestand. De export bevat oorspronkelijke kolommen en controlevelden. Maak een kopie met de vereiste kolommen, datums en bedragtekens en controleer het importvoorbeeld."
+            "id": "formats",
+            "question": "Kan mijn boekhoudpakket dit als MT940 inlezen?",
+            "answer": "Nee. Excel en MT940 zijn verschillende formaten. StatementXL levert geen MT940 of CAMT.053. Controleer welk formaat uw pakket accepteert."
+          },
+          {
+            "id": "native",
+            "question": "Mijn bank biedt al een transactiedownload: wat nu?",
+            "answer": "Gebruik die als periode en velden voldoen. De PDF-route is bedoeld voor afschriften waarvoor geen passende tabeldownload beschikbaar is."
+          }
+        ]
+      },
+      "csv": {
+        "label": "Bankafschrift PDF naar CSV",
+        "title": "Bankafschrift omzetten naar CSV voor verdere verwerking",
+        "intro": "Wilt u transactieregels in een ander pakket gebruiken? Controleer eerst het PDF-resultaat en download daarna een CSV per logische tabel, inclusief bronkolommen en controleopmerkingen. Dagelijks zijn {anonymousPages} pagina zonder inloggen of {authenticatedPages} pagina’s met inloggen gratis.",
+        "metaDescription": "Bankafschrift PDF naar CSV omzetten. Controleer datum, decimaal en bedragteken; algemene CSV zonder MT940, CAMT.053 of rechtstreekse boekhoudkoppeling.",
+        "requirementsTitle": "Algemene CSV zonder boekhoudprofiel",
+        "requirements": "CSV en Excel gebruiken hetzelfde resultaat. De CSV bevat controle- en bronvelden en is geen vooraf ingericht importbestand voor uw boekhoudpakket.",
+        "preparationTitle": "Controleer bedragteken en importinstellingen",
+        "preparation": "Maak een kopie met de vereiste kolommen. Controleer datumvolgorde, decimaalteken en bij/af in het importvoorbeeld en voorkom dubbele transacties.",
+        "limitationsTitle": "CSV wordt geen MT940 door hernoemen",
+        "limitations": "MT940 en CAMT.053 worden niet gegenereerd. Bewaar elke logische tabel apart en voeg verschillende rekeningen of valuta niet samen zonder controle.",
+        "stepsTitle": "Bron controleren, CSV downloaden",
+        "steps": {
+          "upload": {
+            "title": "Een PDF-bankafschrift selecteren",
+            "text": "Selecteer één PDF van maximaal {megabytes} MB en {pages} pagina’s. Gebruik bij voorkeur de oorspronkelijke tekst-PDF van de bank. Scans vereisen een geschikt AI-abonnement en handmatige selectie van AI."
+          },
+          "review": {
+            "title": "Vergelijk bedragen en omschrijvingen",
+            "text": "Controleer bij/af, datums en afgebroken omschrijvingen aan de hand van het oorspronkelijke afschrift."
+          },
+          "download": {
+            "title": "Bewaar iedere tabel als CSV",
+            "text": "Kies CSV in het resultatenmenu of bij de tabel. Pas voor import alleen een kopie aan en behoud het volledige exportbestand."
+          }
+        },
+        "faq": [
+          {
+            "id": "formats",
+            "question": "Is dit een alternatief voor MT940 of CAMT.053?",
+            "answer": "Alleen als uw doelpakket de algemene CSV na aanpassing accepteert. StatementXL maakt de genoemde bankformaten niet; een andere extensie kiezen helpt niet."
           },
           {
             "id": "tables",
             "question": "Waarom krijg ik meerdere CSV-bestanden?",
-            "answer": "CSV- en TSV-exports maken één bestand per logische tabel. Download ze apart en voeg verschillende rekeningen of valuta’s niet zomaar samen in één importbestand."
+            "answer": "Elke logische tabel blijft een apart bestand. Controleer rekeningen en valuta voordat u gegevens samenvoegt."
           }
         ]
       },
@@ -777,7 +810,7 @@
         "bank": "Chase",
         "label": "Chase-afschrift naar Excel",
         "title": "Zet een Chase-bankafschrift om naar Excel",
-        "intro": "Download uw Chase-afschrift als PDF en upload het naar StatementXL om transacties te controleren en Excel te downloaden. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Vergelijk de resultaten met het origineel.",
+        "intro": "Download uw Chase-afschrift als PDF en selecteer het in StatementXL om transacties te controleren en Excel te downloaden. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Vergelijk de resultaten met het origineel.",
         "availability": "Chase biedt afhankelijk van het rekeningtype tot zeven jaar aan afschriften. Controleer de beschikbare jaren in Statements & documents; niet elke rekening bevat zeven volledige jaren.",
         "download": "Meld u aan op chase.com en open Main Menu, daarna Statements & documents. Kies jaar en rekening en klik op Open of Save naast het afschrift. Bewaar de oorspronkelijke PDF in plaats van een schermafbeelding.",
         "detailsTitle": "Chase Mobile en transactiedownloads",
@@ -788,7 +821,7 @@
         "bank": "Bank of America",
         "label": "Bank of America-afschrift naar Excel",
         "title": "Zet een Bank of America-afschrift om naar Excel",
-        "intro": "Upload uw PDF-afschrift van Bank of America naar StatementXL, controleer de transacties en download Excel. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Bewaar aangevraagde oudere afschriften tijdig.",
+        "intro": "Selecteer uw PDF-afschrift van Bank of America in StatementXL, controleer de transacties en download Excel. Zonder aanmelding krijgt u dagelijks {anonymousPages} gratis pagina, na aanmelding {authenticatedPages} pagina's. Bewaar aangevraagde oudere afschriften tijdig.",
         "availability": "Afschriften met chequeafbeeldingen zijn tot 18 maanden rechtstreeks te bekijken, af te drukken en te downloaden. Oudere kopieën kunt u tot zeven jaar terug aanvragen. Controleer de beschikbaarheid voor uw creditcardrekening afzonderlijk.",
         "download": "Meld u aan bij Online Banking en open Statements & Documents onder Accounts. Kies rekening en periode, open de PDF en sla deze op. Voor oudere kopieën kiest u daar Request statements.",
         "detailsTitle": "Oudere Bank of America-afschriften aanvragen",
@@ -807,43 +840,43 @@
         "metaDescription": "Bereid Wells Fargo-PDF’s voor op Excel. Controleer beschikbare periodes per rekening en transacties voordat u exporteert."
       },
       "scanned": {
-        "label": "OCR voor bankafschriften: gescande PDF naar Excel",
-        "title": "Gescande bankafschriften met AI naar Excel omzetten",
-        "intro": "Probeer met OCR transacties uit een gescand PDF-bankafschrift te halen. Gebruikers van Professional en Enterprise kunnen vóór conversie AI kiezen, het resultaat controleren en Excel of CSV downloaden. Herkenning is niet gegarandeerd.",
+        "label": "Bankafschrift OCR: scan en herken",
+        "title": "Gescand bankafschrift herkennen met optionele AI",
+        "intro": "Een afschrift zonder tekstlaag vraagt om scan en herken. Met Professional of Enterprise kunt u Qwen AI kiezen om transacties uit een PDF-scan te proberen en daarna met de afbeelding te vergelijken.",
         "planNote": "Scans vereisen Professional of Enterprise en beschikbare pagina's. Anoniem, gratis en Standard vereisen een tekstlaag. Vergelijk de abonnementen hieronder.",
         "planCta": "AI-analyse naar keuze; gescande PDF’s proberen",
-        "requirementsTitle": "Welke abonnementen kunnen scans verwerken?",
-        "requirements": "Log in met Professional of Enterprise en beschikbaar paginategoed en kies vóór de start AI. Gratis gebruik en Standard vereisen een tekst-PDF. AI is optioneel en wordt nooit automatisch ingeschakeld.",
-        "preparationTitle": "Een leesbare scan-PDF voorbereiden",
-        "preparation": "Scan volledige pagina's in volgorde, met scherpe datums en bedragen. Vermijd afgesneden randen, schaduwen en gedraaide pagina's. Upload één PDF binnen de getoonde grenzen. Voeg JPG of PNG eerst samen tot PDF; gebruik indien mogelijk het oorspronkelijke tekst-PDF van de bank.",
+        "requirementsTitle": "Een scan vraagt om een bewuste AI-keuze",
+        "requirements": "Professional of Enterprise en resterend tegoed zijn vereist. Gewone verwerking heeft tekst nodig en schakelt niet automatisch over naar AI.",
+        "preparationTitle": "Houd alle kolommen zichtbaar",
+        "preparation": "Snijd datums, bedragen en saldi niet af. Vermijd schaduw en scheve pagina’s. Voeg foto’s eerst samen tot PDF; gebruik liever het digitale origineel als dat beschikbaar is.",
         "limitationsTitle": "AI-resultaten en gegevensverwerking controleren",
         "limitations": "AI-analyse stuurt de volledige PDF en bestandsnaam naar Qwen AI Platform. Vergelijk het resultaat met het origineel; herkenning is niet gegarandeerd. StatementXL bewaart geen permanente bestands- of transactiegeschiedenis. De aanbieder verwerkt gegevens volgens zijn voorwaarden; we garanderen geen extra bewaartermijn of regels voor trainingsgebruik.",
-        "stepsTitle": "Een scan omzetten in drie stappen",
+        "stepsTitle": "Herkennen en met de scan vergelijken",
         "steps": {
           "upload": {
             "title": "Kies een geschikt abonnement en upload",
             "text": "Meld u aan met actief Professional of Enterprise en beschikbare quota. Upload één scan-PDF tot {megabytes} MB en {pages} pagina's."
           },
           "review": {
-            "title": "Controleer de uitgelezen transacties",
-            "text": "Wacht op de eindcontrole, vergelijk alle transacties met het PDF en controleer DISCREPANCY en UNVERIFIABLE voor gebruik."
+            "title": "Controleer vage cijfers en tekens",
+            "text": "Vergelijk bij- en afschrijvingen en omschrijvingen regel voor regel met de scan. Herkenning kan regels missen of verkeerd lezen."
           },
           "download": {
-            "title": "Download gecontroleerde resultaten",
-            "text": "Download Excel of een ander formaat. Bewaar origineel en download; StatementXL heeft geen blijvende bestandsgeschiedenis."
+            "title": "Bewaar tabel én originele scan",
+            "text": "Download Excel of CSV en bewaar het PDF-origineel. Er is geen permanent bestandenarchief."
           }
         },
-        "metaDescription": "OCR voor gescande PDF-bankafschriften. Geschikte abonnementen kunnen Qwen AI kiezen, transacties controleren en Excel of CSV downloaden. Geen herkenningsgarantie.",
+        "metaDescription": "Scan en herken voor bankafschriften met optionele AI in geschikte abonnementen. Volledige PDF en bestandsnaam gaan naar Qwen; controleer iedere regel.",
         "faq": [
           {
             "id": "accuracy",
-            "question": "Garandeert OCR dat elke transactie klopt?",
-            "answer": "Nee. Scankwaliteit en opmaak beïnvloeden de herkenning. Controleer datums, bedragen, saldi en alle risicomeldingen met het origineel voordat je Excel of CSV gebruikt."
+            "question": "Doet scan en herken de controle voor mij?",
+            "answer": "Nee. Vergelijk transacties en aanwezige saldi met de bron. Risicomeldingen helpen bij controle, maar zijn geen garantie."
           },
           {
-            "id": "images",
-            "question": "Kan ik een bankafschrift als JPG of PNG uploaden?",
-            "answer": "Deze upload accepteert alleen PDF’s. Voeg eerst scherpe, volledige afbeeldingen samen in één PDF en kies AI met een geschikt Professional- of Enterprise-abonnement."
+            "id": "processing",
+            "question": "Blijft de scan op mijn apparaat?",
+            "answer": "Bij gekozen AI worden de volledige PDF en bestandsnaam naar Qwen AI Platform gestuurd. De voorwaarden van die aanbieder gelden, zonder aanvullende belofte over bewaring of training."
           }
         ]
       },
@@ -863,7 +896,7 @@
         "steps": {
           "upload": {
             "title": "Zet het PDF-afschrift om",
-            "text": "Upload één PDF tot {megabytes} MB en {pages} pagina's. Gratis en Standard vereisen tekst; Professional en Enterprise kunnen scans proberen."
+            "text": "Selecteer één PDF tot {megabytes} MB en {pages} pagina's. Gratis en Standard vereisen tekst; Professional en Enterprise kunnen scans proberen."
           },
           "review": {
             "title": "Controleer en exporteer transacties",
@@ -1162,7 +1195,7 @@
           },
           {
             "title": "Verwerking en grenzen",
-            "text": "Inhoud wordt niet als documentgeschiedenis blijvend bewaard. Geschikte scans kunnen externe AI gebruiken volgens het privacybeleid. Account-, betaal- en operationele metadata zijn apart. Geen bankkoppeling, openbare extractie-API of directe boekhoudimport."
+            "text": "Lokale analyse gebeurt standaard in uw browser, zonder de PDF, bestandsnaam of transacties te uploaden. Na een geslaagde analyse wordt alleen het aantal pagina’s naar de quotum-API gestuurd. AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Account-, betaal- en operationele metadata zijn apart. Geen bankkoppeling, openbare extractie-API of directe boekhoudimport."
           },
           {
             "title": "Wie publiceert",
@@ -1334,50 +1367,50 @@
     }
   },
   "Resources": {
-    "title": "Gidsen en hulpmiddelen voor bankafschriften",
-    "intro": "Vind conversiehulp, bankgidsen, handmatige boekhoudimports, vergelijkingen, gratis hulpmiddelen en gemeten resultaten van openbare voorbeelden.",
-    "featuredTitle": "Gidsen en gratis hulpmiddelen",
-    "featuredDescription": "Praktische hulp bij PDF-conversie, boekhoudimport en saldocontrole.",
+    "title": "Bankafschriften omzetten en transacties controleren",
+    "intro": "Kies Excel of CSV en controleer de bron. Heeft uw boekhoudpakket MT940 of CAMT.053 nodig, controleer dan die eis: StatementXL levert deze bankformaten niet.",
+    "featuredTitle": "Kies uw volgende bewerking",
+    "featuredDescription": "CSV voor transactieregels, Excel voor werkbladen. Lees bij scans eerst de AI-voorwaarden en controleer saldi afzonderlijk.",
     "relatedTitle": "Gerelateerde gidsen en hulpmiddelen",
     "viewAll": "Alle gidsen en hulpmiddelen bekijken",
     "groups": {
-      "conversion": "Conversiebasis",
-      "banks": "Gidsen per bank",
-      "accounting": "Boekhoudimportgidsen",
-      "bookkeeping": "Boekhouding en documenten",
-      "comparisons": "Productvergelijkingen",
-      "tools": "Hulpmiddelen en voorbeeldrapport"
+      "conversion": "Afschrift omzetten",
+      "banks": "Amerikaanse banken en HSBC UK",
+      "accounting": "Handmatige import in buitenlandse software",
+      "bookkeeping": "Periodes en bewijsstukken ordenen",
+      "comparisons": "Conversiemethoden vergelijken",
+      "tools": "Saldi en voorbeeldresultaten controleren"
     },
     "links": {
-      "pdf": "PDF naar Excel: gids",
-      "scanned": "Gescande afschriften",
-      "chase": "Chase-afschriften",
-      "bofa": "Bank of America-afschriften",
-      "wellsFargo": "Wells Fargo-afschriften",
-      "hsbc": "HSBC UK-afschriften",
-      "quickbooks": "QuickBooks-importgids",
+      "pdf": "Bankafschrift PDF naar Excel",
+      "scanned": "Scan en herken: AI-voorwaarden",
+      "chase": "Chase (VS)",
+      "bofa": "Bank of America (VS)",
+      "wellsFargo": "Wells Fargo (VS)",
+      "hsbc": "HSBC persoonlijk GBP (VK)",
+      "quickbooks": "QuickBooks CSV (Amerikaanse bronnen)",
       "xero": "Xero-importgids",
-      "wave": "Wave-importgids",
-      "sage": "Sage Accounting UK-importgids",
+      "wave": "Wave handmatig importeren",
+      "sage": "Sage Accounting (VK)",
       "loan": "Documenten voor leningaanvragen",
-      "tax": "Documenten voor belastingvoorbereiding",
+      "tax": "Belastingstukken (Amerikaanse IRS)",
       "catchup": "Achterstallige boekhouding",
       "docuclipper": "StatementXL en DocuClipper",
       "alternatives": "DocuClipper-alternatieven",
       "nanonets": "StatementXL en Nanonets",
       "checker": "Saldocontrole en Excel-sjabloon",
       "benchmark": "Openbaar voorbeeldrapport",
-      "csv": "PDF naar CSV converteren",
+      "csv": "Bankafschrift PDF naar CSV",
       "bestConverters": "Beste bankafschriftconverters (2026)"
     },
     "groupDescriptions": {
-      "conversion": "Kies PDF naar Excel of CSV voor tekstafschriften. Controleer bij PDF’s met alleen afbeeldingen de scanvereisten voordat je AI kiest.",
-      "banks": "Kies uw bank voor downloadstappen en beschikbare periodes per rekening. Een downloadhandleiding bewijst geen ondersteuning voor elke afschriftindeling.",
-      "accounting": "Kies de boekhoudsoftware en controleer de CSV-eisen. De gidsen beschrijven handmatige import; StatementXL maakt geen verbinding met uw boekhoudaccount.",
-      "bookkeeping": "Begin bij uw taak: leningdocumenten, Amerikaanse belastingvoorbereiding of achterstallige boekhouding. Bewaar originele afschriften en bewijsstukken bij de tabel.",
-      "comparisons": "Begin met de keuzegids en vergelijk daarna StatementXL met DocuClipper of Nanonets. De alternatievenpagina behandelt ook bankexports. Controleer uitvoer, koppelingen en controlewerk.",
-      "tools": "Controleer totalen zonder bestanden te uploaden met de saldocontrole. Het steekproefrapport toont metingen voor twee indelingen en de grenzen daarvan."
+      "conversion": "Tekst-PDFs worden gewoon in de browser verwerkt. Scans vereisen optionele AI. Excel en CSV zijn geen MT940- of CAMT.053-bestanden.",
+      "banks": "Instructies voor Chase, Bank of America en Wells Fargo in de VS en de genoemde HSBC-UK-rekening. Geen stappen voor Nederlandse bankportalen.",
+      "accounting": "Handmatige gidsen volgens hun bronnen: QuickBooks met Amerikaanse documentatie, Sage in de Britse editie. Geen rechtstreekse koppeling met uw administratie.",
+      "bookkeeping": "Orden rekeningen en ontbrekende periodes. De belastinggids verwijst naar de Amerikaanse IRS en beschrijft geen eisen van de Nederlandse Belastingdienst.",
+      "comparisons": "Vergelijk bankdownloads, controle van één PDF en batchverwerking. Een vergelijking van een leverancier is geen onafhankelijk nauwkeurigheidsonderzoek.",
+      "tools": "De saldocontrole vergelijkt ingevoerde totalen zonder upload. Het openbare rapport betreft alleen de genoemde voorbeelden, niet alle Nederlandse banken."
     },
-    "metaDescription": "Handleidingen voor afschriftconversie, bankdownloads, handmatige boekhoudimport, productvergelijkingen en gratis saldocontrole."
+    "metaDescription": "Gidsen voor bankafschrift PDF naar Excel of CSV, scan en herken en saldocontrole. Amerikaanse banken en Britse software-edities staan apart vermeld."
   }
 }

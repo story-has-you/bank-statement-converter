@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "StatementXL | Estratti conto da PDF a Excel",
-    "description": "StatementXL: Converti estratti conto PDF in Excel con anteprima e avvisi di rischio. Professional ed Enterprise possono provare le scansioni con IA. Nessuna cronologia permanente dei file.",
-    "keywords": "Bank Statement Converter, estratto conto PDF in Excel, convertitore PDF Excel, estrazione movimenti bancari, analisi IA estratti conto, estratto conto PDF scansionato in Excel",
+    "title": "Convertire estratto conto PDF in Excel o CSV | StatementXL",
+    "description": "Converti estratti PDF in Excel o CSV con analisi locale nel browser e senza caricamento predefinito dei file. IA facoltativa con Professional ed Enterprise. Verifica prima di scaricare.",
+    "keywords": "estratto conto PDF Excel, convertire estratto conto CSV, convertitore estratti conto, OCR estratto conto",
     "brand": "StatementXL",
-    "alternateName": "Convertitore di estratti conto da PDF a Excel"
+    "alternateName": "Da estratto conto PDF a Excel o CSV"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -52,26 +52,26 @@
   },
   "HomeIntro": {
     "eyebrow": "Conversione di estratti conto PDF",
-    "title": "Converti il tuo estratto conto da PDF a Excel",
-    "description": "Converti un estratto conto PDF in Excel o CSV e confronta movimenti e avvisi nell’anteprima prima di scaricare."
+    "title": "Da estratto conto PDF a Excel o CSV",
+    "description": "Converti estratti PDF in Excel o CSV, per impostazione predefinita nel browser senza caricare file. Verifica le transazioni e gli indicatori di rischio prima di scaricare. Professional ed Enterprise offrono l’analisi IA facoltativa."
   },
   "PdfUpload": {
-    "title": "Carica un estratto conto",
+    "title": "Seleziona un estratto conto",
     "description": "Elabora un PDF alla volta",
     "fileLabel": "Estratto conto PDF",
     "dropzone": "Scegli un PDF o trascinalo qui",
     "dropzoneHint": "Un PDF leggibile alla volta, fino a {megabytes, number} MB · {pages, number} pagine.",
     "errorTitle": "Non è stato possibile completare questa operazione",
-    "invalidPdf": "Il file caricato non è un PDF.",
-    "multipleFiles": "Carica un PDF alla volta.",
+    "invalidPdf": "Il file selezionato non è un PDF.",
+    "multipleFiles": "Seleziona un PDF alla volta.",
     "conversionFailed": "Non è stato possibile determinare la causa specifica dell’errore.",
     "parserUnavailable": "Non è stato possibile raggiungere il servizio di conversione.",
     "quotaExceeded": "Questo PDF contiene {pageCount, plural, one {# pagina} other {# pagine}}, ma puoi ancora convertire solo {remainingPages, plural, one {# pagina} other {# pagine}}.",
     "quotaUnavailable": "Non è stato possibile determinare la quota di conversione disponibile.",
     "removeFile": "Rimuovi file",
     "quota": "Pagine gratuite: {anonymousPages, number} al giorno senza accesso, {authenticatedPages, number} al giorno dopo l'accesso",
-    "serviceReady": "Questo sito non mantiene una cronologia permanente dei file.",
-    "status": "Pronto per il caricamento",
+    "serviceReady": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA.",
+    "status": "Pronto per la conversione",
     "converting": "Conversione in corso",
     "start": "Converti e controlla",
     "fileTooLarge": "Questo PDF supera i {megabytes, number} MB.",
@@ -83,22 +83,22 @@
     "requestFailed": "Non è stato possibile ricevere una risposta alla richiesta di conversione.",
     "resultStorageFailed": "La conversione è completata, ma il browser non ha potuto salvare il risultato.",
     "browserStorageUnavailable": "Lo spazio di archiviazione del browser non è disponibile.",
-    "emptyFile": "Il file PDF caricato è vuoto.",
+    "emptyFile": "Il file PDF selezionato è vuoto.",
     "quotaExhausted": "Hai utilizzato tutte le pagine disponibili per questo periodo.",
     "invalidResponse": "Il servizio di conversione ha restituito dati in un formato non valido.",
-    "aiNotice": "Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento. Consulta <link>il fornitore, i termini e l’informativa privacy</link>.",
+    "aiNotice": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento. Consulta <link>il fornitore, i termini e l’informativa privacy</link>.",
     "checking": "Verifica del PDF e della quota",
     "retryCheck": "Riprova la verifica",
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagine}}",
     "tooManyPages": "Questo PDF supera il limite di {pages, number} pagine per file.",
     "unreadablePdf": "Impossibile leggere il PDF. Scegli un PDF che si apra normalmente.",
-    "passwordProtectedPdf": "Questo PDF è protetto da password. Rimuovi la password prima di caricarlo.",
-    "aiSummary": "Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform.",
+    "passwordProtectedPdf": "Questo PDF è protetto da password. Rimuovila e seleziona di nuovo il file.",
+    "aiSummary": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server.",
     "aiDetails": "Dettagli del trattamento IA",
     "methodLabel": "Metodo di analisi",
-    "regularMethod": "Analisi ordinaria",
+    "regularMethod": "Analisi locale",
     "aiMethod": "Analisi IA",
-    "localNotice": "L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota."
+    "localNotice": "Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota."
   },
   "ConversionResult": {
     "metadata": {
@@ -274,13 +274,13 @@
     }
   },
   "HomeFeatures": {
-    "title": "Conversione degli estratti conto",
-    "securityTitle": "Privacy dei file",
-    "securityDescription": "Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento.",
-    "banksTitle": "Estrazione delle tabelle",
-    "banksDescription": "Intestazioni e celle dell’estratto conto PDF sono mostrate in tabelle da confrontare con l’originale.",
-    "accuracyTitle": "Controllo dei rischi",
-    "accuracyDescription": "DISCREPANCY e UNVERIFIABLE segnalano dati incompleti o righe disallineate prima del download."
+    "title": "Movimenti da controllare prima di contabilizzare",
+    "securityTitle": "Analisi locale predefinita",
+    "securityDescription": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA.",
+    "banksTitle": "Prima verifica l’esportazione della banca",
+    "banksDescription": "Se la banca offre Excel o CSV con il periodo e i campi necessari, usa quel file. Converti il PDF quando è l’unica fonte utile e controlla il risultato.",
+    "accuracyTitle": "Confronta causali, date e segni",
+    "accuracyDescription": "Verifica addebiti, accrediti, causali su più righe e saldi disponibili nell’originale. Mantieni pagina e riga di origine per risalire ai movimenti dubbi."
   },
   "UsageTiers": {
     "title": "Piani e quote per estratti conto",
@@ -369,32 +369,32 @@
   "HomeFaq": {
     "title": "Cosa sapere prima della conversione?",
     "banks": {
-      "question": "Quali estratti conto sono supportati?",
-      "answer": "Stiamo verificando il convertitore su diversi formati di estratti conto elettronici. Pubblicheremo banche e formati man mano che li avremo verificati."
+      "question": "Conviene usare il file Excel già fornito dalla banca?",
+      "answer": "Usa l’Excel o il CSV della banca se contiene il periodo e le colonne richiesti. In alternativa prova il PDF testuale originale e controlla l’output. Non abbiamo verificato tutte le banche italiane e tutti i formati di conto."
     },
     "accuracy": {
-      "question": "Perché devo controllare il risultato?",
-      "answer": "La conversione degli estratti conto conserva intestazioni e celle quando possibile. Layout complessi, testo sfocato o colonne disallineate possono produrre DISCREPANCY o UNVERIFIABLE. Confronta il PDF prima di registrare, dichiarare o presentare i dati."
+      "question": "Come controllo addebiti, accrediti e causali?",
+      "answer": "Confronta date, addebiti, accrediti, causali e saldi disponibili con l’originale. OK, DISCREPANCY e UNVERIFIABLE indicano le evidenze della riga, non un controllo di revisione né una garanzia di correttezza."
     },
     "quota": {
-      "question": "Quante pagine posso convertire al giorno?",
-      "answer": "Conversione gratuita degli estratti conto: {anonymousPages, number} pagine al giorno senza accesso, {authenticatedPages, number} con accesso. Al mese: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagine. Si contano le pagine PDF. L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale."
+      "question": "Quante pagine posso convertire gratis ogni giorno?",
+      "answer": "Conversione gratuita degli estratti conto: {anonymousPages, number} pagine al giorno senza accesso, {authenticatedPages, number} con accesso. Al mese: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagine. Si contano le pagine PDF. Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota."
     },
     "scans": {
-      "question": "Posso convertire PDF scansionati o crittografati?",
-      "answer": "Professional ed Enterprise possono provare a convertire PDF scansionati con l’IA. Gli altri piani richiedono un livello di testo. Nessun piano supporta file protetti da password."
+      "question": "Si può convertire un estratto conto scansionato?",
+      "answer": "L’analisi ordinaria richiede un livello testuale. Professional ed Enterprise con quota disponibile permettono di scegliere l’IA per tentare una scansione PDF. Il PDF completo e il nome vanno a Qwen AI Platform; occorre verificare il risultato."
     },
     "storage": {
-      "question": "Salvate il mio PDF, il file Excel o i movimenti?",
-      "answer": "Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download."
+      "question": "Posso scaricare di nuovo una vecchia conversione?",
+      "answer": "L’analisi locale è la modalità predefinita. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server solo se scegli l’IA. Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download."
     },
     "failure": {
-      "question": "Cosa succede se la conversione non riesce?",
+      "question": "Cosa fare se mancano dei movimenti?",
       "answer": "Se la conversione dell’estratto conto fallisce, compare un errore, senza Excel non valido né consumo di quota. I risultati parziali contano tutte le pagine PDF."
     },
     "ai": {
-      "question": "Quando viene usata l’analisi IA?",
-      "answer": "Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale. Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform."
+      "question": "Quali dati vengono inviati a Qwen scegliendo l’IA?",
+      "answer": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Confronta i risultati con il PDF originale prima di usarli."
     }
   },
   "HomeFooter": {
@@ -413,7 +413,7 @@
     "resources": "Guide e strumenti"
   },
   "LegalCommon": {
-    "lastUpdated": "Ultimo aggiornamento: 20 ottobre 2026"
+    "lastUpdated": "Ultimo aggiornamento: 28 ottobre 2026"
   },
   "Terms": {
     "metadata": {
@@ -425,11 +425,11 @@
     "availability": "La conversione da PDF a Excel e gli abbonamenti Creem, PayPal o Waffo sono offerti secondo lo stato attuale della pagina. Prezzi e disponibilità dei piani possono cambiare in base alla configurazione del servizio.",
     "service": {
       "title": "Ambito del servizio",
-      "body": "Il servizio organizza i movimenti degli estratti conto PDF supportati in file Excel da scaricare e controllare. Banche, tipi di file e limiti di elaborazione supportati sono descritti nella pagina del servizio. Non offriamo collegamenti a conti bancari, servizi bancari né consulenza finanziaria, fiscale o legale. Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale."
+      "body": "Il servizio organizza i movimenti degli estratti conto PDF supportati in file Excel da scaricare e controllare. Banche, tipi di file e limiti di elaborazione supportati sono descritti nella pagina del servizio. Non offriamo collegamenti a conti bancari, servizi bancari né consulenza finanziaria, fiscale o legale. Per impostazione predefinita l’analisi locale avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale."
     },
     "authorization": {
-      "title": "Autorizzazione al caricamento",
-      "body": "Carica solo estratti conto che sei autorizzato a usare ed elaborare. Il caricamento e il trattamento di informazioni personali o finanziarie devono rispettare la legge applicabile e i tuoi obblighi verso altre persone. Non caricare file ottenuti senza autorizzazione."
+      "title": "Autorizzazione al trattamento dei file",
+      "body": "Seleziona solo estratti che sei autorizzato a usare e trattare. Il trattamento di dati personali o finanziari deve rispettare la legge applicabile e gli obblighi verso altre persone. Se scegli l’IA, devi anche essere autorizzato a inviare il PDF completo e il nome del file al nostro server e a Qwen AI Platform. Non trattare file ottenuti senza autorizzazione."
     },
     "accuracy": {
       "title": "Controllo dei risultati",
@@ -437,7 +437,7 @@
     },
     "quota": {
       "title": "Limiti di conversione",
-      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem, PayPal o Waffo attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF. L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale."
+      "body": "Senza accesso puoi convertire {anonymousPages, plural, one {# pagina} other {# pagine}} PDF al giorno; gli utenti gratuiti che hanno effettuato l'accesso possono convertirne {authenticatedPages, number}. Standard include {standardPages, plural, one {# pagina} other {# pagine}} al mese, Professionale {professionalPages, number} e Aziendale {enterprisePages, number}. Il limite giornaliero si azzera in UTC e quello del piano segue il periodo di fatturazione Creem, PayPal o Waffo attuale. Le conversioni non riuscite non consumano pagine; i risultati parziali contano le pagine del PDF. Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota."
     },
     "subscription": {
       "title": "Abbonamenti e pagamenti",
@@ -451,7 +451,7 @@
     },
     "files": {
       "title": "File e download",
-      "body": "Excel, CSV, JSON, Markdown, TSV e HTML vengono generati nel browser dal risultato finale corrente, inclusi i nomi degli esercenti confermati. Il server non conserva una cronologia persistente di PDF, transazioni estratte o file esportati. Nome del file, risultato e associazioni restano temporaneamente nella sessione di questa scheda per anteprima, ripristino dopo l’aggiornamento e download. Conserva gli estratti originali e i file scaricati; al termine del flusso corrente il servizio non consente di scaricare nuovamente file storici."
+      "body": "L’analisi locale è la modalità predefinita. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server solo se scegli l’IA. Excel, CSV, JSON, Markdown, TSV e HTML vengono generati nel browser dal risultato finale corrente, inclusi i nomi degli esercenti confermati. Il server non conserva una cronologia persistente di PDF, transazioni estratte o file esportati. Nome del file, risultato e associazioni restano temporaneamente nella sessione di questa scheda per anteprima, ripristino dopo l’aggiornamento e download. Conserva gli estratti originali e i file scaricati; al termine del flusso corrente il servizio non consente di scaricare nuovamente file storici."
     },
     "prohibited": {
       "title": "Usi vietati",
@@ -459,7 +459,7 @@
     },
     "rights": {
       "title": "Titolarità",
-      "body": "Mantieni i diritti che possiedi sui file e sui loro contenuti. Il caricamento ci concede solo il permesso necessario alla conversione attuale, senza trasferire la titolarità. I diritti su software, interfaccia e marchio del sito restano ai legittimi titolari."
+      "body": "Conservi i tuoi diritti sui file e sul loro contenuto. L’uso del convertitore autorizza solo il trattamento necessario alla conversione corrente e non trasferisce la proprietà. L’analisi locale non richiede il caricamento di file. I diritti sul software, sull’interfaccia e sul marchio restano ai legittimi titolari."
     },
     "liability": {
       "title": "Disponibilità e responsabilità",
@@ -481,18 +481,18 @@
   "Privacy": {
     "metadata": {
       "title": "Informativa sulla privacy | StatementXL",
-      "description": "Trattamento di estratti conto, analisi IA, risultati temporanei nel browser e dati di account, gestione delle analisi, quote e fatturazione."
+      "description": "Trattamento dell’analisi locale nel browser, degli invii IA facoltativi, dei risultati temporanei e dei dati di account, statistiche, quota e fatturazione."
     },
     "title": "Informativa sulla privacy",
     "intro": "ReAvid Ltd gestisce <site>{domain}</site>. Questa informativa spiega come trattiamo le informazioni quando usi la conversione e gli abbonamenti Creem, PayPal o Waffo.",
     "availability": "L'informativa si applica alle funzioni attualmente disponibili di conversione da PDF a Excel, accesso all'account e abbonamenti Creem, PayPal o Waffo.",
     "documents": {
       "title": "Estratti conto e contenuti della conversione",
-      "body": "Il PDF può contenere nomi, numeri di conto, date, importi, saldi e descrizioni di transazioni sensibili. Trattiamo PDF, transazioni estratte e contenuti esportati solo per la conversione e il download richiesti, senza finalità pubblicitarie o estranee. L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale. Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform."
+      "body": "Gli estratti possono contenere nomi, numeri di conto, date, importi, saldi e descrizioni sensibili. Il contenuto serve solo alla conversione, verifica e al download richiesti, non alla pubblicità o a scopi estranei. Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota. L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server."
     },
     "accountData": {
       "title": "Dati di account, utilizzo e fatturazione",
-      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem, PayPal o Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem, PayPal o Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti con accesso registriamo ID account, copia dell’e-mail, ora, stato e codici di errore sicuri solo per l’analisi IA scelta, per risolvere problemi. L’analisi ordinaria comunica solo le pagine utilizzate. I registri non contengono nomi o contenuti dei file, transazioni o output del modello. Per creare il pagamento inviamo al fornitore scelto il piano selezionato e un identificativo che lo collega all’account. Creem e Waffo ricevono anche l’e-mail dell’account del sito; PayPal gestisce i dati di pagamento tramite il proprio percorso di account. I metadati di fatturazione possono includere anche gli identificativi del piano e del pagatore presso il fornitore, importo e valuta, importo originale, importo e identificativo dello sconto e identificativi degli eventi di pagamento."
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Creem, PayPal o Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Creem, PayPal o Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti con accesso registriamo ID account, copia dell’e-mail, ora, stato e codici di errore sicuri solo per l’analisi IA scelta, per risolvere problemi. L’analisi locale comunica solo le pagine utilizzate. I registri non contengono nomi o contenuti dei file, transazioni o output del modello. Per creare il pagamento inviamo al fornitore scelto il piano selezionato e un identificativo che lo collega all’account. Creem e Waffo ricevono anche l’e-mail dell’account del sito; PayPal gestisce i dati di pagamento tramite il proprio percorso di account. I metadati di fatturazione possono includere anche gli identificativi del piano e del pagatore presso il fornitore, importo e valuta, importo originale, importo e identificativo dello sconto e identificativi degli eventi di pagamento."
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
@@ -504,7 +504,7 @@
     },
     "retention": {
       "title": "Conservazione",
-      "documents": "Questo sito usa PDF, transazioni estratte e contenuti esportati solo per la conversione e il download correnti, senza registrarli in database persistenti, archiviazione di oggetti o cronologia dei file. Dopo l’elaborazione non restano file per download successivi. I dati ricevuti dal fornitore di analisi IA sono soggetti alle sue regole di conservazione e trattamento.",
+      "documents": "Con l’analisi locale, PDF e transazioni sono elaborati solo nel browser. Se scegli l’IA, il nostro server elabora il contenuto caricato per la conversione corrente, senza salvare PDF, transazioni, output del modello o esportazioni in database persistenti, archiviazione di oggetti o cronologie di file sul server. Il fornitore IA applica ai dati ricevuti le proprie regole di conservazione e trattamento. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download.",
       "metadata": "I metadati di account, utilizzo e fatturazione sono conservati solo per il tempo necessario al servizio o agli obblighi legali applicabili. Quando non servono più, vengono eliminati o anonimizzati secondo il sistema e i requisiti di legge. L'email dell'account registrata all'acquisto fa parte del registro dell'abbonamento. I metadati operativi di analisi seguono gli stessi principi di conservazione; i record di analisi associati vengono eliminati quando l’account viene eliminato."
     },
     "providers": {
@@ -538,7 +538,7 @@
     "aiParsing": {
       "title": "Analisi IA e trattamento da parte di terzi",
       "provider": "Il fornitore di analisi IA è Qwen AI Platform, gestito da 通义云启（杭州）信息技术有限公司 (denominazione legale registrata). Si applicano il suo <terms>Accordo sui servizi del prodotto</terms> e la sua <privacy>Informativa legale e sulla privacy</privacy>.",
-      "body": "Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento."
+      "body": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento."
     }
   },
   "ThemeToggle": {
@@ -652,19 +652,19 @@
     }
   },
   "Geo": {
-    "glance": "In breve",
-    "conversionSummary": "StatementXL trasforma gli estratti conto PDF in Excel da verificare. Professional ed Enterprise possono provare a convertire PDF scansionati con il supporto IA. Filtra i rischi, uniforma manualmente i nomi degli esercenti ed esporta in Excel, CSV, JSON, Markdown, TSV o HTML.",
-    "limitsSummary": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
+    "glance": "Prepara i movimenti per il controllo contabile: confronta addebiti, accrediti e causali con il PDF, poi salva Excel o CSV. L’analisi ordinaria avviene nel browser.",
+    "conversionSummary": "Prepara i movimenti per il controllo contabile: confronta addebiti, accrediti e causali con il PDF, poi salva Excel o CSV. L’analisi ordinaria avviene nel browser.",
+    "limitsSummary": "Seleziona un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
     "quotaSummary": "Converti {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine con accesso; i piani mensili partono da {price} USD.",
-    "privacySummary": "L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale. Professional ed Enterprise possono scegliere l’IA per tentare i PDF scansionati. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento.",
-    "featuresAnswer": "Per impostazione predefinita l’analisi ordinaria avviene nel browser, senza passaggio automatico all’IA. Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Confronta i risultati con il PDF originale. L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale.",
+    "privacySummary": "Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota. L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento.",
+    "featuresAnswer": "Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota. L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Confronta i risultati con il PDF originale prima di usarli.",
     "riskTitle": "Cosa significano le etichette di rischio?",
     "riskAnswer": "Le etichette descrivono le prove disponibili per ogni riga estratta. Confronta le righe segnalate con il PDF originale prima dell’uso. I filtri di rischio modificano solo l’anteprima; uniformazione ed esportazioni continuano a includere tutte le transazioni del risultato.",
     "okDefinition": "Nessun problema rilevato; non garantisce accuratezza o completezza.",
     "discrepancyDefinition": "Sono state rilevate prove contrastanti o la necessità di verifica.",
     "unverifiableDefinition": "Mancano prove essenziali o la riga non è verificabile in modo affidabile.",
-    "limitsTitle": "Quali PDF posso caricare?",
-    "limitsAnswer": "Carica un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password. L’analisi ordinaria avviene nel browser. PDF e transazioni non vengono caricati; dopo il successo si invia solo il numero di pagine per scalare la quota. Il server accetta il conteggio del client senza verificare il file originale.",
+    "limitsTitle": "Quali PDF posso selezionare?",
+    "limitsAnswer": "Seleziona un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Enterprise possono provare le scansioni. Nessun piano supporta file protetti da password.",
     "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Creem, PayPal o Waffo. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito.",
     "faqAnswer": "Queste risposte spiegano requisiti, quote e rischi. Leggi la risposta pertinente e controlla il PDF prima della conversione.",
     "planHeader": "Piano",
@@ -676,7 +676,7 @@
     "billingPeriod": "Periodo di fatturazione",
     "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Creem, PayPal o Waffo. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito. I prezzi Waffo sono al netto delle imposte; le imposte applicabili e il totale finale sono mostrati al pagamento.",
     "privacyTitle": "Come vengono trattati i miei dati?",
-    "privacyAnswer": "Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
+    "privacyAnswer": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA. Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
     "browserTitle": "Cosa viene salvato temporaneamente nel browser?",
     "browserAnswer": "Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download.",
     "metadataTitle": "Quali dati di account e fatturazione vengono conservati?",
@@ -715,8 +715,8 @@
   },
   "Landing": {
     "stepsTitle": "Converti un estratto conto in tre passaggi",
-    "uploadTitle": "Carica il PDF",
-    "uploadText": "Carica un estratto conto PDF originale, fino a {megabytes} MB e {pages} pagine. L'uso anonimo e i piani gratuito e Standard richiedono un livello di testo. I file protetti da password non sono supportati.",
+    "uploadTitle": "Seleziona il PDF",
+    "uploadText": "Seleziona un estratto conto PDF originale, fino a {megabytes} MB e {pages} pagine. L'uso anonimo e i piani gratuito e Standard richiedono un livello di testo. I file protetti da password non sono supportati.",
     "reviewTitle": "Controlla le operazioni estratte",
     "downloadTitle": "Scarica i risultati",
     "downloadText": "Scarica Excel oppure scegli CSV, JSON, Markdown, TSV o HTML. CSV e TSV generano un file per tabella con campi di rischio e origine. Adatta le colonne ai requisiti del software contabile prima dell'importazione; non sono file dedicati a QBO o Xero.",
@@ -729,47 +729,80 @@
     "disclaimer": "{bank} è un marchio del rispettivo titolare. StatementXL non è affiliato alla banca. Questa guida spiega come ottenere e controllare gli estratti conto, senza garantire la conversione di ogni formato.",
     "pages": {
       "pdf": {
-        "label": "Estratto conto da PDF a Excel",
-        "title": "Converti un estratto conto PDF in Excel",
-        "intro": "Usa StatementXL per estrarre le operazioni dal PDF, confrontare l'anteprima con l'originale e scaricare Excel con indicatori di rischio. Puoi convertire gratis {anonymousPages} pagina al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Conserva l'originale per verificare i dati.",
-        "metaDescription": "Converti estratti PDF in Excel con StatementXL. Verifica transazioni e segnalazioni di rischio confrontando l’export con il PDF originale."
-      },
-      "csv": {
-        "label": "Convertitore di estratti conto PDF in CSV",
-        "title": "Convertire estratti conto bancari PDF in CSV",
-        "intro": "Estrai le transazioni dal tuo estratto conto PDF, verifica le righe con l’originale e scarica il CSV. Prova {anonymousPages} pagina al giorno senza accedere o {authenticatedPages} pagine dopo l’accesso.",
-        "metaDescription": "Converti estratti conto PDF in CSV. Verifica transazioni e avvisi, scarica un CSV per tabella e adatta le colonne al tuo software contabile.",
-        "requirementsTitle": "Scegliere CSV o Excel",
-        "requirements": "Scegli CSV per preparare dati destinati a un foglio di calcolo o a un’importazione contabile. Scegli Excel per una cartella con più fogli. Entrambi usano lo stesso risultato di conversione verificato.",
-        "preparationTitle": "Un file CSV per tabella",
-        "preparation": "Dopo la conversione, apri il menu dei formati accanto al download Excel e scegli CSV. Ogni tabella logica viene scaricata separatamente, con le colonne originali e i campi di rischio e origine.",
-        "limitationsTitle": "Preparare una copia per l’importazione",
-        "limitations": "Conserva l’esportazione completa per la verifica. In una copia separata, rimuovi i campi di controllo e adatta date, descrizioni e importi al software di destinazione. StatementXL non crea file dedicati QBO o Xero e non importa transazioni per te.",
-        "stepsTitle": "Dall’estratto conto PDF al CSV",
+        "label": "Estratto conto PDF in Excel",
+        "title": "Converti l’estratto conto PDF in un foglio Excel da verificare",
+        "intro": "Organizza i movimenti per il confronto con la contabilità. Dopo il controllo, scarica Excel con un foglio per tabella logica e riferimenti al PDF. La quota gratuita giornaliera è di {anonymousPages} pagina senza accesso o {authenticatedPages} pagine con accesso.",
+        "metaDescription": "Converti estratto conto PDF in Excel. Controlla addebiti, accrediti e causali con l’originale e conserva riferimenti di pagina e note di verifica.",
+        "requirementsTitle": "Scegli il PDF originale dell’home banking",
+        "requirements": "L’analisi ordinaria legge il testo selezionabile nel browser. Evita di stampare e scansionare un originale digitale; per scansioni serve un piano idoneo e la scelta esplicita dell’IA.",
+        "preparationTitle": "Controlla conto e periodo prima di iniziare",
+        "preparation": "Verifica conto, valuta e intervallo del documento. Conserva il PDF accanto al foglio e confronta le causali distribuite su più righe e i passaggi di pagina.",
+        "limitationsTitle": "Nessun profilo contabile dedicato",
+        "limitations": "L’Excel è una copia di lavoro, non un estratto ufficiale né un file di registrazioni contabili. Non ci sono collegamenti diretti o profili di importazione per TeamSystem, Zucchetti o altri gestionali.",
+        "stepsTitle": "Dal PDF al foglio di controllo",
         "steps": {
           "upload": {
-            "title": "Caricare un estratto conto PDF",
-            "text": "Carica un PDF fino a {megabytes} MB e {pages} pagine. Preferisci il PDF testuale originale della banca. Le scansioni richiedono un piano IA idoneo e la selezione manuale dell’IA."
+            "title": "Seleziona l’estratto PDF",
+            "text": "Scegli un solo PDF fino a {megabytes} MB e {pages} pagine, preferibilmente l’originale con testo."
           },
           "review": {
-            "title": "Verificare transazioni e avvisi",
-            "text": "Confronta date, descrizioni, importi e saldi con l’originale. Controlla le righe DISCREPANCY e UNVERIFIABLE prima di usare l’esportazione."
+            "title": "Confronta i movimenti",
+            "text": "Verifica date, segni, causali e saldi presenti. Controlla tutte le segnalazioni confrontandole con il PDF."
           },
           "download": {
-            "title": "Scegliere CSV nel menu di download",
-            "text": "Apri il menu dei formati accanto a Excel e scegli CSV. Scarica ogni tabella, conserva la copia completa per la verifica e preparane una separata per l’importazione."
+            "title": "Salva il file Excel",
+            "text": "Mantieni un foglio per tabella logica e i riferimenti di origine. Prepara una copia distinta per l’eventuale importazione contabile."
           }
         },
         "faq": [
           {
-            "id": "import",
-            "question": "Posso importare il CSV direttamente in QuickBooks o Xero?",
-            "answer": "Non è un file di importazione dedicato. Include colonne originali e campi di controllo. Prepara una copia con colonne, date e segni degli importi richiesti e controlla l’anteprima di importazione."
+            "id": "software",
+            "question": "È già un file per TeamSystem o Zucchetti?",
+            "answer": "No. È una tabella generale con colonne originali e note di verifica. Predisponi una copia nel formato richiesto dal gestionale e controlla l’anteprima di importazione."
+          },
+          {
+            "id": "dates",
+            "question": "Come gestire data contabile e data valuta?",
+            "answer": "Controlla quali colonne sono presenti nel PDF e nel risultato. Non considerarle intercambiabili: scegli nella copia di importazione quella richiesta dal sistema di destinazione."
+          }
+        ]
+      },
+      "csv": {
+        "label": "Estratto conto PDF in CSV",
+        "title": "Estrai i movimenti dal PDF e preparali in CSV",
+        "intro": "Per lavorare sulle righe in un altro programma, confronta l’estratto e scarica un CSV per tabella logica. Mantiene le colonne estratte, le causali, le note di controllo e i riferimenti di origine. La quota gratuita giornaliera è di {anonymousPages} pagina senza accesso o {authenticatedPages} pagine con accesso.",
+        "metaDescription": "Estratto conto PDF in CSV, una tabella per file. Controlla data contabile, valuta, decimali e segni prima di preparare una copia per il gestionale.",
+        "requirementsTitle": "CSV generale, non tracciato del gestionale",
+        "requirements": "Excel e CSV usano lo stesso risultato. Il CSV include colonne di verifica e non fornisce un profilo pronto per un gestionale contabile.",
+        "preparationTitle": "Distingui date e causali",
+        "preparation": "Se presenti, controlla data contabile e data valuta con l’originale. Adatta colonne, segni, decimali e separatori in una copia, seguendo le regole del programma di destinazione.",
+        "limitationsTitle": "Tabelle e conti restano distinti",
+        "limitations": "Ogni tabella logica produce un CSV. Non unire conti o valute senza verificarli; l’apertura in un foglio di calcolo può modificare l’interpretazione di date e numeri.",
+        "stepsTitle": "Verifica i movimenti, poi salva CSV",
+        "steps": {
+          "upload": {
+            "title": "Seleziona un estratto conto PDF",
+            "text": "Seleziona un PDF fino a {megabytes} MB e {pages} pagine. Preferisci il PDF testuale originale della banca. Le scansioni richiedono un piano IA idoneo e la selezione manuale dell’IA."
+          },
+          "review": {
+            "title": "Controlla date e addebiti",
+            "text": "Confronta causali su più righe, addebiti, accrediti e date con il PDF."
+          },
+          "download": {
+            "title": "Scarica ogni tabella",
+            "text": "Scegli CSV dal menu dei formati o dalla singola tabella. Mantieni il file completo e lavora su una copia per l’importazione."
+          }
+        },
+        "faq": [
+          {
+            "id": "software",
+            "question": "Posso importare il CSV senza modificarlo?",
+            "answer": "Non presumerlo. Verifica il tracciato del gestionale, prepara una copia con le sole colonne richieste e controlla date, segni e duplicati nell’anteprima."
           },
           {
             "id": "tables",
-            "question": "Perché ricevo più file CSV?",
-            "answer": "Le esportazioni CSV e TSV producono un file per ogni tabella logica. Scaricale separatamente e non presumere che conti o valute diversi vadano nello stesso file di importazione."
+            "question": "Perché un estratto produce più CSV?",
+            "answer": "Ogni tabella logica ha un file separato per conservarne la struttura. Controlla conti e valute prima di consolidare i dati."
           }
         ]
       },
@@ -777,7 +810,7 @@
         "bank": "Chase",
         "label": "Estratto conto Chase in Excel",
         "title": "Converti un estratto conto Chase in Excel",
-        "intro": "Scarica il PDF di Chase e caricalo su StatementXL per controllare le operazioni e scaricare Excel. Hai {anonymousPages} pagina gratuita al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Confronta i risultati con l'originale.",
+        "intro": "Scarica il PDF di Chase e selezionalo in StatementXL per controllare le operazioni e scaricare Excel. Hai {anonymousPages} pagina gratuita al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Confronta i risultati con l'originale.",
         "availability": "Chase offre fino a sette anni di estratti conto, a seconda del tipo di conto. Verifica gli anni disponibili in Statements & documents; non tutti i conti includono sette anni completi.",
         "download": "Accedi a chase.com, apri Main Menu e scegli Statements & documents. Seleziona anno e conto, poi Open o Save accanto all'estratto. Salva il PDF originale invece di uno screenshot.",
         "detailsTitle": "Chase Mobile e download delle operazioni",
@@ -788,7 +821,7 @@
         "bank": "Bank of America",
         "label": "Estratto Bank of America in Excel",
         "title": "Converti un estratto Bank of America in Excel",
-        "intro": "Carica il PDF di Bank of America su StatementXL, controlla le operazioni e scarica Excel. Hai {anonymousPages} pagina gratuita al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Salva tempestivamente gli estratti più vecchi richiesti.",
+        "intro": "Seleziona il PDF di Bank of America in StatementXL, controlla le operazioni e scarica Excel. Hai {anonymousPages} pagina gratuita al giorno senza accesso o {authenticatedPages} pagine dopo l'accesso. Salva tempestivamente gli estratti più vecchi richiesti.",
         "availability": "Puoi visualizzare, stampare e scaricare direttamente fino a 18 mesi di estratti con immagini degli assegni. Le copie più vecchie possono essere richieste fino a sette anni indietro. Verifica separatamente i documenti disponibili per il conto della carta di credito.",
         "download": "Accedi a Online Banking e apri Statements & Documents nella scheda Accounts. Scegli conto e periodo, apri il PDF e salvalo. Per le copie precedenti, usa Request statements nella stessa sezione.",
         "detailsTitle": "Richiedere vecchi estratti Bank of America",
@@ -807,43 +840,43 @@
         "metaDescription": "Prepara i PDF Wells Fargo per Excel. Controlla i periodi disponibili per conto e le transazioni prima di esportare."
       },
       "scanned": {
-        "label": "OCR estratti conto: da PDF scansionato a Excel",
-        "title": "Convertire estratti conto scansionati in Excel con l’IA",
-        "intro": "Usa l’OCR per tentare di estrarre transazioni da un estratto conto PDF scansionato. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, verificare il risultato e scaricare Excel o CSV. Il riconoscimento non è garantito.",
+        "label": "OCR per estratti conto scansionati",
+        "title": "Leggi una scansione con l’IA e confronta i movimenti",
+        "intro": "Un PDF composto da immagini richiede riconoscimento visivo. Professional ed Enterprise consentono di scegliere Qwen IA per tentare l’estrazione e verificare i movimenti prima di scaricare Excel o CSV.",
         "planNote": "Le scansioni richiedono Professional o Enterprise e una quota disponibile. Uso anonimo, gratuito e Standard richiedono testo nel PDF. Confronta i piani qui sotto.",
         "planCta": "Analisi IA facoltativa; tentativo di PDF scansionati",
-        "requirementsTitle": "Quali piani possono elaborare scansioni?",
-        "requirements": "Accedi con Professional o Enterprise e una quota di pagine disponibile, poi scegli l’IA prima di iniziare. L’accesso gratuito e Standard richiede un PDF testuale. L’IA è facoltativa e non si attiva automaticamente.",
-        "preparationTitle": "Prepara un PDF scansionato leggibile",
-        "preparation": "Scansiona pagine complete in ordine, con date e importi nitidi. Evita bordi tagliati, ombre e rotazioni. Carica un PDF entro i limiti mostrati. Unisci prima JPG o PNG in PDF; preferisci il PDF testuale originale della banca quando disponibile.",
+        "requirementsTitle": "Scansioni con scelta esplicita dell’IA",
+        "requirements": "Servono Professional o Enterprise e quota disponibile. L’IA non si attiva automaticamente; l’analisi ordinaria richiede testo selezionabile.",
+        "preparationTitle": "Rendi leggibili tutte le colonne",
+        "preparation": "Non tagliare date, causali, importi o saldi. Evita ombre e pagine inclinate; unisci le foto in un PDF prima di selezionarlo. Preferisci il PDF digitale se disponibile.",
         "limitationsTitle": "Controlla risultati IA e trattamento dei dati",
         "limitations": "L’analisi IA invia l’intero PDF e il nome del file a Qwen AI Platform. Confronta il risultato con l’originale: il riconoscimento non è garantito. StatementXL non conserva una cronologia permanente di file o transazioni. Il fornitore tratta i dati secondo i propri termini; non garantiamo tempi di conservazione o utilizzi per l’addestramento.",
-        "stepsTitle": "Converti una scansione in tre passaggi",
+        "stepsTitle": "Dalla scansione al controllo delle righe",
         "steps": {
           "upload": {
             "title": "Scegli un piano idoneo e carica",
             "text": "Accedi con Professional o Enterprise attivo e quota disponibile, poi carica un PDF scansionato fino a {megabytes} MB e {pages} pagine."
           },
           "review": {
-            "title": "Controlla le operazioni estratte",
-            "text": "Attendi la verifica finale, confronta tutte le operazioni con il PDF e controlla DISCREPANCY e UNVERIFIABLE prima dell'uso."
+            "title": "Controlla cifre e date sull’immagine",
+            "text": "Confronta numeri poco leggibili, segni, data contabile e valuta se presenti. La lettura può perdere o interpretare male una riga."
           },
           "download": {
-            "title": "Scarica i risultati controllati",
-            "text": "Scarica Excel o un altro formato. Conserva originale e download: StatementXL non offre una cronologia permanente dei file."
+            "title": "Conserva tabella e scansione",
+            "text": "Scarica Excel o CSV e conserva l’originale. Non è disponibile un archivio permanente dei file."
           }
         },
-        "metaDescription": "OCR per estratti conto PDF scansionati. I piani idonei consentono di scegliere Qwen AI, verificare le transazioni e scaricare Excel o CSV, senza garanzia di riconoscimento.",
+        "metaDescription": "OCR di estratti conto scansionati con IA facoltativa nei piani idonei. Il PDF completo e il nome vanno a Qwen; il risultato richiede controllo.",
         "faq": [
           {
             "id": "accuracy",
-            "question": "L’OCR garantisce che ogni transazione sia corretta?",
-            "answer": "No. La qualità della scansione e il layout influiscono sul riconoscimento. Verifica date, importi, saldi e tutti gli avvisi con l’originale prima di usare Excel o CSV."
+            "question": "L’OCR garantisce la correttezza dei movimenti?",
+            "answer": "No. Verifica righe e saldi disponibili con la scansione. Le segnalazioni non sostituiscono il controllo del documento."
           },
           {
-            "id": "images",
-            "question": "Posso caricare un estratto conto JPG o PNG?",
-            "answer": "Questo caricamento accetta solo PDF. Riunisci prima immagini nitide e complete in un unico PDF, poi scegli l’IA con un piano Professional o Enterprise idoneo."
+            "id": "processing",
+            "question": "Il documento resta sul dispositivo quando uso l’IA?",
+            "answer": "La scelta dell’IA invia il PDF completo e il nome a Qwen AI Platform. Valgono le condizioni del fornitore; non aggiungiamo garanzie su conservazione o uso per addestramento."
           }
         ]
       },
@@ -863,7 +896,7 @@
         "steps": {
           "upload": {
             "title": "Converti l'estratto PDF",
-            "text": "Carica un PDF fino a {megabytes} MB e {pages} pagine. Gratuito e Standard richiedono testo; Professional ed Enterprise possono tentare scansioni."
+            "text": "Seleziona un PDF fino a {megabytes} MB e {pages} pagine. Gratuito e Standard richiedono testo; Professional ed Enterprise possono tentare scansioni."
           },
           "review": {
             "title": "Controlla ed esporta le operazioni",
@@ -916,7 +949,7 @@
     "pages": {
       "docuclipper": {
         "title": "StatementXL o DocuClipper: scegliere in base al lavoro",
-        "intro": "Scegli StatementXL per verificare un PDF ed esportare Excel o CSV con analisi ordinaria nel browser. Valuta DocuClipper per lotti, QBO o integrazioni QuickBooks/Xero. StatementXL ha scritto questo confronto sulla base di descrizioni ufficiali, senza test indipendenti di velocità o accuratezza.",
+        "intro": "Scegli StatementXL per verificare un PDF ed esportare Excel o CSV con analisi locale nel browser. Valuta DocuClipper per lotti, QBO o integrazioni QuickBooks/Xero. StatementXL ha scritto questo confronto sulla base di descrizioni ufficiali, senza test indipendenti di velocità o accuratezza.",
         "sections": [
           {
             "title": "Quando è più adatto DocuClipper",
@@ -924,11 +957,11 @@
           },
           {
             "title": "Quando è adatto StatementXL",
-            "text": "StatementXL serve a verificare un PDF riga per riga e scaricare Excel o CSV. L’analisi ordinaria avviene nel browser senza caricare PDF o movimenti; dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Motivi di rischio e posizioni di origine aiutano la verifica. L’IA facoltativa richiede Professional o Enterprise e invia PDF completo e nome a Qwen AI Platform. Non ci sono QBO, acquisizione in lotti, API pubblica di estrazione o collegamento contabile."
+            "text": "StatementXL serve a verificare un PDF riga per riga e scaricare Excel o CSV. L’analisi locale avviene nel browser senza caricare PDF o movimenti; dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Motivi di rischio e posizioni di origine aiutano la verifica. L’IA facoltativa richiede Professional o Enterprise e invia PDF completo e nome a Qwen AI Platform. Non ci sono QBO, acquisizione in lotti, API pubblica di estrazione o collegamento contabile."
           },
           {
             "title": "Confrontare fatturazione e costo di verifica",
-            "text": "Entrambi pubblicano piani basati sulle pagine, con funzioni e limiti diversi. StatementXL distingue analisi ordinaria e IA facoltativa per piano. DocuClipper dichiara che la prova permette di esaminare i movimenti estratti, mentre esportazione e sincronizzazione richiedono un upgrade. Confronta il piano necessario ai file e alla consegna, incluse le correzioni manuali. Consulta i termini attuali senza presumere che la prova includa un’esportazione utilizzabile."
+            "text": "Entrambi pubblicano piani basati sulle pagine, con funzioni e limiti diversi. StatementXL distingue analisi locale e IA facoltativa per piano. DocuClipper dichiara che la prova permette di esaminare i movimenti estratti, mentre esportazione e sincronizzazione richiedono un upgrade. Confronta il piano necessario ai file e alla consegna, incluse le correzioni manuali. Consulta i termini attuali senza presumere che la prova includa un’esportazione utilizzabile."
           },
           {
             "title": "Verifica cosa devi consegnare",
@@ -974,7 +1007,7 @@
       },
       "nanonets": {
         "title": "StatementXL o Nanonets: esportazione o automazione?",
-        "intro": "Scegli StatementXL per verificare un PDF e scaricare Excel o CSV con analisi ordinaria nel browser. Valuta Nanonets per collegare l’estrazione a e-mail, cloud o altri passaggi automatizzati. StatementXL ha scritto questo confronto da descrizioni ufficiali; non dimostra quale servizio sia più accurato.",
+        "intro": "Scegli StatementXL per verificare un PDF e scaricare Excel o CSV con analisi locale nel browser. Valuta Nanonets per collegare l’estrazione a e-mail, cloud o altri passaggi automatizzati. StatementXL ha scritto questo confronto da descrizioni ufficiali; non dimostra quale servizio sia più accurato.",
         "sections": [
           {
             "title": "Dove Nanonets offre vantaggi",
@@ -982,7 +1015,7 @@
           },
           {
             "title": "A cosa serve StatementXL",
-            "text": "StatementXL elabora un PDF alla volta ed esporta Excel, CSV e altri formati con rischi per riga e posizioni di origine. L’analisi ordinaria avviene nel browser senza caricare PDF o movimenti; dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Professional ed Enterprise possono selezionare l’IA anche per scansioni, inviando PDF completo e nome a Qwen AI Platform. Non ci sono API pubblica di estrazione, acquisizione in lotti, QBO o collegamento contabile diretto."
+            "text": "StatementXL elabora un PDF alla volta ed esporta Excel, CSV e altri formati con rischi per riga e posizioni di origine. L’analisi locale avviene nel browser senza caricare PDF o movimenti; dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Professional ed Enterprise possono selezionare l’IA anche per scansioni, inviando PDF completo e nome a Qwen AI Platform. Non ci sono API pubblica di estrazione, acquisizione in lotti, QBO o collegamento contabile diretto."
           },
           {
             "title": "Confrontare unità coerenti",
@@ -1162,7 +1195,7 @@
           },
           {
             "title": "Trattamento e limiti",
-            "text": "I contenuti non vengono conservati come storico documentale. Scansioni idonee possono usare IA esterna secondo l’informativa. Metadati di account, pagamenti e operazioni sono separati. Nessun collegamento bancario, API pubblica di estrazione o import contabile diretto."
+            "text": "Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota. L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Metadati di account, pagamenti e operazioni sono separati. Nessun collegamento bancario, API pubblica di estrazione o import contabile diretto."
           },
           {
             "title": "Chi pubblica",
@@ -1238,7 +1271,7 @@
           },
           {
             "title": "Per verificare un PDF alla volta: StatementXL",
-            "text": "StatementXL converte un PDF in tabelle verificabili ed esporta Excel o CSV con rischi per riga e posizioni di origine. L’analisi ordinaria avviene nel browser, senza caricare PDF o movimenti. Dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Gli utenti Professional ed Enterprise possono scegliere esplicitamente l’IA per le scansioni; il PDF completo e il nome vengono inviati a Qwen AI Platform. Confronta il risultato con l’originale. Non ci sono acquisizione in lotti, QBO, API pubblica di estrazione o collegamento contabile diretto."
+            "text": "StatementXL converte un PDF in tabelle verificabili ed esporta Excel o CSV con rischi per riga e posizioni di origine. L’analisi locale avviene nel browser, senza caricare PDF o movimenti. Dopo il completamento viene inviato solo il numero di pagine per detrarre la quota. Gli utenti Professional ed Enterprise possono scegliere esplicitamente l’IA per le scansioni; il PDF completo e il nome vengono inviati a Qwen AI Platform. Confronta il risultato con l’originale. Non ci sono acquisizione in lotti, QBO, API pubblica di estrazione o collegamento contabile diretto."
           },
           {
             "title": "Per lotti e consegne QBO: valutare DocuClipper",
@@ -1256,11 +1289,11 @@
         "faq": [
           {
             "question": "Esiste un’opzione gratuita?",
-            "answer": "Usa il CSV o Excel della banca se copre periodo e campi necessari. StatementXL offre anche una quota gratuita limitata di analisi ordinaria per PDF con testo. Controlla i limiti attuali prima di convertire. L’accesso gratuito non include l’analisi IA degli estratti scansionati."
+            "answer": "Usa il CSV o Excel della banca se copre periodo e campi necessari. StatementXL offre anche una quota gratuita limitata di analisi locale per PDF con testo. Controlla i limiti attuali prima di convertire. L’accesso gratuito non include l’analisi IA degli estratti scansionati."
           },
           {
             "question": "Cosa scegliere per un estratto scansionato?",
-            "answer": "Scegli un processo che dichiari la gestione delle scansioni e verifica un file rappresentativo. In StatementXL gli utenti Professional ed Enterprise devono selezionare l’IA; PDF completo e nome vengono inviati a Qwen AI Platform. L’analisi ordinaria nel browser richiede testo e anche i risultati IA vanno verificati."
+            "answer": "Scegli un processo che dichiari la gestione delle scansioni e verifica un file rappresentativo. In StatementXL gli utenti Professional ed Enterprise devono selezionare l’IA; PDF completo e nome vengono inviati a Qwen AI Platform. L’analisi locale nel browser richiede testo e anche i risultati IA vanno verificati."
           },
           {
             "question": "Si può importare direttamente nel software contabile?",
@@ -1315,7 +1348,7 @@
       "pricing": "Unità di prezzo"
     },
     "statementxl": {
-      "workflow": "Un PDF alla volta; analisi ordinaria nel browser, rischi per riga e fonti. L’IA facoltativa invia il PDF completo a Qwen.",
+      "workflow": "Un PDF alla volta; analisi locale nel browser, rischi per riga e fonti. L’IA facoltativa invia il PDF completo a Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; nessun QBO.",
       "integration": "Import manuale; nessuna banca o API pubblica di estrazione.",
       "pricing": "Da US${price}/mese per {pages} pagine PDF; vedere piani attuali."
@@ -1334,50 +1367,50 @@
     }
   },
   "Resources": {
-    "title": "Guide e strumenti per estratti bancari",
-    "intro": "Trova aiuto per conversione, guide per banca, importazione contabile manuale, confronti, strumenti gratuiti e risultati misurati su esempi pubblici.",
-    "featuredTitle": "Guide e strumenti gratuiti",
-    "featuredDescription": "Aiuto pratico per convertire PDF, importare in contabilità e controllare i saldi.",
+    "title": "Estratti conto: conversione e controllo dei movimenti",
+    "intro": "Scegli Excel o CSV per preparare il lavoro contabile. I tutorial di banche e software esteri indicano paese e versione; non sono tracciati per i gestionali italiani.",
+    "featuredTitle": "Scegli il prossimo passaggio",
+    "featuredDescription": "Excel per i fogli di lavoro, CSV per le righe da adattare. Controlla i saldi separatamente e le condizioni IA per le scansioni.",
     "relatedTitle": "Guide e strumenti correlati",
     "viewAll": "Tutte le guide e gli strumenti",
     "groups": {
-      "conversion": "Nozioni di conversione",
-      "banks": "Guide per banca",
-      "accounting": "Guide all’importazione contabile",
-      "bookkeeping": "Contabilità e documenti",
-      "comparisons": "Confronti tra prodotti",
-      "tools": "Strumenti e rapporto sui campioni"
+      "conversion": "Convertire l’estratto conto",
+      "banks": "Banche USA e HSBC UK",
+      "accounting": "Importazioni manuali in software esteri",
+      "bookkeeping": "Ordinare periodi e documenti",
+      "comparisons": "Scegliere il metodo di conversione",
+      "tools": "Controllare saldi ed esempi"
     },
     "links": {
-      "pdf": "Guida da PDF a Excel",
-      "scanned": "Estratti scansionati",
-      "chase": "Estratti Chase",
-      "bofa": "Estratti Bank of America",
-      "wellsFargo": "Estratti Wells Fargo",
-      "hsbc": "Estratti HSBC UK",
-      "quickbooks": "Guida all’importazione in QuickBooks",
+      "pdf": "Estratto PDF in Excel",
+      "scanned": "Scansioni: requisiti IA",
+      "chase": "Chase (USA)",
+      "bofa": "Bank of America (USA)",
+      "wellsFargo": "Wells Fargo (USA)",
+      "hsbc": "HSBC personale GBP (Regno Unito)",
+      "quickbooks": "QuickBooks CSV (fonti USA)",
       "xero": "Guida all’importazione in Xero",
-      "wave": "Guida all’importazione in Wave",
-      "sage": "Importazione Sage Accounting UK",
+      "wave": "Importazione manuale Wave",
+      "sage": "Sage Accounting (Regno Unito)",
       "loan": "Documenti per prestiti",
-      "tax": "Documenti per le imposte",
+      "tax": "Documenti fiscali (IRS USA)",
       "catchup": "Recupero contabile",
       "docuclipper": "StatementXL e DocuClipper",
       "alternatives": "Alternative a DocuClipper",
       "nanonets": "StatementXL e Nanonets",
       "checker": "Controllo saldo e modello Excel",
       "benchmark": "Rapporto su campioni pubblici",
-      "csv": "Convertitore da PDF a CSV",
+      "csv": "Movimenti PDF in CSV",
       "bestConverters": "Migliori convertitori di estratti conto (2026)"
     },
     "groupDescriptions": {
-      "conversion": "Scegli PDF in Excel o CSV per gli estratti testuali. Per i PDF composti da immagini, verifica i requisiti delle scansioni prima di scegliere l’IA.",
-      "banks": "Scegli la banca per i passaggi di download e i periodi disponibili per conto. La guida non dimostra il supporto di tutti i layout.",
-      "accounting": "Scegli il software di destinazione e verifica i requisiti CSV. Le guide descrivono importazioni manuali; StatementXL non si collega al conto contabile.",
-      "bookkeeping": "Parti dal compito: documenti per prestiti, imposte statunitensi o contabilità arretrata. Conserva estratti originali e giustificativi insieme al foglio.",
-      "comparisons": "Parti dalla guida alla scelta e confronta StatementXL con DocuClipper o Nanonets. La pagina delle alternative include anche l’esportazione bancaria. Verifica formati, integrazioni e lavoro di controllo.",
-      "tools": "Il controllo saldi confronta i totali senza caricare file. Il rapporto campione presenta misurazioni su due layout e i limiti dei risultati."
+      "conversion": "Testo PDF nel browser con analisi ordinaria; scansioni con IA facoltativa. Excel e CSV sono tabelle generali, non tracciati contabili dedicati.",
+      "banks": "Procedure di Chase, Bank of America e Wells Fargo negli USA e del conto HSBC UK indicato. Non descrivono l’home banking italiano.",
+      "accounting": "Guide manuali secondo le fonti: QuickBooks con documentazione USA, Sage nell’edizione britannica. Nessuna connessione diretta ai gestionali italiani.",
+      "bookkeeping": "Organizza conti e periodi mancanti. La guida fiscale cita l’IRS statunitense e non spiega le regole dell’Agenzia delle Entrate italiana.",
+      "comparisons": "Distingui export della banca, controllo del singolo PDF e lotti. Le descrizioni dei fornitori non sono prove indipendenti di accuratezza.",
+      "tools": "Il controllo confronta totali inseriti senza caricare file. Il rapporto pubblico riguarda solo i campioni indicati, non tutte le banche italiane."
     },
-    "metaDescription": "Guide alla conversione degli estratti, download bancari, importazioni contabili manuali, confronti e controllo gratuito dei saldi."
+    "metaDescription": "Guide per estratti conto PDF in Excel o CSV, OCR e controllo saldi. Distingui banche statunitensi, software britannici e limiti dei formati di importazione."
   }
 }
