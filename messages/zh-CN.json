@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "银行流水转 Excel、CSV，先核对再使用",
-    "description": "银行流水 PDF 转 Excel、CSV。预览交易明细，核对风险标记后下载。"
+    "description": "银行流水 PDF 转 Excel、CSV，核对交易与风险标记后下载。"
   },
   "PdfUpload": {
     "title": "选择对账单",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "未能确认当前可用的转换额度。",
     "removeFile": "移除文件",
     "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
-    "serviceReady": "默认本地解析，PDF、文件名和流水不上传，成功后仅发送页数核算额度。主动选择 AI 时，完整 PDF 和文件名才会经本站服务端发送至千问。",
     "status": "可以转换",
     "converting": "正在处理",
     "start": "转换并查看结果",
@@ -86,19 +85,17 @@
     "emptyFile": "所选 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
     "invalidResponse": "转换服务返回的数据格式异常。",
-    "aiNotice": "专业和企业套餐可在转换前主动选择 AI，尝试处理扫描件，不会自动启用。本站不保存文件或流水的持久化历史；千问的数据保留和训练政策以其条款为准。查看<link>服务商条款与隐私详情</link>。",
+    "aiNotice": "专业和企业套餐可主动选择 AI，尝试扫描件，不会自动启用。选择后，完整 PDF 和文件名经本站服务端发送至千问。本站不保存文件或流水历史；千问的留存和训练政策以其条款为准。查看<link>条款与隐私详情</link>。",
     "checking": "正在检查 PDF 和额度",
     "retryCheck": "重新检查",
     "pageCount": "共 {pageCount, number} 页",
     "tooManyPages": "这份 PDF 超过了单个文件最多 {pages, number} 页的限制。",
     "unreadablePdf": "无法读取这份 PDF，请选择可正常打开的 PDF 文件。",
     "passwordProtectedPdf": "这份 PDF 已加密，请移除密码后重新选择。",
-    "aiSummary": "AI 解析为可选功能，不会自动启用。Professional 和 Enterprise 用户可在转换前主动选择 AI，尝试处理扫描件；只有主动选择后，完整 PDF 和文件名才会经本站服务端发送至千问 AI 平台。",
     "aiDetails": "AI 处理详情",
     "methodLabel": "解析方式",
     "regularMethod": "本地解析",
-    "aiMethod": "AI 解析",
-    "localNotice": "默认在浏览器中完成本地解析，不上传 PDF、文件名或流水内容。解析成功后，仅向额度接口发送页数。"
+    "aiMethod": "AI 解析"
   },
   "ConversionResult": {
     "metadata": {
@@ -276,11 +273,11 @@
   "HomeFeatures": {
     "title": "从流水 PDF 到可核对的表格",
     "securityTitle": "默认本地解析",
-    "securityDescription": "在浏览器内处理流水，无需上传原件。",
+    "securityDescription": "浏览器内处理，无需上传原件。",
     "banksTitle": "导出 Excel、CSV",
-    "banksDescription": "用于表格整理和记账准备。",
+    "banksDescription": "用于表格整理和记账。",
     "accuracyTitle": "下载前核对",
-    "accuracyDescription": "根据风险标记，对照原始 PDF 检查交易。"
+    "accuracyDescription": "对照 PDF 检查风险标记。"
   },
   "UsageTiers": {
     "title": "银行流水转换套餐与额度",
@@ -1370,7 +1367,7 @@
     "title": "银行流水转换、核对与导出指南",
     "intro": "先按文件和目标格式选择入口，再查看核对工具。目录同时保留美国银行和英国软件教程，使用时注意其地区与版本范围。",
     "featuredTitle": "按手头的流水选择下一步",
-    "featuredDescription": "有文字的流水先选 Excel 或 CSV；只有扫描件时查看 AI 条件，整理完成后可另用余额工具检查合计。",
+    "featuredDescription": "Excel、CSV、扫描件转换与余额检查。",
     "relatedTitle": "相关指南与工具",
     "viewAll": "查看全部指南与工具",
     "groups": {

@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Conversione di estratti conto PDF",
     "title": "Da estratto conto PDF a Excel o CSV",
-    "description": "Converti estratti PDF in Excel o CSV, per impostazione predefinita nel browser senza caricare file. Verifica le transazioni e gli indicatori di rischio prima di scaricare. Professional ed Enterprise offrono l’analisi IA facoltativa."
+    "description": "Converti estratti conto PDF in Excel o CSV. Controlla transazioni e avvisi prima del download."
   },
   "PdfUpload": {
     "title": "Seleziona un estratto conto",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "Non è stato possibile determinare la quota di conversione disponibile.",
     "removeFile": "Rimuovi file",
     "quota": "Pagine gratuite: {anonymousPages, number} al giorno senza accesso, {authenticatedPages, number} al giorno dopo l'accesso",
-    "serviceReady": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA.",
     "status": "Pronto per la conversione",
     "converting": "Conversione in corso",
     "start": "Converti e controlla",
@@ -86,19 +85,17 @@
     "emptyFile": "Il file PDF selezionato è vuoto.",
     "quotaExhausted": "Hai utilizzato tutte le pagine disponibili per questo periodo.",
     "invalidResponse": "Il servizio di conversione ha restituito dati in un formato non valido.",
-    "aiNotice": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Il sito non conserva uno storico permanente di PDF, transazioni, output del modello o esportazioni. Il fornitore IA applica i propri termini e la propria informativa privacy; non garantiamo tempi di conservazione né l’uso per addestramento. Consulta <link>il fornitore, i termini e l’informativa privacy</link>.",
+    "aiNotice": "Professional ed Enterprise consentono di scegliere l’IA, anche per scansioni. Non si attiva automaticamente. Solo scegliendola il PDF completo e il nome passano dal nostro server a Qwen AI Platform. Non conserviamo una cronologia permanente di file o transazioni. Per conservazione e addestramento di Qwen valgono i suoi <link>termini e l’informativa sulla privacy</link>.",
     "checking": "Verifica del PDF e della quota",
     "retryCheck": "Riprova la verifica",
     "pageCount": "{pageCount, plural, one {# pagina} other {# pagine}}",
     "tooManyPages": "Questo PDF supera il limite di {pages, number} pagine per file.",
     "unreadablePdf": "Impossibile leggere il PDF. Scegli un PDF che si apra normalmente.",
     "passwordProtectedPdf": "Questo PDF è protetto da password. Rimuovila e seleziona di nuovo il file.",
-    "aiSummary": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server.",
     "aiDetails": "Dettagli del trattamento IA",
     "methodLabel": "Metodo di analisi",
     "regularMethod": "Analisi locale",
-    "aiMethod": "Analisi IA",
-    "localNotice": "Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota."
+    "aiMethod": "Analisi IA"
   },
   "ConversionResult": {
     "metadata": {
@@ -276,15 +273,15 @@
   "HomeFeatures": {
     "title": "Movimenti da controllare prima di contabilizzare",
     "securityTitle": "Analisi locale predefinita",
-    "securityDescription": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA.",
-    "banksTitle": "Prima verifica l’esportazione della banca",
-    "banksDescription": "Se la banca offre Excel o CSV con il periodo e i campi necessari, usa quel file. Converti il PDF quando è l’unica fonte utile e controlla il risultato.",
-    "accuracyTitle": "Confronta causali, date e segni",
-    "accuracyDescription": "Verifica addebiti, accrediti, causali su più righe e saldi disponibili nell’originale. Mantieni pagina e riga di origine per risalire ai movimenti dubbi."
+    "securityDescription": "Elaborazione nel browser senza caricare l’estratto conto.",
+    "banksTitle": "Esportazione Excel e CSV",
+    "banksDescription": "Per fogli di calcolo e preparazione contabile.",
+    "accuracyTitle": "Controlla prima del download",
+    "accuracyDescription": "Confronta gli avvisi con il PDF originale."
   },
   "UsageTiers": {
     "title": "Piani e quote per estratti conto",
-    "description": "Quote gratuite giornaliere e abbonamenti per periodo di fatturazione. Accedi per abbonarti con Creem, PayPal o Waffo.",
+    "description": "Quota gratuita giornaliera o abbonamento mensile.",
     "anonymous": "Senza accesso",
     "anonymousAmount": "{pages, plural, one {# pagina} other {# pagine}}",
     "signedIn": "Con accesso",
@@ -370,31 +367,31 @@
     "title": "Cosa sapere prima della conversione?",
     "banks": {
       "question": "Conviene usare il file Excel già fornito dalla banca?",
-      "answer": "Usa l’Excel o il CSV della banca se contiene il periodo e le colonne richiesti. In alternativa prova il PDF testuale originale e controlla l’output. Non abbiamo verificato tutte le banche italiane e tutti i formati di conto."
+      "answer": "Preferisci l’Excel o il CSV della banca. Se hai solo il PDF, convertilo e verifica il risultato. Il supporto dipende dal formato."
     },
     "accuracy": {
       "question": "Come controllo addebiti, accrediti e causali?",
-      "answer": "Confronta date, addebiti, accrediti, causali e saldi disponibili con l’originale. OK, DISCREPANCY e UNVERIFIABLE indicano le evidenze della riga, non un controllo di revisione né una garanzia di correttezza."
+      "answer": "Confronta date, importi, saldi e descrizioni su più righe con l’originale. Gli avvisi non garantiscono l’accuratezza."
     },
     "quota": {
       "question": "Quante pagine posso convertire gratis ogni giorno?",
-      "answer": "Conversione gratuita degli estratti conto: {anonymousPages, number} pagine al giorno senza accesso, {authenticatedPages, number} con accesso. Al mese: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagine. Si contano le pagine PDF. Per impostazione predefinita, l’analisi locale avviene nel browser senza caricare il PDF, il nome del file o le transazioni. Dopo un’analisi riuscita, solo il numero di pagine viene inviato all’API della quota."
+      "answer": "Gratis al giorno: {anonymousPages, number} pagine senza accesso, {authenticatedPages, number} con accesso. Al mese: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} pagine."
     },
     "scans": {
       "question": "Si può convertire un estratto conto scansionato?",
-      "answer": "L’analisi ordinaria richiede un livello testuale. Professional ed Enterprise con quota disponibile permettono di scegliere l’IA per tentare una scansione PDF. Il PDF completo e il nome vanno a Qwen AI Platform; occorre verificare il risultato."
+      "answer": "L’analisi locale richiede testo selezionabile. Professional ed Enterprise consentono di scegliere l’IA per scansioni con quota disponibile. Verifica il risultato."
     },
     "storage": {
       "question": "Posso scaricare di nuovo una vecchia conversione?",
-      "answer": "L’analisi locale è la modalità predefinita. Il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server solo se scegli l’IA. Il server non conserva una cronologia persistente di PDF, esportazioni o transazioni. Lo spazio di sessione di questa scheda mantiene temporaneamente nome del file, risultato estratto, colonne degli esercenti scelte e associazioni degli alias con i nomi confermati per anteprima, ripristino dopo l’aggiornamento e download. Avviare un’altra conversione o cancellare il risultato rimuove questi dati; le associazioni non vengono riutilizzate tra file. Conserva PDF originali e download."
+      "answer": "Nessuna cronologia dei file sul server. Questa scheda conserva temporaneamente risultati e alias degli esercenti per anteprima e ripristino dopo un aggiornamento. Una nuova conversione o la cancellazione dei risultati li elimina. Conserva i download."
     },
     "failure": {
       "question": "Cosa fare se mancano dei movimenti?",
-      "answer": "Se la conversione dell’estratto conto fallisce, compare un errore, senza Excel non valido né consumo di quota. I risultati parziali contano tutte le pagine PDF."
+      "answer": "I tentativi falliti non consumano quota. I risultati parziali contano tutte le pagine PDF. Controlla le transazioni mancanti."
     },
     "ai": {
       "question": "Quali dati vengono inviati a Qwen scegliendo l’IA?",
-      "answer": "L’analisi IA è facoltativa e non si attiva mai automaticamente. Gli utenti Professional ed Enterprise possono scegliere l’IA prima della conversione, anche per le scansioni. Solo scegliendo l’IA, il PDF completo e il nome del file vengono inviati a Qwen AI Platform tramite il nostro server. Confronta i risultati con il PDF originale prima di usarli."
+      "answer": "L’IA non si attiva automaticamente. Scegliendola con Professional o Enterprise, il PDF completo e il nome vengono inviati tramite il nostro server a Qwen AI Platform."
     }
   },
   "HomeFooter": {
@@ -1370,7 +1367,7 @@
     "title": "Estratti conto: conversione e controllo dei movimenti",
     "intro": "Scegli Excel o CSV per preparare il lavoro contabile. I tutorial di banche e software esteri indicano paese e versione; non sono tracciati per i gestionali italiani.",
     "featuredTitle": "Scegli il prossimo passaggio",
-    "featuredDescription": "Excel per i fogli di lavoro, CSV per le righe da adattare. Controlla i saldi separatamente e le condizioni IA per le scansioni.",
+    "featuredDescription": "Excel, CSV, verifica del saldo e scansioni.",
     "relatedTitle": "Guide e strumenti correlati",
     "viewAll": "Tutte le guide e gli strumenti",
     "groups": {

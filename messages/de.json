@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge in Excel oder CSV umwandeln",
-    "description": "Kontoauszug-PDFs in Excel oder CSV umwandeln: standardmäßig lokal im Browser, ohne Dateien hochzuladen. Prüfen Sie Transaktionen und Risikomarkierungen vor dem Download. Professional und Enterprise bieten eine optionale KI-Analyse."
+    "description": "Kontoauszug-PDFs in Excel oder CSV umwandeln. Transaktionen und Risikohinweise vor dem Download prüfen."
   },
   "PdfUpload": {
     "title": "Kontoauszug auswählen",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "Ihr verfügbares Konvertierungskontingent konnte nicht ermittelt werden.",
     "removeFile": "Datei entfernen",
     "quota": "Kostenloses Kontingent: {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag ohne Anmeldung, {authenticatedPages, plural, one {# Seite} other {# Seiten}} pro Tag nach Anmeldung",
-    "serviceReady": "Die lokale Analyse erfolgt standardmäßig im Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nur wenn Sie KI wählen, werden die vollständige PDF und der Dateiname an unseren Server und Qwen AI Platform gesendet.",
     "status": "Bereit zur Konvertierung",
     "converting": "Wird konvertiert",
     "start": "Konvertieren und überprüfen",
@@ -86,19 +85,17 @@
     "emptyFile": "Die ausgewählte PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "aiNotice": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung. Siehe <link>Anbieter, Bedingungen und Datenschutz</link>.",
+    "aiNotice": "Professional und Enterprise können KI auch für Scans wählen; sie startet nie automatisch. Nur dann gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform. Wir speichern keinen dauerhaften Datei- oder Transaktionsverlauf. Für Qwens Speicherung und Training gelten die <link>Nutzungs- und Datenschutzbedingungen</link>.",
     "checking": "PDF und Kontingent werden geprüft",
     "retryCheck": "Erneut prüfen",
     "pageCount": "{pageCount, plural, one {# Seite} other {# Seiten}}",
     "tooManyPages": "Diese PDF überschreitet das Limit von {pages, number} Seiten pro Datei.",
     "unreadablePdf": "Die PDF konnte nicht gelesen werden. Bitte wählen Sie eine PDF, die sich normal öffnen lässt.",
     "passwordProtectedPdf": "Diese PDF ist passwortgeschützt. Entfernen Sie das Passwort und wählen Sie die Datei erneut aus.",
-    "aiSummary": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet.",
     "aiDetails": "Details zur KI-Verarbeitung",
     "methodLabel": "Analysemethode",
     "regularMethod": "Lokale Analyse",
-    "aiMethod": "KI-Analyse",
-    "localNotice": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet."
+    "aiMethod": "KI-Analyse"
   },
   "ConversionResult": {
     "metadata": {
@@ -275,16 +272,16 @@
   },
   "HomeFeatures": {
     "title": "Buchungen aus dem PDF nachvollziehbar aufbereiten",
-    "securityTitle": "Standardmäßig lokal analysieren",
-    "securityDescription": "Die lokale Analyse erfolgt standardmäßig im Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nur wenn Sie KI wählen, werden die vollständige PDF und der Dateiname an unseren Server und Qwen AI Platform gesendet.",
-    "banksTitle": "Bankexport vor PDF-Konvertierung prüfen",
-    "banksDescription": "Liefert die Bank CSV oder Excel mit dem passenden Zeitraum, nutzen Sie diesen Export. Für PDF-Auszüge prüfen Sie jede Buchung; eine Bankliste wäre kein Nachweis für alle Kontomodelle.",
-    "accuracyTitle": "Verwendungszweck, Soll und Haben abgleichen",
-    "accuracyDescription": "Kontrollieren Sie Datum, Vorzeichen, mehrzeilige Verwendungszwecke und vorhandene Salden am Original. Quellenpositionen und Prüfhinweise bleiben für die Nacharbeit erhalten."
+    "securityTitle": "Standardmäßig lokal",
+    "securityDescription": "Verarbeitung im Browser ohne Upload des Kontoauszugs.",
+    "banksTitle": "Excel- und CSV-Export",
+    "banksDescription": "Für Tabellen und die Vorbereitung der Buchhaltung.",
+    "accuracyTitle": "Vor dem Download prüfen",
+    "accuracyDescription": "Risikohinweise mit dem Original-PDF abgleichen."
   },
   "UsageTiers": {
     "title": "Kontoauszug-Tarife und Kontingente",
-    "description": "Gratisseiten werden täglich, Aboseiten je Abrechnungszeitraum erneuert. Nach Anmeldung über Creem, PayPal oder Waffo abonnieren.",
+    "description": "Tägliches Gratiskontingent oder Monatsabo.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
     "signedIn": "Angemeldet",
@@ -370,31 +367,31 @@
     "title": "Was sollte ich vor der Konvertierung wissen?",
     "banks": {
       "question": "Sollte ich lieber den CSV-Export meiner Bank verwenden?",
-      "answer": "Nutzen Sie den bankeigenen CSV- oder Excel-Export, wenn Zeitraum und Felder passen. Bei PDF-only-Unterlagen können Sie eine zulässige Datei ausprobieren und das Ergebnis prüfen. Nicht alle deutschen Banken und Kontolayouts wurden getestet."
+      "answer": "Nutzen Sie zuerst den Excel- oder CSV-Export Ihrer Bank. Konvertieren Sie andernfalls das PDF und prüfen Sie das Ergebnis. Die Unterstützung hängt vom Layout ab."
     },
     "accuracy": {
       "question": "Wie prüfe ich Soll, Haben und Verwendungszwecke?",
-      "answer": "Gleichen Sie Buchungsdatum, Soll/Haben beziehungsweise Vorzeichen, Verwendungszweck und verfügbare Salden mit dem Original ab. OK, DISCREPANCY und UNVERIFIABLE beschreiben die Beleglage einer Zeile, keine geprüfte Buchführung."
+      "answer": "Prüfen Sie Datum, Beträge, Salden und mehrzeilige Verwendungszwecke am Original. Risikohinweise garantieren keine Genauigkeit."
     },
     "quota": {
       "question": "Wie viele Kontoauszugsseiten sind kostenlos?",
-      "answer": "Kostenlose Kontoauszug-Konvertierung: {anonymousPages, number} Seiten täglich ohne Anmeldung, {authenticatedPages, number} mit Anmeldung. Monatlich: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} Seiten. Gezählt werden PDF-Seiten. Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet."
+      "answer": "Täglich kostenlos: {anonymousPages, number} Seiten ohne Anmeldung, {authenticatedPages, number} mit Anmeldung. Monatlich: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} Seiten."
     },
     "scans": {
       "question": "Lassen sich eingescannte Kontoauszüge umwandeln?",
-      "answer": "Die reguläre Analyse braucht eine Textebene. Mit Professional oder Enterprise und Restkontingent können Sie KI für ein Scan-PDF aktiv wählen. Das vollständige PDF und der Dateiname gehen an Qwen AI Platform; auch dieses Ergebnis muss geprüft werden."
+      "answer": "Lokale Analyse benötigt auswählbaren Text. Professional und Enterprise können mit Restkontingent KI für Scans wählen. Ergebnisse müssen geprüft werden."
     },
     "storage": {
       "question": "Kann ich frühere Konvertierungen erneut herunterladen?",
-      "answer": "Die lokale Analyse ist der Standard. Nur wenn Sie KI wählen, werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Der Server speichert PDFs, Exporte und Transaktionen nicht als dauerhaften Verlauf. Im Sitzungsspeicher dieses Tabs liegen vorübergehend Dateiname, extrahiertes Ergebnis, gewählte Händlerspalten und Aliaszuordnungen samt bestätigten Namen für Vorschau, Wiederherstellung nach dem Neuladen und Download. Eine neue Konvertierung oder das Löschen des Ergebnisses entfernt diese Daten; Zuordnungen werden nicht für andere Dateien verwendet. Bewahren Sie Original-PDF und Downloads selbst auf."
+      "answer": "Kein Dateiverlauf auf dem Server. Dieser Tab speichert Ergebnisse und Händlerzuordnungen vorübergehend für Vorschau und Wiederherstellung nach dem Neuladen. Neue Konvertierungen oder das Löschen der Ergebnisse entfernen sie. Downloads selbst sichern."
     },
     "failure": {
       "question": "Was tun bei fehlenden Buchungen oder einem Abbruch?",
-      "answer": "Scheitert die Kontoauszug-Konvertierung, erscheint ein Fehler; es gibt keinen ungültigen Excel-Download und keinen Kontingentverbrauch. Teilergebnisse zählen alle PDF-Seiten."
+      "answer": "Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen alle PDF-Seiten. Prüfen Sie fehlende Buchungen."
     },
     "ai": {
       "question": "Welche Daten erhält Qwen bei der KI-Analyse?",
-      "answer": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Prüfen Sie die Ergebnisse vor der Verwendung anhand der Original-PDF."
+      "answer": "KI wird nie automatisch aktiviert. Wenn Sie sie mit Professional oder Enterprise wählen, gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform."
     }
   },
   "HomeFooter": {
@@ -1370,7 +1367,7 @@
     "title": "Kontoauszüge umwandeln und Buchungen prüfen",
     "intro": "Wählen Sie Excel oder CSV und prüfen Sie danach die Buchungen. Buchhaltungsprofile wie DATEV oder MT940 sind von einer allgemeinen Tabellenkonvertierung zu unterscheiden.",
     "featuredTitle": "Passender Einstieg für Ihren Auszug",
-    "featuredDescription": "Für die Weiterverarbeitung CSV, für Arbeitsblätter Excel. Prüfen Sie Salden separat und bei Scans zunächst Tarif und KI-Datenverarbeitung.",
+    "featuredDescription": "Excel, CSV, Saldenprüfung und Hinweise zu Scans.",
     "relatedTitle": "Passende Anleitungen und Werkzeuge",
     "viewAll": "Alle Anleitungen und Werkzeuge",
     "groups": {

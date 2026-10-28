@@ -201,7 +201,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
               <summary className="w-fit cursor-pointer rounded-sm text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
                 {t("aiDetails")}
               </summary>
-              <p className="mt-2">
+              <p id="pdf-ai-summary" className="mt-2">
                 {t.rich("aiNotice", {
                   link: (chunks) => (
                     <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
@@ -257,9 +257,6 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
               {t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}
             </p>
           )}
-          <p id="pdf-ai-summary" className="text-xs text-muted-foreground">
-            {t("serviceReady")}
-          </p>
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           {allowAi && (

@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter for Excel & CSV",
-    "description": "Use our Bank Statement Converter to turn PDFs into Excel or CSV. Preview transactions, check flagged rows and download."
+    "description": "Use our Bank Statement Converter for Excel or CSV. Review flagged transactions before downloading."
   },
   "PdfUpload": {
     "title": "Choose a bank statement",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "Your available conversion quota could not be determined.",
     "removeFile": "Remove file",
     "quota": "Free daily pages: {anonymousPages, number} anonymous · {authenticatedPages, number} signed in",
-    "serviceReady": "Local parsing keeps the PDF, filename and transactions in your browser; only page count is sent for quota after success. Optional AI sends the full PDF and filename through our server to Qwen.",
     "status": "Ready to convert",
     "converting": "Converting",
     "start": "Convert and review",
@@ -86,19 +85,17 @@
     "emptyFile": "The selected PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "Professional and Enterprise can choose AI, including for scans. It never activates automatically. We keep no permanent file or transaction history. Qwen’s retention and training policies apply. See <link>terms and privacy details</link>.",
+    "aiNotice": "Professional and Enterprise can choose AI, including for scans. It never activates automatically. Only then are the full PDF and filename sent via our server to Qwen AI Platform. We keep no permanent file or transaction history. Qwen’s retention and training policies apply. See <link>terms and privacy details</link>.",
     "checking": "Checking PDF and quota",
     "retryCheck": "Retry check",
     "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
     "tooManyPages": "This PDF exceeds the limit of {pages, number} pages per file.",
     "unreadablePdf": "The PDF could not be read. Please choose a PDF that opens normally.",
     "passwordProtectedPdf": "This PDF is password protected. Remove its password before selecting it again.",
-    "aiSummary": "AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform.",
     "aiDetails": "AI processing details",
     "methodLabel": "Parsing method",
     "regularMethod": "Local parsing",
-    "aiMethod": "AI parsing",
-    "localNotice": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint."
+    "aiMethod": "AI parsing"
   },
   "ConversionResult": {
     "metadata": {
@@ -276,15 +273,15 @@
   "HomeFeatures": {
     "title": "Why use this Bank Statement Converter?",
     "securityTitle": "Local by default",
-    "securityDescription": "The Bank Statement Converter works in your browser without uploading your statement.",
+    "securityDescription": "The Bank Statement Converter processes your statement in your browser.",
     "banksTitle": "Excel and CSV exports",
-    "banksDescription": "Download Bank Statement Converter results for spreadsheets or bookkeeping preparation.",
+    "banksDescription": "Download Bank Statement Converter results for bookkeeping.",
     "accuracyTitle": "Review before download",
-    "accuracyDescription": "Check Bank Statement Converter risk flags against the original PDF."
+    "accuracyDescription": "Check Bank Statement Converter risk flags against the PDF."
   },
   "UsageTiers": {
     "title": "Bank Statement Converter plans",
-    "description": "Daily free pages or a monthly subscription.",
+    "description": "Daily free pages or monthly plans.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "signedIn": "Signed in",
@@ -1489,7 +1486,7 @@
     "title": "Bank statement conversion guides & tools",
     "intro": "Choose a format first, then use the accounting or bank guide for your handoff. The directory keeps the original PDF and row review at the center of the workflow.",
     "featuredTitle": "Choose your next step",
-    "featuredDescription": "Start with Excel or CSV. For a US bookkeeping handoff, check the QuickBooks guide and use the balance checker as a separate totals check.",
+    "featuredDescription": "Excel, CSV, QuickBooks guides and a balance checker.",
     "relatedTitle": "Related guides & tools",
     "viewAll": "View all guides & tools",
     "groups": {

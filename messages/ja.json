@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "銀行明細PDFの変換",
     "title": "銀行取引明細を Excel・CSV に変換",
-    "description": "銀行明細PDFをExcel・CSVに変換。標準ではファイルをアップロードせず、ブラウザー内でローカル解析します。取引とリスク表示を確認してダウンロードできます。ProfessionalとEnterpriseでは任意でAI解析を選べます。"
+    "description": "銀行明細PDFをExcel・CSVに変換。取引とリスク表示を確認してダウンロード。"
   },
   "PdfUpload": {
     "title": "銀行明細を選択",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "現在利用できる変換枠を確認できませんでした。",
     "removeFile": "ファイルの選択を解除",
     "quota": "無料枠：匿名は1日{anonymousPages, number}ページ、ログイン後は1日{authenticatedPages, number}ページ",
-    "serviceReady": "デフォルトではブラウザー内でローカル解析を行い、PDF、ファイル名、取引内容をアップロードしません。AI解析を選択した場合に限り、PDF全体とファイル名を当サイトのサーバーと千問AIプラットフォームに送信します。",
     "status": "変換できます",
     "converting": "変換中",
     "start": "変換して確認",
@@ -86,19 +85,17 @@
     "emptyFile": "選択したPDFファイルは空です。",
     "quotaExhausted": "今期の変換可能ページ数を使い切りました。",
     "invalidResponse": "変換サービスから返されたデータの形式が無効です。",
-    "aiNotice": "AI解析は任意で、自動的には有効になりません。ProfessionalとEnterpriseのユーザーは、変換前にAIを選択してスキャンの変換などを試せます。AIを選択した場合に限り、PDF全体とファイル名が当サイトのサーバーを経由して千問AIプラットフォームに送信されます。 当サイトはPDF、取引明細、モデル出力、エクスポートを永続的な履歴として保存しません。AI提供者は独自の規約とプライバシーポリシーに従って処理します。保存期間や学習利用について追加の保証はしません。 <link>提供者、規約とプライバシーポリシー</link>をご確認ください。",
+    "aiNotice": "Professional・Enterpriseは任意でAIを選び、スキャンも試せます。自動では有効になりません。選択時のみPDF全体とファイル名を当サイトのサーバー経由でQwen AI Platformに送信します。当サイトにファイルや取引の永続的な履歴はありません。Qwenの保存・学習方針は<link>規約とプライバシーポリシー</link>をご確認ください。",
     "checking": "PDF と残りページ数を確認中",
     "retryCheck": "再確認",
     "pageCount": "{pageCount, number} ページ",
     "tooManyPages": "この PDF は、1 ファイルあたり {pages, number} ページの上限を超えています。",
     "unreadablePdf": "PDF を読み取れませんでした。正常に開ける PDF を選択してください。",
     "passwordProtectedPdf": "このPDFはパスワードで保護されています。パスワードを解除してから選択し直してください。",
-    "aiSummary": "AI解析は任意で、自動的には有効になりません。ProfessionalとEnterpriseのユーザーは、変換前にAIを選択してスキャンの変換などを試せます。AIを選択した場合に限り、PDF全体とファイル名が当サイトのサーバーを経由して千問AIプラットフォームに送信されます。",
     "aiDetails": "AI処理の詳細",
     "methodLabel": "解析方法",
     "regularMethod": "ローカル解析",
-    "aiMethod": "AI解析",
-    "localNotice": "デフォルトではブラウザー内でローカル解析を行い、PDF、ファイル名、取引内容をアップロードしません。解析に成功した後、利用枠の管理用APIにページ数のみを送信します。"
+    "aiMethod": "AI解析"
   },
   "ConversionResult": {
     "metadata": {
@@ -276,15 +273,15 @@
   "HomeFeatures": {
     "title": "入出金明細を確認しながら表にする",
     "securityTitle": "標準はローカル解析",
-    "securityDescription": "デフォルトではブラウザー内でローカル解析を行い、PDF、ファイル名、取引内容をアップロードしません。AI解析を選択した場合に限り、PDF全体とファイル名を当サイトのサーバーと千問AIプラットフォームに送信します。",
-    "banksTitle": "銀行の CSV 出力を先に確認",
-    "banksDescription": "必要な期間の CSV がネットバンキングで取得できれば、そのファイルを優先してください。PDF のみの場合に変換を試し、銀行や口座ごとのレイアウトを確認します。",
-    "accuracyTitle": "摘要の折り返しと入出金を照合",
-    "accuracyDescription": "取引日、入金・出金、摘要、原本の残高を確認します。元ページと行の情報を残せるため、月ごとの記帳前の確認に使えます。"
+    "securityDescription": "明細をアップロードせず、ブラウザー内で処理。",
+    "banksTitle": "Excel・CSV出力",
+    "banksDescription": "表計算や記帳の準備に。",
+    "accuracyTitle": "ダウンロード前に確認",
+    "accuracyDescription": "リスク表示を元のPDFと照合。"
   },
   "UsageTiers": {
     "title": "銀行明細変換のプランと利用枠",
-    "description": "無料枠は毎日、有料枠は請求期間ごとに更新。ログイン後、Creem・PayPal・Waffoで申し込めます。",
+    "description": "毎日の無料枠、または月額プラン。",
     "anonymous": "ログインなし",
     "anonymousAmount": "{pages, number}ページ",
     "signedIn": "ログイン済み",
@@ -370,31 +367,31 @@
     "title": "変換前に知っておくべきことは？",
     "banks": {
       "question": "銀行の CSV ダウンロードと PDF 変換はどう使い分けますか？",
-      "answer": "必要な期間と項目がそろう銀行の CSV を優先してください。PDF しかない場合は文字情報のある原本で試し、結果を照合します。日本の全銀行・全口座の対応を確認したものではありません。"
+      "answer": "銀行のExcel・CSVを優先してください。PDFしかない場合に変換し、結果を確認します。対応はレイアウトによって異なります。"
     },
     "accuracy": {
       "question": "入出金と摘要が正しいか確認するには？",
-      "answer": "入金と出金の方向、日付、改行された摘要、原本の残高を照合してください。OK・DISCREPANCY・UNVERIFIABLE は行の証拠の状態を示し、正確性の保証や監査結果ではありません。"
+      "answer": "日付、金額、残高、複数行の摘要を原本と照合してください。リスク表示は正確性の保証ではありません。"
     },
     "quota": {
       "question": "無料で変換できるページ数は？",
-      "answer": "無料の銀行明細変換は匿名で1日{anonymousPages, number}ページ、ログイン後は{authenticatedPages, number}ページ。月間枠はStandard {standardPages, number}、Professional {professionalPages, number}、Enterprise {enterprisePages, number}ページです。PDFページ数で集計します。 デフォルトではブラウザー内でローカル解析を行い、PDF、ファイル名、取引内容をアップロードしません。解析に成功した後、利用枠の管理用APIにページ数のみを送信します。"
+      "answer": "1日あたり未ログインで{anonymousPages, number}ページ、ログイン後は{authenticatedPages, number}ページ無料。月額枠はStandard {standardPages, number}、Professional {professionalPages, number}、Enterprise {enterprisePages, number}ページ。"
     },
     "scans": {
       "question": "通帳のスキャンも変換できますか？",
-      "answer": "通帳を含む画像だけの PDF は通常解析の対象ではありません。Professional または Enterprise と残りページ枠があれば任意の AI で試せますが、通帳全般への対応は未検証です。PDF 全体とファイル名を Qwen AI Platform に送り、結果は照合が必要です。"
+      "answer": "ローカル解析には文字情報が必要です。Professional・Enterpriseは残り枠があればAIでスキャンを試せます。通帳全般への対応は未検証です。"
     },
     "storage": {
       "question": "変換した明細は後から再取得できますか？",
-      "answer": "標準はローカル解析です。AIを選択した場合に限り、PDF全体とファイル名が当サイトのサーバーを経由して千問AIプラットフォームに送信されます。 サーバーは PDF、エクスポート、取引を永続的な履歴として保存しません。このタブのセッションストレージには、ファイル名、抽出結果、選択した加盟店列、確認済み名称を含む別名の対応付けを一時保存し、プレビュー、再読み込み時の復元、ダウンロードに使用します。新しい変換の開始や結果の消去で削除され、別のファイルには引き継がれません。元の PDF とダウンロードはご自身で保管してください。"
+      "answer": "サーバーにファイル履歴はありません。このタブに結果と名称の対応付けを一時保存し、再読み込み時に復元します。新規変換や結果の消去で削除されます。ダウンロードはご自身で保管してください。"
     },
     "failure": {
       "question": "取引が抜けている場合はどうすればよいですか？",
-      "answer": "銀行明細変換に失敗するとエラーを表示し、無効なExcelは提供せず、利用枠も消費しません。一部結果が得られた場合はPDF全ページを計上します。"
+      "answer": "失敗時は利用枠を消費しません。一部結果の場合はPDF全ページを計上します。不足する取引を確認してください。"
     },
     "ai": {
       "question": "AI を選ぶと明細はどこへ送られますか？",
-      "answer": "AI解析は任意で、自動的には有効になりません。ProfessionalとEnterpriseのユーザーは、変換前にAIを選択してスキャンの変換などを試せます。AIを選択した場合に限り、PDF全体とファイル名が当サイトのサーバーを経由して千問AIプラットフォームに送信されます。 使用前に結果を元のPDFと照合してください。"
+      "answer": "自動では有効になりません。Professional・EnterpriseでAIを選ぶと、PDF全体とファイル名を当サイトのサーバー経由でQwen AI Platformに送信します。"
     }
   },
   "HomeFooter": {
@@ -1370,7 +1367,7 @@
     "title": "銀行明細の Excel・CSV 変換と照合ガイド",
     "intro": "明細の形式を選び、入出金の照合と取り込み準備へ進めます。海外銀行や会計ソフトのガイドは対象地域を確認してお使いください。",
     "featuredTitle": "明細の状態から選ぶ",
-    "featuredDescription": "文字のある PDF は Excel・CSV、通帳などのスキャンは AI 条件へ。記帳前に原本と残高を確認してください。",
+    "featuredDescription": "Excel・CSV・スキャンの変換と残高チェック。",
     "relatedTitle": "関連ガイドとツール",
     "viewAll": "すべてのガイドとツールを見る",
     "groups": {

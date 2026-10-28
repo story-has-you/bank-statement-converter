@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "은행 명세서 PDF 변환",
     "title": "은행 거래내역 PDF를 엑셀·CSV로 정리",
-    "description": "은행 명세서 PDF를 Excel 또는 CSV로 변환하세요. 기본적으로 파일 업로드 없이 브라우저에서 로컬 분석합니다. 거래와 위험 표시를 검토한 뒤 다운로드하세요. Professional 및 Enterprise 사용자는 AI 분석을 선택할 수 있습니다."
+    "description": "은행 명세서 PDF를 Excel·CSV로 변환하세요. 거래와 위험 표시를 확인한 뒤 다운로드하세요."
   },
   "PdfUpload": {
     "title": "은행 명세서 선택",
@@ -70,7 +70,6 @@
     "quotaUnavailable": "현재 사용 가능한 변환 한도를 확인하지 못했습니다.",
     "removeFile": "파일 선택 해제",
     "quota": "무료 사용 한도: 로그인 없이 하루 {anonymousPages, number}페이지, 로그인 후 하루 {authenticatedPages, number}페이지",
-    "serviceReady": "기본적으로 브라우저에서 로컬 분석을 수행하며 PDF, 파일명 또는 거래 내용을 업로드하지 않습니다. AI 분석을 직접 선택한 경우에만 전체 PDF와 파일명을 당사 서버 및 Qwen AI Platform으로 전송합니다.",
     "status": "변환 준비 완료",
     "converting": "변환 중",
     "start": "변환 및 검토",
@@ -86,19 +85,17 @@
     "emptyFile": "선택한 PDF 파일이 비어 있습니다.",
     "quotaExhausted": "이번 기간에 변환할 수 있는 페이지를 모두 사용했습니다.",
     "invalidResponse": "변환 서비스가 잘못된 형식의 데이터를 반환했습니다.",
-    "aiNotice": "AI 분석은 선택 사항이며 자동으로 활성화되지 않습니다. Professional 및 Enterprise 사용자는 변환 전에 AI를 직접 선택하여 스캔 문서 등의 변환을 시도할 수 있습니다. AI를 선택한 경우에만 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다. 사이트는 PDF, 거래 내역, 모델 출력 또는 내보낸 파일을 영구 이력으로 저장하지 않습니다. AI 제공자는 자체 약관과 개인정보 처리방침에 따라 데이터를 처리하며, 보관 기간이나 학습 사용에 대해 추가로 보장하지 않습니다. <link>제공자 정보, 약관 및 개인정보 처리방침</link>을 확인하세요.",
+    "aiNotice": "Professional·Enterprise는 스캔을 포함해 AI를 직접 선택할 수 있으며 자동으로 활성화되지 않습니다. 선택한 경우에만 전체 PDF와 파일명을 당사 서버를 거쳐 Qwen AI Platform으로 전송합니다. 사이트는 파일·거래 이력을 영구 보관하지 않습니다. Qwen의 보관·학습 정책은 <link>약관 및 개인정보 처리방침</link>을 확인하세요.",
     "checking": "PDF 및 잔여 페이지 확인 중",
     "retryCheck": "다시 확인",
     "pageCount": "{pageCount, number}페이지",
     "tooManyPages": "이 PDF는 파일당 최대 {pages, number}페이지 제한을 초과합니다.",
     "unreadablePdf": "PDF를 읽을 수 없습니다. 정상적으로 열리는 PDF를 선택해 주세요.",
     "passwordProtectedPdf": "이 PDF는 암호로 보호되어 있습니다. 암호를 제거한 뒤 다시 선택해 주세요.",
-    "aiSummary": "AI 분석은 선택 사항이며 자동으로 활성화되지 않습니다. Professional 및 Enterprise 사용자는 변환 전에 AI를 직접 선택하여 스캔 문서 등의 변환을 시도할 수 있습니다. AI를 선택한 경우에만 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다.",
     "aiDetails": "AI 처리 세부정보",
     "methodLabel": "분석 방식",
     "regularMethod": "로컬 분석",
-    "aiMethod": "AI 분석",
-    "localNotice": "기본적으로 브라우저에서 로컬 분석을 수행하며 PDF, 파일명 또는 거래 내용을 업로드하지 않습니다. 분석에 성공하면 사용량 API에 페이지 수만 전송합니다."
+    "aiMethod": "AI 분석"
   },
   "ConversionResult": {
     "metadata": {
@@ -276,15 +273,15 @@
   "HomeFeatures": {
     "title": "입출금 내역을 확인할 수 있는 표로",
     "securityTitle": "기본 로컬 분석",
-    "securityDescription": "기본적으로 브라우저에서 로컬 분석을 수행하며 PDF, 파일명 또는 거래 내용을 업로드하지 않습니다. AI 분석을 직접 선택한 경우에만 전체 PDF와 파일명을 당사 서버 및 Qwen AI Platform으로 전송합니다.",
-    "banksTitle": "은행의 엑셀 다운로드부터 확인",
-    "banksDescription": "인터넷뱅킹에서 필요한 기간의 엑셀이나 CSV를 받을 수 있다면 먼저 사용하세요. PDF만 있을 때 변환을 시도하고 계좌별 서식을 확인하세요.",
-    "accuracyTitle": "입금·출금 열과 잔액 대조",
-    "accuracyDescription": "날짜, 입출금 방향, 줄바꿈된 적요와 원본 잔액을 대조하세요. 원본 페이지와 행 정보는 확인에 도움을 주며 정확성을 보증하지 않습니다."
+    "securityDescription": "명세서를 업로드하지 않고 브라우저에서 처리합니다.",
+    "banksTitle": "Excel·CSV 내보내기",
+    "banksDescription": "표 정리와 기장 준비에 사용하세요.",
+    "accuracyTitle": "다운로드 전 확인",
+    "accuracyDescription": "위험 표시를 원본 PDF와 대조하세요."
   },
   "UsageTiers": {
     "title": "은행 명세서 변환 요금제와 한도",
-    "description": "무료 한도는 매일, 구독 한도는 결제 기간마다 갱신됩니다. 로그인 후 Creem·PayPal·Waffo로 구독하세요.",
+    "description": "매일 무료 한도 또는 월간 구독.",
     "anonymous": "로그인 없이",
     "anonymousAmount": "{pages, number}페이지",
     "signedIn": "로그인됨",
@@ -370,31 +367,31 @@
     "title": "변환 전에 무엇을 알아야 하나요?",
     "banks": {
       "question": "은행에서 받은 거래내역 PDF는 모두 지원하나요?",
-      "answer": "모든 은행과 계좌 서식을 검증한 것은 아닙니다. 은행에서 필요한 엑셀·CSV를 받을 수 있으면 우선 사용하고, PDF만 있다면 원본 텍스트 PDF로 시도한 뒤 결과를 대조하세요."
+      "answer": "은행의 Excel·CSV 다운로드를 우선 사용하세요. PDF만 있을 때 변환하고 결과를 확인하세요. 지원 여부는 서식에 따라 다릅니다."
     },
     "accuracy": {
       "question": "입금과 출금이 맞는지 어떻게 확인하나요?",
-      "answer": "거래일, 입금·출금 열, 금액, 여러 줄의 적요와 잔액을 원본과 비교하세요. OK, DISCREPANCY, UNVERIFIABLE은 행의 근거 상태이며 은행 인증이나 감사 결과가 아닙니다."
+      "answer": "날짜, 금액, 잔액과 여러 줄의 적요를 원본과 대조하세요. 위험 표시는 정확성을 보증하지 않습니다."
     },
     "quota": {
       "question": "무료 변환은 하루 몇 페이지인가요?",
-      "answer": "무료 은행 명세서 변환은 비로그인 하루 {anonymousPages, number}페이지, 로그인 후 {authenticatedPages, number}페이지입니다. 월간 한도는 Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number}페이지이며 PDF 페이지 수로 집계합니다. 기본적으로 브라우저에서 로컬 분석을 수행하며 PDF, 파일명 또는 거래 내용을 업로드하지 않습니다. 분석에 성공하면 사용량 API에 페이지 수만 전송합니다."
+      "answer": "매일 비로그인 {anonymousPages, number}페이지, 로그인 후 {authenticatedPages, number}페이지 무료. 월간 한도: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number}페이지."
     },
     "scans": {
       "question": "스캔한 거래내역서도 엑셀로 만들 수 있나요?",
-      "answer": "일반 분석에는 텍스트 레이어가 필요합니다. Professional 또는 Enterprise와 남은 한도가 있으면 AI를 직접 선택해 스캔 PDF를 시도할 수 있습니다. 전체 PDF와 파일명이 Qwen AI Platform으로 전송되며 인식 결과를 확인해야 합니다."
+      "answer": "로컬 분석에는 선택 가능한 텍스트가 필요합니다. Professional·Enterprise는 남은 한도로 AI를 선택해 스캔을 시도할 수 있습니다. 결과를 확인하세요."
     },
     "storage": {
       "question": "이전에 변환한 파일을 다시 받을 수 있나요?",
-      "answer": "로컬 분석이 기본입니다. AI를 직접 선택한 경우에만 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다. 서버는 PDF, 내보내기 파일이나 거래를 영구 이력으로 보관하지 않습니다. 이 탭의 세션 저장소는 미리보기, 새로고침 복원과 다운로드를 위해 파일명, 추출 결과, 선택한 가맹점 열과 확인한 이름이 포함된 별칭 매핑을 임시 보관합니다. 새 변환을 시작하거나 결과를 지우면 삭제되며 다른 파일에 재사용하지 않습니다. 원본 PDF와 다운로드 파일은 직접 보관하세요."
+      "answer": "서버에 파일 이력은 없습니다. 이 탭은 미리보기와 새로고침 복원을 위해 결과와 가맹점 매핑을 임시 보관합니다. 새 변환이나 결과 삭제 시 지워집니다. 다운로드는 직접 보관하세요."
     },
     "failure": {
       "question": "거래 행이 빠졌거나 변환이 실패하면 어떻게 하나요?",
-      "answer": "은행 명세서 변환 실패 시 오류를 표시하며 잘못된 Excel을 제공하거나 한도를 차감하지 않습니다. 부분 결과는 PDF 전체 페이지 수만큼 집계합니다."
+      "answer": "실패 시 한도를 차감하지 않습니다. 부분 결과는 PDF 전체 페이지를 집계합니다. 누락된 거래를 확인하세요."
     },
     "ai": {
       "question": "AI를 선택하면 어떤 정보가 전송되나요?",
-      "answer": "AI 분석은 선택 사항이며 자동으로 활성화되지 않습니다. Professional 및 Enterprise 사용자는 변환 전에 AI를 직접 선택하여 스캔 문서 등의 변환을 시도할 수 있습니다. AI를 선택한 경우에만 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다. 사용하기 전에 결과를 원본 PDF와 대조하세요."
+      "answer": "자동으로 활성화되지 않습니다. Professional·Enterprise에서 AI를 선택하면 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다."
     }
   },
   "HomeFooter": {
@@ -1370,7 +1367,7 @@
     "title": "은행 거래내역 변환·대조 가이드",
     "intro": "엑셀과 CSV 중 필요한 형식을 고르고 입출금 내역을 확인하세요. 해외 은행과 회계 프로그램 안내는 대상 국가와 버전을 확인하세요.",
     "featuredTitle": "거래내역 정리의 다음 단계",
-    "featuredDescription": "텍스트 PDF는 엑셀·CSV로 정리하고 잔액 합계를 별도로 확인하세요. 스캔만 있다면 AI 조건부터 확인하세요.",
+    "featuredDescription": "Excel·CSV 변환, 잔액 확인과 스캔 안내.",
     "relatedTitle": "관련 가이드와 도구",
     "viewAll": "모든 가이드와 도구 보기",
     "groups": {
