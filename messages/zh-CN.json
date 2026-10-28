@@ -916,19 +916,19 @@
     "pages": {
       "docuclipper": {
         "title": "StatementXL 与 DocuClipper：按实际工作流程选择",
-        "intro": "本文由 StatementXL 编写，依据官方资料比较单份 PDF 核对导出与更广泛的财务文档平台，并非独立速度或准确率测试。",
+        "intro": "需要逐份核对 PDF、在浏览器常规解析并导出 Excel 或 CSV，可选 StatementXL；需要批量处理、QBO 或 QuickBooks/Xero 集成，可考虑 DocuClipper。本文由 StatementXL 根据官方说明编写，未进行独立速度或准确率对照测试。",
         "sections": [
           {
             "title": "哪些需求更适合 DocuClipper",
-            "text": "DocuClipper 宣传支持银行、信用卡、证券账单及发票、收据、支票，提供 QBO 导出、批量处理、API 和 Webhook。如果你需要多类文档或自动化收件流程，这些能力更值得考虑。购买前核实所需功能属于哪个套餐。"
+            "text": "DocuClipper 宣传支持银行、信用卡、证券账单及发票、收据、支票，提供批量处理和 Excel、CSV、QBO 导出。价格页列出 QuickBooks Online、Xero 直连及所有付费套餐的 API。多文件处理、会计专用格式或自动收件有明确要求时，可考虑这些能力；购买前确认完整流程。"
           },
           {
-            "title": "哪些需求更适合 StatementXL",
-            "text": "StatementXL 面向单份 PDF：先检查交易行，再下载 Excel、CSV、TSV、JSON、Markdown 或 HTML。导出保留风险原因和原始位置；OK、DISCREPANCY、UNVERIFIABLE 表示每行可用的核对证据。产品没有 QBO 导出或会计软件连接。"
+            "title": "哪些需求适合 StatementXL",
+            "text": "StatementXL 适合逐份转换 PDF、逐行核对并下载 Excel 或 CSV。常规解析在浏览器执行，不上传 PDF 或交易内容，成功后仅发送页数用于扣减额度。行风险原因和来源位置帮助复查疑点。可选 AI 要求 Professional 或 Enterprise，完整 PDF 和文件名会发送至 Qwen AI Platform。产品没有 QBO 导出、批量收件、公开提取 API 或会计软件直连。"
           },
           {
-            "title": "用代表性文件比较完整成本",
-            "text": "用同一份获准使用的样本核对交易数、日期、金额方向和换行摘要。除套餐和文件限制外，也计算人工核对时间。我们没有运行两款产品的对照测试，不把供应商自述的准确率当作独立结论。"
+            "title": "比较计费条件与人工复核成本",
+            "text": "两款产品均公布按页计费的套餐，但包含的功能和限制不同。StatementXL 按套餐区分常规解析与可选 AI。DocuClipper 官网说明，试用可查看提取结果，导出或同步需要升级。应比较实际文件和交付所需的套餐，加上人工修正成本；查看当前价格条款，不要默认试用就能完成导出。"
           },
           {
             "title": "先确认交付环节需要什么",
@@ -941,7 +941,7 @@
             "answer": "不能。它主要用于逐份核对并导出流水 PDF；DocuClipper 宣传的文档范围、批量处理和集成适用于不同需求。"
           }
         ],
-        "metaDescription": "按导出格式、人工核对和集成需求比较 StatementXL 与 DocuClipper，选择适合现有银行流水转换任务的流程。"
+        "metaDescription": "比较 StatementXL 与 DocuClipper：浏览器 PDF 核对、批量处理、Excel/CSV/QBO 导出、会计集成和按页计费，按实际任务选择。"
       },
       "alternatives": {
         "title": "DocuClipper 替代方案：原生导出、StatementXL 与 Nanonets",
@@ -974,15 +974,15 @@
       },
       "nanonets": {
         "title": "StatementXL 与 Nanonets：流水导出还是自动化工作流？",
-        "intro": "StatementXL 聚焦可核对的流水导出，Nanonets 提供文档处理和自动化流程。本文依据官方说明编写，不是准确率对照测试。",
+        "intro": "需要逐份核对 PDF、在浏览器常规解析并下载 Excel 或 CSV，可选 StatementXL；需要串联邮件、云存储及更多自动化步骤，可考虑 Nanonets。本文由 StatementXL 根据官方说明编写，不构成双方准确率的比较结论。",
         "sections": [
           {
             "title": "Nanonets 的优势场景",
-            "text": "Nanonets 宣传数据提取、API、邮件集成和云存储连接；高阶方案还包括 ERP、数据库集成和可配置模块。提取只是业务流程的一环时，这些能力有价值，具体可用性和条款需要核实。"
+            "text": "Nanonets 列出数据提取、API、邮件集成和云存储连接能力，高阶套餐还包括 ERP、数据库集成及可配置工作流模块。文件需要经过多道相连步骤时，这些能力有价值。应确认完整流程需要的连接器、人工复核步骤及适用套餐。"
           },
           {
-            "title": "StatementXL 的适用场景",
-            "text": "一次处理一份 PDF，下载 Excel、CSV 等核对格式，通过风险标记和原始位置复查疑点。扫描件需要符合条件的套餐和剩余额度。产品没有公开提取 API、批量收件或类似 Nanonets 的自动化工作流。"
+            "title": "StatementXL 适合哪些任务",
+            "text": "StatementXL 一次处理一份 PDF，导出 Excel、CSV 等格式，并提供交易行风险和来源位置。常规解析在浏览器执行，不上传 PDF 或交易内容，成功后仅发送页数用于扣减额度。Professional 和 Enterprise 用户可主动选择 AI 尝试扫描件，完整 PDF 和文件名会发送至 Qwen AI Platform。产品没有公开提取 API、批量收件、QBO 导出或会计软件直连。"
           },
           {
             "title": "用相同任务比较费用",
@@ -999,7 +999,7 @@
             "answer": "没有。我们未进行受控对照测试；公开样本报告只描述本地解析器在指定样本上的结果。"
           }
         ],
-        "metaDescription": "比较 StatementXL 的 PDF 转换与 Nanonets 的文档自动化，了解人工复核、集成及计费单位的差异。"
+        "metaDescription": "比较 StatementXL 与 Nanonets：浏览器 PDF 核对与文档工作流、Excel/CSV 交付、连接能力，以及页数额度和工作流积分的区别。"
       },
       "xero": {
         "title": "银行流水 PDF 转 Xero：整理并核对 CSV 导入文件",
@@ -1226,6 +1226,47 @@
           }
         ],
         "metaDescription": "查看 StatementXL 对两种公开账单版式的本地解析结果及样本局限；报告不包含可选 AI 解析测试。"
+      },
+      "bestConverters": {
+        "title": "2026 银行流水转 Excel、CSV 工具怎么选：按需求推荐",
+        "intro": "银行能提供日期和字段齐全的原生导出时，优先使用。只有 PDF 时，逐份核对可考虑 StatementXL，批量处理或 QBO 交付可考虑 DocuClipper，需要串联文档工作流可考虑 Nanonets。本文由 StatementXL 根据官方产品说明编写，按需求给出选择依据，未进行独立排名或准确率对照测试。",
+        "metaDescription": "2026 银行流水转换工具选型指南：比较银行原生导出、StatementXL、DocuClipper 和 Nanonets，按 Excel、CSV、批量和集成需求选择。",
+        "sections": [
+          {
+            "title": "银行已有合适的 CSV 或 Excel：优先原生导出",
+            "text": "先在网银中检查能否下载目标账户、币种和期间的交易。日期、描述和金额等字段满足要求时，无需先从 PDF 提取。需要正式账单作为证明材料时，仍要保留原始 PDF，交易导出不能替代它。"
+          },
+          {
+            "title": "逐份转换 PDF 并人工核对：考虑 StatementXL",
+            "text": "StatementXL 一次处理一份 PDF，提供 Excel、CSV 导出，以及交易行风险和来源位置。常规解析在浏览器执行，不上传 PDF 或交易内容；成功后仅发送页数用于扣减额度。Professional 和 Enterprise 用户可主动选择 AI 尝试扫描件，完整 PDF 和文件名会发送至 Qwen AI Platform。结果需要与原件核对。产品没有批量收件、QBO 导出、公开提取 API 或会计软件直连。"
+          },
+          {
+            "title": "需要批量处理或 QBO 交付：考虑 DocuClipper",
+            "text": "DocuClipper 宣传支持批量处理、Excel、CSV、QBO 导出，以及 QuickBooks Online 和 Xero 集成。其价格页列明所有付费套餐均提供 API。这些能力适合多文件处理或指定会计格式的交付。套餐按页计费，需根据实际文档量和所需功能核对官网条款。官方试用允许查看提取结果，导出或同步需要升级。"
+          },
+          {
+            "title": "需要串联文档自动化：考虑 Nanonets",
+            "text": "Nanonets 列出 API、邮件和云存储连接能力，高阶套餐还包括 ERP 和数据库集成。提取后还有多道重复处理步骤时，可考虑这类工作流。它按工作流模块运行消耗积分，格式整理、校验和提取可能分别计费。应估算完整流程，不能把一个积分或一次模块运行当作一页 PDF。"
+          },
+          {
+            "title": "选择前确认六件事",
+            "text": "输入：PDF 有文字层还是扫描件，代表版式能否处理？\n输出：需要通用 Excel、CSV，还是 QBO 或目标软件专用格式？\n数量：只有一份文件，还是持续收到多份账单？\n集成：由人手动导入，还是需要自动交给下游系统？\n数据处理：完整 PDF 和交易内容在哪里处理，相关条款是否符合要求？\n复核成本：逐项核对交易行数、日期、金额方向、跨行描述和余额，将修正工作及套餐限制计入成本。汇总金额相符不能证明每行都正确。"
+          }
+        ],
+        "faq": [
+          {
+            "question": "有免费的银行流水转换方案吗？",
+            "answer": "银行能提供所需期间和字段的原生 CSV、Excel 时，可以先使用该导出。StatementXL 也为文字型 PDF 提供有限的免费常规解析额度，转换前请查看当前额度。免费使用不包含扫描件的 AI 解析。"
+          },
+          {
+            "question": "扫描件应该选择哪种方案？",
+            "answer": "选择明确能够处理扫描件的流程，并用代表文件核对效果。StatementXL 的 Professional 和 Enterprise 用户需要主动选择 AI，完整 PDF 和文件名会发送至 Qwen AI Platform。浏览器常规解析要求 PDF 有文字层，AI 结果仍需人工核对。"
+          },
+          {
+            "question": "转换工具能直接把流水导入会计软件吗？",
+            "answer": "需要核对具体格式和目标软件。StatementXL 导出的是通用 Excel、CSV，需要整理后手动导入，没有 QBO 导出或会计软件直连。DocuClipper 宣传会计导出与集成，Nanonets 提供工作流连接能力；具体功能和套餐应向对应厂商确认。"
+          }
+        ]
       }
     }
   },
@@ -1274,7 +1315,7 @@
       "pricing": "计费单位"
     },
     "statementxl": {
-      "workflow": "逐份处理 PDF，附行风险与来源位置。",
+      "workflow": "逐份处理 PDF；常规解析在浏览器执行，附行风险与来源位置。可选 AI 会将完整 PDF 发送至 Qwen。",
       "exports": "Excel、CSV、TSV、JSON、Markdown、HTML，无 QBO。",
       "integration": "手工会计导入，没有银行连接或公开提取 API。",
       "pricing": "每月 US${price} 起，含 {pages} 页 PDF，参阅当前套餐。"
@@ -1282,14 +1323,14 @@
     "docuclipper": {
       "workflow": "财务文档、批量处理及更广泛收件。",
       "exports": "银行流水导出包含 Excel、CSV、QBO。",
-      "integration": "宣传 API、Webhook 和会计流程，具体以套餐为准。",
-      "pricing": "按页计费方案，查看官方当前价格与条件。"
+      "integration": "官方价格页列出所有付费套餐均含 QuickBooks Online、Xero 集成和 API。",
+      "pricing": "按页计费；官方试用导出或同步需要升级，参阅当前条款。"
     },
     "nanonets": {
       "workflow": "可配置的文档处理工作流。",
       "exports": "提供流水转 Excel，具体输出按工作流确认。",
       "integration": "宣传 API、邮件、云连接及高阶 ERP 集成。",
-      "pricing": "工作流模块积分，不等同于月度 PDF 页数。"
+      "pricing": "按工作流模块运行消耗积分，应计算所需步骤，不能等同于 PDF 页数。"
     }
   },
   "Resources": {
@@ -1326,14 +1367,15 @@
       "nanonets": "StatementXL 与 Nanonets",
       "checker": "余额核对器与 Excel 模板",
       "benchmark": "公开样本实测报告",
-      "csv": "PDF 转 CSV"
+      "csv": "PDF 转 CSV",
+      "bestConverters": "2026 银行流水转换工具选型"
     },
     "groupDescriptions": {
       "conversion": "文本型流水可选择 PDF 转 Excel 或 CSV；仅有图片的 PDF，请先查看扫描件要求，再决定是否选择 AI 解析。",
       "banks": "按银行查看账单下载步骤及不同账户的可用记录范围。下载指南不代表每种账单版式都已验证支持。",
       "accounting": "先选择目标软件，再核对 CSV 格式要求。这里介绍手动导入流程，StatementXL 不连接你的会计软件账户。",
       "bookkeeping": "按贷款材料、美国税务资料或历史补账选择指南。整理表格时，同时保留银行原始账单及相关凭证。",
-      "comparisons": "两款产品之间做选择时，查看对应比较页；也可从替代方案指南了解银行原生导出。重点比较交付格式及人工核对工作。",
+      "comparisons": "先用选型指南按任务筛选，再查看 StatementXL 与 DocuClipper 或 Nanonets 的具体对比。替代方案页也介绍银行原生导出，重点核对交付格式、集成和人工复核工作。",
       "tools": "无需上传文件，即可用余额核对器比较账单汇总金额。样本报告列出两种版式的实测结果及其适用边界。"
     },
     "metaDescription": "查找银行流水转换指南、账单下载步骤、会计软件手动导入说明、产品比较和免费余额核对工具。"

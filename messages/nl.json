@@ -916,19 +916,19 @@
     "pages": {
       "docuclipper": {
         "title": "StatementXL of DocuClipper: kies op basis van uw werk",
-        "intro": "Vergelijking door StatementXL op basis van officiële bronnen: één PDF controleren of een breder financieel platform. Geen onderlinge snelheids- of nauwkeurigheidstest.",
+        "intro": "Kies StatementXL voor controle van één PDF en Excel- of CSV-uitvoer met reguliere verwerking in de browser. Overweeg DocuClipper voor batches, QBO of QuickBooks/Xero-koppelingen. StatementXL schreef deze vergelijking op basis van officiële beschrijvingen; een onafhankelijke snelheids- of nauwkeurigheidstest is niet uitgevoerd.",
         "sections": [
           {
-            "title": "Wanneer DocuClipper past",
-            "text": "DocuClipper noemt bank-, kaart- en beleggingsafschriften, facturen, bonnen en cheques, met QBO, batchverwerking, API en webhooks. Nuttig voor meerdere documenten of automatische ontvangst. Controleer functies en abonnement."
+            "title": "Wanneer DocuClipper beter past",
+            "text": "DocuClipper noemt bank-, creditcard- en beleggingsoverzichten, facturen, bonnen en cheques, naast batches en Excel-, CSV- en QBO-uitvoer. De prijspagina vermeldt directe QuickBooks Online- en Xero-koppelingen en API-toegang bij alle betaalde abonnementen. Bevestig vóór aankoop het volledige proces voor meerdere bestanden, boekhoudformaten of automatische invoer."
           },
           {
             "title": "Wanneer StatementXL past",
-            "text": "Eén PDF controleren en uitvoeren als Excel, CSV, TSV, JSON, Markdown of HTML. Risicoredenen en bronposities blijven behouden. OK, DISCREPANCY en UNVERIFIABLE beschrijven het bewijs per regel. Geen QBO of directe boekhoudkoppeling."
+            "text": "StatementXL is bedoeld voor één PDF, controle per rij en een Excel- of CSV-download. Reguliere verwerking draait in de browser zonder PDF of transacties te uploaden; na afloop wordt alleen het aantal pagina’s verstuurd om het quotum te verlagen. Risicoredenen en bronposities helpen bij controle. Optionele AI vereist Professional of Enterprise en verstuurt de volledige PDF en bestandsnaam naar Qwen AI Platform. QBO, batchinvoer, openbare extractie-API en boekhoudkoppeling ontbreken."
           },
           {
-            "title": "Vergelijk een volledige taak",
-            "text": "Gebruik hetzelfde toegestane voorbeeld en controleer aantal, datums, bedragen, richting en meerregelige omschrijvingen. Tel limieten en controletijd mee. Leveranciersclaims zijn geen onafhankelijke meetresultaten; wij hebben geen rechtstreekse test uitgevoerd."
+            "title": "Facturering en controlekosten vergelijken",
+            "text": "Beide producten publiceren abonnementen per pagina met verschillende functies en grenzen. StatementXL onderscheidt reguliere verwerking en optionele AI per abonnement. DocuClipper zegt dat u tijdens de proef geëxtraheerde transacties kunt bekijken, maar voor export en synchronisatie moet upgraden. Vergelijk het abonnement voor uw bestanden en overdracht, inclusief handmatige correcties. Controleer actuele voorwaarden en ga niet uit van een bruikbare proefexport."
           },
           {
             "title": "Controleer de vereiste overdracht",
@@ -941,7 +941,7 @@
             "answer": "Nee. StatementXL is bedoeld voor één PDF tegelijk. Batches, koppelingen en andere documentsoorten stellen andere eisen."
           }
         ],
-        "metaDescription": "Vergelijk StatementXL en DocuClipper op uitvoer, controlewerk en integraties om een passende afschriftworkflow te kiezen."
+        "metaDescription": "StatementXL vs DocuClipper: PDF-controle in de browser, batchverwerking, Excel/CSV/QBO, boekhoudkoppelingen en abonnementen per pagina vergelijken."
       },
       "alternatives": {
         "title": "DocuClipper-alternatieven: bankexport, StatementXL en Nanonets",
@@ -974,15 +974,15 @@
       },
       "nanonets": {
         "title": "StatementXL of Nanonets: exporteren of automatiseren?",
-        "intro": "StatementXL biedt controleerbare afschriftexport, Nanonets documentverwerking en automatisering. Dit is een vergelijking van officiële beschrijvingen, geen nauwkeurigheidstest.",
+        "intro": "Kies StatementXL voor controle van één PDF en Excel- of CSV-downloads met reguliere verwerking in de browser. Overweeg Nanonets als extractie moet aansluiten op e-mail, cloudopslag of verdere automatisering. StatementXL schreef deze vergelijking op basis van officiële beschrijvingen; zij bewijst geen verschil in nauwkeurigheid.",
         "sections": [
           {
-            "title": "Sterke punten van Nanonets",
-            "text": "Het noemt extractie, API, e-mail en cloudopslagkoppelingen. Hogere aanbiedingen omvatten ERP, databases en configureerbare blokken. Dat past wanneer extractie onderdeel van een groter proces is. Controleer voorwaarden en beschikbaarheid."
+            "title": "Waar Nanonets voordeel biedt",
+            "text": "Nanonets noemt gegevensextractie, API-toegang, e-mailintegratie en cloudopslagconnectors. Hogere abonnementen bevatten ERP- en databasekoppelingen en instelbare workflowblokken. Dat kan helpen als een bestand verschillende gekoppelde stappen doorloopt. Bevestig de nodige connectors, controlestap en het abonnement voor het hele proces."
           },
           {
-            "title": "Gebruik van StatementXL",
-            "text": "Eén PDF tegelijk naar Excel, CSV en andere formaten, met risico’s en bronposities. Scans vereisen een geschikt abonnement en resterend quotum. Geen openbare extractie-API, batchinname of vergelijkbare workflowautomatisering."
+            "title": "Waarvoor StatementXL bedoeld is",
+            "text": "StatementXL verwerkt één PDF tegelijk en exporteert Excel, CSV en andere formaten met rijrisico’s en bronposities. Reguliere verwerking draait in de browser zonder PDF of transacties te uploaden; na afloop wordt alleen het aantal pagina’s verstuurd om het quotum te verlagen. Professional en Enterprise kunnen bewust AI kiezen, ook voor scans, waarbij de volledige PDF en bestandsnaam naar Qwen AI Platform gaan. Er is geen openbare extractie-API, batchinvoer, QBO of directe boekhoudkoppeling."
           },
           {
             "title": "Vergelijk dezelfde eenheden",
@@ -999,7 +999,7 @@
             "answer": "Nee. Er is geen gecontroleerde onderlinge test. Het openbare rapport betreft alleen de lokale parser en genoemde voorbeelden."
           }
         ],
-        "metaDescription": "Vergelijk StatementXL en Nanonets voor PDF-conversie en documentautomatisering: handmatige controle, integraties en rekeneenheden."
+        "metaDescription": "StatementXL vs Nanonets: PDF-controle in de browser, documentprocessen, Excel/CSV, connectors en paginaquota tegenover workflowcredits."
       },
       "xero": {
         "title": "Bankafschrift-PDF naar Xero: CSV voorbereiden en controleren",
@@ -1226,6 +1226,47 @@
           }
         ],
         "metaDescription": "Resultaten van de lokale StatementXL-parser voor twee openbare indelingen, met bereik en beperkingen. Optionele AI-verwerking is niet getest."
+      },
+      "bestConverters": {
+        "title": "Beste bankafschriftconverters voor Excel en CSV (2026)",
+        "intro": "Gebruik eerst de bankexport als de datums en kolommen voldoen. Overweeg bij PDF’s StatementXL voor controle per bestand, DocuClipper voor batches en QBO-uitvoer, of Nanonets voor een gekoppeld documentproces. StatementXL stelde deze gids samen op basis van officiële productbeschrijvingen, zonder onafhankelijke ranglijst of vergelijkende nauwkeurigheidstest.",
+        "metaDescription": "Vergelijk bankafschriftconverters voor 2026: bankexport, StatementXL, DocuClipper en Nanonets voor Excel, CSV, batches en gekoppelde processen.",
+        "sections": [
+          {
+            "title": "Als de bank een geschikte CSV of Excel biedt: bankexport",
+            "text": "Controleer in internetbankieren of u transacties voor de juiste rekening, valuta en periode kunt downloaden. Gebruik die export vóór PDF-extractie als datums, omschrijvingen en bedragen voldoen. Bewaar het originele PDF-bestand als u een officieel afschrift als bewijs nodig hebt; een transactie-export vervangt dat niet."
+          },
+          {
+            "title": "Voor controle van één PDF tegelijk: StatementXL",
+            "text": "StatementXL zet één PDF om in controleerbare tabellen en exporteert Excel of CSV met rijrisico’s en bronposities. De reguliere verwerking draait in de browser, zonder PDF of transacties te uploaden. Na afloop wordt alleen het aantal pagina’s verstuurd om het quotum te verlagen. Professional- en Enterprise-gebruikers kunnen bewust AI voor scans kiezen; dan gaan de volledige PDF en bestandsnaam naar Qwen AI Platform. Controleer het resultaat aan de hand van het origineel. Batchinvoer, QBO, een openbare extractie-API en directe boekhoudkoppeling ontbreken."
+          },
+          {
+            "title": "Voor batches en QBO-uitvoer: overweeg DocuClipper",
+            "text": "DocuClipper adverteert met batchverwerking, Excel-, CSV- en QBO-uitvoer en koppelingen met QuickBooks Online en Xero. De prijspagina vermeldt API-toegang bij alle betaalde abonnementen. Dit kan passen bij meerdere bestanden of verplichte boekhoudformaten. Abonnementen rekenen per pagina; bevestig volume en functies op de officiële pagina. In de beschreven proef kunt u geëxtraheerde transacties bekijken; exporteren of synchroniseren vereist een upgrade."
+          },
+          {
+            "title": "Voor gekoppelde documentprocessen: overweeg Nanonets",
+            "text": "Nanonets noemt API-toegang, e-mailintegratie en cloudopslagconnectors, met ERP- en databasekoppelingen in hogere abonnementen. Overweeg dit als extractie deel is van een terugkerend proces. Credits worden verbruikt per uitvoering van een workflowblok; opmaak, validatie en extractie kunnen afzonderlijke stappen zijn. Bereken het hele proces en stel een credit of blokuitvoering niet gelijk aan één PDF-pagina."
+          },
+          {
+            "title": "Zes vragen vóór de keuze",
+            "text": "Invoer: tekst-PDF of scan, en kan een representatieve indeling worden verwerkt?\nUitvoer: algemene Excel/CSV-tabel, QBO of een specifiek importformaat?\nVolume: één bestand of terugkerende batches?\nKoppeling: handmatig importeren of automatisch doorsturen naar een ander systeem?\nGegevens: waar worden de volledige PDF en transacties verwerkt, en passen de voorwaarden bij uw eisen?\nControlekosten: vergelijk rijen, datums, richting van bedragen, doorlopende omschrijvingen en saldi met het origineel. Tel correcties en abonnementsgrenzen mee. Gelijke totalen bewijzen niet dat elke rij klopt."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is er een gratis optie?",
+            "answer": "Gebruik een CSV- of Excel-bankdownload als die de juiste periode en velden bevat. StatementXL biedt ook een beperkt gratis quotum voor reguliere verwerking van tekst-PDF’s. Controleer de actuele limieten vóór conversie. Gratis gebruik omvat geen AI-verwerking van gescande afschriften."
+          },
+          {
+            "question": "Wat kiest u voor een gescand afschrift?",
+            "answer": "Kies een proces dat scans expliciet ondersteunt en controleer een representatief bestand. Bij StatementXL moeten Professional- en Enterprise-gebruikers AI actief kiezen; de volledige PDF en bestandsnaam gaan naar Qwen AI Platform. Reguliere browserverwerking vereist een tekstlaag en ook AI-resultaten moeten worden gecontroleerd."
+          },
+          {
+            "question": "Kan een converter rechtstreeks in boekhoudsoftware importeren?",
+            "answer": "Controleer het precieze formaat en de bestemming. StatementXL levert algemene Excel/CSV-bestanden die voorbereiding en handmatige import vereisen, zonder QBO of directe boekhoudkoppeling. DocuClipper adverteert met boekhouduitvoer en integraties, Nanonets met workflowconnectors. Bevestig functie en abonnement bij de leverancier."
+          }
+        ]
       }
     }
   },
@@ -1274,7 +1315,7 @@
       "pricing": "Prijseenheid"
     },
     "statementxl": {
-      "workflow": "Eén PDF tegelijk, regelrisico’s en bronnen.",
+      "workflow": "Eén PDF tegelijk; reguliere verwerking in de browser, rijrisico’s en bronnen. Optionele AI verstuurt de volledige PDF naar Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; geen QBO.",
       "integration": "Handmatige import; geen bank of openbare extractie-API.",
       "pricing": "Vanaf US${price}/maand voor {pages} PDF-pagina’s; zie huidige plannen."
@@ -1282,14 +1323,14 @@
     "docuclipper": {
       "workflow": "Financiële documenten, batches en bredere intake.",
       "exports": "Bankuitvoer Excel, CSV en QBO.",
-      "integration": "Noemt API, webhooks en boekhoudprocessen; controleer plan.",
-      "pricing": "Paginaplannen; zie actuele voorwaarden."
+      "integration": "De officiële prijspagina vermeldt QuickBooks Online, Xero en API bij alle betaalde abonnementen.",
+      "pricing": "Abonnementen per pagina; exporteren of synchroniseren in de beschreven proef vereist een upgrade. Controleer voorwaarden."
     },
     "nanonets": {
       "workflow": "Configureerbare documentprocessen.",
       "exports": "Afschrift naar Excel; bevestig nodige uitvoer.",
       "integration": "Noemt API, e-mail, cloud en hogere ERP-koppelingen.",
-      "pricing": "Blokcredits, niet gelijk aan maandelijkse PDF-paginaquota."
+      "pricing": "Credits per workflowblokuitvoering; bereken alle vereiste stappen, niet de PDF-pagina’s."
     }
   },
   "Resources": {
@@ -1326,14 +1367,15 @@
       "nanonets": "StatementXL en Nanonets",
       "checker": "Saldocontrole en Excel-sjabloon",
       "benchmark": "Openbaar voorbeeldrapport",
-      "csv": "PDF naar CSV converteren"
+      "csv": "PDF naar CSV converteren",
+      "bestConverters": "Beste bankafschriftconverters (2026)"
     },
     "groupDescriptions": {
       "conversion": "Kies PDF naar Excel of CSV voor tekstafschriften. Controleer bij PDF’s met alleen afbeeldingen de scanvereisten voordat je AI kiest.",
       "banks": "Kies uw bank voor downloadstappen en beschikbare periodes per rekening. Een downloadhandleiding bewijst geen ondersteuning voor elke afschriftindeling.",
       "accounting": "Kies de boekhoudsoftware en controleer de CSV-eisen. De gidsen beschrijven handmatige import; StatementXL maakt geen verbinding met uw boekhoudaccount.",
       "bookkeeping": "Begin bij uw taak: leningdocumenten, Amerikaanse belastingvoorbereiding of achterstallige boekhouding. Bewaar originele afschriften en bewijsstukken bij de tabel.",
-      "comparisons": "Gebruik een vergelijking voor de keuze tussen twee producten, of de alternatievengids voor een bankexport. Vergelijk uitvoerformaten en controlewerk.",
+      "comparisons": "Begin met de keuzegids en vergelijk daarna StatementXL met DocuClipper of Nanonets. De alternatievenpagina behandelt ook bankexports. Controleer uitvoer, koppelingen en controlewerk.",
       "tools": "Controleer totalen zonder bestanden te uploaden met de saldocontrole. Het steekproefrapport toont metingen voor twee indelingen en de grenzen daarvan."
     },
     "metaDescription": "Handleidingen voor afschriftconversie, bankdownloads, handmatige boekhoudimport, productvergelijkingen en gratis saldocontrole."

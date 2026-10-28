@@ -7,7 +7,7 @@ export const resourceGroups = [
   { id: "banks", pageIds: ["chase", "bofa", "wellsFargo", "hsbc"] },
   { id: "accounting", pageIds: ["quickbooks", "xero", "wave", "sage"] },
   { id: "bookkeeping", pageIds: ["loan", "tax", "catchup"] },
-  { id: "comparisons", pageIds: ["docuclipper", "alternatives", "nanonets"] },
+  { id: "comparisons", pageIds: ["bestConverters", "docuclipper", "alternatives", "nanonets"] },
   { id: "tools", pageIds: ["checker", "benchmark"] },
 ] as const satisfies readonly { id: string; pageIds: readonly ResourcePageId[] }[];
 
@@ -21,10 +21,12 @@ export function getResourcePage(id: ResourcePageId) {
 export function getRelatedResources(current?: string) {
   const group = resourceGroups.find((item) => item.pageIds.some((id) => id === current));
   let priorityIds: ResourcePageId[] = [];
-  if (group?.id === "banks") {
+  if (current === "bestConverters") {
+    priorityIds = ["docuclipper", "nanonets", "pdf", "csv"];
+  } else if (group?.id === "banks") {
     priorityIds = ["quickbooks"];
   } else if (group?.id === "comparisons") {
-    priorityIds = ["benchmark", "checker"];
+    priorityIds = ["benchmark", "checker", "bestConverters"];
   }
   const ids = [...new Set([...priorityIds, ...(group?.pageIds ?? []), ...featuredResourceIds])].filter((id) => id !== current).slice(0, 4);
   return ids.map(getResourcePage);

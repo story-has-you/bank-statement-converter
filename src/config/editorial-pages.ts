@@ -1,23 +1,30 @@
 export const editorialPages = [
   {
+    id: "bestConverters",
+    path: "/guides/best-bank-statement-converters",
+    kind: "guide",
+    checkedOn: "2026-10-28",
+    sources: ["https://www.docuclipper.com/pricing/", "https://nanonets.com/pricing", "https://nanonets.com/bank-statement-converter/"],
+  },
+  {
     id: "docuclipper",
     path: "/compare/statementxl-vs-docuclipper",
     kind: "comparison",
-    checkedOn: "2026-10-19",
+    checkedOn: "2026-10-28",
     sources: ["https://www.docuclipper.com/pricing/"],
   },
   {
     id: "alternatives",
     path: "/alternatives/docuclipper",
     kind: "comparison",
-    checkedOn: "2026-10-19",
+    checkedOn: "2026-10-28",
     sources: ["https://www.docuclipper.com/pricing/", "https://nanonets.com/pricing"],
   },
   {
     id: "nanonets",
     path: "/compare/statementxl-vs-nanonets",
     kind: "comparison",
-    checkedOn: "2026-10-19",
+    checkedOn: "2026-10-28",
     sources: ["https://nanonets.com/pricing", "https://nanonets.com/bank-statement-converter/"],
   },
   {

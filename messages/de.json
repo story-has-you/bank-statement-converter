@@ -916,19 +916,19 @@
     "pages": {
       "docuclipper": {
         "title": "StatementXL oder DocuClipper: nach dem Arbeitsablauf entscheiden",
-        "intro": "Dieser von StatementXL verfasste Vergleich beruht auf offiziellen Angaben. Er vergleicht die Prüfung einzelner PDFs mit einer breiteren Finanzdokument-Plattform, nicht gemessene Geschwindigkeit oder Genauigkeit.",
+        "intro": "Wählen Sie StatementXL, um einzelne PDFs mit regulärer Browseranalyse zu prüfen und als Excel oder CSV auszugeben. Für Stapel, QBO oder QuickBooks-/Xero-Anbindungen kommt DocuClipper infrage. Dieser Vergleich stammt von StatementXL und beruht auf offiziellen Beschreibungen; einen unabhängigen Geschwindigkeits- oder Genauigkeitstest haben wir nicht durchgeführt.",
         "sections": [
           {
-            "title": "Wann DocuClipper passt",
-            "text": "DocuClipper bewirbt Bank-, Kreditkarten- und Depotabrechnungen, Rechnungen, Belege und Schecks sowie QBO-Export, Stapelverarbeitung, API und Webhooks. Das kann bei mehreren Dokumentarten oder automatisiertem Eingang helfen. Funktionen und Tarif vor dem Kauf prüfen."
+            "title": "Wann DocuClipper besser passt",
+            "text": "DocuClipper bewirbt Bank-, Kreditkarten- und Depotauszüge, Rechnungen, Belege und Schecks sowie Stapelverarbeitung und Excel-, CSV- und QBO-Ausgaben. Die Preisseite nennt direkte QuickBooks-Online- und Xero-Anbindungen sowie API-Zugriff in allen kostenpflichtigen Tarifen. Prüfen Sie den kompletten Ablauf vor dem Kauf, wenn mehrere Dateien, Buchhaltungsformate oder automatischer Eingang erforderlich sind."
           },
           {
             "title": "Wann StatementXL passt",
-            "text": "Eine PDF hochladen, Zeilen prüfen und Excel, CSV, TSV, JSON, Markdown oder HTML herunterladen. Risikogründe und Fundstellen bleiben erhalten. OK, DISCREPANCY und UNVERIFIABLE beschreiben die Beleglage je Zeile. QBO-Export und direkte Buchhaltungsanbindungen fehlen."
+            "text": "StatementXL eignet sich für ein PDF, zeilenweise Prüfung und den Excel-/CSV-Download. Die reguläre Analyse läuft im Browser, ohne PDF oder Transaktionen hochzuladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Risikogründe und Quellpositionen helfen bei der Prüfung. Optionale KI erfordert Professional oder Enterprise und sendet das vollständige PDF samt Dateiname an Qwen AI Platform. QBO, Stapeleingang, öffentliche Extraktions-API und Buchhaltungsanbindung fehlen."
           },
           {
-            "title": "Eine vollständige Aufgabe vergleichen",
-            "text": "Dasselbe zulässige Beispiel auf Anzahl, Datum, Betrag, Richtung und mehrzeilige Beschreibung prüfen. Tarifgrenzen und Prüfzeit berücksichtigen. Es gibt keinen direkten Vergleichstest; Genauigkeitsangaben eines Anbieters sind keine unabhängigen Ergebnisse."
+            "title": "Abrechnung und Prüfkosten vergleichen",
+            "text": "Beide Produkte veröffentlichen seitenbasierte Tarife mit unterschiedlichen Funktionen und Grenzen. StatementXL unterscheidet je nach Tarif zwischen regulärer Analyse und optionaler KI. Laut DocuClipper kann man im Test extrahierte Transaktionen prüfen; Export und Synchronisierung erfordern ein Upgrade. Vergleichen Sie den für Ihre Dateien und Übergabe nötigen Tarif einschließlich Korrekturen. Prüfen Sie aktuelle Konditionen, statt einen nutzbaren Export im Test vorauszusetzen."
           },
           {
             "title": "Die benötigte Übergabe prüfen",
@@ -941,7 +941,7 @@
             "answer": "Nein. Es ist auf die Prüfung und Ausgabe einzelner Kontoauszug-PDFs ausgerichtet. Breite Dokumentabdeckung, Stapelverarbeitung und Integrationen bedienen andere Anforderungen."
           }
         ],
-        "metaDescription": "StatementXL und DocuClipper nach Exportformaten, Prüfaufwand und Integrationen vergleichen. Finden Sie den passenden Ablauf für Ihre Auszüge."
+        "metaDescription": "StatementXL vs. DocuClipper: PDF-Prüfung im Browser, Stapelverarbeitung, Excel/CSV/QBO, Buchhaltungsanbindungen und seitenbasierte Tarife vergleichen."
       },
       "alternatives": {
         "title": "DocuClipper-Alternativen: Bankexport, StatementXL und Nanonets",
@@ -974,15 +974,15 @@
       },
       "nanonets": {
         "title": "StatementXL oder Nanonets: Auszugsexport oder Automatisierung?",
-        "intro": "StatementXL liefert prüfbare Auszüge; Nanonets bietet Dokumentverarbeitung und automatisierte Abläufe. Grundlage sind offizielle Beschreibungen, kein Genauigkeitsvergleich.",
+        "intro": "Für einzelne PDFs, reguläre Browseranalyse und geprüfte Excel-/CSV-Downloads kommt StatementXL infrage. Nanonets ist eine Option, wenn Extraktion mit E-Mail, Cloudspeicher oder weiteren automatisierten Schritten verbunden werden muss. StatementXL hat diesen Vergleich anhand offizieller Beschreibungen erstellt; er belegt keinen Genauigkeitsvorsprung.",
         "sections": [
           {
-            "title": "Stärken von Nanonets",
-            "text": "Nanonets bewirbt Extraktion, API, E-Mail- und Cloudspeicher-Anbindungen. Höhere Angebote umfassen ERP, Datenbanken und konfigurierbare Blöcke. Das hilft, wenn Extraktion Teil eines größeren Prozesses ist. Verfügbarkeit und Bedingungen prüfen."
+            "title": "Wo Nanonets Vorteile bietet",
+            "text": "Nanonets nennt Datenextraktion, API-Zugriff, E-Mail-Integration und Cloudspeicher-Anbindungen. Höhere Tarife umfassen ERP- und Datenbankintegrationen sowie konfigurierbare Workflow-Blöcke. Das kann wichtig sein, wenn Dateien mehrere verknüpfte Schritte durchlaufen. Prüfen Sie die nötigen Anbindungen, den Prüfschritt und den Tarif für den gesamten Prozess."
           },
           {
-            "title": "Einsatz von StatementXL",
-            "text": "Jeweils eine PDF in Excel, CSV und weitere Prüfformate umwandeln. Risiken und Quellpositionen helfen bei der Kontrolle. Scans erfordern einen berechtigten Tarif und Restkontingent. Keine öffentliche Extraktions-API, Sammelannahme oder vergleichbare Workflow-Automatisierung."
+            "title": "Wofür StatementXL gedacht ist",
+            "text": "StatementXL verarbeitet ein PDF pro Vorgang und exportiert Excel, CSV und weitere Prüfformate mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Professional und Enterprise können KI auch für Scans aktiv wählen; das vollständige PDF und der Dateiname gehen dann an Qwen AI Platform. Öffentliche Extraktions-API, Stapeleingang, QBO und direkte Buchhaltungsanbindung sind nicht vorhanden."
           },
           {
             "title": "Kosten richtig vergleichen",
@@ -999,7 +999,7 @@
             "answer": "Nein. Es gab keinen kontrollierten direkten Test. Der öffentliche Bericht betrifft nur den lokalen Parser und die benannten Beispiele."
           }
         ],
-        "metaDescription": "StatementXL und Nanonets für PDF-Konvertierung und Dokumentenautomatisierung vergleichen: manuelle Prüfung, Integrationen und Abrechnungseinheiten."
+        "metaDescription": "StatementXL vs. Nanonets: PDF-Prüfung im Browser, Dokumentenprozesse, Excel/CSV, Anbindungen und Seitenkontingente gegenüber Workflow-Credits."
       },
       "xero": {
         "title": "Kontoauszug-PDF für Xero: CSV vorbereiten und prüfen",
@@ -1226,6 +1226,47 @@
           }
         ],
         "metaDescription": "Lokale Parser-Ergebnisse für zwei öffentliche Auszugslayouts mit Umfang und Grenzen der Stichprobe. Optionale KI-Verarbeitung wurde nicht geprüft."
+      },
+      "bestConverters": {
+        "title": "Die besten Kontoauszug-Konverter für Excel und CSV (2026)",
+        "intro": "Nutzen Sie zuerst den Bankexport, wenn Zeitraum und Spalten passen. Für PDFs kommt StatementXL zur Prüfung einzelner Dateien infrage, DocuClipper für Stapelverarbeitung und QBO-Ausgaben, Nanonets für verknüpfte Dokumentenprozesse. StatementXL hat diesen Leitfaden anhand offizieller Produktbeschreibungen erstellt. Er ist weder eine unabhängige Rangliste noch ein Genauigkeitsvergleich.",
+        "metaDescription": "Kontoauszug-Konverter 2026 vergleichen: Bankexport, StatementXL, DocuClipper und Nanonets für Excel, CSV, Stapelverarbeitung und Automatisierung.",
+        "sections": [
+          {
+            "title": "Wenn die Bank passende CSV- oder Excel-Dateien liefert: Bankexport",
+            "text": "Prüfen Sie im Onlinebanking, ob Sie Transaktionen für das richtige Konto, die Währung und den Zeitraum herunterladen können. Sind Datum, Beschreibung und Beträge enthalten, nutzen Sie diese Datei vor einer PDF-Extraktion. Bewahren Sie das Original-PDF auf, wenn Sie einen offiziellen Nachweis benötigen. Ein Transaktionsexport ersetzt keinen offiziellen Kontoauszug."
+          },
+          {
+            "title": "Für die Prüfung einzelner PDFs: StatementXL",
+            "text": "StatementXL wandelt jeweils ein PDF in prüfbare Tabellen um und exportiert Excel oder CSV mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach erfolgreicher Verarbeitung wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Nutzer von Professional und Enterprise können KI für Scans ausdrücklich auswählen. Dabei gehen das vollständige PDF und der Dateiname an Qwen AI Platform. Prüfen Sie das Ergebnis am Original. Es gibt keinen Stapeleingang, QBO-Export, keine öffentliche Extraktions-API und keine direkte Buchhaltungsanbindung."
+          },
+          {
+            "title": "Für Stapelverarbeitung und QBO: DocuClipper prüfen",
+            "text": "DocuClipper bewirbt Stapelverarbeitung, Excel-, CSV- und QBO-Ausgaben sowie QuickBooks-Online- und Xero-Anbindungen. Laut Preisseite enthalten alle kostenpflichtigen Tarife API-Zugriff. Das kann bei mehreren Dateien oder vorgeschriebenen Buchhaltungsformaten passen. Die Tarife rechnen nach Seiten ab; prüfen Sie Volumen und benötigte Funktionen auf der offiziellen Seite. Im beworbenen Test lassen sich extrahierte Transaktionen prüfen, Export und Synchronisierung erfordern ein Upgrade."
+          },
+          {
+            "title": "Für verknüpfte Dokumentenprozesse: Nanonets prüfen",
+            "text": "Nanonets nennt API-Zugriff, E-Mail-Integration und Cloudspeicher-Anbindungen; höhere Tarife umfassen ERP- und Datenbankintegrationen. Das ist eine Option, wenn auf die Extraktion regelmäßig weitere Schritte folgen. Abgerechnet werden Credits für ausgeführte Workflow-Blöcke. Formatierung, Validierung und Extraktion können getrennte Schritte sein. Kalkulieren Sie den gesamten Ablauf, statt einen Credit oder Blocklauf mit einer PDF-Seite gleichzusetzen."
+          },
+          {
+            "title": "Sechs Fragen vor der Auswahl",
+            "text": "Eingabe: Text-PDF oder Scan, und lässt sich ein repräsentatives Layout verarbeiten?\nAusgabe: Allgemeine Excel-/CSV-Tabelle, QBO oder ein spezielles Importformat?\nVolumen: Einzeldatei oder wiederkehrender Stapel?\nAnbindung: Manueller Import oder automatische Übergabe an ein anderes System?\nDatenverarbeitung: Wo werden das vollständige PDF und die Transaktionen verarbeitet, und passen die Bedingungen zu Ihren Vorgaben?\nPrüfaufwand: Zeilenzahl, Datum, Betragsrichtung, mehrzeilige Beschreibungen und Salden am Original prüfen. Korrekturen und Tarifgrenzen gehören in die Kostenrechnung. Übereinstimmende Summen beweisen nicht die Richtigkeit jeder Zeile."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Gibt es eine kostenlose Möglichkeit zur Umwandlung?",
+            "answer": "Nutzen Sie einen CSV- oder Excel-Bankexport, falls er den benötigten Zeitraum und die Felder abdeckt. StatementXL bietet außerdem ein begrenztes kostenloses Kontingent für die reguläre Analyse von Text-PDFs. Prüfen Sie die aktuellen Kontingente. Die KI-Analyse gescannter Auszüge ist nicht kostenlos enthalten."
+          },
+          {
+            "question": "Welche Option eignet sich für gescannte Auszüge?",
+            "answer": "Wählen Sie einen ausdrücklich für Scans vorgesehenen Ablauf und prüfen Sie eine repräsentative Datei. Bei StatementXL müssen Nutzer von Professional oder Enterprise KI aktiv auswählen; das vollständige PDF und der Dateiname gehen an Qwen AI Platform. Die reguläre Browseranalyse benötigt eine Textebene. Auch KI-Ergebnisse müssen geprüft werden."
+          },
+          {
+            "question": "Kann das Ergebnis direkt in die Buchhaltung importiert werden?",
+            "answer": "Prüfen Sie Format und Zielsoftware. StatementXL liefert allgemeine Excel-/CSV-Dateien zur Vorbereitung und zum manuellen Import, ohne QBO-Ausgabe oder direkte Buchhaltungsanbindung. DocuClipper bewirbt Buchhaltungsexporte und Integrationen, Nanonets bietet Workflow-Anbindungen. Bestätigen Sie Funktion und Tarif beim jeweiligen Anbieter."
+          }
+        ]
       }
     }
   },
@@ -1274,7 +1315,7 @@
       "pricing": "Preisbasis"
     },
     "statementxl": {
-      "workflow": "Eine PDF, Zeilenrisiken und Fundstellen.",
+      "workflow": "Ein PDF pro Vorgang; reguläre Browseranalyse mit Zeilenrisiken und Quellpositionen. Optionale KI sendet das vollständige PDF an Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; kein QBO.",
       "integration": "Manueller Buchhaltungsimport; keine Bankverbindung oder öffentliche Extraktions-API.",
       "pricing": "Ab US${price}/Monat für {pages} PDF-Seiten; aktuelle Tarife beachten."
@@ -1282,14 +1323,14 @@
     "docuclipper": {
       "workflow": "Finanzdokumente, Stapelverarbeitung und breiterer Eingang.",
       "exports": "Bankausgabe umfasst Excel, CSV und QBO.",
-      "integration": "Bewirbt API, Webhooks und Buchhaltungsabläufe; Tarif prüfen.",
-      "pricing": "Seitenbasierte Tarife; aktuelle offizielle Bedingungen prüfen."
+      "integration": "Die offizielle Preisseite nennt QuickBooks Online, Xero und API-Zugriff in allen kostenpflichtigen Tarifen.",
+      "pricing": "Seitenbasierte Tarife; Export und Synchronisierung im beworbenen Test erfordern ein Upgrade. Aktuelle Konditionen prüfen."
     },
     "nanonets": {
       "workflow": "Konfigurierbare Dokumentabläufe.",
       "exports": "Kontoauszug nach Excel; benötigte Ausgabe bestätigen.",
       "integration": "Bewirbt API, E-Mail, Cloud und höhere ERP-Anbindungen.",
-      "pricing": "Workflow-Block-Credits, keine gleichwertige PDF-Seitenquote."
+      "pricing": "Credits für Workflow-Blockläufe; alle nötigen Schritte kalkulieren, nicht PDF-Seiten."
     }
   },
   "Resources": {
@@ -1326,14 +1367,15 @@
       "nanonets": "StatementXL und Nanonets",
       "checker": "Saldoprüfer und Excel-Vorlage",
       "benchmark": "Öffentlicher Beispielbericht",
-      "csv": "PDF in CSV konvertieren"
+      "csv": "PDF in CSV konvertieren",
+      "bestConverters": "Die besten Kontoauszug-Konverter (2026)"
     },
     "groupDescriptions": {
       "conversion": "Wählen Sie für Textauszüge PDF in Excel oder CSV. Prüfen Sie bei reinen Bild-PDFs die Anforderungen für Scans, bevor Sie KI wählen.",
       "banks": "Wählen Sie Ihre Bank für Download-Schritte und kontospezifische Zeiträume. Eine Download-Anleitung belegt keine Unterstützung aller Auszugslayouts.",
       "accounting": "Wählen Sie die Zielsoftware und prüfen Sie deren CSV-Vorgaben. Die Anleitungen beschreiben manuelle Importe; StatementXL verbindet sich nicht mit Ihrem Buchhaltungskonto.",
       "bookkeeping": "Beginnen Sie mit Ihrer Aufgabe: Kreditunterlagen, US-Steuervorbereitung oder fehlende Buchungszeiträume. Bewahren Sie Originalauszüge und Belege neben der Tabelle auf.",
-      "comparisons": "Für die Wahl zwischen zwei Produkten nutzen Sie den Vergleich, für bankeigene Exporte die Alternativen-Anleitung. Entscheidend sind Ausgabeformat und Prüfaufwand.",
+      "comparisons": "Wählen Sie im Leitfaden nach Aufgabe und vergleichen Sie dann StatementXL mit DocuClipper oder Nanonets. Die Alternativen behandeln auch den Bankexport. Prüfen Sie Ausgabe, Anbindungen und Prüfaufwand.",
       "tools": "Der Saldenprüfer vergleicht Summen ohne Datei-Upload. Der Stichprobenbericht zeigt Messwerte für zwei Layouts und die Grenzen dieser Ergebnisse."
     },
     "metaDescription": "Anleitungen zur Auszugskonvertierung, Bank-Downloads, manuellen Buchhaltungsimporten, Produktvergleiche und ein kostenloser Saldenprüfer."
