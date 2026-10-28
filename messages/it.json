@@ -726,10 +726,10 @@
     "disclaimer": "{bank} è un marchio del rispettivo titolare. StatementXL non è affiliato alla banca. Questa guida spiega come ottenere e controllare gli estratti conto, senza garantire la conversione di ogni formato.",
     "pages": {
       "pdf": {
-        "label": "Estratto conto PDF in Excel",
-        "title": "Converti l’estratto conto PDF in un foglio Excel da verificare",
-        "intro": "Organizza i movimenti per il confronto con la contabilità. Dopo il controllo, scarica Excel con un foglio per tabella logica e riferimenti al PDF. La quota gratuita giornaliera è di {anonymousPages} pagina senza accesso o {authenticatedPages} pagine con accesso.",
-        "metaDescription": "Converti estratto conto PDF in Excel. Controlla addebiti, accrediti e causali con l’originale e conserva riferimenti di pagina e note di verifica.",
+        "label": "Convertire estratto conto PDF in Excel",
+        "title": "Convertire estratto conto PDF in Excel",
+        "intro": "Convertire un estratto conto PDF in Excel permette di confrontare i movimenti con la contabilità. Dopo il controllo, scarica l’estratto conto in formato Excel con un foglio per tabella logica e riferimenti al PDF. La quota gratuita giornaliera è di {anonymousPages} pagina senza accesso o {authenticatedPages} pagine con accesso.",
+        "metaDescription": "Convertire estratto conto PDF in Excel: controlla addebiti, accrediti e causali con l’originale. Salva un foglio per tabella con riferimenti e note di verifica.",
         "requirementsTitle": "Scegli il PDF originale dell’home banking",
         "requirements": "L’analisi ordinaria legge il testo selezionabile nel browser. Evita di stampare e scansionare un originale digitale; per scansioni serve un piano idoneo e la scelta esplicita dell’IA.",
         "preparationTitle": "Controlla conto e periodo prima di iniziare",
@@ -759,7 +759,7 @@
           },
           {
             "id": "dates",
-            "question": "Come gestire data contabile e data valuta?",
+            "question": "Come controllare data contabile e data valuta nell’estratto conto in formato Excel?",
             "answer": "Controlla quali colonne sono presenti nel PDF e nel risultato. Non considerarle intercambiabili: scegli nella copia di importazione quella richiesta dal sistema di destinazione."
           }
         ]
@@ -1379,8 +1379,8 @@
       "tools": "Controllare saldi ed esempi"
     },
     "links": {
-      "pdf": "Estratto PDF in Excel",
-      "scanned": "Scansioni: requisiti IA",
+      "pdf": "Convertire estratto conto PDF in Excel",
+      "scanned": "OCR per estratti conto scansionati",
       "chase": "Chase (USA)",
       "bofa": "Bank of America (USA)",
       "wellsFargo": "Wells Fargo (USA)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL e Nanonets",
       "checker": "Controllo saldo e modello Excel",
       "benchmark": "Rapporto su campioni pubblici",
-      "csv": "Movimenti PDF in CSV",
+      "csv": "Estratto conto PDF in CSV",
       "bestConverters": "Migliori convertitori di estratti conto (2026)"
     },
     "groupDescriptions": {

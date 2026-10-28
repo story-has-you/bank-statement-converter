@@ -726,10 +726,10 @@
     "disclaimer": "{bank} é uma marca de seu titular. O StatementXL não é afiliado ao banco. Este guia explica como obter e conferir extratos, sem garantir a conversão de todos os layouts.",
     "pages": {
       "pdf": {
-        "label": "Extrato bancário PDF para Excel",
-        "title": "Transforme o extrato PDF em uma planilha Excel para conferir",
-        "intro": "Organize os lançamentos para conciliação, compare descrições e valores com o extrato e baixe um Excel com uma aba por tabela lógica. A cota diária gratuita é de {anonymousPages} página sem entrar ou {authenticatedPages} páginas com login.",
-        "metaDescription": "Converta extrato bancário PDF em Excel e confira entradas, saídas e saldo. Mantenha as descrições, referências de origem e notas de revisão.",
+        "label": "Converter extrato bancário PDF em Excel",
+        "title": "Converter extrato bancário PDF em Excel",
+        "intro": "Use o conversor para transformar seu extrato bancário PDF em Excel. Confira lançamentos, descrições e valores com o original e baixe uma aba por tabela lógica. A cota diária gratuita é de {anonymousPages} página sem entrar ou {authenticatedPages} páginas com login.",
+        "metaDescription": "Converter extrato bancário PDF em Excel: confira entradas, saídas e saldo com o original. Baixe uma aba por tabela com referências de origem e notas de revisão.",
         "requirementsTitle": "Prefira o PDF original do banco",
         "requirements": "O extrato com texto selecionável usa análise comum no navegador. Não imprima e digitalize um original digital; scans exigem plano elegível e seleção ativa da IA.",
         "preparationTitle": "Separe conta, período e moeda",
@@ -754,7 +754,7 @@
         "faq": [
           {
             "id": "ofx",
-            "question": "O Excel pode ser usado no lugar de OFX?",
+            "question": "Converter extrato bancário PDF para Excel também gera OFX?",
             "answer": "Não automaticamente. Se o sistema exige OFX, o Excel não atende só por mudar a extensão. StatementXL não exporta OFX; confirme o formato aceito no destino."
           },
           {
@@ -1379,8 +1379,8 @@
       "tools": "Conferir saldos e amostras"
     },
     "links": {
-      "pdf": "Extrato PDF para Excel",
-      "scanned": "Extrato digitalizado: condições da IA",
+      "pdf": "Converter extrato bancário PDF em Excel",
+      "scanned": "OCR de extrato bancário digitalizado",
       "chase": "Chase (EUA)",
       "bofa": "Bank of America (EUA)",
       "wellsFargo": "Wells Fargo (EUA)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL e Nanonets",
       "checker": "Conferidor de saldo e modelo Excel",
       "benchmark": "Relatório de amostras públicas",
-      "csv": "Lançamentos do PDF para CSV",
+      "csv": "Extrato bancário PDF para CSV",
       "bestConverters": "Melhores conversores de extratos (2026)"
     },
     "groupDescriptions": {

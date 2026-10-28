@@ -726,10 +726,10 @@
     "disclaimer": "{bank} est une marque de son titulaire. StatementXL n'est pas affilié à cette banque. Ce guide explique comment obtenir et vérifier les relevés, sans garantir la conversion de tous leurs modèles.",
     "pages": {
       "pdf": {
-        "label": "Relevé bancaire PDF en Excel",
-        "title": "Convertir un relevé bancaire PDF en tableau Excel",
-        "intro": "Préparez un tableau de travail pour le rapprochement : vérifiez les opérations du relevé puis téléchargez Excel, avec une feuille par tableau logique. Le quota quotidien gratuit est de {anonymousPages} page sans connexion ou {authenticatedPages} pages avec connexion.",
-        "metaDescription": "Convertissez un relevé bancaire PDF en Excel. Vérifiez débits, crédits, libellés et soldes, puis conservez les références aux lignes de l’original.",
+        "label": "Convertir un relevé bancaire PDF en Excel",
+        "title": "Convertir un relevé bancaire PDF en Excel",
+        "intro": "Convertir un relevé bancaire PDF en Excel permet de préparer un tableau pour le rapprochement. Vérifiez les opérations du relevé de compte puis téléchargez une feuille par tableau logique. Le quota quotidien gratuit est de {anonymousPages} page sans connexion ou {authenticatedPages} pages avec connexion.",
+        "metaDescription": "Convertir un relevé bancaire PDF en Excel : vérifiez débits, crédits et soldes avec l’original, puis gardez les références de page et les notes de contrôle.",
         "requirementsTitle": "Partir du PDF bancaire original",
         "requirements": "Préférez le PDF dont le texte est sélectionnable. Il est analysé dans le navigateur ; un scan nécessite un forfait adapté et le choix explicite de l’IA.",
         "preparationTitle": "Identifier le compte et la période",
@@ -759,7 +759,7 @@
           },
           {
             "id": "native",
-            "question": "Et si ma banque propose déjà les opérations en Excel ?",
+            "question": "Faut-il transformer le relevé de compte PDF si la banque propose déjà Excel ?",
             "answer": "Utilisez cet export s’il couvre la période et les colonnes nécessaires. La conversion du PDF sert lorsque cet export n’est pas disponible ou ne convient pas."
           }
         ]
@@ -1379,8 +1379,8 @@
       "tools": "Contrôler les soldes et les exemples"
     },
     "links": {
-      "pdf": "Relevé PDF en Excel",
-      "scanned": "Relevé scanné : conditions IA",
+      "pdf": "Convertir un relevé bancaire PDF en Excel",
+      "scanned": "OCR de relevés bancaires scannés",
       "chase": "Chase (États-Unis)",
       "bofa": "Bank of America (États-Unis)",
       "wellsFargo": "Wells Fargo (États-Unis)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL et Nanonets",
       "checker": "Vérificateur de solde et modèle Excel",
       "benchmark": "Rapport d’exemples publics",
-      "csv": "Opérations PDF en CSV",
+      "csv": "Relevé bancaire PDF en CSV",
       "bestConverters": "Meilleurs convertisseurs de relevés (2026)"
     },
     "groupDescriptions": {

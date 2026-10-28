@@ -367,7 +367,7 @@
     "title": "转换前需要了解哪些问题？",
     "banks": {
       "question": "什么时候需要转换流水 PDF？",
-      "answer": "网银有 Excel 或 CSV 时优先使用原生导出；只有 PDF 时再转换，支持情况因版式而异。"
+      "answer": "网银有 Excel 或 CSV 时优先使用原生导出；只有 PDF 时再转换，支持情况因版式而异。加密流水需先自行准备有权处理的无密码 PDF 副本。"
     },
     "accuracy": {
       "question": "转换结果准确吗？",
@@ -726,12 +726,12 @@
     "disclaimer": "{bank} 商标归其权利人所有，StatementXL 与该银行无关联。本指南说明账单获取和核对方法，不保证所有版式都能成功转换。",
     "pages": {
       "pdf": {
-        "label": "银行流水 PDF 转 Excel",
-        "title": "把银行流水 PDF 整理成 Excel 明细",
-        "intro": "需要按月核对收支或整理账目时，可从一份银行流水 PDF 提取明细，保留摘要、原始列和来源位置。核对后下载 Excel，每个逻辑表各占一个工作表。不登录每天免费 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。",
-        "metaDescription": "银行流水 PDF 转 Excel，保留交易摘要、核对提示和来源行。检查日期、收入支出与余额，再用于对账或整理账目。",
+        "label": "银行流水 PDF 转换成 Excel",
+        "title": "银行流水 PDF 转换成 Excel",
+        "intro": "把银行流水 PDF 转换成 Excel 表格，用于收支核对和账目整理。保留摘要、原始列和来源位置，核对后下载，每个逻辑表各占一个工作表。不登录每天免费 {anonymousPages} 页，登录后每天 {authenticatedPages} 页。",
+        "metaDescription": "把银行流水 PDF 转换成 Excel 表格，保留交易摘要、原始列和来源位置。对照银行对账单核对收入、支出与余额，检查风险标记后，按逻辑表下载工作表。",
         "requirementsTitle": "优先使用网银原始 PDF",
-        "requirements": "能直接选中文字的 PDF 可用常规解析，在浏览器内完成。不要把原始 PDF 打印再扫描；扫描件需符合套餐条件并主动选择 AI。",
+        "requirements": "本地解析使用网银下载、可选中文字的原始 PDF。加密流水需先由你在有权处理的前提下准备无密码副本，本站不提供解密。扫描件需符合套餐条件并主动选择 AI。",
         "preparationTitle": "确认账户、期间和币种",
         "preparation": "整理前先确认流水所属账户、起止日期及币种。不同账户和逻辑表分开核对，保留银行原件，不把转换表格当作银行出具的证明。",
         "limitationsTitle": "Excel 是核对副本",
@@ -759,7 +759,7 @@
           },
           {
             "id": "columns",
-            "question": "流水中收入和支出分两列，转换后会怎样？",
+            "question": "银行对账单导入 Excel 后，收入和支出会合并吗？",
             "answer": "结果保留提取出的原始列，不保证统一成一种收支格式。核对金额所在列及方向后，再在副本中整理成目标格式。"
           }
         ]
@@ -1379,8 +1379,8 @@
       "tools": "核对工具与样本证据"
     },
     "links": {
-      "pdf": "银行流水 PDF 转 Excel",
-      "scanned": "扫描流水识别与 AI 条件",
+      "pdf": "银行流水 PDF 转换成 Excel",
+      "scanned": "银行流水扫描件识别与 OCR",
       "chase": "Chase 流水下载（美国）",
       "bofa": "Bank of America 流水下载（美国）",
       "wellsFargo": "Wells Fargo 流水下载（美国）",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL 与 Nanonets",
       "checker": "余额核对器与 Excel 模板",
       "benchmark": "公开样本实测报告",
-      "csv": "银行流水按表导出 CSV",
+      "csv": "银行流水 PDF 转 CSV",
       "bestConverters": "2026 银行流水转换工具选型"
     },
     "groupDescriptions": {

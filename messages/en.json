@@ -726,10 +726,10 @@
     "disclaimer": "{bank} is a trademark of its owner. StatementXL is not affiliated with the bank. These instructions help you obtain and review statements; they do not guarantee conversion of every layout.",
     "pages": {
       "pdf": {
-        "label": "Bank statement PDF to Excel",
-        "title": "Convert a bank statement PDF to Excel",
-        "intro": "Make a working spreadsheet from one statement PDF. Check deposits, withdrawals and descriptions against the source, then download Excel with a worksheet for each logical table. Free daily access includes {anonymousPages} page without signing in or {authenticatedPages} pages when signed in.",
-        "metaDescription": "Convert a bank statement PDF to Excel with source rows and review notes. Check deposits, withdrawals and balances before using the workbook for bookkeeping.",
+        "label": "Bank Statement to Excel",
+        "title": "Bank Statement to Excel",
+        "intro": "Convert a bank statement PDF to Excel for bookkeeping and transaction review. Check deposits, withdrawals and descriptions against the source, then download a worksheet for each logical table. Free daily access includes {anonymousPages} page without signing in or {authenticatedPages} pages when signed in.",
+        "metaDescription": "Convert a bank statement PDF to Excel. Check deposits, withdrawals and balances against the original, then download worksheets with source rows and review notes.",
         "requirementsTitle": "Use a text PDF for regular conversion",
         "requirements": "Choose the original statement from online banking rather than printing and scanning it. Regular parsing runs in your browser; scanned statements require an eligible plan and active AI selection.",
         "preparationTitle": "Keep statement periods and accounts separate",
@@ -754,8 +754,8 @@
         "faq": [
           {
             "id": "native",
-            "question": "Do I need a converter if my bank already exports Excel?",
-            "answer": "Use the bank export first if it covers the right dates and fields. PDF conversion is useful when only the statement PDF is available."
+            "question": "How do I convert a bank statement to Excel?",
+            "answer": "If only a PDF is available, select the statement, review the extracted transactions against the original and download Excel. Use the bank’s own Excel or CSV export first if it covers the dates and fields you need."
           },
           {
             "id": "qbo",
@@ -1498,8 +1498,8 @@
       "tools": "Check results and sample evidence"
     },
     "links": {
-      "pdf": "PDF statement to Excel",
-      "scanned": "Scanned statements and optional AI",
+      "pdf": "Bank statement to Excel",
+      "scanned": "Scanned bank statement OCR",
       "chase": "Chase statement downloads (US)",
       "bofa": "Bank of America statements (US)",
       "wellsFargo": "Wells Fargo statements (US)",
@@ -1516,7 +1516,7 @@
       "nanonets": "StatementXL vs Nanonets",
       "checker": "Balance checker & Excel template",
       "benchmark": "Public sample report",
-      "csv": "PDF statement to CSV",
+      "csv": "Bank statement PDF to CSV",
       "bestConverters": "Best bank statement converters (2026)"
     },
     "groupDescriptions": {

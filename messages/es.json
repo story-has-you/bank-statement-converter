@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Convertir extracto bancario PDF a Excel o CSV | StatementXL",
-    "description": "Convierte extractos PDF a Excel o CSV con análisis local en el navegador y sin subir archivos por defecto. IA opcional con Professional y Enterprise. Revisa antes de descargar.",
-    "keywords": "extracto bancario PDF Excel, convertir extracto bancario CSV, conversor extractos bancarios, OCR extracto bancario",
+    "title": "Convertidor de estados de cuenta a Excel y CSV | StatementXL",
+    "description": "Convierte estados de cuenta o extractos bancarios PDF a Excel o CSV. Análisis local en el navegador; IA opcional con Professional y Enterprise. Revisa el resultado.",
+    "keywords": "convertidor de estados de cuenta, convertir estado de cuenta PDF a Excel, extracto bancario PDF Excel, estado de cuenta CSV, OCR estado de cuenta",
     "brand": "StatementXL",
-    "alternateName": "Convierte extractos bancarios en Excel o CSV"
+    "alternateName": "Convierte estados de cuenta a Excel o CSV"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -51,9 +51,9 @@
     "backHome": "Volver a la página de inicio"
   },
   "HomeIntro": {
-    "eyebrow": "Conversión de extractos bancarios en PDF",
-    "title": "Convierte extractos bancarios en Excel o CSV",
-    "description": "Convierte extractos PDF a Excel o CSV. Revisa las transacciones y las alertas antes de descargar."
+    "eyebrow": "Conversión de estados de cuenta PDF",
+    "title": "Convierte estados de cuenta a Excel o CSV",
+    "description": "Convierte estados de cuenta o extractos bancarios PDF a Excel o CSV. Revisa las transacciones y las alertas antes de descargar."
   },
   "PdfUpload": {
     "title": "Seleccionar un extracto bancario",
@@ -273,7 +273,7 @@
   "HomeFeatures": {
     "title": "Movimientos preparados para comprobar",
     "securityTitle": "Análisis local por defecto",
-    "securityDescription": "Procesa el extracto en tu navegador sin subirlo.",
+    "securityDescription": "Procesa el estado de cuenta en tu navegador sin subirlo.",
     "banksTitle": "Exportación Excel y CSV",
     "banksDescription": "Para hojas de cálculo y preparación contable.",
     "accuracyTitle": "Revisa antes de descargar",
@@ -366,7 +366,7 @@
   "HomeFaq": {
     "title": "¿Qué debo saber antes de convertir?",
     "banks": {
-      "question": "¿Necesito convertir si mi banco ya permite descargar Excel?",
+      "question": "¿Necesito un convertidor de estados de cuenta si mi banco ya ofrece Excel?",
       "answer": "Prioriza el Excel o CSV de tu banco. Si solo tienes PDF, conviértelo y revisa el resultado. La compatibilidad depende del formato."
     },
     "accuracy": {
@@ -378,7 +378,7 @@
       "answer": "Gratis al día: {anonymousPages, number} páginas sin sesión, {authenticatedPages, number} con sesión. Al mes: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} páginas."
     },
     "scans": {
-      "question": "¿Puedo convertir un extracto escaneado?",
+      "question": "¿Puedo convertir un estado de cuenta escaneado?",
       "answer": "El análisis local necesita texto seleccionable. Professional y Enterprise permiten elegir IA para escaneos con cuota disponible. Revisa el resultado."
     },
     "storage": {
@@ -726,20 +726,20 @@
     "disclaimer": "{bank} es una marca de su titular. StatementXL no está afiliado al banco. Esta guía explica cómo obtener y revisar extractos, sin garantizar la conversión de todos los diseños.",
     "pages": {
       "pdf": {
-        "label": "Extracto bancario PDF a Excel",
-        "title": "Convierte los movimientos de un extracto PDF a Excel",
-        "intro": "Prepara una hoja de trabajo para revisar movimientos, cargos y abonos. Descarga Excel con una hoja por tabla lógica y conserva las referencias del PDF. La cuota gratuita diaria es de {anonymousPages} página sin iniciar sesión o {authenticatedPages} páginas con sesión.",
-        "metaDescription": "Pasa un extracto bancario PDF a Excel y revisa cargos, abonos y conceptos contra el original. Guarda las referencias de página y las notas de revisión.",
-        "requirementsTitle": "Parte del extracto PDF original",
+        "label": "Convertir estado de cuenta PDF a Excel",
+        "title": "Convertir estado de cuenta PDF a Excel",
+        "intro": "Convierte tu estado de cuenta PDF a Excel para revisar movimientos, cargos y abonos. Si tu banco lo llama extracto bancario, el proceso es el mismo: contrasta el PDF y descarga una hoja por tabla lógica. La cuota gratuita diaria es de {anonymousPages} página sin iniciar sesión o {authenticatedPages} páginas con sesión.",
+        "metaDescription": "Convierte tu estado de cuenta PDF a Excel. Revisa cargos, abonos y conceptos contra el extracto bancario original; guarda referencias y notas de revisión.",
+        "requirementsTitle": "Parte del estado de cuenta PDF original",
         "requirements": "Para el análisis normal, utiliza un PDF con texto seleccionable del área de clientes del banco. Un escaneo requiere un plan compatible y elegir IA expresamente.",
         "preparationTitle": "Identifica cuenta, fechas y moneda",
-        "preparation": "Comprueba el periodo y la cuenta del extracto. Revisa los conceptos que ocupan varias líneas y guarda el PDF junto con la hoja de trabajo.",
+        "preparation": "Comprueba la cuenta bancaria y el periodo del estado de cuenta. Revisa los conceptos que ocupan varias líneas y guarda el PDF junto con la hoja de trabajo.",
         "limitationsTitle": "Una hoja de movimientos no es una conexión bancaria",
-        "limitations": "El Excel no sustituye al extracto oficial ni verifica su autenticidad. No genera asientos contables ni se conecta a tu programa; prepara una copia si necesitas importarlo.",
-        "stepsTitle": "Del extracto al Excel revisado",
+        "limitations": "El Excel no sustituye al estado de cuenta oficial ni verifica su autenticidad. No genera asientos contables ni se conecta a tu programa; prepara una copia si necesitas importarlo.",
+        "stepsTitle": "Del estado de cuenta al Excel revisado",
         "steps": {
           "upload": {
-            "title": "Elige el PDF del banco",
+            "title": "Selecciona el estado de cuenta PDF",
             "text": "Selecciona un PDF de hasta {megabytes} MB y {pages} páginas. Prefiere el documento original con texto."
           },
           "review": {
@@ -754,8 +754,8 @@
         "faq": [
           {
             "id": "bank",
-            "question": "¿Sustituye al extracto emitido por el banco?",
-            "answer": "No. Es una tabla de trabajo obtenida del PDF. Conserva el extracto original y entrega los documentos que solicite la entidad receptora."
+            "question": "¿Sustituye al estado de cuenta o extracto emitido por el banco?",
+            "answer": "No. Es una tabla de trabajo obtenida del PDF. Conserva el estado de cuenta o extracto bancario original y entrega los documentos que solicite la entidad receptora."
           },
           {
             "id": "accounting",
@@ -765,17 +765,17 @@
         ]
       },
       "csv": {
-        "label": "Extracto bancario PDF a CSV",
-        "title": "Extrae los movimientos del PDF en archivos CSV",
-        "intro": "Para reutilizar filas en otro programa, revisa el extracto y descarga un CSV por tabla lógica. Cada archivo conserva las columnas extraídas, los conceptos, las notas de revisión y las posiciones de origen. La cuota gratuita diaria es de {anonymousPages} página sin iniciar sesión o {authenticatedPages} páginas con sesión.",
-        "metaDescription": "Convierte un extracto bancario PDF a CSV por tabla. Comprueba fechas, decimales y signos de cargos y abonos antes de preparar una copia de importación.",
+        "label": "Estado de cuenta PDF a CSV",
+        "title": "Convierte tu estado de cuenta PDF a CSV",
+        "intro": "Para reutilizar filas en otro programa, revisa el estado de cuenta o extracto bancario PDF y descarga un CSV por tabla lógica. Cada archivo conserva las columnas extraídas, los conceptos, las notas de revisión y las posiciones de origen. La cuota gratuita diaria es de {anonymousPages} página sin iniciar sesión o {authenticatedPages} páginas con sesión.",
+        "metaDescription": "Convierte tu estado de cuenta PDF a CSV por tabla. Comprueba fechas, decimales y signos de cargos y abonos antes de preparar una copia de importación.",
         "requirementsTitle": "El CSV es una tabla general",
         "requirements": "Usa el mismo resultado revisado que Excel. Incluye columnas de control y origen; no es el formato específico de un programa contable ni una conexión bancaria.",
         "preparationTitle": "Revisa fechas, decimales y columnas",
         "preparation": "Adapta una copia a las columnas y separadores que espere el programa de destino. Comprueba día y mes, signos y duplicados en su vista previa.",
         "limitationsTitle": "No cambies de formato renombrando el archivo",
         "limitations": "Cambiar la extensión no crea un formato bancario ni una plantilla contable. El CSV se entrega por tabla lógica; no mezcles cuentas o monedas sin comprobarlas.",
-        "stepsTitle": "Revisar el extracto y guardar CSV",
+        "stepsTitle": "Revisar el estado de cuenta y guardar CSV",
         "steps": {
           "upload": {
             "title": "Seleccionar un extracto bancario PDF",
@@ -837,9 +837,9 @@
         "metaDescription": "Prepare PDF de Wells Fargo para Excel. Compruebe los períodos disponibles por cuenta y revise las operaciones antes de exportar."
       },
       "scanned": {
-        "label": "OCR de extractos bancarios escaneados",
-        "title": "Lee un extracto escaneado con IA y comprueba sus movimientos",
-        "intro": "Si el PDF solo contiene imágenes, el análisis normal no puede extraer su texto. Con Professional o Enterprise puedes elegir Qwen IA para intentar leerlo y revisar cargos, abonos y conceptos antes del Excel o CSV.",
+        "label": "OCR de estados de cuenta escaneados",
+        "title": "Lee tu estado de cuenta escaneado con IA y revisa los movimientos",
+        "intro": "Si el estado de cuenta o extracto bancario PDF solo contiene imágenes, el análisis normal no puede extraer su texto. Con Professional o Enterprise puedes elegir Qwen IA para intentar leerlo y revisar cargos, abonos y conceptos antes del Excel o CSV.",
         "planNote": "Los escaneos requieren Professional o Enterprise y cuota disponible. El uso anónimo, gratuito y Standard exige una capa de texto. Compara los planes abajo.",
         "planCta": "Análisis con IA opcional; permite intentar escaneos",
         "requirementsTitle": "Elige IA solo con un plan compatible",
@@ -863,7 +863,7 @@
             "text": "Descarga Excel o CSV y conserva el escaneo. No hay un historial permanente de archivos para recuperarlos después."
           }
         },
-        "metaDescription": "OCR de extractos bancarios escaneados con IA opcional en planes compatibles. Se envía el PDF completo y su nombre a Qwen; la revisión es necesaria.",
+        "metaDescription": "OCR de estados de cuenta escaneados con IA opcional en planes compatibles. Se envía el PDF completo y su nombre a Qwen; la revisión es necesaria.",
         "faq": [
           {
             "id": "accuracy",
@@ -1364,8 +1364,8 @@
     }
   },
   "Resources": {
-    "title": "Extractos bancarios: conversión y revisión de movimientos",
-    "intro": "Elige Excel o CSV, revisa el extracto y prepara después la copia que necesites. Las guías de otros países indican su ámbito para no confundirlas con instrucciones de banca española.",
+    "title": "Estados de cuenta: conversión y revisión de movimientos",
+    "intro": "Elige Excel o CSV, revisa el estado de cuenta o extracto bancario y prepara después la copia que necesites. Las guías de otros países indican su ámbito; compruébalo antes de seguir instrucciones bancarias o contables.",
     "featuredTitle": "Empieza por el formato que necesitas",
     "featuredDescription": "Excel, CSV, escaneos y comprobación de saldos.",
     "relatedTitle": "Guías y herramientas relacionadas",
@@ -1379,8 +1379,8 @@
       "tools": "Comprobar saldos y ejemplos"
     },
     "links": {
-      "pdf": "Extracto PDF a Excel",
-      "scanned": "Escaneos: condiciones de la IA",
+      "pdf": "Convertir estado de cuenta PDF a Excel",
+      "scanned": "OCR de estados de cuenta escaneados",
       "chase": "Chase (EE. UU.)",
       "bofa": "Bank of America (EE. UU.)",
       "wellsFargo": "Wells Fargo (EE. UU.)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL y Nanonets",
       "checker": "Comprobador de saldo y plantilla Excel",
       "benchmark": "Informe de muestras públicas",
-      "csv": "Movimientos del PDF a CSV",
+      "csv": "Estado de cuenta PDF a CSV",
       "bestConverters": "Mejores conversores de extractos (2026)"
     },
     "groupDescriptions": {
@@ -1408,6 +1408,6 @@
       "comparisons": "Compara descarga bancaria, revisión de un PDF y trabajo con lotes. Las descripciones de los proveedores no son pruebas independientes de exactitud.",
       "tools": "Comprueba los totales introducidos sin subir archivos. El informe público solo cubre los ejemplos indicados, no todos los bancos españoles."
     },
-    "metaDescription": "Guías de extractos PDF a Excel o CSV, OCR y comprobación de saldos. Identifica el país de las guías bancarias y la edición del programa contable."
+    "metaDescription": "Guías de estados de cuenta PDF a Excel o CSV, OCR y comprobación de saldos. Revisa el país de cada guía bancaria y la edición del programa contable."
   }
 }

@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Konversi rekening koran PDF ke Excel & CSV | StatementXL",
-    "description": "Konversi rekening koran PDF ke Excel atau CSV, secara default lokal di browser tanpa unggahan berkas. AI opsional untuk Professional dan Enterprise. Tinjau sebelum mengunduh.",
-    "keywords": "rekening koran PDF ke Excel, rekening koran PDF ke CSV, konverter rekening koran, OCR rekening koran",
+    "title": "Konversi rekening koran ke Excel & CSV | StatementXL",
+    "description": "Konversi rekening koran atau mutasi rekening PDF ke Excel atau CSV, secara default di browser tanpa unggahan. AI opsional untuk Professional dan Enterprise. Periksa hasilnya.",
+    "keywords": "convert rekening koran PDF ke Excel, konversi rekening koran, mutasi rekening PDF ke CSV, OCR rekening koran",
     "brand": "StatementXL",
-    "alternateName": "Ubah rekening koran PDF menjadi Excel atau CSV"
+    "alternateName": "Konversi rekening koran ke Excel atau CSV"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -52,8 +52,8 @@
   },
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
-    "title": "Ubah rekening koran PDF menjadi Excel atau CSV",
-    "description": "Ubah rekening koran PDF ke Excel atau CSV. Periksa transaksi dan penanda risiko sebelum mengunduh."
+    "title": "Konversi rekening koran ke Excel atau CSV",
+    "description": "Konversi rekening koran atau mutasi rekening PDF ke Excel atau CSV. Periksa transaksi dan penanda risiko sebelum mengunduh."
   },
   "PdfUpload": {
     "title": "Pilih rekening koran",
@@ -726,10 +726,10 @@
     "disclaimer": "{bank} adalah merek dagang milik pemegang haknya. StatementXL tidak berafiliasi dengan bank tersebut. Panduan ini menjelaskan cara memperoleh dan memeriksa rekening koran, tanpa menjamin konversi semua tata letak.",
     "pages": {
       "pdf": {
-        "label": "Rekening koran PDF ke Excel",
-        "title": "Jadikan rekening koran PDF lembar Excel untuk diperiksa",
-        "intro": "Siapkan rekap transaksi tanpa menyalin satu per satu. Cocokkan keterangan, debit dan kredit dengan PDF, lalu simpan Excel dengan satu sheet per tabel logis. Kuota gratis harian adalah {anonymousPages} halaman tanpa masuk atau {authenticatedPages} halaman setelah masuk.",
-        "metaDescription": "Konversi rekening koran PDF ke Excel dan cocokkan tanggal, keterangan, debit, kredit serta saldo. Simpan sumber baris dan catatan pemeriksaan.",
+        "label": "Convert rekening koran PDF ke Excel",
+        "title": "Convert rekening koran PDF ke Excel",
+        "intro": "Convert rekening koran PDF ke Excel untuk menyiapkan rekap mutasi rekening. Cocokkan keterangan, debit dan kredit dengan PDF, lalu simpan satu sheet per tabel logis. Kuota gratis harian adalah {anonymousPages} halaman tanpa masuk atau {authenticatedPages} halaman setelah masuk.",
+        "metaDescription": "Convert rekening koran PDF ke Excel. Cocokkan mutasi rekening, debit, kredit dan saldo dengan PDF asli, lalu simpan sumber baris dan catatan pemeriksaan.",
         "requirementsTitle": "Gunakan PDF asli dari internet banking",
         "requirements": "Teks yang bisa dipilih dapat diurai di browser. Hindari mencetak lalu memindai PDF digital; hasil scan memerlukan paket yang sesuai dan pemilihan AI secara aktif.",
         "preparationTitle": "Pisahkan rekening dan periode",
@@ -759,13 +759,13 @@
           },
           {
             "id": "reconcile",
-            "question": "Apakah Excel sudah berarti transaksi direkonsiliasi?",
+            "question": "Apakah konversi mutasi rekening ke Excel berarti transaksi sudah direkonsiliasi?",
             "answer": "Belum. Cocokkan dengan catatan pembukuan dan rekening koran asli. Tanda risiko menunjukkan bukti per baris, bukan hasil rekonsiliasi atau audit."
           }
         ]
       },
       "csv": {
-        "label": "Rekening koran PDF ke CSV",
+        "label": "Konversi rekening koran PDF ke CSV",
         "title": "Ekstrak mutasi rekening koran ke CSV per tabel",
         "intro": "Perlu baris transaksi untuk diolah lagi? Periksa hasil dari PDF lalu unduh satu CSV untuk setiap tabel logis. Kolom asli, keterangan, catatan pemeriksaan dan posisi sumber tetap disertakan. Kuota gratis harian adalah {anonymousPages} halaman tanpa masuk atau {authenticatedPages} halaman setelah masuk.",
         "metaDescription": "Ubah rekening koran PDF ke CSV per tabel. Periksa debit, kredit, tanggal dan angka sebelum menyiapkan salinan untuk impor pembukuan.",
@@ -1379,8 +1379,8 @@
       "tools": "Periksa saldo dan sampel"
     },
     "links": {
-      "pdf": "Rekening koran PDF ke Excel",
-      "scanned": "Scan rekening koran: syarat AI",
+      "pdf": "Convert rekening koran PDF ke Excel",
+      "scanned": "OCR rekening koran hasil scan",
       "chase": "Chase (AS)",
       "bofa": "Bank of America (AS)",
       "wellsFargo": "Wells Fargo (AS)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL dan Nanonets",
       "checker": "Pemeriksa saldo dan templat Excel",
       "benchmark": "Laporan sampel publik",
-      "csv": "Mutasi PDF ke CSV",
+      "csv": "Konversi rekening koran PDF ke CSV",
       "bestConverters": "Konverter rekening koran terbaik (2026)"
     },
     "groupDescriptions": {

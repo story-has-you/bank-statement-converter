@@ -726,10 +726,10 @@
     "disclaimer": "{bank} का ट्रेडमार्क उसके अधिकारधारक का है। StatementXL का इस बैंक से कोई संबंध नहीं है। यह गाइड स्टेटमेंट पाने और जाँचने का तरीका बताती है; हर लेआउट का रूपांतरण सफल होने की गारंटी नहीं देती।",
     "pages": {
       "pdf": {
-        "label": "बैंक स्टेटमेंट PDF से Excel",
-        "title": "बैंक स्टेटमेंट के लेनदेन को Excel में व्यवस्थित करें",
-        "intro": "मूल PDF से debit, credit और narration मिलाकर काम की शीट बनाएँ। हर logical table की अलग worksheet और स्रोत जानकारी मिलती है। दैनिक मुफ़्त सीमा बिना साइन इन {anonymousPages} पेज और साइन इन के बाद {authenticatedPages} पेज है।",
-        "metaDescription": "बैंक स्टेटमेंट PDF को Excel में बदलें। तारीख, debit/credit, narration और balance जाँचकर स्रोत पंक्तियों सहित worksheet डाउनलोड करें।",
+        "label": "Bank Statement PDF to Excel Converter",
+        "title": "Bank Statement PDF to Excel Converter",
+        "intro": "Bank Statement PDF to Excel Converter से बैंक स्टेटमेंट को Excel शीट में बदलें। मूल PDF से debit, credit और narration मिलाएँ, फिर हर logical table की अलग worksheet और स्रोत जानकारी डाउनलोड करें। दैनिक मुफ़्त सीमा बिना साइन इन {anonymousPages} पेज और साइन इन के बाद {authenticatedPages} पेज है।",
+        "metaDescription": "Bank Statement PDF to Excel Converter: बैंक स्टेटमेंट की तारीख, debit, credit, narration और balance मूल PDF से जाँचें। स्रोत जानकारी सहित Excel डाउनलोड करें।",
         "requirementsTitle": "खुलने योग्य मूल टेक्स्ट PDF लें",
         "requirements": "नेटबैंकिंग का ऐसा PDF चुनें जिसमें टेक्स्ट select हो सके। पासवर्ड-सुरक्षित PDF समर्थित नहीं है; केवल अपने अधिकृत दस्तावेज़ की बिना पासवर्ड वाली प्रति तैयार करके चुनें।",
         "preparationTitle": "खाता और अवधि अलग रखें",
@@ -754,13 +754,13 @@
         "faq": [
           {
             "id": "password",
-            "question": "क्या HDFC या दूसरे बैंक का password PDF सीधे खोल सकते हैं?",
-            "answer": "नहीं। किसी भी प्लान में password-protected PDF समर्थित नहीं है। अपने अधिकृत दस्तावेज़ की बिना पासवर्ड वाली PDF प्रति पहले तैयार करें।"
+            "question": "Password wale bank statement ko Excel me kaise convert kare?",
+            "answer": "पहले अपने अधिकृत दस्तावेज़ की बिना पासवर्ड वाली PDF प्रति तैयार करें; किसी भी प्लान में password-protected PDF समर्थित नहीं है। फिर PDF चुनें, debit और credit मूल से जाँचें और Excel डाउनलोड करें।"
           },
           {
             "id": "tally",
             "question": "क्या Excel सीधे Tally में जाएगा?",
-            "answer": "यह Tally का विशेष import format नहीं है और सीधा connection नहीं है। अपने संस्करण के नियम देखकर कॉलम, तारीख और रकम की अलग प्रति तैयार करें।"
+            "answer": "यह Tally XML या Tally Prime का विशेष import format नहीं है और सीधा connection नहीं है। अपने संस्करण के नियम देखकर कॉलम, तारीख और रकम की अलग प्रति तैयार करें।"
           }
         ]
       },
@@ -1379,8 +1379,8 @@
       "tools": "Balance check और public samples"
     },
     "links": {
-      "pdf": "Bank statement PDF से Excel",
-      "scanned": "स्कैन PDF: AI शर्तें",
+      "pdf": "Bank Statement PDF to Excel Converter",
+      "scanned": "बैंक स्टेटमेंट OCR और स्कैन PDF",
       "chase": "Chase (अमेरिका)",
       "bofa": "Bank of America (अमेरिका)",
       "wellsFargo": "Wells Fargo (अमेरिका)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL और Nanonets",
       "checker": "शेष जाँच और Excel टेम्पलेट",
       "benchmark": "सार्वजनिक नमूना रिपोर्ट",
-      "csv": "Transaction rows से CSV",
+      "csv": "Bank statement PDF से CSV",
       "bestConverters": "बैंक स्टेटमेंट कन्वर्टर चुनने की गाइड (2026)"
     },
     "groupDescriptions": {

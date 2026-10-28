@@ -727,9 +727,9 @@
     "pages": {
       "pdf": {
         "label": "Bankafschrift PDF naar Excel",
-        "title": "Zet een PDF-bankafschrift om naar een controleerbaar Excelbestand",
-        "intro": "Bereid transacties voor om met uw administratie te vergelijken. Controleer het PDF-afschrift en sla Excel op met één werkblad per logische tabel. Dagelijks zijn {anonymousPages} pagina zonder inloggen of {authenticatedPages} pagina’s met inloggen gratis.",
-        "metaDescription": "Zet bankafschrift PDF om naar Excel. Controleer bij, af, omschrijvingen en saldi en bewaar bronregels en controleopmerkingen in de werkmap.",
+        "title": "Bankafschrift PDF naar Excel",
+        "intro": "Een bankafschrift PDF naar Excel omzetten helpt bij het vergelijken van transacties met uw administratie. Controleer het rekeningafschrift en sla één werkblad per logische tabel op. Dagelijks zijn {anonymousPages} pagina zonder inloggen of {authenticatedPages} pagina’s met inloggen gratis.",
+        "metaDescription": "Bankafschrift PDF naar Excel omzetten? Controleer bij, af, omschrijvingen en saldi met het origineel. Bewaar bronregels en controleopmerkingen in de werkmap.",
         "requirementsTitle": "Gebruik de originele tekst-PDF",
         "requirements": "Download het digitale afschrift via internetbankieren. Selecteerbare tekst kan in de browser worden verwerkt; een scan vereist een geschikt abonnement en een bewuste AI-keuze.",
         "preparationTitle": "Leg rekening en periode vast",
@@ -1380,7 +1380,7 @@
     },
     "links": {
       "pdf": "Bankafschrift PDF naar Excel",
-      "scanned": "Scan en herken: AI-voorwaarden",
+      "scanned": "OCR voor gescande bankafschriften",
       "chase": "Chase (VS)",
       "bofa": "Bank of America (VS)",
       "wellsFargo": "Wells Fargo (VS)",

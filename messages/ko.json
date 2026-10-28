@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "은행 거래내역 PDF 엑셀·CSV 변환 | StatementXL",
-    "description": "은행 명세서 PDF를 Excel 또는 CSV로 변환하세요. 기본 로컬 분석은 파일 업로드 없이 브라우저에서 수행됩니다. Professional 및 Enterprise는 AI를 선택할 수 있습니다. 결과를 검토한 뒤 다운로드하세요.",
-    "keywords": "은행 거래내역 PDF 엑셀 변환, 거래내역 CSV 변환, 은행 거래내역 OCR, 입출금 내역 엑셀",
+    "title": "은행 거래내역서 변환 도구: 엑셀·CSV | StatementXL",
+    "description": "은행 거래내역서 PDF를 엑셀 또는 CSV로 변환하세요. 기본 로컬 분석은 파일 업로드 없이 브라우저에서 수행됩니다. Professional 및 Enterprise는 AI를 선택할 수 있습니다. 결과를 검토한 뒤 다운로드하세요.",
+    "keywords": "은행 거래내역서 PDF 엑셀 변환, 은행 거래내역 엑셀, 거래내역서 CSV 변환, 입출금 거래내역서 OCR",
     "brand": "StatementXL",
-    "alternateName": "은행 거래내역 PDF를 엑셀·CSV로 정리"
+    "alternateName": "은행 거래내역서를 엑셀·CSV로 정리"
   },
   "HomeHeader": {
     "brand": "StatementXL",
@@ -51,9 +51,9 @@
     "backHome": "홈페이지로 돌아가기"
   },
   "HomeIntro": {
-    "eyebrow": "은행 명세서 PDF 변환",
-    "title": "은행 거래내역 PDF를 엑셀·CSV로 정리",
-    "description": "은행 명세서 PDF를 Excel·CSV로 변환하세요. 거래와 위험 표시를 확인한 뒤 다운로드하세요."
+    "eyebrow": "은행 거래내역서 PDF 변환",
+    "title": "은행 거래내역서를 엑셀·CSV로 정리",
+    "description": "은행 거래내역서 PDF를 엑셀·CSV로 변환하세요. 거래와 위험 표시를 확인한 뒤 다운로드하세요."
   },
   "PdfUpload": {
     "title": "은행 명세서 선택",
@@ -273,7 +273,7 @@
   "HomeFeatures": {
     "title": "입출금 내역을 확인할 수 있는 표로",
     "securityTitle": "기본 로컬 분석",
-    "securityDescription": "명세서를 업로드하지 않고 브라우저에서 처리합니다.",
+    "securityDescription": "거래내역서를 업로드하지 않고 브라우저에서 처리합니다.",
     "banksTitle": "Excel·CSV 내보내기",
     "banksDescription": "표 정리와 기장 준비에 사용하세요.",
     "accuracyTitle": "다운로드 전 확인",
@@ -726,10 +726,10 @@
     "disclaimer": "{bank} 상표는 해당 권리자의 소유입니다. StatementXL은 해당 은행과 제휴하지 않습니다. 이 안내는 명세서 조회와 검토 방법을 설명하며 모든 양식의 변환을 보장하지 않습니다.",
     "pages": {
       "pdf": {
-        "label": "은행 거래내역 PDF를 엑셀로",
-        "title": "입출금 거래내역 PDF를 엑셀로 변환",
-        "intro": "거래내역의 날짜, 적요, 입출금을 원본과 대조하며 정리하세요. 확인 후 논리 테이블마다 별도 시트가 있는 엑셀 파일을 받을 수 있습니다. 비로그인은 하루 {anonymousPages}페이지, 로그인 후에는 {authenticatedPages}페이지 무료입니다.",
-        "metaDescription": "은행 거래내역 PDF를 엑셀로 정리하고 입금·출금, 잔액과 적요를 대조하세요. 원본 페이지와 확인 메모를 함께 저장합니다.",
+        "label": "은행 거래내역서 PDF 엑셀 변환",
+        "title": "은행 거래내역서 PDF 엑셀 변환",
+        "intro": "은행 거래내역서 PDF를 엑셀로 변환하고 날짜, 적요, 입출금을 원본과 대조하세요. 확인 후 논리 테이블마다 별도 시트가 있는 엑셀 파일을 받을 수 있습니다. 비로그인은 하루 {anonymousPages}페이지, 로그인 후에는 {authenticatedPages}페이지 무료입니다.",
+        "metaDescription": "은행 거래내역서 PDF 엑셀 변환 후 입금·출금, 잔액과 적요를 원본과 대조하세요. 논리 테이블별 시트에 원본 페이지와 확인 메모를 함께 저장합니다.",
         "requirementsTitle": "인터넷뱅킹의 원본 PDF 사용",
         "requirements": "일반 분석은 글자를 선택할 수 있는 PDF를 브라우저에서 읽습니다. 원본을 출력해 다시 스캔하지 마세요. 이미지 PDF는 대상 요금제에서 AI를 직접 선택해야 합니다.",
         "preparationTitle": "계좌와 조회 기간을 먼저 확인",
@@ -759,13 +759,13 @@
           },
           {
             "id": "columns",
-            "question": "입금과 출금이 다른 열이면 어떻게 되나요?",
+            "question": "입출금 거래내역서에서 입금과 출금이 다른 열이면 어떻게 되나요?",
             "answer": "추출된 원본 열을 유지합니다. 금액 방향과 열 위치를 확인한 뒤 필요한 형식은 별도 사본에서 정리하세요."
           }
         ]
       },
       "csv": {
-        "label": "은행 거래내역 PDF CSV 변환",
+        "label": "은행 거래내역서 PDF CSV 변환",
         "title": "거래내역을 CSV로 저장하고 필요한 열만 정리",
         "intro": "엑셀 서식보다 거래 행이 필요하다면 CSV를 선택하세요. PDF와 대조한 같은 결과에서 논리 테이블별로 다운로드하며 적요, 확인 메모와 출처 행을 포함합니다. 비로그인은 하루 {anonymousPages}페이지, 로그인 후에는 {authenticatedPages}페이지 무료입니다.",
         "metaDescription": "은행 거래내역 PDF를 테이블별 CSV로 저장. 입출금 열과 날짜를 확인하고 회계 프로그램의 열 규칙에 맞는 사본을 준비하세요.",
@@ -837,7 +837,7 @@
         "metaDescription": "Wells Fargo 명세서 PDF의 Excel 변환을 준비하세요. 계좌별 조회 기간과 내보내기 전 거래 내역을 확인하세요."
       },
       "scanned": {
-        "label": "스캔 거래내역 OCR와 선택형 AI",
+        "label": "스캔 거래내역서 OCR와 선택형 AI",
         "title": "스캔한 거래내역서를 AI로 읽고 원본과 비교",
         "intro": "텍스트가 없는 스캔 거래내역은 일반 분석으로 읽을 수 없습니다. Professional·Enterprise 사용자는 AI를 선택해 추출을 시도하고 입출금과 흐린 숫자를 확인한 뒤 엑셀·CSV로 저장할 수 있습니다.",
         "planNote": "스캔 PDF에는 Professional 또는 Enterprise와 남은 페이지 할당량이 필요합니다. 비로그인, 무료, Standard는 텍스트 레이어가 필요합니다. 아래 요금제를 비교하세요.",
@@ -1379,8 +1379,8 @@
       "tools": "잔액 확인과 공개 샘플"
     },
     "links": {
-      "pdf": "거래내역 PDF를 엑셀로",
-      "scanned": "스캔 거래내역 AI 조건",
+      "pdf": "은행 거래내역서 PDF 엑셀 변환",
+      "scanned": "스캔 거래내역서 OCR 이용 조건",
       "chase": "Chase 거래내역 (미국)",
       "bofa": "Bank of America (미국)",
       "wellsFargo": "Wells Fargo (미국)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL과 Nanonets",
       "checker": "잔액 확인기와 Excel 양식",
       "benchmark": "공개 표본 측정 보고서",
-      "csv": "거래내역을 CSV로 정리",
+      "csv": "은행 거래내역서 PDF CSV 변환",
       "bestConverters": "2026 은행 명세서 변환 도구 선택 가이드"
     },
     "groupDescriptions": {

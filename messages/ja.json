@@ -726,10 +726,10 @@
     "disclaimer": "{bank} の商標は権利者に帰属します。StatementXL は当該銀行と提携していません。このガイドは明細の取得と確認を説明するもので、すべてのレイアウトの変換を保証しません。",
     "pages": {
       "pdf": {
-        "label": "銀行明細 PDF を Excel に変換",
-        "title": "銀行取引明細を Excel のワークシートへ",
-        "intro": "入出金の記帳や月次確認に使う表を、銀行明細 PDF から作成します。摘要や元の列を残し、照合後に論理テーブルごとのワークシートで保存できます。無料枠は未ログインで毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページです。",
-        "metaDescription": "銀行取引明細 PDF を Excel に変換。入出金、摘要の改行、残高を原本と照合し、元ページ情報付きで保存できます。",
+        "label": "入出金明細 PDF をエクセルに変換",
+        "title": "入出金明細 PDF をエクセルに変換",
+        "intro": "入出金明細 PDF をエクセルに変換し、記帳や月次確認に使う表を作成します。銀行明細の摘要や元の列を残し、照合後に論理テーブルごとの Excel ワークシートで保存できます。無料枠は未ログインで毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページです。",
+        "metaDescription": "入出金明細 PDF をエクセルに変換。銀行明細の入金・出金、摘要、残高を原本と照合し、元ページ情報と確認メモ付きの Excel ワークシートを保存できます。",
         "requirementsTitle": "ネットバンキングの原本 PDF を使う",
         "requirements": "文字を選択できる PDF は通常解析を利用できます。印刷して再スキャンせず、取得した原本を使ってください。スキャンの AI 利用は対象プランのみです。",
         "preparationTitle": "口座・期間・通貨を確認",
@@ -754,8 +754,8 @@
         "faq": [
           {
             "id": "passbook",
-            "question": "通帳を撮影した画像も通常解析できますか？",
-            "answer": "通常解析には PDF の文字情報が必要です。画像は PDF にまとめて対象プランの AI で試せますが、すべての通帳レイアウトの対応は保証しません。"
+            "question": "通帳をエクセルに変換できますか？",
+            "answer": "通常解析には PDF の文字情報が必要です。通帳の画像は PDF にまとめ、Professional・Enterprise の残り枠で任意の AI を選んで試せますが、通帳全般への対応は未検証です。すべての取引を原本と照合してください。"
           },
           {
             "id": "accounting",
@@ -765,7 +765,7 @@
         ]
       },
       "csv": {
-        "label": "銀行取引明細 PDF を CSV に変換",
+        "label": "入出金明細 PDF を CSV に変換",
         "title": "銀行明細を CSV にして、取り込み用に整理",
         "intro": "会計ソフトへの取り込み前に、銀行 PDF の取引を CSV で整理したい方向けの入口です。原本と照合し、結果画面からテーブルごとにダウンロードしてください。 無料枠は未ログインで毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページです。",
         "metaDescription": "銀行明細 PDF をテーブルごとの CSV に変換。日付、入出金と摘要を確認し、会計ソフトの指定列に合わせたコピーを作成します。",
@@ -867,7 +867,7 @@
         "faq": [
           {
             "id": "passbook",
-            "question": "どの銀行の通帳でも読めますか？",
+            "question": "通帳をエクセルに変換する OCR は、どの銀行でも使えますか？",
             "answer": "保証していません。折り目や印字、レイアウトによって読み取りが失敗することがあります。対象プランの AI で試した場合も原本と照合が必要です。"
           },
           {
@@ -1379,8 +1379,8 @@
       "tools": "残高確認と公開サンプル"
     },
     "links": {
-      "pdf": "取引明細 PDF を Excel に",
-      "scanned": "通帳・明細スキャンの AI 条件",
+      "pdf": "入出金明細 PDF をエクセルに変換",
+      "scanned": "通帳・銀行明細 OCR の利用条件",
       "chase": "Chase 明細の取得（米国）",
       "bofa": "Bank of America 明細（米国）",
       "wellsFargo": "Wells Fargo 明細（米国）",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL と Nanonets",
       "checker": "残高チェッカーと Excel テンプレート",
       "benchmark": "公開サンプルの実測レポート",
-      "csv": "取引明細を CSV で整理",
+      "csv": "入出金明細 PDF を CSV に変換",
       "bestConverters": "銀行明細変換ツールの選び方（2026年）"
     },
     "groupDescriptions": {

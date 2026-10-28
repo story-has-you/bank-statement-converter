@@ -726,10 +726,10 @@
     "disclaimer": "{bank} ist eine Marke des jeweiligen Rechteinhabers. StatementXL ist nicht mit der Bank verbunden. Diese Anleitung erläutert das Abrufen und Prüfen von Auszügen, garantiert aber nicht die Umwandlung jedes Formats.",
     "pages": {
       "pdf": {
-        "label": "Kontoauszug PDF in Excel",
-        "title": "PDF-Kontoauszug in Excel umwandeln und prüfen",
-        "intro": "Bereiten Sie einen Kontoauszug für die Buchungskontrolle auf: Datum, Verwendungszweck und Beträge mit dem PDF abgleichen, dann Excel mit einem Blatt je logischer Tabelle speichern. Kostenlos sind täglich {anonymousPages} Seite ohne Anmeldung oder {authenticatedPages} Seiten mit Anmeldung.",
-        "metaDescription": "PDF-Kontoauszug in Excel umwandeln. Verwendungszwecke, Soll/Haben und Salden am Original prüfen und Quellen sowie Prüfhinweise im Arbeitsblatt behalten.",
+        "label": "Kontoauszug PDF in Excel umwandeln",
+        "title": "Kontoauszug PDF in Excel umwandeln",
+        "intro": "Kontoauszug PDF in Excel umwandeln und Buchungen prüfen: Gleichen Sie Datum, Verwendungszweck und Beträge mit dem Original ab. Speichern Sie Ihre Kontoauszüge mit einem Blatt je logischer Tabelle. Kostenlos sind täglich {anonymousPages} Seite ohne Anmeldung oder {authenticatedPages} Seiten mit Anmeldung.",
+        "metaDescription": "Kontoauszug PDF in Excel umwandeln: Buchungen, Verwendungszweck und Salden mit dem Original prüfen. Je Tabelle ein Blatt mit Quellenangaben und Prüfhinweisen.",
         "requirementsTitle": "Original-PDF mit Textebene verwenden",
         "requirements": "Laden Sie möglichst den digitalen Auszug aus dem Onlinebanking herunter. Reguläre Analyse erfolgt im Browser. Ein Scan braucht einen geeigneten Tarif und die aktive Wahl der KI.",
         "preparationTitle": "Konto und Auszugszeitraum festhalten",
@@ -759,7 +759,7 @@
           },
           {
             "id": "native",
-            "question": "Warum nicht einfach den Bankexport nutzen?",
+            "question": "Sollte ich den Bankexport in Excel importieren oder ein PDF umwandeln?",
             "answer": "Wenn der Bankexport die benötigten Daten enthält, ist er der erste Weg. PDF-Konvertierung hilft bei Zeiträumen, für die nur ein Auszug als PDF vorliegt."
           }
         ]
@@ -1379,8 +1379,8 @@
       "tools": "Salden prüfen und Stichproben lesen"
     },
     "links": {
-      "pdf": "Kontoauszug PDF in Excel",
-      "scanned": "Scan-PDF und optionale KI",
+      "pdf": "Kontoauszug PDF in Excel umwandeln",
+      "scanned": "OCR für gescannte Kontoauszüge",
       "chase": "Chase-Auszüge (USA)",
       "bofa": "Bank of America (USA)",
       "wellsFargo": "Wells Fargo (USA)",
@@ -1397,7 +1397,7 @@
       "nanonets": "StatementXL und Nanonets",
       "checker": "Saldoprüfer und Excel-Vorlage",
       "benchmark": "Öffentlicher Beispielbericht",
-      "csv": "Kontoauszug PDF in CSV",
+      "csv": "Kontoauszug PDF in CSV umwandeln",
       "bestConverters": "Die besten Kontoauszug-Konverter (2026)"
     },
     "groupDescriptions": {
