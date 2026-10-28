@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "银行流水转 Excel、CSV，先核对再使用",
-    "description": "银行流水 PDF 转 Excel、CSV，默认在浏览器本地解析，无需上传文件。预览交易明细并核对风险标记后下载；专业和企业套餐可主动选择 AI 解析。"
+    "description": "银行流水 PDF 转 Excel、CSV。预览交易明细，核对风险标记后下载。"
   },
   "PdfUpload": {
     "title": "选择对账单",
@@ -70,7 +70,7 @@
     "quotaUnavailable": "未能确认当前可用的转换额度。",
     "removeFile": "移除文件",
     "quota": "免费额度：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页",
-    "serviceReady": "默认在浏览器中完成本地解析，不上传 PDF、文件名或流水内容。只有主动选择 AI 解析，才会将完整 PDF 和文件名发送至本站服务端及千问 AI 平台。",
+    "serviceReady": "默认本地解析，PDF、文件名和流水不上传，成功后仅发送页数核算额度。主动选择 AI 时，完整 PDF 和文件名才会经本站服务端发送至千问。",
     "status": "可以转换",
     "converting": "正在处理",
     "start": "转换并查看结果",
@@ -86,7 +86,7 @@
     "emptyFile": "所选 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
     "invalidResponse": "转换服务返回的数据格式异常。",
-    "aiNotice": "AI 解析为可选功能，不会自动启用。Professional 和 Enterprise 用户可在转换前主动选择 AI，尝试处理扫描件；只有主动选择后，完整 PDF 和文件名才会经本站服务端发送至千问 AI 平台。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。 查看<link>处理方详情、协议与隐私政策</link>。",
+    "aiNotice": "专业和企业套餐可在转换前主动选择 AI，尝试处理扫描件，不会自动启用。本站不保存文件或流水的持久化历史；千问的数据保留和训练政策以其条款为准。查看<link>服务商条款与隐私详情</link>。",
     "checking": "正在检查 PDF 和额度",
     "retryCheck": "重新检查",
     "pageCount": "共 {pageCount, number} 页",
@@ -274,17 +274,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "从流水原件整理出可核对的明细",
+    "title": "从流水 PDF 到可核对的表格",
     "securityTitle": "默认本地解析",
-    "securityDescription": "默认在浏览器中完成本地解析，不上传 PDF、文件名或流水内容。只有主动选择 AI 解析，才会将完整 PDF 和文件名发送至本站服务端及千问 AI 平台。",
-    "banksTitle": "先看网银是否已有表格下载",
-    "banksDescription": "网银若能下载所需期间的 Excel 或 CSV，优先使用原生导出。只有 PDF 时再转换；不同银行、账户和时期的版式需要逐份核对。",
-    "accuracyTitle": "核对收支方向和摘要换行",
-    "accuracyDescription": "检查交易日期、收入支出、余额及多行摘要，保留来源位置。风险标记帮助定位疑点，不能代替与原件逐行比对。"
+    "securityDescription": "在浏览器内处理流水，无需上传原件。",
+    "banksTitle": "导出 Excel、CSV",
+    "banksDescription": "用于表格整理和记账准备。",
+    "accuracyTitle": "下载前核对",
+    "accuracyDescription": "根据风险标记，对照原始 PDF 检查交易。"
   },
   "UsageTiers": {
     "title": "银行流水转换套餐与额度",
-    "description": "免费额度每日重置；登录后可通过 Creem、PayPal 或 Waffo 订阅，按计费周期获取转换额度。",
+    "description": "每日免费额度，或按月订阅。",
     "anonymous": "不登录",
     "anonymousAmount": "{pages, number} 页",
     "signedIn": "登录后",
@@ -369,32 +369,32 @@
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",
     "banks": {
-      "question": "银行流水和银行对账单都能尝试转换吗？",
-      "answer": "可以尝试银行提供的流水或对账单 PDF，但并非所有版式都已验证。优先下载网银原生 Excel、CSV 或可选中文字的 PDF；不要把贷款材料、余额证明等其他文件当作已支持的流水版式。"
+      "question": "什么时候需要转换流水 PDF？",
+      "answer": "网银有 Excel 或 CSV 时优先使用原生导出；只有 PDF 时再转换，支持情况因版式而异。"
     },
     "accuracy": {
-      "question": "转成表格后，怎样核对收入、支出和余额？",
-      "answer": "将交易日期、摘要、收支方向、金额和原件中的余额逐项比对，特别检查摘要跨行与分页处。OK、DISCREPANCY、UNVERIFIABLE 反映行证据情况，不代表银行认证或审计结论。"
+      "question": "转换结果准确吗？",
+      "answer": "请核对日期、金额、余额和多行摘要。风险标记用于辅助检查，不保证准确性。"
     },
     "quota": {
-      "question": "不登录和登录后每天能免费转换几页？",
-      "answer": "免费银行流水转换：不登录每天 {anonymousPages, number} 页，登录后每天 {authenticatedPages, number} 页；标准每月 {standardPages, number} 页，专业 {professionalPages, number} 页，企业 {enterprisePages, number} 页。按 PDF 页数累计。 默认在浏览器中完成本地解析，不上传 PDF、文件名或流水内容。解析成功后，仅向额度接口发送页数。"
+      "question": "每天能免费转换几页？",
+      "answer": "不登录每天 {anonymousPages, number} 页，登录后 {authenticatedPages, number} 页；月度套餐分别含 {standardPages, number}、{professionalPages, number}、{enterprisePages, number} 页。"
     },
     "scans": {
-      "question": "扫描的银行流水 PDF 能识别吗？",
-      "answer": "常规解析要求 PDF 有文字层。专业和企业套餐在额度足够时可主动选择 AI 尝试扫描件；完整 PDF 和文件名会发给千问 AI 平台，识别结果仍需人工核对。"
+      "question": "能转换扫描件吗？",
+      "answer": "本地解析需要可选中的文字。专业和企业套餐额度足够时，可主动选择 AI 尝试扫描件，结果仍需核对。"
     },
     "storage": {
-      "question": "刷新页面或离开后还能找回结果吗？",
-      "answer": "默认使用本地解析；只有主动选择 AI，完整 PDF 和文件名才会经本站服务端发送至千问 AI 平台。 服务端不将 PDF、导出文件或流水明细保存为持久化历史。本标签页会话存储会临时保存文件名、提取结果、所选商户列及包含已确认名称的别名映射，用于预览、刷新恢复和下载；重新转换或清理结果时一起清除，不跨文件复用。请自行保管原始 PDF 和下载文件。"
+      "question": "会保存我的文件吗？",
+      "answer": "服务端不保存文件历史。本标签页临时保存结果和商户映射，用于预览及刷新恢复；重新转换或清理结果后删除。请自行保存下载文件。"
     },
     "failure": {
-      "question": "流水缺行或转换失败时怎么办？",
-      "answer": "银行流水转换失败会提示错误，不提供无效 Excel、不扣额度；部分结果仍按全部 PDF 页数计入用量。"
+      "question": "转换失败会扣额度吗？",
+      "answer": "失败不扣额度；部分结果按全部 PDF 页数计量。使用前请核对缺失的交易。"
     },
     "ai": {
-      "question": "选择 AI 会把什么内容发给千问？",
-      "answer": "AI 解析为可选功能，不会自动启用。Professional 和 Enterprise 用户可在转换前主动选择 AI，尝试处理扫描件；只有主动选择后，完整 PDF 和文件名才会经本站服务端发送至千问 AI 平台。 使用结果前，请对照原始 PDF 核对。"
+      "question": "会自动使用 AI 吗？",
+      "answer": "不会。专业和企业套餐可主动选择 AI；选择后，完整 PDF 和文件名会经本站服务端发送至千问 AI 平台。"
     }
   },
   "HomeFooter": {

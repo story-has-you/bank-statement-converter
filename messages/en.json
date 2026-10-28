@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter for Excel & CSV",
-    "description": "Convert bank statement PDFs to Excel or CSV in your browser without uploading files by default. Preview transactions and review risk flags before downloading. Professional and Enterprise users can choose optional AI parsing."
+    "description": "Use our Bank Statement Converter to turn PDFs into Excel or CSV. Preview transactions, check flagged rows and download."
   },
   "PdfUpload": {
     "title": "Choose a bank statement",
@@ -70,7 +70,7 @@
     "quotaUnavailable": "Your available conversion quota could not be determined.",
     "removeFile": "Remove file",
     "quota": "Free daily pages: {anonymousPages, number} anonymous · {authenticatedPages, number} signed in",
-    "serviceReady": "Local parsing runs in your browser by default without uploading the PDF, filename or transactions. The complete PDF and filename are sent to our server and Qwen AI Platform only when you choose AI parsing.",
+    "serviceReady": "Local parsing keeps the PDF, filename and transactions in your browser; only page count is sent for quota after success. Optional AI sends the full PDF and filename through our server to Qwen.",
     "status": "Ready to convert",
     "converting": "Converting",
     "start": "Convert and review",
@@ -86,7 +86,7 @@
     "emptyFile": "The selected PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training. See <link>provider details, terms and privacy policy</link>.",
+    "aiNotice": "Professional and Enterprise can choose AI, including for scans. It never activates automatically. We keep no permanent file or transaction history. Qwen’s retention and training policies apply. See <link>terms and privacy details</link>.",
     "checking": "Checking PDF and quota",
     "retryCheck": "Retry check",
     "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
@@ -274,17 +274,17 @@
     }
   },
   "HomeFeatures": {
-    "title": "From statement PDF to reviewed transactions",
-    "securityTitle": "Local parsing by default",
-    "securityDescription": "Local parsing runs in your browser by default without uploading the PDF, filename or transactions. The complete PDF and filename are sent to our server and Qwen AI Platform only when you choose AI parsing.",
-    "banksTitle": "Start with the bank’s own export",
-    "banksDescription": "If online banking offers the dates and columns you need as CSV or Excel, use that export. Use PDF conversion for statement periods you cannot otherwise download.",
-    "accuracyTitle": "Check the handoff to bookkeeping",
-    "accuracyDescription": "Compare transaction counts, payment and deposit signs, and balances with the PDF. Keep review notes and source rows; prepare a separate copy for accounting imports."
+    "title": "Why use this Bank Statement Converter?",
+    "securityTitle": "Local by default",
+    "securityDescription": "The Bank Statement Converter works in your browser without uploading your statement.",
+    "banksTitle": "Excel and CSV exports",
+    "banksDescription": "Download Bank Statement Converter results for spreadsheets or bookkeeping preparation.",
+    "accuracyTitle": "Review before download",
+    "accuracyDescription": "Check Bank Statement Converter risk flags against the original PDF."
   },
   "UsageTiers": {
-    "title": "Plans and page allowances",
-    "description": "Free pages each day, with monthly subscriptions through Creem, PayPal or Waffo.",
+    "title": "Bank Statement Converter plans",
+    "description": "Daily free pages or a monthly subscription.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "signedIn": "Signed in",
@@ -367,34 +367,34 @@
     "pendingCheckout": "Pending checkout: {provider} / {tier}."
   },
   "HomeFaq": {
-    "title": "Bank statement converter FAQ",
+    "title": "Bank Statement Converter FAQ",
     "banks": {
-      "question": "Should I use my bank’s CSV download instead?",
-      "answer": "Use a native bank CSV or Excel export when it covers the required period and fields. For a PDF-only statement, try a permitted sample and check the result. A bank download guide is not evidence that every account layout is supported."
+      "question": "When should I use a Bank Statement Converter?",
+      "answer": "Use your bank’s Excel or CSV export when available. Use PDF conversion otherwise; support varies by statement layout."
     },
     "accuracy": {
-      "question": "How do I check converted bank transactions?",
-      "answer": "Check dates, deposits, payments, multiline descriptions and available balances against the original. OK, DISCREPANCY and UNVERIFIABLE describe row evidence, not an audit or a guarantee of accuracy."
+      "question": "Is the Bank Statement Converter accurate?",
+      "answer": "Check dates, amounts, balances and multiline descriptions against the PDF. Row risk labels are review aids, not an accuracy guarantee."
     },
     "quota": {
-      "question": "How many statement pages can I convert for free?",
-      "answer": "The daily free allowance is {anonymousPages, plural, one {# page} other {# pages}} without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} when signed in. Monthly subscriptions include Standard {standardPages, number}, Professional {professionalPages, number} and Enterprise {enterprisePages, number} pages. Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint."
+      "question": "Is the Bank Statement Converter free?",
+      "answer": "Yes: {anonymousPages, plural, one {# page} other {# pages}} daily without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} signed in. Monthly plans include {standardPages, number}, {professionalPages, number} or {enterprisePages, number} pages."
     },
     "scans": {
-      "question": "Can I convert a scanned bank statement?",
-      "answer": "Regular parsing needs a text layer. Professional and Enterprise users with available quota can actively choose AI for a scanned PDF. It sends the complete PDF and filename to Qwen AI Platform; recognition still needs review."
+      "question": "Can the Bank Statement Converter handle scans?",
+      "answer": "Local parsing needs selectable text. Professional and Enterprise users can choose AI for scans with available quota. Review recognition results."
     },
     "storage": {
-      "question": "Can I retrieve an old converted statement here?",
-      "answer": "Local parsing is the default. The complete PDF and filename are sent through our server to Qwen AI Platform only when you choose AI. The website keeps no permanent file, export or transaction history on its servers. This tab’s browser session stores filenames, results, selected merchant columns and alias mappings, including confirmed names, for previews and downloads. Results survive refresh. Starting a new job or clearing results erases them, and mappings never cross files. Keep your original PDFs and downloaded exports."
+      "question": "Does the Bank Statement Converter save my files?",
+      "answer": "No server file history. This tab temporarily stores results and merchant mappings for previews and refresh recovery. A new conversion or clearing results removes them. Save your downloads."
     },
     "failure": {
-      "question": "What should I do if rows are missing or conversion fails?",
-      "answer": "Failed jobs show an error rather than an invalid Excel file and do not deduct quota. If a conversion returns partial results, all pages in the PDF count toward the allowance."
+      "question": "Does a failed conversion use quota?",
+      "answer": "Failed conversions use no quota. Partial results count all PDF pages. Check missing rows before using an export."
     },
     "ai": {
-      "question": "When does the PDF go to an AI provider?",
-      "answer": "AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. Check results against the original PDF before use."
+      "question": "Does the Bank Statement Converter use AI automatically?",
+      "answer": "No. AI is optional for Professional and Enterprise. Choosing it sends the full PDF and filename through our server to Qwen AI Platform."
     }
   },
   "HomeFooter": {
