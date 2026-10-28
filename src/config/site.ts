@@ -8,6 +8,6 @@ if (environment === "preview") {
   url = "https://bankstatementconverter.xyz";
 }
 const domain = new URL(url).host;
-const contactEmail = "support@bankstatementconverter.xyz";
+const contactEmail = "support@mail.bankstatementconverter.xyz";
 
 export const siteConfig = { domain, contactEmail, conversionLimits, url, contactHref: `mailto:${contactEmail}` } as const;
