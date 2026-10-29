@@ -27,6 +27,10 @@ export function TermsContent() {
         <p className="text-sm leading-7 text-muted-foreground sm:text-base">{t("availability")}</p>
       </header>
 
+      <LegalSection id="eligibility" title={t("eligibility.title")}>
+        <p>{t("eligibility.body")}</p>
+      </LegalSection>
+
       <LegalSection id="service" title={t("service.title")}>
         <p>{t("service.body")}</p>
       </LegalSection>
@@ -56,9 +60,10 @@ export function TermsContent() {
       </LegalSection>
 
       <LegalSection id="refunds" title={t("refunds.title")}>
-        <p>{t("refunds.body")}</p>
+        <p>
+          {t("refunds.rights")} {t("refunds.body")}
+        </p>
         <p>{t("refunds.cancellation")}</p>
-        <p>{t("refunds.rights")}</p>
       </LegalSection>
 
       <LegalSection id="files" title={t("files.title")}>

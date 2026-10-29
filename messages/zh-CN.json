@@ -351,7 +351,8 @@
       "checkoutUnknown": "无法确认原结账状态，请联系客服核对后再付款。",
       "checkoutAwaitingPayment": "原结账正在处理付款或等待确认，请稍后重试。",
       "checkoutAlreadyPending": "已有待付款结账。请回到对应套餐，选择原支付渠道继续。",
-      "checkoutClosed": "原结账已关闭，请返回套餐页重试。"
+      "checkoutClosed": "原结账已关闭，请返回套餐页重试。",
+      "renewalConsentRequired": "请先确认您已阅读并同意自动续费条款。"
     },
     "providerUnavailable": "{provider} 支付暂不可用。",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "通过 {provider} 订阅",
     "openingProvider": "正在打开 {provider}",
-    "pendingCheckout": "待处理结账：{provider} / {tier}。"
+    "pendingCheckout": "待处理结账：{provider} / {tier}。",
+    "renewalDisclosure": "订阅费用为每月 {amount}，将按月持续自动续费，直至您取消。适用税费和最终应付金额以结账页展示为准。",
+    "renewalCancellation": "您可在<account>个人账户</account>中取消自动续费，停止后续续费扣款；已付权益保留至当前计费周期结束。查看<terms>订阅与付款条款</terms>。",
+    "renewalConsent": "我已阅读并同意上述自动续费条款。"
   },
   "HomeFaq": {
     "title": "转换前需要了解哪些问题？",
@@ -410,7 +414,7 @@
     "resources": "指南与工具"
   },
   "LegalCommon": {
-    "lastUpdated": "最后更新：2026 年 10 月 28 日"
+    "lastUpdated": "最后更新：2026 年 10 月 29 日"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "联系我们",
       "body": "如对本条款有疑问，请通过 <link>{email}</link> 联系 ReAvid Ltd。"
+    },
+    "eligibility": {
+      "title": "使用资格",
+      "body": "您必须年满 18 岁，并具备适用法律要求的订约能力，才能使用本服务，包括匿名转换、账号登录和订阅购买。"
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "AI 解析与第三方处理",
       "provider": "当前 AI 解析服务提供方为千问 AI 平台，运营主体为通义云启（杭州）信息技术有限公司，适用其<terms>《千问AI平台产品服务协议》</terms>和<privacy>《千问AI平台法律声明及隐私权政策》</privacy>。",
       "body": "AI 解析为可选功能，不会自动启用。Professional 和 Enterprise 用户可在转换前主动选择 AI，尝试处理扫描件；只有主动选择后，完整 PDF 和文件名才会经本站服务端发送至千问 AI 平台。 本站不将 PDF、流水明细、模型输出或导出文件保存为持久化历史。AI 提供方按其服务条款和隐私政策处理收到的数据；我们不对其留存期限或是否用于训练作额外保证。"
+    },
+    "children": {
+      "title": "儿童与未成年人",
+      "body": "本服务不面向未满 18 岁的用户。若您认为我们处理了未满 18 岁用户的个人信息，请通过 <link>{email}</link> 联系我们，我们会核实并按适用法律处理，包括在适当情况下删除相关个人信息。"
     }
   },
   "ThemeToggle": {

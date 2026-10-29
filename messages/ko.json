@@ -351,7 +351,8 @@
       "checkoutUnknown": "이전 결제 상태를 확인할 수 없습니다. 다시 결제하기 전에 고객 지원에 문의하세요.",
       "checkoutAwaitingPayment": "이전 결제를 처리 중이거나 확인을 기다리고 있습니다. 잠시 후 다시 시도하세요.",
       "checkoutAlreadyPending": "이미 대기 중인 결제가 있습니다. 해당 요금제로 돌아가 원래 결제 제공업체를 선택하여 계속하세요.",
-      "checkoutClosed": "이전 결제가 종료되었습니다. 요금제로 돌아가 다시 시도하세요."
+      "checkoutClosed": "이전 결제가 종료되었습니다. 요금제로 돌아가 다시 시도하세요.",
+      "renewalConsentRequired": "자동 갱신 약관을 읽고 동의했는지 확인해 주세요."
     },
     "providerUnavailable": "{provider} 결제는 현재 이용할 수 없습니다.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "{provider}(으)로 구독",
     "openingProvider": "{provider} 여는 중",
-    "pendingCheckout": "대기 중인 결제: {provider} / {tier}."
+    "pendingCheckout": "대기 중인 결제: {provider} / {tier}.",
+    "renewalDisclosure": "구독료는 월 {amount}이며, 해지할 때까지 매월 자동 갱신됩니다. 적용 세금과 최종 결제 금액은 결제 화면에 표시됩니다.",
+    "renewalCancellation": "<account>계정</account>에서 자동 갱신을 해지하면 이후 갱신 요금이 청구되지 않습니다. 결제한 이용 권한은 현재 청구 기간이 끝날 때까지 유지됩니다. <terms>구독 및 결제 약관</terms>을 확인하세요.",
+    "renewalConsent": "위 자동 갱신 약관을 읽었으며 이에 동의합니다."
   },
   "HomeFaq": {
     "title": "변환 전에 무엇을 알아야 하나요?",
@@ -410,7 +414,7 @@
     "resources": "가이드와 도구"
   },
   "LegalCommon": {
-    "lastUpdated": "최종 업데이트: 2026년 10월 28일"
+    "lastUpdated": "최종 업데이트: 2026년 10월 29일"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "문의하기",
       "body": "본 약관에 대한 질문이 있는 경우 ReAvid Ltd(<link>{email}</link>)에 문의하세요."
+    },
+    "eligibility": {
+      "title": "이용 자격",
+      "body": "비로그인 변환, 계정 로그인 및 구독 구매를 포함하여 본 서비스를 이용하려면 만 18세 이상이어야 하며, 관련 법률에 따라 계약을 체결할 법적 능력이 있어야 합니다."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "AI 분석 및 제삼자의 처리",
       "provider": "현재 AI 분석 제공업체는 Qwen AI Platform이며, 운영 주체는 通义云启（杭州）信息技术有限公司(등록된 법인명)입니다. 해당 업체의 <terms>제품 서비스 계약</terms>과 <privacy>법적 고지 및 개인정보처리방침</privacy>이 적용됩니다.",
       "body": "AI 분석은 선택 사항이며 자동으로 활성화되지 않습니다. Professional 및 Enterprise 사용자는 변환 전에 AI를 직접 선택하여 스캔 문서 등의 변환을 시도할 수 있습니다. AI를 선택한 경우에만 전체 PDF와 파일명이 당사 서버를 거쳐 Qwen AI Platform으로 전송됩니다. 사이트는 PDF, 거래 내역, 모델 출력 또는 내보낸 파일을 영구 이력으로 저장하지 않습니다. AI 제공자는 자체 약관과 개인정보 처리방침에 따라 데이터를 처리하며, 보관 기간이나 학습 사용에 대해 추가로 보장하지 않습니다."
+    },
+    "children": {
+      "title": "아동 및 미성년자",
+      "body": "본 서비스는 만 18세 미만 사용자를 대상으로 하지 않습니다. 만 18세 미만 사용자의 개인정보가 처리되었다고 생각되면 <link>{email}</link>로 연락해 주세요. 확인 후 필요한 경우 해당 개인정보를 삭제하는 등 관련 법률에 따라 처리하겠습니다."
     }
   },
   "ThemeToggle": {

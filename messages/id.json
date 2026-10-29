@@ -351,7 +351,8 @@
       "checkoutUnknown": "Checkout sebelumnya tidak dapat diverifikasi. Hubungi dukungan sebelum membayar lagi.",
       "checkoutAwaitingPayment": "Pembayaran checkout sebelumnya sedang diproses atau menunggu konfirmasi. Coba lagi sebentar.",
       "checkoutAlreadyPending": "Sudah ada checkout yang tertunda. Kembali ke paket tersebut dan pilih penyedia pembayaran semula untuk melanjutkan.",
-      "checkoutClosed": "Checkout sebelumnya sudah ditutup. Kembali ke pilihan paket dan coba lagi."
+      "checkoutClosed": "Checkout sebelumnya sudah ditutup. Kembali ke pilihan paket dan coba lagi.",
+      "renewalConsentRequired": "Harap konfirmasikan bahwa Anda telah membaca dan menyetujui ketentuan perpanjangan otomatis."
     },
     "providerUnavailable": "Pembayaran melalui {provider} saat ini tidak tersedia.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "Berlangganan dengan {provider}",
     "openingProvider": "Membuka {provider}",
-    "pendingCheckout": "Checkout tertunda: {provider} / {tier}."
+    "pendingCheckout": "Checkout tertunda: {provider} / {tier}.",
+    "renewalDisclosure": "Biaya langganan Anda adalah {amount} per bulan dan diperpanjang otomatis setiap bulan hingga dibatalkan. Pajak yang berlaku dan jumlah akhir pembayaran ditampilkan saat checkout.",
+    "renewalCancellation": "Anda dapat membatalkan perpanjangan otomatis di <account>akun</account> untuk menghentikan tagihan perpanjangan berikutnya. Akses berbayar tetap tersedia hingga akhir periode penagihan berjalan. Lihat <terms>ketentuan langganan dan pembayaran</terms>.",
+    "renewalConsent": "Saya telah membaca dan menyetujui ketentuan perpanjangan otomatis di atas."
   },
   "HomeFaq": {
     "title": "Apa yang perlu diketahui sebelum konversi?",
@@ -410,7 +414,7 @@
     "resources": "Panduan dan alat"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 28 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 29 Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "Kontak",
       "body": "Untuk pertanyaan tentang ketentuan ini, hubungi ReAvid Ltd di <link>{email}</link>."
+    },
+    "eligibility": {
+      "title": "Persyaratan penggunaan",
+      "body": "Untuk menggunakan layanan ini, termasuk konversi tanpa login, login ke akun, dan pembelian langganan, Anda harus berusia minimal 18 tahun dan memiliki kecakapan hukum untuk membuat perjanjian berdasarkan hukum yang berlaku."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "Penguraian AI dan pemrosesan pihak ketiga",
       "provider": "Penyedia penguraian AI adalah Qwen AI Platform, yang dioperasikan oleh 通义云启（杭州）信息技术有限公司 (nama badan hukum terdaftar). Berlaku <terms>Perjanjian Layanan Produk</terms> serta <privacy>Pemberitahuan Hukum dan Kebijakan Privasi</privacy> penyedia.",
       "body": "Penguraian AI bersifat opsional dan tidak pernah aktif otomatis. Pengguna Professional dan Enterprise dapat memilih AI sebelum konversi, termasuk untuk hasil pindai. Hanya saat Anda memilih AI, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Situs ini tidak menyimpan riwayat permanen PDF, transaksi, keluaran model, atau ekspor. Penyedia AI memproses data menurut ketentuan dan kebijakan privasinya sendiri; kami tidak menjamin masa penyimpanan atau penggunaan untuk pelatihan."
+    },
+    "children": {
+      "title": "Anak-anak dan pengguna di bawah umur",
+      "body": "Layanan ini tidak ditujukan bagi siapa pun yang berusia di bawah 18 tahun. Jika Anda merasa kami telah memproses informasi pribadi pengguna di bawah 18 tahun, hubungi <link>{email}</link>. Kami akan meninjau dan menanganinya sesuai hukum yang berlaku, termasuk menghapus informasi pribadi jika diperlukan."
     }
   },
   "ThemeToggle": {

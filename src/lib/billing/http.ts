@@ -63,6 +63,9 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       if (!isMembershipTier(input.tier)) {
         throw new BillingError("invalidTier", 400);
       }
+      if (input.renewalConsent !== true) {
+        throw new BillingError("renewalConsentRequired", 400);
+      }
       const locale = resolveLocale(request.headers.get("x-app-locale"));
       const prefix = locale === "en" ? "" : `/${locale}`;
       const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);

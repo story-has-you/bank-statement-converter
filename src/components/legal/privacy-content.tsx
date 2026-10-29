@@ -27,6 +27,19 @@ export function PrivacyContent() {
         <p className="text-sm leading-7 text-muted-foreground sm:text-base">{t("availability")}</p>
       </header>
 
+      <LegalSection id="children" title={t("children.title")}>
+        <p>
+          {t.rich("children.body", {
+            email: siteConfig.contactEmail,
+            link: (chunks) => (
+              <a className="break-all text-primary underline underline-offset-4" href={siteConfig.contactHref}>
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
+      </LegalSection>
+
       <LegalSection id="documents" title={t("documents.title")}>
         <p>{t("documents.body")}</p>
       </LegalSection>

@@ -351,7 +351,8 @@
       "checkoutUnknown": "De vorige checkout kon niet worden geverifieerd. Neem contact op met support voordat je opnieuw betaalt.",
       "checkoutAwaitingPayment": "De betaling van de vorige checkout wordt verwerkt of wacht op bevestiging. Probeer het zo opnieuw.",
       "checkoutAlreadyPending": "Er staat al een checkout open. Ga terug naar dat abonnement en kies de oorspronkelijke betaalprovider om door te gaan.",
-      "checkoutClosed": "De vorige checkout is gesloten. Ga terug naar de abonnementen en probeer het opnieuw."
+      "checkoutClosed": "De vorige checkout is gesloten. Ga terug naar de abonnementen en probeer het opnieuw.",
+      "renewalConsentRequired": "Bevestig dat je de voorwaarden voor automatische verlenging hebt gelezen en ermee akkoord gaat."
     },
     "providerUnavailable": "Betalingen via {provider} zijn momenteel niet beschikbaar.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "Abonneren via {provider}",
     "openingProvider": "{provider} openen",
-    "pendingCheckout": "Openstaande checkout: {provider} / {tier}."
+    "pendingCheckout": "Openstaande checkout: {provider} / {tier}.",
+    "renewalDisclosure": "Je abonnement kost {amount} per maand en wordt elke maand automatisch verlengd totdat je opzegt. Eventuele belastingen en het definitieve bedrag worden bij het afrekenen getoond.",
+    "renewalCancellation": "Je kunt de automatische verlenging in je <account>account</account> stopzetten om toekomstige verlengingskosten te voorkomen. Je betaalde toegang blijft geldig tot het einde van de huidige factureringsperiode. Bekijk de <terms>abonnements- en betalingsvoorwaarden</terms>.",
+    "renewalConsent": "Ik heb de bovenstaande voorwaarden voor automatische verlenging gelezen en ga ermee akkoord."
   },
   "HomeFaq": {
     "title": "Wat moet ik weten vóór de conversie?",
@@ -410,7 +414,7 @@
     "resources": "Gidsen en hulpmiddelen"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 28 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 29 oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "Contact",
       "body": "Neem voor vragen over deze voorwaarden contact op met ReAvid Ltd via <link>{email}</link>."
+    },
+    "eligibility": {
+      "title": "Leeftijd en bevoegdheid",
+      "body": "Je moet minimaal 18 jaar oud zijn en volgens het toepasselijke recht bevoegd zijn om een overeenkomst te sluiten om deze dienst te gebruiken. Dit geldt ook voor conversie zonder inloggen, inloggen op een account en het afsluiten van abonnementen."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "AI-analyse en verwerking door derden",
       "provider": "De aanbieder van AI-analyse is Qwen AI Platform, beheerd door 通义云启（杭州）信息技术有限公司 (geregistreerde juridische naam). De <terms>Productdienstenovereenkomst</terms> en de <privacy>Juridische kennisgeving en het privacybeleid</privacy> van de aanbieder zijn van toepassing.",
       "body": "AI-analyse is optioneel en wordt nooit automatisch ingeschakeld. Gebruikers van Professional en Enterprise kunnen vóór de conversie AI kiezen, ook voor scans. Alleen dan worden de volledige PDF en de bestandsnaam via onze server naar Qwen AI Platform gestuurd. Deze website bewaart geen permanente historie van PDF’s, transacties, modeluitvoer of exports. Voor de AI-aanbieder gelden diens eigen voorwaarden en privacybeleid; wij garanderen geen bewaartermijn of uitsluiting van trainingsgebruik."
+    },
+    "children": {
+      "title": "Kinderen en minderjarigen",
+      "body": "Deze dienst is niet bedoeld voor personen jonger dan 18 jaar. Denk je dat wij persoonsgegevens van een gebruiker jonger dan 18 jaar hebben verwerkt? Neem dan contact op via <link>{email}</link>. We onderzoeken dit en handelen volgens het toepasselijke recht, waaronder het verwijderen van persoonsgegevens waar nodig."
     }
   },
   "ThemeToggle": {

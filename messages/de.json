@@ -351,7 +351,8 @@
       "checkoutUnknown": "Der vorherige Checkout konnte nicht überprüft werden. Kontaktiere vor einer weiteren Zahlung den Support.",
       "checkoutAwaitingPayment": "Die Zahlung des vorherigen Checkouts wird verarbeitet oder wartet auf Bestätigung. Bitte versuche es gleich erneut.",
       "checkoutAlreadyPending": "Ein Checkout ist bereits offen. Kehre zu diesem Tarif zurück und wähle den ursprünglichen Zahlungsanbieter.",
-      "checkoutClosed": "Der vorherige Checkout ist geschlossen. Kehre zu den Tarifen zurück und versuche es erneut."
+      "checkoutClosed": "Der vorherige Checkout ist geschlossen. Kehre zu den Tarifen zurück und versuche es erneut.",
+      "renewalConsentRequired": "Bitte bestätigen Sie, dass Sie die Bedingungen zur automatischen Verlängerung gelesen haben und ihnen zustimmen."
     },
     "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "Mit {provider} abonnieren",
     "openingProvider": "{provider} wird geöffnet",
-    "pendingCheckout": "Offener Checkout: {provider} / {tier}."
+    "pendingCheckout": "Offener Checkout: {provider} / {tier}.",
+    "renewalDisclosure": "Ihr Abonnement kostet {amount} pro Monat und verlängert sich bis zur Kündigung automatisch jeden Monat. Anfallende Steuern und der endgültige Zahlbetrag werden beim Bezahlen angezeigt.",
+    "renewalCancellation": "Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen, um weitere Verlängerungszahlungen zu stoppen. Der bezahlte Zugang bleibt bis zum Ende des laufenden Abrechnungszeitraums bestehen. Siehe <terms>Abonnement- und Zahlungsbedingungen</terms>.",
+    "renewalConsent": "Ich habe die oben genannten Bedingungen zur automatischen Verlängerung gelesen und stimme ihnen zu."
   },
   "HomeFaq": {
     "title": "Was sollte ich vor der Konvertierung wissen?",
@@ -410,7 +414,7 @@
     "resources": "Anleitungen und Werkzeuge"
   },
   "LegalCommon": {
-    "lastUpdated": "Zuletzt aktualisiert: 28. Oktober 2026"
+    "lastUpdated": "Zuletzt aktualisiert: 29. Oktober 2026"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "Kontaktieren Sie uns",
       "body": "Bei Fragen zu diesen Bedingungen wenden Sie sich bitte an ReAvid Ltd unter <link>{email}</link>."
+    },
+    "eligibility": {
+      "title": "Nutzungsvoraussetzungen",
+      "body": "Sie müssen mindestens 18 Jahre alt sein und nach geltendem Recht die erforderliche Geschäftsfähigkeit besitzen, um diesen Dienst zu nutzen. Dies gilt auch für die Konvertierung ohne Anmeldung, die Kontoanmeldung und den Abschluss von Abonnements."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "KI-Analyse und Verarbeitung durch Dritte",
       "provider": "Der KI-Analyseanbieter ist Qwen AI Platform, betrieben von 通义云启（杭州）信息技术有限公司 (eingetragener Firmenname). Es gelten die <terms>Produktdienstleistungsvereinbarung</terms> und die <privacy>Rechtshinweise und Datenschutzrichtlinie</privacy> des Anbieters.",
       "body": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung."
+    },
+    "children": {
+      "title": "Kinder und Minderjährige",
+      "body": "Dieser Dienst richtet sich nicht an Personen unter 18 Jahren. Wenn Sie vermuten, dass wir personenbezogene Daten einer Person unter 18 Jahren verarbeitet haben, kontaktieren Sie uns unter <link>{email}</link>. Wir prüfen den Fall und handeln nach geltendem Recht, einschließlich der Löschung der Daten, soweit angemessen."
     }
   },
   "ThemeToggle": {

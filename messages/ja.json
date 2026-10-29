@@ -351,7 +351,8 @@
       "checkoutUnknown": "前の決済状況を確認できません。再度支払う前にサポートへお問い合わせください。",
       "checkoutAwaitingPayment": "前の決済を処理中、または確認待ちです。しばらくしてから再試行してください。",
       "checkoutAlreadyPending": "未完了の決済があります。該当プランに戻り、元の決済サービスを選択して続行してください。",
-      "checkoutClosed": "前の決済は終了しています。プラン一覧に戻り、再試行してください。"
+      "checkoutClosed": "前の決済は終了しています。プラン一覧に戻り、再試行してください。",
+      "renewalConsentRequired": "自動更新条件を読み、同意したことをご確認ください。"
     },
     "providerUnavailable": "{provider} での支払いは現在利用できません。",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "{provider} で契約",
     "openingProvider": "{provider} を開いています",
-    "pendingCheckout": "未完了の決済：{provider} / {tier}。"
+    "pendingCheckout": "未完了の決済：{provider} / {tier}。",
+    "renewalDisclosure": "料金は月額{amount}で、解約するまで毎月自動更新されます。適用される税金と最終的なお支払い額は決済画面に表示されます。",
+    "renewalCancellation": "<account>アカウント</account>で自動更新を解約すると、今後の更新料金の請求が停止します。支払い済みの利用権は現在の請求期間の終了まで有効です。<terms>サブスクリプションと支払いの条件</terms>をご確認ください。",
+    "renewalConsent": "上記の自動更新条件を読み、同意します。"
   },
   "HomeFaq": {
     "title": "変換前に知っておくべきことは？",
@@ -410,7 +414,7 @@
     "resources": "ガイドとツール"
   },
   "LegalCommon": {
-    "lastUpdated": "最終更新日：2026年10月28日"
+    "lastUpdated": "最終更新日：2026年10月29日"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "お問い合わせ",
       "body": "規約については<link>{email}</link>までReAvid Ltdにお問い合わせください。"
+    },
+    "eligibility": {
+      "title": "利用資格",
+      "body": "匿名での変換、アカウントへのログイン、サブスクリプションの購入を含め、本サービスを利用するには、18歳以上であり、適用法に基づく契約締結能力を有している必要があります。"
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "AI解析と第三者による処理",
       "provider": "現在のAI解析サービス提供者は千問AIプラットフォーム（Qwen AI Platform）で、運営主体は通义云启（杭州）信息技术有限公司（登記上の正式名称）です。同社の<terms>製品サービス契約</terms>と<privacy>法的通知およびプライバシーポリシー</privacy>が適用されます。",
       "body": "AI解析は任意で、自動的には有効になりません。ProfessionalとEnterpriseのユーザーは、変換前にAIを選択してスキャンの変換などを試せます。AIを選択した場合に限り、PDF全体とファイル名が当サイトのサーバーを経由して千問AIプラットフォームに送信されます。 当サイトはPDF、取引明細、モデル出力、エクスポートを永続的な履歴として保存しません。AI提供者は独自の規約とプライバシーポリシーに従って処理します。保存期間や学習利用について追加の保証はしません。"
+    },
+    "children": {
+      "title": "児童および未成年者",
+      "body": "本サービスは18歳未満の方を対象としていません。18歳未満の利用者の個人情報が処理されたと思われる場合は、<link>{email}</link>までご連絡ください。確認のうえ、必要に応じた個人情報の削除を含め、適用法に従って対応します。"
     }
   },
   "ThemeToggle": {

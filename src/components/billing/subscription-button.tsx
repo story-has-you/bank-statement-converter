@@ -11,9 +11,9 @@ import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { isCheckoutResult, readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
 
-type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
+type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier; renewalConsent: boolean };
 
-const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
+const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier, renewalConsent }) => {
   const t = useTranslations("Billing");
   const plans = useTranslations("UsageTiers.plans");
   const locale = useLocale();
@@ -32,7 +32,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
       const response = await fetch("/api/billing/subscriptions/create", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
-        body: JSON.stringify({ provider: checkout.provider, tier }),
+        body: JSON.stringify({ provider: checkout.provider, tier, renewalConsent }),
       });
       const payload: unknown = await response.json().catch(() => null);
       if (!response.ok || !isCheckoutResult(payload)) {
@@ -91,7 +91,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
                 setFailure(null);
                 void start();
               }}
-              disabled={pending}
+              disabled={pending || !renewalConsent}
             >
               <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
               <span className="truncate">{pending ? label : providerName}</span>

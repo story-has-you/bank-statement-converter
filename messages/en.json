@@ -351,7 +351,8 @@
       "checkoutUnknown": "The previous checkout could not be verified. Contact support before paying again.",
       "checkoutAwaitingPayment": "The previous checkout is processing payment or awaiting confirmation. Try again shortly.",
       "checkoutAlreadyPending": "A checkout is already pending. Return to that plan and select the original payment provider to continue.",
-      "checkoutClosed": "The previous checkout is closed. Return to the plans and try again."
+      "checkoutClosed": "The previous checkout is closed. Return to the plans and try again.",
+      "renewalConsentRequired": "Please confirm that you have read and agree to the automatic renewal terms."
     },
     "providerUnavailable": "{provider} payments are currently unavailable.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "Subscribe with {provider}",
     "openingProvider": "Opening {provider}",
-    "pendingCheckout": "Pending checkout: {provider} / {tier}."
+    "pendingCheckout": "Pending checkout: {provider} / {tier}.",
+    "renewalDisclosure": "Your subscription costs {amount} per month and automatically renews each month until you cancel. Applicable taxes and the final amount due are shown at checkout.",
+    "renewalCancellation": "Cancel automatic renewal in your <account>account</account> to stop future renewal charges. Paid access remains available until the end of the current billing period. See the <terms>subscription and payment terms</terms>.",
+    "renewalConsent": "I have read and agree to the automatic renewal terms above."
   },
   "HomeFaq": {
     "title": "Bank Statement Converter FAQ",
@@ -410,7 +414,7 @@
     "resources": "Guides & tools"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 28, 2026"
+    "lastUpdated": "Last updated: October 29, 2026"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "Contact us",
       "body": "For questions about these terms, contact ReAvid Ltd at <link>{email}</link>."
+    },
+    "eligibility": {
+      "title": "Eligibility",
+      "body": "You must be at least 18 years old and have the legal capacity to enter into a contract under applicable law to use this service, including anonymous conversion, account sign-in and subscription purchases."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "AI parsing and third-party processing",
       "provider": "The AI parsing provider is Qwen AI Platform, operated by 通义云启（杭州）信息技术有限公司 (registered legal name). Its <terms>Product Service Agreement</terms> and <privacy>Legal Notice and Privacy Policy</privacy> apply.",
       "body": "AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training."
+    },
+    "children": {
+      "title": "Children and minors",
+      "body": "This service is not intended for anyone under 18. If you believe we have processed personal information about a user under 18, contact us at <link>{email}</link>. We will investigate and handle it under applicable law, including deleting the personal information where appropriate."
     }
   },
   "ThemeToggle": {

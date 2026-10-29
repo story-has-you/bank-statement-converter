@@ -351,7 +351,8 @@
       "checkoutUnknown": "No se pudo verificar el pago anterior. Contacta con soporte antes de volver a pagar.",
       "checkoutAwaitingPayment": "El pago anterior se está procesando o espera confirmación. Inténtalo de nuevo en breve.",
       "checkoutAlreadyPending": "Ya hay un pago pendiente. Vuelve a ese plan y selecciona el proveedor de pago original para continuar.",
-      "checkoutClosed": "El pago anterior está cerrado. Vuelve a los planes e inténtalo de nuevo."
+      "checkoutClosed": "El pago anterior está cerrado. Vuelve a los planes e inténtalo de nuevo.",
+      "renewalConsentRequired": "Confirma que has leído y aceptas las condiciones de renovación automática."
     },
     "providerUnavailable": "Los pagos con {provider} no están disponibles en este momento.",
     "providers": {
@@ -361,7 +362,10 @@
     },
     "subscribeWith": "Suscribirse con {provider}",
     "openingProvider": "Abriendo {provider}",
-    "pendingCheckout": "Pago pendiente: {provider} / {tier}."
+    "pendingCheckout": "Pago pendiente: {provider} / {tier}.",
+    "renewalDisclosure": "Tu suscripción cuesta {amount} al mes y se renueva automáticamente cada mes hasta que la canceles. Los impuestos aplicables y el importe final se muestran al pagar.",
+    "renewalCancellation": "Puedes cancelar la renovación automática en tu <account>cuenta</account> para detener los próximos cargos de renovación. El acceso pagado se mantiene hasta el final del período de facturación actual. Consulta las <terms>condiciones de suscripción y pago</terms>.",
+    "renewalConsent": "He leído y acepto las condiciones de renovación automática anteriores."
   },
   "HomeFaq": {
     "title": "¿Qué debo saber antes de convertir?",
@@ -410,7 +414,7 @@
     "resources": "Guías y herramientas"
   },
   "LegalCommon": {
-    "lastUpdated": "Última actualización: 28 de octubre de 2026"
+    "lastUpdated": "Última actualización: 29 de octubre de 2026"
   },
   "Terms": {
     "metadata": {
@@ -473,6 +477,10 @@
     "contact": {
       "title": "Contacto",
       "body": "Si tienes preguntas sobre estos términos, contacta con ReAvid Ltd en <link>{email}</link>."
+    },
+    "eligibility": {
+      "title": "Requisitos de uso",
+      "body": "Para utilizar este servicio, incluida la conversión sin iniciar sesión, el acceso a una cuenta y la compra de suscripciones, debes tener al menos 18 años y capacidad legal para celebrar un contrato conforme a la legislación aplicable."
     }
   },
   "Privacy": {
@@ -536,6 +544,10 @@
       "title": "Análisis con IA y tratamiento por terceros",
       "provider": "El proveedor de análisis con IA es Qwen AI Platform, operado por 通义云启（杭州）信息技术有限公司 (denominación legal registrada). Se aplican su <terms>Acuerdo de servicios del producto</terms> y su <privacy>Aviso legal y política de privacidad</privacy>.",
       "body": "El análisis con IA es opcional y nunca se activa automáticamente. Los usuarios de Professional y Enterprise pueden elegir IA antes de convertir, también para escaneos. Solo al elegir IA se envían el PDF completo y su nombre a Qwen AI Platform a través de nuestro servidor. Este sitio no guarda un historial permanente de PDF, transacciones, respuestas del modelo ni exportaciones. El proveedor de IA aplica sus propios términos y política de privacidad; no garantizamos plazos de conservación ni uso para entrenamiento."
+    },
+    "children": {
+      "title": "Niños y menores de edad",
+      "body": "Este servicio no está dirigido a personas menores de 18 años. Si crees que hemos tratado datos personales de un usuario menor de 18 años, escríbenos a <link>{email}</link>. Revisaremos el caso y actuaremos conforme a la legislación aplicable, incluida la eliminación de los datos cuando corresponda."
     }
   },
   "ThemeToggle": {
