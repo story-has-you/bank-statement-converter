@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Conversione di estratti conto PDF",
     "title": "Da estratto conto PDF a Excel o CSV",
-    "description": "Converti estratti conto PDF in Excel o CSV. Controlla transazioni e avvisi prima del download."
+    "description": "Converti gli estratti conto PDF con testo in Excel o CSV nel browser, senza caricare il file. Controlla movimenti e avvisi prima del download. Quota gratuita giornaliera: {anonymousPages, number} senza accesso, {authenticatedPages, number} dopo l’accesso."
   },
   "PdfUpload": {
     "title": "Seleziona un estratto conto",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Impossibile salvare il risultato nel browser",
       "description": "Puoi continuare a visualizzare e scaricare il risultato su questa pagina. Se aggiorni o lasci la pagina, il risultato e le modifiche ai commercianti potrebbero non essere recuperabili. Scarica prima i file necessari."
+    },
+    "nextSteps": {
+      "title": "Prosegui con il file esportato",
+      "description": "Questi strumenti si aprono in una nuova scheda per mantenere disponibili i risultati. Scarica i file prima di chiudere questa scheda.",
+      "quickbooks": "Preparare un CSV per QuickBooks Online (USA)",
+      "checker": "Verificare i totali dell’estratto conto"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Metodo e riferimento",
-            "text": "PDF ufficiali renderizzati e transazioni datate trascritte prima del confronto. Carson: pagine originali 1–2; BHW: 12 separata. Saldi iniziale/finale esclusi. Python locale senza IA, account o quota."
+            "text": "I dati di riferimento sono stati trascritti prima del confronto dai PDF ufficiali: pagine 1–2 di Carson e pagina 12 di BHW. Saldi iniziali/finali e tabelle separate degli assegni sono fuori ambito. Abbiamo eseguito localmente l’attuale punto di ingresso parseWithPdfJs in Node.js con il runtime legacy di PDF.js. Interfaccia browser, account/quote e IA opzionale non sono stati verificati."
           },
           {
             "title": "Distinguere etichette e confronto",
-            "text": "OK, DISCREPANCY e UNVERIFIABLE sono etichette del parser. Una riga OK può perdere spazi e un saldo diventare riga extra. Esaminare differenze nei campi e righe aggiunte oltre agli stati."
+            "text": "OK, DISCREPANCY e UNVERIFIABLE sono etichette del parser, distinte dal confronto con i dati di riferimento. OK non garantisce l’esattezza di un movimento né la sua inclusione nell’importazione contabile. Riepiloghi assegni separati possono essere estratti insieme ai movimenti. Verifica campi, ambito delle tabelle e PDF originale prima dell’uso."
           },
           {
             "title": "Limiti e riproduzione",
@@ -1340,10 +1346,10 @@
     "extracted": "Righe estratte",
     "statuses": "Stati",
     "missing": "Riferimenti non abbinati",
-    "extra": "Righe extra",
+    "extra": "Righe fuori riferimento",
     "mismatches": "Differenze nei campi",
-    "findings": "Carson: 11 descrizioni senza spazio tra ACH e DEBIT nonostante OK. BHW: saldo finale come riga extra UNVERIFIABLE. Nessun errore di pagina restituito per questi input.",
-    "matching": "Abbinamento per data, importo e direzione, ogni riga una volta. Riferimenti non abbinati non provano necessariamente omissioni. Si normalizzano solo spazi. Dettagli nel download.",
+    "findings": "Carson: tutti i 47 movimenti di riferimento corrispondono senza differenze nei campi; sono state estratte anche tre righe del riepilogo assegni fuori dall’ambito di riferimento. BHW: tutti i 30 movimenti corrispondono senza differenze nei campi. Nessun errore di pagina per gli input selezionati.",
+    "matching": "L’abbinamento usa pagina originale, data e valori di addebito/accredito; ogni riga estratta viene usata una sola volta. Si normalizzano solo gli spazi. Le righe fuori ambito non sono automaticamente errori. Il JSON contiene dettagli e link ai dati di riferimento.",
     "measured": "Misurato: {date} (UTC)",
     "download": "Scarica misure (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "Il controllo confronta totali inseriti senza caricare file. Il rapporto pubblico riguarda solo i campioni indicati, non tutte le banche italiane."
     },
     "metaDescription": "Guide per estratti conto PDF in Excel o CSV, OCR e controllo saldi. Distingui banche statunitensi, software britannici e limiti dei formati di importazione."
+  },
+  "HomeSample": {
+    "title": "Guarda un esempio di conversione",
+    "description": "Confronta un estratto conto fittizio con i file esportati dal parser locale attuale. Non vengono usati dati reali di conti o clienti.",
+    "caption": "Cinque movimenti estratti. Testo e nomi delle colonne restano quelli del PDF di esempio in inglese.",
+    "downloadPdf": "Scarica il PDF di esempio",
+    "downloadExcel": "Scarica l’Excel di esempio",
+    "downloadCsv": "Scarica il CSV di esempio",
+    "limitation": "Le esportazioni includono anche etichette di verifica e pagine di origine. Questo esempio non garantisce il supporto al formato della tua banca. Verifica i tuoi risultati con l’originale."
   }
 }

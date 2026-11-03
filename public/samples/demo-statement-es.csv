@@ -1,0 +1,6 @@
+﻿"Date","Description","Amount","Balance","Estado","Notas de revisión","Página de origen","Fila en la página","Riesgos de página","Notas de la tabla"
+"2026-10-01","Store purchase","-12.34","987.66","OK",,"1","5",,
+"2026-10-02","Deposit","200.00","1187.66","OK",,"1","6",,
+"2026-10-03","Utility payment","-45.00","1142.66","OK",,"1","7",,
+"2026-10-04","Client payment","350.00","1492.66","OK",,"1","8",,
+"2026-10-05","Office supplies","-19.90","1472.76","OK",,"1","9",,

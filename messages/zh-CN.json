@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "银行流水转换工具：PDF 转 Excel、CSV | StatementXL",
-    "description": "银行流水 PDF 转 Excel、CSV，默认在浏览器本地解析，不上传文件。专业和企业套餐可主动选择 AI 解析；预览交易并核对风险后下载。",
+    "description": "银行流水 PDF 转 Excel、CSV，常规解析在浏览器内完成，无需上传原件。核对交易与风险标记后下载，每天有免费页数可试用；扫描件可按套餐主动选择 AI 解析。",
     "keywords": "银行流水转换, 银行流水 PDF 转 Excel, 银行对账单转 CSV, 银行流水扫描件识别",
     "brand": "StatementXL",
     "alternateName": "银行流水转 Excel、CSV，先核对再使用"
@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "银行流水 PDF 转换",
     "title": "银行流水转 Excel、CSV，先核对再使用",
-    "description": "银行流水 PDF 转 Excel、CSV，核对交易与风险标记后下载。"
+    "description": "将文字型银行流水 PDF 转为 Excel 或 CSV，常规解析在浏览器内完成，无需上传原件。核对交易与风险标记后下载。不登录每天可免费转换 {anonymousPages, number} 页，登录后 {authenticatedPages, number} 页。"
   },
   "PdfUpload": {
     "title": "选择对账单",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "浏览器未能保存结果",
       "description": "浏览器未能保存当前结果。仍可在本页预览和下载；刷新或离开后，结果及商户修改可能无法恢复，请先下载所需文件。"
+    },
+    "nextSteps": {
+      "title": "导出之后，可以继续做什么？",
+      "description": "以下工具在新标签页打开，便于保留当前结果。关闭本页前请先下载文件。",
+      "quickbooks": "整理用于 QuickBooks Online（美国版）的 CSV",
+      "checker": "核对流水收支与余额"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "方法与参考数据",
-            "text": "下载官方 PDF，渲染选定页，先记录有日期的逐笔交易，再与解析输出比较。Carson 取原第 1–2 页，BHW 取原第 12 页单独输入；参考交易数不含期初期末余额行。直接运行本地 Python 解析器，不使用 AI、用户账户或额度。"
+            "text": "参考数据来自事先核对的官方 PDF 选页。Carson 取原第 1–2 页，BHW 取原第 12 页；参考范围不含期初期末余额和独立支票汇总表。本次在 Node.js 中使用 PDF.js legacy 运行时，调用当前 parseWithPdfJs 入口。核对范围是解析输出，不包含浏览器界面、账户额度流程或可选 AI。"
           },
           {
             "title": "行标记能说明什么",
-            "text": "OK、DISCREPANCY、UNVERIFIABLE 是解析器自身的证据标签，与人工参考对比单独报告。OK 行也可能丢失摘要中的空格，余额汇总也可能作为多余行返回。请同时查看字段核对和多行统计。"
+            "text": "OK、DISCREPANCY、UNVERIFIABLE 是解析器自身的核对标记，与人工参考比对单独报告。OK 不代表交易准确，也不代表该行应直接导入账务系统。独立支票汇总可能与交易表一起提取，使用前仍需核对字段、表格范围和原 PDF。"
           },
           {
             "title": "限制与复现",
@@ -1340,10 +1346,10 @@
     "extracted": "提取行",
     "statuses": "行状态",
     "missing": "未匹配参考行",
-    "extra": "多余行",
+    "extra": "参考范围外的行",
     "mismatches": "字段差异",
-    "findings": "Carson 有 11 笔摘要丢失 ACH 与 DEBIT 之间的空格，仍标为 OK。BHW 的期末余额被作为一条多余的 UNVERIFIABLE 行返回。选定输入没有返回失败页。",
-    "matching": "按日期、金额及方向匹配，每条提取行只匹配一次；未匹配参考行不一定已证明是漏行。匹配后字段仅规范空白，不修正文字。完整结果见下载。",
+    "findings": "Carson 的 47 笔参考交易均匹配，匹配字段无差异；另外提取了参考范围之外的 3 条支票汇总明细。BHW 的 30 笔参考交易均匹配，匹配字段无差异。选定输入没有返回失败页。",
+    "matching": "按原始来源页、日期及借贷金额匹配，每条提取行只匹配一次，仅规范空白。参考范围之外的行不自动视为提取错误。完整结果及参考数据链接见 JSON 下载。",
     "measured": "实测日期：{date}（UTC）",
     "download": "下载实测结果（JSON）"
   },
@@ -1421,5 +1427,14 @@
       "tools": "余额工具只核对输入的合计，不上传文件；公开报告只覆盖说明中的两个版式，不能当作银行支持清单。"
     },
     "metaDescription": "银行流水 PDF 转 Excel、CSV、扫描件识别和余额核对入口，以及标明地区范围的银行下载、会计导入与工具选型指南。"
+  },
+  "HomeSample": {
+    "title": "先看一份转换示例",
+    "description": "对照合成流水与当前本地解析器生成的导出文件，示例不含真实账户或客户数据。",
+    "caption": "示例提取了 5 笔交易，原文和列名保留英文 PDF 中的内容。",
+    "downloadPdf": "下载示例 PDF",
+    "downloadExcel": "下载示例 Excel",
+    "downloadCsv": "下载示例 CSV",
+    "limitation": "导出文件还包含核对标记和来源页码。此示例不代表支持所有银行版式，请对照自己的原件核查结果。"
   }
 }

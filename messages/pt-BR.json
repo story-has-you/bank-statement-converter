@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Conversão de extratos bancários em PDF",
     "title": "Extrato bancário PDF para Excel ou CSV",
-    "description": "Converta extratos PDF em Excel ou CSV. Confira transações e alertas antes de baixar."
+    "description": "Converta extratos PDF com texto em Excel ou CSV no navegador, sem enviar o arquivo. Confira as transações e os alertas antes de baixar. Cota gratuita diária: {anonymousPages, number} sem entrar e {authenticatedPages, number} após entrar."
   },
   "PdfUpload": {
     "title": "Selecionar um extrato bancário",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Não foi possível salvar o resultado no navegador",
       "description": "Você ainda pode visualizar e baixar o resultado nesta página. Ao atualizar ou sair, talvez não seja possível recuperar o resultado e as alterações de comerciantes. Baixe primeiro os arquivos necessários."
+    },
+    "nextSteps": {
+      "title": "Continue com seu arquivo exportado",
+      "description": "Estas ferramentas abrem em uma nova aba para manter os resultados disponíveis. Baixe seus arquivos antes de fechar esta aba.",
+      "quickbooks": "Preparar CSV para QuickBooks Online (EUA)",
+      "checker": "Conferir os totais do extrato"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Método e referência",
-            "text": "PDFs oficiais renderizados e transações datadas transcritas antes da comparação. Carson: páginas originais 1–2; BHW: 12 separada. Saldos inicial/final excluídos. Python local sem IA, conta de usuário ou cota."
+            "text": "Os dados de referência foram transcritos antes da comparação dos PDFs oficiais: páginas 1–2 de Carson e página 12 de BHW. Saldos inicial/final e tabelas separadas de cheques ficam fora do escopo. Executamos o ponto de entrada atual parseWithPdfJs localmente no Node.js com o runtime legacy do PDF.js. Interface do navegador, contas/cotas e IA opcional não foram testadas."
           },
           {
             "title": "Separe rótulos e conferência",
-            "text": "OK, DISCREPANCY e UNVERIFIABLE são marcas do parser. Uma linha OK pode perder espaços e um saldo virar linha adicional. Veja divergências de campos e linhas extras além dos estados."
+            "text": "OK, DISCREPANCY e UNVERIFIABLE são indicações do analisador, separadas da comparação com a referência. OK não comprova a exatidão de uma transação nem que ela deva entrar na importação contábil. Resumos de cheques podem ser extraídos junto das transações. Confira os campos, o escopo das tabelas e o PDF original antes de usar o arquivo."
           },
           {
             "title": "Limites e reprodução",
@@ -1340,10 +1346,10 @@
     "extracted": "Linhas extraídas",
     "statuses": "Estados",
     "missing": "Referências sem correspondência",
-    "extra": "Linhas extras",
+    "extra": "Linhas fora da referência",
     "mismatches": "Divergências de campos",
-    "findings": "Carson: 11 descrições perderam o espaço entre ACH e DEBIT apesar de OK. BHW: saldo final como linha extra UNVERIFIABLE. Nenhuma falha de página retornada para essas entradas.",
-    "matching": "Correspondência por data, valor e direção, cada linha uma vez. Referências sem correspondência não provam necessariamente omissões. Apenas espaços são normalizados. Detalhes no download.",
+    "findings": "Carson: as 47 transações de referência corresponderam sem diferenças nos campos; três linhas do resumo de cheques fora do escopo também foram extraídas. BHW: as 30 transações de referência corresponderam sem diferenças nos campos. Não houve falhas de página nas entradas selecionadas.",
+    "matching": "O cruzamento usa página original, data e valores de débito/crédito; cada linha extraída é usada uma vez. Apenas espaços são normalizados. Linhas fora do escopo não são consideradas erros automaticamente. O JSON inclui os detalhes e o link dos dados de referência.",
     "measured": "Medido: {date} (UTC)",
     "download": "Baixar medidas (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "O conferidor compara os totais digitados sem enviar arquivo. O relatório público cobre apenas as amostras indicadas, não todos os bancos brasileiros."
     },
     "metaDescription": "Guias de extrato PDF para Excel ou CSV, OCR e conferência de saldo. Identifique limites de OFX e o país dos guias bancários e contábeis."
+  },
+  "HomeSample": {
+    "title": "Veja um exemplo de conversão",
+    "description": "Compare um extrato fictício com os arquivos exportados pelo analisador local atual. Não são usados dados reais de contas ou clientes.",
+    "caption": "Cinco transações extraídas. O texto e os nomes das colunas são mantidos como no PDF de exemplo em inglês.",
+    "downloadPdf": "Baixar PDF de exemplo",
+    "downloadExcel": "Baixar Excel de exemplo",
+    "downloadCsv": "Baixar CSV de exemplo",
+    "limitation": "Os arquivos também incluem indicações de revisão e páginas de origem. Este exemplo não comprova suporte ao formato do seu banco. Confira seus resultados com o original."
   }
 }

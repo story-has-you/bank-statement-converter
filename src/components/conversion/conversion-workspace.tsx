@@ -6,6 +6,7 @@ import { useFormatter, useTranslations } from "next-intl";
 
 import { ConversionReview } from "@/components/conversion/conversion-review";
 import { ConversionDownloads } from "@/components/conversion/conversion-downloads";
+import { ConversionNextSteps } from "@/components/conversion/conversion-next-steps";
 import { MerchantNormalizationPanel } from "@/components/conversion/merchant-normalization-panel";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -155,6 +156,7 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
         <MerchantNormalizationPanel result={result} normalization={normalization} onChange={updateNormalization} />
       )}
       <ConversionReview result={result} merchants={merchants} />
+      {canDownloadResult(result) && <ConversionNextSteps />}
 
       <div className="flex justify-start">
         <Link href="/" onClick={onReset} className={buttonVariants()}>

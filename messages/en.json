@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Bank Statement Converter: PDF to Excel & CSV | StatementXL",
-    "description": "Convert bank statement PDFs to Excel or CSV with local browser parsing and no file upload by default. Optional AI for Professional and Enterprise. Review before downloading.",
+    "description": "Bank statement converter for Excel and CSV. Parse text-based PDFs in your browser, review transactions, and download. Free pages available daily.",
     "keywords": "bank statement converter, bank statement PDF to Excel, bank statement to CSV, bank statement OCR",
     "brand": "StatementXL",
     "alternateName": "Bank Statement Converter for Excel & CSV"
@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter for Excel & CSV",
-    "description": "Use our Bank Statement Converter for Excel or CSV. Review flagged transactions before downloading."
+    "description": "Convert a text-based bank statement PDF to Excel or CSV without uploading it. Standard parsing runs in your browser. Review transactions and flagged rows before downloading. Try {anonymousPages, plural, one {# page} other {# pages}} a day without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} after signing in."
   },
   "PdfUpload": {
     "title": "Choose a bank statement",
@@ -268,19 +268,25 @@
     "storage": {
       "title": "Result could not be saved in this browser",
       "description": "You can still preview and download the current result on this page. The result and merchant changes may not be recoverable after refreshing or leaving. Download the files you need first."
+    },
+    "nextSteps": {
+      "title": "Continue with your export",
+      "description": "These tools open in a new tab so you can keep these results available. Download your files before closing this tab.",
+      "quickbooks": "Prepare a CSV for QuickBooks Online (US)",
+      "checker": "Check your statement totals"
     }
   },
   "HomeFeatures": {
-    "title": "Why use this Bank Statement Converter?",
+    "title": "Why use StatementXL?",
     "securityTitle": "Local by default",
-    "securityDescription": "The Bank Statement Converter processes your statement in your browser.",
+    "securityDescription": "Parse text-based PDFs in your browser without uploading the file.",
     "banksTitle": "Excel and CSV exports",
-    "banksDescription": "Download Bank Statement Converter results for bookkeeping.",
+    "banksDescription": "Download transactions as Excel or CSV for review and bookkeeping.",
     "accuracyTitle": "Review before download",
-    "accuracyDescription": "Check Bank Statement Converter risk flags against the PDF."
+    "accuracyDescription": "Check flagged rows, dates and amounts against the original PDF."
   },
   "UsageTiers": {
-    "title": "Bank Statement Converter plans",
+    "title": "Plans and daily free pages",
     "description": "Daily free pages or monthly plans.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
@@ -368,25 +374,25 @@
     "renewalConsent": "I have read and agree to the automatic renewal terms above."
   },
   "HomeFaq": {
-    "title": "Bank Statement Converter FAQ",
+    "title": "Frequently asked questions",
     "banks": {
-      "question": "When should I use a Bank Statement Converter?",
+      "question": "When should I convert a PDF?",
       "answer": "Use your bank’s Excel or CSV export when available. Use PDF conversion otherwise; support varies by statement layout."
     },
     "accuracy": {
-      "question": "Is the Bank Statement Converter accurate?",
+      "question": "How should I check the results?",
       "answer": "Check dates, amounts, balances and multiline descriptions against the PDF. Row risk labels are review aids, not an accuracy guarantee."
     },
     "quota": {
-      "question": "Is the Bank Statement Converter free?",
+      "question": "Is it free?",
       "answer": "Yes: {anonymousPages, plural, one {# page} other {# pages}} daily without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} signed in. Monthly plans include {standardPages, number}, {professionalPages, number} or {enterprisePages, number} pages."
     },
     "scans": {
-      "question": "Can the Bank Statement Converter handle scans?",
+      "question": "Can I convert scanned PDFs?",
       "answer": "Local parsing needs selectable text. Professional and Enterprise users can choose AI for scans with available quota. Review recognition results."
     },
     "storage": {
-      "question": "Does the Bank Statement Converter save my files?",
+      "question": "Are my files saved?",
       "answer": "No server file history. This tab temporarily stores results and merchant mappings for previews and refresh recovery. A new conversion or clearing results removes them. Save your downloads."
     },
     "failure": {
@@ -394,7 +400,7 @@
       "answer": "Failed conversions use no quota. Partial results count all PDF pages. Check missing rows before using an export."
     },
     "ai": {
-      "question": "Does the Bank Statement Converter use AI automatically?",
+      "question": "Is AI parsing automatic?",
       "answer": "No. AI is optional for Professional and Enterprise. Choosing it sends the full PDF and filename through our server to Qwen AI Platform."
     }
   },
@@ -1369,11 +1375,11 @@
         "sections": [
           {
             "title": "Method and reference data",
-            "text": "We downloaded the official PDFs, rendered the selected pages, and transcribed the dated transaction rows before comparing the parser output. Carson uses original pages 1–2; BHW uses original page 12 as a separate input. Opening and closing balance rows are excluded from the reference transaction count. The local Python parser runs directly without optional AI parsing, user accounts or quota usage."
+            "text": "The reference data was transcribed from the selected official PDF pages before comparison. Carson uses original pages 1–2 and BHW uses original page 12; opening and closing balances and separate check-summary tables are outside the reference scope. We ran the current parseWithPdfJs entry point locally in Node.js with the PDF.js legacy runtime. This checks parser output, without browser UI, account/quota flows or optional AI."
           },
           {
             "title": "What the row labels do and do not prove",
-            "text": "OK, DISCREPANCY and UNVERIFIABLE are the parser’s own evidence labels. We report those separately from the manual reference comparison. A row can be marked OK while its description has lost a space, and a balance summary can be returned as an extra row. Review the field checks and extra-row count as well as the status distribution."
+            "text": "OK, DISCREPANCY and UNVERIFIABLE are the parser’s own review labels, reported separately from comparison with the reference data. OK does not establish transaction accuracy or that a row belongs in your accounting import. Separate check summaries can appear alongside transaction tables. Review fields, table scope and the original PDF before using an export."
           },
           {
             "title": "Limits and reproducibility",
@@ -1459,10 +1465,10 @@
     "extracted": "Extracted rows",
     "statuses": "Row statuses",
     "missing": "Unmatched reference rows",
-    "extra": "Extra rows",
+    "extra": "Rows outside reference",
     "mismatches": "Field mismatches",
-    "findings": "Carson: 11 descriptions lost the space between ACH and DEBIT despite OK status. BHW: the closing-balance summary was returned as one extra UNVERIFIABLE row. No page failures were returned for these selected inputs.",
-    "matching": "Rows are matched on date, amount and direction, consuming each extracted row once; unmatched reference rows are not necessarily proven omissions. Matched fields normalize whitespace only. The full findings are in the download.",
+    "findings": "Carson: all 47 reference transactions matched without field mismatches; three check-summary rows were also extracted outside the reference scope. BHW: all 30 reference transactions matched without field mismatches. No page failures were returned for these selected inputs.",
+    "matching": "Match by original source page, date and debit/credit values, consuming each extracted row once. Only whitespace is normalized. Rows outside the reference scope are not automatically extraction errors. Full results and the reference-data link are in the JSON download.",
     "measured": "Measured {date} (UTC)",
     "download": "Download measured results (JSON)"
   },
@@ -1540,5 +1546,14 @@
       "tools": "Check totals without uploading a file, or read the limited public sample report. Neither proves every converted transaction is correct."
     },
     "metaDescription": "Find PDF-to-Excel and CSV tools, bank statement OCR, US bank download guides and manual accounting import instructions."
+  },
+  "HomeSample": {
+    "title": "See a sample conversion",
+    "description": "Compare a synthetic statement with files exported by the current local parser. No real account or customer data is used.",
+    "caption": "Five extracted transactions. Source text and column labels are kept as they appear in the English sample PDF.",
+    "downloadPdf": "Download sample PDF",
+    "downloadExcel": "Download sample Excel",
+    "downloadCsv": "Download sample CSV",
+    "limitation": "Exports also include review labels and source-page references. This example does not establish support for your bank’s layout; always check your own results."
   }
 }

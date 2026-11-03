@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
+import { brandConfig } from "@/config/brand";
 
 export async function getResourcesMetadata(locale: string): Promise<Metadata> {
   if (!hasLocale(routing.locales, locale)) {
@@ -25,7 +26,8 @@ export async function getResourcesMetadata(locale: string): Promise<Metadata> {
       siteName: "StatementXL",
       url: alternates.canonical,
       locale: locale.replace("-", "_"),
+      images: [brandConfig.socialImage],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [brandConfig.socialImage] },
   };
 }

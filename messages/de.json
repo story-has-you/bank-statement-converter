@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge in Excel oder CSV umwandeln",
-    "description": "Kontoauszug-PDFs in Excel oder CSV umwandeln. Transaktionen und Risikohinweise vor dem Download prüfen."
+    "description": "Wandeln Sie textbasierte Kontoauszug-PDFs direkt im Browser in Excel oder CSV um, ohne die Datei hochzuladen. Prüfen Sie Buchungen und Hinweise vor dem Download. Kostenloses Tageskontingent: {anonymousPages, number} ohne Anmeldung, {authenticatedPages, number} nach Anmeldung."
   },
   "PdfUpload": {
     "title": "Kontoauszug auswählen",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Ergebnis konnte nicht im Browser gespeichert werden",
       "description": "Auf dieser Seite können Sie das aktuelle Ergebnis weiterhin ansehen und herunterladen. Nach dem Neuladen oder Verlassen lassen sich das Ergebnis und Änderungen an Händlern möglicherweise nicht wiederherstellen. Laden Sie zuerst die benötigten Dateien herunter."
+    },
+    "nextSteps": {
+      "title": "Mit Ihrem Export weiterarbeiten",
+      "description": "Diese Werkzeuge öffnen in einem neuen Tab, damit Ihre Ergebnisse verfügbar bleiben. Laden Sie die Dateien herunter, bevor Sie diesen Tab schließen.",
+      "quickbooks": "CSV für QuickBooks Online (USA) vorbereiten",
+      "checker": "Summen Ihres Kontoauszugs prüfen"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Methode und Referenz",
-            "text": "Offizielle PDFs herunterladen, Seiten darstellen und datierte Transaktionen vor dem Vergleich übertragen. Carson: Originalseiten 1–2; BHW: Seite 12 als eigene Eingabe. Anfangs-/Endsalden zählen nicht als Referenztransaktionen. Direkter lokaler Python-Lauf ohne KI, Nutzerkonten oder Kontingentverbrauch."
+            "text": "Die Referenzdaten wurden vor dem Vergleich aus den offiziellen PDF-Seiten übertragen: Carson Seiten 1–2, BHW Seite 12. Anfangs-/Endsalden und separate Scheckübersichten liegen außerhalb des Referenzumfangs. Der aktuelle Einstiegspunkt parseWithPdfJs wurde lokal in Node.js mit der PDF.js-Legacy-Laufzeit ausgeführt. Browseroberfläche, Konto-/Kontingentabläufe und optionales AI-Parsing wurden nicht geprüft."
           },
           {
             "title": "Status von Originalvergleich unterscheiden",
-            "text": "OK, DISCREPANCY und UNVERIFIABLE sind eigene Parsermarkierungen. Auch OK-Zeilen können Leerzeichen verlieren; Salden können als zusätzliche Zeilen erscheinen. Feldabweichungen und zusätzliche Zeilen neben der Statusverteilung beachten."
+            "text": "OK, DISCREPANCY und UNVERIFIABLE sind Prüfkennzeichen des Parsers und werden getrennt vom Referenzvergleich berichtet. OK belegt weder die Richtigkeit einer Buchung noch ihre Eignung für den Buchhaltungsimport. Separate Scheckübersichten können neben Buchungstabellen erscheinen. Prüfen Sie Felder, Tabellenumfang und Original-PDF vor der Verwendung."
           },
           {
             "title": "Grenzen und Reproduktion",
@@ -1340,10 +1346,10 @@
     "extracted": "Extrahierte Zeilen",
     "statuses": "Zeilenstatus",
     "missing": "Nicht zugeordnete Referenzzeilen",
-    "extra": "Zusätzliche Zeilen",
+    "extra": "Zeilen außerhalb der Referenz",
     "mismatches": "Feldabweichungen",
-    "findings": "Carson: 11 Beschreibungen verloren das Leerzeichen zwischen ACH und DEBIT trotz OK. BHW: Endsaldo als zusätzliche UNVERIFIABLE-Zeile. Für die ausgewählten Eingaben wurden keine Seitenfehler gemeldet.",
-    "matching": "Zuordnung nach Datum, Betrag und Richtung, jede extrahierte Zeile nur einmal. Nicht zugeordnete Referenzen beweisen nicht zwingend Auslassungen. Felder normalisieren nur Leerraum. Details im Download.",
+    "findings": "Carson: Alle 47 Referenzbuchungen wurden ohne Feldabweichungen zugeordnet; zusätzlich wurden drei Zeilen der Scheckübersicht außerhalb des Referenzumfangs extrahiert. BHW: Alle 30 Referenzbuchungen wurden ohne Feldabweichungen zugeordnet. Für diese Eingaben wurden keine Seitenfehler gemeldet.",
+    "matching": "Zuordnung nach Originalseite, Datum und Soll-/Habenwerten; jede extrahierte Zeile wird einmal verwendet. Nur Leerraum wird normalisiert. Zeilen außerhalb des Referenzumfangs sind nicht automatisch Extraktionsfehler. Details und Referenzdaten-Link stehen im JSON-Download.",
     "measured": "Gemessen: {date} (UTC)",
     "download": "Messwerte herunterladen (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "Der Saldenprüfer verarbeitet eingegebene Summen ohne Datei-Upload. Der Bericht betrifft nur die genannten Stichproben, nicht alle deutschen Banklayouts."
     },
     "metaDescription": "Kontoauszug in Excel oder CSV umwandeln, Scans einordnen und Salden prüfen. Auslands-Bankguides und Buchhaltungsanleitungen mit klarer Länderangabe."
+  },
+  "HomeSample": {
+    "title": "Eine Beispielkonvertierung ansehen",
+    "description": "Vergleichen Sie einen fiktiven Kontoauszug mit Exporten des aktuellen lokalen Parsers. Es werden keine echten Konto- oder Kundendaten verwendet.",
+    "caption": "Fünf extrahierte Buchungen. Text und Spaltennamen bleiben wie im englischen Beispiel-PDF erhalten.",
+    "downloadPdf": "Beispiel-PDF herunterladen",
+    "downloadExcel": "Beispiel-Excel herunterladen",
+    "downloadCsv": "Beispiel-CSV herunterladen",
+    "limitation": "Die Exporte enthalten auch Prüfhinweise und Quellseiten. Dieses Beispiel belegt keine Unterstützung für das Layout Ihrer Bank. Prüfen Sie Ihre eigenen Ergebnisse am Original."
   }
 }

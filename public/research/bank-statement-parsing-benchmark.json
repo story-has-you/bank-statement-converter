@@ -1,10 +1,26 @@
 {
-  "schemaVersion": 1,
-  "measuredAt": "2026-10-19T10:12:10.259812+00:00",
-  "parserRevision": "f0eede038e8908b70ef930b2cf95e96275c93e63",
-  "parserSourceSha256": "5588b094b4822be8ac9129a0b3da7018c32e2854ef19a1a81f9544d6fbb5d090",
+  "schemaVersion": 2,
+  "measuredAt": "2026-11-03T09:13:17.154Z",
+  "parserRevision": "9658acd32d617b0ae0d1ba0846f03b62b5161992",
+  "parserFilesSha256": {
+    "src/config/conversion.ts": "8317de8615f176f39c21e4564548f9d015bb767ce2dd761fee4cf80ffbedacfd",
+    "src/lib/conversion-errors.ts": "6996ed41a5342328f37314835e77d7fa6f1e9cb254f3c3b2551a3fc2ef4f030e",
+    "src/lib/conversion-types.ts": "8b0f85871d5748a4f4b693306a12e06212eb64800d5a84d6eb9b48c8bce13514",
+    "src/lib/conversion/local/font-glyphs.ts": "165bfed78b87aaf6f93ffb7780de9e83d712e41cad99ae7d88817aef6483bbbc",
+    "src/lib/conversion/local/glyphs.ts": "d2538f900751e5a8f40004e2245bc37dab458372563bb94831c9805d33120f8d",
+    "src/lib/conversion/local/parser.ts": "a4e0d1267aaf7dac1d8773f92241f14c0761251432f9a6717c886e37c62a41ec",
+    "src/lib/conversion/local/paths.ts": "531641abd4f9d934ad3dd2e4b2c10b6c743aba4e3f4ab2235252b8a6195f9f17",
+    "src/lib/conversion/local/pdf-reader.ts": "1aed709fcfa89904c9416ba939ffc8ab6db7e5d24ef75c67bb11d99d91c0c8c6",
+    "src/lib/conversion/local/tables.ts": "60dfcc8464abeb82080c2be4ca95d852d16f5ec7c14ec7f10aecff379c29641e",
+    "src/lib/conversion/local/types.ts": "72cc8631b521803b78db346dfc90be1cf18c020a155aab489029ea88827c011a"
+  },
   "referenceSha256": "4543240c002d95c3ca1c23ef51042ba1c083622d922dd328b60630a946c3fd16",
-  "engine": "local-python-no-ai",
+  "referenceUrl": "/research/bank-statement-parsing-reference.json",
+  "engine": "local-pdfjs-no-ai",
+  "pdfjsVersion": "6.4.299",
+  "runtime": "v26.13.0; PDF.js legacy runtime",
+  "scope": "Current parseWithPdfJs entry point, run locally in Node.js. Browser UI, account/quota flows, optional AI and deployed production behavior were not tested.",
+  "matching": "One-to-one matching by original source page, date and debit/credit fields. Whitespace normalized only. Opening/closing balances and separate check-summary tables are outside the reference scope; unmatched extracted rows are not automatically errors.",
   "samples": [
     {
       "id": "carson",
@@ -18,97 +34,48 @@
       ],
       "selectedPageCount": 2,
       "referenceTransactions": 47,
-      "extractedRows": 47,
+      "extractedRows": 50,
       "statuses": {
-        "OK": 47,
+        "OK": 50,
         "DISCREPANCY": 0,
         "UNVERIFIABLE": 0
       },
       "matchedDateAmountDirectionRows": 47,
       "unmatchedReferenceRows": 0,
-      "extraRows": 0,
-      "fieldMismatches": [
+      "extraRows": 3,
+      "fieldMismatches": [],
+      "extraRowDetails": [
         {
-          "referenceRow": 4,
-          "originalPage": 1,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 8,
-          "originalPage": 1,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 22,
+          "values": [
+            "4416",
+            "07/08/19",
+            "$100.00"
+          ],
           "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
+          "status": "valid"
         },
         {
-          "referenceRow": 25,
+          "values": [
+            "4419 *",
+            "07/08/19",
+            "$266.00"
+          ],
           "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
+          "status": "valid"
         },
         {
-          "referenceRow": 27,
+          "values": [
+            "4420",
+            "07/08/19",
+            "$69.13"
+          ],
           "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 29,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 35,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 36,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 37,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 42,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
-        },
-        {
-          "referenceRow": 45,
-          "originalPage": 2,
-          "column": 1,
-          "expected": "C&J CLARK RETAIL ACH DEBIT SETTLEMENT STORE NBR 131",
-          "actual": "C&J CLARK RETAIL ACHDEBIT SETTLEMENT STORE NBR 131"
+          "status": "valid"
         }
       ],
-      "extraRowDetails": [],
-      "rowIssues": {},
-      "failedPages": []
+      "failedPages": [],
+      "selectedInputSha256": "d2fb1ef25c3f4bec44fcf346c02fc1f349b59555ae7dc7db63cc132c853306e3",
+      "unmatchedReferenceRowNumbers": []
     },
     {
       "id": "bhw",
@@ -121,32 +88,20 @@
       ],
       "selectedPageCount": 1,
       "referenceTransactions": 30,
-      "extractedRows": 31,
+      "extractedRows": 30,
       "statuses": {
         "OK": 30,
         "DISCREPANCY": 0,
-        "UNVERIFIABLE": 1
+        "UNVERIFIABLE": 0
       },
       "matchedDateAmountDirectionRows": 30,
       "unmatchedReferenceRows": 0,
-      "extraRows": 1,
+      "extraRows": 0,
       "fieldMismatches": [],
-      "extraRowDetails": [
-        {
-          "originalPage": 12,
-          "values": [
-            null,
-            "Kontostand per 31.12.2024",
-            null,
-            "8.486,82"
-          ],
-          "status": "failed"
-        }
-      ],
-      "rowIssues": {
-        "MISSING_DATE": 1
-      },
-      "failedPages": []
+      "extraRowDetails": [],
+      "failedPages": [],
+      "selectedInputSha256": "c4a5a5f49f9209e81e870a51e6b5f60abb8e44fc0c18d5daae35fa01c393ce1f",
+      "unmatchedReferenceRowNumbers": []
     }
   ]
 }

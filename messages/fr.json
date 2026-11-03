@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Conversion de relevés bancaires PDF",
     "title": "Convertir un relevé bancaire en Excel ou CSV",
-    "description": "Convertissez vos relevés PDF en Excel ou CSV. Vérifiez les opérations et les alertes avant de télécharger."
+    "description": "Convertissez les relevés PDF contenant du texte en Excel ou CSV dans votre navigateur, sans envoyer le fichier. Vérifiez les opérations et les alertes avant de télécharger. Quota gratuit quotidien : {anonymousPages, number} sans connexion, {authenticatedPages, number} après connexion."
   },
   "PdfUpload": {
     "title": "Choisir un relevé bancaire",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Le résultat n’a pas pu être enregistré dans le navigateur",
       "description": "Vous pouvez toujours consulter et télécharger le résultat sur cette page. Après une actualisation ou si vous quittez la page, le résultat et les modifications des commerçants pourraient être perdus. Téléchargez d’abord les fichiers nécessaires."
+    },
+    "nextSteps": {
+      "title": "Poursuivre avec votre export",
+      "description": "Ces outils s’ouvrent dans un nouvel onglet pour garder vos résultats disponibles. Téléchargez vos fichiers avant de fermer cet onglet.",
+      "quickbooks": "Préparer un CSV pour QuickBooks Online (États-Unis)",
+      "checker": "Vérifier les totaux du relevé"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Méthode et référence",
-            "text": "PDF officiels rendus, transactions datées transcrites avant comparaison. Carson : pages originales 1–2 ; BHW : page 12 seule. Soldes initial/final exclus de la référence. Python local sans IA, compte utilisateur ou quota."
+            "text": "Les données de référence ont été transcrites avant comparaison à partir des PDF officiels : pages 1–2 pour Carson, page 12 pour BHW. Les soldes initial/final et tableaux de chèques séparés sont hors périmètre. Le point d’entrée actuel parseWithPdfJs a été exécuté localement sous Node.js avec le runtime legacy de PDF.js. L’interface du navigateur, les comptes/quotas et l’IA optionnelle n’ont pas été testés."
           },
           {
             "title": "Séparer statut et vérification",
-            "text": "OK, DISCREPANCY et UNVERIFIABLE sont les marqueurs du parseur. Une ligne OK peut perdre une espace ; un solde peut devenir une ligne supplémentaire. Consultez écarts de champs et lignes ajoutées en plus des statuts."
+            "text": "OK, DISCREPANCY et UNVERIFIABLE sont les indications du moteur, distinctes de la comparaison aux références. OK ne garantit ni l’exactitude d’une opération ni sa place dans un import comptable. Des récapitulatifs de chèques peuvent être extraits avec les opérations. Vérifiez les champs, le périmètre des tableaux et le PDF original avant utilisation."
           },
           {
             "title": "Limites et reproduction",
@@ -1340,10 +1346,10 @@
     "extracted": "Lignes extraites",
     "statuses": "États des lignes",
     "missing": "Références non appariées",
-    "extra": "Lignes supplémentaires",
+    "extra": "Lignes hors référence",
     "mismatches": "Écarts de champs",
-    "findings": "Carson : 11 libellés sans espace entre ACH et DEBIT malgré OK. BHW : solde final ajouté comme ligne UNVERIFIABLE. Aucune erreur de page renvoyée pour ces entrées.",
-    "matching": "Appariement par date, montant et sens, chaque ligne une seule fois. Une référence non appariée ne prouve pas forcément une omission. Seuls les espaces sont normalisés. Détails dans le téléchargement.",
+    "findings": "Carson : les 47 opérations de référence correspondent sans différence de champ ; trois lignes du récapitulatif des chèques ont aussi été extraites hors du périmètre de référence. BHW : les 30 opérations de référence correspondent sans différence de champ. Aucun échec de page sur les entrées sélectionnées.",
+    "matching": "Correspondance par page source, date et valeurs de débit/crédit, chaque ligne extraite étant utilisée une seule fois. Seuls les espaces sont normalisés. Les lignes hors du périmètre de référence ne sont pas automatiquement des erreurs. Le JSON contient les détails et le lien vers les données de référence.",
     "measured": "Mesuré le {date} (UTC)",
     "download": "Télécharger les mesures (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "Le contrôle compare les totaux saisis sans envoyer de fichier. Le rapport public ne porte que sur les exemples indiqués, pas sur toutes les banques françaises."
     },
     "metaDescription": "Guides PDF bancaire vers Excel ou CSV, OCR des scans et contrôle de solde. Banques américaines et éditions britanniques clairement identifiées."
+  },
+  "HomeSample": {
+    "title": "Voir un exemple de conversion",
+    "description": "Comparez un relevé fictif aux fichiers exportés par le moteur local actuel. Aucune donnée réelle de compte ou de client n’est utilisée.",
+    "caption": "Cinq opérations extraites. Le texte et les noms de colonnes du PDF d’exemple en anglais sont conservés.",
+    "downloadPdf": "Télécharger le PDF exemple",
+    "downloadExcel": "Télécharger l’Excel exemple",
+    "downloadCsv": "Télécharger le CSV exemple",
+    "limitation": "Les exports incluent aussi les indications de vérification et les pages sources. Cet exemple ne garantit pas la prise en charge du format de votre banque. Vérifiez vos résultats avec l’original."
   }
 }

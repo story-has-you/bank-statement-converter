@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
     "title": "Konversi rekening koran ke Excel atau CSV",
-    "description": "Konversi rekening koran atau mutasi rekening PDF ke Excel atau CSV. Periksa transaksi dan penanda risiko sebelum mengunduh."
+    "description": "Ubah rekening koran PDF berbasis teks menjadi Excel atau CSV di browser tanpa mengunggah berkas. Periksa transaksi dan peringatan sebelum mengunduh. Kuota halaman gratis harian: {anonymousPages, number} tanpa masuk, {authenticatedPages, number} setelah masuk."
   },
   "PdfUpload": {
     "title": "Pilih rekening koran",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Hasil tidak dapat disimpan di browser",
       "description": "Anda tetap dapat melihat pratinjau dan mengunduh hasil di halaman ini. Setelah memuat ulang atau meninggalkan halaman, hasil dan perubahan nama merchant mungkin tidak dapat dipulihkan. Unduh file yang diperlukan terlebih dahulu."
+    },
+    "nextSteps": {
+      "title": "Lanjutkan dengan hasil ekspor",
+      "description": "Alat ini dibuka di tab baru agar hasil Anda tetap tersedia. Unduh berkas sebelum menutup tab ini.",
+      "quickbooks": "Siapkan CSV untuk QuickBooks Online (AS)",
+      "checker": "Periksa total rekening koran"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Metode dan referensi",
-            "text": "PDF resmi dirender dan transaksi bertanggal ditranskripsikan sebelum perbandingan. Carson: halaman asli 1–2; BHW: 12 terpisah. Saldo awal/akhir bukan transaksi referensi. Python lokal tanpa AI, akun atau kuota."
+            "text": "Data referensi disalin sebelum perbandingan dari halaman PDF resmi: halaman 1–2 Carson dan halaman 12 BHW. Saldo awal/akhir serta tabel ringkasan cek terpisah berada di luar cakupan. Titik masuk parseWithPdfJs saat ini dijalankan lokal di Node.js dengan runtime legacy PDF.js. Antarmuka browser, akun/kuota, dan AI opsional tidak diuji."
           },
           {
             "title": "Pisahkan label dan pemeriksaan asli",
-            "text": "OK, DISCREPANCY, UNVERIFIABLE adalah label parser. Baris OK bisa kehilangan spasi dan saldo bisa menjadi baris tambahan. Periksa perbedaan kolom dan baris ekstra selain status."
+            "text": "OK, DISCREPANCY, dan UNVERIFIABLE adalah label pemeriksaan parser, terpisah dari perbandingan referensi. OK tidak membuktikan transaksi akurat atau layak dimasukkan ke impor akuntansi. Ringkasan cek terpisah dapat diekstrak bersama tabel transaksi. Periksa bidang, cakupan tabel, dan PDF asli sebelum memakai ekspor."
           },
           {
             "title": "Batas dan reproduksi",
@@ -1340,10 +1346,10 @@
     "extracted": "Baris ekstraksi",
     "statuses": "Status",
     "missing": "Referensi tak cocok",
-    "extra": "Baris tambahan",
+    "extra": "Baris di luar referensi",
     "mismatches": "Perbedaan kolom",
-    "findings": "Carson: 11 uraian kehilangan spasi antara ACH dan DEBIT meski OK. BHW: saldo akhir sebagai baris ekstra UNVERIFIABLE. Tidak ada kegagalan halaman dikembalikan untuk input ini.",
-    "matching": "Dicocokkan berdasarkan tanggal, nominal dan arah, tiap baris sekali. Referensi tak cocok belum tentu membuktikan transaksi hilang. Hanya spasi dinormalisasi. Rincian di unduhan.",
+    "findings": "Carson: seluruh 47 transaksi referensi cocok tanpa perbedaan bidang; tiga baris ringkasan cek di luar cakupan referensi juga diekstrak. BHW: seluruh 30 transaksi referensi cocok tanpa perbedaan bidang. Tidak ada kegagalan halaman pada masukan terpilih.",
+    "matching": "Pencocokan memakai halaman asli, tanggal, serta nilai debit/kredit; setiap baris hasil dipakai sekali. Hanya spasi yang dinormalisasi. Baris di luar cakupan referensi tidak otomatis dianggap kesalahan ekstraksi. JSON memuat hasil lengkap dan tautan data referensi.",
     "measured": "Diukur: {date} (UTC)",
     "download": "Unduh hasil ukur (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "Pemeriksa membandingkan total yang diketik tanpa unggah berkas. Laporan publik hanya mencakup sampel tertentu, bukan seluruh format bank Indonesia."
     },
     "metaDescription": "Rekening koran PDF ke Excel atau CSV, OCR scan dan pemeriksaan saldo. Panduan bank AS, pajak IRS dan software edisi Inggris diberi batas wilayah."
+  },
+  "HomeSample": {
+    "title": "Lihat contoh konversi",
+    "description": "Bandingkan rekening koran fiktif dengan berkas hasil ekspor parser lokal saat ini. Tidak ada data rekening atau pelanggan sungguhan.",
+    "caption": "Lima transaksi yang diekstrak. Teks dan nama kolom dipertahankan seperti pada PDF contoh berbahasa Inggris.",
+    "downloadPdf": "Unduh PDF contoh",
+    "downloadExcel": "Unduh Excel contoh",
+    "downloadCsv": "Unduh CSV contoh",
+    "limitation": "Ekspor juga menyertakan label pemeriksaan dan halaman sumber. Contoh ini tidak membuktikan dukungan untuk tata letak bank Anda. Selalu cocokkan hasil Anda dengan dokumen asli."
   }
 }

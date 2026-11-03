@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { findEditorialPage } from "@/config/editorial-pages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
+import { brandConfig } from "@/config/brand";
 
 export type EditorialParams = Promise<{ locale: string; content: string[] }>;
 export type EditorialSection = { title: string; text: string; quickbooksLink?: string };
@@ -41,8 +42,9 @@ export async function getEditorialMetadata(params: EditorialParams): Promise<Met
       type: "website",
       siteName: "StatementXL",
       url: getLocalizedAlternates(c.page.path, c.locale).canonical,
+      images: [brandConfig.socialImage],
     },
-    twitter: { card: "summary_large_image", title, description: c.metaDescription },
+    twitter: { card: "summary_large_image", title, description: c.metaDescription, images: [brandConfig.socialImage] },
   };
 }
 

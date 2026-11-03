@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { findBankPage, type ConversionPageId } from "@/config/conversion-pages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
+import { brandConfig } from "@/config/brand";
 import { getLandingContent } from "@/lib/seo/landing-content";
 
 export async function getLandingMetadata(locale: string, id: ConversionPageId): Promise<Metadata> {
@@ -25,8 +26,9 @@ export async function getLandingMetadata(locale: string, id: ConversionPageId): 
       description: c.metaDescription,
       url: alternates.canonical,
       locale: locale.replace("-", "_"),
+      images: [brandConfig.socialImage],
     },
-    twitter: { card: "summary_large_image", title, description: c.metaDescription },
+    twitter: { card: "summary_large_image", title, description: c.metaDescription, images: [brandConfig.socialImage] },
     robots: { index: true, follow: true },
   };
 }

@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
     "title": "Bankafschrift van PDF naar Excel of CSV",
-    "description": "Zet bankafschrift-PDF’s om naar Excel of CSV. Controleer transacties en waarschuwingen vóór het downloaden."
+    "description": "Zet bankafschrift-PDF’s met tekst in je browser om naar Excel of CSV, zonder het bestand te uploaden. Controleer transacties en waarschuwingen vóór het downloaden. Gratis daglimiet: {anonymousPages, number} zonder inloggen, {authenticatedPages, number} na inloggen."
   },
   "PdfUpload": {
     "title": "Bankafschrift selecteren",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "Het resultaat kon niet in de browser worden opgeslagen",
       "description": "Je kunt het huidige resultaat op deze pagina nog steeds bekijken en downloaden. Na het vernieuwen of verlaten van de pagina zijn het resultaat en wijzigingen aan verkopers mogelijk niet te herstellen. Download eerst de bestanden die je nodig hebt."
+    },
+    "nextSteps": {
+      "title": "Verder met je export",
+      "description": "Deze hulpmiddelen openen in een nieuw tabblad, zodat je resultaten beschikbaar blijven. Download je bestanden voordat je dit tabblad sluit.",
+      "quickbooks": "CSV voorbereiden voor QuickBooks Online (VS)",
+      "checker": "Totalen van je afschrift controleren"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Methode en referentie",
-            "text": "Officiële PDF’s weergegeven en gedateerde transacties overgeschreven vóór vergelijking. Carson: originele pagina’s 1–2; BHW: 12 apart. Begin-/eindsaldi tellen niet als referentietransactie. Lokale Python zonder AI, account of quotum."
+            "text": "De referentiegegevens zijn vóór de vergelijking overgenomen uit de officiële PDF-pagina’s: Carson pagina 1–2, BHW pagina 12. Begin-/eindsaldi en aparte chequeoverzichten vallen buiten het referentiebereik. Het huidige parseWithPdfJs-startpunt is lokaal in Node.js uitgevoerd met de legacy-runtime van PDF.js. Browserinterface, accounts/quota en optionele AI zijn niet getest."
           },
           {
             "title": "Labels en broncontrole scheiden",
-            "text": "OK, DISCREPANCY en UNVERIFIABLE zijn parserlabels. Een OK-regel kan spaties verliezen en een saldo kan een extra regel worden. Bekijk veldverschillen en extra regels naast statussen."
+            "text": "OK, DISCREPANCY en UNVERIFIABLE zijn controlelabels van de parser, los van de referentievergelijking. OK bewijst niet dat een transactie juist is of in je boekhoudimport thuishoort. Aparte chequeoverzichten kunnen naast transactietabellen worden uitgelezen. Controleer velden, tabelbereik en oorspronkelijke PDF vóór gebruik."
           },
           {
             "title": "Grenzen en herhaling",
@@ -1340,10 +1346,10 @@
     "extracted": "Geëxtraheerde regels",
     "statuses": "Statussen",
     "missing": "Niet gekoppelde referenties",
-    "extra": "Extra regels",
+    "extra": "Regels buiten referentie",
     "mismatches": "Veldverschillen",
-    "findings": "Carson: 11 omschrijvingen verloren de spatie tussen ACH en DEBIT ondanks OK. BHW: eindsaldo als extra UNVERIFIABLE-regel. Geen paginafouten voor deze invoer geretourneerd.",
-    "matching": "Koppeling op datum, bedrag en richting, iedere regel eenmaal. Niet gekoppelde referenties bewijzen niet noodzakelijk weglating. Alleen witruimte wordt genormaliseerd. Details in download.",
+    "findings": "Carson: alle 47 referentietransacties kwamen overeen zonder veldverschillen; ook zijn drie regels uit het chequesoverzicht buiten het referentiebereik uitgelezen. BHW: alle 30 referentietransacties kwamen overeen zonder veldverschillen. Er waren geen paginafouten bij deze invoer.",
+    "matching": "Koppeling op oorspronkelijke bronpagina, datum en debet-/creditwaarden; elke uitgelezen regel wordt eenmaal gebruikt. Alleen witruimte wordt genormaliseerd. Regels buiten het referentiebereik zijn niet automatisch extractiefouten. Het JSON-bestand bevat details en een link naar de referentiegegevens.",
     "measured": "Gemeten: {date} (UTC)",
     "download": "Meetresultaten downloaden (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "De saldocontrole vergelijkt ingevoerde totalen zonder upload. Het openbare rapport betreft alleen de genoemde voorbeelden, niet alle Nederlandse banken."
     },
     "metaDescription": "Gidsen voor bankafschrift PDF naar Excel of CSV, scan en herken en saldocontrole. Amerikaanse banken en Britse software-edities staan apart vermeld."
+  },
+  "HomeSample": {
+    "title": "Bekijk een voorbeeldconversie",
+    "description": "Vergelijk een fictief afschrift met bestanden uit de huidige lokale parser. Er worden geen echte rekening- of klantgegevens gebruikt.",
+    "caption": "Vijf uitgelezen transacties. Tekst en kolomnamen blijven zoals in de Engelstalige voorbeeld-PDF.",
+    "downloadPdf": "Voorbeeld-PDF downloaden",
+    "downloadExcel": "Voorbeeld-Excel downloaden",
+    "downloadCsv": "Voorbeeld-CSV downloaden",
+    "limitation": "De exports bevatten ook controlelabels en bronpagina’s. Dit voorbeeld bewijst geen ondersteuning voor de indeling van jouw bank. Vergelijk je eigen resultaten met het origineel."
   }
 }

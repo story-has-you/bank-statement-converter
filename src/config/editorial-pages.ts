@@ -87,7 +87,7 @@ export const editorialPages = [
     id: "benchmark",
     path: "/research/bank-statement-parsing-benchmark",
     kind: "research",
-    checkedOn: "2026-10-19",
+    checkedOn: "2026-11-03",
     sources: [
       "https://www.carsonbank.com/wp-content/uploads/2021/01/Sample-Statement.pdf",
       "https://www.bhw.de/dam/bhwde/pdf/Jahreskontoauszuege_koop_2024.pdf",

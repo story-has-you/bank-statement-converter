@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "Conversión de estados de cuenta PDF",
     "title": "Convierte estados de cuenta a Excel o CSV",
-    "description": "Convierte estados de cuenta o extractos bancarios PDF a Excel o CSV. Revisa las transacciones y las alertas antes de descargar."
+    "description": "Convierte estados de cuenta PDF con texto a Excel o CSV en tu navegador, sin subir el archivo. Revisa las transacciones y alertas antes de descargar. Cuota gratuita diaria: {anonymousPages, number} sin iniciar sesión y {authenticatedPages, number} al iniciar sesión."
   },
   "PdfUpload": {
     "title": "Seleccionar un extracto bancario",
@@ -268,6 +268,12 @@
     "storage": {
       "title": "No se pudo guardar el resultado en el navegador",
       "description": "Puedes seguir viendo y descargando el resultado en esta página. Si actualizas o sales, es posible que no se puedan recuperar el resultado ni los cambios de comercios. Descarga primero los archivos que necesites."
+    },
+    "nextSteps": {
+      "title": "Continúa con tu archivo exportado",
+      "description": "Estas herramientas se abren en otra pestaña para conservar tus resultados. Descarga los archivos antes de cerrar esta pestaña.",
+      "quickbooks": "Preparar un CSV para QuickBooks Online (EE. UU.)",
+      "checker": "Comprobar los totales del extracto"
     }
   },
   "HomeFeatures": {
@@ -1250,11 +1256,11 @@
         "sections": [
           {
             "title": "Método y referencia",
-            "text": "Se renderizaron los PDF oficiales y transcribieron las transacciones fechadas antes de comparar. Carson: páginas originales 1–2; BHW: 12 por separado. Saldos inicial/final excluidos. Python local, sin IA, cuentas de usuario ni cuota."
+            "text": "Los datos de referencia se transcribieron antes de comparar desde los PDF oficiales: páginas 1–2 de Carson y página 12 de BHW. Los saldos inicial/final y las tablas separadas de cheques quedan fuera del alcance. Ejecutamos el punto de entrada actual parseWithPdfJs localmente en Node.js con el entorno legacy de PDF.js. No se probaron la interfaz del navegador, cuentas/cuotas ni la IA opcional."
           },
           {
             "title": "Separe etiquetas y cotejo",
-            "text": "OK, DISCREPANCY y UNVERIFIABLE son marcas del analizador. Una fila OK puede perder espacios y un saldo aparecer como fila adicional. Revise diferencias de campos y filas extra además de los estados."
+            "text": "OK, DISCREPANCY y UNVERIFIABLE son etiquetas del analizador, distintas de la comparación con la referencia. OK no garantiza la exactitud de una transacción ni que deba incluirse en una importación contable. Pueden extraerse resúmenes de cheques junto con las transacciones. Revisa campos, alcance de las tablas y PDF original antes de usar el archivo."
           },
           {
             "title": "Límites y reproducción",
@@ -1340,10 +1346,10 @@
     "extracted": "Filas extraídas",
     "statuses": "Estados",
     "missing": "Referencias sin correspondencia",
-    "extra": "Filas extra",
+    "extra": "Filas fuera de referencia",
     "mismatches": "Diferencias de campos",
-    "findings": "Carson: 11 descripciones perdieron el espacio entre ACH y DEBIT pese a OK. BHW: saldo final como fila extra UNVERIFIABLE. Sin fallos de página devueltos para estas entradas.",
-    "matching": "Correspondencia por fecha, importe y dirección, cada fila una vez. Referencias sin correspondencia no prueban necesariamente omisiones. Solo se normalizan espacios. Detalles en la descarga.",
+    "findings": "Carson: coincidieron las 47 transacciones de referencia sin diferencias de campo; también se extrajeron tres filas del resumen de cheques fuera del alcance de referencia. BHW: coincidieron las 30 transacciones de referencia sin diferencias de campo. No hubo fallos de página en estas entradas.",
+    "matching": "La comparación usa la página original, fecha y valores de débito/crédito; cada fila extraída se usa una vez. Solo se normalizan espacios. Las filas fuera del alcance de referencia no se consideran errores automáticamente. El JSON incluye los detalles y el enlace a los datos de referencia.",
     "measured": "Medido: {date} (UTC)",
     "download": "Descargar medidas (JSON)"
   },
@@ -1421,5 +1427,14 @@
       "tools": "Comprueba los totales introducidos sin subir archivos. El informe público solo cubre los ejemplos indicados, no todos los bancos españoles."
     },
     "metaDescription": "Guías de estados de cuenta PDF a Excel o CSV, OCR y comprobación de saldos. Revisa el país de cada guía bancaria y la edición del programa contable."
+  },
+  "HomeSample": {
+    "title": "Ver un ejemplo de conversión",
+    "description": "Compara un extracto ficticio con los archivos exportados por el analizador local actual. No se usan datos reales de cuentas ni clientes.",
+    "caption": "Cinco transacciones extraídas. El texto y los nombres de columna se conservan como en el PDF de ejemplo en inglés.",
+    "downloadPdf": "Descargar PDF de ejemplo",
+    "downloadExcel": "Descargar Excel de ejemplo",
+    "downloadCsv": "Descargar CSV de ejemplo",
+    "limitation": "Los archivos también incluyen etiquetas de revisión y páginas de origen. Este ejemplo no garantiza compatibilidad con el formato de tu banco. Comprueba tus resultados con el original."
   }
 }

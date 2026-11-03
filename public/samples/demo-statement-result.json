@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1",
+  "filename": "demo-statement.pdf",
+  "pageCount": 1,
+  "tables": [
+    {
+      "id": "table-1",
+      "pageStart": 1,
+      "pageEnd": 1,
+      "columns": [
+        {
+          "key": "c0",
+          "label": "Date",
+          "index": 0
+        },
+        {
+          "key": "c1",
+          "label": "Description",
+          "index": 1
+        },
+        {
+          "key": "c2",
+          "label": "Amount",
+          "index": 2
+        },
+        {
+          "key": "c3",
+          "label": "Balance",
+          "index": 3
+        }
+      ],
+      "rows": [
+        {
+          "values": {
+            "c0": "2026-10-01",
+            "c1": "Store purchase",
+            "c2": "-12.34",
+            "c3": "987.66"
+          },
+          "source": {
+            "page": 1,
+            "row": 5
+          },
+          "status": "valid",
+          "warnings": []
+        },
+        {
+          "values": {
+            "c0": "2026-10-02",
+            "c1": "Deposit",
+            "c2": "200.00",
+            "c3": "1187.66"
+          },
+          "source": {
+            "page": 1,
+            "row": 6
+          },
+          "status": "valid",
+          "warnings": []
+        },
+        {
+          "values": {
+            "c0": "2026-10-03",
+            "c1": "Utility payment",
+            "c2": "-45.00",
+            "c3": "1142.66"
+          },
+          "source": {
+            "page": 1,
+            "row": 7
+          },
+          "status": "valid",
+          "warnings": []
+        },
+        {
+          "values": {
+            "c0": "2026-10-04",
+            "c1": "Client payment",
+            "c2": "350.00",
+            "c3": "1492.66"
+          },
+          "source": {
+            "page": 1,
+            "row": 8
+          },
+          "status": "valid",
+          "warnings": []
+        },
+        {
+          "values": {
+            "c0": "2026-10-05",
+            "c1": "Office supplies",
+            "c2": "-19.90",
+            "c3": "1472.76"
+          },
+          "source": {
+            "page": 1,
+            "row": 9
+          },
+          "status": "valid",
+          "warnings": []
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "status": "success",
+    "tableCount": 1,
+    "rowCount": 5,
+    "validRowCount": 5,
+    "warningRowCount": 0,
+    "failedRowCount": 0
+  },
+  "errors": []
+}

@@ -8,6 +8,7 @@ import { HomeFeatures } from "@/components/home/home-features";
 import { HomeFooter } from "@/components/shared/home-footer";
 import { HomeHeader } from "@/components/shared/home-header";
 import { HomeIntro } from "@/components/home/home-intro";
+import { HomeSample } from "@/components/home/home-sample";
 import { HomeStructuredData } from "@/components/home/home-structured-data";
 import { PdfUpload } from "@/components/conversion/pdf-upload";
 import { UsageTiers } from "@/components/home/usage-tiers";
@@ -16,6 +17,7 @@ import { ClientMessages } from "@/components/shared/client-messages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
+import { brandConfig } from "@/config/brand";
 
 type HomePageProps = { params: Promise<{ locale: string }> };
 
@@ -38,8 +40,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       description: t("description"),
       url: getLocalizedAlternates("/", locale).canonical,
       locale: locale.replace("-", "_"),
+      images: [brandConfig.socialImage],
     },
-    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("description"), images: [brandConfig.socialImage] },
     robots: { index: true, follow: true },
   };
 }
@@ -58,6 +61,7 @@ export default function HomePage() {
           </ClientMessages>
         </section>
 
+        <HomeSample />
         <HomeFeatures />
         <UsageTiers />
         <HomeFaq />
