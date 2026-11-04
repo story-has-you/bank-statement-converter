@@ -50,11 +50,13 @@ export function GoogleSignInButton() {
         variant="outline"
         disabled={pending || !configured || status === "loading"}
         aria-busy={pending}
+        aria-label={pending ? t("signingIn") : t("signInWithGoogle")}
         aria-describedby={feedback ? feedbackId : undefined}
+        className="w-10 px-0 sm:w-auto sm:px-4"
         onClick={signIn}
       >
         {pending ? <LoaderCircleIcon data-icon="inline-start" className="animate-spin" /> : <LogInIcon data-icon="inline-start" />}
-        {pending ? t("signingIn") : t("signInWithGoogle")}
+        <span className="hidden sm:inline">{pending ? t("signingIn") : t("signInWithGoogle")}</span>
       </Button>
       {feedback && (
         <p id={feedbackId} role={error ? "alert" : "status"} className="max-w-xs text-sm text-muted-foreground">

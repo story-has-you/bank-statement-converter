@@ -9,12 +9,12 @@ export async function HomeFaq() {
   const [t, questions] = await Promise.all([getTranslations({ locale, namespace: "HomeFaq" }), getHomeFaq(locale)]);
 
   return (
-    <section id="faq" className="border-t border-border bg-muted/35" aria-labelledby="faq-title">
-      <div className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8 sm:py-14">
-        <h2 id="faq-title" className="text-xl font-semibold sm:text-2xl">
+    <section id="faq" className="border-t border-border bg-muted/50" aria-labelledby="faq-title">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-16">
+        <h2 id="faq-title" className="font-heading text-3xl font-medium sm:text-4xl">
           {t("title")}
         </h2>
-        <Accordion className="mt-5 border-t border-border">
+        <Accordion className="border-t border-foreground/50">
           {questions.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
               <AccordionTrigger className="py-4">{item.question}</AccordionTrigger>

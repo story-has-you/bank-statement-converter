@@ -1,7 +1,7 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter, Newsreader, Noto_Serif_SC } from "next/font/google";
 import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
@@ -17,7 +17,9 @@ import { siteConfig } from "@/config/site";
 import { brandConfig } from "@/config/brand";
 import "../globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
+const newsreader = Newsreader({ variable: "--font-editorial", subsets: ["latin"] });
+const notoSerif = Noto_Serif_SC({ variable: "--font-editorial-cjk", weight: ["500", "600"], preload: false });
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
@@ -51,7 +53,11 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
   const { LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult, ApiErrors } = await getMessages();
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${newsreader.variable} ${notoSerif.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <OrganizationStructuredData />
         <NextIntlClientProvider

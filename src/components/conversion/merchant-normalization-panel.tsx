@@ -117,7 +117,7 @@ export function MerchantNormalizationPanel({ result, normalization, onChange }: 
   }
 
   return (
-    <Accordion className="rounded-md border border-border bg-card px-4">
+    <Accordion className="border-y border-border px-1">
       <AccordionItem value="merchants">
         <AccordionTrigger>{t("title")}</AccordionTrigger>
         <AccordionContent>

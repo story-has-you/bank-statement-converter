@@ -54,7 +54,7 @@ export default function HomePage() {
       <HomeHeader />
 
       <main id="main" className="flex-1">
-        <section className="mx-auto w-full max-w-4xl px-5 pb-16 pt-10 sm:px-8 sm:pb-8 sm:pt-8">
+        <section className="mx-auto grid w-full max-w-7xl items-start gap-9 px-5 py-10 sm:px-8 sm:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)] lg:gap-16">
           <HomeIntro />
           <ClientMessages namespaces={["PdfUpload"]}>
             <PdfUpload />

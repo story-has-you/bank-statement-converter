@@ -35,9 +35,9 @@ export function ConversionProgress({
 
   return (
     <div className="flex flex-col gap-6" aria-busy="true">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-foreground pb-6">
         <div className="min-w-0">
-          <h1 className="break-all text-xl font-semibold">{filename}</h1>
+          <h1 className="break-words font-heading text-3xl font-medium sm:text-4xl">{filename}</h1>
           <p role="status" className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
             <LoaderCircleIcon className="size-4 animate-spin" aria-hidden="true" />
             {t(`stream.stages.${preview.stage}`)}

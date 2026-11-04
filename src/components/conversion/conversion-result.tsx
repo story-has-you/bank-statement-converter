@@ -45,7 +45,7 @@ export function ConversionResult() {
   if (conversion.state.phase === "error") {
     return (
       <section className="flex flex-col gap-5">
-        <h1 className="break-all text-xl font-semibold">{conversion.state.filename}</h1>
+        <h1 className="break-words font-heading text-3xl font-medium sm:text-4xl">{conversion.state.filename}</h1>
         <Alert variant="destructive">
           <CircleAlertIcon aria-hidden="true" />
           <AlertTitle>{t("stream.failedTitle")}</AlertTitle>
@@ -67,8 +67,8 @@ export function ConversionResult() {
 
   if (!payload) {
     return (
-      <section className="rounded-md border border-border bg-card p-6 shadow-xs" aria-labelledby="result-missing-title">
-        <h1 id="result-missing-title" className="text-lg font-semibold">
+      <section className="border-y border-border py-12 sm:py-16" aria-labelledby="result-missing-title">
+        <h1 id="result-missing-title" className="font-heading text-3xl font-medium sm:text-4xl">
           {t("missing.title")}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">{t("missing.description")}</p>

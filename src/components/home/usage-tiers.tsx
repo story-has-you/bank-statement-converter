@@ -16,9 +16,9 @@ export async function UsageTiers() {
   return (
     <ClientMessages namespaces={["UsageTiers", "Billing"]}>
       <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
-        <div className="mx-auto w-full max-w-5xl px-5 py-12 sm:px-8 sm:py-14">
+        <div className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
           <div className="flex flex-col gap-2">
-            <h2 id="plans-title" className="text-xl font-semibold sm:text-2xl">
+            <h2 id="plans-title" className="font-heading text-3xl font-medium sm:text-4xl">
               {t("title")}
             </h2>
             <p className="text-sm leading-6 text-muted-foreground">{t("description")}</p>
@@ -58,13 +58,13 @@ export async function UsageTiers() {
             })}
           </p>
 
-          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+          <div className="mt-6 grid divide-y divide-border border-y border-border lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             {membershipTiers.map((tier) => (
-              <article key={tier} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+              <article key={tier} className="flex flex-col gap-4 px-0 py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0">
                 <div className="flex items-start justify-between gap-3">
                   <div className="grid gap-1">
-                    <h3 className="text-base font-semibold">{t(`plans.${tier}.name`)}</h3>
-                    <p className="text-3xl font-semibold">
+                    <h3 className="text-base font-medium">{t(`plans.${tier}.name`)}</h3>
+                    <p className="mt-3 font-heading text-4xl font-medium">
                       {format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" })}
                       <span className="ml-1 text-sm font-normal text-muted-foreground">{t("perMonth")}</span>
                     </p>

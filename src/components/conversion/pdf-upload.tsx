@@ -7,7 +7,6 @@ import { useFormatter, useTranslations } from "next-intl";
 import { conversionLimits, maxUploadBytes } from "@/config/conversion";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { usePublicAccount } from "@/components/account/public-account-provider";
@@ -140,15 +139,17 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   }
 
   return (
-    <section id="workspace" className="rounded-md border border-border bg-card p-4 shadow-xs sm:p-5" aria-labelledby="workspace-title">
+    <section id="workspace" className="scroll-mt-6 border-t-2 border-primary pt-5" aria-labelledby="workspace-title">
       <div className="mb-5 flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h2 id="workspace-title" className="text-base font-semibold">
+          <h2 id="workspace-title" className="font-heading text-2xl font-medium">
             {t("title")}
           </h2>
           <p className="text-sm text-muted-foreground">{t("description")}</p>
         </div>
-        <Badge variant="secondary">{statusLabel}</Badge>
+        <span role="status" className="pt-1 text-xs text-muted-foreground">
+          {statusLabel}
+        </span>
       </div>
 
       <FieldGroup>
@@ -176,10 +177,10 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             }}
             onDrop={handleDrop}
             data-dragging={isDragging}
-            className="flex min-h-48 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-dashed border-border bg-muted/30 px-4 py-6 text-center transition-colors hover:bg-muted/60 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 data-[dragging=true]:border-primary data-[dragging=true]:bg-primary/5 sm:min-h-36"
+            className="upload-dropzone flex min-h-36 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-sm border border-dashed border-muted-foreground/60 bg-muted/60 px-4 py-5 text-center transition-colors duration-200 hover:border-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring data-[dragging=true]:border-primary data-[dragging=true]:bg-primary/10"
           >
-            <span className="flex size-11 items-center justify-center rounded-md border border-border bg-background text-primary">
-              <UploadIcon className="size-5" aria-hidden="true" />
+            <span className="text-primary">
+              <UploadIcon className="size-6" aria-hidden="true" />
             </span>
             <span className="text-sm font-medium">{t("dropzone")}</span>
             <span id="pdf-help" className="text-xs font-normal text-muted-foreground">
@@ -248,17 +249,17 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
         </div>
       )}
 
-      <Separator className="my-5" />
+      <Separator className="my-4" />
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           {showFreeQuota && (
-            <p className="text-sm font-medium">
+            <p className="text-xs leading-5 text-muted-foreground">
               {t("quota", { anonymousPages: usageQuotaConfig.anonymous.pages, authenticatedPages: usageQuotaConfig.authenticated.pages })}
             </p>
           )}
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-4">
           {allowAi && (
             <Field orientation="horizontal" className="w-auto" data-disabled={isPending}>
               <Switch
@@ -278,7 +279,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             size="lg"
             disabled={!preflight.canConvert || isPending || Boolean(error)}
             onClick={startConversion}
-            className="w-full sm:w-auto"
+            className="w-full"
           >
             {isPending || preflight.isChecking ? (
               <LoaderCircleIcon className="animate-spin" data-icon="inline-start" />

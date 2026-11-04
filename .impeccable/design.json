@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T02:22:30.068267+00:00",
+  "title": "Design System: StatementXL",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Document White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#272c32",
+        "tonalRamp": [
+          "oklch(15% 0.0056 253.02)",
+          "oklch(26% 0.0097 253.02)",
+          "oklch(38% 0.0131 253.02)",
+          "oklch(49% 0.0131 253.02)",
+          "oklch(61% 0.0131 253.02)",
+          "oklch(72% 0.0122 253.02)",
+          "oklch(84% 0.0070 253.02)",
+          "oklch(95% 0.0022 253.02)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Document Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "popover": {
+        "role": "neutral",
+        "displayName": "Floating Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Muted Oxblood",
+        "canonical": "#8e3438",
+        "tonalRamp": [
+          "oklch(15% 0.0524 20.79)",
+          "oklch(26% 0.0909 20.79)",
+          "oklch(38% 0.1223 20.79)",
+          "oklch(49% 0.1223 20.79)",
+          "oklch(61% 0.1223 20.79)",
+          "oklch(72% 0.1142 20.79)",
+          "oklch(84% 0.0652 20.79)",
+          "oklch(95% 0.0204 20.79)"
+        ]
+      },
+      "primary-foreground": {
+        "role": "primary",
+        "displayName": "Action White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Warning Gold Wash",
+        "canonical": "#f8efd9",
+        "tonalRamp": [
+          "oklch(15% 0.0131 88.37)",
+          "oklch(26% 0.0227 88.37)",
+          "oklch(38% 0.0306 88.37)",
+          "oklch(49% 0.0306 88.37)",
+          "oklch(61% 0.0306 88.37)",
+          "oklch(72% 0.0285 88.37)",
+          "oklch(84% 0.0163 88.37)",
+          "oklch(95% 0.0051 88.37)"
+        ]
+      },
+      "secondary-foreground": {
+        "role": "secondary",
+        "displayName": "Warning Gold Ink",
+        "canonical": "#755116",
+        "tonalRamp": [
+          "oklch(15% 0.0372 75.07)",
+          "oklch(26% 0.0645 75.07)",
+          "oklch(38% 0.0869 75.07)",
+          "oklch(49% 0.0869 75.07)",
+          "oklch(61% 0.0869 75.07)",
+          "oklch(72% 0.0811 75.07)",
+          "oklch(84% 0.0463 75.07)",
+          "oklch(95% 0.0145 75.07)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Warm Gray Ground",
+        "canonical": "#f5f4f1",
+        "tonalRamp": [
+          "oklch(15% 0.0018 91.45)",
+          "oklch(26% 0.0031 91.45)",
+          "oklch(38% 0.0041 91.45)",
+          "oklch(49% 0.0041 91.45)",
+          "oklch(61% 0.0041 91.45)",
+          "oklch(72% 0.0039 91.45)",
+          "oklch(84% 0.0022 91.45)",
+          "oklch(95% 0.0007 91.45)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Secondary Graphite",
+        "canonical": "#64686b",
+        "tonalRamp": [
+          "oklch(15% 0.0029 239.92)",
+          "oklch(26% 0.0051 239.92)",
+          "oklch(38% 0.0069 239.92)",
+          "oklch(49% 0.0069 239.92)",
+          "oklch(61% 0.0069 239.92)",
+          "oklch(72% 0.0064 239.92)",
+          "oklch(84% 0.0037 239.92)",
+          "oklch(95% 0.0011 239.92)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Oxblood Wash",
+        "canonical": "#f1e8e7",
+        "tonalRamp": [
+          "oklch(15% 0.0042 25.08)",
+          "oklch(26% 0.0073 25.08)",
+          "oklch(38% 0.0099 25.08)",
+          "oklch(49% 0.0099 25.08)",
+          "oklch(61% 0.0099 25.08)",
+          "oklch(72% 0.0092 25.08)",
+          "oklch(84% 0.0053 25.08)",
+          "oklch(95% 0.0016 25.08)"
+        ]
+      },
+      "accent-foreground": {
+        "role": "primary",
+        "displayName": "Oxblood Ink",
+        "canonical": "#7e2d32",
+        "tonalRamp": [
+          "oklch(15% 0.0482 19.80)",
+          "oklch(26% 0.0835 19.80)",
+          "oklch(38% 0.1124 19.80)",
+          "oklch(49% 0.1124 19.80)",
+          "oklch(61% 0.1124 19.80)",
+          "oklch(72% 0.1049 19.80)",
+          "oklch(84% 0.0599 19.80)",
+          "oklch(95% 0.0187 19.80)"
+        ]
+      },
+      "destructive": {
+        "role": "secondary",
+        "displayName": "Error Red",
+        "canonical": "#b42330",
+        "tonalRamp": [
+          "oklch(15% 0.0769 22.53)",
+          "oklch(26% 0.1333 22.53)",
+          "oklch(38% 0.1795 22.53)",
+          "oklch(49% 0.1795 22.53)",
+          "oklch(61% 0.1795 22.53)",
+          "oklch(72% 0.1675 22.53)",
+          "oklch(84% 0.0957 22.53)",
+          "oklch(95% 0.0299 22.53)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Quiet Rule",
+        "canonical": "#dadbd7",
+        "tonalRamp": [
+          "oklch(15% 0.0024 117.93)",
+          "oklch(26% 0.0041 117.93)",
+          "oklch(38% 0.0055 117.93)",
+          "oklch(49% 0.0055 117.93)",
+          "oklch(61% 0.0055 117.93)",
+          "oklch(72% 0.0051 117.93)",
+          "oklch(84% 0.0029 117.93)",
+          "oklch(95% 0.0009 117.93)"
+        ]
+      },
+      "input": {
+        "role": "neutral",
+        "displayName": "Field Stroke",
+        "canonical": "#b4b3af",
+        "tonalRamp": [
+          "oklch(15% 0.0025 95.12)",
+          "oklch(26% 0.0043 95.12)",
+          "oklch(38% 0.0057 95.12)",
+          "oklch(49% 0.0057 95.12)",
+          "oklch(61% 0.0057 95.12)",
+          "oklch(72% 0.0054 95.12)",
+          "oklch(84% 0.0031 95.12)",
+          "oklch(95% 0.0010 95.12)"
+        ]
+      },
+      "ring": {
+        "role": "primary",
+        "displayName": "Oxblood Focus",
+        "canonical": "#8e3438",
+        "tonalRamp": [
+          "oklch(15% 0.0524 20.79)",
+          "oklch(26% 0.0909 20.79)",
+          "oklch(38% 0.1223 20.79)",
+          "oklch(49% 0.1223 20.79)",
+          "oklch(61% 0.1223 20.79)",
+          "oklch(72% 0.1142 20.79)",
+          "oklch(84% 0.0652 20.79)",
+          "oklch(95% 0.0204 20.79)"
+        ]
+      },
+      "dark-background": {
+        "role": "neutral",
+        "displayName": "Night / Document White",
+        "canonical": "#1e2023",
+        "tonalRamp": [
+          "oklch(15% 0.0028 258.36)",
+          "oklch(26% 0.0048 258.36)",
+          "oklch(38% 0.0064 258.36)",
+          "oklch(49% 0.0064 258.36)",
+          "oklch(61% 0.0064 258.36)",
+          "oklch(72% 0.0060 258.36)",
+          "oklch(84% 0.0034 258.36)",
+          "oklch(95% 0.0011 258.36)"
+        ]
+      },
+      "dark-foreground": {
+        "role": "neutral",
+        "displayName": "Night / Graphite Ink",
+        "canonical": "#eeece8",
+        "tonalRamp": [
+          "oklch(15% 0.0025 84.57)",
+          "oklch(26% 0.0043 84.57)",
+          "oklch(38% 0.0058 84.57)",
+          "oklch(49% 0.0058 84.57)",
+          "oklch(61% 0.0058 84.57)",
+          "oklch(72% 0.0054 84.57)",
+          "oklch(84% 0.0031 84.57)",
+          "oklch(95% 0.0010 84.57)"
+        ]
+      },
+      "dark-card": {
+        "role": "neutral",
+        "displayName": "Night / Document Surface",
+        "canonical": "#242629",
+        "tonalRamp": [
+          "oklch(15% 0.0027 258.36)",
+          "oklch(26% 0.0047 258.36)",
+          "oklch(38% 0.0063 258.36)",
+          "oklch(49% 0.0063 258.36)",
+          "oklch(61% 0.0063 258.36)",
+          "oklch(72% 0.0059 258.36)",
+          "oklch(84% 0.0034 258.36)",
+          "oklch(95% 0.0010 258.36)"
+        ]
+      },
+      "dark-popover": {
+        "role": "neutral",
+        "displayName": "Night / Floating Paper",
+        "canonical": "#292b2e",
+        "tonalRamp": [
+          "oklch(15% 0.0026 258.36)",
+          "oklch(26% 0.0046 258.36)",
+          "oklch(38% 0.0062 258.36)",
+          "oklch(49% 0.0062 258.36)",
+          "oklch(61% 0.0062 258.36)",
+          "oklch(72% 0.0058 258.36)",
+          "oklch(84% 0.0033 258.36)",
+          "oklch(95% 0.0010 258.36)"
+        ]
+      },
+      "dark-primary": {
+        "role": "primary",
+        "displayName": "Night / Muted Oxblood",
+        "canonical": "#e4a29e",
+        "tonalRamp": [
+          "oklch(15% 0.0339 22.94)",
+          "oklch(26% 0.0588 22.94)",
+          "oklch(38% 0.0792 22.94)",
+          "oklch(49% 0.0792 22.94)",
+          "oklch(61% 0.0792 22.94)",
+          "oklch(72% 0.0739 22.94)",
+          "oklch(84% 0.0422 22.94)",
+          "oklch(95% 0.0132 22.94)"
+        ]
+      },
+      "dark-primary-foreground": {
+        "role": "primary",
+        "displayName": "Night / Action White",
+        "canonical": "#2d181b",
+        "tonalRamp": [
+          "oklch(15% 0.0146 10.70)",
+          "oklch(26% 0.0253 10.70)",
+          "oklch(38% 0.0341 10.70)",
+          "oklch(49% 0.0341 10.70)",
+          "oklch(61% 0.0341 10.70)",
+          "oklch(72% 0.0318 10.70)",
+          "oklch(84% 0.0182 10.70)",
+          "oklch(95% 0.0057 10.70)"
+        ]
+      },
+      "dark-secondary": {
+        "role": "secondary",
+        "displayName": "Night / Warning Gold Wash",
+        "canonical": "#40341f",
+        "tonalRamp": [
+          "oklch(15% 0.0162 80.86)",
+          "oklch(26% 0.0280 80.86)",
+          "oklch(38% 0.0377 80.86)",
+          "oklch(49% 0.0377 80.86)",
+          "oklch(61% 0.0377 80.86)",
+          "oklch(72% 0.0352 80.86)",
+          "oklch(84% 0.0201 80.86)",
+          "oklch(95% 0.0063 80.86)"
+        ]
+      },
+      "dark-secondary-foreground": {
+        "role": "secondary",
+        "displayName": "Night / Warning Gold Ink",
+        "canonical": "#e9cc91",
+        "tonalRamp": [
+          "oklch(15% 0.0354 84.58)",
+          "oklch(26% 0.0614 84.58)",
+          "oklch(38% 0.0826 84.58)",
+          "oklch(49% 0.0826 84.58)",
+          "oklch(61% 0.0826 84.58)",
+          "oklch(72% 0.0771 84.58)",
+          "oklch(84% 0.0441 84.58)",
+          "oklch(95% 0.0138 84.58)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Night / Warm Gray Ground",
+        "canonical": "#2b2d30",
+        "tonalRamp": [
+          "oklch(15% 0.0026 258.36)",
+          "oklch(26% 0.0046 258.36)",
+          "oklch(38% 0.0061 258.36)",
+          "oklch(49% 0.0061 258.36)",
+          "oklch(61% 0.0061 258.36)",
+          "oklch(72% 0.0057 258.36)",
+          "oklch(84% 0.0033 258.36)",
+          "oklch(95% 0.0010 258.36)"
+        ]
+      },
+      "dark-muted-foreground": {
+        "role": "neutral",
+        "displayName": "Night / Secondary Graphite",
+        "canonical": "#b5b4b1",
+        "tonalRamp": [
+          "oklch(15% 0.0019 91.46)",
+          "oklch(26% 0.0032 91.46)",
+          "oklch(38% 0.0044 91.46)",
+          "oklch(49% 0.0044 91.46)",
+          "oklch(61% 0.0044 91.46)",
+          "oklch(72% 0.0041 91.46)",
+          "oklch(84% 0.0023 91.46)",
+          "oklch(95% 0.0007 91.46)"
+        ]
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Night / Oxblood Wash",
+        "canonical": "#433035",
+        "tonalRamp": [
+          "oklch(15% 0.0123 1.38)",
+          "oklch(26% 0.0214 1.38)",
+          "oklch(38% 0.0288 1.38)",
+          "oklch(49% 0.0288 1.38)",
+          "oklch(61% 0.0288 1.38)",
+          "oklch(72% 0.0268 1.38)",
+          "oklch(84% 0.0153 1.38)",
+          "oklch(95% 0.0048 1.38)"
+        ]
+      },
+      "dark-accent-foreground": {
+        "role": "primary",
+        "displayName": "Night / Oxblood Ink",
+        "canonical": "#edb8b4",
+        "tonalRamp": [
+          "oklch(15% 0.0266 23.46)",
+          "oklch(26% 0.0460 23.46)",
+          "oklch(38% 0.0620 23.46)",
+          "oklch(49% 0.0620 23.46)",
+          "oklch(61% 0.0620 23.46)",
+          "oklch(72% 0.0578 23.46)",
+          "oklch(84% 0.0331 23.46)",
+          "oklch(95% 0.0103 23.46)"
+        ]
+      },
+      "dark-destructive": {
+        "role": "secondary",
+        "displayName": "Night / Error Red",
+        "canonical": "#f29c9c",
+        "tonalRamp": [
+          "oklch(15% 0.0443 19.67)",
+          "oklch(26% 0.0768 19.67)",
+          "oklch(38% 0.1033 19.67)",
+          "oklch(49% 0.1033 19.67)",
+          "oklch(61% 0.1033 19.67)",
+          "oklch(72% 0.0964 19.67)",
+          "oklch(84% 0.0551 19.67)",
+          "oklch(95% 0.0172 19.67)"
+        ]
+      },
+      "dark-border": {
+        "role": "neutral",
+        "displayName": "Night / Quiet Rule",
+        "canonical": "#45474a",
+        "tonalRamp": [
+          "oklch(15% 0.0024 258.35)",
+          "oklch(26% 0.0042 258.35)",
+          "oklch(38% 0.0057 258.35)",
+          "oklch(49% 0.0057 258.35)",
+          "oklch(61% 0.0057 258.35)",
+          "oklch(72% 0.0053 258.35)",
+          "oklch(84% 0.0030 258.35)",
+          "oklch(95% 0.0009 258.35)"
+        ]
+      },
+      "dark-input": {
+        "role": "neutral",
+        "displayName": "Night / Field Stroke",
+        "canonical": "#747477",
+        "tonalRamp": [
+          "oklch(15% 0.0020 286.25)",
+          "oklch(26% 0.0034 286.25)",
+          "oklch(38% 0.0046 286.25)",
+          "oklch(49% 0.0046 286.25)",
+          "oklch(61% 0.0046 286.25)",
+          "oklch(72% 0.0043 286.25)",
+          "oklch(84% 0.0024 286.25)",
+          "oklch(95% 0.0008 286.25)"
+        ]
+      },
+      "dark-ring": {
+        "role": "primary",
+        "displayName": "Night / Oxblood Focus",
+        "canonical": "#e4a29e",
+        "tonalRamp": [
+          "oklch(15% 0.0339 22.94)",
+          "oklch(26% 0.0588 22.94)",
+          "oklch(38% 0.0792 22.94)",
+          "oklch(49% 0.0792 22.94)",
+          "oklch(61% 0.0792 22.94)",
+          "oklch(72% 0.0739 22.94)",
+          "oklch(84% 0.0422 22.94)",
+          "oklch(95% 0.0132 22.94)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "首页主标题。"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "章节标题与结果文件名。"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "上传工作区与表格标题。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "正文、说明与控制。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "状态、表头和紧凑标签。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "menu-md",
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "purpose": "主下拉菜单浮层。"
+      },
+      {
+        "name": "menu-lg",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "下拉子菜单浮层。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "常用颜色与边框变化。"
+      },
+      {
+        "name": "upload-transition",
+        "value": "200ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "上传 hover 与拖入反馈。"
+      },
+      {
+        "name": "menu-transition",
+        "value": "100ms",
+        "purpose": "现有下拉开合。"
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion 下的动画与过渡。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "共享 Button 的 primary 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-primary\">Convert PDF</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-primary { background:var(--primary); color:var(--primary-foreground); } .ds-button-primary:hover { background:color-mix(in oklab,var(--primary) 80%,transparent); } .ds-button-primary:disabled { background:var(--muted); color:var(--muted-foreground); opacity:1; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "共享 Button 的 outline 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-outline\">Cancel</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-outline { background:var(--background); color:var(--foreground); border-color:var(--border); } .ds-button-outline:hover { background:var(--muted); } :host-context(.dark) .ds-button-outline { border-color:var(--input); background:color-mix(in oklab,var(--input) 30%,transparent); } :host-context(.dark) .ds-button-outline:hover { background:color-mix(in oklab,var(--input) 50%,transparent); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "共享 Button 的 secondary 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-secondary\">Review warning</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-secondary { background:var(--secondary); color:var(--secondary-foreground); } .ds-button-secondary:hover { background:color-mix(in oklch,var(--secondary),var(--foreground) 5%); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "共享 Button 的 ghost 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-ghost\">Remove</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-ghost { background:transparent; color:var(--foreground); } .ds-button-ghost:hover { background:var(--muted); } :host-context(.dark) .ds-button-ghost:hover { background:color-mix(in oklab,var(--muted) 50%,transparent); }"
+    },
+    {
+      "name": "Destructive Button",
+      "kind": "button",
+      "refersTo": "button-destructive",
+      "description": "共享 Button 的 destructive 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-destructive\">Delete</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-destructive { background:color-mix(in oklab,var(--destructive) 10%,transparent); color:var(--destructive); } .ds-button-destructive:hover { background:color-mix(in oklab,var(--destructive) 20%,transparent); } :host-context(.dark) .ds-button-destructive { background:color-mix(in oklab,var(--destructive) 20%,transparent); } :host-context(.dark) .ds-button-destructive:hover { background:color-mix(in oklab,var(--destructive) 30%,transparent); }"
+    },
+    {
+      "name": "Link Button",
+      "kind": "button",
+      "refersTo": "button-link",
+      "description": "共享 Button 的 link 变体；预览文字仅供设计面板演示。",
+      "html": "<button type=\"button\" class=\"ds-button ds-button-link\">Download sample</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; height:2.5rem; padding:0 1rem; border:1px solid transparent; border-radius:calc(var(--radius) * .6); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; font-weight:500; white-space:nowrap; cursor:pointer; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-button:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-button:active { transform:translateY(1px); } .ds-button:disabled { pointer-events:none; opacity:.5; } .ds-button-link { background:transparent; color:var(--primary); } .ds-button-link:hover { background:transparent; text-decoration:underline; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "共享文本输入；用于商户搜索与名称整理。",
+      "html": "<input class=\"ds-input\" aria-label=\"Merchant name\" placeholder=\"Merchant name\" />",
+      "css": ".ds-input { height:2rem; min-width:0; width:100%; border:1px solid var(--input); border-radius:var(--radius); background:transparent; color:var(--foreground); padding:.25rem .625rem; font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:1rem; transition:color 150ms, background-color 150ms, border-color 150ms; } .ds-input::placeholder { color:var(--muted-foreground); } .ds-input:focus-visible { outline:2px solid var(--ring); outline-offset:3px; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab,var(--ring) 50%,transparent); } .ds-input:disabled { background:color-mix(in oklab,var(--input) 50%,transparent); opacity:.5; cursor:not-allowed; } .ds-input[aria-invalid=true] { border-color:var(--destructive); box-shadow:0 0 0 3px color-mix(in oklab,var(--destructive) 20%,transparent); } @media(min-width:48rem) { .ds-input { font-size:.875rem; } } :host-context(.dark) .ds-input { background:color-mix(in oklab,var(--input) 30%,transparent); }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "低权重文字导航，手机独立成行并可横向滚动。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#workspace\">Convert</a><a href=\"#features\">Features</a><a href=\"#plans\">Plans</a></nav>",
+      "css": ".ds-nav { display:flex; gap:1.5rem; width:100%; overflow-x:auto; font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.75rem; line-height:1rem; color:var(--muted-foreground); } .ds-nav a { color:inherit; text-decoration:none; transition:color 150ms; } .ds-nav a:hover { color:var(--foreground); } .ds-nav a:focus-visible { outline:2px solid var(--ring); outline-offset:3px; } @media(min-width:48rem) { .ds-nav { width:auto; gap:1.75rem; font-size:.875rem; line-height:1.25rem; } }"
+    },
+    {
+      "name": "Neutral Risk Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "有效行状态的中性标签；不表示人工验证准确。",
+      "html": "<span class=\"ds-badge\">OK</span>",
+      "css": ".ds-badge { display:inline-flex; align-items:center; justify-content:center; gap:.25rem; height:1.25rem; width:max-content; padding:.125rem .5rem; border:1px solid var(--border); border-radius:calc(var(--radius) * .6); background:var(--muted); color:var(--foreground); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.75rem; line-height:1rem; font-weight:500; white-space:nowrap; }"
+    },
+    {
+      "name": "Existing Card Primitive",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "其他页面仍可复用的现有原语；首页与转换主区使用连续规则线。",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-content\">Statement details</div></div>",
+      "css": ".ds-card { display:flex; flex-direction:column; gap:1rem; overflow:hidden; border-radius:var(--radius); background:var(--card); color:var(--card-foreground); padding:1rem 0; box-shadow:0 0 0 1px color-mix(in oklab,var(--foreground) 10%,transparent); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; line-height:1.25rem; } .ds-card-content { padding:0 1rem; }"
+    },
+    {
+      "name": "Upload Dropzone",
+      "kind": "custom",
+      "refersTo": "upload-dropzone",
+      "description": "上传目标以虚线和轻底色表示可拖放；演示保留真实 SVG 上传图标。",
+      "html": "<button type=\"button\" class=\"ds-upload\"><svg class=\"ds-upload-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m17 8-5-5-5 5\"/><path d=\"M12 3v12\"/></svg><span>Select or drop a PDF</span><span class=\"ds-upload-help\">PDF</span></button>",
+      "css": ".ds-upload { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; min-height:9rem; width:100%; padding:1.25rem 1rem; border:1px dashed color-mix(in oklab,var(--muted-foreground) 60%,transparent); border-radius:calc(var(--radius) * .6); background:color-mix(in oklab,var(--muted) 60%,transparent); color:var(--foreground); font-family:var(--font-body), \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size:.875rem; line-height:1.25rem; font-weight:500; text-align:center; cursor:pointer; transition:background-color 200ms, border-color 200ms; } .ds-upload-icon { color:var(--primary); } .ds-upload-help { color:var(--muted-foreground); font-size:.75rem; line-height:1rem; font-weight:400; } .ds-upload:hover { border-color:var(--primary); background:color-mix(in oklab,var(--primary) 5%,transparent); } .ds-upload:focus-visible { outline:2px solid var(--ring); outline-offset:4px; } .ds-upload[data-dragging=true] { border-color:var(--primary); background:color-mix(in oklab,var(--primary) 10%,transparent); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Modern Annual Report / 现代年报",
+    "overview": "像一份可阅读、可核对的现代年报：白色文档地承载石墨文字，低饱和酒红只在操作与交互提示中发声。衬线标题负责节奏，中性无衬线负责说明与控制，细线把内容组织成连续的行列。\n\n信息密度来自共同对齐和清楚分组。首页与结果工作区以通栏表格、连续分隔和紧凑操作区呈现内容，避免重复卡片堆叠、零散留白与通用模板配色。现有 StatementXL 标识保留；风险和来源始终清楚可见。",
+    "keyCharacteristics": [
+      "白色纸面、石墨文字、克制的酒红操作色。",
+      "衬线标题配中性无衬线控制与正文。",
+      "连续细线、对齐行列与可横向滚动的账簿。",
+      "浅色与深色共用语义角色，小圆角保持精确感。"
+    ],
+    "rules": [
+      {
+        "name": "The Action Ink Rule",
+        "body": "酒红服务于操作、链接与交互状态；警告使用独立的暖金语义，不把品牌色铺成大面积装饰底。",
+        "section": "colors"
+      },
+      {
+        "name": "The Editorial Division Rule",
+        "body": "衬线用于标题、价格与文件名；操作、说明、状态和数据保持无衬线，数字使用等宽数字特性。",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Surface Rule",
+        "body": "内容区通过分隔线与轻微底色建立层级；浮层才使用环境阴影，页面主体保持平面。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do 用连续规则线与共同对齐组织信息，让表格、状态与来源容易逐项核对。",
+      "Do 复用语义色、字体角色和小圆角；深色模式使用对应的 dark token。",
+      "Do 保留键盘焦点、文本风险标识与横向滚动表格；所有产品文案通过 next-intl。"
+    ],
+    "donts": [
+      "Don't 将首页和转换工作区恢复为重复的圆角卡片堆叠。",
+      "Don't 为装饰加入未经确认的渐变、纹理、硬阴影或无功能的留白。",
+      "Don't 只用颜色区分风险，或把成功状态包装成准确率保证。"
+    ]
+  }
+}

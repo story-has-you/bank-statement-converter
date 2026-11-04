@@ -10,14 +10,17 @@ export async function HomeHeader() {
   const t = await getTranslations("HomeHeader");
 
   return (
-    <header className="border-b border-border">
-      <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 py-2 sm:px-8">
+    <header className="px-5 sm:px-8">
+      <div className="mx-auto flex min-h-20 w-full max-w-[76rem] flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-foreground py-4 sm:min-h-24">
         <Link className="flex min-w-0 items-center gap-2.5" href="/">
-          <BrandLogo className="size-9 shrink-0" />
-          <span className="truncate text-sm font-semibold">{t("brand")}</span>
+          <BrandLogo className="size-8 shrink-0" />
+          <span className="truncate text-lg font-semibold tracking-tight sm:text-xl">{t("brand")}</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 text-sm text-muted-foreground sm:flex" aria-label={t("navigation")}>
+        <nav
+          className="order-last flex w-full items-center gap-6 overflow-x-auto text-xs text-muted-foreground md:order-none md:w-auto md:gap-7 md:text-sm"
+          aria-label={t("navigation")}
+        >
           <Link className="transition-colors hover:text-foreground" href="/#workspace">
             {t("convert")}
           </Link>
@@ -32,7 +35,7 @@ export async function HomeHeader() {
           </Link>
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-0 sm:gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
           <AuthControl />

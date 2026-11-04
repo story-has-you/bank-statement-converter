@@ -65,10 +65,10 @@ export function ConversionTable({ table, title, onlyRiskRows = false, riskFilter
   const tableTitle = title ?? t("table.title", { id: table.id });
 
   return (
-    <section className="rounded-md border border-border bg-card shadow-xs" aria-labelledby={`${table.id}-title`}>
-      <div className="flex flex-col gap-3 border-b border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <section className="min-w-0 border-y border-foreground/50 bg-card" aria-labelledby={`${table.id}-title`}>
+      <div className="flex flex-col gap-3 border-b border-border px-3 py-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 id={`${table.id}-title`} className="text-sm font-semibold">
+          <h2 id={`${table.id}-title`} className="font-heading text-2xl font-medium">
             {tableTitle}
           </h2>
           <p className="text-xs text-muted-foreground">{t("table.pages", { start: table.pageStart, end: table.pageEnd })}</p>

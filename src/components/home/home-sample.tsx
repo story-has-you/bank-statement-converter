@@ -10,15 +10,15 @@ export async function HomeSample() {
   const table = sample.tables[0];
 
   return (
-    <section className="border-t border-border" aria-labelledby="sample-title">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-5 px-5 py-12 sm:px-8">
-        <div className="grid gap-3">
-          <h2 id="sample-title" className="text-xl font-semibold sm:text-2xl">
+    <section className="px-5 sm:px-8" aria-labelledby="sample-title">
+      <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-5 border-t border-foreground pb-12 pt-6">
+        <div className="grid items-baseline gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <h2 id="sample-title" className="font-heading text-2xl font-medium sm:text-3xl">
             {t("title")}
           </h2>
           <p className="text-sm leading-6 text-muted-foreground">{t("description")}</p>
         </div>
-        <Table>
+        <Table className="[&_td]:h-11 [&_td]:px-3 [&_td:nth-child(n+3)]:text-right [&_th]:bg-muted [&_th]:px-3 [&_th]:text-xs [&_th]:text-muted-foreground [&_th:nth-child(n+3)]:text-right">
           <TableCaption>{t("caption")}</TableCaption>
           <TableHeader>
             <TableRow>
@@ -37,14 +37,26 @@ export async function HomeSample() {
             ))}
           </TableBody>
         </Table>
-        <div className="flex flex-wrap gap-3">
-          <a href="/samples/demo-statement.pdf" download className={buttonVariants({ variant: "outline" })}>
+        <div className="flex flex-wrap gap-x-6 gap-y-3">
+          <a
+            href="/samples/demo-statement.pdf"
+            download
+            className={buttonVariants({ variant: "link", className: "h-auto px-0 underline" })}
+          >
             {t("downloadPdf")}
           </a>
-          <a href={`/samples/demo-statement-${locale}.xlsx`} download className={buttonVariants({ variant: "outline" })}>
+          <a
+            href={`/samples/demo-statement-${locale}.xlsx`}
+            download
+            className={buttonVariants({ variant: "link", className: "h-auto px-0 underline" })}
+          >
             {t("downloadExcel")}
           </a>
-          <a href={`/samples/demo-statement-${locale}.csv`} download className={buttonVariants({ variant: "outline" })}>
+          <a
+            href={`/samples/demo-statement-${locale}.csv`}
+            download
+            className={buttonVariants({ variant: "link", className: "h-auto px-0 underline" })}
+          >
             {t("downloadCsv")}
           </a>
         </div>

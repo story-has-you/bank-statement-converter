@@ -11,8 +11,8 @@ export function HomeFooter() {
   const t = useTranslations("HomeFooter");
 
   return (
-    <footer className="border-t border-border px-5 py-8 text-xs text-muted-foreground sm:px-8 sm:py-10">
-      <div className="mx-auto w-full max-w-5xl">
+    <footer className="border-t border-foreground/60 bg-muted/40 px-5 py-8 text-xs text-muted-foreground sm:px-8 sm:py-12">
+      <div className="mx-auto w-full max-w-[76rem]">
         <AgentsFooter />
         <div className="mt-8 border-t border-border pt-6">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -24,7 +24,7 @@ export function HomeFooter() {
               className="group flex w-fit max-w-full items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
               href={siteConfig.contactHref}
             >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
+              <span className="flex size-10 shrink-0 items-center justify-center text-primary">
                 <MailIcon className="size-4" aria-hidden="true" />
               </span>
               <span className="min-w-0 text-sm leading-6 font-medium text-foreground [overflow-wrap:anywhere] group-hover:text-primary">

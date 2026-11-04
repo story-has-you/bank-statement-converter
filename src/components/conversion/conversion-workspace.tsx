@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CircleAlertIcon, FileSpreadsheetIcon } from "lucide-react";
+import { CircleAlertIcon } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 
 import { ConversionReview } from "@/components/conversion/conversion-review";
@@ -60,14 +60,10 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex min-w-0 items-start gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-card text-primary">
-            <FileSpreadsheetIcon className="size-5" aria-hidden="true" />
-          </span>
+      <div className="flex flex-col gap-5 border-b border-foreground pb-6 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
           <div className="min-w-0">
-            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{t("eyebrow")}</p>
-            <h1 className="truncate text-xl font-semibold" title={payload.filename}>
+            <h1 className="break-words font-heading text-3xl font-medium sm:text-4xl" title={payload.filename}>
               {payload.filename}
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>
@@ -125,8 +121,8 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
         </Alert>
       )}
 
-      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-        <div className="rounded-md border border-border bg-card p-3 shadow-xs">
+      <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-5 [&>div]:border-b [&>div]:border-border [&>div]:px-4 [&>div]:py-4 sm:[&>div]:border-b-0 sm:[&>div]:border-r sm:[&>div:first-child]:pl-0 sm:[&>div:last-child]:border-r-0">
+        <div>
           <dt className="text-xs text-muted-foreground">{t("summary.status")}</dt>
           <dd className="mt-1">
             <Badge variant={result.summary.status === "failed" ? "destructive" : "secondary"}>
@@ -134,19 +130,19 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
             </Badge>
           </dd>
         </div>
-        <div className="rounded-md border border-border bg-card p-3 shadow-xs">
+        <div>
           <dt className="text-xs text-muted-foreground">{t("summary.pages")}</dt>
           <dd className="mt-1 text-lg font-semibold">{format.number(result.pageCount)}</dd>
         </div>
-        <div className="rounded-md border border-border bg-card p-3 shadow-xs">
+        <div>
           <dt className="text-xs text-muted-foreground">{t("summary.tables")}</dt>
           <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.tableCount)}</dd>
         </div>
-        <div className="rounded-md border border-border bg-card p-3 shadow-xs">
+        <div>
           <dt className="text-xs text-muted-foreground">{t("summary.rows")}</dt>
           <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.rowCount)}</dd>
         </div>
-        <div className="rounded-md border border-border bg-card p-3 shadow-xs">
+        <div>
           <dt className="text-xs text-muted-foreground">{t("summary.warnings")}</dt>
           <dd className="mt-1 text-lg font-semibold">{format.number(result.summary.warningRowCount + result.summary.failedRowCount)}</dd>
         </div>

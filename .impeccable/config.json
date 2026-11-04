@@ -6,5 +6,29 @@
       "maxFindings": 5,
       "maxChars": 8000
     }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "manrope",
+        "files": [
+          ".impeccable/mocks/decision/bulletin.html"
+        ],
+        "createdAt": "2026-11-04T02:26:32.129Z",
+        "reason": "Agent: intentional unselected comparison sketch; user selected report.html, whose production typography is documented in DESIGN.md."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto sans sc",
+        "files": [
+          ".impeccable/mocks/decision/bulletin.html"
+        ],
+        "createdAt": "2026-11-04T02:26:32.286Z",
+        "reason": "Agent: intentional unselected comparison sketch; user selected report.html, whose production typography is documented in DESIGN.md."
+      }
+    ]
   }
 }

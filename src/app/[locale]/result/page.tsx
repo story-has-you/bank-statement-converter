@@ -15,7 +15,7 @@ export default function ConversionResultPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <HomeHeader />
-      <main id="main" className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 py-8 sm:px-8">
+      <main id="main" className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 py-10 sm:px-8 sm:py-12">
         <ClientMessages namespaces={["ConversionResult"]}>
           <ConversionResult />
         </ClientMessages>
