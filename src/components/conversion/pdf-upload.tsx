@@ -197,24 +197,39 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
             className="hidden"
             onChange={handleInputChange}
           />
-          <div className="grid gap-1 text-xs leading-5 text-muted-foreground">
-            <details>
-              <summary className="w-fit cursor-pointer rounded-sm text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
-                {t("aiDetails")}
-              </summary>
-              <p id="pdf-ai-summary" className="mt-2">
-                {t.rich("aiNotice", {
-                  link: (chunks) => (
-                    <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
-                      {chunks}
-                    </Link>
-                  ),
-                })}
-              </p>
-            </details>
-          </div>
         </Field>
       </FieldGroup>
+
+      <div className="mt-4 flex items-start justify-between gap-4">
+        <details className="min-w-0 flex-1 text-xs leading-5 text-muted-foreground">
+          <summary className="w-fit cursor-pointer rounded-sm text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
+            {t("aiDetails")}
+          </summary>
+          <p id="pdf-ai-summary" className="mt-2">
+            {t.rich("aiNotice", {
+              link: (chunks) => (
+                <Link className="text-primary underline underline-offset-4" href="/privacy#ai-parsing">
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
+        </details>
+        {allowAi && (
+          <Field orientation="horizontal" className="w-auto shrink-0" data-disabled={isPending}>
+            <Switch
+              id="conversion-ai"
+              checked={method === "llm"}
+              disabled={isPending}
+              onCheckedChange={(checked) => setSelection({ method: checked ? "llm" : "code", userId: account.user?.id ?? null })}
+              aria-describedby="pdf-ai-summary"
+              nativeButton
+              render={<button type="button" />}
+            />
+            <FieldLabel htmlFor="conversion-ai">{t("aiMethod")}</FieldLabel>
+          </Field>
+        )}
+      </div>
 
       {errorMessage && (
         <Alert variant="destructive" className="mt-4">
@@ -260,20 +275,6 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
           )}
         </div>
         <div className="flex flex-col gap-4">
-          {allowAi && (
-            <Field orientation="horizontal" className="w-auto" data-disabled={isPending}>
-              <Switch
-                id="conversion-ai"
-                checked={method === "llm"}
-                disabled={isPending}
-                onCheckedChange={(checked) => setSelection({ method: checked ? "llm" : "code", userId: account.user?.id ?? null })}
-                aria-describedby="pdf-ai-summary"
-                nativeButton
-                render={<button type="button" />}
-              />
-              <FieldLabel htmlFor="conversion-ai">{t("aiMethod")}</FieldLabel>
-            </Field>
-          )}
           <Button
             type="button"
             size="lg"

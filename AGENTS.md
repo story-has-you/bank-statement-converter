@@ -9,6 +9,10 @@
 - 今后开发或修改功能和页面时，所有面向用户的文案都使用 `next-intl` 国际化，包括可见文字、提示、错误信息、无障碍标签和页面 metadata。
 - 中文文案统一写入 `messages/zh-CN.json`，组件和业务代码中不要硬编码面向用户的中文文案。
 
+# UI 修改与验证
+
+- UI 修改完成后不需要由代理验证，由用户自行验证；除非用户明确要求，不主动运行浏览器检查、截图、测试、lint、类型检查或构建来验证 UI 改动。
+
 # Git 工作树
 
 - 新建工作树默认放在主仓库根目录的 `worktrees/<名称>/`，创建前确认 `/worktrees/` 已被 Git 忽略；已处于工作树时复用当前工作区。
@@ -29,17 +33,3 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
-
-## Agent skills
-
-### Issue tracker
-
-Issues and specs live in GitHub Issues via the `gh` CLI.
-
-### Triage labels
-
-Use the five canonical triage labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`.
-
-### Domain docs
-
-This is a single-context repo; use the root `GLOSSARY.md`. Internal documentation in `docs/`, including ADRs, is local and ignored by Git; consult it when available.
