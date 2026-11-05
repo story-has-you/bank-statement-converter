@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { useAtomValue } from "jotai";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 
@@ -15,9 +16,10 @@ import { subscriptionConfig } from "@/config/plans";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
-import { useConversion } from "@/components/conversion/conversion-provider";
+import { useConversionActions } from "@/components/conversion/conversion-provider";
 import { usePdfPreflight } from "@/components/conversion/use-pdf-preflight";
 import { clearConversionPayload } from "@/lib/conversion-storage";
+import { conversionPendingAtom } from "@/lib/conversion-state";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean }) {
@@ -37,8 +39,8 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   const [isDragging, setIsDragging] = useState(false);
   const preflight = usePdfPreflight(file);
   const errorMessage = error ? t(error, conversionLimits) : preflight.error;
-  const conversion = useConversion();
-  const isPending = conversion.state.phase === "pending";
+  const { start } = useConversionActions();
+  const isPending = useAtomValue(conversionPendingAtom);
   let statusLabel = t("status");
   let actionLabel = t("start");
   if (isPending) {
@@ -133,7 +135,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
       return;
     }
     if (await preflight.check()) {
-      conversion.start(file, method);
+      start(file, method);
       router.push("/result");
     }
   }

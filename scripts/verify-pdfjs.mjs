@@ -193,6 +193,26 @@ await assert.rejects(
 const partial = await parse(await statement({ bad: true }));
 assert.equal(partial.summary.status, "partial");
 assert.equal(partial.summary.failedRowCount, 1);
+
+// A missing table header must warn; a subtotal must not hide the following transactions.
+for (const subtotal of [false, true]) {
+  const doc = await PDFDocument.create();
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  function line(page, y, values) {
+    values.forEach((text, column) => {
+      if (text) page.drawText(text, { x: [40, 145, 365, 470][column], y, size: 10, font });
+    });
+  }
+  const first = doc.addPage([600, 800]);
+  line(first, 720, ["Date", "Description", "Amount", "Balance"]);
+  line(first, 698, ["2026-10-01", "Store A", "10.00", "990.00"]);
+  if (subtotal) line(first, 676, ["", "Subtotal", "10.00", ""]);
+  line(subtotal ? first : doc.addPage([600, 800]), subtotal ? 654 : 720, ["2026-10-02", "Store B", "20.00", "970.00"]);
+  const result = await parse(await doc.save());
+  assert.equal(result.summary.rowCount, subtotal ? 2 : 1);
+  assert.equal(result.summary.status, subtotal ? "success" : "partial");
+  assert.deepEqual(result.errors, subtotal ? [] : [{ code: "PAGE_UNPARSED", page: 2 }]);
+}
 await assert.rejects(parse(new TextEncoder().encode("not a pdf")), (e) => e.code === "INVALID_PDF");
 await assert.rejects(parse(new Uint8Array()), (e) => e.code === "EMPTY_FILE");
 await assert.rejects(parse(new Uint8Array(4 * 1024 * 1024 + 1)), (e) => e.code === "FILE_TOO_LARGE");
@@ -218,7 +238,7 @@ const empty = await PDFDocument.create();
 empty.addPage().drawText("Not a bank statement");
 await assert.rejects(parse(await empty.save()), (e) => e.code === "TABLE_NOT_FOUND");
 console.log(
-  "PDF.js integration: bordered/borderless, continuation, cross-page merging, multiple tables, watermark, partial result, invalid/empty/oversized/scanned/unsupported PDF, page limit and cancellation passed.",
+  "PDF.js integration: bordered/borderless, continuation, subtotals, headerless-page risks, cross-page merging, multiple tables, watermark, partial result, invalid/empty/oversized/scanned/unsupported PDF, page limit and cancellation passed.",
 );
 if (process.argv[2]) {
   const result = await parse(await readFile(process.argv[2]));

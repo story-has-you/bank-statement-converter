@@ -84,7 +84,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 根目录 Next.js 可部署到 Vercel，不再需要 Python 服务或 Cloudflare Containers。现有线上容器、域名和密钥资源不由本次代码改动删除，切换部署后可由管理员另行清理。
 
-[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时检查类型、既有集成检查、Lint 和构建，不再部署解析容器。
+[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时使用 Node.js 24 执行 `pnpm test`，覆盖账户、解析证据、导出、计费及额度回归和既有集成检查，不连接真实服务或部署解析容器。
 
 ### Vercel Next.js
 
@@ -133,7 +133,7 @@ Professional 和 Enterprise 使用资格有效时可主动选择 AI 解析，包
 
 ## 迁移验证
 
-`pnpm verify:pdfjs` 使用内存生成的 PDF 验证自动表格提取和异常场景；`pnpm verify:conversion` 使用隔离接口替身验证扣额及 AI 请求资格，不连接真实数据库或模型。两项均在 CI 执行，不新增单元测试。
+`pnpm test` 运行已保留的回归测试和两项集成检查。`pnpm verify:pdfjs` 使用内存生成的 PDF 验证自动表格提取、无表头续页风险、小计后的交易和异常场景；`pnpm verify:conversion` 使用隔离接口替身验证接口及 AI 请求资格。`tests/billing-quota.test.ts` 使用真实额度、计费模块及 Supabase 客户端，仅替换 HTTP 传输，验证并发 CAS、周期切换、重复与乱序事件、验签和金额边界；它不等同于 PostgreSQL 约束或真实支付验收。检查均不连接真实数据库、支付渠道或模型。
 
 可使用本地获准样本和已有 Python 对照 JSON 执行逐单元格比较：
 

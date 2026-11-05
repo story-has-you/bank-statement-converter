@@ -14,15 +14,6 @@ export type ConversionEvent =
 
 export type EmitConversionEvent = (event: ConversionEvent) => void;
 
-export function emitParsedTables(result: ParseResponse, emit: EmitConversionEvent): void {
-  result.tables.forEach(({ rows, ...table }, tableIndex) => {
-    emit({ type: "table", data: { tableIndex, table } });
-    for (let startIndex = 0; startIndex < rows.length; startIndex += 50) {
-      emit({ type: "rows", data: { tableIndex, startIndex, rows: rows.slice(startIndex, startIndex + 50) } });
-    }
-  });
-}
-
 // Validate preview fragments through the same contract as completed conversions.
 export function isPreviewTable(value: unknown): value is ParsedTable {
   return isParseResponse({

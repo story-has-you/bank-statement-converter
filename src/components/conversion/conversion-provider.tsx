@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, type ReactNode } from "react";
+import { Provider, useSetAtom } from "jotai";
 import { useLocale, useTranslations, type AppConfig } from "next-intl";
 import { conversionLimits } from "@/config/conversion";
 import { ConversionError } from "@/lib/conversion-errors";
@@ -9,29 +10,31 @@ import { createClient } from "@/lib/supabase/browser";
 import { trackEvent } from "@/lib/analytics";
 import { usePathname } from "@/i18n/navigation";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
+import { conversionRevisionAtom, conversionStateAtom } from "@/lib/conversion-state";
 import { ConversionStreamError, readConversionStream, type ConversionPreview } from "@/lib/conversion-stream-client";
 import type { ConversionMethod, ParseResponse } from "@/lib/conversion-types";
 
-type ConversionState =
-  | { phase: "idle" }
-  | { phase: "pending"; filename: string; preview: ConversionPreview }
-  | { phase: "complete"; filename: string; result: ParseResponse; storageFailed: boolean }
-  | { phase: "error"; filename: string; message: string };
-type ConversionContextValue = {
-  state: ConversionState;
-  revision: number;
+type ConversionActions = {
   start: (file: File, method: ConversionMethod) => void;
   reset: () => void;
 };
-const ConversionContext = createContext<ConversionContextValue | null>(null);
+const ConversionActionsContext = createContext<ConversionActions | null>(null);
 
 export function ConversionProvider({ children }: { children: ReactNode }) {
+  return (
+    <Provider>
+      <ConversionController>{children}</ConversionController>
+    </Provider>
+  );
+}
+
+function ConversionController({ children }: { children: ReactNode }) {
   const locale = useLocale();
   const t = useTranslations("ConversionResult.stream");
   const apiErrors = useTranslations("ApiErrors");
   const pathname = usePathname();
-  const [state, setState] = useState<ConversionState>({ phase: "idle" });
-  const [revision, setRevision] = useState(0);
+  const setState = useSetAtom(conversionStateAtom);
+  const setRevision = useSetAtom(conversionRevisionAtom);
   const active = useRef<AbortController | null>(null);
   const enteredResult = useRef(false);
   const previousLocale = useRef(locale);
@@ -47,7 +50,7 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     } catch {
       /* The next request reports storage failures. */
     }
-  }, []);
+  }, [setState, setRevision]);
 
   useEffect(() => {
     if (pathname === "/result") {
@@ -172,11 +175,11 @@ export function ConversionProvider({ children }: { children: ReactNode }) {
     })();
   }
 
-  return <ConversionContext.Provider value={{ state, revision, start, reset }}>{children}</ConversionContext.Provider>;
+  return <ConversionActionsContext.Provider value={{ start, reset }}>{children}</ConversionActionsContext.Provider>;
 }
 
-export function useConversion(): ConversionContextValue {
-  const value = useContext(ConversionContext);
+export function useConversionActions(): ConversionActions {
+  const value = useContext(ConversionActionsContext);
   if (!value) {
     throw new Error("ConversionProvider is required");
   }

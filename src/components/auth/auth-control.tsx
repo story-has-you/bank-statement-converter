@@ -3,7 +3,7 @@
 import { LogOutIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useConversion } from "@/components/conversion/conversion-provider";
+import { useConversionActions } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
@@ -21,7 +21,7 @@ export function AuthControl() {
   const signedIn = Boolean(user);
   const t = useTranslations("AuthControl");
   const router = useRouter();
-  const conversion = useConversion();
+  const { reset } = useConversionActions();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +39,7 @@ export function AuthControl() {
       if (authError) {
         setError(t("signOutFailed"));
       } else {
-        conversion.reset();
+        reset();
         router.refresh();
       }
     } catch {

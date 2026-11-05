@@ -139,23 +139,29 @@ export function validateRowEvidence(columns: ParseColumn[], values: ParsedRow["v
   const cell = (column: ParseColumn): string => (values[column.key] ?? "").trim();
   const issues: ParseIssue[] = [];
   const dateValues = dateColumns.map(cell);
-  if (!dateValues.some(isValidDate)) {
+  const invalidDate = dateColumns.some((column) => {
+    const value = cell(column);
+    const timeOnly = matchesHeader(column, ["time", "时间"]) && !matchesHeader(column, ["date", "datum", "wertstellung", "日期"]);
+    const clock =
+      /^(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/.test(value) || /^(?:0?[1-9]|1[0-2]):[0-5]\d(?::[0-5]\d)?\s*[ap]m$/i.test(value);
+    return value !== "" && !isValidDate(value) && !(timeOnly && clock);
+  });
+  if (invalidDate || !dateValues.some(isValidDate)) {
     issues.push({ code: dateValues.some(Boolean) ? "INVALID_DATE" : "MISSING_DATE", params: {} });
   }
   if (!descriptionColumns.some((column) => cell(column))) {
     issues.push({ code: "MISSING_DESCRIPTION", params: {} });
   }
   const amountValues = amountColumns.map(cell);
-  if (!amountValues.some(isValidAmount)) {
+  const invalidAmount = amountValues.some((value) => value !== "" && !isValidAmount(value));
+  if (invalidAmount || !amountValues.some(isValidAmount)) {
     const otherAmount = columns.some(
       (column) =>
         !amountColumns.includes(column) && !balanceColumns.includes(column) && !dateColumns.includes(column) && isValidAmount(cell(column)),
     );
-    let code = "MISSING_AMOUNT";
-    if (otherAmount) {
+    let code = invalidAmount ? "INVALID_AMOUNT" : "MISSING_AMOUNT";
+    if (!invalidAmount && otherAmount) {
       code = "AMOUNT_COLUMN_MISMATCH";
-    } else if (amountValues.some(Boolean)) {
-      code = "INVALID_AMOUNT";
     }
     issues.push({ code, params: {} });
   }

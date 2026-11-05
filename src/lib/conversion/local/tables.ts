@@ -18,6 +18,7 @@ const AMOUNT_HEADER =
   /金额|发生额|借|贷|收入|支出|amount|debit|credit|withdrawal|deposit|betrag|lastschrift|gutschrift|paid\s*(?:out|in)|money\s*(?:out|in)|transaction\s*total/i;
 const BALANCE_HEADER = /余额|balance|saldo/i;
 const OPENING = new Set(["previousbalance", "openingbalance", "saldovortrag", "anfangssaldo"]);
+const UNRESOLVED = /[\u0000-\u0008\u000e-\u001f\ufffd]/;
 type Cells = (string | null)[];
 type CellRow = { cells: Cells; source: number; top: number; unresolved?: boolean };
 type LocatedTable = { table: ParsedTable; box: number[] };
@@ -99,7 +100,7 @@ function continuationColumn(cells: Cells, headers: string[]) {
 function columnsFor(headers: string[]): ParseColumn[] {
   return headers.map((label, index) => ({ key: `c${index}`, label, index }));
 }
-function parseRows(headers: string[], input: CellRow[], page: number, grid: boolean): ParsedTable | null {
+function parseRows(headers: string[], input: CellRow[], page: number, grid: boolean): { table: ParsedTable; end: number } | null {
   const columns = columnsFor(headers),
     rows: ParsedRow[] = [],
     warnings: ParseIssue[] = [];
@@ -109,6 +110,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
   let previousDate: { value: string; row: number } | null = null;
   let lastDataTop: number | null = null;
   let pending: CellRow[] = [];
+  let end = Infinity;
   for (const item of input) {
     const { cells, source, top } = item;
     const text = clean(cells.join(" "));
@@ -118,6 +120,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
       ) &&
       !cells.some((cell) => cell && isValidDate(cell))
     ) {
+      end = top;
       break;
     }
     if (
@@ -125,18 +128,22 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
         text,
       )
     ) {
+      end = top;
       break;
     }
     if (!cells.some(Boolean)) {
       continue;
     }
-    if (cells.length === headers.length && cells.every((cell, i) => normalize(cell ?? "") === normalize(headers[i]))) {
+    if (statementHeader(cells) && !dateColumns.some((column) => cells[column.index] && isValidDate(cells[column.index]!))) {
       previousDate = null;
       pending = [];
       continue;
     }
     if (summaryRow(cells, headers)) {
-      break;
+      previousDate = null;
+      lastDataTop = null;
+      pending = [];
+      continue;
     }
     if (openingRow(cells)) {
       previousDate = null;
@@ -149,11 +156,16 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
     const hasDate = dateColumns.some((column) => cells[column.index] && isValidDate(cells[column.index]!));
     const hasAmount = amountColumns.some((column) => cells[column.index] && isValidAmount(cells[column.index]!));
     const hasDescription = descriptionColumns.some((column) => cells[column.index]);
-    if (!hasDate && !hasAmount) {
+    if (
+      !hasDate &&
+      !hasAmount &&
+      cells.every((cell, i) => !cell || isDescriptionHeader(headers[i] ?? "") || /security|cusip|counterparty|对手/i.test(headers[i] ?? ""))
+    ) {
       const index = continuationColumn(cells, headers);
       if (
         rows.length &&
-        cells.some((cell, i) => cell && (isDescriptionHeader(headers[i] ?? "") || /security|cusip/i.test(headers[i] ?? ""))) &&
+        (index >= 0 ||
+          cells.some((cell, i) => cell && (isDescriptionHeader(headers[i] ?? "") || /security|cusip/i.test(headers[i] ?? "")))) &&
         dateColumns.every((column) => !cells[column.index]) &&
         lastDataTop !== null &&
         top - lastDataTop <= 60
@@ -164,11 +176,12 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
             previous.values[column.key] = clean(`${previous.values[column.key] ?? ""} ${cells[column.index]}`);
           }
         });
-        continue;
-      }
-      if (index >= 0 && rows.length && lastDataTop !== null && top - lastDataTop <= 60) {
-        const row = rows.at(-1)!;
-        row.values[`c${index}`] = clean(`${row.values[`c${index}`] ?? ""} ${cells[index]}`);
+        if (item.unresolved || UNRESOLVED.test(text)) {
+          previous.status = "failed";
+          if (!previous.warnings.some((issue) => issue.code === "UNRESOLVED_CHARACTERS")) {
+            previous.warnings.push({ code: "UNRESOLVED_CHARACTERS", params: {} });
+          }
+        }
       } else if (index >= 0 && !rows.length) {
         pending.push(item);
       } else {
@@ -191,6 +204,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
       values[column.key] = clean([...pending.map((row) => row.cells[column.index] ?? ""), values[column.key] ?? ""].join(" "));
       sourceRow = pending[0].source;
     }
+    const unresolved = item.unresolved || pending.some((row) => row.unresolved);
     pending = [];
     const checkValues = { ...values };
     const rowWarnings: ParseIssue[] = [];
@@ -202,8 +216,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
       rowWarnings.push({ code: "INHERITED_DATE", params: { date: previousDate.value, page, row: previousDate.row } });
     }
     const issues = validateRowEvidence(columns, checkValues);
-    const unresolved = Object.values(values).some((value) => value && /[\u0000-\u0008\u000e-\u001f\ufffd]/.test(value));
-    if (unresolved || item.unresolved) {
+    if (unresolved || Object.values(values).some((value) => value && UNRESOLVED.test(value))) {
       issues.push({ code: "UNRESOLVED_CHARACTERS", params: {} });
     }
     rows.push({
@@ -220,7 +233,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
   warnings.push(
     ...columns.filter((column) => !column.label).map((column) => ({ code: "MISSING_HEADER", params: { column: column.index + 1 } })),
   );
-  return { id: "", pageStart: page, pageEnd: page, columns, rows, warnings };
+  return { table: { id: "", pageStart: page, pageEnd: page, columns, rows, warnings }, end };
 }
 
 function gridTables(page: PdfPage, lines: PdfLine[], number: number): LocatedTable[] {
@@ -340,20 +353,21 @@ function gridTables(page: PdfPage, lines: PdfLine[], number: number): LocatedTab
     if (start < 0) {
       continue;
     }
-    const table = parseRows(
+    const parsed = parseRows(
       headers,
       input.slice(start).map((row) => ({ ...row, cells: keep.map((i) => row.cells[i]) })),
       number,
       true,
     );
-    if (!table) {
+    if (!parsed) {
       continue;
     }
+    const { table } = parsed;
     const first = table.rows.find((row) => row.values.c0)?.values.c0;
     if (first && /^\d{4}[-/.]\d{1,2}[-/.]\d{1,2}\s+[A-Z]{3}$/.test(first) && DATE_HEADER.test(headers[0])) {
       continue;
     }
-    const box = [left, top, right, bottom];
+    const box = [left, top, right, Math.min(bottom, parsed.end)];
     if (!tables.some((existing) => inside({ x0: left, x1: right, top, bottom, text: "" }, existing.box))) {
       tables.push({ table, box });
     }
@@ -603,14 +617,20 @@ export function extractPageTables(page: PdfPage, number: number) {
         input[i].source = remaining.indexOf(loanDescription) + 1;
       }
     }
-    const table = parseRows(labels, input, number, false);
-    if (!table) {
+    const parsed = parseRows(labels, input, number, false);
+    if (!parsed) {
       continue;
     }
+    const { table } = parsed;
     const used = remaining.slice(start, end).flatMap((line) => line.words.filter((word) => word.x0 >= left && word.x0 < right));
-    const box = [left, remaining[start].top, Math.max(...used.map((word) => word.x1)), Math.max(...used.map((word) => word.bottom))];
+    const box = [
+      left,
+      remaining[start].top,
+      Math.max(...used.map((word) => word.x1)),
+      Math.min(parsed.end, Math.max(...used.map((word) => word.bottom))),
+    ];
     tables.push({ table, box });
-    for (let row = start; row < end; row++) {
+    for (let row = start; row < end && remaining[row].top < parsed.end; row++) {
       // Mark only rows belonging to this table, keeping unrelated areas available for omission checks.
       remaining[row].words = remaining[row].words.filter((word) => word.x0 < left || word.x0 >= right);
     }
@@ -622,9 +642,6 @@ export function extractPageTables(page: PdfPage, number: number) {
     const preceding = lines
       .slice(0, index)
       .findLastIndex((candidate) => statementHeader(clusters(candidate.words).map((cell) => cell.text)));
-    if (preceding < 0) {
-      return false;
-    }
     const section = lines.slice(preceding + 1, index).map((candidate) => normalize(candidate.words.map((word) => word.text).join(" ")));
     return !section.some((text) =>
       /totaladditions.*totalsubtractions|dailybalance|interestcharged|interestcalculation|percentagerate/.test(text),
