@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# página} other {# páginas}}",
     "perDay": "/ día",
     "perMonth": "/ mes",
-    "renewalNote": "Las suscripciones se renuevan automáticamente cada mes. Puedes cancelar la renovación automática en tu <account>cuenta</account>. Consulta las <terms>condiciones de suscripción y pago</terms>.",
+    "renewalNote": "Las suscripciones mensuales de Waffo muestran precios en USD sin impuestos; los métodos de pago, descuentos y total final aparecen al pagar. Las suscripciones se renuevan automáticamente cada mes. Puedes cancelar la renovación automática en tu <account>cuenta</account>. Consulta las <terms>condiciones de suscripción y pago</terms>.",
     "planQuota": "{pages, plural, one {# página} other {# páginas}} por mes",
     "current": "Plan actual",
     "cancelledPeriodActive": "La suscripción está cancelada. Los beneficios siguen disponibles hasta {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Guías y herramientas"
   },
   "LegalCommon": {
-    "lastUpdated": "Última actualización: 29 de octubre de 2026"
+    "lastUpdated": "Última actualización: 6 de noviembre de 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Suscripciones y pago",
-      "body": "Standard, Professional y Business se renuevan mensualmente al precio mostrado antes de la compra. Solo se realiza el cargo después de confirmar la compra. Puedes cancelar la renovación automática desde tu cuenta del sitio; el acceso de pago sigue disponible hasta que termine el período de facturación confirmado. Al pagar con Waffo, Waffo actúa como Merchant of Record y gestiona los pagos y los impuestos aplicables. Los precios de Waffo no incluyen impuestos; el importe final se muestra al pagar. Los proveedores de pago disponibles dependen de las opciones de compra que se muestren actualmente en el sitio."
+      "body": "Los planes se renuevan automáticamente cada mes. Las nuevas suscripciones usan el pago alojado de Waffo, que actúa como Merchant of Record y gestiona los pagos y los impuestos aplicables. Los precios mostrados no incluyen impuestos. Los métodos de pago, descuentos, impuestos y total final se muestran en Waffo. Creem y PayPal ya no se ofrecen para nuevas suscripciones. Puedes cancelar la renovación automática de Waffo desde tu cuenta del sitio; el acceso de pago se mantiene hasta el final del período confirmado.",
+      "prices": "Precios base mensuales actuales en USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Cada pago fija su precio base mensual; los enlaces y las suscripciones existentes conservan el precio acordado. Los cambios de precio del sitio se aplican a nuevos procesos de pago. Las renovaciones usan el precio base acordado, con los impuestos y descuentos que correspondan al pagar o renovar.",
+      "checkout": "Inicia sesión antes de suscribirte. Antes de pagar, puedes elegir otro plan iniciando un nuevo proceso de pago. Los enlaces anteriores pueden seguir admitiendo pagos: completa solo el que quieras usar. El acceso se activa cuando el sitio verifica el pago, no simplemente al volver de la página de pago. Varios pagos no suman cuotas de suscripción. Si has pagado pero el acceso no está confirmado, consulta tu cuenta o contacta con soporte antes de volver a pagar.",
+      "discounts": "Waffo puede aplicar un cupón válido a parte o a todo el importe. Un pago con descuento total también requiere confirmación y no es una prueba gratuita. Las condiciones y la duración del cupón figuran al pagar; un descuento inicial no significa que las siguientes renovaciones cuesten lo mismo."
     },
     "refunds": {
       "title": "Política de reembolsos",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Información de cuenta, cuota y facturación",
-      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de Waffo, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. Waffo maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel. Para usuarios con sesión, registramos ID de cuenta, copia del correo, hora, estado y códigos de error seguros solo para el análisis con IA elegido, para investigar fallos. El análisis local solo comunica páginas utilizadas. Los registros no contienen nombres ni contenidos de archivos, transacciones ni respuestas del modelo. Para crear el pago, enviamos el plan seleccionado y un identificador que lo vincula con la cuenta al proveedor elegido. Waffo también recibe el correo de la cuenta del sitio. Los metadatos de facturación también pueden incluir identificadores del plan y del pagador del proveedor, importe y moneda, importe original, importe e identificador del descuento e identificadores de eventos de pago."
+      "body": "Cuando inicia sesión en Google, Supabase almacena la identidad y los detalles de la cuenta necesarios para proporcionar servicios de cuenta. Después de activar una suscripción, almacenamos su estado, plan, identificador de suscripción de Waffo, período de facturación, correo electrónico del pagador y una instantánea del correo electrónico de la cuenta del sitio web en el momento de la compra. Waffo maneja la información de pago. Estos registros no contienen originales en PDF, transacciones extraídas ni contenido de Excel. Para usuarios con sesión, registramos ID de cuenta, copia del correo, hora, estado y códigos de error seguros solo para el análisis con IA elegido, para investigar fallos. El análisis local solo comunica páginas utilizadas. Los registros no contienen nombres ni contenidos de archivos, transacciones ni respuestas del modelo. Para crear el pago, enviamos el plan seleccionado y un identificador que lo vincula con la cuenta al proveedor elegido. Waffo también recibe el correo de la cuenta del sitio. Los metadatos de facturación también pueden incluir identificadores del plan y del pagador del proveedor, importe y moneda, importe original, importe e identificador del descuento e identificadores de eventos de pago.",
+      "checkout": "El pago alojado de Waffo recibe el identificador y correo de tu cuenta, el plan elegido, la referencia de pago y una oferta de precio firmada. Waffo conserva las sesiones sin pagar; el sitio no crea un nuevo registro local de suscripción pendiente por cada proceso de pago. Tras verificar el pago, conservamos el precio base mensual acordado y sus comprobantes, incluidos los importes original y pagado y, cuando corresponda, el descuento y el identificador del cupón. No guardamos el código del cupón. Los registros históricos, incluidos los de Creem y PayPal, pueden conservarse por motivos de servicio y obligaciones legales; esto no indica que esos proveedores estén disponibles para nuevas compras."
     },
     "technicalData": {
       "title": "Información técnica necesaria",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Faltan pruebas clave o la fila no puede verificarse de forma fiable.",
     "limitsTitle": "¿Qué PDF puedo seleccionar?",
     "limitsAnswer": "Selecciona un extracto bancario PDF de hasta {megabytes} MB y {pages} páginas. Sin sesión, con cuenta gratuita y con Standard se requiere una capa de texto; Professional y Business pueden intentar convertir escaneos. Ningún plan admite archivos protegidos con contraseña.",
-    "pricingAnswer": "Las cuotas gratuitas se restablecen a diario y las suscripciones dan páginas por periodo de facturación. Compara los planes e inicia sesión antes de suscribirte con Waffo. Los proveedores de pago disponibles dependen de las opciones de compra que se muestren actualmente en el sitio.",
+    "pricingAnswer": "Las cuotas gratuitas se restablecen cada día en UTC; las páginas de suscripción siguen el período de facturación confirmado. Inicia sesión para comprar mediante Waffo cuando el pago esté disponible. Las nuevas suscripciones ya no usan Creem ni PayPal. Los métodos disponibles son los que ofrece Waffo al pagar.",
     "faqAnswer": "Estas respuestas explican requisitos, cuotas y riesgos. Lee la respuesta pertinente y revisa tu PDF antes de convertirlo.",
     "planHeader": "Plan",
     "priceHeader": "Precio (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Diario (UTC)",
     "billingPeriod": "Periodo de facturación",
-    "billingNote": "Las suscripciones se renuevan mensualmente con Waffo. Los fallos no consumen cuota; los resultados parciales cuentan las páginas del PDF original. Los proveedores de pago disponibles dependen de las opciones de compra que se muestren actualmente en el sitio. Los precios de Waffo no incluyen impuestos; los impuestos aplicables y el total final se muestran al pagar.",
+    "billingNote": "Las nuevas suscripciones se renuevan mensualmente mediante Waffo en USD. Los precios no incluyen impuestos; los métodos de pago, descuentos, impuestos y total final se muestran al pagar. Los pagos y suscripciones existentes conservan su precio base mensual acordado cuando cambia el precio del sitio. Los fallos no consumen cuota; los resultados parciales cuentan las páginas del PDF original.",
     "privacyTitle": "¿Cómo se tratan mis datos?",
     "privacyAnswer": "El análisis local se realiza en tu navegador por defecto, sin subir el PDF, su nombre ni las transacciones. El PDF completo y su nombre solo se envían a nuestro servidor y a Qwen AI Platform si eliges el análisis con IA. El contenido se usa solo para la conversión y descarga actuales. Conserva el PDF y Excel porque el servicio no tiene historial de archivos.",
     "browserTitle": "¿Qué se guarda temporalmente en mi navegador?",

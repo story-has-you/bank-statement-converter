@@ -83,7 +83,7 @@ function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intent
   const tables: Record<string, Row[]> = { billing_subscriptions: structuredClone(subscriptions), billing_subscription_intents: structuredClone(intents) };
   const calls: { url: URL; body: Row; method: string }[] = [];
   const state = { orders: [waffoRemote()], payment: waffoPayment(), failCreate: false, copySyncFails: false,
-    copySyncMismatch: false, backfillConflict: false,
+    copySyncMismatch: false, backfillConflict: false, billingInsertError: null as Row | null,
     beforeCreate: undefined as ((body: Row) => Promise<void>) | undefined };
   t.mock.method(globalThis, "fetch", async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(input instanceof Request ? input.url : input);
@@ -104,6 +104,7 @@ function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intent
       });
       let rows = tables[table].filter(matches);
       if (method === "POST") {
+        if (table === "billing_subscriptions" && state.billingInsertError) return json(state.billingInsertError, 400);
         const duplicate = tables[table].some((row) => table === "billing_subscription_intents" ? row.attempt_id === body.attempt_id : row.provider === body.provider && row.provider_subscription_id === body.provider_subscription_id);
         if (duplicate) return json({ code: "23505", message: "Fixture conflict" }, 409);
         tables[table].push(body); rows = [body];
@@ -231,6 +232,18 @@ test("signed zero-dollar Waffo webhook stores the discount once and keeps the re
   assert.equal((await send()).status, 502);
   assert.equal(tables.billing_subscriptions.length, 0);
   event.data.chargedAmount = "0.00";
+  const errorLog = t.mock.method(console, "error", () => {});
+  state.billingInsertError = { code: "PGRST204", message: "Could not find the 'recurring_amount_usd' column of 'billing_subscriptions' in the schema cache",
+    details: "private payment data", hint: null };
+  const failed = await send();
+  assert.equal(failed.status, 502);
+  assert.deepEqual(await failed.json(), { error: "webhookProcessingFailed" });
+  assert.deepEqual(errorLog.mock.calls[0].arguments, ["Failed to process billing webhook", {
+    provider: "waffo", reason: "WEBHOOK_PROCESSING_FAILED", eventId: event.id, subscriptionId: remote.id,
+    errorCode: "PGRST204", errorMessage: state.billingInsertError.message,
+  }]);
+  assert.equal(tables.billing_subscriptions.length, 0);
+  state.billingInsertError = null;
   const response = await send();
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { received: true });

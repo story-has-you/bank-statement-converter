@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, number} halaman",
     "perDay": "/ hari",
     "perMonth": "/ bulan",
-    "renewalNote": "Langganan diperpanjang secara otomatis setiap bulan. Anda dapat membatalkan perpanjangan otomatis melalui <account>akun</account> Anda. Lihat <terms>ketentuan langganan dan pembayaran</terms>.",
+    "renewalNote": "Langganan bulanan Waffo menampilkan harga dalam USD sebelum pajak; metode pembayaran, diskon, dan total akhir ada di checkout. Langganan diperpanjang secara otomatis setiap bulan. Anda dapat membatalkan perpanjangan otomatis melalui <account>akun</account> Anda. Lihat <terms>ketentuan langganan dan pembayaran</terms>.",
     "planQuota": "{pages, number} halaman per bulan",
     "current": "Paket saat ini",
     "cancelledPeriodActive": "Langganan sudah dibatalkan. Manfaat tetap tersedia hingga {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Panduan dan alat"
   },
   "LegalCommon": {
-    "lastUpdated": "Terakhir diperbarui: 29 Oktober 2026"
+    "lastUpdated": "Terakhir diperbarui: 6 November 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Langganan dan pembayaran",
-      "body": "Standard, Professional, dan Business diperpanjang setiap bulan dengan harga yang ditampilkan sebelum pembelian. Anda hanya dikenai biaya setelah mengonfirmasi pembelian. Batalkan perpanjangan otomatis dari akun situs Anda; akses berbayar tetap tersedia hingga akhir periode penagihan yang dikonfirmasi. Untuk pembayaran melalui Waffo, Waffo bertindak sebagai Merchant of Record dan menangani pembayaran serta pajak yang berlaku. Harga Waffo belum termasuk pajak; jumlah akhir ditampilkan saat pembayaran. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs."
+      "body": "Paket diperpanjang otomatis setiap bulan. Langganan baru menggunakan checkout yang dihosting Waffo; Waffo bertindak sebagai Merchant of Record dan menangani pembayaran serta pajak. Harga paket yang ditampilkan belum termasuk pajak. Metode pembayaran, diskon, pajak, dan total akhir ditampilkan di checkout Waffo. Creem dan PayPal tidak lagi ditawarkan untuk langganan baru. Batalkan perpanjangan otomatis Waffo melalui akun situs Anda; akses berbayar berlaku hingga akhir periode tagihan yang dikonfirmasi.",
+      "prices": "Harga dasar bulanan saat ini dalam USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Setiap checkout mengunci harga dasar bulanannya; tautan dan langganan yang sudah ada mempertahankan harga yang disepakati. Perubahan harga situs berlaku untuk checkout baru. Perpanjangan memakai harga dasar yang disepakati, dengan pajak dan diskon yang berlaku saat pembayaran atau perpanjangan.",
+      "checkout": "Masuk sebelum berlangganan. Sebelum membayar, Anda dapat memilih paket lain dengan memulai checkout baru. Tautan sebelumnya mungkin masih menerima pembayaran: selesaikan hanya checkout yang ingin digunakan. Akses aktif setelah situs memverifikasi pembayaran, bukan sekadar setelah kembali dari checkout. Beberapa pembayaran tidak menggabungkan kuota langganan. Jika sudah membayar tetapi akses belum dikonfirmasi, periksa akun atau hubungi dukungan sebelum membayar lagi.",
+      "discounts": "Waffo dapat menerapkan kupon yang valid untuk sebagian atau seluruh pembayaran. Pembayaran dengan diskon penuh tetap memerlukan konfirmasi dan bukan uji coba gratis. Syarat dan masa berlaku kupon mengikuti ketentuan checkout; diskon pembayaran pertama tidak menjamin jumlah yang sama pada perpanjangan berikutnya."
     },
     "refunds": {
       "title": "Kebijakan pengembalian dana",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian lokal hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Waffo juga menerima email akun situs. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran."
+      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian lokal hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Waffo juga menerima email akun situs. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran.",
+      "checkout": "Checkout yang dihosting Waffo menerima pengenal akun, email akun, paket yang dipilih, referensi checkout, dan penawaran harga bertanda tangan. Sesi yang belum dibayar disimpan oleh Waffo; situs tidak membuat catatan langganan lokal tertunda baru untuk setiap checkout. Setelah pembayaran diverifikasi, kami menyimpan harga dasar bulanan yang disepakati dan bukti pembayaran, termasuk jumlah awal dan yang dibayar serta jumlah diskon dan pengenal kupon jika berlaku. Kami tidak menyimpan kode kupon. Catatan tagihan historis, termasuk Creem dan PayPal, dapat disimpan untuk layanan dan kewajiban hukum; hal ini tidak berarti penyedia tersebut tersedia untuk pembelian baru."
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Bukti penting tidak tersedia atau baris tidak dapat diverifikasi dengan andal.",
     "limitsTitle": "PDF apa yang dapat dipilih?",
     "limitsAnswer": "Pilih satu rekening koran PDF hingga {megabytes} MB dan {pages} halaman. Pengguna tanpa login, gratis, dan Standard memerlukan lapisan teks; Professional dan Business dapat mencoba hasil pindai. Berkas berpassword tidak didukung pada semua paket.",
-    "pricingAnswer": "Kuota gratis direset setiap hari dan langganan menyediakan halaman per periode tagihan. Bandingkan paket dan masuk sebelum berlangganan melalui Waffo. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs.",
+    "pricingAnswer": "Kuota gratis direset setiap hari menurut UTC; halaman langganan mengikuti periode tagihan yang dikonfirmasi. Masuk untuk membeli melalui Waffo saat checkout tersedia. Langganan baru tidak lagi menggunakan Creem atau PayPal. Metode pembayaran mengikuti pilihan di checkout Waffo.",
     "faqAnswer": "Jawaban ini menjelaskan syarat berkas, kuota, dan risiko. Baca jawaban yang relevan dan periksa PDF sebelum mengonversi.",
     "planHeader": "Paket",
     "priceHeader": "Harga (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Harian (UTC)",
     "billingPeriod": "Periode tagihan",
-    "billingNote": "Langganan diperpanjang otomatis setiap bulan melalui Waffo. Konversi gagal tidak memakai kuota; hasil parsial dihitung dari halaman PDF asli. Penyedia pembayaran yang tersedia bergantung pada opsi pembelian yang sedang ditampilkan di situs. Harga Waffo belum termasuk pajak; pajak yang berlaku dan total akhir ditampilkan saat checkout.",
+    "billingNote": "Langganan baru diperpanjang setiap bulan melalui Waffo dalam USD. Harga belum termasuk pajak; metode pembayaran, diskon, pajak, dan total akhir ada di checkout. Checkout dan langganan yang sudah ada mempertahankan harga dasar bulanan yang disepakati saat harga situs berubah. Konversi gagal tidak memakai kuota; hasil parsial menghitung halaman PDF asli.",
     "privacyTitle": "Bagaimana data saya diproses?",
     "privacyAnswer": "Secara default, penguraian lokal berlangsung di browser tanpa mengunggah PDF, nama berkas, atau transaksi. PDF lengkap dan nama berkas hanya dikirim ke server kami dan Qwen AI Platform jika Anda memilih AI. Isi rekening koran hanya dipakai untuk konversi dan unduhan saat ini. Simpan PDF dan Excel karena layanan tidak memiliki riwayat berkas.",
     "browserTitle": "Apa yang disimpan sementara di browser?",

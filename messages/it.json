@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# pagina} other {# pagine}}",
     "perDay": "/ giorno",
     "perMonth": "/ mese",
-    "renewalNote": "Gli abbonamenti si rinnovano automaticamente ogni mese. Puoi annullare il rinnovo automatico dal tuo <account>account</account>. Consulta le <terms>condizioni di abbonamento e pagamento</terms>.",
+    "renewalNote": "Gli abbonamenti mensili Waffo mostrano prezzi in USD al netto delle imposte; metodi di pagamento, sconti e totale sono indicati al checkout. Gli abbonamenti si rinnovano automaticamente ogni mese. Puoi annullare il rinnovo automatico dal tuo <account>account</account>. Consulta le <terms>condizioni di abbonamento e pagamento</terms>.",
     "planQuota": "{pages, plural, one {# pagina} other {# pagine}} al mese",
     "current": "Piano attuale",
     "cancelledPeriodActive": "L’abbonamento è annullato. I vantaggi restano disponibili fino al {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Guide e strumenti"
   },
   "LegalCommon": {
-    "lastUpdated": "Ultimo aggiornamento: 29 ottobre 2026"
+    "lastUpdated": "Ultimo aggiornamento: 6 novembre 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Abbonamenti e pagamenti",
-      "body": "Standard, Professional ed Business si rinnovano mensilmente al prezzo indicato prima dell’acquisto. L’addebito avviene solo dopo la conferma dell’acquisto. Puoi annullare il rinnovo automatico dal tuo account sul sito; l’accesso a pagamento rimane disponibile fino alla fine del periodo di fatturazione confermato. Per i pagamenti con Waffo, Waffo agisce come Merchant of Record e gestisce i pagamenti e le imposte applicabili. I prezzi Waffo non includono le imposte; il totale viene mostrato al pagamento. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito."
+      "body": "I piani si rinnovano automaticamente ogni mese. I nuovi abbonamenti usano il checkout ospitato da Waffo, che agisce come Merchant of Record e gestisce pagamenti e imposte applicabili. I prezzi mostrati sono al netto delle imposte. Metodi di pagamento, sconti, imposte e totale finale sono indicati nel checkout Waffo. Creem e PayPal non sono più offerti per i nuovi abbonamenti. Puoi annullare il rinnovo automatico Waffo dal tuo account sul sito; l’accesso pagato rimane fino alla fine del periodo confermato.",
+      "prices": "Prezzi base mensili attuali in USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Ogni checkout blocca il proprio prezzo base mensile; i link e gli abbonamenti esistenti mantengono il prezzo concordato. Le variazioni sul sito valgono per i nuovi checkout. I rinnovi usano il prezzo base concordato con le imposte e gli sconti applicabili al pagamento o al rinnovo.",
+      "checkout": "Accedi prima di abbonarti. Prima di pagare puoi scegliere un altro piano avviando un nuovo checkout. I link precedenti potrebbero ancora accettare pagamenti: completa solo il checkout desiderato. L’accesso si attiva dopo la verifica del pagamento da parte del sito, non semplicemente al ritorno dal checkout. Più pagamenti non sommano le quote degli abbonamenti. Se hai pagato ma l’accesso non è confermato, controlla l’account o contatta l’assistenza prima di pagare di nuovo.",
+      "discounts": "Waffo può applicare un coupon valido a parte o all’intero pagamento. Anche un pagamento interamente scontato richiede conferma e non è una prova gratuita. Condizioni e durata del coupon sono indicate al checkout; lo sconto iniziale non garantisce lo stesso importo per i rinnovi successivi."
     },
     "refunds": {
       "title": "Politica di rimborso",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Dati di account, utilizzo e fatturazione",
-      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti con accesso registriamo ID account, copia dell’e-mail, ora, stato e codici di errore sicuri solo per l’analisi IA scelta, per risolvere problemi. L’analisi locale comunica solo le pagine utilizzate. I registri non contengono nomi o contenuti dei file, transazioni o output del modello. Per creare il pagamento inviamo al fornitore scelto il piano selezionato e un identificativo che lo collega all’account. Waffo riceve anche l’e-mail dell’account del sito. I metadati di fatturazione possono includere anche gli identificativi del piano e del pagatore presso il fornitore, importo e valuta, importo originale, importo e identificativo dello sconto e identificativi degli eventi di pagamento."
+      "body": "Quando accedi con Google, Supabase conserva i dati di identità e account necessari al servizio. Dopo l'attivazione di un abbonamento, conserviamo stato, piano, identificativo Waffo, periodo di fatturazione, email del pagatore e una copia dell'email dell'account del sito al momento dell'acquisto. Waffo gestisce i dati di pagamento. Questi registri non contengono PDF originali, movimenti estratti o contenuti Excel. Per gli utenti con accesso registriamo ID account, copia dell’e-mail, ora, stato e codici di errore sicuri solo per l’analisi IA scelta, per risolvere problemi. L’analisi locale comunica solo le pagine utilizzate. I registri non contengono nomi o contenuti dei file, transazioni o output del modello. Per creare il pagamento inviamo al fornitore scelto il piano selezionato e un identificativo che lo collega all’account. Waffo riceve anche l’e-mail dell’account del sito. I metadati di fatturazione possono includere anche gli identificativi del piano e del pagatore presso il fornitore, importo e valuta, importo originale, importo e identificativo dello sconto e identificativi degli eventi di pagamento.",
+      "checkout": "Il checkout ospitato da Waffo riceve identificativo ed e-mail dell’account, piano scelto, riferimento del checkout e offerta di prezzo firmata. Waffo conserva le sessioni non pagate; il sito non crea un nuovo abbonamento locale in attesa per ogni checkout. Dopo la verifica del pagamento conserviamo il prezzo base mensile concordato e le prove di pagamento, inclusi importo originale e pagato e, se applicabili, sconto e identificativo del coupon. Non salviamo il codice del coupon. I dati storici di fatturazione, inclusi quelli Creem e PayPal, possono essere conservati per il servizio e gli obblighi legali; ciò non indica che tali fornitori siano disponibili per nuovi acquisti."
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Mancano prove essenziali o la riga non è verificabile in modo affidabile.",
     "limitsTitle": "Quali PDF posso selezionare?",
     "limitsAnswer": "Seleziona un estratto conto PDF fino a {megabytes} MB e {pages} pagine. Senza accesso, con un account gratuito e con Standard serve un livello di testo; Professional ed Business possono provare le scansioni. Nessun piano supporta file protetti da password.",
-    "pricingAnswer": "Le quote gratuite si rinnovano ogni giorno, quelle a pagamento seguono il periodo di fatturazione. Confronta i piani e accedi prima di abbonarti con Waffo. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito.",
+    "pricingAnswer": "Le quote gratuite si azzerano ogni giorno in UTC; le pagine degli abbonamenti seguono il periodo di fatturazione confermato. Accedi per acquistare tramite Waffo quando il checkout è disponibile. I nuovi abbonamenti non usano più Creem o PayPal. I metodi di pagamento sono quelli offerti nel checkout Waffo.",
     "faqAnswer": "Queste risposte spiegano requisiti, quote e rischi. Leggi la risposta pertinente e controlla il PDF prima della conversione.",
     "planHeader": "Piano",
     "priceHeader": "Prezzo (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Giornaliero (UTC)",
     "billingPeriod": "Periodo di fatturazione",
-    "billingNote": "Gli abbonamenti si rinnovano mensilmente tramite Waffo. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale. I fornitori di pagamento disponibili dipendono dalle opzioni di acquisto attualmente mostrate sul sito. I prezzi Waffo sono al netto delle imposte; le imposte applicabili e il totale finale sono mostrati al pagamento.",
+    "billingNote": "I nuovi abbonamenti si rinnovano mensilmente tramite Waffo in USD. I prezzi sono al netto delle imposte; metodi di pagamento, sconti, imposte e totale sono indicati al checkout. Checkout e abbonamenti esistenti mantengono il prezzo base mensile concordato se cambia il prezzo del sito. Gli errori non consumano quota; i risultati parziali contano le pagine del PDF originale.",
     "privacyTitle": "Come vengono trattati i miei dati?",
     "privacyAnswer": "L’analisi locale avviene nel browser per impostazione predefinita, senza caricare il PDF, il nome del file o le transazioni. Il PDF completo e il suo nome vengono inviati al nostro server e a Qwen AI Platform solo se scegli l’IA. Il contenuto serve solo alla conversione e al download attuali. Conserva PDF ed Excel perché il servizio non offre una cronologia dei file.",
     "browserTitle": "Cosa viene salvato temporaneamente nel browser?",

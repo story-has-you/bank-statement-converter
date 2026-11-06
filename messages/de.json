@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
     "perDay": "/ Tag",
     "perMonth": "/ Monat",
-    "renewalNote": "Abonnements verlängern sich jeden Monat automatisch. Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen. Weitere Informationen finden Sie in den <terms>Abonnement- und Zahlungsbedingungen</terms>.",
+    "renewalNote": "Waffo-Monatsabonnements werden in USD ohne Steuern angezeigt; Zahlungsarten, Rabatte und Endbetrag stehen im Checkout. Abonnements verlängern sich jeden Monat automatisch. Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen. Weitere Informationen finden Sie in den <terms>Abonnement- und Zahlungsbedingungen</terms>.",
     "planQuota": "{pages, plural, one {# Seite} other {# Seiten}} pro Monat",
     "current": "Aktueller Plan",
     "cancelledPeriodActive": "Das Abonnement ist gekündigt. Die Leistungen bleiben bis {date} (UTC) verfügbar.",
@@ -412,7 +412,7 @@
     "resources": "Anleitungen und Werkzeuge"
   },
   "LegalCommon": {
-    "lastUpdated": "Zuletzt aktualisiert: 29. Oktober 2026"
+    "lastUpdated": "Zuletzt aktualisiert: 6. November 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Abonnements und Zahlung",
-      "body": "Standard, Professional und Business verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Bei Zahlungen über Waffo ist Waffo der Merchant of Record und wickelt Zahlungen sowie anfallende Steuern ab. Die Waffo-Preise verstehen sich ohne Steuern; der Endbetrag wird beim Bezahlen angezeigt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen."
+      "body": "Abonnements verlängern sich jeden Monat automatisch. Neue Abonnements nutzen den gehosteten Waffo-Checkout. Waffo wickelt als Merchant of Record Zahlungen und anfallende Steuern ab. Angezeigte Tarifpreise sind Nettopreise. Verfügbare Zahlungsarten, Rabatte, Steuern und Endbetrag stehen im Waffo-Checkout. Creem und PayPal werden für neue Abonnements nicht mehr angeboten. Die automatische Waffo-Verlängerung können Sie im Website-Konto kündigen; bezahlter Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen.",
+      "prices": "Aktuelle monatliche Grundpreise in USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Jeder Checkout legt seinen Grundpreis fest; bestehende Zahlungslinks und Abonnements behalten den vereinbarten Preis. Preisänderungen auf der Website gelten für neu erstellte Checkouts. Verlängerungen verwenden den vereinbarten Grundpreis mit den jeweils geltenden Steuern und Rabatten.",
+      "checkout": "Melden Sie sich vor dem Abonnieren an. Vor der Zahlung können Sie einen anderen Tarif wählen und einen neuen Checkout starten. Frühere Zahlungslinks können weiterhin zahlbar sein: Bezahlen Sie nur den gewünschten Checkout. Der Zugang wird erst nach Prüfung der Zahlung durch die Website aktiviert, nicht allein durch die Rückkehr vom Checkout. Mehrere Zahlungen werden nicht zu einem Kontingent addiert. Prüfen Sie nach einer Zahlung ohne bestätigten Zugang Ihr Konto oder kontaktieren Sie den Support, bevor Sie erneut zahlen.",
+      "discounts": "Waffo kann gültige Gutscheine auf einen Teil oder den gesamten Zahlbetrag anwenden. Auch bei vollständigem Rabatt ist eine Zahlungsbestätigung erforderlich; es handelt sich nicht um eine kostenlose Testphase. Bedingungen und Dauer richten sich nach dem Checkout. Ein Rabatt auf die erste Zahlung gilt nicht automatisch für spätere Verlängerungen."
     },
     "refunds": {
       "title": "Rückerstattungsregelung",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Waffo erhält außerdem die E-Mail-Adresse des Website-Kontos. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören."
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Waffo erhält außerdem die E-Mail-Adresse des Website-Kontos. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören.",
+      "checkout": "Der gehostete Waffo-Checkout erhält Kontokennung, Konto-E-Mail, gewählten Tarif, Checkout-Referenz und signiertes Preisangebot. Unbezahlte Checkout-Sitzungen werden von Waffo gespeichert; die Website legt nicht für jeden Checkout einen neuen lokalen Datensatz für ein ausstehendes Abonnement an. Nach geprüfter Zahlung speichern wir den vereinbarten monatlichen Grundpreis und Zahlungsnachweise, einschließlich ursprünglichem und gezahltem Betrag sowie gegebenenfalls Rabattbetrag und Gutschein-ID. Den Gutscheincode speichern wir nicht. Historische Abrechnungsdaten, auch von Creem und PayPal, können für Servicezwecke und gesetzliche Pflichten erhalten bleiben; diese Anbieter stehen damit nicht für neue Käufe zur Verfügung."
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
     "limitsTitle": "Welche PDFs kann ich auswählen?",
     "limitsAnswer": "Wählen Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten aus. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Business können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
-    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Waffo-Abo an. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen.",
+    "pricingAnswer": "Kostenlose Tageskontingente werden nach UTC zurückgesetzt; Abonnementseiten folgen dem bestätigten Abrechnungszeitraum. Melden Sie sich an, um bei geöffnetem Checkout über Waffo zu kaufen. Neue Abonnements nutzen weder Creem noch PayPal. Verfügbare Zahlungsarten werden im Waffo-Checkout angezeigt.",
     "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
     "planHeader": "Tarif",
     "priceHeader": "Preis (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Kostenlos",
     "dailyPeriod": "Täglich (UTC)",
     "billingPeriod": "Abrechnungszeitraum",
-    "billingNote": "Abos verlängern sich monatlich über Waffo. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen. Waffo zeigt Nettopreise an; anfallende Steuern und der endgültige Gesamtbetrag werden im Checkout angezeigt.",
+    "billingNote": "Neue Abonnements verlängern sich monatlich über Waffo in USD. Preise sind ohne Steuern; Zahlungsarten, Rabatte, Steuern und Endbetrag stehen im Checkout. Bestehende Checkouts und Abonnements behalten bei Website-Preisänderungen ihren vereinbarten monatlichen Grundpreis. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse zählen die Original-PDF-Seiten.",
     "privacyTitle": "Wie werden meine Daten verarbeitet?",
     "privacyAnswer": "Die lokale Analyse erfolgt standardmäßig im Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nur wenn Sie KI wählen, werden die vollständige PDF und der Dateiname an unseren Server und Qwen AI Platform gesendet. Auszugsinhalte dienen nur der aktuellen Konvertierung und dem Download. Bewahren Sie PDF und Excel selbst auf, da es keinen Dateiverlauf gibt.",
     "browserTitle": "Was wird vorübergehend im Browser gespeichert?",

@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# page} other {# pages}}",
     "perDay": "/ jour",
     "perMonth": "/ mois",
-    "renewalNote": "Les abonnements se renouvellent automatiquement chaque mois. Vous pouvez annuler le renouvellement automatique dans votre <account>compte</account>. Consultez les <terms>conditions d’abonnement et de paiement</terms>.",
+    "renewalNote": "Les abonnements mensuels Waffo affichent des prix en USD hors taxes ; moyens de paiement, remises et total figurent au paiement. Les abonnements se renouvellent automatiquement chaque mois. Vous pouvez annuler le renouvellement automatique dans votre <account>compte</account>. Consultez les <terms>conditions d’abonnement et de paiement</terms>.",
     "planQuota": "{pages, plural, one {# page} other {# pages}} par mois",
     "current": "Forfait actuel",
     "cancelledPeriodActive": "L’abonnement est résilié. Les avantages restent disponibles jusqu’au {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Guides et outils"
   },
   "LegalCommon": {
-    "lastUpdated": "Dernière mise à jour : 29 octobre 2026"
+    "lastUpdated": "Dernière mise à jour : 6 novembre 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Abonnements et paiement",
-      "body": "Standard, Professional et Business sont renouvelés chaque mois au prix affiché avant l’achat. Vous êtes débité uniquement après confirmation de l’achat. Vous pouvez annuler le renouvellement automatique depuis votre compte sur le site ; l’accès payant reste disponible jusqu’à la fin de la période de facturation confirmée. Pour les paiements Waffo, Waffo agit en tant que Merchant of Record et gère les paiements et les taxes applicables. Les prix Waffo sont hors taxes ; le montant final est indiqué au paiement. Les prestataires disponibles dépendent des options d’achat actuellement affichées sur le site."
+      "body": "Les forfaits se renouvellent automatiquement chaque mois. Les nouveaux abonnements utilisent le paiement hébergé de Waffo, qui agit en tant que Merchant of Record et traite les paiements et taxes applicables. Les prix affichés sont hors taxes. Les moyens de paiement, remises, taxes et total définitif figurent dans le paiement Waffo. Creem et PayPal ne sont plus proposés pour les nouveaux abonnements. Annulez le renouvellement automatique Waffo depuis votre compte du site ; l’accès payé reste disponible jusqu’à la fin de la période confirmée.",
+      "prices": "Prix mensuels de base actuels en USD : Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Chaque session de paiement fixe son prix de base ; les liens et abonnements existants conservent le prix convenu. Les changements du site concernent les nouvelles sessions. Les renouvellements utilisent le prix de base convenu, avec les taxes et remises applicables au paiement ou au renouvellement.",
+      "checkout": "Connectez-vous avant de vous abonner. Avant de payer, vous pouvez choisir un autre forfait en ouvrant une nouvelle session de paiement. Les anciens liens peuvent encore accepter un paiement : ne réglez que la session souhaitée. L’accès est activé après vérification du paiement par le site, pas simplement au retour de la page de paiement. Plusieurs paiements ne cumulent pas les quotas. Si vous avez payé mais que l’accès n’est pas confirmé, consultez votre compte ou contactez l’assistance avant de payer à nouveau.",
+      "discounts": "Waffo peut appliquer un coupon valide à une partie ou à la totalité du paiement. Même intégralement remisé, un paiement doit être confirmé et ne constitue pas un essai gratuit. Les conditions et la durée du coupon figurent au paiement ; une remise initiale ne garantit pas le même montant aux renouvellements suivants."
     },
     "refunds": {
       "title": "Politique de remboursement",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
-      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Waffo, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Waffo gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons identifiant de compte, copie de l’e-mail, heure, état et codes d’erreur sûrs uniquement pour l’analyse IA choisie, à des fins de dépannage. L’analyse locale ne transmet que le nombre de pages utilisées. Les journaux ne contiennent ni nom ou contenu de fichier, ni transactions ou sorties du modèle. Pour créer le paiement, nous transmettons la formule choisie et un identifiant de rattachement au compte au prestataire sélectionné. Waffo reçoit aussi l’adresse e-mail du compte du site. Les métadonnées de facturation peuvent également inclure les identifiants de formule et de payeur du prestataire, le montant et la devise, le montant initial, le montant et l’identifiant de remise, ainsi que les identifiants d’événements de paiement."
+      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Waffo, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Waffo gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons identifiant de compte, copie de l’e-mail, heure, état et codes d’erreur sûrs uniquement pour l’analyse IA choisie, à des fins de dépannage. L’analyse locale ne transmet que le nombre de pages utilisées. Les journaux ne contiennent ni nom ou contenu de fichier, ni transactions ou sorties du modèle. Pour créer le paiement, nous transmettons la formule choisie et un identifiant de rattachement au compte au prestataire sélectionné. Waffo reçoit aussi l’adresse e-mail du compte du site. Les métadonnées de facturation peuvent également inclure les identifiants de formule et de payeur du prestataire, le montant et la devise, le montant initial, le montant et l’identifiant de remise, ainsi que les identifiants d’événements de paiement.",
+      "checkout": "Le paiement hébergé Waffo reçoit l’identifiant et l’e-mail du compte, le forfait choisi, la référence de paiement et une offre de prix signée. Waffo conserve les sessions impayées ; le site ne crée pas un nouvel abonnement local en attente pour chaque session. Après vérification du paiement, nous conservons le prix mensuel de base convenu et les justificatifs, notamment les montants initial et payé et, le cas échéant, le montant de la remise et l’identifiant du coupon. Nous ne conservons pas le code du coupon. Les données historiques, y compris celles de Creem et PayPal, peuvent être conservées pour le service et les obligations légales ; cela ne signifie pas que ces prestataires sont disponibles pour de nouveaux achats."
     },
     "technicalData": {
       "title": "Informations techniques nécessaires",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Des preuves essentielles manquent ou la ligne ne peut pas être vérifiée de façon fiable.",
     "limitsTitle": "Quels PDF puis-je sélectionner ?",
     "limitsAnswer": "Sélectionnez un relevé bancaire PDF de {megabytes} Mo et {pages} pages maximum. Sans connexion, en gratuit et avec Standard, une couche texte est nécessaire ; Professional et Business peuvent essayer les scans. Aucun forfait ne prend en charge les fichiers protégés par mot de passe.",
-    "pricingAnswer": "Les quotas gratuits sont quotidiens, ceux des abonnements suivent la période de facturation. Comparez les offres et connectez-vous avant de vous abonner via Waffo. Les prestataires disponibles dépendent des options d’achat actuellement affichées sur le site.",
+    "pricingAnswer": "Les quotas gratuits sont réinitialisés chaque jour en UTC ; les pages des abonnements suivent la période de facturation confirmée. Connectez-vous pour acheter via Waffo lorsque le paiement est ouvert. Les nouveaux abonnements n’utilisent plus Creem ni PayPal. Les moyens disponibles sont ceux proposés par Waffo au paiement.",
     "faqAnswer": "Ces réponses expliquent les exigences, quotas et risques. Lisez la réponse pertinente et vérifiez votre PDF avant la conversion.",
     "planHeader": "Offre",
     "priceHeader": "Prix (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Gratuit",
     "dailyPeriod": "Chaque jour (UTC)",
     "billingPeriod": "Période de facturation",
-    "billingNote": "Les abonnements sont renouvelés chaque mois via Waffo. Un échec ne consomme pas de quota ; un résultat partiel compte les pages du PDF original. Les prestataires disponibles dépendent des options d’achat actuellement affichées sur le site. Les prix Waffo sont hors taxes ; les taxes applicables et le total définitif sont affichés au paiement.",
+    "billingNote": "Les nouveaux abonnements se renouvellent chaque mois via Waffo en USD. Les prix sont hors taxes ; moyens de paiement, remises, taxes et total figurent au paiement. Les sessions et abonnements existants conservent leur prix mensuel de base convenu si le prix du site change. Les échecs ne consomment pas de quota ; les résultats partiels comptent les pages du PDF original.",
     "privacyTitle": "Comment mes données sont-elles traitées ?",
     "privacyAnswer": "Par défaut, l’analyse locale s’effectue dans votre navigateur sans téléverser le PDF, son nom ni les opérations. Le PDF complet et son nom ne sont envoyés à notre serveur et à Qwen AI Platform que si vous choisissez l’IA. Le contenu sert uniquement à la conversion et au téléchargement en cours. Conservez PDF et Excel, car le service ne propose aucun historique de fichiers.",
     "browserTitle": "Que conserve temporairement mon navigateur ?",

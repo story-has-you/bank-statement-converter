@@ -112,10 +112,14 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
 
 export async function handleBillingWebhook(request: Request, providerId: unknown): Promise<Response> {
   const t = await getApiTranslations(request);
+  let eventId: string | undefined;
+  let subscriptionId: string | undefined;
   try {
     const provider = getPaymentProvider(providerId);
     const event = await provider.parseWebhook(request.headers, await request.text());
     if (event) {
+      eventId = event.id;
+      subscriptionId = event.subscriptionId;
       const result = await applyBillingEvent(event);
       console.info("Billing webhook event processed", { provider: provider.id, eventId: event.id, type: event.type, result });
     }
@@ -125,7 +129,12 @@ export async function handleBillingWebhook(request: Request, providerId: unknown
       return NextResponse.json({ error: t(error.code) }, { status: error.status });
     }
     const reason = error instanceof BillingError ? error.code : "WEBHOOK_PROCESSING_FAILED";
-    console.error("Failed to process billing webhook", { provider: providerId, reason });
+    const failure = error && typeof error === "object" ? error as { code?: unknown; message?: unknown } : null;
+    console.error("Failed to process billing webhook", {
+      provider: providerId, reason, eventId, subscriptionId,
+      errorCode: typeof failure?.code === "string" ? failure.code : undefined,
+      errorMessage: typeof failure?.message === "string" ? failure.message : undefined,
+    });
     return NextResponse.json({ error: t("webhookProcessingFailed") }, { status: 502 });
   }
 }

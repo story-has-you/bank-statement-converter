@@ -4,6 +4,12 @@
 
 Waffo 保留三档商品 ID，通过 `priceSnapshot` 覆盖常规周期的税前价格，税费和最终总额以结账页为准，禁止试用。价格、产品 ID 和用户身份都由服务端决定，浏览器提交的金额、名称、描述不作为下单依据。
 
+## 公开价格、付款与隐私说明
+
+Waffo 是当前新订阅的支付服务商与名义商户，具体付款方式以 Waffo 结账页为准，不因接入 Waffo 就承诺某一种卡或钱包可用。新购入口受 `WAFFO_PAYMENT_ENABLED` 控制，公开套餐价格不等于当前环境已开放付款。每次新建结账锁定 USD 基础月价；网站改价不改写旧支付链接和订阅价格，续费按约定基础价及当期税费、优惠核算。首次优惠后的实付不代表后续续费金额，全额优惠仍需核实渠道付款，不作为免费试用。
+
+套餐提示、用户条款和隐私政策在 12 种语言的 `messages/*.json` 中维护，分别复用 `UsageTiers`、`Terms.subscription` 和 `Privacy.accountData`。用户条款与大模型可读的价格表直接读取 `src/config/plans.ts`；`src/lib/geo/content.ts` 同时复用付款与隐私文案，生成 `llms.txt`、`llms-full.txt`、`pricing.md` 和 `privacy.md` 等公开说明。公开隐私说明包含传给 Waffo 的账号及报价信息、Waffo 保存的未付款会话、本站付款核实后的价格与优惠凭据，以及历史渠道记录的保留边界；不将支付切换描述为删除历史账单。
+
 ## 产品名称与描述
 
 网站和支付平台复用 `messages/en.json` 中的 `UsageTiers.plans.<tier>.name`、`description`。支付标题组合品牌名称与套餐名称，如 `StatementXL Professional`，描述使用同一份网站英文文案。修改并部署后，下次新建结账前自动通过官方 SDK 同步商品名称和描述，不传价格和计费周期；相同内容由平台跳过，新内容创建商品版本。字段去掉首尾空白后不能为空，平台的其他内容限制由接口验证。

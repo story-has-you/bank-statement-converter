@@ -64,6 +64,7 @@ export function PrivacyContent() {
 
       <LegalSection id="account-data" title={t("accountData.title")}>
         <p>{t("accountData.body")}</p>
+        <p>{t("accountData.checkout")}</p>
       </LegalSection>
 
       <LegalSection id="technical-data" title={t("technicalData.title")}>

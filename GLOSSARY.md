@@ -50,7 +50,7 @@ _Avoid_: failed、空值
 
 _Avoid_: 已验证准确、完全正确
 
-**扫描版 PDF**：主要由页面图像组成、缺少可直接提取文字层的银行流水 PDF；仅 Professional 和 Enterprise 可主动选择 AI 尝试转换，识别结果仍需核对。
+**扫描版 PDF**：主要由页面图像组成、缺少可直接提取文字层的银行流水 PDF；仅 Professional 和 Business 可主动选择 AI 尝试转换，识别结果仍需核对。
 
 _Avoid_: 已支持扫描版式、准确扫描件
 

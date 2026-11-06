@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# page} other {# pages}}",
     "perDay": "/ day",
     "perMonth": "/ month",
-    "renewalNote": "Monthly auto-renewal; cancel in your <account>account</account>. See <terms>subscription and payment terms</terms>.",
+    "renewalNote": "Waffo monthly subscriptions are priced in USD before tax; payment methods, discounts and the final total appear at checkout. Monthly auto-renewal; cancel in your <account>account</account>. See <terms>subscription and payment terms</terms>.",
     "planQuota": "{pages, plural, one {# page} other {# pages}} per month",
     "current": "Current plan",
     "cancelledPeriodActive": "The subscription is cancelled. Benefits remain available until {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Guides & tools"
   },
   "LegalCommon": {
-    "lastUpdated": "Last updated: October 29, 2026"
+    "lastUpdated": "Last updated: November 6, 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Subscriptions and payment",
-      "body": "Standard, Professional, and Business renew monthly at the price shown before purchase. You are charged only after confirming the purchase. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For Waffo checkout, Waffo acts as Merchant of Record and handles payments and applicable taxes. Waffo prices exclude tax; the final amount is shown at checkout. Available payment providers depend on the purchase options currently shown on the website."
+      "body": "Plans renew automatically each month. New subscriptions use Waffo hosted checkout; Waffo acts as Merchant of Record and handles payment and applicable taxes. Displayed plan prices exclude tax. Available payment methods, discounts, taxes and the final total are shown at Waffo checkout. Creem and PayPal are no longer offered for new subscriptions. Cancel Waffo automatic renewal from your website account; paid access remains until the confirmed billing period ends.",
+      "prices": "Current base monthly prices in USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Each checkout locks its base monthly price; existing checkout links and subscriptions keep their agreed price. Website price changes apply to newly created checkouts. Renewals use the agreed base price, with applicable taxes and discounts calculated at checkout or renewal.",
+      "checkout": "Sign in before subscribing. Before payment, you can choose another plan by starting a new checkout. Earlier payment links may remain payable: complete only the checkout you intend to use. Access is activated after the website verifies payment, not merely after returning from checkout. Multiple payments do not combine subscription quotas. If payment has completed but access is not confirmed, check your account or contact support before paying again.",
+      "discounts": "Waffo may apply a valid coupon to part or all of a payment. A fully discounted payment still requires payment confirmation and is not a free trial. Coupon eligibility and duration follow the checkout terms; a discounted first payment does not mean later renewals will cost the same."
     },
     "refunds": {
       "title": "Refund policy",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Waffo receives the website account email. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers."
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Waffo receives the website account email. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers.",
+      "checkout": "Waffo hosted checkout receives your account identifier, account email, selected plan, checkout reference and signed price quote. Unpaid checkout sessions are held by Waffo; the website does not save a new pending subscription record for each checkout. After verified payment, we retain the agreed base monthly price and payment evidence, including original and paid amounts, discount amount and coupon identifier when applicable. We do not store the coupon code. Historical billing records, including Creem and PayPal records, may remain for service and legal obligations; they do not indicate those providers are available for new purchases."
     },
     "technicalData": {
       "title": "Necessary technical information",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
     "limitsTitle": "Which PDFs can I choose?",
     "limitsAnswer": "Choose one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Business can attempt scans. Password-protected files are not supported on any plan.",
-    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Waffo. Available payment providers depend on the purchase options currently shown on the website.",
+    "pricingAnswer": "Free quotas reset daily in UTC; subscription pages follow the confirmed billing period. Sign in to purchase through Waffo when checkout is available. New subscriptions no longer use Creem or PayPal. Payment methods are those offered at Waffo checkout.",
     "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
     "planHeader": "Plan",
     "priceHeader": "Price (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Free",
     "dailyPeriod": "Daily (UTC)",
     "billingPeriod": "billing period",
-    "billingNote": "Subscriptions renew monthly through Waffo. Failed conversions do not use quota; partial results use the original PDF page count. Available payment providers depend on the purchase options currently shown on the website. Waffo prices exclude tax; applicable tax and the final total are shown at checkout.",
+    "billingNote": "New subscriptions renew monthly through Waffo in USD. Prices exclude tax; available payment methods, discounts, taxes and the final total appear at checkout. Existing checkouts and subscriptions keep their agreed base monthly price when website prices change. Failed conversions use no quota; partial results count the original PDF pages.",
     "privacyTitle": "How is my data handled?",
     "privacyAnswer": "Local parsing runs in your browser by default without uploading the PDF, filename or transactions. The complete PDF and filename are sent to our server and Qwen AI Platform only when you choose AI parsing. Statement content is used for the current conversion and download only. Keep your original PDF and downloaded Excel because the service has no file history.",
     "browserTitle": "What is temporarily stored in my browser?",

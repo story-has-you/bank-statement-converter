@@ -294,7 +294,7 @@
     "signedInAmount": "{pages, plural, one {# pagina} other {# pagina's}}",
     "perDay": "/ dag",
     "perMonth": "/ maand",
-    "renewalNote": "Abonnementen worden elke maand automatisch verlengd. Je kunt de automatische verlenging opzeggen in je <account>account</account>. Bekijk de <terms>abonnements- en betalingsvoorwaarden</terms>.",
+    "renewalNote": "Waffo-maandabonnementen tonen prijzen in USD exclusief belasting; betaalmethoden, kortingen en eindtotaal staan bij de checkout. Abonnementen worden elke maand automatisch verlengd. Je kunt de automatische verlenging opzeggen in je <account>account</account>. Bekijk de <terms>abonnements- en betalingsvoorwaarden</terms>.",
     "planQuota": "{pages, plural, one {# pagina} other {# pagina's}} per maand",
     "current": "Huidig abonnement",
     "cancelledPeriodActive": "Het abonnement is opgezegd. De voordelen blijven beschikbaar tot {date} (UTC).",
@@ -412,7 +412,7 @@
     "resources": "Gidsen en hulpmiddelen"
   },
   "LegalCommon": {
-    "lastUpdated": "Laatst bijgewerkt: 29 oktober 2026"
+    "lastUpdated": "Laatst bijgewerkt: 6 november 2026"
   },
   "Terms": {
     "metadata": {
@@ -440,7 +440,10 @@
     },
     "subscription": {
       "title": "Abonnementen en betaling",
-      "body": "Standard, Professional en Business worden maandelijks verlengd tegen de prijs die vóór aankoop wordt getoond. U wordt pas belast nadat u de aankoop bevestigt. U kunt automatische verlenging annuleren vanuit uw websiteaccount; betaalde toegang blijft beschikbaar tot het einde van de bevestigde factureringsperiode. Bij betaling via Waffo treedt Waffo op als Merchant of Record en verwerkt het betalingen en toepasselijke belastingen. Waffo-prijzen zijn exclusief belasting; het eindbedrag wordt bij het afrekenen getoond. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan."
+      "body": "Abonnementen worden elke maand automatisch verlengd. Nieuwe abonnementen gebruiken de gehoste checkout van Waffo. Waffo treedt op als Merchant of Record en verwerkt betalingen en toepasselijke belastingen. Getoonde prijzen zijn exclusief belasting. Betaalmethoden, kortingen, belastingen en eindtotaal staan in de Waffo-checkout. Creem en PayPal worden niet meer aangeboden voor nieuwe abonnementen. Zeg automatische Waffo-verlenging op in je websiteaccount; betaalde toegang blijft tot het einde van de bevestigde factureringsperiode.",
+      "prices": "Huidige maandelijkse basisprijzen in USD: Standard {standardPrice}, Professional {professionalPrice}, Business {enterprisePrice}. Elke checkout legt de maandelijkse basisprijs vast; bestaande betaallinks en abonnementen behouden hun afgesproken prijs. Prijswijzigingen op de site gelden voor nieuwe checkouts. Verlengingen gebruiken de afgesproken basisprijs met de belastingen en kortingen die bij betaling of verlenging van toepassing zijn.",
+      "checkout": "Log in voordat je een abonnement afsluit. Vóór betaling kun je een ander abonnement kiezen door een nieuwe checkout te starten. Eerdere links kunnen nog betalingen accepteren: betaal alleen de gewenste checkout. Toegang wordt geactiveerd nadat de site de betaling heeft gecontroleerd, niet alleen door terug te keren van de checkout. Meerdere betalingen voegen geen abonnementsquota samen. Heb je betaald maar is toegang niet bevestigd, bekijk dan je account of neem contact op met support voordat je opnieuw betaalt.",
+      "discounts": "Waffo kan met een geldige coupon een deel of het hele betaalbedrag verrekenen. Ook een volledig afgeprijsde betaling vereist bevestiging en is geen gratis proefperiode. Voorwaarden en duur van de coupon staan bij de checkout; korting op de eerste betaling betekent niet dat latere verlengingen hetzelfde kosten."
     },
     "refunds": {
       "title": "Terugbetalingsbeleid",
@@ -495,7 +498,8 @@
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De lokale analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Waffo ontvangt ook het e-mailadres van het websiteaccount. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten."
+      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De lokale analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Waffo ontvangt ook het e-mailadres van het websiteaccount. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten.",
+      "checkout": "De gehoste Waffo-checkout ontvangt je account-ID, account-e-mail, gekozen abonnement, checkoutreferentie en ondertekende prijsopgave. Waffo bewaart onbetaalde checkoutsessies; de site maakt niet voor elke checkout een nieuw lokaal openstaand abonnementsrecord. Na gecontroleerde betaling bewaren we de afgesproken maandelijkse basisprijs en betaalbewijs, inclusief oorspronkelijk en betaald bedrag en waar van toepassing kortingsbedrag en coupon-ID. De couponcode bewaren we niet. Historische factureringsgegevens, ook van Creem en PayPal, kunnen voor dienstverlening en wettelijke verplichtingen bewaard blijven; dit betekent niet dat deze providers voor nieuwe aankopen beschikbaar zijn."
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
@@ -672,7 +676,7 @@
     "unverifiableDefinition": "Belangrijk bewijs ontbreekt of de rij is niet betrouwbaar te controleren.",
     "limitsTitle": "Welke PDF’s kan ik selecteren?",
     "limitsAnswer": "Selecteer één bankafschrift-PDF van maximaal {megabytes} MB en {pages} pagina’s. Zonder login, met een gratis account en met Standard is een tekstlaag nodig; Professional en Business kunnen scans proberen. Geen enkel abonnement ondersteunt bestanden met een wachtwoord.",
-    "pricingAnswer": "Gratis quota worden dagelijks vernieuwd; abonnementen bieden pagina’s per factuurperiode. Vergelijk de plannen en meld u aan voordat u via Waffo abonneert. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan.",
+    "pricingAnswer": "Gratis quota worden dagelijks volgens UTC vernieuwd; abonnementspagina’s volgen de bevestigde factureringsperiode. Log in om via Waffo te kopen wanneer checkout beschikbaar is. Nieuwe abonnementen gebruiken geen Creem of PayPal meer. Betaalmethoden zijn de opties die Waffo bij het afrekenen aanbiedt.",
     "faqAnswer": "Deze antwoorden verklaren eisen, quota en risico’s. Lees het relevante antwoord en controleer uw PDF vóór de conversie.",
     "planHeader": "Plan",
     "priceHeader": "Prijs (USD)",
@@ -681,7 +685,7 @@
     "freePrice": "Gratis",
     "dailyPeriod": "Dagelijks (UTC)",
     "billingPeriod": "factuurperiode",
-    "billingNote": "Abonnementen verlengen maandelijks via Waffo. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s. Beschikbare betaalproviders zijn afhankelijk van de aankoopopties die momenteel op de website staan. Waffo-prijzen zijn exclusief belasting; de toepasselijke belasting en het definitieve totaal staan bij het afrekenen.",
+    "billingNote": "Nieuwe abonnementen verlengen maandelijks via Waffo in USD. Prijzen zijn exclusief belasting; betaalmethoden, kortingen, belastingen en eindtotaal staan bij de checkout. Bestaande checkouts en abonnementen behouden hun afgesproken maandelijkse basisprijs als de siteprijs wijzigt. Mislukte conversies verbruiken geen quota; gedeeltelijke resultaten tellen de oorspronkelijke PDF-pagina’s.",
     "privacyTitle": "Hoe worden mijn gegevens verwerkt?",
     "privacyAnswer": "Lokale analyse gebeurt standaard in uw browser zonder de PDF, bestandsnaam of transacties te uploaden. De volledige PDF en bestandsnaam worden alleen naar onze server en Qwen AI Platform gestuurd als u AI kiest. Afschriftinhoud dient alleen de huidige conversie en download. Bewaar PDF en Excel zelf, want de dienst biedt geen bestandsgeschiedenis.",
     "browserTitle": "Wat wordt tijdelijk in mijn browser bewaard?",

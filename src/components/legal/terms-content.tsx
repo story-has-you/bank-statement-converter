@@ -1,6 +1,7 @@
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 import { LegalSection } from "@/components/legal/legal-section";
+import { subscriptionConfig } from "@/config/plans";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 import { usageQuotaConfig } from "@/lib/usage/config";
@@ -8,6 +9,7 @@ import { usageQuotaConfig } from "@/lib/usage/config";
 export function TermsContent() {
   const t = useTranslations("Terms");
   const common = useTranslations("LegalCommon");
+  const format = useFormatter();
 
   return (
     <article className="max-w-3xl">
@@ -56,7 +58,16 @@ export function TermsContent() {
       </LegalSection>
 
       <LegalSection id="subscription" title={t("subscription.title")}>
+        <p>
+          {t("subscription.prices", {
+            standardPrice: format.number(subscriptionConfig.standard.monthlyPrice, { style: "currency", currency: "USD" }),
+            professionalPrice: format.number(subscriptionConfig.professional.monthlyPrice, { style: "currency", currency: "USD" }),
+            enterprisePrice: format.number(subscriptionConfig.enterprise.monthlyPrice, { style: "currency", currency: "USD" }),
+          })}
+        </p>
         <p>{t("subscription.body")}</p>
+        <p>{t("subscription.checkout")}</p>
+        <p>{t("subscription.discounts")}</p>
       </LegalSection>
 
       <LegalSection id="refunds" title={t("refunds.title")}>
