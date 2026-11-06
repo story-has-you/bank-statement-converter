@@ -1,6 +1,6 @@
 import "server-only";
 
-import { WaffoPancake, type PaymentStatus, type SubscriptionOrderStatus } from "@waffo/pancake-ts";
+import { TaxCategory, WaffoPancake, type PaymentStatus, type SubscriptionOrderStatus } from "@waffo/pancake-ts";
 import { createCheckoutQuote } from "@/lib/billing/checkout-quote";
 import { BillingError } from "@/lib/billing/errors";
 import { getSubscriptionProductCopy } from "@/lib/billing/catalog";
@@ -146,7 +146,7 @@ export async function createWaffoCheckout(
     {
       productId,
       currency: "USD",
-      priceSnapshot: { amount: requireRecurringAmount(attempt.amount), taxCategory: "saas" },
+      priceSnapshot: { amount: requireRecurringAmount(attempt.amount), taxCategory: TaxCategory.SaaS },
       metadata,
       buyerIdentity: user.id,
       buyerEmail: user.email,

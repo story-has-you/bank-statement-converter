@@ -115,6 +115,8 @@ function notification(
   changes: Partial<ProviderSubscription> = {},
   at = new Date().toISOString(),
 ): BillingNotification {
+  const provider = existing.provider;
+  assert(provider === "waffo");
   const remote: ProviderSubscription = {
     subscriptionId: existing.provider_subscription_id,
     planId: existing.provider_plan_id,
@@ -128,13 +130,13 @@ function notification(
     ...changes,
   };
   return {
-    provider: existing.provider,
+    provider,
     id,
     at,
     type,
     subscriptionId: remote.subscriptionId,
     async resolve() {
-      const base = { provider: existing.provider, id, at, subscription: remote };
+      const base = { provider, id, at, subscription: remote };
       return type === "subscription-paid"
         ? {
             ...base,
