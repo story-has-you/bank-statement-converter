@@ -97,9 +97,6 @@ async function resolveWaffoEvent(event: WebhookEvent<WebhookEventData>, type: Bi
     type,
     ...verified,
     recurringAmount,
-    originalAmount: verified.amount,
-    discountAmount: "0.00",
-    providerDiscountId: null,
     currencyCode: "USD",
   };
 }

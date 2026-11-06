@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { createHmac, generateKeyPairSync } from "node:crypto";
+import { createHmac, generateKeyPairSync, sign } from "node:crypto";
 import { registerHooks } from "node:module";
 import { test, type TestContext } from "node:test";
 import { subscriptionConfig } from "@/config/plans";
@@ -72,12 +72,12 @@ function waffoRemote(): WaffoSubscription {
     orderMerchantExternalId: `wco_${attemptId}`, status: "active", billingPeriod: "monthly", isInTrial: false,
     currentPeriodStart: new Date(now - 86400000).toISOString(), currentPeriodEnd: new Date(now + 29 * 86400000).toISOString(),
     currentPeriodNumber: 1, subscriptionProduct: { id: productId },
-    priceSnapshot: { currency: "USD", regularPhase: { subtotal: "19.90", total: "21.89" } } };
+    priceSnapshot: { currency: "USD", regularPhase: { subtotal: "19.90", total: "21.89", taxAmount: "1.99" } }, discount: null };
 }
 function waffoPayment(): WaffoPayment {
   return { id: "PAY_fixture", orderId: "ORD_fixture", orderMerchantExternalId: `wco_${attemptId}`, testMode: true,
     status: "succeeded", periodNumber: 1, pspAmountDetails: { amount: "21.89", currency: "USD" },
-    snapshotAmountDetails: { subtotal: "19.90", total: "21.89", taxAmount: "1.99", currency: "USD" }, createdAt: new Date(now).toISOString() };
+    snapshotAmountDetails: { subtotal: "19.90", total: "21.89", listTotal: "21.89", discountAmount: "0.00", taxAmount: "1.99", currency: "USD" }, createdAt: new Date(now).toISOString() };
 }
 function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intents: CheckoutIntent[] = []) {
   const tables: Record<string, Row[]> = { billing_subscriptions: structuredClone(subscriptions), billing_subscription_intents: structuredClone(intents) };
@@ -163,6 +163,106 @@ test("Waffo rejects missing and invalid webhook signatures", async (t) => {
   const { parseWaffoWebhook } = await import("@/lib/billing/providers/waffo/webhook");
   await assert.rejects(parseWaffoWebhook(new Headers(), "{}"));
   await assert.rejects(parseWaffoWebhook(new Headers({ "x-waffo-signature": "invalid" }), "{}"));
+});
+
+test("Waffo verifies full and partial discounts from remote payment evidence", async (t) => {
+  setup(t);
+  const { verifyWaffoPayment } = await import("@/lib/billing/providers/waffo/subscription");
+  const remote = waffoRemote();
+  remote.discount = { couponId: "coupon-fixture" };
+  const full = waffoPayment();
+  Object.assign(full.snapshotAmountDetails, { total: "0.00", discountAmount: "21.89", taxAmount: "0.00" });
+  full.pspAmountDetails.amount = "0.00";
+  assert.deepEqual(verifyWaffoPayment(remote, full, "19.90"), {
+    amount: "0.00", paidAt: full.createdAt, originalAmount: "21.89", discountAmount: "21.89", providerDiscountId: "coupon-fixture",
+  });
+  const partial = waffoPayment();
+  Object.assign(partial.snapshotAmountDetails, { total: "11.00", discountAmount: "10.89", taxAmount: "1.00" });
+  partial.pspAmountDetails.amount = "11.00";
+  assert.equal(verifyWaffoPayment(remote, partial, "19.90").discountAmount, "10.89");
+  assert.equal(verifyWaffoPayment(remote, waffoPayment(), "19.90").providerDiscountId, null);
+  for (const mutate of [
+    (order: WaffoSubscription, payment: WaffoPayment) => { order.discount = null; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { order.discount!.couponId = " "; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.snapshotAmountDetails.discountAmount = "21.90"; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.snapshotAmountDetails.discountAmount = "0.00"; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.snapshotAmountDetails.listTotal = "19.90"; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.snapshotAmountDetails.subtotal = "0.00"; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.snapshotAmountDetails.taxAmount = "0.01"; },
+    (order: WaffoSubscription, payment: WaffoPayment) => { payment.pspAmountDetails.amount = "0.01"; },
+  ]) {
+    const order = structuredClone(remote); const payment = structuredClone(full); mutate(order, payment);
+    assert.throws(() => verifyWaffoPayment(order, payment, "19.90"));
+  }
+});
+
+test("signed zero-dollar Waffo webhook stores the discount once and keeps the recurring price", async (t) => {
+  const { tables, calls, state } = setup(t);
+  const { createCheckoutQuote } = await import("@/lib/billing/checkout-quote");
+  const { handleBillingWebhook } = await import("@/lib/billing/http");
+  const keys = generateKeyPairSync("rsa", { modulusLength: 2048 });
+  const previousKey = process.env.WAFFO_WEBHOOK_TEST_PUBLIC_KEY;
+  t.after(() => {
+    if (previousKey === undefined) delete process.env.WAFFO_WEBHOOK_TEST_PUBLIC_KEY;
+    else process.env.WAFFO_WEBHOOK_TEST_PUBLIC_KEY = previousKey;
+  });
+  process.env.WAFFO_WEBHOOK_TEST_PUBLIC_KEY = keys.publicKey.export({ type: "spki", format: "pem" }).toString();
+  const remote = state.orders[0];
+  remote.subscriptionProduct = { id: process.env.WAFFO_PRODUCT_ID_PROFESSIONAL! };
+  remote.priceSnapshot!.regularPhase = { subtotal: "24.90", total: "24.90", taxAmount: "0.00" };
+  remote.discount = { couponId: "coupon-fixture" };
+  remote.metadata = JSON.stringify(createCheckoutQuote({ ...quoteIdentity(), tier: "professional", productId: remote.subscriptionProduct.id }, "24.90"));
+  Object.assign(state.payment.snapshotAmountDetails, { subtotal: "24.90", total: "0.00", listTotal: "24.90", discountAmount: "24.90", taxAmount: "0.00" });
+  state.payment.pspAmountDetails.amount = "0.00";
+  const event = { id: "event-discounted", eventId: state.payment.id, eventType: "subscription.payment_succeeded",
+    timestamp: new Date(now).toISOString(), mode: "test", storeId: "fixture-store", data: {
+      orderId: remote.id, paymentId: state.payment.id, periodNumber: 1, currency: "USD", chargedAmount: "0.00", paymentStatus: "succeeded",
+      merchantProvidedBuyerIdentity: user.id, orderMerchantExternalId: remote.orderMerchantExternalId,
+    } };
+  const send = () => {
+    const body = JSON.stringify(event);
+    const timestamp = String(Date.now());
+    const signature = sign("RSA-SHA256", Buffer.from(`${timestamp}.${body}`), keys.privateKey).toString("base64");
+    return handleBillingWebhook(new Request("https://site.example.invalid/api/billing/webhooks/waffo", {
+      method: "POST", body, headers: { "x-waffo-signature": `t=${timestamp},v1=${signature}` },
+    }), "waffo");
+  };
+  event.data.chargedAmount = "0.01";
+  assert.equal((await send()).status, 502);
+  assert.equal(tables.billing_subscriptions.length, 0);
+  event.data.chargedAmount = "0.00";
+  const response = await send();
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { received: true });
+  const row = tables.billing_subscriptions[0];
+  assert.equal(row.amount, "0.00");
+  assert.equal(row.original_amount, "24.90");
+  assert.equal(row.discount_amount, "24.90");
+  assert.equal(row.provider_discount_id, "coupon-fixture");
+  assert.equal(row.recurring_amount_usd, "24.90");
+  assert.equal(row.status, "ACTIVE");
+  const before = calls.length;
+  assert.equal((await send()).status, 200);
+  assert(calls.slice(before).every((call) => call.url.origin === "https://billing-test.invalid"));
+  assert.equal(tables.billing_subscriptions.length, 1);
+  assert(calls.some((call) => String(call.body.query).includes("listTotal discountAmount")));
+  const renewalStart = Date.parse(remote.currentPeriodEnd!);
+  t.mock.method(Date, "now", () => renewalStart + 1000);
+  remote.currentPeriodNumber = 2;
+  remote.currentPeriodStart = new Date(renewalStart).toISOString();
+  remote.currentPeriodEnd = new Date(renewalStart + 30 * 86400000).toISOString();
+  Object.assign(state.payment, { id: "PAY_renewal", periodNumber: 2, createdAt: remote.currentPeriodStart });
+  Object.assign(state.payment.snapshotAmountDetails, { total: "24.90", discountAmount: "0.00" });
+  state.payment.pspAmountDetails.amount = "24.90";
+  Object.assign(event, { id: "event-renewal", eventId: state.payment.id, timestamp: remote.currentPeriodStart });
+  Object.assign(event.data, { paymentId: state.payment.id, periodNumber: 2, chargedAmount: "24.90" });
+  assert.equal((await send()).status, 200);
+  assert.equal(row.current_period_end, remote.currentPeriodEnd);
+  assert.equal(row.amount, "0.00");
+  assert.equal(row.original_amount, "24.90");
+  assert.equal(row.discount_amount, "24.90");
+  assert.equal(row.provider_discount_id, "coupon-fixture");
+  assert.equal(row.recurring_amount_usd, "24.90");
 });
 
 
@@ -346,9 +446,9 @@ test("first payment before checkout returns activates without creating a pending
     remote.metadata = JSON.stringify(body.metadata);
     remote.orderMerchantExternalId = String(body.orderMerchantExternalId);
     const amount = (body.priceSnapshot as { amount: string }).amount;
-    remote.priceSnapshot!.regularPhase = { subtotal: amount, total: amount };
+    remote.priceSnapshot!.regularPhase = { subtotal: amount, total: amount, taxAmount: "0.00" };
     state.payment.orderMerchantExternalId = remote.orderMerchantExternalId;
-    state.payment.snapshotAmountDetails = { subtotal: amount, total: amount, taxAmount: "0.00", currency: "USD" };
+    state.payment.snapshotAmountDetails = { subtotal: amount, total: amount, listTotal: amount, discountAmount: "0.00", taxAmount: "0.00", currency: "USD" };
     state.payment.pspAmountDetails.amount = amount;
     assert.equal(await applyBillingEvent(await paidNotification(remote, state.payment)), "applied");
   };
@@ -487,7 +587,7 @@ async function paidNotification(remote: WaffoSubscription, payment: WaffoPayment
       });
       const verified = verifyWaffoPayment(remote, payment, recurringAmount);
       return { provider: "waffo" as const, id: "event-paid", at: new Date(now).toISOString(), type: "subscription-paid" as const,
-        subscription, recurringAmount, ...verified, originalAmount: verified.amount, discountAmount: "0.00", providerDiscountId: null, currencyCode: "USD" };
+        subscription, recurringAmount, ...verified, currencyCode: "USD" };
     },
   };
 }

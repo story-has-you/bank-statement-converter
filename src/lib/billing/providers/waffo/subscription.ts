@@ -43,12 +43,18 @@ export function normalizeWaffoSubscription(remote: WaffoSubscription): ProviderS
 }
 
 /** 以渠道实付和订单锁定的税前价、税额核账，避免把报价快照当作付款证据。 */
-export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPayment, recurringAmount: string): { amount: string; paidAt: string } {
+export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPayment, recurringAmount: string): {
+  amount: string; paidAt: string; originalAmount: string; discountAmount: string; providerDiscountId: string | null;
+} {
   normalizeWaffoSubscription(remote);
   const expected = usdFromDecimal(requireRecurringAmount(recurringAmount));
   const snapshot = remote.priceSnapshot;
   const paid = payment.pspAmountDetails;
   const charged = payment.snapshotAmountDetails;
+  const original = usdFromDecimal(charged.listTotal);
+  const discount = usdFromDecimal(charged.discountAmount);
+  const total = usdFromDecimal(charged.total);
+  const tax = usdFromDecimal(charged.taxAmount);
   const start = Date.parse(remote.currentPeriodStart ?? "");
   const end = Date.parse(remote.currentPeriodEnd ?? "");
   if (
@@ -67,9 +73,15 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
     paid.currency !== "USD" ||
     charged.currency !== "USD" ||
     usdFromDecimal(charged.subtotal) !== expected ||
-    usdFromDecimal(charged.total) !== usdFromMinorUnits(expected + usdFromDecimal(charged.taxAmount)) ||
-    usdFromDecimal(snapshot.regularPhase.total) !== usdFromDecimal(charged.total) ||
-    usdFromDecimal(paid.amount) !== usdFromDecimal(charged.total) ||
+    original !== usdFromMinorUnits(expected + usdFromDecimal(snapshot.regularPhase.taxAmount)) ||
+    usdFromDecimal(snapshot.regularPhase.total) !== original ||
+    discount > original ||
+    total !== original - discount ||
+    tax > total ||
+    tax > usdFromDecimal(snapshot.regularPhase.taxAmount) ||
+    usdFromDecimal(snapshot.regularPhase.taxAmount) - tax > discount ||
+    (discount > 0 && !remote.discount?.couponId?.trim()) ||
+    usdFromDecimal(paid.amount) !== total ||
     !Number.isFinite(start) ||
     !Number.isFinite(end) ||
     start >= end ||
@@ -78,7 +90,11 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
   ) {
     throw new Error("Waffo payment evidence is invalid");
   }
-  return { amount: usdToDecimal(usdFromDecimal(paid.amount)), paidAt: payment.createdAt };
+  return {
+    amount: usdToDecimal(total), paidAt: payment.createdAt,
+    originalAmount: usdToDecimal(original), discountAmount: usdToDecimal(discount),
+    providerDiscountId: discount > 0 ? remote.discount!.couponId : null,
+  };
 }
 
 export function getWaffoAgreedAmount(remote: WaffoSubscription): string {

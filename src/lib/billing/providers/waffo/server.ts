@@ -24,7 +24,8 @@ export type WaffoSubscription = {
   currentPeriodEnd: string | null;
   currentPeriodNumber: number | null;
   subscriptionProduct: { id: string } | null;
-  priceSnapshot: { currency: string; regularPhase: { subtotal: string; total: string } } | null;
+  priceSnapshot: { currency: string; regularPhase: { subtotal: string; total: string; taxAmount: string } } | null;
+  discount: { couponId: string } | null;
 };
 
 export type WaffoPayment = {
@@ -35,7 +36,7 @@ export type WaffoPayment = {
   status: `${PaymentStatus}`;
   periodNumber: number | null;
   pspAmountDetails: { amount: string; currency: string };
-  snapshotAmountDetails: { subtotal: string; total: string; taxAmount: string; currency: string };
+  snapshotAmountDetails: { subtotal: string; total: string; listTotal: string; discountAmount: string; taxAmount: string; currency: string };
   createdAt: string;
 };
 
@@ -43,13 +44,14 @@ const subscriptionFields = `
   id metadata storeId testMode buyerEmail merchantProvidedBuyerIdentity orderMerchantExternalId
   status billingPeriod isInTrial currentPeriodStart currentPeriodEnd currentPeriodNumber
   subscriptionProduct { id }
-  priceSnapshot { currency regularPhase { subtotal total } }
+  priceSnapshot { currency regularPhase { subtotal total taxAmount } }
+  discount { couponId }
 `;
 
 const paymentFields = `
   id orderId orderMerchantExternalId testMode status periodNumber createdAt
   pspAmountDetails { amount currency }
-  snapshotAmountDetails { subtotal total taxAmount currency }
+  snapshotAmountDetails { subtotal total listTotal discountAmount taxAmount currency }
 `;
 
 export function requireWaffoConfig() {
