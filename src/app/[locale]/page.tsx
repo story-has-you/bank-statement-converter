@@ -17,7 +17,6 @@ import { ClientMessages } from "@/components/shared/client-messages";
 import { getLocalizedAlternates } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { getAgentDocumentUrl } from "@/lib/geo/links";
-import { brandConfig } from "@/config/brand";
 
 type HomePageProps = { params: Promise<{ locale: string }> };
 
@@ -40,9 +39,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       description: t("description"),
       url: getLocalizedAlternates("/", locale).canonical,
       locale: locale.replace("-", "_"),
-      images: [brandConfig.socialImage],
     },
-    twitter: { card: "summary_large_image", title: t("title"), description: t("description"), images: [brandConfig.socialImage] },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
     robots: { index: true, follow: true },
   };
 }

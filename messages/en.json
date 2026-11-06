@@ -6,6 +6,10 @@
     "brand": "StatementXL",
     "alternateName": "Bank Statement Converter for Excel & CSV"
   },
+  "SocialImage": {
+    "tagline": "Convert PDF bank statements to Excel/CSV",
+    "alt": "StatementXL — Convert PDF bank statements to Excel/CSV"
+  },
   "HomeHeader": {
     "brand": "StatementXL",
     "navigation": "Main navigation",

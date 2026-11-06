@@ -14,7 +14,6 @@ import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
-import { brandConfig } from "@/config/brand";
 import "../globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -39,8 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(siteConfig.url),
     title: t("title"),
     description: t("description"),
-    openGraph: { images: [brandConfig.socialImage] },
-    twitter: { card: "summary_large_image", images: [brandConfig.socialImage] },
+    twitter: { card: "summary_large_image" },
   };
 }
 
