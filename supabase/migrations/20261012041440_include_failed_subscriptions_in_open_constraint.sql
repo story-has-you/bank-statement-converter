@@ -1,5 +1,7 @@
 -- 续费失败仍可能重试扣款，属于开放订阅；在同一事务中替换现有唯一索引。
 -- 如已有用户包含多条开放订阅，CREATE UNIQUE INDEX 将失败并回滚，禁止自动清理记录。
+begin;
+
 lock table public.billing_subscriptions in share row exclusive mode;
 do $$
 begin
@@ -16,3 +18,5 @@ drop index public.billing_subscriptions_open_user_idx;
 create unique index billing_subscriptions_open_user_idx
   on public.billing_subscriptions (user_id)
   where status in ('APPROVAL_PENDING', 'APPROVED', 'ACTIVE', 'SUSPENDED', 'PAYMENT_FAILED');
+
+commit;

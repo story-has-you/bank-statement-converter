@@ -4,7 +4,6 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import type { BillingEvent, BillingNotification } from "./provider";
 import { insertActivatedBillingSubscription, findBillingSubscriptionByProviderId, updateBillingSubscriptionFromWebhook } from "./server";
 import { checkSubscriptionIdentity } from "./subscriptions";
-import { completePaidCheckoutIntent } from "./checkouts";
 
 function requireTime(value: string | null): number {
   const result = Date.parse(value ?? "");
@@ -20,14 +19,7 @@ export async function applyBillingEvent(notification: BillingNotification): Prom
     return resumeCancelledSubscription(notification);
   }
   if (notification.type === "subscription-paid" || notification.type === "subscription-status-changed") {
-    const result = await applyPaidSubscriptionEvent(notification);
-    if (notification.type === "subscription-paid") {
-      const stored = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
-      if (stored) {
-        await completePaidCheckoutIntent(stored);
-      }
-    }
-    return result;
+    return applyPaidSubscriptionEvent(notification);
   }
   const existing = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
   if (!existing) {
@@ -169,6 +161,7 @@ async function insertConfirmedSubscription(
     email: data.user.email,
     tier: remote.tier,
     amount: event.amount,
+    recurringAmount: event.recurringAmount,
     originalAmount: event.originalAmount,
     discountAmount: event.discountAmount,
     providerDiscountId: event.providerDiscountId,

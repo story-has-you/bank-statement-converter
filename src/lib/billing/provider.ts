@@ -1,15 +1,11 @@
 import type { MembershipTier, SubscriptionStatus } from "./types";
 
-export type PaymentProviderId = "creem" | "paypal" | "waffo";
+export type PaymentProviderId = "waffo";
+export type BillingProviderId = PaymentProviderId | "creem" | "paypal";
 
 type CheckoutAvailability = { availableTiers: MembershipTier[]; available: boolean };
 
-export type CheckoutConfig = CheckoutAvailability &
-  (
-    | { provider: "creem"; settings: { environment: "test" | "production" } }
-    | { provider: "paypal"; settings: { environment: "sandbox" | "live" } }
-    | { provider: "waffo"; settings: { environment: "test" | "prod" } }
-  );
+export type CheckoutConfig = CheckoutAvailability & { provider: "waffo"; settings: { environment: "test" | "prod" } };
 
 export type CheckoutResult = {
   provider: PaymentProviderId;
@@ -19,11 +15,9 @@ export type CheckoutResult = {
 
 export type CreatedCheckout = CheckoutResult & { expiresAt: string | null };
 
-export type CheckoutAttempt = { id: string; onDispatch: () => void };
+export type CheckoutAttempt = { id: string; amount: string };
 
 export type CheckoutState = { status: "pending" | "processing" | "closed" | "unknown" } | { status: "completed"; subscriptionId: string };
-
-export type PendingCheckout = { provider: PaymentProviderId; tier: MembershipTier };
 
 export type CheckoutUser = { id: string; email: string };
 
@@ -52,6 +46,7 @@ export type BillingEvent = EventBase &
     | {
         type: "subscription-paid";
         amount: string;
+        recurringAmount: string;
         originalAmount: string;
         discountAmount: string;
         providerDiscountId: string | null;

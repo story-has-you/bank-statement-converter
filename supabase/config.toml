@@ -1,0 +1,13 @@
+# 专用实例由 docker/bank-statement-converter 统一启停；本配置用于本地迁移。
+project_id = "bank-statement-converter"
+
+[api]
+port = 56321
+
+[db]
+port = 56322
+shadow_port = 56320
+major_version = 17
+
+[db.seed]
+enabled = false

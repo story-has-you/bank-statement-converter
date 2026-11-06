@@ -2,11 +2,9 @@ import "server-only";
 
 import { BillingError } from "./errors";
 import type { PaymentProvider, PaymentProviderId } from "./provider";
-import { creemProvider } from "./providers/creem/adapter";
-import { paypalProvider } from "./providers/paypal/adapter";
 import { waffoProvider } from "./providers/waffo/adapter";
 
-const providers: PaymentProvider[] = [creemProvider, paypalProvider, waffoProvider];
+const providers: PaymentProvider[] = [waffoProvider];
 
 export function getPaymentProvider(value: unknown): PaymentProvider {
   const provider = providers.find((candidate) => candidate.id === value);
@@ -18,7 +16,7 @@ export function getPaymentProvider(value: unknown): PaymentProvider {
 
 export function isPaymentProviderEnabled(provider: PaymentProviderId): boolean {
   const value = process.env[`${provider.toUpperCase()}_PAYMENT_ENABLED`];
-  return value === undefined ? provider === "creem" : value.trim().toLowerCase() === "true";
+  return value?.trim().toLowerCase() === "true";
 }
 
 /** 只公开渠道可用性和浏览器结账所需的非敏感配置。 */

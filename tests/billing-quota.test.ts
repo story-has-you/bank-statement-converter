@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { createHmac } from "node:crypto";
 import { registerHooks } from "node:module";
 import { test, type TestContext } from "node:test";
 
@@ -19,12 +18,10 @@ registerHooks({
 process.env.NEXT_PUBLIC_SUPABASE_URL = "https://billing-test.invalid";
 process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "fixture-public-key";
 process.env.SUPABASE_SERVICE_ROLE_KEY = "fixture-service-key";
-process.env.CREEM_WEBHOOK_SECRET = "fixture-webhook-secret";
 
 const modules = Promise.all([
   import("@/lib/usage/server"),
   import("@/lib/billing/events"),
-  import("@/lib/billing/providers/creem/webhook"),
   import("@/lib/billing/usd"),
 ]);
 type Row = Record<string, unknown>;
@@ -37,12 +34,13 @@ function subscription(changes: Partial<BillingSubscription> = {}): BillingSubscr
     user_id: actor.key,
     email: actor.email,
     tier: "professional",
-    provider: "creem",
-    provider_subscription_id: "sub_fixture",
-    provider_plan_id: "prod_fixture",
+    provider: "waffo",
+    provider_subscription_id: "ORD_fixture",
+    provider_plan_id: "PROD_fixture",
     status: "ACTIVE",
-    amount: 49.9,
-    original_amount: 49.9,
+    amount: 24.9,
+    recurring_amount_usd: 24.9,
+    original_amount: 24.9,
     discount_amount: 0,
     provider_discount_id: null,
     currency_code: "USD",
@@ -141,8 +139,9 @@ function notification(
         ? {
             ...base,
             type,
-            amount: "49.90",
-            originalAmount: "49.90",
+            amount: "24.90",
+            recurringAmount: "24.90",
+            originalAmount: "24.90",
             discountAmount: "0.00",
             providerDiscountId: null,
             currencyCode: "USD",
@@ -261,23 +260,8 @@ test("payment notifications cannot change the owner or resurrect an expired subs
   assert.equal(tables.billing_subscriptions[0].status, "EXPIRED");
 });
 
-test("Creem signatures cover the original body and reject tampering", async () => {
-  const [, , { parseCreemWebhook }] = await modules;
-  const body = JSON.stringify({
-    id: "event-fixture",
-    eventType: "subscription.paid",
-    created_at: Date.now(),
-    object: { id: "sub_fixture" },
-  });
-  const signature = createHmac("sha256", process.env.CREEM_WEBHOOK_SECRET!).update(body).digest("hex");
-  const headers = new Headers({ "creem-signature": signature });
-  assert.equal((await parseCreemWebhook(headers, body))?.subscriptionId, "sub_fixture");
-  await assert.rejects(parseCreemWebhook(headers, `${body} `));
-  await assert.rejects(parseCreemWebhook(new Headers(), body));
-});
-
 test("USD cents stay exact and reject unsafe, negative or over-precision inputs", async () => {
-  const [, , , { usdFromDecimal, usdFromMinorUnits, usdToDecimal }] = await modules;
+  const [, , { usdFromDecimal, usdFromMinorUnits, usdToDecimal }] = await modules;
   assert.equal(usdFromDecimal("49.90"), 4990);
   assert.equal(usdToDecimal(usdFromDecimal("0")), "0.00");
   for (const value of ["-1", "1.001", " 1", "1e2", "9007199254740991"]) assert.throws(() => usdFromDecimal(value));

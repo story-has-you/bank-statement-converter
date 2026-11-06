@@ -2,6 +2,7 @@ import "server-only";
 
 import { verifyWebhook, type WebhookEvent, type WebhookEventData } from "@waffo/pancake-ts";
 import { usdFromDecimal } from "@/lib/billing/usd";
+import { getLockedSubscriptionAmount } from "@/lib/billing/pricing";
 import { BillingError } from "@/lib/billing/errors";
 import type { BillingEvent, BillingNotification } from "@/lib/billing/provider";
 import { getWaffoCurrentPayment, getWaffoPayment, getWaffoSubscription, isWaffoOrderId, requireWaffoConfig } from "./server";
@@ -68,14 +69,20 @@ async function resolveWaffoEvent(event: WebhookEvent<WebhookEventData>, type: Bi
   }
   if (type === "subscription-resumed") {
     if (subscription.status === "ACTIVE") {
-      verifyWaffoPayment(remote, await getWaffoCurrentPayment(remote));
+      const recurringAmount = await getLockedSubscriptionAmount("waffo", subscription, remote.orderMerchantExternalId!.slice(4), {
+    metadata: remote.metadata, storeId: remote.storeId, environment: requireWaffoConfig().environment,
+  });
+      verifyWaffoPayment(remote, await getWaffoCurrentPayment(remote), recurringAmount);
     }
     return { ...base, type };
   }
   if (type !== "subscription-paid" || !payment) {
     throw new Error("Unsupported Waffo event");
   }
-  const verified = verifyWaffoPayment(remote, payment);
+  const recurringAmount = await getLockedSubscriptionAmount("waffo", subscription, remote.orderMerchantExternalId!.slice(4), {
+    metadata: remote.metadata, storeId: remote.storeId, environment: requireWaffoConfig().environment,
+  });
+  const verified = verifyWaffoPayment(remote, payment, recurringAmount);
   if (
     event.data.periodNumber !== payment.periodNumber ||
     event.data.currency !== "USD" ||
@@ -89,6 +96,7 @@ async function resolveWaffoEvent(event: WebhookEvent<WebhookEventData>, type: Bi
     ...base,
     type,
     ...verified,
+    recurringAmount,
     originalAmount: verified.amount,
     discountAmount: "0.00",
     providerDiscountId: null,

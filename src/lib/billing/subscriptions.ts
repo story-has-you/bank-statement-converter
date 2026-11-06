@@ -97,7 +97,7 @@ export async function cancelSubscription(provider: PaymentProvider, subscription
 export async function syncBillingSubscriptionStatus(userId: string): Promise<void> {
   try {
     const existing = await findOpenBillingSubscription(userId);
-    if (!existing) {
+    if (!existing || existing.provider !== "waffo") {
       return;
     }
     const remote = await getPaymentProvider(existing.provider).getSubscription(existing.provider_subscription_id);

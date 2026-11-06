@@ -25,3 +25,10 @@ export function usdToDecimal(value: UsdCents): string {
   const cents = usdFromMinorUnits(value);
   return `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
 }
+
+export function requireRecurringAmount(value: unknown): string {
+  if (typeof value !== "number" && typeof value !== "string") throw new Error("Subscription price is missing");
+  const cents = usdFromDecimal(String(value));
+  if (cents <= 0 || cents > 999999999999) throw new Error("Subscription price is out of range");
+  return usdToDecimal(cents);
+}

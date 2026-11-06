@@ -43,24 +43,9 @@ export async function UsageTiers() {
 
           <PublicPlanState />
 
-          <p className="mt-8 text-sm leading-6 text-muted-foreground">
-            {t.rich("renewalNote", {
-              account: (chunks) => (
-                <Link href="/account" className="text-primary underline underline-offset-4">
-                  {chunks}
-                </Link>
-              ),
-              terms: (chunks) => (
-                <Link href="/terms#subscription" className="text-primary underline underline-offset-4">
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-
-          <div className="mt-6 grid divide-y divide-border border-y border-border lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          <div className="mt-6 grid divide-y divide-border border-y border-border lg:grid-cols-3 lg:gap-y-4 lg:divide-x lg:divide-y-0">
             {membershipTiers.map((tier) => (
-              <article key={tier} className="flex flex-col gap-4 px-0 py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0">
+              <article key={tier} className="flex flex-col gap-4 px-0 py-7 lg:row-span-5 lg:grid lg:grid-rows-subgrid lg:px-7 lg:first:pl-0 lg:last:pr-0">
                 <div className="flex items-start justify-between gap-3">
                   <div className="grid gap-1">
                     <h3 className="text-base font-medium">{t(`plans.${tier}.name`)}</h3>
@@ -79,6 +64,20 @@ export async function UsageTiers() {
               </article>
             ))}
           </div>
+          <p id="subscription-renewal-terms" className="mt-5 text-sm leading-6 text-muted-foreground">
+            {t.rich("renewalNote", {
+              account: (chunks) => (
+                <Link href="/account" className="text-primary underline underline-offset-4">
+                  {chunks}
+                </Link>
+              ),
+              terms: (chunks) => (
+                <Link href="/terms#subscription" className="text-primary underline underline-offset-4">
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
         </div>
       </section>
     </ClientMessages>

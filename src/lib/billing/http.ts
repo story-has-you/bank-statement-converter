@@ -63,9 +63,6 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       if (!isMembershipTier(input.tier)) {
         throw new BillingError("invalidTier", 400);
       }
-      if (input.renewalConsent !== true) {
-        throw new BillingError("renewalConsentRequired", 400);
-      }
       const locale = resolveLocale(request.headers.get("x-app-locale"));
       const prefix = locale === "en" ? "" : `/${locale}`;
       const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);
@@ -103,7 +100,7 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
   } catch (error) {
     if (error instanceof BillingError) {
       return NextResponse.json(
-        { error: t(error.code), code: error.code, ...(error.pendingCheckout ? { pendingCheckout: error.pendingCheckout } : {}) },
+        { error: t(error.code), code: error.code },
         { status: error.status, headers },
       );
     }
@@ -127,10 +124,7 @@ export async function handleBillingWebhook(request: Request, providerId: unknown
     if (error instanceof BillingError && ["invalidProvider", "webhookInvalidRequest", "webhookSignatureFailed"].includes(error.code)) {
       return NextResponse.json({ error: t(error.code) }, { status: error.status });
     }
-    let reason = error instanceof BillingError ? error.code : "WEBHOOK_PROCESSING_FAILED";
-    if (error instanceof Error && error.message === "Creem payment evidence is invalid") {
-      reason = "CREEM_PAYMENT_EVIDENCE_INVALID";
-    }
+    const reason = error instanceof BillingError ? error.code : "WEBHOOK_PROCESSING_FAILED";
     console.error("Failed to process billing webhook", { provider: providerId, reason });
     return NextResponse.json({ error: t("webhookProcessingFailed") }, { status: 502 });
   }

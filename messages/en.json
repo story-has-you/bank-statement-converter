@@ -85,7 +85,7 @@
     "emptyFile": "The selected PDF file is empty.",
     "quotaExhausted": "You have no pages left to convert in this period.",
     "invalidResponse": "The conversion service returned data in an invalid format.",
-    "aiNotice": "Professional and Enterprise can choose AI, including for scans. It never activates automatically. Only then are the full PDF and filename sent via our server to Qwen AI Platform. We keep no permanent file or transaction history. Qwen’s retention and training policies apply. See <link>terms and privacy details</link>.",
+    "aiNotice": "Professional and Business can choose AI, including for scans. It never activates automatically. Only then are the full PDF and filename sent via our server to Qwen AI Platform. We keep no permanent file or transaction history. Qwen’s retention and training policies apply. See <link>terms and privacy details</link>.",
     "checking": "Checking PDF and quota",
     "retryCheck": "Retry check",
     "pageCount": "{pageCount, plural, one {# page} other {# pages}}",
@@ -287,7 +287,7 @@
   },
   "UsageTiers": {
     "title": "Plans and daily free pages",
-    "description": "Daily free pages or monthly plans.",
+    "description": "Daily free pages or monthly plans. On plans with AI, local and AI parsing share the monthly page allowance.",
     "anonymous": "Without signing in",
     "anonymousAmount": "{pages, plural, one {# page} other {# pages}}",
     "signedIn": "Signed in",
@@ -301,19 +301,19 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "For occasional text-based PDF conversion."
+        "description": "For personal bookkeeping, occasional catch-up work and text-based bank statements. Parse files in your browser, review transaction sources and risk flags, then export to Excel or CSV."
       },
       "professional": {
         "name": "Professional",
-        "description": "For regular use, with optional AI parsing."
+        "description": "For accountants and bookkeepers who regularly organize client statements, reconcile transactions and prepare records. Use local parsing or choose AI to try scanned PDFs, with sources and risk flags to guide your review."
       },
       "enterprise": {
-        "name": "Enterprise",
-        "description": "For higher monthly page volumes, with optional AI parsing."
+        "name": "Business",
+        "description": "For managing statements across several clients, month-end reconciliation or a larger monthly workload. Get a higher page allowance with the same local parsing, optional AI, review and export tools as Professional."
       }
     },
-    "aiParsing": "Optional AI parsing; can try scanned PDFs",
-    "textParsing": "Text-based PDF parsing"
+    "aiParsing": "Optional AI for text and scanned PDFs; review results before use.",
+    "textParsing": "Local text PDF parsing; no original file upload."
   },
   "Billing": {
     "signInRequired": "Sign in before starting a subscription.",
@@ -353,12 +353,8 @@
       "billingPeriodEnded": "The current billing period for this subscription has ended.",
       "invalidProvider": "The selected payment provider is invalid.",
       "existingFailedSubscription": "Your subscription has an unresolved payment. Cancel it or resolve the payment before subscribing again.",
-      "checkoutCreating": "Checkout is being created. Try again shortly; contact support if this continues.",
-      "checkoutUnknown": "The previous checkout could not be verified. Contact support before paying again.",
-      "checkoutAwaitingPayment": "The previous checkout is processing payment or awaiting confirmation. Try again shortly.",
-      "checkoutAlreadyPending": "A checkout is already pending. Return to that plan and select the original payment provider to continue.",
-      "checkoutClosed": "The previous checkout is closed. Return to the plans and try again.",
-      "renewalConsentRequired": "Please confirm that you have read and agree to the automatic renewal terms."
+      "checkoutUnknown": "This checkout request could not be confirmed. You can choose a plan and try again. If you have already paid, check your account first.",
+      "checkoutClosed": "The previous checkout is closed. Return to the plans and try again."
     },
     "providerUnavailable": "{provider} payments are currently unavailable.",
     "providers": {
@@ -367,11 +363,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Subscribe with {provider}",
-    "openingProvider": "Opening {provider}",
-    "pendingCheckout": "Pending checkout: {provider} / {tier}.",
-    "renewalDisclosure": "Your subscription costs {amount} per month and automatically renews each month until you cancel. Applicable taxes and the final amount due are shown at checkout.",
-    "renewalCancellation": "Cancel automatic renewal in your <account>account</account> to stop future renewal charges. Paid access remains available until the end of the current billing period. See the <terms>subscription and payment terms</terms>.",
-    "renewalConsent": "I have read and agree to the automatic renewal terms above."
+    "openingProvider": "Opening {provider}"
   },
   "HomeFaq": {
     "title": "Frequently asked questions",
@@ -389,7 +381,7 @@
     },
     "scans": {
       "question": "Can I convert scanned PDFs?",
-      "answer": "Local parsing needs selectable text. Professional and Enterprise users can choose AI for scans with available quota. Review recognition results."
+      "answer": "Local parsing needs selectable text. Professional and Business users can choose AI for scans with available quota. Review recognition results."
     },
     "storage": {
       "question": "Are my files saved?",
@@ -401,7 +393,7 @@
     },
     "ai": {
       "question": "Is AI parsing automatic?",
-      "answer": "No. AI is optional for Professional and Enterprise. Choosing it sends the full PDF and filename through our server to Qwen AI Platform."
+      "answer": "No. AI is optional for Professional and Business. Choosing it sends the full PDF and filename through our server to Qwen AI Platform."
     }
   },
   "HomeFooter": {
@@ -425,14 +417,14 @@
   "Terms": {
     "metadata": {
       "title": "Terms of service | StatementXL",
-      "description": "Learn how StatementXL handles files, quotas, Creem, PayPal or Waffo subscriptions, refunds, and user responsibilities."
+      "description": "Learn how StatementXL handles files, quotas, Waffo subscriptions, refunds, and user responsibilities."
     },
     "title": "Terms of service",
     "intro": "This service is operated by ReAvid Ltd and provided through <site>{domain}</site>. Read these terms and the privacy policy before using the conversion and subscription services.",
-    "availability": "PDF to Excel conversion and Creem, PayPal or Waffo subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
+    "availability": "PDF to Excel conversion and Waffo subscriptions are provided according to the current page state. Plan prices and availability may change with service configuration.",
     "service": {
       "title": "Service scope",
-      "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice. Local parsing runs in your browser by default and never switches to AI automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Check results against the original PDF."
+      "body": "The service organizes transaction information from supported bank statement PDFs into Excel files for download and review. Supported banks, file types, and processing limits are described on the service page. We do not provide bank account connections, banking services, or financial, tax, or legal advice. Local parsing runs in your browser by default and never switches to AI automatically. Professional and Business users can choose AI before conversion, including for scans. Check results against the original PDF."
     },
     "authorization": {
       "title": "Authorization to process files",
@@ -444,11 +436,11 @@
     },
     "quota": {
       "title": "Conversion quotas",
-      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Enterprise includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Creem, PayPal or Waffo billing period. Failed conversions do not use quota; partial results count PDF pages. Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint."
+      "body": "Anonymous users can convert {anonymousPages, plural, one {# PDF page} other {# PDF pages}} per day, and signed-in free users can convert {authenticatedPages, plural, one {# PDF page} other {# PDF pages}} per day. Standard includes {standardPages, plural, one {# page} other {# pages}} per month, Professional includes {professionalPages, number}, and Business includes {enterprisePages, number}. Daily quota resets in UTC and plan quota follows the current Waffo billing period. Failed conversions do not use quota; partial results count PDF pages. Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint."
     },
     "subscription": {
       "title": "Subscriptions and payment",
-      "body": "Standard, Professional, and Enterprise renew monthly at the price shown before purchase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction), handling payments, applicable taxes, and payment receipts. You are charged only after confirming the purchase. Creem sends subscription, renewal, and payment failure information to this service. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service. For Waffo checkout, Waffo acts as Merchant of Record and handles payments and applicable taxes. Waffo prices exclude tax; the final amount is shown at checkout. Available payment providers depend on the purchase options currently shown on the website."
+      "body": "Standard, Professional, and Business renew monthly at the price shown before purchase. You are charged only after confirming the purchase. Cancel automatic renewal from your website account; paid access remains available until the confirmed billing period ends. For Waffo checkout, Waffo acts as Merchant of Record and handles payments and applicable taxes. Waffo prices exclude tax; the final amount is shown at checkout. Available payment providers depend on the purchase options currently shown on the website."
     },
     "refunds": {
       "title": "Refund policy",
@@ -495,15 +487,15 @@
       "description": "How default local browser parsing, optional AI uploads, temporary browser results, and account, analytics, quota and billing data are handled."
     },
     "title": "Privacy policy",
-    "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and Creem, PayPal or Waffo subscription services.",
-    "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and Creem, PayPal or Waffo subscription features.",
+    "intro": "ReAvid Ltd operates <site>{domain}</site>. This policy explains how we handle information when you use the conversion and Waffo subscription services.",
+    "availability": "This policy applies to the currently available PDF to Excel conversion, account sign-in, and Waffo subscription features.",
     "documents": {
       "title": "Bank statements and conversion content",
-      "body": "Bank statements may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. Statement content is used only for your requested conversion, review and download, not for advertising or unrelated purposes. Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform."
+      "body": "Bank statements may contain sensitive names, account numbers, transaction dates, amounts, balances and descriptions. Statement content is used only for your requested conversion, review and download, not for advertising or unrelated purposes. Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Business users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform."
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Creem, PayPal or Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Creem, PayPal or Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Creem and Waffo also receive the website account email; PayPal handles payment details through its own account flow. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers."
+      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Waffo receives the website account email. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers."
     },
     "technicalData": {
       "title": "Necessary technical information",
@@ -520,7 +512,7 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Creem is our payment provider and Merchant of Record (the legal seller for the transaction). It processes subscription payments, applicable taxes, payment receipts, and refunds required by applicable law, and synchronizes subscription status with this service. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. Creem may process payment and account information under its applicable terms and privacy policy. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. For PayPal checkout, ReAvid Ltd is the seller and PayPal processes subscription payments and related account information under its terms and privacy policy. PayPal is not the Merchant of Record for this service. When you select Waffo, it acts as payment provider and Merchant of Record, processes payment and account information, and sends subscription updates to this service."
+      "body": "Account sign-in uses Google and Supabase. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. When you select Waffo, it acts as payment provider and Merchant of Record, processes payment and account information, and sends subscription updates to this service."
     },
     "storage": {
       "title": "Browser storage",
@@ -549,7 +541,7 @@
     "aiParsing": {
       "title": "AI parsing and third-party processing",
       "provider": "The AI parsing provider is Qwen AI Platform, operated by 通义云启（杭州）信息技术有限公司 (registered legal name). Its <terms>Product Service Agreement</terms> and <privacy>Legal Notice and Privacy Policy</privacy> apply.",
-      "body": "AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training."
+      "body": "AI parsing is optional and never turns on automatically. Professional and Business users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training."
     },
     "children": {
       "title": "Children and minors",
@@ -597,7 +589,7 @@
     "LLM_RESPONSE_TOO_LARGE": "The conversion result exceeds the response size limit.",
     "LLM_PAGE_COUNT_UNAVAILABLE": "A valid PDF page count was not returned. The conversion cannot be completed.",
     "LLM_INCOMPLETE_RESPONSE": "The AI output ended before the conversion was complete. No pages were deducted. Please try a shorter PDF.",
-    "AI_NOT_ALLOWED": "AI parsing requires an active Professional or Enterprise entitlement."
+    "AI_NOT_ALLOWED": "AI parsing requires an active Professional or Business entitlement."
   },
   "Account": {
     "title": "My account",
@@ -669,18 +661,18 @@
   "Geo": {
     "glance": "Turn a bank statement PDF into a spreadsheet you can check. Review deposits, payments and source rows before exporting Excel or CSV; regular parsing runs in your browser.",
     "conversionSummary": "Turn a bank statement PDF into a spreadsheet you can check. Review deposits, payments and source rows before exporting Excel or CSV; regular parsing runs in your browser.",
-    "limitsSummary": "Choose one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
+    "limitsSummary": "Choose one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Business can attempt scans. Password-protected files are not supported on any plan.",
     "quotaSummary": "Convert {anonymousPages} page per day anonymously or {authenticatedPages} pages when signed in; monthly plans start at {price} USD.",
-    "privacySummary": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training.",
-    "featuresAnswer": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. Check results against the original PDF before use.",
+    "privacySummary": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Business users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. This website keeps no permanent PDF, transaction, model-output or export history. The AI provider processes received data under its own terms and privacy policy; we make no additional promise about its retention period or use for training.",
+    "featuresAnswer": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Business users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. Check results against the original PDF before use.",
     "riskTitle": "What do the risk labels mean?",
     "riskAnswer": "Risk labels describe the evidence available for each extracted row. Compare flagged rows with the original PDF before using the result. Risk filters change only the preview; merchant normalization and exports still cover all transactions in the result.",
     "okDefinition": "No issue was detected; this does not guarantee accuracy or completeness.",
     "discrepancyDefinition": "Evidence conflicts or a review issue was detected.",
     "unverifiableDefinition": "Key evidence is missing or the row cannot be reliably verified.",
     "limitsTitle": "Which PDFs can I choose?",
-    "limitsAnswer": "Choose one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Enterprise can attempt scans. Password-protected files are not supported on any plan.",
-    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Creem, PayPal or Waffo. Available payment providers depend on the purchase options currently shown on the website.",
+    "limitsAnswer": "Choose one bank statement PDF of up to {megabytes} MB and {pages} pages. Anonymous, free and Standard users need a text layer; Professional and Business can attempt scans. Password-protected files are not supported on any plan.",
+    "pricingAnswer": "Free quotas reset daily; subscriptions provide pages per billing period. Compare the plans below and sign in before subscribing through Waffo. Available payment providers depend on the purchase options currently shown on the website.",
     "faqAnswer": "These answers explain file requirements, quotas and conversion risks. Read the relevant answer and check your PDF before converting.",
     "planHeader": "Plan",
     "priceHeader": "Price (USD)",
@@ -689,7 +681,7 @@
     "freePrice": "Free",
     "dailyPeriod": "Daily (UTC)",
     "billingPeriod": "billing period",
-    "billingNote": "Subscriptions renew monthly through Creem, PayPal or Waffo. Failed conversions do not use quota; partial results use the original PDF page count. Available payment providers depend on the purchase options currently shown on the website. Waffo prices exclude tax; applicable tax and the final total are shown at checkout.",
+    "billingNote": "Subscriptions renew monthly through Waffo. Failed conversions do not use quota; partial results use the original PDF page count. Available payment providers depend on the purchase options currently shown on the website. Waffo prices exclude tax; applicable tax and the final total are shown at checkout.",
     "privacyTitle": "How is my data handled?",
     "privacyAnswer": "Local parsing runs in your browser by default without uploading the PDF, filename or transactions. The complete PDF and filename are sent to our server and Qwen AI Platform only when you choose AI parsing. Statement content is used for the current conversion and download only. Keep your original PDF and downloaded Excel because the service has no file history.",
     "browserTitle": "What is temporarily stored in my browser?",
@@ -708,7 +700,7 @@
     "chatDescription": "Ask an AI assistant about StatementXL using our official sources.",
     "prompt": "Visit the official StatementXL information: {fullUrl}. If you need more detail, read {indexUrl} and follow the relevant document links. Answer in {language}: explain the product features, usage steps, file limits, data handling, free quotas and subscription prices, and cite source links. If you cannot access a source or it does not answer a question, say so clearly and do not guess.",
     "showPrompt": "View the default prompt",
-    "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Creem, PayPal or Waffo.",
+    "metadataAnswer": "Necessary account, quota and billing metadata is retained to operate the service. Manage your subscription in your account and Waffo.",
     "analyticsAnswer": "Google Analytics and Pageview may process technical visit information. Bank statements, extracted transactions and Excel content are not sent to these analytics services.",
     "parsingHeader": "Parsing capability",
     "merchantTitle": "How can I normalize merchant names?",
@@ -840,7 +832,7 @@
         "availability": "Bank of America lets you view, print and download up to 18 months of statements with check images directly. Older copies can be requested for up to seven years back. Do not apply these periods to every credit card product without checking the account's available documents.",
         "download": "Sign in to Online Banking. Under the Accounts tab, open Statements & Documents, select the account and statement period, then view and save the statement PDF. For older copies, use Request statements in the same area.",
         "detailsTitle": "Requesting older Bank of America statements",
-        "details": "Requested electronic statement copies are free. They are generally available 24–36 hours after the request and remain accessible for seven days, so save them promptly.\n\nPaper statement copies are mailed 7–10 business days after a request. Prefer the electronic PDF: a paper copy needs scanning, and only Professional and Enterprise can attempt scans through optional AI parsing.",
+        "details": "Requested electronic statement copies are free. They are generally available 24–36 hours after the request and remain accessible for seven days, so save them promptly.\n\nPaper statement copies are mailed 7–10 business days after a request. Prefer the electronic PDF: a paper copy needs scanning, and only Professional and Business can attempt scans through optional AI parsing.",
         "metaDescription": "Prepare Bank of America statement PDFs for Excel conversion. Find download and older-copy steps, then check the extracted transactions."
       },
       "wellsFargo": {
@@ -857,11 +849,11 @@
       "scanned": {
         "label": "Bank statement OCR for scanned PDFs",
         "title": "Turn a scanned bank statement into reviewable rows",
-        "intro": "A scan has no selectable transaction text. Professional and Enterprise users can choose Qwen AI to attempt extraction, then compare the output with the page images before downloading Excel or CSV.",
-        "planNote": "Scanned PDFs require Professional or Enterprise and available page quota. Anonymous, free and Standard access requires a text layer. Use the plan comparison below to choose the appropriate parsing capability.",
+        "intro": "A scan has no selectable transaction text. Professional and Business users can choose Qwen AI to attempt extraction, then compare the output with the page images before downloading Excel or CSV.",
+        "planNote": "Scanned PDFs require Professional or Business and available page quota. Anonymous, free and Standard access requires a text layer. Use the plan comparison below to choose the appropriate parsing capability.",
         "planCta": "Optional AI parsing; can try scanned PDFs",
         "requirementsTitle": "Check whether OCR is needed",
-        "requirements": "Try selecting text in the original PDF. If it is an image-only scan, sign in with Professional or Enterprise and available quota, then actively choose AI. Regular parsing does not provide OCR.",
+        "requirements": "Try selecting text in the original PDF. If it is an image-only scan, sign in with Professional or Business and available quota, then actively choose AI. Regular parsing does not provide OCR.",
         "preparationTitle": "Prepare complete, legible pages",
         "preparation": "Keep page order, column edges and balance rows visible. Combine JPG or PNG images into a PDF first; this upload accepts PDFs only. Prefer an original digital statement when available.",
         "limitationsTitle": "Know what leaves your device",
@@ -870,7 +862,7 @@
         "steps": {
           "upload": {
             "title": "Select optional AI",
-            "text": "With Professional or Enterprise and available quota, choose AI and one PDF up to {megabytes} MB and {pages} pages."
+            "text": "With Professional or Business and available quota, choose AI and one PDF up to {megabytes} MB and {pages} pages."
           },
           "review": {
             "title": "Compare with the page images",
@@ -891,7 +883,7 @@
           {
             "id": "images",
             "question": "Can I upload a photo of a statement?",
-            "answer": "Combine clear, complete photos into a PDF first. AI requires Professional or Enterprise and available quota; the complete PDF and filename go to Qwen."
+            "answer": "Combine clear, complete photos into a PDF first. AI requires Professional or Business and available quota; the complete PDF and filename go to Qwen."
           }
         ]
       },
@@ -899,7 +891,7 @@
         "label": "Convert Bank Statement PDF to QuickBooks CSV",
         "title": "Convert bank statement PDFs to a QuickBooks-ready CSV",
         "intro": "Extract transactions from your PDF bank statement and review them against the original. Export your reviewed data, then prepare a separate 3- or 4-column CSV for QuickBooks Online using the guide below.",
-        "planNote": "Text PDFs can use the free daily quota; larger workloads can use a subscription. Scanned PDFs require Professional or Enterprise. Compare the configured prices and page quotas below.",
+        "planNote": "Text PDFs can use the free daily quota; larger workloads can use a subscription. Scanned PDFs require Professional or Business. Compare the configured prices and page quotas below.",
         "planCta": "Compare page quotas and parsing plans",
         "requirementsTitle": "Prepare a clean CSV for QuickBooks",
         "requirements": "Use Date, Description, Amount, or Date, Description, Credit, Debit. Copy reviewed transactions into a new sheet; remove balance, risk, source and summary columns from the import copy. Keep the full StatementXL export separately for checking. Use one date format, plain decimal amounts and blank unused amount cells.",
@@ -911,7 +903,7 @@
         "steps": {
           "upload": {
             "title": "Convert the statement PDF",
-            "text": "Choose one PDF up to {megabytes} MB and {pages} pages. Use a text PDF on free or Standard access; Professional and Enterprise can attempt scans."
+            "text": "Choose one PDF up to {megabytes} MB and {pages} pages. Use a text PDF on free or Standard access; Professional and Business can attempt scans."
           },
           "review": {
             "title": "Check and export transactions",
@@ -1026,7 +1018,7 @@
         "beforeImport": {
           "title": "Before you import",
           "balance": "Check your opening and closing balances with the <checker>balance checker</checker>.",
-          "scanned": "Working from a scan? Read the <scanned>scanned statement guide</scanned>. Scanned PDF parsing requires Professional or Enterprise."
+          "scanned": "Working from a scan? Read the <scanned>scanned statement guide</scanned>. Scanned PDF parsing requires Professional or Business."
         },
         "faq": [
           {
@@ -1089,7 +1081,7 @@
           },
           {
             "title": "When StatementXL is a better fit",
-            "text": "Choose StatementXL for one PDF, row-by-row review and downloadable Excel or CSV. Local parsing runs in your browser: no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Row risk reasons and source locations help review uncertain results. Optional AI requires Professional or Enterprise and sends the complete PDF and filename to Qwen AI Platform. There is no QBO export, batch intake, public extraction API or accounting connection."
+            "text": "Choose StatementXL for one PDF, row-by-row review and downloadable Excel or CSV. Local parsing runs in your browser: no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Row risk reasons and source locations help review uncertain results. Optional AI requires Professional or Business and sends the complete PDF and filename to Qwen AI Platform. There is no QBO export, batch intake, public extraction API or accounting connection."
           },
           {
             "title": "Compare billing and the cost of review",
@@ -1147,7 +1139,7 @@
           },
           {
             "title": "Where StatementXL fits",
-            "text": "StatementXL handles one PDF at a time and exports Excel, CSV and other review formats with row risks and source locations. Local parsing runs in your browser; no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Professional and Enterprise users can actively choose AI, including for scans, which sends the complete PDF and filename to Qwen AI Platform. There is no public extraction API, bulk intake, QBO export or direct accounting connection."
+            "text": "StatementXL handles one PDF at a time and exports Excel, CSV and other review formats with row risks and source locations. Local parsing runs in your browser; no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Professional and Business users can actively choose AI, including for scans, which sends the complete PDF and filename to Qwen AI Platform. There is no public extraction API, bulk intake, QBO export or direct accounting connection."
           },
           {
             "title": "Compare costs using the right unit",
@@ -1329,7 +1321,7 @@
           },
           {
             "title": "Processing and product boundaries",
-            "text": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Enterprise users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. Account, billing and operational metadata are separate from statement contents. The product has no direct accounting import, bank connection or public extraction API."
+            "text": "Local parsing runs in your browser by default, without uploading the PDF, filename or transactions. After successful parsing, only the page count is sent to the quota endpoint. AI parsing is optional and never turns on automatically. Professional and Business users can choose AI before conversion, including for scans. Only when you choose AI are the complete PDF and filename sent through our server to Qwen AI Platform. Account, billing and operational metadata are separate from statement contents. The product has no direct accounting import, bank connection or public extraction API."
           },
           {
             "title": "Who publishes these guides",
@@ -1405,7 +1397,7 @@
           },
           {
             "title": "Best for reviewing one PDF at a time: StatementXL",
-            "text": "StatementXL converts one PDF into reviewable tables and exports Excel or CSV, with row risks and source locations. Local parsing runs in your browser; no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Professional and Enterprise users can actively choose AI for scans; that sends the complete PDF and filename to Qwen AI Platform. Review the output against the original. There is no batch intake, QBO export, public extraction API or direct accounting connection."
+            "text": "StatementXL converts one PDF into reviewable tables and exports Excel or CSV, with row risks and source locations. Local parsing runs in your browser; no PDF or transactions are uploaded, and only the page count is sent to deduct quota after success. Professional and Business users can actively choose AI for scans; that sends the complete PDF and filename to Qwen AI Platform. Review the output against the original. There is no batch intake, QBO export, public extraction API or direct accounting connection."
           },
           {
             "title": "Best for batch processing and QBO handoffs: consider DocuClipper",
@@ -1427,7 +1419,7 @@
           },
           {
             "question": "Which option should I choose for a scanned statement?",
-            "answer": "Choose a workflow that explicitly handles scans and check a representative file. In StatementXL, Professional and Enterprise users must actively select AI; the complete PDF and filename go to Qwen AI Platform. Regular browser parsing requires a text layer, and AI output still needs manual review."
+            "answer": "Choose a workflow that explicitly handles scans and check a representative file. In StatementXL, Professional and Business users must actively select AI; the complete PDF and filename go to Qwen AI Platform. Regular browser parsing requires a text layer, and AI output still needs manual review."
           },
           {
             "question": "Can a converter import the statement into my accounting software?",

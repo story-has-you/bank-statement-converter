@@ -11,11 +11,30 @@ pnpm dev
 
 开发和构建命令自动从锁定版本的 `pdfjs-dist` 准备 Worker、CMaps、字体和 WASM 静态资源，不使用 CDN。开发服务只需 Next.js，默认端口 3000。
 
+`pnpm dev` 将开发服务的 HTTP 请求头上限设为 64 KiB，容纳本地登录会话及同一 `localhost` 下其他项目的 Cookie，避免超过 Node.js 默认 16 KiB 上限而返回 HTTP 431。此设置仅用于开发服务。
+
+### 本地 Supabase
+
+开发调试默认连接 OrbStack 中的专用本地实例 `bank-statement-converter`，由 `/Users/fangxi/Independent.localized/docker/bank-statement-converter` 统一管理，数据卷与其他项目独立，不关联 Supabase Cloud。
+
+```sh
+make -C /Users/fangxi/Independent.localized/docker/bank-statement-converter start
+# 在本项目根目录预览并应用迁移（Supabase CLI 3.x 默认操作本地）
+supabase db push --dry-run
+supabase db push
+```
+
+根目录 `.env.local` 使用 `NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:56321`，以及该实例的 `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` 和 `SUPABASE_SERVICE_ROLE_KEY`。密钥通过实例目录中的 `supabase status -o env` 获取：分别对应 `PUBLISHABLE_KEY` 和 `SERVICE_ROLE_KEY`，不要提交到 Git。修改后重启已有 Next.js 开发服务。
+
+Studio 为 [http://127.0.0.1:56323](http://127.0.0.1:56323)，测试邮件箱为 [http://127.0.0.1:56324](http://127.0.0.1:56324)，PostgreSQL 端口为 `56322`。本地用户、订阅和额度独立于云端及原共享实例，不自动迁移已有数据。不要运行 `supabase db reset` 或删除数据卷；停止服务使用实例目录中的 `make stop`，再次启动会保留数据。
+
+专用实例的 Google OAuth 已启用，凭据保存在实例目录的 `.env`（不提交 Git），由该目录的 `supabase/config.toml` 引用。Google Cloud 的 OAuth 客户端必须将 `http://127.0.0.1:56321/auth/v1/callback` 加入 Authorized redirect URIs；应用回调为 `http://localhost:3000/api/auth/callback`。Google 授权仍连接 Google，登录用户及会话保存在本地 Supabase。切换 Supabase 不会改变 Qwen 和支付渠道的配置，它们仍按各自环境变量连接外部服务。
+
 打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
 
 选择文件后本地读取页数，通过 `/api/convert/quota` 查询额度，不上传 PDF、不扣额度。默认常规解析在浏览器内执行，生成可用结果后只向 `POST /api/convert/quota` 提交 `{ pageCount }` 扣额，成功后开放下载。服务端不接收或核实 PDF 与流水内容，页数采用客户端报告值；修改客户端可绕过此计费边界。额度接口保留正整数及现有身份、周期、余额约束，扣额失败不交付最终结果。
 
-Professional 和 Enterprise 可在转换前主动选择 AI。只有 AI 模式通过 `/api/convert` 上传原始 PDF，并由服务端复核使用资格；常规失败或部分成功均不自动请求 AI。
+Professional 和 Business 可在转换前主动选择 AI。只有 AI 模式通过 `/api/convert` 上传原始 PDF，并由服务端复核使用资格；常规失败或部分成功均不自动请求 AI。
 
 当前标签页的会话存储临时保存文件名、最终解析结果和商户归一化映射，供预览、刷新恢复和下载；重新转换或清理结果时一并清除，不跨文件复用。PDF、解析结果和所有导出文件不写入数据库、对象存储或持久化文件历史。multipart 请求解析可能短暂使用内存或系统临时文件，处理结束后关闭并清理，不提供再次下载的文件。
 
@@ -39,13 +58,15 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 在 [`src/config/plans.ts`](src/config/plans.ts) 统一调整套餐规则：
 
 - `freeQuotaConfig`：匿名与登录免费用户的每日页数，当前分别为 1 页和 5 页，按 UTC 日重置。
-- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `aiParsing`（是否允许用户主动选择 AI 解析）。当前 Standard 为 $9.90 / 500 页，Professional 为 $49.90 / 1,000 页，Enterprise 为 $79.90 / 2,000 页。
+- `subscriptionConfig`：各套餐的 `monthlyPrice`（美元月费）、`pages`（每个支付渠道计费周期的额度）和 `aiParsing`（是否允许用户主动选择 AI 解析）。当前 Standard 为 $9.90 / 500 页，Professional 为 $24.90 / 1,000 页，Business 为 $39.90 / 2,000 页。Business 沿用内部标识 `enterprise`；Professional 与 Business 的本地解析和可选 AI 共用每月页数额度。
 
 首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，现有 CAS 扣减使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
 
-订阅已接入 Creem、PayPal 和 Waffo，可用渠道以购买入口和环境配置为准。三档套餐均按月自动续费；Waffo 展示税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
+订阅已接入 Waffo，可用渠道以购买入口和环境配置为准。三档套餐均按月自动续费；Waffo 展示税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
 
-这些是代码配置，修改后需要重新发布才能在已部署环境生效。修改 `monthlyPrice` 不会自动修改渠道的实际扣款金额；若今后改价，需要同步调整所有已启用渠道的产品或计划价格及其环境变量映射，付款校验也使用该月价。仅修改页数额度不需要调整渠道产品价格或 ID。部署后需分别验证真实付款、权益入库与运行结果。
+这些是代码配置，修改后需要重新发布才能在已部署环境生效。新结账会将 `monthlyPrice` 传给 Waffo，并在 Waffo metadata 保存签名报价；不需要同步修改平台商品价格或环境变量映射。已有结账和订阅继续按各自约定价格付款、续费。付款成功前可重新选择任意套餐，每次点击会建立独立结账，不写入本地待支付表；核实成功付款后才保存订阅及锁定月价。仅修改页数额度不需要调整渠道产品价格或 ID。首次上线需配置签名密钥，并核实旧订阅快照与存量回填，部署后分别验证真实付款、权益入库与运行结果。
+
+产品名称、描述复用 `messages/en.json` 的 `UsageTiers.plans.<tier>.name`、`description`，新建结账前自动同步到 Waffo 商品；无需在平台后台分别修改。平台共享商品采用英文，网站其他语言仍使用各自翻译。名称、描述不能为空，同步失败时不创建结账；详情见 [支付配置说明](BILLING.md)。
 
 ## 单文件转换限制
 
@@ -53,11 +74,15 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 
 ## 订阅配置
 
-订阅支持 Creem、PayPal 和 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，各渠道需配置自己的凭据、产品及 Webhook。Waffo 价格为税前价，适用税费在结账时计算。
+订阅支持 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，需配置 Waffo 凭据、产品及 Webhook。Waffo 价格为税前价，适用税费在结账时计算。
 
-`CREEM_PAYMENT_ENABLED` 控制是否接受新建支付：未设置时默认开启；已设置时仅 `true` 开启（忽略首尾空白和大小写），其他值关闭。关闭时隐藏购买按钮，新建订阅返回 HTTP 503。开启但凭据或套餐配置不完整时显示禁用按钮，通过无障碍标签和 title 提示不可用原因。已有订阅的确认、回调与取消继续处理。
+`WAFFO_PAYMENT_ENABLED` 控制新建支付，仅显式设为 `true` 时开启。关闭时隐藏购买入口，新建订阅返回 HTTP 503；已有订阅的确认、回调与取消继续处理。价格由 `src/config/plans.ts` 决定，下单时锁定，已有订阅按原约定价格续费。
 
-新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/creem`，本地联调需要公开 HTTPS 地址。
+新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/waffo`，本地联调需要公开 HTTPS 地址。
+
+价格快照迁移、存量回填及已停用渠道下线前置检查见 [支付价格统一与上线说明](BILLING.md)。
+
+`BILLING_QUOTE_SIGNING_SECRET` 是至少 32 字节的独立随机签名密钥，仅服务端使用，需长期保留；不要随部署重新生成，以免旧支付链接无法核账。
 
 本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。
 
@@ -94,13 +119,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 SUPABASE_SERVICE_ROLE_KEY
-CREEM_PAYMENT_ENABLED=true
-CREEM_API_KEY
-CREEM_ENVIRONMENT=production
-CREEM_PRODUCT_ID_STANDARD
-CREEM_PRODUCT_ID_PROFESSIONAL
-CREEM_PRODUCT_ID_ENTERPRISE
-CREEM_WEBHOOK_SECRET
+BILLING_QUOTE_SIGNING_SECRET
+WAFFO_PAYMENT_ENABLED=true
+WAFFO_ENVIRONMENT=prod
+WAFFO_MERCHANT_ID
+WAFFO_PRIVATE_KEY
+WAFFO_STORE_ID
+WAFFO_PRODUCT_ID_STANDARD
+WAFFO_PRODUCT_ID_PROFESSIONAL
+WAFFO_PRODUCT_ID_ENTERPRISE
+WAFFO_RETURN_BASE_URL=https://example.com
 ```
 
 将自己的域名添加为 Vercel Production Domain。Supabase Auth 回调地址示例：
@@ -109,17 +137,17 @@ CREEM_WEBHOOK_SECRET
 https://example.com/api/auth/callback
 ```
 
-Creem Webhook 地址示例：
+Waffo Webhook 地址示例：
 
 ```text
-https://example.com/api/billing/webhooks/creem
+https://example.com/api/billing/webhooks/waffo
 ```
 
-不要把 `SUPABASE_SERVICE_ROLE_KEY`、`CREEM_API_KEY`、`CREEM_WEBHOOK_SECRET` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
+不要把 `SUPABASE_SERVICE_ROLE_KEY`、`BILLING_QUOTE_SIGNING_SECRET`、`WAFFO_PRIVATE_KEY` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
 
 ### 主动选择 Qwen 与流式预览
 
-Professional 和 Enterprise 使用资格有效时可主动选择 AI 解析，包括尝试扫描件。有效计费周期内已取消续费的高阶订阅也保留此能力。默认常规解析不请求 AI，匿名、免费和 Standard 只可使用常规解析。
+Professional 和 Business 使用资格有效时可主动选择 AI 解析，包括尝试扫描件。有效计费周期内已取消续费的高阶订阅也保留此能力。默认常规解析不请求 AI，匿名、免费和 Standard 只可使用常规解析。
 
 在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响 AI，不影响浏览器常规解析。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
 

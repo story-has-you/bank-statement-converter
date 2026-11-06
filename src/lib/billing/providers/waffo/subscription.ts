@@ -1,7 +1,6 @@
 import "server-only";
 
-import { usdFromDecimal, usdFromMinorUnits, usdToDecimal } from "@/lib/billing/usd";
-import { subscriptionConfig } from "@/config/plans";
+import { requireRecurringAmount, usdFromDecimal, usdFromMinorUnits, usdToDecimal } from "@/lib/billing/usd";
 import type { ProviderSubscription } from "@/lib/billing/provider";
 import type { SubscriptionStatus } from "@/lib/billing/types";
 import { getWaffoTier } from "./config";
@@ -25,7 +24,8 @@ export function normalizeWaffoSubscription(remote: WaffoSubscription): ProviderS
     remote.testMode !== (config.environment === "test") ||
     !tier ||
     !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(userId) ||
-    !remote.orderMerchantExternalId?.startsWith("wco_")
+    !/^wco_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(remote.orderMerchantExternalId ?? "") ||
+    !Object.hasOwn(statuses, remote.status)
   ) {
     throw new Error("Waffo subscription identity mismatch");
   }
@@ -43,9 +43,9 @@ export function normalizeWaffoSubscription(remote: WaffoSubscription): ProviderS
 }
 
 /** 以渠道实付和订单锁定的税前价、税额核账，避免把报价快照当作付款证据。 */
-export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPayment): { amount: string; paidAt: string } {
-  const subscription = normalizeWaffoSubscription(remote);
-  const expected = usdFromDecimal(String(subscriptionConfig[subscription.tier].monthlyPrice));
+export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPayment, recurringAmount: string): { amount: string; paidAt: string } {
+  normalizeWaffoSubscription(remote);
+  const expected = usdFromDecimal(requireRecurringAmount(recurringAmount));
   const snapshot = remote.priceSnapshot;
   const paid = payment.pspAmountDetails;
   const charged = payment.snapshotAmountDetails;
@@ -79,4 +79,11 @@ export function verifyWaffoPayment(remote: WaffoSubscription, payment: WaffoPaym
     throw new Error("Waffo payment evidence is invalid");
   }
   return { amount: usdToDecimal(usdFromDecimal(paid.amount)), paidAt: payment.createdAt };
+}
+
+export function getWaffoAgreedAmount(remote: WaffoSubscription): string {
+  if (remote.billingPeriod !== "monthly" || remote.isInTrial || remote.priceSnapshot?.currency !== "USD") {
+    throw new Error("Waffo subscription price evidence is invalid");
+  }
+  return requireRecurringAmount(remote.priceSnapshot.regularPhase.subtotal);
 }

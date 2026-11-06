@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/prepare-pdfjs.mjs && next dev --port 3000",
+    "dev": "node scripts/prepare-pdfjs.mjs && node --max-http-header-size=65536 ./node_modules/next/dist/bin/next dev --port 3000",
     "build": "node scripts/prepare-pdfjs.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "pnpm test:unit && pnpm verify:pdfjs && pnpm verify:conversion",
-    "test:unit": "node --import tsx --test tests/account-summary.test.ts tests/billing-quota.test.ts tests/conversion-evidence.test.ts tests/conversion-spreadsheet-export.test.tsx tests/merchant-normalization.test.ts",
+    "test:unit": "node --import tsx --test tests/account-summary.test.ts tests/billing-quota.test.ts tests/billing-pricing.test.ts tests/conversion-evidence.test.ts tests/conversion-spreadsheet-export.test.tsx tests/merchant-normalization.test.ts",
     "test:account": "node --import tsx --test tests/account-summary.test.ts",
     "test:exports": "node --import tsx --test tests/conversion-spreadsheet-export.test.tsx",
     "test:merchants": "node --import tsx --test tests/merchant-normalization.test.ts",
@@ -16,7 +16,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "verify:conversion": "node --import tsx scripts/verify-conversion.mjs",
-    "verify:pdfjs": "node --import tsx scripts/verify-pdfjs.mjs"
+    "verify:pdfjs": "node --import tsx scripts/verify-pdfjs.mjs",
+    "billing:prices:audit": "node --import tsx scripts/backfill-billing-prices.mts",
+    "test:billing": "node --import tsx --test tests/billing-quota.test.ts tests/billing-pricing.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -28,7 +30,6 @@
     "@waffo/pancake-ts": "0.26.0",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
-    "creem": "1.13.0",
     "jotai": "2.20.3",
     "lucide-react": "^1.49.0",
     "next": "16.3.6",

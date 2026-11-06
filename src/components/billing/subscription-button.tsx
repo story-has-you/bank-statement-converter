@@ -5,17 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
-import { PaymentProviderIcon } from "@/components/billing/payment-provider-icon";
+import { CreditCard } from "lucide-react";
 import { CheckoutSession } from "@/components/billing/checkout-session";
 import type { CheckoutConfig, CheckoutResult } from "@/lib/billing/provider";
 import { isCheckoutResult, readBillingResponse } from "@/lib/billing/response";
 import type { MembershipTier } from "@/lib/billing/types";
 
-type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier; renewalConsent: boolean };
+type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier };
 
-const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier, renewalConsent }) => {
+const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
-  const plans = useTranslations("UsageTiers.plans");
   const locale = useLocale();
   const providerName = t(`providers.${checkout.provider}`);
   const [failure, setFailure] = useState<string | null>(null);
@@ -32,19 +31,14 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier, renew
       const response = await fetch("/api/billing/subscriptions/create", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
-        body: JSON.stringify({ provider: checkout.provider, tier, renewalConsent }),
+        body: JSON.stringify({ provider: checkout.provider, tier }),
       });
       const payload: unknown = await response.json().catch(() => null);
       if (!response.ok || !isCheckoutResult(payload)) {
         if (mounted.current) {
           const failure = readBillingResponse(payload);
           const message = failure.error ?? t("api.createFailed");
-          const pending = failure.pendingCheckout;
-          setFailure(
-            pending
-              ? `${message} ${t("pendingCheckout", { provider: t(`providers.${pending.provider}`), tier: plans(`${pending.tier}.name`) })}`
-              : message,
-          );
+          setFailure(message);
         }
         throw new Error("Subscription creation failed");
       }
@@ -61,7 +55,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier, renew
     const unavailable = t("providerUnavailable", { provider: providerName });
     return (
       <Button type="button" size="lg" className="w-full min-w-0" disabled aria-label={unavailable} title={unavailable}>
-        <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+        <CreditCard aria-hidden="true" data-icon="inline-start" />
         <span className="truncate">{providerName}</span>
       </Button>
     );
@@ -86,14 +80,15 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier, renew
               size="lg"
               className="w-full min-w-0"
               aria-label={label}
+              aria-describedby="subscription-renewal-terms"
               title={label}
               onClick={() => {
                 setFailure(null);
                 void start();
               }}
-              disabled={pending || !renewalConsent}
+              disabled={pending}
             >
-              <PaymentProviderIcon provider={checkout.provider} data-icon="inline-start" />
+              <CreditCard aria-hidden="true" data-icon="inline-start" />
               <span className="truncate">{pending ? label : providerName}</span>
             </Button>
             {failure && (

@@ -2,7 +2,6 @@
 
 import { useEffect, useEffectEvent, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,6 @@ export function CheckoutReturnStatus(props: CheckoutReturnStatusProps) {
 function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatusProps) {
   const t = useTranslations("BillingReturn");
   const locale = useLocale();
-  const router = useRouter();
   const { refresh: refreshAccount } = usePublicAccount();
   const [state, setState] = useState<ReturnState>("pending");
   const [error, setError] = useState<string | null>(null);
@@ -38,29 +36,32 @@ function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatu
     setState(next.kind === "done" ? "active" : next.kind);
     if (next.kind === "done") {
       void refreshAccount();
-      router.refresh();
     }
+  });
+  const readStatus = useEffectEvent(async (signal: AbortSignal) => {
+    const response = await fetch("/api/billing/subscriptions/activate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-app-locale": locale },
+      body: JSON.stringify({ provider, checkoutId, tier }),
+      signal,
+    });
+    const payload = readBillingResponse(await response.json());
+    if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
+      return { kind: "done" as const, subscriptionId: payload.subscriptionId };
+    }
+    if (response.status !== 202 || payload.status !== "PENDING") {
+      return { kind: "failed" as const, error: payload.error ?? t("failed") };
+    }
+    return { kind: "pending" as const };
   });
   useEffect(() => {
     let subscriptionId: string | undefined;
     return startStatusPolling({
       initialDelayMs: 0,
       async read(signal) {
-        const response = await fetch("/api/billing/subscriptions/activate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-app-locale": locale },
-          body: JSON.stringify({ provider, checkoutId, tier }),
-          signal,
-        });
-        const payload = readBillingResponse(await response.json());
-        if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
-          subscriptionId = payload.subscriptionId;
-          return { kind: "done" };
-        }
-        if (response.status !== 202 || payload.status !== "PENDING") {
-          return { kind: "failed", error: payload.error ?? t("failed") };
-        }
-        return { kind: "pending" };
+        const next = await readStatus(signal);
+        if (next.kind === "done") subscriptionId = next.subscriptionId;
+        return next;
       },
       onState(next) {
         if (next.kind === "done" && subscriptionId) {
@@ -74,7 +75,7 @@ function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatu
         handleState(next);
       },
     });
-  }, [provider, checkoutId, tier, locale, retry, t]);
+  }, [provider, checkoutId, tier, locale, retry]);
   return (
     <div className="grid gap-4">
       <p role={state === "failed" ? "alert" : "status"}>{error ?? t(state)}</p>

@@ -95,7 +95,7 @@ export async function AccountSubscriptions({ subscriptions }: { subscriptions: A
                     <div>{date(subscription.periodEnd)}</div>
                   </TableCell>
                   <TableCell className="max-w-64 text-right whitespace-normal">
-                    {(subscription.status === "ACTIVE" || subscription.status === "PAYMENT_FAILED") && (
+                    {subscription.provider === "waffo" && (subscription.status === "ACTIVE" || subscription.status === "PAYMENT_FAILED") && (
                       <CancelSubscriptionButton
                         provider={subscription.provider}
                         subscriptionId={subscription.subscriptionId}

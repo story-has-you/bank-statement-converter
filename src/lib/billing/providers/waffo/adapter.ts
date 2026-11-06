@@ -1,5 +1,6 @@
 import "server-only";
 
+import { hasQuoteSigningSecret } from "@/lib/billing/checkout-quote";
 import { membershipTiers } from "@/lib/billing/config";
 import type { PaymentProvider } from "@/lib/billing/provider";
 import { getWaffoConfig, getWaffoEnvironment, getWaffoProductId } from "./config";
@@ -11,7 +12,7 @@ export const waffoProvider: PaymentProvider = {
   id: "waffo",
   getCheckoutConfig: () => ({
     provider: "waffo",
-    available: Boolean(getWaffoConfig()),
+    available: Boolean(getWaffoConfig()) && hasQuoteSigningSecret(),
     availableTiers: membershipTiers.filter((tier) => getWaffoProductId(tier)),
     settings: { environment: getWaffoEnvironment() },
   }),

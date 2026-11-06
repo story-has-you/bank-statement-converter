@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Kontoauszug umwandeln: PDF in Excel & CSV | StatementXL",
-    "description": "Kontoauszug-PDFs in Excel oder CSV umwandeln: standardmäßig lokal im Browser ohne Datei-Upload. Optionale KI für Professional und Enterprise. Ergebnisse vor dem Download prüfen.",
+    "description": "Kontoauszug-PDFs in Excel oder CSV umwandeln: standardmäßig lokal im Browser ohne Datei-Upload. Optionale KI für Professional und Business. Ergebnisse vor dem Download prüfen.",
     "keywords": "Kontoauszug umwandeln, Kontoauszug PDF Excel, Kontoauszug PDF CSV, Kontoauszug OCR",
     "brand": "StatementXL",
     "alternateName": "Kontoauszüge in Excel oder CSV umwandeln"
@@ -85,7 +85,7 @@
     "emptyFile": "Die ausgewählte PDF-Datei ist leer.",
     "quotaExhausted": "Ihr Seitenkontingent für diesen Zeitraum ist aufgebraucht.",
     "invalidResponse": "Der Konvertierungsdienst hat Daten in einem ungültigen Format zurückgegeben.",
-    "aiNotice": "Professional und Enterprise können KI auch für Scans wählen; sie startet nie automatisch. Nur dann gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform. Wir speichern keinen dauerhaften Datei- oder Transaktionsverlauf. Für Qwens Speicherung und Training gelten die <link>Nutzungs- und Datenschutzbedingungen</link>.",
+    "aiNotice": "Professional und Business können KI auch für Scans wählen; sie startet nie automatisch. Nur dann gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform. Wir speichern keinen dauerhaften Datei- oder Transaktionsverlauf. Für Qwens Speicherung und Training gelten die <link>Nutzungs- und Datenschutzbedingungen</link>.",
     "checking": "PDF und Kontingent werden geprüft",
     "retryCheck": "Erneut prüfen",
     "pageCount": "{pageCount, plural, one {# Seite} other {# Seiten}}",
@@ -287,7 +287,7 @@
   },
   "UsageTiers": {
     "title": "Kontoauszug-Tarife und Kontingente",
-    "description": "Tägliches Gratiskontingent oder Monatsabo.",
+    "description": "Tägliche Gratisseiten oder Monatsabo. In Tarifen mit KI teilen sich lokale und KI-Analyse das monatliche Seitenkontingent.",
     "anonymous": "Ohne Anmeldung",
     "anonymousAmount": "{pages, plural, one {# Seite} other {# Seiten}}",
     "signedIn": "Angemeldet",
@@ -301,19 +301,19 @@
     "plans": {
       "standard": {
         "name": "Standard",
-        "description": "Für persönliche Kontoauszüge."
+        "description": "Für die private Buchhaltung, gelegentliche Nacharbeiten und Kontoauszüge mit Textebene. Dateien im Browser auslesen, Transaktionsquellen und Risikohinweise prüfen und anschließend als Excel oder CSV exportieren."
       },
       "professional": {
         "name": "Professional",
-        "description": "Für regelmäßige Kontoauszug-Konvertierungen."
+        "description": "Für Buchhaltungsfachkräfte, die regelmäßig Mandantenunterlagen ordnen, Transaktionen abgleichen und Buchungen vorbereiten. Lokal auslesen oder für gescannte PDFs gezielt KI wählen; Quellen und Risikohinweise unterstützen die Prüfung."
       },
       "enterprise": {
-        "name": "Unternehmen",
-        "description": "Für viele Kontoauszüge pro Monat."
+        "name": "Business",
+        "description": "Für Kontoauszüge mehrerer Mandanten, den Monatsabgleich oder größere monatliche Mengen. Höheres Seitenkontingent mit denselben Funktionen für lokales Auslesen, optionale KI, Prüfung und Export wie bei Professional."
       }
     },
-    "aiParsing": "KI-Analyse wählbar; Scans können versucht werden",
-    "textParsing": "Verarbeitung von Text-PDFs"
+    "aiParsing": "Optionale KI für Text- und Scan-PDFs; Ergebnisse vor der Nutzung prüfen.",
+    "textParsing": "Text-PDFs lokal verarbeiten, ohne die Originaldatei hochzuladen."
   },
   "Billing": {
     "signInRequired": "Melden Sie sich an, bevor Sie ein Abonnement starten.",
@@ -353,12 +353,8 @@
       "billingPeriodEnded": "Der aktuelle Abrechnungszeitraum dieses Abonnements ist beendet.",
       "invalidProvider": "Der ausgewählte Zahlungsanbieter ist ungültig.",
       "existingFailedSubscription": "Für Ihr Abonnement ist eine Zahlung offen. Klären Sie diese oder kündigen Sie das Abonnement.",
-      "checkoutCreating": "Der Checkout wird erstellt. Bitte versuche es gleich erneut. Wende dich an den Support, falls dies anhält.",
-      "checkoutUnknown": "Der vorherige Checkout konnte nicht überprüft werden. Kontaktiere vor einer weiteren Zahlung den Support.",
-      "checkoutAwaitingPayment": "Die Zahlung des vorherigen Checkouts wird verarbeitet oder wartet auf Bestätigung. Bitte versuche es gleich erneut.",
-      "checkoutAlreadyPending": "Ein Checkout ist bereits offen. Kehre zu diesem Tarif zurück und wähle den ursprünglichen Zahlungsanbieter.",
-      "checkoutClosed": "Der vorherige Checkout ist geschlossen. Kehre zu den Tarifen zurück und versuche es erneut.",
-      "renewalConsentRequired": "Bitte bestätigen Sie, dass Sie die Bedingungen zur automatischen Verlängerung gelesen haben und ihnen zustimmen."
+      "checkoutUnknown": "Diese Checkout-Anfrage konnte nicht bestätigt werden. Sie können einen Tarif wählen und es erneut versuchen. Falls Sie bereits bezahlt haben, prüfen Sie zuerst Ihr Konto.",
+      "checkoutClosed": "Der vorherige Checkout ist geschlossen. Kehre zu den Tarifen zurück und versuche es erneut."
     },
     "providerUnavailable": "Zahlungen über {provider} sind derzeit nicht verfügbar.",
     "providers": {
@@ -367,11 +363,7 @@
       "waffo": "Waffo"
     },
     "subscribeWith": "Mit {provider} abonnieren",
-    "openingProvider": "{provider} wird geöffnet",
-    "pendingCheckout": "Offener Checkout: {provider} / {tier}.",
-    "renewalDisclosure": "Ihr Abonnement kostet {amount} pro Monat und verlängert sich bis zur Kündigung automatisch jeden Monat. Anfallende Steuern und der endgültige Zahlbetrag werden beim Bezahlen angezeigt.",
-    "renewalCancellation": "Sie können die automatische Verlängerung in Ihrem <account>Konto</account> kündigen, um weitere Verlängerungszahlungen zu stoppen. Der bezahlte Zugang bleibt bis zum Ende des laufenden Abrechnungszeitraums bestehen. Siehe <terms>Abonnement- und Zahlungsbedingungen</terms>.",
-    "renewalConsent": "Ich habe die oben genannten Bedingungen zur automatischen Verlängerung gelesen und stimme ihnen zu."
+    "openingProvider": "{provider} wird geöffnet"
   },
   "HomeFaq": {
     "title": "Was sollte ich vor der Konvertierung wissen?",
@@ -385,11 +377,11 @@
     },
     "quota": {
       "question": "Wie viele Kontoauszugsseiten sind kostenlos?",
-      "answer": "Täglich kostenlos: {anonymousPages, number} Seiten ohne Anmeldung, {authenticatedPages, number} mit Anmeldung. Monatlich: Standard {standardPages, number}, Professional {professionalPages, number}, Enterprise {enterprisePages, number} Seiten."
+      "answer": "Täglich kostenlos: {anonymousPages, number} Seiten ohne Anmeldung, {authenticatedPages, number} mit Anmeldung. Monatlich: Standard {standardPages, number}, Professional {professionalPages, number}, Business {enterprisePages, number} Seiten."
     },
     "scans": {
       "question": "Lassen sich eingescannte Kontoauszüge umwandeln?",
-      "answer": "Lokale Analyse benötigt auswählbaren Text. Professional und Enterprise können mit Restkontingent KI für Scans wählen. Ergebnisse müssen geprüft werden."
+      "answer": "Lokale Analyse benötigt auswählbaren Text. Professional und Business können mit Restkontingent KI für Scans wählen. Ergebnisse müssen geprüft werden."
     },
     "storage": {
       "question": "Kann ich frühere Konvertierungen erneut herunterladen?",
@@ -401,7 +393,7 @@
     },
     "ai": {
       "question": "Welche Daten erhält Qwen bei der KI-Analyse?",
-      "answer": "KI wird nie automatisch aktiviert. Wenn Sie sie mit Professional oder Enterprise wählen, gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform."
+      "answer": "KI wird nie automatisch aktiviert. Wenn Sie sie mit Professional oder Business wählen, gehen das vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform."
     }
   },
   "HomeFooter": {
@@ -425,14 +417,14 @@
   "Terms": {
     "metadata": {
       "title": "Nutzungsbedingungen | Kontoauszugskonverter",
-      "description": "Informationen zu Dateien, Kontingenten, Creem, PayPal oder Waffo-Abonnements, Rückerstattungen und Nutzerpflichten bei StatementXL."
+      "description": "Informationen zu Dateien, Kontingenten, Waffo-Abonnements, Rückerstattungen und Nutzerpflichten bei StatementXL."
     },
     "title": "Nutzungsbedingungen",
     "intro": "Dieser Dienst wird von ReAvid Ltd betrieben und über <site>{domain}</site> bereitgestellt. Lesen Sie diese Bedingungen und die Datenschutzrichtlinie, bevor Sie die Konvertierungs- und Abonnementdienste nutzen.",
-    "availability": "Die Konvertierung von PDF in Excel und Creem, PayPal oder Waffo-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
+    "availability": "Die Konvertierung von PDF in Excel und Waffo-Abonnements werden entsprechend dem aktuellen Seitenstatus bereitgestellt. Planpreise und Verfügbarkeit können sich je nach Servicekonfiguration ändern.",
     "service": {
       "title": "Leistungsumfang",
-      "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an. Standardmäßig erfolgt die reguläre Analyse im Browser, ohne automatischen gewählter KI-Analyse. Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Vergleichen Sie das Ergebnis mit dem Original-PDF."
+      "body": "Der Dienst organisiert Transaktionsinformationen aus unterstützten Kontoauszugs-PDFs in Excel-Dateien zum Herunterladen und Überprüfen. Unterstützte Banken, Dateitypen und Verarbeitungsgrenzen werden auf der Serviceseite beschrieben. Wir bieten keine Bankkontoverbindungen, Bankdienstleistungen oder Finanz-, Steuer- oder Rechtsberatung an. Standardmäßig erfolgt die reguläre Analyse im Browser, ohne automatischen gewählter KI-Analyse. Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Vergleichen Sie das Ergebnis mit dem Original-PDF."
     },
     "authorization": {
       "title": "Berechtigung zur Dateiverarbeitung",
@@ -444,11 +436,11 @@
     },
     "quota": {
       "title": "Konvertierungskontingente",
-      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Unternehmen {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Creem, PayPal oder Waffo-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten. Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet."
+      "body": "Ohne Anmeldung können Sie {anonymousPages, plural, one {# Seite} other {# Seiten}} pro Tag konvertieren, mit einem kostenlosen Konto {authenticatedPages, number}. Standard umfasst {standardPages, plural, one {# Seite} other {# Seiten}} pro Monat, Professional {professionalPages, number} und Business {enterprisePages, number}. Das Tageskontingent wird nach UTC zurückgesetzt; das Abonnementkontingent folgt dem aktuellen Waffo-Abrechnungszeitraum. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent. Teilergebnisse zählen die PDF-Seiten. Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet."
     },
     "subscription": {
       "title": "Abonnements und Zahlung",
-      "body": "Standard, Professional und Enterprise verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion) und übernimmt Zahlungen, anfallende Steuern und Zahlungsbelege. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Creem übermittelt Informationen zu Abonnements, Verlängerungen und fehlgeschlagenen Zahlungen an diesen Dienst. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst. Bei Zahlungen über Waffo ist Waffo der Merchant of Record und wickelt Zahlungen sowie anfallende Steuern ab. Die Waffo-Preise verstehen sich ohne Steuern; der Endbetrag wird beim Bezahlen angezeigt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen."
+      "body": "Standard, Professional und Business verlängern sich monatlich zum vor dem Kauf angezeigten Preis. Eine Belastung erfolgt erst nach Ihrer Kaufbestätigung. Sie können die automatische Verlängerung in Ihrem Website-Konto kündigen. Der bezahlte Zugang bleibt bis zum Ende des bestätigten Abrechnungszeitraums bestehen. Bei Zahlungen über Waffo ist Waffo der Merchant of Record und wickelt Zahlungen sowie anfallende Steuern ab. Die Waffo-Preise verstehen sich ohne Steuern; der Endbetrag wird beim Bezahlen angezeigt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen."
     },
     "refunds": {
       "title": "Rückerstattungsregelung",
@@ -495,15 +487,15 @@
       "description": "Informationen zur lokalen Browseranalyse, optionalen KI-Uploads, temporären Browserergebnissen sowie Konto-, Analyse-, Kontingent- und Abrechnungsdaten."
     },
     "title": "Datenschutzrichtlinie",
-    "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und Creem, PayPal oder Waffo-Abonnementdienste nutzen.",
-    "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und Creem, PayPal oder Waffo-Abonnementfunktionen.",
+    "intro": "ReAvid Ltd betreibt <site>{domain}</site>. In dieser Richtlinie wird erläutert, wie wir mit Informationen umgehen, wenn Sie die Konvertierungs- und Waffo-Abonnementdienste nutzen.",
+    "availability": "Diese Richtlinie gilt für die derzeit verfügbaren PDF-zu-Excel-Konvertierungs-, Kontoanmeldungs- und Waffo-Abonnementfunktionen.",
     "documents": {
       "title": "Kontoauszüge und Umrechnungsinhalte",
-      "body": "Kontoauszüge können sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Auszugsinhalte werden nur für die angeforderte Konvertierung, Prüfung und den Download verwendet, nicht für Werbung oder sachfremde Zwecke. Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet."
+      "body": "Kontoauszüge können sensible Namen, Kontonummern, Transaktionsdaten, Beträge, Salden und Beschreibungen enthalten. Auszugsinhalte werden nur für die angeforderte Konvertierung, Prüfung und den Download verwendet, nicht für Werbung oder sachfremde Zwecke. Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet."
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Creem, PayPal oder Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Creem, PayPal oder Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Creem und Waffo erhalten außerdem die E-Mail-Adresse des Website-Kontos; PayPal verarbeitet Zahlungsdaten über seinen eigenen Kontoablauf. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören."
+      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Waffo erhält außerdem die E-Mail-Adresse des Website-Kontos. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören."
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
@@ -520,7 +512,7 @@
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
-      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Creem ist unser Zahlungsanbieter und Merchant of Record (der rechtliche Verkäufer der Transaktion). Creem verarbeitet Abonnementzahlungen, anfallende Steuern, Zahlungsbelege und gesetzlich vorgeschriebene Rückerstattungen und gleicht den Abonnementstatus mit diesem Dienst ab. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Creem kann Zahlungs- und Kontoinformationen gemäß seinen geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Beim PayPal-Checkout ist ReAvid Ltd der Verkäufer. PayPal verarbeitet Abonnementzahlungen und zugehörige Kontodaten gemäß seinen Bedingungen und Datenschutzbestimmungen und ist nicht der Merchant of Record für diesen Dienst. Wenn Sie Waffo wählen, verarbeitet Waffo als Zahlungsanbieter und Merchant of Record Zahlungs- und Kontoinformationen und übermittelt Abonnement-Updates an diesen Dienst."
+      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Wenn Sie Waffo wählen, verarbeitet Waffo als Zahlungsanbieter und Merchant of Record Zahlungs- und Kontoinformationen und übermittelt Abonnement-Updates an diesen Dienst."
     },
     "storage": {
       "title": "Browserspeicher",
@@ -549,7 +541,7 @@
     "aiParsing": {
       "title": "KI-Analyse und Verarbeitung durch Dritte",
       "provider": "Der KI-Analyseanbieter ist Qwen AI Platform, betrieben von 通义云启（杭州）信息技术有限公司 (eingetragener Firmenname). Es gelten die <terms>Produktdienstleistungsvereinbarung</terms> und die <privacy>Rechtshinweise und Datenschutzrichtlinie</privacy> des Anbieters.",
-      "body": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung."
+      "body": "Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung."
     },
     "children": {
       "title": "Kinder und Minderjährige",
@@ -597,7 +589,7 @@
     "LLM_RESPONSE_TOO_LARGE": "Das Konvertierungsergebnis überschreitet die Größenbegrenzung für Antworten.",
     "LLM_PAGE_COUNT_UNAVAILABLE": "Es wurde keine gültige PDF-Seitenzahl zurückgegeben. Die Konvertierung kann nicht abgeschlossen werden.",
     "LLM_INCOMPLETE_RESPONSE": "Die KI-Ausgabe wurde nicht abgeschlossen. Es wurden keine Seiten abgezogen. Bitte versuchen Sie eine kürzere PDF.",
-    "AI_NOT_ALLOWED": "KI-Analyse erfordert eine gültige Professional- oder Enterprise-Berechtigung."
+    "AI_NOT_ALLOWED": "KI-Analyse erfordert eine gültige Professional- oder Business-Berechtigung."
   },
   "Account": {
     "title": "Mein Konto",
@@ -669,18 +661,18 @@
   "Geo": {
     "glance": "PDF-Kontoauszüge für die Buchhaltung aufbereiten: Buchungen, Verwendungszwecke und Salden am Original prüfen, dann als Excel oder CSV speichern. Die reguläre Analyse läuft im Browser.",
     "conversionSummary": "PDF-Kontoauszüge für die Buchhaltung aufbereiten: Buchungen, Verwendungszwecke und Salden am Original prüfen, dann als Excel oder CSV speichern. Die reguläre Analyse läuft im Browser.",
-    "limitsSummary": "Wählen Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten aus. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
+    "limitsSummary": "Wählen Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten aus. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Business können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
     "quotaSummary": "Ohne Anmeldung sind täglich {anonymousPages} Seite, nach Anmeldung {authenticatedPages} Seiten möglich; Monatsabos beginnen bei {price} USD.",
-    "privacySummary": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung.",
-    "featuresAnswer": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Prüfen Sie die Ergebnisse vor der Verwendung anhand der Original-PDF.",
+    "privacySummary": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Diese Website speichert PDFs, Transaktionen, Modellausgaben und Exporte nicht als dauerhafte Historie. Für den KI-Anbieter gelten dessen Bedingungen und Datenschutzregeln. Wir geben keine zusätzliche Zusage zur Aufbewahrungsdauer oder Trainingsnutzung.",
+    "featuresAnswer": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Prüfen Sie die Ergebnisse vor der Verwendung anhand der Original-PDF.",
     "riskTitle": "Was bedeuten die Risikomarkierungen?",
     "riskAnswer": "Die Markierungen beschreiben die Belege jeder extrahierten Zeile. Prüfen Sie markierte Zeilen anhand des Original-PDFs vor der Nutzung. Risikofilter ändern nur die Vorschau; Namensvereinheitlichung und Exporte berücksichtigen weiterhin alle Transaktionen des Ergebnisses.",
     "okDefinition": "Kein Problem erkannt; Genauigkeit und Vollständigkeit sind damit nicht garantiert.",
     "discrepancyDefinition": "Widersprüchliche Belege oder ein Prüfbedarf wurden erkannt.",
     "unverifiableDefinition": "Wichtige Belege fehlen oder die Zeile lässt sich nicht zuverlässig prüfen.",
     "limitsTitle": "Welche PDFs kann ich auswählen?",
-    "limitsAnswer": "Wählen Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten aus. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Enterprise können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
-    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Creem, PayPal oder Waffo-Abo an. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen.",
+    "limitsAnswer": "Wählen Sie eine Kontoauszug-PDF mit höchstens {megabytes} MB und {pages} Seiten aus. Ohne Anmeldung, kostenlos und mit Standard ist eine Textebene erforderlich; Professional und Business können Scans versuchen. Passwortgeschützte Dateien sind in keinem Tarif unterstützt.",
+    "pricingAnswer": "Kostenlose Kontingente werden täglich zurückgesetzt, Abos bieten Seiten pro Abrechnungszeitraum. Vergleichen Sie die Tarife und melden Sie sich vor dem Waffo-Abo an. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen.",
     "faqAnswer": "Diese Antworten erläutern Dateianforderungen, Kontingente und Risiken. Lesen Sie die passende Antwort und prüfen Sie Ihr PDF vor der Konvertierung.",
     "planHeader": "Tarif",
     "priceHeader": "Preis (USD)",
@@ -689,7 +681,7 @@
     "freePrice": "Kostenlos",
     "dailyPeriod": "Täglich (UTC)",
     "billingPeriod": "Abrechnungszeitraum",
-    "billingNote": "Abos verlängern sich monatlich über Creem, PayPal oder Waffo. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen. Waffo zeigt Nettopreise an; anfallende Steuern und der endgültige Gesamtbetrag werden im Checkout angezeigt.",
+    "billingNote": "Abos verlängern sich monatlich über Waffo. Fehlgeschlagene Konvertierungen verbrauchen kein Kontingent; Teilergebnisse werden nach Original-PDF-Seiten gezählt. Welche Zahlungsanbieter verfügbar sind, richtet sich nach den aktuell auf der Website angezeigten Kaufoptionen. Waffo zeigt Nettopreise an; anfallende Steuern und der endgültige Gesamtbetrag werden im Checkout angezeigt.",
     "privacyTitle": "Wie werden meine Daten verarbeitet?",
     "privacyAnswer": "Die lokale Analyse erfolgt standardmäßig im Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nur wenn Sie KI wählen, werden die vollständige PDF und der Dateiname an unseren Server und Qwen AI Platform gesendet. Auszugsinhalte dienen nur der aktuellen Konvertierung und dem Download. Bewahren Sie PDF und Excel selbst auf, da es keinen Dateiverlauf gibt.",
     "browserTitle": "Was wird vorübergehend im Browser gespeichert?",
@@ -708,7 +700,7 @@
     "chatDescription": "Fragen Sie einen KI-Assistenten anhand unserer offiziellen Quellen nach StatementXL.",
     "prompt": "Besuche die offiziellen Informationen zu StatementXL: {fullUrl}. Lies bei Bedarf {indexUrl} und folge relevanten Dokumentlinks. Antworte auf {language}: Erkläre Funktionen, Nutzungsschritte, Dateilimits, Datenverarbeitung, kostenlose Kontingente und Abopreise mit Quellenlinks. Falls eine Quelle nicht zugänglich ist oder eine Antwort fehlt, sage dies ausdrücklich und rate nicht.",
     "showPrompt": "Standardprompt ansehen",
-    "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Creem, PayPal oder Waffo.",
+    "metadataAnswer": "Notwendige Konto-, Kontingent- und Abrechnungsmetadaten werden für den Betrieb gespeichert. Prüfen und verwalten Sie Ihr Abo in Ihrem Konto und bei Waffo.",
     "analyticsAnswer": "Google Analytics und Pageview können technische Besuchsinformationen verarbeiten. Kontoauszüge, extrahierte Transaktionen und Excel-Inhalte werden nicht an diese Analysedienste gesendet.",
     "parsingHeader": "Analysefunktionen",
     "merchantTitle": "Wie lassen sich Händlernamen vereinheitlichen?",
@@ -840,7 +832,7 @@
         "availability": "Auszüge mit Scheckbildern sind bis zu 18 Monate direkt abrufbar, druckbar und herunterladbar. Ältere Kopien können bis zu sieben Jahre rückwirkend angefordert werden. Prüfen Sie die Verfügbarkeit bei Kreditkarten separat für das jeweilige Konto.",
         "download": "Melden Sie sich im Online Banking an und öffnen Sie unter Accounts den Bereich Statements & Documents. Wählen Sie Konto und Zeitraum, öffnen Sie das PDF und speichern Sie es. Ältere Kopien können dort über Request statements angefordert werden.",
         "detailsTitle": "Ältere Auszüge bei Bank of America anfordern",
-        "details": "Elektronische Kopien sind kostenlos, normalerweise nach 24–36 Stunden verfügbar und sieben Tage abrufbar. Speichern Sie sie möglichst sofort.\n\nPapierkopien werden normalerweise 7–10 Werktage nach der Anfrage versendet. Bevorzugen Sie das elektronische PDF: Papier muss gescannt werden, und nur Professional und Enterprise können Scans über den optionale KI-Analyse versuchen.",
+        "details": "Elektronische Kopien sind kostenlos, normalerweise nach 24–36 Stunden verfügbar und sieben Tage abrufbar. Speichern Sie sie möglichst sofort.\n\nPapierkopien werden normalerweise 7–10 Werktage nach der Anfrage versendet. Bevorzugen Sie das elektronische PDF: Papier muss gescannt werden, und nur Professional und Business können Scans über den optionale KI-Analyse versuchen.",
         "metaDescription": "Bank-of-America-Auszüge für Excel vorbereiten. Lesen Sie die Download-Schritte und Hinweise zur Anforderung älterer Kopien."
       },
       "wellsFargo": {
@@ -857,11 +849,11 @@
       "scanned": {
         "label": "OCR für gescannte Kontoauszüge",
         "title": "Kontoauszug-Scan mit optionaler KI auslesen",
-        "intro": "Ein Kontoauszug ohne Textebene braucht eine Bilderkennung. Professional und Enterprise können Qwen KI aktiv wählen und die erkannten Buchungen mit dem Scan abgleichen, bevor sie Excel oder CSV speichern.",
-        "planNote": "Scans benötigen Professional oder Enterprise und ein verfügbares Seitenkontingent. Anonyme, kostenlose und Standard-Nutzung erfordern eine Textebene. Vergleichen Sie die Tarife unten.",
+        "intro": "Ein Kontoauszug ohne Textebene braucht eine Bilderkennung. Professional und Business können Qwen KI aktiv wählen und die erkannten Buchungen mit dem Scan abgleichen, bevor sie Excel oder CSV speichern.",
+        "planNote": "Scans benötigen Professional oder Business und ein verfügbares Seitenkontingent. Anonyme, kostenlose und Standard-Nutzung erfordern eine Textebene. Vergleichen Sie die Tarife unten.",
         "planCta": "KI-Analyse wählbar; Scans können versucht werden",
         "requirementsTitle": "Scans benötigen die aktive KI-Auswahl",
-        "requirements": "Professional oder Enterprise und verfügbares Kontingent sind erforderlich. KI wird nicht automatisch eingeschaltet. Die reguläre Browseranalyse liest nur PDFs mit Textebene.",
+        "requirements": "Professional oder Business und verfügbares Kontingent sind erforderlich. KI wird nicht automatisch eingeschaltet. Die reguläre Browseranalyse liest nur PDFs mit Textebene.",
         "preparationTitle": "Alle Spalten und Seiten lesbar halten",
         "preparation": "Datum, Verwendungszweck, Soll/Haben und Saldo dürfen nicht abgeschnitten sein. Schatten und Schräglage vermeiden; Fotos zunächst zu einem PDF zusammenstellen.",
         "limitationsTitle": "KI-Ergebnisse und Datenverarbeitung prüfen",
@@ -870,7 +862,7 @@
         "steps": {
           "upload": {
             "title": "Geeigneten Tarif wählen und hochladen",
-            "text": "Melden Sie sich mit aktivem Professional- oder Enterprise-Tarif und verfügbarem Kontingent an. Laden Sie ein Scan-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch."
+            "text": "Melden Sie sich mit aktivem Professional- oder Business-Tarif und verfügbarem Kontingent an. Laden Sie ein Scan-PDF mit höchstens {megabytes} MB und {pages} Seiten hoch."
           },
           "review": {
             "title": "Schwache Ziffern und Vorzeichen prüfen",
@@ -899,7 +891,7 @@
         "label": "Kontoauszüge für QuickBooks vorbereiten",
         "title": "Bankbuchungen für QuickBooks Online vorbereiten",
         "intro": "Wandeln Sie das PDF in StatementXL um, prüfen Sie die Buchungen und erstellen Sie eine CSV mit drei oder vier Spalten für QuickBooks Online. Der Import erfolgt manuell, ohne Kontoverbindung oder spezielle QBO-Dateien. QuickBooks bietet auch einen eigenen PDF- und Bildimport.",
-        "planNote": "Text-PDFs können das tägliche Gratis-Kontingent nutzen; größere Mengen einen passenden Tarif. Scans benötigen Professional oder Enterprise. Preise und Seitenkontingente finden Sie unten.",
+        "planNote": "Text-PDFs können das tägliche Gratis-Kontingent nutzen; größere Mengen einen passenden Tarif. Scans benötigen Professional oder Business. Preise und Seitenkontingente finden Sie unten.",
         "planCta": "Kontingente und Analysetarife vergleichen",
         "requirementsTitle": "Eine saubere CSV für QuickBooks erstellen",
         "requirements": "Verwenden Sie Date, Description, Amount oder Date, Description, Credit, Debit. Kopieren Sie geprüfte Buchungen in ein neues Blatt; entfernen Sie Saldo-, Risiko-, Quellen- und Summenspalten aus der Importkopie. Bewahren Sie den vollständigen Export separat auf. Einheitliche Datumsformate, einfache Dezimalbeträge und leere ungenutzte Betragszellen verwenden.",
@@ -911,7 +903,7 @@
         "steps": {
           "upload": {
             "title": "PDF-Auszug umwandeln",
-            "text": "Wählen Sie eine PDF bis {megabytes} MB und {pages} Seiten aus. Kostenlos und Standard benötigen Text-PDFs; Professional und Enterprise können Scans versuchen."
+            "text": "Wählen Sie eine PDF bis {megabytes} MB und {pages} Seiten aus. Kostenlos und Standard benötigen Text-PDFs; Professional und Business können Scans versuchen."
           },
           "review": {
             "title": "Buchungen prüfen und exportieren",
@@ -972,7 +964,7 @@
           },
           {
             "title": "Wann StatementXL passt",
-            "text": "StatementXL eignet sich für ein PDF, zeilenweise Prüfung und den Excel-/CSV-Download. Die reguläre Analyse läuft im Browser, ohne PDF oder Transaktionen hochzuladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Risikogründe und Quellpositionen helfen bei der Prüfung. Optionale KI erfordert Professional oder Enterprise und sendet das vollständige PDF samt Dateiname an Qwen AI Platform. QBO, Stapeleingang, öffentliche Extraktions-API und Buchhaltungsanbindung fehlen."
+            "text": "StatementXL eignet sich für ein PDF, zeilenweise Prüfung und den Excel-/CSV-Download. Die reguläre Analyse läuft im Browser, ohne PDF oder Transaktionen hochzuladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Risikogründe und Quellpositionen helfen bei der Prüfung. Optionale KI erfordert Professional oder Business und sendet das vollständige PDF samt Dateiname an Qwen AI Platform. QBO, Stapeleingang, öffentliche Extraktions-API und Buchhaltungsanbindung fehlen."
           },
           {
             "title": "Abrechnung und Prüfkosten vergleichen",
@@ -1030,7 +1022,7 @@
           },
           {
             "title": "Wofür StatementXL gedacht ist",
-            "text": "StatementXL verarbeitet ein PDF pro Vorgang und exportiert Excel, CSV und weitere Prüfformate mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Professional und Enterprise können KI auch für Scans aktiv wählen; das vollständige PDF und der Dateiname gehen dann an Qwen AI Platform. Öffentliche Extraktions-API, Stapeleingang, QBO und direkte Buchhaltungsanbindung sind nicht vorhanden."
+            "text": "StatementXL verarbeitet ein PDF pro Vorgang und exportiert Excel, CSV und weitere Prüfformate mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach Erfolg wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Professional und Business können KI auch für Scans aktiv wählen; das vollständige PDF und der Dateiname gehen dann an Qwen AI Platform. Öffentliche Extraktions-API, Stapeleingang, QBO und direkte Buchhaltungsanbindung sind nicht vorhanden."
           },
           {
             "title": "Kosten richtig vergleichen",
@@ -1210,7 +1202,7 @@
           },
           {
             "title": "Verarbeitung und Grenzen",
-            "text": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Enterprise können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Konto-, Abrechnungs- und Betriebsmetadaten sind getrennt. Keine Bankverbindung, öffentliche Extraktions-API oder direkte Buchhaltungsübernahme."
+            "text": "Die lokale Analyse erfolgt standardmäßig in Ihrem Browser, ohne PDF, Dateinamen oder Transaktionen hochzuladen. Nach erfolgreicher Analyse wird nur die Seitenzahl an die Kontingent-API gesendet. Die KI-Analyse ist optional und wird nie automatisch aktiviert. Nutzer von Professional und Business können vor der Konvertierung KI wählen, auch für Scans. Nur dann werden die vollständige PDF und der Dateiname über unseren Server an Qwen AI Platform gesendet. Konto-, Abrechnungs- und Betriebsmetadaten sind getrennt. Keine Bankverbindung, öffentliche Extraktions-API oder direkte Buchhaltungsübernahme."
           },
           {
             "title": "Wer die Inhalte veröffentlicht",
@@ -1286,7 +1278,7 @@
           },
           {
             "title": "Für die Prüfung einzelner PDFs: StatementXL",
-            "text": "StatementXL wandelt jeweils ein PDF in prüfbare Tabellen um und exportiert Excel oder CSV mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach erfolgreicher Verarbeitung wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Nutzer von Professional und Enterprise können KI für Scans ausdrücklich auswählen. Dabei gehen das vollständige PDF und der Dateiname an Qwen AI Platform. Prüfen Sie das Ergebnis am Original. Es gibt keinen Stapeleingang, QBO-Export, keine öffentliche Extraktions-API und keine direkte Buchhaltungsanbindung."
+            "text": "StatementXL wandelt jeweils ein PDF in prüfbare Tabellen um und exportiert Excel oder CSV mit Zeilenrisiken und Quellpositionen. Die reguläre Analyse läuft im Browser; PDF und Transaktionen werden nicht hochgeladen. Nach erfolgreicher Verarbeitung wird nur die Seitenzahl zur Kontingentabrechnung gesendet. Nutzer von Professional und Business können KI für Scans ausdrücklich auswählen. Dabei gehen das vollständige PDF und der Dateiname an Qwen AI Platform. Prüfen Sie das Ergebnis am Original. Es gibt keinen Stapeleingang, QBO-Export, keine öffentliche Extraktions-API und keine direkte Buchhaltungsanbindung."
           },
           {
             "title": "Für Stapelverarbeitung und QBO: DocuClipper prüfen",
@@ -1308,7 +1300,7 @@
           },
           {
             "question": "Welche Option eignet sich für gescannte Auszüge?",
-            "answer": "Wählen Sie einen ausdrücklich für Scans vorgesehenen Ablauf und prüfen Sie eine repräsentative Datei. Bei StatementXL müssen Nutzer von Professional oder Enterprise KI aktiv auswählen; das vollständige PDF und der Dateiname gehen an Qwen AI Platform. Die reguläre Browseranalyse benötigt eine Textebene. Auch KI-Ergebnisse müssen geprüft werden."
+            "answer": "Wählen Sie einen ausdrücklich für Scans vorgesehenen Ablauf und prüfen Sie eine repräsentative Datei. Bei StatementXL müssen Nutzer von Professional oder Business KI aktiv auswählen; das vollständige PDF und der Dateiname gehen an Qwen AI Platform. Die reguläre Browseranalyse benötigt eine Textebene. Auch KI-Ergebnisse müssen geprüft werden."
           },
           {
             "question": "Kann das Ergebnis direkt in die Buchhaltung importiert werden?",

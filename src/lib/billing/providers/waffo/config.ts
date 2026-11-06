@@ -23,7 +23,11 @@ export function getWaffoConfig() {
   if (!merchantId || !privateKey || !storeId || !returnBaseUrl || !membershipTiers.every(getWaffoProductId)) {
     return null;
   }
-  if (!URL.canParse(returnBaseUrl) || new URL(returnBaseUrl).protocol !== "https:") {
+  if (!URL.canParse(returnBaseUrl)) {
+    return null;
+  }
+  const protocol = new URL(returnBaseUrl).protocol;
+  if (protocol !== "https:" && !(process.env.NODE_ENV === "development" && protocol === "http:")) {
     return null;
   }
   return { merchantId, privateKey, storeId, returnBaseUrl, environment: getWaffoEnvironment() };

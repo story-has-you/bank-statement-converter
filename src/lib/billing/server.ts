@@ -1,7 +1,8 @@
 import "server-only";
 
-import type { PaymentProviderId } from "./provider";
+import type { BillingProviderId, PaymentProviderId } from "./provider";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireRecurringAmount } from "./usd";
 
 import type { MembershipTier, SubscriptionStatus } from "./types";
 
@@ -10,11 +11,12 @@ export type BillingSubscription = {
   user_id: string;
   email: string;
   tier: MembershipTier;
-  provider: PaymentProviderId;
+  provider: BillingProviderId;
   provider_subscription_id: string;
   provider_plan_id: string;
   status: SubscriptionStatus;
   amount: number | null;
+  recurring_amount_usd: number | null;
   original_amount: number | null;
   discount_amount: number | null;
   provider_discount_id: string | null;
@@ -29,7 +31,7 @@ export type BillingSubscription = {
 };
 
 export async function findBillingSubscriptionByProviderId(
-  provider: PaymentProviderId,
+  provider: BillingProviderId,
   subscriptionId: string,
 ): Promise<BillingSubscription | null> {
   const admin = createAdminClient();
@@ -214,6 +216,7 @@ export type BillingActivation = {
   tier: MembershipTier;
   planId: string;
   amount: string;
+  recurringAmount: string;
   originalAmount: string;
   discountAmount: string;
   providerDiscountId: string | null;
@@ -221,6 +224,7 @@ export type BillingActivation = {
 };
 
 export async function insertActivatedBillingSubscription(update: BillingActivation): Promise<"applied" | "ignored"> {
+  const recurringAmount = requireRecurringAmount(update.recurringAmount);
   if (await findBillingSubscriptionByProviderId(update.provider, update.subscriptionId)) {
     return "ignored";
   }
@@ -235,7 +239,8 @@ export async function insertActivatedBillingSubscription(update: BillingActivati
     return "ignored";
   }
   const entitled = await findEntitledBillingSubscription(update.userId);
-  if (open || entitled?.status === "CANCELLED") {
+  // A late payment for an already canceled subscription is still a bill; retain it without replacing current membership.
+  if (update.status !== "CANCELLED" && (open || entitled?.status === "CANCELLED")) {
     throw new Error("Account already has an open or paid cancelled subscription");
   }
   const { error } = await admin.from("billing_subscriptions").insert({
@@ -247,6 +252,7 @@ export async function insertActivatedBillingSubscription(update: BillingActivati
     provider_plan_id: update.planId,
     status: update.status ?? "ACTIVE",
     amount: update.amount,
+    recurring_amount_usd: recurringAmount,
     original_amount: update.originalAmount,
     discount_amount: update.discountAmount,
     provider_discount_id: update.providerDiscountId,
