@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "銀行取引明細の PDF を Excel・CSV に変換 | StatementXL",
-    "description": "銀行明細PDFをExcel・CSVに変換。標準のローカル解析はブラウザー内で完結し、ファイルのアップロードは不要です。ProfessionalとBusinessでは任意でAIを選択できます。結果を確認してダウンロード。",
+    "description": "文字を選択できる銀行取引明細 PDF を Excel・CSV に変換。標準解析はブラウザー内で完結し、アップロードは不要です。取引と残高を原本と照合してからダウンロードできます。",
     "keywords": "銀行明細 PDF Excel 変換, 銀行取引明細 CSV, 入出金明細 エクセル, 銀行明細 OCR",
     "brand": "StatementXL",
     "alternateName": "銀行取引明細を Excel・CSV に変換"
@@ -53,7 +53,7 @@
   "HomeIntro": {
     "eyebrow": "銀行明細PDFの変換",
     "title": "銀行取引明細を Excel・CSV に変換",
-    "description": "テキストを選択できる銀行明細PDFを、アップロードせずブラウザー内でExcel・CSVに変換。取引とリスク表示を確認してからダウンロードできます。無料枠は1日あたり未ログインで{anonymousPages, number}ページ、ログイン後は{authenticatedPages, number}ページです。"
+    "description": "テキストを選択できる銀行取引明細 PDF を、アップロードせずブラウザー内で Excel・CSV に変換。取引とリスク表示を確認してからダウンロードできます。無料枠は1日あたり未ログインで{anonymousPages, number}ページ、ログイン後は{authenticatedPages, number}ページです。"
   },
   "PdfUpload": {
     "title": "銀行明細を選択",
@@ -740,10 +740,10 @@
     "disclaimer": "{bank} の商標は権利者に帰属します。StatementXL は当該銀行と提携していません。このガイドは明細の取得と確認を説明するもので、すべてのレイアウトの変換を保証しません。",
     "pages": {
       "pdf": {
-        "label": "入出金明細 PDF をエクセルに変換",
-        "title": "入出金明細 PDF をエクセルに変換",
+        "label": "銀行取引明細 PDF を Excel に変換",
+        "title": "銀行取引明細 PDF を Excel に変換",
         "intro": "入出金明細 PDF をエクセルに変換し、記帳や月次確認に使う表を作成します。銀行明細の摘要や元の列を残し、照合後に論理テーブルごとの Excel ワークシートで保存できます。無料枠は未ログインで毎日 {anonymousPages} ページ、ログイン後は {authenticatedPages} ページです。",
-        "metaDescription": "入出金明細 PDF をエクセルに変換。銀行明細の入金・出金、摘要、残高を原本と照合し、元ページ情報と確認メモ付きの Excel ワークシートを保存できます。",
+        "metaDescription": "銀行取引明細 PDF を Excel に変換。入金・出金、摘要、残高を原本と照合し、元ページ情報と確認メモ付きの Excel ワークシートを保存できます。",
         "requirementsTitle": "ネットバンキングの原本 PDF を使う",
         "requirements": "文字を選択できる PDF は通常解析を利用できます。印刷して再スキャンせず、取得した原本を使ってください。スキャンの AI 利用は対象プランのみです。",
         "preparationTitle": "口座・期間・通貨を確認",
@@ -964,7 +964,7 @@
         "sections": [
           {
             "title": "DocuClipper が適するケース",
-            "text": "DocuClipper は銀行・カード・証券の明細、請求書、領収書、小切手に加え、一括処理と Excel・CSV・QBO 出力を案内しています。料金ページには QuickBooks Online・Xero への直接連携と、全有料プランの API が記載されています。複数ファイル、会計専用形式、自動取り込みが必要な場合は、購入前に一連の手順を確認してください。"
+            "text": "DocuClipper は銀行・カード・証券の明細、請求書、領収書、小切手に加え、一括処理と Excel・CSV・QBO 出力を案内しています。料金ページには QuickBooks Online・Xero への直接連携と、全有料 Web プランの API が記載されています。複数ファイル、会計専用形式、自動取り込みが必要な場合は、購入前に一連の手順を確認してください。"
           },
           {
             "title": "StatementXL が適するケース",
@@ -983,6 +983,22 @@
           {
             "question": "DocuClipper の全用途を代替できますか？",
             "answer": "いいえ。StatementXL は PDF を一つずつ確認して出力する用途です。幅広い文書、バッチ処理、連携には別の要件があります。"
+          },
+          {
+            "question": "StatementXL は QBO 作成や QuickBooks・Xero 接続に対応しますか？",
+            "answer": "いいえ。確認済みの Excel・CSV を出力し、会計ソフトの要件に合わせて別の取込用コピーを作成します。StatementXL は .qbo・Web Connect ファイルの作成や直接連携には対応していません。DocuClipper の Web 製品は QBO 出力と会計連携を案内しています。対象プランと手順を確認してください。"
+          },
+          {
+            "question": "解析時に PDF はアップロードされますか？",
+            "answer": "StatementXL の通常解析はブラウザー内で行い、PDF や取引は送信せず、成功後に使用ページ数のみを報告します。自分で AI を選ぶと PDF 全体とファイル名を Qwen に送信します。DocuClipper はアップロードしたファイルをクラウドで処理するため、公式のプライバシー・保存条件を確認してください。"
+          },
+          {
+            "question": "DocuClipper の無料試用で出力できますか？",
+            "answer": "公式料金ページでは、試用中は抽出取引を確認でき、出力や同期にはアップグレードが必要と案内しています。開始前に最新条件を確認してください。StatementXL の毎日の無料枠ではローカル解析と確認後の結果のダウンロードが可能です。"
+          },
+          {
+            "question": "どちらの変換ツールが正確ですか？",
+            "answer": "条件を統一した製品間比較は行っていません。同じ使用許可済みのサンプルを使い、件数、日付、金額の方向、摘要、残高を原本 PDF と照合してください。合計が一致しても全取引の正確さは証明できません。"
           }
         ],
         "metaDescription": "StatementXL と DocuClipper を比較。ブラウザーでの PDF 確認、一括処理、Excel・CSV・QBO、会計連携、ページ数課金の違いを確認できます。"
@@ -1041,6 +1057,22 @@
           {
             "question": "Nanonets より高精度と証明されていますか？",
             "answer": "いいえ。対照試験は行っていません。公開レポートは指定サンプルに対するローカル解析器の結果だけを示します。"
+          },
+          {
+            "question": "単一の表計算作業と自動化ワークフローはどう選びますか？",
+            "answer": "StatementXL は PDF を1件ずつ確認して Excel・CSV を保存する用途に適しています。一括受信や公開抽出 API はありません。継続的な受信や連続する処理工程が必要なら Nanonets を検討し、必要な接続先、確認工程、プランを確認してください。"
+          },
+          {
+            "question": "どちらの手順でも PDF をアップロードしますか？",
+            "answer": "StatementXL の通常解析では PDF と取引はブラウザー内に留まり、成功後は使用ページ数のみを報告します。AI を選ぶと PDF 全体とファイル名を Qwen に送信します。Nanonets は文書のアップロードが必要です。適用されるプライバシー・保存条件を確認してください。"
+          },
+          {
+            "question": "結果を QuickBooks や Xero に取り込むには？",
+            "answer": "StatementXL では出力を確認し、取込先の要件に合わせて別の CSV を作成して手動で取り込みます。.qbo 出力や会計ソフトへの直接接続はありません。Nanonets は具体的な出力、接続先、プランを確認し、すべてのワークフローが対応すると推定しないでください。"
+          },
+          {
+            "question": "ワークフローのクレジットを PDF ページ数と直接比較できますか？",
+            "answer": "できません。StatementXL の有料枠は PDF ページ数、Nanonets はワークフローブロックの実行にクレジットを使います。同じ作業全体の工程、実行回数、手動修正を見積もり、1クレジットや1回の実行を1ページと扱わないでください。"
           }
         ],
         "metaDescription": "StatementXL と Nanonets の PDF 確認、文書ワークフロー、Excel・CSV 出力、連携、ページ枠と実行クレジットの違いを比較します。"
@@ -1356,25 +1388,33 @@
       "workflow": "作業方式",
       "exports": "出力",
       "integration": "連携",
-      "pricing": "料金単位"
+      "pricing": "料金単位",
+      "processing": "ファイルの処理場所",
+      "review": "結果の確認"
     },
     "statementxl": {
       "workflow": "PDF を1件ずつブラウザーでローカル解析。行のリスクと元の位置を表示。任意の AI は PDF 全体を Qwen に送信。",
       "exports": "Excel、CSV、TSV、JSON、Markdown、HTML。QBO なし。",
       "integration": "手動会計取込。銀行接続や公開抽出 API なし。",
-      "pricing": "月 US${price} から、PDF {pages} ページ。現行プラン参照。"
+      "pricing": "月 US${price} から、PDF {pages} ページ。現行プラン参照。",
+      "processing": "通常解析はブラウザー内で行い、PDF や取引をアップロードしません。任意の AI を選ぶと PDF 全体とファイル名を Qwen に送信します。",
+      "review": "行のリスクと元の位置を使って PDF と照合します。残高が一致しても全取引の正確さは証明できません。"
     },
     "docuclipper": {
       "workflow": "財務文書、バッチ処理、広い受付範囲。",
       "exports": "銀行明細は Excel、CSV、QBO を案内。",
-      "integration": "公式料金ページには全有料プランの QuickBooks Online・Xero 連携と API を記載。",
-      "pricing": "ページ数課金。案内されている試用では出力・同期にアップグレードが必要。最新条件を確認。"
+      "integration": "公式料金ページには有料 Web プランの QuickBooks Online・Xero 連携と API を記載。独立した API 専用プランには Web 出力や会計連携を含みません。",
+      "pricing": "ページ数課金。案内されている試用では出力・同期にアップグレードが必要。最新条件を確認。",
+      "processing": "アップロードしたファイルを AWS のクラウドで処理します。保存・削除条件は公式のセキュリティ・プライバシー規約を確認してください。",
+      "review": "公式説明では原本の期首・期末残高と照合し、一致しない明細にフラグを付けます。"
     },
     "nanonets": {
       "workflow": "設定可能な文書処理ワークフロー。",
       "exports": "明細から Excel への変換。必要な出力は個別確認。",
       "integration": "API、メール、クラウド、上位 ERP 連携を案内。",
-      "pricing": "ワークフローのブロック実行に対するクレジット。PDF ページ数ではなく必要な全工程を計算。"
+      "pricing": "ワークフローのブロック実行に対するクレジット。PDF ページ数ではなく必要な全工程を計算。",
+      "processing": "処理には Nanonets への文書アップロードが必要です。適用されるプライバシー・保存条件を確認してください。",
+      "review": "銀行明細ガイドでは抽出行を原本 PDF と照合し、誤りを修正してから出力するよう案内しています。"
     }
   },
   "Resources": {
@@ -1393,7 +1433,7 @@
       "tools": "残高確認と公開サンプル"
     },
     "links": {
-      "pdf": "入出金明細 PDF をエクセルに変換",
+      "pdf": "銀行取引明細 PDF を Excel に変換",
       "scanned": "通帳・銀行明細 OCR の利用条件",
       "chase": "Chase 明細の取得（米国）",
       "bofa": "Bank of America 明細（米国）",

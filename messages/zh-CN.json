@@ -964,7 +964,7 @@
         "sections": [
           {
             "title": "哪些需求更适合 DocuClipper",
-            "text": "DocuClipper 宣传支持银行、信用卡、证券账单及发票、收据、支票，提供批量处理和 Excel、CSV、QBO 导出。价格页列出 QuickBooks Online、Xero 直连及所有付费套餐的 API。多文件处理、会计专用格式或自动收件有明确要求时，可考虑这些能力；购买前确认完整流程。"
+            "text": "DocuClipper 宣传支持银行、信用卡、证券账单及发票、收据、支票，提供批量处理和 Excel、CSV、QBO 导出。价格页列出 QuickBooks Online、Xero 直连及所有付费网页套餐的 API。多文件处理、会计专用格式或自动收件有明确要求时，可考虑这些能力；购买前确认完整流程。"
           },
           {
             "title": "哪些需求适合 StatementXL",
@@ -983,6 +983,22 @@
           {
             "question": "StatementXL 能替代所有 DocuClipper 工作流吗？",
             "answer": "不能。它主要用于逐份核对并导出流水 PDF；DocuClipper 宣传的文档范围、批量处理和集成适用于不同需求。"
+          },
+          {
+            "question": "StatementXL 能生成 QBO 或连接 QuickBooks、Xero 吗？",
+            "answer": "不能。先导出核对后的 Excel 或 CSV，再按会计软件要求另建导入副本。StatementXL 不生成 .qbo 或 Web Connect 文件，也不提供直接会计连接。DocuClipper 的网页产品宣传提供 QBO 导出和会计集成，使用前确认具体套餐与流程。"
+          },
+          {
+            "question": "解析时会上传 PDF 吗？",
+            "answer": "StatementXL 常规解析在浏览器内完成，不上传 PDF 或交易明细；成功后仅上报页数用量。主动选择 AI 时，完整 PDF 和文件名会发送至 Qwen。DocuClipper 将上传文件放在云端处理，隐私和保留期限需查看官方条款。"
+          },
+          {
+            "question": "DocuClipper 免费试用包含导出吗？",
+            "answer": "官方价格页说明，试用可查看提取的交易，导出或同步需要升级；开始前请确认最新条款。StatementXL 的每日免费额度支持本地解析和下载已复核的结果。"
+          },
+          {
+            "question": "哪款转换工具更准确？",
+            "answer": "我们未进行受控的产品对照测试。应使用同一份获准使用的样本，对照 PDF 核查交易笔数、日期、金额方向、摘要和余额；总额相符也不能证明每笔交易都正确。"
           }
         ],
         "metaDescription": "比较 StatementXL 与 DocuClipper：浏览器 PDF 核对、批量处理、Excel/CSV/QBO 导出、会计集成和按页计费，按实际任务选择。"
@@ -1041,6 +1057,22 @@
           {
             "question": "StatementXL 已证明比 Nanonets 更准确吗？",
             "answer": "没有。我们未进行受控对照测试；公开样本报告只描述本地解析器在指定样本上的结果。"
+          },
+          {
+            "question": "单份表格转换和自动化工作流该怎么选？",
+            "answer": "StatementXL 适合逐份核对 PDF 并下载 Excel 或 CSV，没有批量收件或公开提取 API。需要持续收件或连接多个处理环节时，可以评估 Nanonets，并确认完整任务所需的连接器、复核步骤和套餐。"
+          },
+          {
+            "question": "两种流程都会上传 PDF 吗？",
+            "answer": "StatementXL 常规解析将 PDF 和交易明细留在浏览器内，成功后仅上报页数用量；主动选择 AI 会将完整 PDF 和文件名发送至 Qwen。Nanonets 需要上传文档处理，隐私和保留期限以适用条款为准。"
+          },
+          {
+            "question": "如何把结果交给 QuickBooks 或 Xero？",
+            "answer": "使用 StatementXL 时，先核对导出结果，再按目标软件要求另建 CSV 并手动导入；没有 .qbo 导出或直接会计连接。使用 Nanonets 前需确认具体输出格式、连接器和套餐，不应假定所有工作流都支持目标软件。"
+          },
+          {
+            "question": "工作流积分可以直接等同于 PDF 页数吗？",
+            "answer": "不能。StatementXL 付费套餐按 PDF 页数提供额度，Nanonets 按工作流模块运行消耗积分。比较同一完整任务的全部步骤、运行次数和人工修正，不能把一个积分或一次模块运行当作一页 PDF。"
           }
         ],
         "metaDescription": "比较 StatementXL 与 Nanonets：浏览器 PDF 核对与文档工作流、Excel/CSV 交付、连接能力，以及页数额度和工作流积分的区别。"
@@ -1356,25 +1388,33 @@
       "workflow": "工作流程",
       "exports": "导出格式",
       "integration": "集成方式",
-      "pricing": "计费单位"
+      "pricing": "计费单位",
+      "processing": "文件处理位置",
+      "review": "结果复核"
     },
     "statementxl": {
       "workflow": "逐份处理 PDF；本地解析在浏览器执行，附行风险与来源位置。可选 AI 会将完整 PDF 发送至 Qwen。",
       "exports": "Excel、CSV、TSV、JSON、Markdown、HTML，无 QBO。",
       "integration": "手工会计导入，没有银行连接或公开提取 API。",
-      "pricing": "每月 US${price} 起，含 {pages} 页 PDF，参阅当前套餐。"
+      "pricing": "每月 US${price} 起，含 {pages} 页 PDF，参阅当前套餐。",
+      "processing": "常规解析在浏览器内完成，不上传 PDF 或交易明细。主动选择 AI 时，完整 PDF 和文件名会发送至 Qwen。",
+      "review": "行级风险与来源位置帮助对照 PDF 复核；余额相符不代表每笔交易都正确。"
     },
     "docuclipper": {
       "workflow": "财务文档、批量处理及更广泛收件。",
       "exports": "银行流水导出包含 Excel、CSV、QBO。",
-      "integration": "官方价格页列出所有付费套餐均含 QuickBooks Online、Xero 集成和 API。",
-      "pricing": "按页计费；官方试用导出或同步需要升级，参阅当前条款。"
+      "integration": "官方价格页列出付费网页套餐的 QuickBooks Online、Xero 集成和 API；独立 API 套餐不含网页导出或会计集成。",
+      "pricing": "按页计费；官方试用导出或同步需要升级，参阅当前条款。",
+      "processing": "上传文件后在 AWS 云端处理；数据保留和删除规则以官方安全与隐私条款为准。",
+      "review": "官方说明会核对原件上的期初、期末余额，并标记无法对平的流水。"
     },
     "nanonets": {
       "workflow": "可配置的文档处理工作流。",
       "exports": "提供流水转 Excel，具体输出按工作流确认。",
       "integration": "宣传 API、邮件、云连接及高阶 ERP 集成。",
-      "pricing": "按工作流模块运行消耗积分，应计算所需步骤，不能等同于 PDF 页数。"
+      "pricing": "按工作流模块运行消耗积分，应计算所需步骤，不能等同于 PDF 页数。",
+      "processing": "需要将文档上传至 Nanonets 处理；隐私和保留期限以适用条款为准。",
+      "review": "银行流水指南要求将提取行与原始 PDF 对照，纠错后再导出。"
     }
   },
   "Resources": {

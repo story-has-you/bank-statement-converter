@@ -23,7 +23,7 @@ export async function ComparisonTable({ id }: { id: ComparisonPageId }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {(["workflow", "exports", "integration", "pricing"] as const).map((row) => (
+        {(["workflow", "processing", "review", "exports", "integration", "pricing"] as const).map((row) => (
           <TableRow key={row}>
             <TableHead className="whitespace-normal">{t(`labels.${row}`)}</TableHead>
             <TableCell className="min-w-48 whitespace-normal align-top leading-7">

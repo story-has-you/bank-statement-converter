@@ -964,7 +964,7 @@
         "sections": [
           {
             "title": "Kapan DocuClipper lebih sesuai",
-            "text": "DocuClipper mengiklankan rekening koran, laporan kartu dan investasi, faktur, kuitansi, dan cek, serta pemrosesan massal dan ekspor Excel, CSV, dan QBO. Halaman harga mencantumkan integrasi langsung QuickBooks Online dan Xero serta API pada semua paket berbayar. Pastikan alur lengkap sebelum membeli jika perlu banyak berkas, format akuntansi, atau penerimaan otomatis."
+            "text": "DocuClipper mengiklankan rekening koran, laporan kartu dan investasi, faktur, kuitansi, dan cek, serta pemrosesan massal dan ekspor Excel, CSV, dan QBO. Halaman harga mencantumkan integrasi langsung QuickBooks Online dan Xero serta API pada semua paket web berbayar. Pastikan alur lengkap sebelum membeli jika perlu banyak berkas, format akuntansi, atau penerimaan otomatis."
           },
           {
             "title": "Kapan StatementXL sesuai",
@@ -983,6 +983,22 @@
           {
             "question": "Apakah semua alur DocuClipper dapat diganti?",
             "answer": "Tidak. Fokusnya memeriksa dan mengekspor satu PDF sekaligus. Batch, integrasi dan jenis dokumen lain memiliki kebutuhan berbeda."
+          },
+          {
+            "question": "Apakah StatementXL membuat QBO atau terhubung ke QuickBooks atau Xero?",
+            "answer": "Tidak. Ekspor data Excel atau CSV yang telah diperiksa, lalu siapkan salinan impor terpisah sesuai persyaratan perangkat lunak akuntansi. StatementXL tidak membuat berkas .qbo atau Web Connect dan tidak menyediakan koneksi akuntansi langsung. Produk web DocuClipper mengiklankan ekspor QBO dan integrasi akuntansi; pastikan paket dan alur yang diperlukan."
+          },
+          {
+            "question": "Apakah PDF diunggah untuk diproses?",
+            "answer": "Analisis standar StatementXL berjalan di peramban tanpa mengunggah PDF atau transaksi; hanya penggunaan halaman yang dilaporkan setelah berhasil. Jika memilih AI, PDF lengkap dan nama berkas dikirim ke Qwen. DocuClipper memproses unggahan di cloud; periksa ketentuan resmi privasi dan retensinya."
+          },
+          {
+            "question": "Apakah uji coba gratis DocuClipper mencakup ekspor?",
+            "answer": "Halaman harga resmi menyatakan bahwa uji coba memungkinkan pemeriksaan transaksi hasil ekstraksi, sedangkan ekspor atau sinkronisasi memerlukan peningkatan paket. Periksa ketentuan terbaru sebelum memulai. Kuota harian gratis StatementXL mendukung analisis lokal dan unduhan hasil yang telah diperiksa."
+          },
+          {
+            "question": "Konverter mana yang lebih akurat?",
+            "answer": "Kami belum melakukan perbandingan langsung dengan kondisi terkendali. Bandingkan sampel berizin yang sama dengan PDF aslinya: jumlah transaksi, tanggal, arah jumlah, deskripsi, dan saldo. Total yang cocok saja tidak membuktikan setiap transaksi benar."
           }
         ],
         "metaDescription": "StatementXL vs DocuClipper: pemeriksaan PDF di browser, pemrosesan massal, Excel/CSV/QBO, integrasi akuntansi, dan paket per halaman."
@@ -1041,6 +1057,22 @@
           {
             "question": "Apakah StatementXL terbukti lebih akurat?",
             "answer": "Tidak. Belum ada uji langsung terkontrol. Laporan publik hanya menilai parser lokal pada sampel yang disebutkan."
+          },
+          {
+            "question": "Bagaimana memilih antara pekerjaan spreadsheet dan alur otomatis?",
+            "answer": "StatementXL cocok untuk memeriksa satu PDF lalu mengunduh Excel atau CSV. Tidak ada penerimaan massal atau API ekstraksi publik. Pertimbangkan Nanonets untuk penerimaan berulang atau tahap pemrosesan yang terhubung, lalu pastikan konektor, pemeriksaan, dan paket untuk seluruh pekerjaan."
+          },
+          {
+            "question": "Apakah kedua alur mengharuskan unggah PDF?",
+            "answer": "Analisis standar StatementXL menyimpan PDF dan transaksi di peramban; setelah berhasil, hanya penggunaan halaman yang dilaporkan. Memilih AI mengirim PDF lengkap dan nama berkas ke Qwen. Nanonets memerlukan unggahan dokumen; periksa ketentuan privasi dan retensi yang berlaku."
+          },
+          {
+            "question": "Bagaimana memindahkan hasil ke QuickBooks atau Xero?",
+            "answer": "Dengan StatementXL, periksa ekspor dan siapkan CSV terpisah sesuai persyaratan perangkat lunak tujuan, lalu impor secara manual. Tidak ada ekspor .qbo atau koneksi akuntansi langsung. Untuk Nanonets, pastikan format keluaran, konektor, dan paket yang tepat, bukan menganggap semua alur mendukung tujuan Anda."
+          },
+          {
+            "question": "Bisakah kredit alur dibandingkan langsung dengan halaman PDF?",
+            "answer": "Tidak. Paket berbayar StatementXL menggunakan kuota halaman PDF; Nanonets mengenakan kredit untuk eksekusi blok alur. Hitung semua tahap, eksekusi, dan koreksi manual untuk pekerjaan lengkap yang sama. Satu kredit atau satu eksekusi blok tidak sama dengan satu halaman PDF."
           }
         ],
         "metaDescription": "StatementXL vs Nanonets: pemeriksaan PDF di browser, alur dokumen, Excel/CSV, konektor, serta kuota halaman dibanding kredit alur kerja."
@@ -1356,25 +1388,33 @@
       "workflow": "Alur",
       "exports": "Ekspor",
       "integration": "Integrasi",
-      "pricing": "Satuan harga"
+      "pricing": "Satuan harga",
+      "processing": "Lokasi pemrosesan berkas",
+      "review": "Pemeriksaan hasil"
     },
     "statementxl": {
       "workflow": "Satu PDF sekaligus; penguraian lokal di browser, risiko per baris dan sumber. AI opsional mengirim seluruh PDF ke Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; tanpa QBO.",
       "integration": "Impor manual; tanpa bank atau API ekstraksi publik.",
-      "pricing": "Mulai US${price}/bulan untuk {pages} halaman PDF; lihat paket terkini."
+      "pricing": "Mulai US${price}/bulan untuk {pages} halaman PDF; lihat paket terkini.",
+      "processing": "Analisis standar berjalan di peramban tanpa mengunggah PDF atau transaksi. AI opsional mengirim PDF lengkap dan nama berkas ke Qwen.",
+      "review": "Risiko per baris dan lokasi sumber membantu pemeriksaan dengan PDF. Saldo yang cocok tidak membuktikan semua transaksi benar."
     },
     "docuclipper": {
       "workflow": "Dokumen keuangan, batch dan penerimaan luas.",
       "exports": "Ekspor bank termasuk Excel, CSV dan QBO.",
-      "integration": "Harga resmi mencantumkan QuickBooks Online, Xero, dan API di semua paket berbayar.",
-      "pricing": "Paket per halaman; ekspor atau sinkronisasi pada uji coba yang ditawarkan memerlukan peningkatan paket. Periksa ketentuan."
+      "integration": "Harga resmi mencantumkan QuickBooks Online, Xero, dan API pada paket web berbayar. Paket terpisah khusus API tidak mencakup ekspor web atau integrasi akuntansi.",
+      "pricing": "Paket per halaman; ekspor atau sinkronisasi pada uji coba yang ditawarkan memerlukan peningkatan paket. Periksa ketentuan.",
+      "processing": "Berkas yang diunggah diproses di cloud AWS. Periksa ketentuan resmi tentang keamanan, privasi, dan retensi.",
+      "review": "Dokumentasi resmi menjelaskan pemeriksaan saldo awal dan akhir tercetak serta penandaan rekening koran yang tidak cocok."
     },
     "nanonets": {
       "workflow": "Alur dokumen yang dapat dikonfigurasi.",
       "exports": "Rekening ke Excel; pastikan keluaran yang diperlukan.",
       "integration": "Menawarkan API, email, cloud dan ERP tingkat atas.",
-      "pricing": "Kredit per eksekusi blok alur kerja; hitung semua langkah yang diperlukan, bukan halaman PDF."
+      "pricing": "Kredit per eksekusi blok alur kerja; hitung semua langkah yang diperlukan, bukan halaman PDF.",
+      "processing": "Dokumen harus diunggah ke Nanonets untuk diproses. Periksa ketentuan privasi dan retensi yang berlaku.",
+      "review": "Panduan rekening koran meminta pemeriksaan baris hasil ekstraksi terhadap PDF asli dan perbaikan kesalahan sebelum ekspor."
     }
   },
   "Resources": {

@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Bank Statement Converter: PDF to Excel & CSV | StatementXL",
-    "description": "Bank statement converter for Excel and CSV. Parse text-based PDFs in your browser, review transactions, and download. Free pages available daily.",
+    "title": "Bank Statement Converter to Excel & CSV | StatementXL",
+    "description": "Convert text-based bank statement PDFs to Excel or CSV in your browser. Review transactions, balances and source rows before downloading. Free pages daily.",
     "keywords": "bank statement converter, bank statement PDF to Excel, bank statement to CSV, bank statement OCR",
     "brand": "StatementXL",
     "alternateName": "Bank Statement Converter for Excel & CSV"
@@ -56,7 +56,7 @@
   },
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
-    "title": "Bank Statement Converter for Excel & CSV",
+    "title": "Bank Statement Converter: PDF to Excel & CSV",
     "description": "Convert a text-based bank statement PDF to Excel or CSV without uploading it. Standard parsing runs in your browser. Review transactions and flagged rows before downloading. Try {anonymousPages, plural, one {# page} other {# pages}} a day without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} after signing in."
   },
   "PdfUpload": {
@@ -744,10 +744,10 @@
     "disclaimer": "{bank} is a trademark of its owner. StatementXL is not affiliated with the bank. These instructions help you obtain and review statements; they do not guarantee conversion of every layout.",
     "pages": {
       "pdf": {
-        "label": "Bank Statement to Excel",
-        "title": "Bank Statement to Excel",
+        "label": "Bank Statement PDF to Excel Converter",
+        "title": "Convert a Bank Statement PDF to Excel",
         "intro": "Convert a bank statement PDF to Excel for bookkeeping and transaction review. Check deposits, withdrawals and descriptions against the source, then download a worksheet for each logical table. Free daily access includes {anonymousPages} page without signing in or {authenticatedPages} pages when signed in.",
-        "metaDescription": "Convert a bank statement PDF to Excel. Check deposits, withdrawals and balances against the original, then download worksheets with source rows and review notes.",
+        "metaDescription": "Convert a text-based bank statement PDF to Excel in your browser. Review deposits, withdrawals and balances, then download worksheets with source references.",
         "requirementsTitle": "Use a text PDF for regular conversion",
         "requirements": "Choose the original statement from online banking rather than printing and scanning it. Regular parsing runs in your browser; scanned statements require an eligible plan and active AI selection.",
         "preparationTitle": "Keep statement periods and accounts separate",
@@ -896,9 +896,9 @@
         ]
       },
       "quickbooks": {
-        "label": "Convert Bank Statement PDF to QuickBooks CSV",
-        "title": "Convert bank statement PDFs to a QuickBooks-ready CSV",
-        "intro": "Extract transactions from your PDF bank statement and review them against the original. Export your reviewed data, then prepare a separate 3- or 4-column CSV for QuickBooks Online using the guide below.",
+        "label": "Bank Statement PDF to QuickBooks CSV",
+        "title": "Prepare a Bank Statement CSV for QuickBooks Online",
+        "intro": "Review transactions against your bank statement PDF, then prepare a separate 3- or 4-column CSV for manual import into QuickBooks Online. StatementXL does not generate .qbo or Web Connect files or connect to your QuickBooks account.",
         "planNote": "Text PDFs can use the free daily quota; larger workloads can use a subscription. Scanned PDFs require Professional or Business. Compare the configured prices and page quotas below.",
         "planCta": "Compare page quotas and parsing plans",
         "requirementsTitle": "Prepare a clean CSV for QuickBooks",
@@ -938,7 +938,7 @@
           "credit": "Credit",
           "debit": "Debit"
         },
-        "metaDescription": "Convert a PDF bank statement into a 3- or 4-column CSV for QuickBooks Online. Review every row, fix dates and signs, then upload. Free pages daily.",
+        "metaDescription": "Review bank statement PDF transactions, dates and amounts, then prepare a separate 3- or 4-column CSV for manual import into QuickBooks Online.",
         "threeColumnTitle": "3-column: Date, Description, Amount",
         "fourColumnTitle": "4-column: Date, Description, Credit, Debit",
         "convertCta": "Convert your statement, then prepare this format",
@@ -1085,7 +1085,7 @@
         "sections": [
           {
             "title": "When DocuClipper is a better fit",
-            "text": "DocuClipper advertises bank, credit-card and brokerage statements, invoices, receipts and checks, plus batch processing and Excel, CSV and QBO exports. Its pricing page lists direct QuickBooks Online and Xero integrations and API access on every paid plan. Consider it when several files, accounting-specific output or automated intake are required; confirm the exact workflow before purchasing."
+            "text": "DocuClipper advertises bank, credit-card and brokerage statements, invoices, receipts and checks, plus batch processing and Excel, CSV and QBO exports. Its pricing page lists direct QuickBooks Online and Xero integrations and API access on every paid web plan. Consider it when several files, accounting-specific output or automated intake are required; confirm the exact workflow before purchasing."
           },
           {
             "title": "When StatementXL is a better fit",
@@ -1104,6 +1104,22 @@
           {
             "question": "Does StatementXL replace every DocuClipper workflow?",
             "answer": "No. It is a narrower option for reviewing and exporting one statement PDF at a time. DocuClipper’s advertised document coverage, batch processing and integrations may suit a different workload."
+          },
+          {
+            "question": "Does StatementXL create QBO files or connect to QuickBooks or Xero?",
+            "answer": "No. Export reviewed Excel or CSV data, then prepare a separate import copy for your accounting software. StatementXL does not create .qbo or Web Connect files or provide a direct accounting connection. DocuClipper advertises QBO exports and accounting integrations in its web offering; confirm the required plan and workflow."
+          },
+          {
+            "question": "Are PDFs uploaded for processing?",
+            "answer": "StatementXL standard parsing runs in your browser without uploading the PDF or transactions; only page usage is reported after success. If you actively choose AI, the full PDF and filename are sent to Qwen. DocuClipper processes uploaded files in the cloud; check its official privacy and retention terms."
+          },
+          {
+            "question": "Does the DocuClipper free trial include exports?",
+            "answer": "Its official pricing page says the trial lets you inspect extracted transactions, while exporting or syncing requires an upgrade. Check the current terms before starting. StatementXL’s free daily quota supports local parsing and downloading reviewed results."
+          },
+          {
+            "question": "Which converter is more accurate?",
+            "answer": "We have not run a controlled head-to-head test. Compare the same permitted sample against its PDF: transaction count, dates, amount direction, descriptions and balances. Matching totals alone do not prove that every transaction is correct."
           }
         ],
         "metaDescription": "StatementXL vs DocuClipper: compare browser-based PDF review, batch processing, Excel/CSV/QBO exports, accounting integrations and page-based plans."
@@ -1162,6 +1178,22 @@
           {
             "question": "Has StatementXL been proven more accurate than Nanonets?",
             "answer": "No. We have not run a controlled head-to-head evaluation. The public sample report only measures our local parser on the stated samples."
+          },
+          {
+            "question": "Should I choose a spreadsheet tool or an automated workflow?",
+            "answer": "StatementXL suits reviewing one PDF and downloading Excel or CSV. It has no batch intake or public extraction API. Consider Nanonets when files need recurring intake or connected processing steps, and confirm the connectors, review process and plan for the complete job."
+          },
+          {
+            "question": "Are PDFs uploaded in these workflows?",
+            "answer": "StatementXL standard parsing keeps the PDF and transactions in your browser; only page usage is reported after success. Choosing AI sends the full PDF and filename to Qwen. Nanonets requires document upload for processing; check the applicable privacy and retention terms."
+          },
+          {
+            "question": "How do I move the result into QuickBooks or Xero?",
+            "answer": "With StatementXL, review the export and prepare a separate CSV following the destination software’s requirements, then import it manually. There is no .qbo export or direct accounting connection. For Nanonets, confirm the exact output, connector and plan rather than assuming every workflow supports your destination."
+          },
+          {
+            "question": "Can I compare workflow credits directly with PDF pages?",
+            "answer": "No. StatementXL paid plans use PDF-page quotas; Nanonets charges for workflow block runs using credits. Estimate every step, run and manual correction for the same complete job. Do not treat one credit or one block run as one PDF page."
           }
         ],
         "metaDescription": "StatementXL vs Nanonets: compare browser-based PDF review with document workflows, Excel/CSV handoffs, connectors and page quotas versus workflow credits."
@@ -1193,8 +1225,8 @@
         "planCta": "Compare conversion plans"
       },
       "wave": {
-        "title": "Bank statement PDF to Wave: review a CSV import",
-        "intro": "Prepare PDF transactions with a bank statement converter for manual CSV import into Wave in the US or Canada. Use a native bank export if available. Check the destination account and amount direction before completing the import.",
+        "title": "Bank Statement PDF to Wave: Prepare a CSV Import",
+        "intro": "Review transactions against your bank statement PDF, prepare a separate CSV copy, then import it manually into Wave in the US or Canada. StatementXL does not connect to Wave. Use a native bank export if available, and check the destination account and amount direction before importing.",
         "sections": [
           {
             "title": "Keep a review copy and an import copy",
@@ -1479,32 +1511,40 @@
       "workflow": "Workflow",
       "exports": "Exports",
       "integration": "Integration",
-      "pricing": "Pricing basis"
+      "pricing": "Pricing basis",
+      "processing": "File processing location",
+      "review": "Result review"
     },
     "statementxl": {
       "workflow": "One PDF at a time; local parsing in your browser, row risks and source references. Optional AI sends the full PDF to Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; no QBO.",
       "integration": "Manual accounting import; no bank connection or public extraction API.",
-      "pricing": "From US${price}/month for {pages} PDF pages; see current plans."
+      "pricing": "From US${price}/month for {pages} PDF pages; see current plans.",
+      "processing": "Standard parsing runs in your browser without uploading the PDF or transactions. Optional AI sends the full PDF and filename to Qwen.",
+      "review": "Row risks and source locations support review against the PDF. Matching balances do not prove every transaction is correct."
     },
     "docuclipper": {
       "workflow": "Financial documents, batch processing and broader intake.",
       "exports": "Bank statement exports include Excel, CSV and QBO.",
-      "integration": "Official pricing lists QuickBooks Online, Xero and API access on every paid plan.",
-      "pricing": "Page-based plans; the advertised trial requires an upgrade to export or sync. Check current terms."
+      "integration": "Official pricing lists QuickBooks Online, Xero and API access in paid web plans. The separate API-only plan excludes web exports and accounting integrations.",
+      "pricing": "Page-based plans; the advertised trial requires an upgrade to export or sync. Check current terms.",
+      "processing": "Uploaded files are processed in the cloud on AWS. Check the official security and retention terms.",
+      "review": "Official documentation describes checks against printed opening and closing balances and flags statements that do not reconcile."
     },
     "nanonets": {
       "workflow": "Configurable document-processing workflows.",
       "exports": "Bank statement to Excel offering; confirm required outputs for the workflow.",
       "integration": "Advertises API, email, cloud connectors and higher-tier ERP integrations.",
-      "pricing": "Credits for workflow block runs; count every required step, not PDF pages."
+      "pricing": "Credits for workflow block runs; count every required step, not PDF pages.",
+      "processing": "Upload documents to Nanonets for processing. Check the applicable privacy and retention terms.",
+      "review": "The bank statement guide calls for checking extracted rows against the original PDF and correcting errors before export."
     }
   },
   "Resources": {
     "title": "Bank statement conversion guides & tools",
     "intro": "Choose a format first, then use the accounting or bank guide for your handoff. The directory keeps the original PDF and row review at the center of the workflow.",
     "featuredTitle": "Choose your next step",
-    "featuredDescription": "Excel, CSV, QuickBooks guides and a balance checker.",
+    "featuredDescription": "Excel and CSV conversion, plus manual CSV import guides for QuickBooks Online and Wave.",
     "relatedTitle": "Related guides & tools",
     "viewAll": "View all guides & tools",
     "groups": {

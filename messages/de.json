@@ -964,7 +964,7 @@
         "sections": [
           {
             "title": "Wann DocuClipper besser passt",
-            "text": "DocuClipper bewirbt Bank-, Kreditkarten- und Depotauszüge, Rechnungen, Belege und Schecks sowie Stapelverarbeitung und Excel-, CSV- und QBO-Ausgaben. Die Preisseite nennt direkte QuickBooks-Online- und Xero-Anbindungen sowie API-Zugriff in allen kostenpflichtigen Tarifen. Prüfen Sie den kompletten Ablauf vor dem Kauf, wenn mehrere Dateien, Buchhaltungsformate oder automatischer Eingang erforderlich sind."
+            "text": "DocuClipper bewirbt Bank-, Kreditkarten- und Depotauszüge, Rechnungen, Belege und Schecks sowie Stapelverarbeitung und Excel-, CSV- und QBO-Ausgaben. Die Preisseite nennt direkte QuickBooks-Online- und Xero-Anbindungen sowie API-Zugriff in allen kostenpflichtigen Web-Tarifen. Prüfen Sie den kompletten Ablauf vor dem Kauf, wenn mehrere Dateien, Buchhaltungsformate oder automatischer Eingang erforderlich sind."
           },
           {
             "title": "Wann StatementXL passt",
@@ -983,6 +983,22 @@
           {
             "question": "Ersetzt StatementXL jeden DocuClipper-Ablauf?",
             "answer": "Nein. Es ist auf die Prüfung und Ausgabe einzelner Kontoauszug-PDFs ausgerichtet. Breite Dokumentabdeckung, Stapelverarbeitung und Integrationen bedienen andere Anforderungen."
+          },
+          {
+            "question": "Erstellt StatementXL QBO-Dateien oder verbindet es sich mit QuickBooks oder Xero?",
+            "answer": "Nein. Exportieren Sie geprüfte Excel- oder CSV-Daten und erstellen Sie eine separate Importkopie nach den Vorgaben Ihrer Buchhaltungssoftware. StatementXL erstellt keine .qbo- oder Web-Connect-Dateien und bietet keine direkte Buchhaltungsanbindung. DocuClipper bewirbt QBO-Exporte und Buchhaltungsanbindungen im Web-Angebot; prüfen Sie Tarif und Ablauf."
+          },
+          {
+            "question": "Werden PDFs zur Verarbeitung hochgeladen?",
+            "answer": "Die Standardanalyse von StatementXL läuft im Browser, ohne PDF oder Transaktionen hochzuladen. Nach Erfolg wird nur der Seitenverbrauch gemeldet. Wenn Sie KI aktiv wählen, werden das vollständige PDF und der Dateiname an Qwen gesendet. DocuClipper verarbeitet hochgeladene Dateien in der Cloud; prüfen Sie die offiziellen Datenschutz- und Aufbewahrungsbedingungen."
+          },
+          {
+            "question": "Sind Exporte in der kostenlosen DocuClipper-Testphase enthalten?",
+            "answer": "Laut offizieller Preisseite können Sie extrahierte Transaktionen prüfen; für Export oder Synchronisierung ist ein Upgrade nötig. Prüfen Sie vor Beginn die aktuellen Bedingungen. Das tägliche kostenlose Kontingent von StatementXL ermöglicht lokale Analyse und den Download geprüfter Ergebnisse."
+          },
+          {
+            "question": "Welcher Konverter ist genauer?",
+            "answer": "Wir haben keinen kontrollierten direkten Vergleich durchgeführt. Prüfen Sie dieselbe zulässige Beispieldatei gegen ihr PDF: Transaktionszahl, Datum, Betragsrichtung, Beschreibung und Salden. Passende Summen allein belegen nicht die Richtigkeit jeder Transaktion."
           }
         ],
         "metaDescription": "StatementXL vs. DocuClipper: PDF-Prüfung im Browser, Stapelverarbeitung, Excel/CSV/QBO, Buchhaltungsanbindungen und seitenbasierte Tarife vergleichen."
@@ -1041,6 +1057,22 @@
           {
             "question": "Ist StatementXL nachweislich genauer?",
             "answer": "Nein. Es gab keinen kontrollierten direkten Test. Der öffentliche Bericht betrifft nur den lokalen Parser und die benannten Beispiele."
+          },
+          {
+            "question": "Wann passt eine Tabellenlösung, wann ein automatisierter Workflow?",
+            "answer": "StatementXL eignet sich zum Prüfen eines einzelnen PDFs und zum Download als Excel oder CSV. Es gibt weder Stapeleingang noch öffentliche Extraktions-API. Prüfen Sie Nanonets bei wiederkehrendem Eingang oder verbundenen Verarbeitungsschritten und bestätigen Sie Konnektoren, Prüfung und Tarif für den gesamten Auftrag."
+          },
+          {
+            "question": "Werden bei beiden Abläufen PDFs hochgeladen?",
+            "answer": "Bei der Standardanalyse von StatementXL bleiben PDF und Transaktionen im Browser; nach Erfolg wird nur der Seitenverbrauch gemeldet. Die Wahl von KI sendet das vollständige PDF und den Dateinamen an Qwen. Nanonets erfordert einen Dokument-Upload; prüfen Sie die geltenden Datenschutz- und Aufbewahrungsbedingungen."
+          },
+          {
+            "question": "Wie übertrage ich das Ergebnis an QuickBooks oder Xero?",
+            "answer": "Prüfen Sie den StatementXL-Export, erstellen Sie eine separate CSV nach den Vorgaben der Zielsoftware und importieren Sie sie manuell. Es gibt keinen .qbo-Export und keine direkte Buchhaltungsanbindung. Bestätigen Sie bei Nanonets das genaue Ausgabeformat, den Konnektor und den Tarif, statt die Unterstützung für jeden Workflow vorauszusetzen."
+          },
+          {
+            "question": "Lassen sich Workflow-Credits direkt mit PDF-Seiten vergleichen?",
+            "answer": "Nein. Bezahlte StatementXL-Tarife verwenden PDF-Seitenkontingente; Nanonets berechnet Workflow-Blockausführungen mit Credits. Schätzen Sie alle Schritte, Ausführungen und manuellen Korrekturen für denselben vollständigen Auftrag. Ein Credit oder eine Blockausführung entspricht nicht einer PDF-Seite."
           }
         ],
         "metaDescription": "StatementXL vs. Nanonets: PDF-Prüfung im Browser, Dokumentenprozesse, Excel/CSV, Anbindungen und Seitenkontingente gegenüber Workflow-Credits."
@@ -1356,25 +1388,33 @@
       "workflow": "Ablauf",
       "exports": "Ausgabe",
       "integration": "Anbindung",
-      "pricing": "Preisbasis"
+      "pricing": "Preisbasis",
+      "processing": "Ort der Dateiverarbeitung",
+      "review": "Ergebnisprüfung"
     },
     "statementxl": {
       "workflow": "Ein PDF pro Vorgang; reguläre Browseranalyse mit Zeilenrisiken und Quellpositionen. Optionale KI sendet das vollständige PDF an Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; kein QBO.",
       "integration": "Manueller Buchhaltungsimport; keine Bankverbindung oder öffentliche Extraktions-API.",
-      "pricing": "Ab US${price}/Monat für {pages} PDF-Seiten; aktuelle Tarife beachten."
+      "pricing": "Ab US${price}/Monat für {pages} PDF-Seiten; aktuelle Tarife beachten.",
+      "processing": "Die Standardanalyse läuft im Browser, ohne PDF oder Transaktionen hochzuladen. Optionale KI sendet das vollständige PDF und den Dateinamen an Qwen.",
+      "review": "Zeilenrisiken und Quellenpositionen helfen beim Abgleich mit dem PDF. Übereinstimmende Salden belegen nicht die Richtigkeit jeder Transaktion."
     },
     "docuclipper": {
       "workflow": "Finanzdokumente, Stapelverarbeitung und breiterer Eingang.",
       "exports": "Bankausgabe umfasst Excel, CSV und QBO.",
-      "integration": "Die offizielle Preisseite nennt QuickBooks Online, Xero und API-Zugriff in allen kostenpflichtigen Tarifen.",
-      "pricing": "Seitenbasierte Tarife; Export und Synchronisierung im beworbenen Test erfordern ein Upgrade. Aktuelle Konditionen prüfen."
+      "integration": "Die offizielle Preisseite nennt QuickBooks Online, Xero und API-Zugriff in kostenpflichtigen Web-Tarifen. Der separate reine API-Tarif enthält keine Web-Exporte oder Buchhaltungsanbindungen.",
+      "pricing": "Seitenbasierte Tarife; Export und Synchronisierung im beworbenen Test erfordern ein Upgrade. Aktuelle Konditionen prüfen.",
+      "processing": "Hochgeladene Dateien werden in der AWS-Cloud verarbeitet. Maßgeblich sind die offiziellen Sicherheits-, Datenschutz- und Aufbewahrungsbedingungen.",
+      "review": "Laut offizieller Beschreibung werden gedruckte Anfangs- und Endsalden geprüft und nicht abgestimmte Auszüge markiert."
     },
     "nanonets": {
       "workflow": "Konfigurierbare Dokumentabläufe.",
       "exports": "Kontoauszug nach Excel; benötigte Ausgabe bestätigen.",
       "integration": "Bewirbt API, E-Mail, Cloud und höhere ERP-Anbindungen.",
-      "pricing": "Credits für Workflow-Blockläufe; alle nötigen Schritte kalkulieren, nicht PDF-Seiten."
+      "pricing": "Credits für Workflow-Blockläufe; alle nötigen Schritte kalkulieren, nicht PDF-Seiten.",
+      "processing": "Dokumente müssen zur Verarbeitung bei Nanonets hochgeladen werden. Prüfen Sie die geltenden Datenschutz- und Aufbewahrungsbedingungen.",
+      "review": "Der Kontoauszugsleitfaden verlangt den Abgleich extrahierter Zeilen mit dem Original-PDF und Korrekturen vor dem Export."
     }
   },
   "Resources": {

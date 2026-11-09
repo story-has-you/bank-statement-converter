@@ -18,7 +18,7 @@ type ResourceGroupId = (typeof resourceGroups)[number]["id"];
 const marketResources = {
   en: {
     groups: ["conversion", "accounting", "banks", "comparisons", "tools", "bookkeeping"],
-    featured: ["pdf", "csv", "quickbooks", "checker"],
+    featured: ["pdf", "csv", "quickbooks", "wave"],
   },
   "zh-CN": {
     groups: ["conversion", "tools", "comparisons", "bookkeeping", "banks", "accounting"],
@@ -38,7 +38,7 @@ const marketResources = {
   },
   fr: {
     groups: ["conversion", "tools", "comparisons", "bookkeeping", "banks", "accounting"],
-    featured: ["pdf", "csv", "checker", "scanned"],
+    featured: ["pdf", "csv", "checker", "wave"],
   },
   es: {
     groups: ["conversion", "comparisons", "tools", "bookkeeping", "banks", "accounting"],
