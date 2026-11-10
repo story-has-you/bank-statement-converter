@@ -136,6 +136,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
     }
     if (statementHeader(cells) && !dateColumns.some((column) => cells[column.index] && isValidDate(cells[column.index]!))) {
       previousDate = null;
+      lastDataTop = null;
       pending = [];
       continue;
     }
@@ -147,6 +148,7 @@ function parseRows(headers: string[], input: CellRow[], page: number, grid: bool
     }
     if (openingRow(cells)) {
       previousDate = null;
+      lastDataTop = null;
       pending = [];
       continue;
     }
