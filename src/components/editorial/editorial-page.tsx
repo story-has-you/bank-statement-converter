@@ -58,6 +58,17 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
             <section key={i} className="grid gap-3">
               <h2 className="text-xl font-semibold">{s.title}</h2>
               <p className="whitespace-pre-line text-sm leading-8 text-muted-foreground">{s.text}</p>
+              {s.links && (
+                <ul className="grid gap-2 text-sm leading-7">
+                  {s.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="underline underline-offset-4">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {s.quickbooksLink && (
                 <p className="text-sm leading-8">
                   <Link href="/guides/bank-statement-to-quickbooks" className="underline underline-offset-4">
@@ -70,6 +81,9 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
           {c.page.kind === "about" && (
             <section className="grid gap-3">
               <h2 className="text-xl font-semibold">{t("officialProfiles")}</h2>
+              <a href={brandConfig.url} className="break-all underline underline-offset-4">
+                {t("officialWebsite", { url: brandConfig.url })}
+              </a>
               {brandConfig.sameAs.map((url) => (
                 <a key={url} href={url} className="break-all underline underline-offset-4">
                   {url}

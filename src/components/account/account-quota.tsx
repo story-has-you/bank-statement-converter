@@ -27,6 +27,9 @@ export async function AccountQuota({ quota }: { quota: Quota | null }) {
               aria-valuetext={t("remaining", { remaining: quota.remainingPages, total: quota.limitPages })}
               className="**:data-[slot=progress-track]:h-2"
             />
+            {quota.aiLimitPages > 0 && (
+              <p className="text-sm text-muted-foreground">{t("aiRemaining", { remaining: quota.remainingAiPages, total: quota.aiLimitPages })}</p>
+            )}
             <p className="text-sm text-muted-foreground">
               {t(quota.period === "day" ? "dayEnds" : "monthEnds", { date: format.dateTime(new Date(quota.periodEnd), { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) })}
             </p>

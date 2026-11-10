@@ -4,6 +4,7 @@ import { createHash, randomUUID } from "node:crypto";
 
 import { findEntitledBillingSubscription, type BillingSubscription } from "@/lib/billing/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import type { ConversionMethod } from "@/lib/conversion-types";
 
 import { usageQuotaConfig, type UsagePeriod } from "./config";
 
@@ -15,7 +16,7 @@ export type UsageActor = { type: UsageActorType; key: string; email: string | nu
 
 export type UsageWindow = { period: UsagePeriod; start: Date; end: Date };
 
-export type QuotaContext = UsageActor & { subscriptionId: string | null; limitPages: number; window: UsageWindow };
+export type QuotaContext = UsageActor & { subscriptionId: string | null; limitPages: number; aiLimitPages: number; window: UsageWindow };
 
 export type UsageRecord = {
   actor_type: UsageActorType;
@@ -25,6 +26,7 @@ export type UsageRecord = {
   period_start: string;
   period_end: string;
   used_pages: number;
+  used_ai_pages: number;
   updated_at: string;
 };
 
@@ -35,6 +37,9 @@ export type QuotaResult = {
   usedPages: number;
   remainingPages: number;
   limitPages: number;
+  usedAiPages: number;
+  remainingAiPages: number;
+  aiLimitPages: number;
 };
 
 export class UsageUnavailableError extends Error {
@@ -98,13 +103,13 @@ export function getQuotaContext(actor: UsageActor, subscription: BillingSubscrip
     const config = usageQuotaConfig.subscriptions[subscription.tier];
     const window = getSubscriptionWindow(subscription, now);
     if (window) {
-      return { ...actor, subscriptionId: subscription.id, limitPages: config.pages, window };
+      return { ...actor, subscriptionId: subscription.id, limitPages: config.pages, aiLimitPages: config.aiPages, window };
     }
     throw new SubscriptionPeriodUnavailableError();
   }
 
   const config = actor.type === "anonymous" ? usageQuotaConfig.anonymous : usageQuotaConfig.authenticated;
-  return { ...actor, subscriptionId: null, limitPages: config.pages, window: createUtcDayWindow(now) };
+  return { ...actor, subscriptionId: null, limitPages: config.pages, aiLimitPages: 0, window: createUtcDayWindow(now) };
 }
 
 export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {
@@ -126,7 +131,7 @@ export async function getUsageRecord(actor: UsageActor): Promise<UsageRecord | n
   const admin = requireAdminClient();
   const { data, error } = await admin
     .from("conversion_usage")
-    .select("actor_type, actor_key, email, period, period_start, period_end, used_pages, updated_at")
+    .select("actor_type, actor_key, email, period, period_start, period_end, used_pages, used_ai_pages, updated_at")
     .eq("actor_type", actor.type)
     .eq("actor_key", actor.key)
     .maybeSingle();
@@ -156,9 +161,12 @@ function validateQuotaInput(context: QuotaContext, pageCount: number): void {
   if (!Number.isSafeInteger(pageCount) || pageCount <= 0 || !Number.isSafeInteger(context.limitPages) || context.limitPages <= 0) {
     throw new Error("Usage page values are invalid");
   }
+  if (!Number.isSafeInteger(context.aiLimitPages) || context.aiLimitPages < 0 || context.aiLimitPages > context.limitPages) {
+    throw new Error("AI page limit is invalid");
+  }
 }
 
-export async function consumeConversionQuota(context: QuotaContext, pageCount: number): Promise<QuotaResult> {
+export async function consumeConversionQuota(context: QuotaContext, pageCount: number, method: ConversionMethod = "code"): Promise<QuotaResult> {
   validateQuotaInput(context, pageCount);
   const admin = requireAdminClient();
   const periodStart = context.window.start.toISOString();
@@ -176,11 +184,15 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
       context.window.end.valueOf() !== currentContext.window.end.valueOf();
     const currentRecord = stale ? await getUsageRecord(context) : record;
     const currentUsedPages = currentRecord && isUsageRecordCurrent(currentRecord, currentContext) ? currentRecord.used_pages : 0;
+    const currentUsedAiPages = currentRecord && isUsageRecordCurrent(currentRecord, currentContext) ? currentRecord.used_ai_pages : 0;
     const currentQuota = {
       period: currentContext.window.period,
       usedPages: currentUsedPages,
       remainingPages: Math.max(currentContext.limitPages - currentUsedPages, 0),
       limitPages: currentContext.limitPages,
+      usedAiPages: currentUsedAiPages,
+      remainingAiPages: Math.max(currentContext.aiLimitPages - currentUsedAiPages, 0),
+      aiLimitPages: currentContext.aiLimitPages,
     };
     if (stale) {
       // 失效窗口不再结算，也不占用新权益的额度；已交付结果不受影响。
@@ -188,14 +200,18 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
     }
 
     const nextUsedPages = currentUsedPages + pageCount;
-    const allowed = nextUsedPages <= currentContext.limitPages;
+    const nextUsedAiPages = currentUsedAiPages + (method === "llm" ? pageCount : 0);
+    const allowed = nextUsedPages <= currentContext.limitPages && (method !== "llm" || nextUsedAiPages <= currentContext.aiLimitPages);
     const usedPages = allowed ? nextUsedPages : currentUsedPages;
+    const usedAiPages = allowed ? nextUsedAiPages : currentUsedAiPages;
     const quota: QuotaResult = {
       ...currentQuota,
       status: allowed ? "consumed" : "exceeded",
       allowed,
       usedPages,
       remainingPages: Math.max(currentContext.limitPages - usedPages, 0),
+      usedAiPages,
+      remainingAiPages: Math.max(currentContext.aiLimitPages - usedAiPages, 0),
     };
     if (!allowed) {
       return quota;
@@ -207,6 +223,7 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
       period_start: periodStart,
       period_end: periodEnd,
       used_pages: nextUsedPages,
+      used_ai_pages: nextUsedAiPages,
       updated_at: new Date().toISOString(),
     };
     if (!record) {
@@ -228,6 +245,7 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
         .eq("period_start", record.period_start)
         .eq("period_end", record.period_end)
         .eq("used_pages", record.used_pages)
+        .eq("used_ai_pages", record.used_ai_pages)
         .eq("updated_at", record.updated_at)
         .select("actor_key");
       if (error) {
@@ -241,6 +259,36 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
     return quota;
   }
 
+  throw new UsageUnavailableError();
+}
+
+export async function releaseAiQuota(context: QuotaContext, pageCount: number): Promise<void> {
+  validateQuotaInput(context, pageCount);
+  const admin = requireAdminClient();
+  for (let attempt = 0; attempt < MAX_QUOTA_ATTEMPTS; attempt += 1) {
+    const record = await getUsageRecord(context);
+    if (!record || !isUsageRecordCurrent(record, context)) {
+      return;
+    }
+    const { data, error } = await admin
+      .from("conversion_usage")
+      .update({
+        used_pages: Math.max(0, record.used_pages - pageCount),
+        used_ai_pages: Math.max(0, record.used_ai_pages - pageCount),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("actor_type", context.type)
+      .eq("actor_key", context.key)
+      .eq("period", record.period)
+      .eq("period_start", record.period_start)
+      .eq("period_end", record.period_end)
+      .eq("used_pages", record.used_pages)
+      .eq("used_ai_pages", record.used_ai_pages)
+      .eq("updated_at", record.updated_at)
+      .select("actor_key");
+    if (error) throw error;
+    if (data.length) return;
+  }
   throw new UsageUnavailableError();
 }
 

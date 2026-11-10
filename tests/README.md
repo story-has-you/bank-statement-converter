@@ -1,5 +1,7 @@
 # Automated checks
 
+- `public-content.test.ts` checks translation interpolation, public page registration, resource navigation and language alternates for all supported locales. It does not render or test the UI.
+
 Run `pnpm test` with Node.js 24 or later to execute the retained unit regressions and the PDF.js/conversion integration checks. No credentials or real services are required.
 
 - `conversion-evidence.test.ts` covers omitted transactions, subtotals, section stops, continuation risks, and invalid fields hidden by valid fields.

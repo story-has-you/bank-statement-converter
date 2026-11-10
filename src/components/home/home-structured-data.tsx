@@ -34,7 +34,7 @@ export async function HomeStructuredData() {
       inLanguage: locale,
       availableLanguage: routing.locales,
       offers: membershipTiers.map((tier) => {
-        const parsing = usageT(subscriptionConfig[tier].aiParsing ? "aiParsing" : "textParsing");
+        const parsing = subscriptionConfig[tier].aiParsing ? usageT("aiParsing", { pages: subscriptionConfig[tier].aiPages }) : usageT("textParsing");
         return {
           "@type": "Offer",
           name: usageT(`plans.${tier}.name`),

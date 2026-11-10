@@ -49,6 +49,7 @@ export async function POST(request: Request): Promise<Response> {
   let anonymousCookie: string | null;
   let context: QuotaContext;
   let availablePages: number;
+  let availableAiPages: number;
   try {
     const resolved = await getRequestQuota(request);
     context = resolved.context;
@@ -57,6 +58,7 @@ export async function POST(request: Request): Promise<Response> {
       return setAnonymousCookie(errorResponse("AI_NOT_ALLOWED", 403, locale), anonymousCookie);
     }
     availablePages = resolved.quota.remainingPages;
+    availableAiPages = resolved.quota.remainingAiPages;
     if (availablePages === 0) {
       return setAnonymousCookie(
         errorResponse("QUOTA_EXHAUSTED", 429, locale, {
@@ -68,6 +70,9 @@ export async function POST(request: Request): Promise<Response> {
         anonymousCookie,
       );
     }
+    if (availableAiPages === 0) {
+      return setAnonymousCookie(errorResponse("AI_QUOTA_EXHAUSTED", 429, locale), anonymousCookie);
+    }
   } catch (error) {
     if (!(error instanceof UsageUnavailableError) && !(error instanceof SubscriptionPeriodUnavailableError)) {
       console.error("Failed to resolve conversion quota", { code: "QUOTA_UNAVAILABLE" });
@@ -75,9 +80,10 @@ export async function POST(request: Request): Promise<Response> {
     const code = error instanceof SubscriptionPeriodUnavailableError ? "QUOTA_PERIOD_UNAVAILABLE" : "QUOTA_UNAVAILABLE";
     return errorResponse(code, 503, locale);
   }
+  let pageCount: number;
   try {
     const document = await PDFDocument.load(await entry.arrayBuffer(), { updateMetadata: false });
-    const pageCount = document.getPageCount();
+    pageCount = document.getPageCount();
     if (!pageCount) {
       return setAnonymousCookie(errorResponse("INVALID_PDF", 400, locale), anonymousCookie);
     }
@@ -87,10 +93,13 @@ export async function POST(request: Request): Promise<Response> {
     if (pageCount > availablePages) {
       return setAnonymousCookie(errorResponse("QUOTA_EXCEEDED", 429, locale), anonymousCookie);
     }
+    if (pageCount > availableAiPages) {
+      return setAnonymousCookie(errorResponse("AI_QUOTA_EXCEEDED", 429, locale), anonymousCookie);
+    }
   } catch (error) {
     const encrypted = error instanceof Error && error.message === new EncryptedPDFError().message;
     return setAnonymousCookie(errorResponse(encrypted ? "PASSWORD_PROTECTED_PDF" : "INVALID_PDF", 400, locale), anonymousCookie);
   }
-  const response = await createConversionResponse(request, entry, context, locale, availablePages);
+  const response = await createConversionResponse(request, entry, context, locale, pageCount);
   return setAnonymousCookie(response, anonymousCookie);
 }

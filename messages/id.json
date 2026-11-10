@@ -84,6 +84,8 @@
     "browserStorageUnavailable": "Penyimpanan browser tidak tersedia.",
     "emptyFile": "Berkas PDF yang dipilih kosong.",
     "quotaExhausted": "Anda telah menggunakan semua halaman yang tersedia untuk periode ini.",
+    "aiQuotaExhausted": "Kuota halaman AI Anda untuk periode penagihan ini telah habis. Analisis lokal tetap dapat digunakan jika kuota total masih tersisa.",
+    "aiQuotaExceeded": "PDF ini memiliki {pageCount, number} halaman; tersisa {remainingPages, number} halaman AI dalam periode penagihan ini.",
     "invalidResponse": "Layanan konversi mengembalikan data dalam format yang tidak valid.",
     "aiNotice": "Professional dan Business dapat memilih AI, termasuk untuk hasil pindai. AI tidak aktif otomatis. Hanya jika dipilih, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform. Kami tidak menyimpan riwayat permanen berkas atau transaksi. Penyimpanan dan pelatihan Qwen mengikuti <link>ketentuan dan kebijakan privasinya</link>.",
     "checking": "Memeriksa PDF dan kuota",
@@ -312,7 +314,7 @@
         "description": "Untuk mengelola rekening koran beberapa klien, rekonsiliasi akhir bulan, atau volume bulanan yang lebih besar. Dapatkan kuota halaman lebih tinggi dengan penguraian lokal, AI opsional, pemeriksaan, dan ekspor yang sama seperti Profesional."
       }
     },
-    "aiParsing": "AI opsional untuk PDF teks dan hasil pindai; periksa hasil sebelum digunakan.",
+    "aiParsing": "AI opsional: hingga {pages, number} halaman per bulan penagihan, termasuk dalam kuota total. Untuk PDF teks dan hasil pindai; periksa hasil sebelum digunakan.",
     "textParsing": "Penguraian PDF teks secara lokal, tanpa mengunggah file asli."
   },
   "Billing": {
@@ -394,6 +396,10 @@
     "ai": {
       "question": "Data apa yang dikirim ke Qwen saat memilih AI?",
       "answer": "AI tidak aktif otomatis. Jika dipilih pada Professional atau Business, PDF lengkap dan nama berkas dikirim melalui server kami ke Qwen AI Platform."
+    },
+    "officialSite": {
+      "question": "Bagaimana memastikan situs resmi StatementXL?",
+      "answer": "Situs resmi StatementXL adalah {url}. Periksa domain lengkap sebelum masuk atau membayar, lalu gunakan profil resmi yang ditautkan dari halaman Tentang."
     }
   },
   "HomeFooter": {
@@ -563,6 +569,8 @@
     "INVALID_FILE": "Tidak ada berkas unggahan yang diterima.",
     "PARSER_UNAVAILABLE": "Layanan konversi tidak dapat dihubungi.",
     "QUOTA_EXCEEDED": "Jumlah halaman PDF ini melebihi sisa halaman yang dapat Anda konversi.",
+    "AI_QUOTA_EXHAUSTED": "Kuota halaman AI untuk periode penagihan ini telah habis. Analisis lokal tetap tersedia dalam batas kuota total.",
+    "AI_QUOTA_EXCEEDED": "PDF ini melebihi sisa kuota halaman AI untuk periode penagihan ini.",
     "QUOTA_UNAVAILABLE": "Kuota konversi yang tersedia tidak dapat ditentukan.",
     "FILE_TOO_LARGE": "Ukuran PDF ini melebihi {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Berkas yang diunggah bukan PDF.",
@@ -613,6 +621,7 @@
     "quota": {
       "title": "Sisa kuota",
       "remaining": "Sisa {remaining, number} dari {total, number} halaman",
+      "aiRemaining": "AI: tersisa {remaining, number} dari {total, number} halaman, termasuk dalam kuota total.",
       "percentage": "Sisa {percent}%",
       "progressLabel": "Sisa kuota halaman",
       "dayEnds": "Kuota harian direset pada {date} UTC.",
@@ -1020,6 +1029,24 @@
             "text": "Bandingkan format tujuan, paket, batas, privasi dan pekerjaan pemeriksaan. Dari StatementXL, siapkan salinan impor secara manual. Fitur dan harga terkini tercantum di halaman resmi."
           },
           {
+            "title": "Bandingkan juga harga, penggabungan berkas, dan tinjauan tim",
+            "text": "StatementCheap menawarkan paket halaman lebih murah dan format akuntansi. FlowParse menawarkan penggabungan beberapa berkas dan API. CapyParse menyebut ruang kerja bersama serta pemindaian/ekspor massal dalam paket Firm. Perbandingan rinci menjelaskan kuota gratis, periode tagihan, dan pemrosesan data. Ini deskripsi vendor, bukan pengukuran akurasi independen.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim"
+              }
+            ]
+          },
+          {
             "title": "Pilih berdasarkan langkah yang belum terpenuhi",
             "text": "Jika bank menyediakan CSV yang sesuai, periksa periode dan kolom sebelum membayar ekstraksi PDF. Jika hanya ada PDF dan Anda perlu lembar kerja untuk ditinjau, coba berkas yang mewakili kebutuhan di StatementXL. Untuk penerimaan otomatis atau alur terhubung, evaluasi fitur dan paket penyedia.\n\nCatat keluaran yang diperlukan, berkas per pekerjaan, dan koreksi manual. Simpan PDF asli dan bandingkan penyerahan lengkap, bukan jumlah fitur yang diiklankan."
           }
@@ -1249,6 +1276,10 @@
           {
             "question": "Di mana bukti klaimnya?",
             "answer": "Pada sumber panduan serta metode dan hasil laporan yang dapat diunduh. Hubungi dukungan untuk pertanyaan produk."
+          },
+          {
+            "question": "Bagaimana memastikan situs resmi StatementXL?",
+            "answer": "Situs resmi StatementXL adalah {url}. Periksa domain lengkap sebelum masuk atau membayar, lalu gunakan profil resmi yang ditautkan dari halaman Tentang."
           }
         ],
         "metaDescription": "Kenali StatementXL: konversi PDF ke lembar kerja dengan penanda risiko per baris, rujukan sumber, dan batas fungsi layanan."
@@ -1325,6 +1356,24 @@
             "text": "Nanonets mencantumkan API, integrasi email, dan konektor penyimpanan cloud, dengan integrasi ERP dan basis data pada paket lebih tinggi. Pertimbangkan jika ekstraksi harus dilanjutkan ke proses berulang. Biaya memakai kredit per eksekusi blok alur kerja; pemformatan, validasi, dan ekstraksi dapat menjadi langkah terpisah. Hitung seluruh alur, jangan samakan satu kredit atau eksekusi blok dengan satu halaman PDF."
           },
           {
+            "title": "Bandingkan juga harga, penggabungan berkas, dan tinjauan tim",
+            "text": "StatementCheap menawarkan paket halaman lebih murah dan format akuntansi. FlowParse menawarkan penggabungan beberapa berkas dan API. CapyParse menyebut ruang kerja bersama serta pemindaian/ekspor massal dalam paket Firm. Perbandingan rinci menjelaskan kuota gratis, periode tagihan, dan pemrosesan data. Ini deskripsi vendor, bukan pengukuran akurasi independen.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim"
+              }
+            ]
+          },
+          {
             "title": "Enam pertanyaan sebelum memilih",
             "text": "Masukan: PDF teks atau hasil pindai, dan bisakah tata letak yang mewakili berkas Anda diproses?\nKeluaran: Excel/CSV umum, QBO, atau format impor khusus?\nVolume: satu berkas atau pemrosesan massal berulang?\nIntegrasi: impor manual atau pengiriman otomatis ke sistem lain?\nData: di mana seluruh PDF dan transaksi diproses, dan apakah ketentuannya memenuhi kebutuhan?\nBiaya pemeriksaan: cocokkan jumlah baris, tanggal, arah nominal, deskripsi multibaris, dan saldo dengan aslinya. Sertakan koreksi dan batas paket. Total yang sama tidak membuktikan setiap baris benar."
           }
@@ -1343,8 +1392,138 @@
             "answer": "Periksa format dan tujuan yang tepat. StatementXL menyediakan Excel/CSV umum yang perlu disiapkan lalu diimpor secara manual, tanpa QBO atau koneksi akuntansi langsung. DocuClipper mengiklankan ekspor dan integrasi akuntansi, sedangkan Nanonets menyediakan konektor alur kerja. Pastikan fitur dan paket kepada penyedia."
           }
         ]
+      },
+      "statementcheap": {
+        "title": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi",
+        "intro": "Bandingkan tinjauan lokal di browser dengan konversi cloud lebih murah dan ekspor akuntansi. Perbandingan ini ditulis StatementXL dari deskripsi resmi, tanpa pengujian kecepatan atau akurasi independen. Harga sesuai tanggal pemeriksaan di bawah; periksa ketentuan terkini sebelum membeli.",
+        "sections": [
+          {
+            "title": "Kapan StatementCheap cocok",
+            "text": "StatementCheap menyebut unggahan massal, pemeriksaan saldo, serta Excel, CSV, QBO, Xero, OFX, dan QFX. Pembayaran bulanan: Starter USD 9/500 halaman, Pro USD 19/2.000, Business USD 49/7.500. Paket sekali bayar USD 6/150 halaman tidak kedaluwarsa. Pada tanggal pemeriksaan, paket bulanan 500 halaman lebih murah daripada paket awal StatementXL. Pertimbangkan juga pemrosesan data dan format yang dibutuhkan. Kebijakan privasinya menjelaskan pemrosesan jarak jauh dan hasil terenkripsi disimpan tujuh hari, dengan penghapusan lebih awal oleh pengguna."
+          },
+          {
+            "title": "Kapan StatementXL cocok",
+            "text": "Pilih satu PDF berteks untuk diurai secara lokal di browser. PDF, nama berkas, dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman dikirim ke API kuota. Batas per berkas {megabytes} MB dan {pages} halaman; PDF bersandi tidak didukung. Pengguna Professional dan Business dapat secara aktif memilih AI, termasuk mencoba hasil pindai. PDF lengkap dan nama berkas lalu melewati server kami menuju Qwen. Situs tidak menyimpan riwayat berkas permanen; tab ini dapat menyimpan hasil sementara. Excel, CSV, TSV, JSON, Markdown, dan HTML menyertakan risiko per baris dan sumber. Tidak ada penerimaan massal, QBO/OFX asli, koneksi akuntansi langsung, atau API ekstraksi publik."
+          },
+          {
+            "title": "Periksa hasil dan kebutuhan impor",
+            "text": "Dengan sampel berizin yang sama, cocokkan jumlah transaksi, tanggal, tanda jumlah, deskripsi beberapa baris, dan saldo terhadap PDF asli. Label OK dan saldo cocok tidak membuktikan kelengkapan atau akurasi. Siapkan salinan impor terpisah sesuai kebutuhan perangkat lunak akuntansi.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apa perbedaan kuota gratisnya?",
+            "answer": "StatementXL menyediakan penguraian lokal dan unduhan {anonymousPages} halaman PDF per hari UTC tanpa masuk, atau {authenticatedPages} setelah masuk. Kegagalan tidak memakai kuota; hasil parsial menghitung seluruh halaman PDF asli. StatementCheap menyebut 5 halaman gratis setiap hari dengan akun email dan semua format ekspor."
+          },
+          {
+            "question": "Apakah StatementXL membuat QBO/OFX atau terhubung ke perangkat lunak akuntansi?",
+            "answer": "Tidak. Ekspor spreadsheet dan teks umum digunakan untuk ditinjau dan disiapkan secara manual. Format akuntansi dari pesaing juga tidak membuktikan koneksi langsung ke QuickBooks atau Xero; pastikan alurnya kepada vendor."
+          },
+          {
+            "question": "Konverter mana yang lebih akurat?",
+            "answer": "Kami belum menjalankan pengujian perbandingan terkontrol. Pemeriksaan saldo dan risiko per baris membantu peninjauan, tetapi tidak membuktikan setiap transaksi diekstrak dengan benar. Bandingkan PDF berizin yang sama dan simpan dokumen asli."
+          }
+        ],
+        "metaDescription": "StatementXL dan StatementCheap: penguraian PDF lokal, pemrosesan cloud, harga bulanan, halaman gratis harian, konversi massal, dan format akuntansi."
+      },
+      "flowparse": {
+        "title": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas",
+        "intro": "Bandingkan meninjau satu PDF secara lokal dengan menggabungkan rekening koran dan ekstraksi melalui API. Perbandingan ini ditulis StatementXL dari deskripsi resmi, tanpa pengujian kecepatan atau akurasi independen. Harga sesuai tanggal pemeriksaan di bawah; periksa ketentuan terkini sebelum membeli.",
+        "sections": [
+          {
+            "title": "Kapan FlowParse cocok",
+            "text": "FlowParse menyebut Smart Merge dengan berkas sumber di setiap baris, Excel, CSV, QBO, QFX, OFX, dan API. Starter EUR 15/bulan mencakup 300 halaman dan penggabungan hingga 20 berkas. Pro mencantumkan harga bulanan reguler EUR 59 untuk 1.000 halaman dan hingga 100 berkas. Harga promosi terpisah dari tarif reguler tersebut. Halaman harga menyebut server UE dan penghapusan berkas asli setelah 30 hari. Pertahankan EUR dan USD tanpa mengasumsikan kurs atau pemrosesan yang sama."
+          },
+          {
+            "title": "Kapan StatementXL cocok",
+            "text": "Pilih satu PDF berteks untuk diurai secara lokal di browser. PDF, nama berkas, dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman dikirim ke API kuota. Batas per berkas {megabytes} MB dan {pages} halaman; PDF bersandi tidak didukung. Pengguna Professional dan Business dapat secara aktif memilih AI, termasuk mencoba hasil pindai. PDF lengkap dan nama berkas lalu melewati server kami menuju Qwen. Situs tidak menyimpan riwayat berkas permanen; tab ini dapat menyimpan hasil sementara. Excel, CSV, TSV, JSON, Markdown, dan HTML menyertakan risiko per baris dan sumber. Tidak ada penerimaan massal, QBO/OFX asli, koneksi akuntansi langsung, atau API ekstraksi publik."
+          },
+          {
+            "title": "Periksa hasil dan kebutuhan impor",
+            "text": "Dengan sampel berizin yang sama, cocokkan jumlah transaksi, tanggal, tanda jumlah, deskripsi beberapa baris, dan saldo terhadap PDF asli. Label OK dan saldo cocok tidak membuktikan kelengkapan atau akurasi. Siapkan salinan impor terpisah sesuai kebutuhan perangkat lunak akuntansi.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apa perbedaan kuota gratisnya?",
+            "answer": "StatementXL menyediakan penguraian lokal dan unduhan {anonymousPages} halaman PDF per hari UTC tanpa masuk, atau {authenticatedPages} setelah masuk. Kegagalan tidak memakai kuota; hasil parsial menghitung seluruh halaman PDF asli. FlowParse menyebut 10 halaman gratis per bulan, ekspor, API, dan penggabungan hingga 5 berkas dalam kuota."
+          },
+          {
+            "question": "Apakah StatementXL membuat QBO/OFX atau terhubung ke perangkat lunak akuntansi?",
+            "answer": "Tidak. Ekspor spreadsheet dan teks umum digunakan untuk ditinjau dan disiapkan secara manual. Format akuntansi dari pesaing juga tidak membuktikan koneksi langsung ke QuickBooks atau Xero; pastikan alurnya kepada vendor."
+          },
+          {
+            "question": "Konverter mana yang lebih akurat?",
+            "answer": "Kami belum menjalankan pengujian perbandingan terkontrol. Pemeriksaan saldo dan risiko per baris membantu peninjauan, tetapi tidak membuktikan setiap transaksi diekstrak dengan benar. Bandingkan PDF berizin yang sama dan simpan dokumen asli."
+          }
+        ],
+        "metaDescription": "StatementXL dan FlowParse: penguraian lokal, Smart Merge, API, paket bulanan EUR, kuota gratis, format akuntansi, dan pemrosesan berkas."
+      },
+      "capyparse": {
+        "title": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim",
+        "intro": "Bandingkan tinjauan lokal satu berkas dengan AI cloud, ruang kerja bersama, dan format akuntansi. Perbandingan ini ditulis StatementXL dari deskripsi resmi, tanpa pengujian kecepatan atau akurasi independen. Harga sesuai tanggal pemeriksaan di bawah; periksa ketentuan terkini sebelum membeli.",
+        "sections": [
+          {
+            "title": "Kapan CapyParse cocok",
+            "text": "CapyParse menyebut ekstraksi AI, pemeriksaan saldo, tanda Needs review, serta CSV, Excel, dan QBO. Starter mencakup 150 halaman/bulan dan 3 anggota; Firm 600 halaman, 10 anggota, serta pindai/ekspor massal. Harga bulanan yang diperiksa USD 29 dan USD 79. Total USD 290 dan USD 790 ditagih tahunan; angka USD 24/USD 66 yang tampil adalah ekuivalen tahunan, bukan langganan bulanan. Dokumen diunggah; pastikan ketentuan privasi dan penyimpanan sebelum mengirim."
+          },
+          {
+            "title": "Kapan StatementXL cocok",
+            "text": "Pilih satu PDF berteks untuk diurai secara lokal di browser. PDF, nama berkas, dan transaksi tidak diunggah; setelah berhasil, hanya jumlah halaman dikirim ke API kuota. Batas per berkas {megabytes} MB dan {pages} halaman; PDF bersandi tidak didukung. Pengguna Professional dan Business dapat secara aktif memilih AI, termasuk mencoba hasil pindai. PDF lengkap dan nama berkas lalu melewati server kami menuju Qwen. Situs tidak menyimpan riwayat berkas permanen; tab ini dapat menyimpan hasil sementara. Excel, CSV, TSV, JSON, Markdown, dan HTML menyertakan risiko per baris dan sumber. Tidak ada penerimaan massal, QBO/OFX asli, koneksi akuntansi langsung, atau API ekstraksi publik."
+          },
+          {
+            "title": "Periksa hasil dan kebutuhan impor",
+            "text": "Dengan sampel berizin yang sama, cocokkan jumlah transaksi, tanggal, tanda jumlah, deskripsi beberapa baris, dan saldo terhadap PDF asli. Label OK dan saldo cocok tidak membuktikan kelengkapan atau akurasi. Siapkan salinan impor terpisah sesuai kebutuhan perangkat lunak akuntansi.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Apa perbedaan kuota gratisnya?",
+            "answer": "StatementXL menyediakan penguraian lokal dan unduhan {anonymousPages} halaman PDF per hari UTC tanpa masuk, atau {authenticatedPages} setelah masuk. Kegagalan tidak memakai kuota; hasil parsial menghitung seluruh halaman PDF asli. CapyParse menyebut 10 halaman gratis satu kali, tanpa kedaluwarsa atau kartu. Bukan kuota yang diperbarui harian atau bulanan. Paket kredit yang dibeli berlaku satu tahun."
+          },
+          {
+            "question": "Apakah StatementXL membuat QBO/OFX atau terhubung ke perangkat lunak akuntansi?",
+            "answer": "Tidak. Ekspor spreadsheet dan teks umum digunakan untuk ditinjau dan disiapkan secara manual. Format akuntansi dari pesaing juga tidak membuktikan koneksi langsung ke QuickBooks atau Xero; pastikan alurnya kepada vendor."
+          },
+          {
+            "question": "Konverter mana yang lebih akurat?",
+            "answer": "Kami belum menjalankan pengujian perbandingan terkontrol. Pemeriksaan saldo dan risiko per baris membantu peninjauan, tetapi tidak membuktikan setiap transaksi diekstrak dengan benar. Bandingkan PDF berizin yang sama dan simpan dokumen asli."
+          }
+        ],
+        "metaDescription": "StatementXL dan CapyParse: penguraian lokal, OCR AI, tinjauan baris, QBO, ruang kerja tim, harga bulanan, dan kuota gratis satu kali."
       }
-    }
+    },
+    "officialWebsite": "Situs resmi: {url}"
   },
   "BalanceChecker": {
     "title": "Pemeriksa saldo",
@@ -1396,7 +1575,7 @@
       "workflow": "Satu PDF sekaligus; penguraian lokal di browser, risiko per baris dan sumber. AI opsional mengirim seluruh PDF ke Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; tanpa QBO.",
       "integration": "Impor manual; tanpa bank atau API ekstraksi publik.",
-      "pricing": "Mulai US${price}/bulan untuk {pages} halaman PDF; lihat paket terkini.",
+      "pricing": "Mulai {price}/bulan untuk {pages} halaman PDF; lihat paket terkini.",
       "processing": "Analisis standar berjalan di peramban tanpa mengunggah PDF atau transaksi. AI opsional mengirim PDF lengkap dan nama berkas ke Qwen.",
       "review": "Risiko per baris dan lokasi sumber membantu pemeriksaan dengan PDF. Saldo yang cocok tidak membuktikan semua transaksi benar."
     },
@@ -1415,6 +1594,38 @@
       "pricing": "Kredit per eksekusi blok alur kerja; hitung semua langkah yang diperlukan, bukan halaman PDF.",
       "processing": "Dokumen harus diunggah ke Nanonets untuk diproses. Periksa ketentuan privasi dan retensi yang berlaku.",
       "review": "Panduan rekening koran meminta pemeriksaan baris hasil ekstraksi terhadap PDF asli dan perbaikan kesalahan sebelum ekspor."
+    },
+    "names": {
+      "statementxl": "StatementXL",
+      "docuclipper": "DocuClipper",
+      "nanonets": "Nanonets",
+      "statementcheap": "StatementCheap",
+      "flowparse": "FlowParse",
+      "capyparse": "CapyParse"
+    },
+    "statementcheap": {
+      "workflow": "Konversi cloud dengan unggahan massal.",
+      "processing": "Pemrosesan jarak jauh; kebijakan menyebut hasil terenkripsi selama 7 hari dan bisa dihapus lebih awal.",
+      "review": "Mengiklankan pemeriksaan saldo; cocokkan transaksi dengan PDF.",
+      "exports": "Excel, CSV, QBO, Xero, OFX, dan QFX.",
+      "integration": "Format akuntansi; pastikan koneksi langsung secara terpisah.",
+      "pricing": "Bulanan USD 9/500 halaman. Akun email: 5 halaman gratis/hari. Paket sekali bayar USD 6/150 tanpa kedaluwarsa."
+    },
+    "flowparse": {
+      "workflow": "Smart Merge menggabungkan beberapa rekening koran ke satu buku kerja; batas menurut paket.",
+      "processing": "Cloud; halaman harga menyebut server UE dan berkas asli dihapus setelah 30 hari.",
+      "review": "Mengiklankan pemeriksaan saldo dan rujukan berkas sumber pada baris gabungan.",
+      "exports": "Excel, CSV, QBO, QFX, dan OFX.",
+      "integration": "Menyebut API; ekspor berkas tidak membuktikan koneksi akuntansi langsung.",
+      "pricing": "Starter bulanan reguler EUR 15/300 halaman. Gratis: 10 halaman/bulan. Promosi dan ekuivalen tahunan terpisah."
+    },
+    "capyparse": {
+      "workflow": "Ekstraksi AI dan ruang kerja bersama; Firm mencakup pindai/ekspor massal.",
+      "processing": "Dokumen diunggah untuk diproses; pastikan ketentuan privasi dan penyimpanan.",
+      "review": "Mengiklankan pemeriksaan saldo, perbandingan dengan PDF asli, dan tanda Needs review.",
+      "exports": "CSV, Excel, dan QBO.",
+      "integration": "Ruang kerja bersama; pastikan integrasi khusus kepada vendor.",
+      "pricing": "Bulanan USD 29/150 halaman atau USD 79/600. Gratis: 10 halaman satu kali tanpa kedaluwarsa. Ekuivalen tahunan bukan harga bulanan."
     }
   },
   "Resources": {
@@ -1452,7 +1663,10 @@
       "checker": "Pemeriksa saldo dan templat Excel",
       "benchmark": "Laporan sampel publik",
       "csv": "Konversi rekening koran PDF ke CSV",
-      "bestConverters": "Konverter rekening koran terbaik (2026)"
+      "bestConverters": "Konverter rekening koran terbaik (2026)",
+      "statementcheap": "StatementXL vs StatementCheap: tinjauan lokal, harga, dan ekspor akuntansi",
+      "flowparse": "StatementXL vs FlowParse: tinjauan lokal atau gabungkan beberapa berkas",
+      "capyparse": "StatementXL vs CapyParse: tinjauan lokal, OCR, dan kerja tim"
     },
     "groupDescriptions": {
       "conversion": "PDF teks diurai di browser; scan memerlukan AI opsional. Excel dan CSV adalah hasil umum untuk diperiksa, bukan rekonsiliasi otomatis.",

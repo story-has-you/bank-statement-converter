@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { conversionLimits } from "@/config/conversion";
 import type { ConversionErrorPayload } from "@/lib/conversion-errors";
+import type { ConversionMethod } from "@/lib/conversion-types";
 import { createClient } from "@/lib/supabase/browser";
 import type { ConversionQuota } from "@/lib/usage/types";
 
@@ -23,7 +24,7 @@ type PreflightState =
   | { phase: "ready"; file: File; pageCount: number; quota: ConversionQuota }
   | { phase: "error"; file: File; pageCount: number | null; error: PreflightError };
 
-export function usePdfPreflight(file: File | null) {
+export function usePdfPreflight(file: File | null, method: ConversionMethod) {
   const locale = useLocale();
   const t = useTranslations("PdfUpload");
   const [state, setState] = useState<PreflightState>({ phase: "idle" });
@@ -52,7 +53,7 @@ export function usePdfPreflight(file: File | null) {
       }
       cachedPages.current = { file, count: pageCount };
       setState({ phase: "ready", file, pageCount, quota });
-      return pageCount <= conversionLimits.pages && pageCount <= quota.remainingPages;
+      return pageCount <= conversionLimits.pages && pageCount <= quota.remainingPages && (method !== "llm" || pageCount <= quota.remainingAiPages);
     } catch (error) {
       if (controller.signal.aborted) {
         return false;
@@ -62,7 +63,7 @@ export function usePdfPreflight(file: File | null) {
       setState({ phase: "error", file, pageCount: previousCount, error: failure });
       return false;
     }
-  }, [cancel, file, locale]);
+  }, [cancel, file, locale, method]);
 
   const check = useCallback((): Promise<boolean> => {
     if (file) {
@@ -104,6 +105,10 @@ export function usePdfPreflight(file: File | null) {
       error = t("quotaExhausted");
     } else if (ready.pageCount > ready.quota.remainingPages) {
       error = t("quotaExceeded", { pageCount: ready.pageCount, remainingPages: ready.quota.remainingPages });
+    } else if (method === "llm" && ready.quota.remainingAiPages === 0) {
+      error = t("aiQuotaExhausted");
+    } else if (method === "llm" && ready.pageCount > ready.quota.remainingAiPages) {
+      error = t("aiQuotaExceeded", { pageCount: ready.pageCount, remainingPages: ready.quota.remainingAiPages });
     }
   }
 

@@ -2,6 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { cache } from "react";
 
 import { aiProvider } from "@/config/ai-provider";
+import { brandConfig } from "@/config/brand";
 import { subscriptionConfig } from "@/config/plans";
 import { publicContentPages } from "@/config/public-pages";
 import { getResourceGroups, getResourcePage } from "@/config/resources";
@@ -53,7 +54,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     pages: quota.subscriptions[tier].pages,
     formattedPrice: format.number(subscriptionConfig[tier].monthlyPrice, { style: "currency", currency: "USD" }),
     period: t("billingPeriod"),
-    parsing: subscriptionConfig[tier].aiParsing ? usage("aiParsing") : usage("textParsing"),
+    parsing: subscriptionConfig[tier].aiParsing ? usage("aiParsing", { pages: subscriptionConfig[tier].aiPages }) : usage("textParsing"),
   }));
   return {
     locale,
@@ -62,6 +63,7 @@ export const getGeoContent = cache(async (locale: AppLocale) => {
     glance: t("glance"),
     summary: [
       t("conversionSummary"),
+      faqT("officialSite.answer", { url: brandConfig.url }),
       t("limitsSummary", limits),
       t("quotaSummary", {
         anonymousPages: quota.anonymous.pages,

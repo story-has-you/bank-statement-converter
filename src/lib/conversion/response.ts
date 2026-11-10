@@ -42,13 +42,13 @@ export async function createConversionResponse(
   file: File,
   context: QuotaContext,
   locale: AppLocale,
-  availablePages: number,
+  pageCount: number,
 ): Promise<NextResponse> {
   if (request.headers.get("accept")?.includes("text/event-stream")) {
-    return streamResponse(request, file, context, locale, availablePages);
+    return streamResponse(request, file, context, locale, pageCount);
   }
   try {
-    const result = await convertStatement(file, context, request.signal, () => {}, availablePages);
+    const result = await convertStatement(file, context, request.signal, () => {}, pageCount);
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store", Vary: "Accept" } });
   } catch (error) {
     const failure = asConversionError(error);
@@ -56,7 +56,7 @@ export async function createConversionResponse(
   }
 }
 
-function streamResponse(request: Request, file: File, context: QuotaContext, locale: AppLocale, availablePages: number): NextResponse {
+function streamResponse(request: Request, file: File, context: QuotaContext, locale: AppLocale, pageCount: number): NextResponse {
   const abort = new AbortController();
   const signal = AbortSignal.any([request.signal, abort.signal]);
   const encoder = new TextEncoder();
@@ -74,7 +74,7 @@ function streamResponse(request: Request, file: File, context: QuotaContext, loc
         }
       }, 15_000);
       try {
-        await convertStatement(file, context, signal, send, availablePages);
+        await convertStatement(file, context, signal, send, pageCount);
       } catch (error) {
         if (!signal.aborted) {
           const failure = asConversionError(error);

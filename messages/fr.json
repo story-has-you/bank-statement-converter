@@ -84,6 +84,8 @@
     "browserStorageUnavailable": "Le stockage du navigateur est indisponible.",
     "emptyFile": "Le fichier PDF sélectionné est vide.",
     "quotaExhausted": "Vous avez utilisé toutes les pages disponibles pour cette période.",
+    "aiQuotaExhausted": "Votre quota IA est épuisé pour cette période de facturation. L’analyse locale reste possible si votre quota total le permet.",
+    "aiQuotaExceeded": "Ce PDF compte {pageCount, number} pages ; il reste {remainingPages, number} pages IA pour cette période de facturation.",
     "invalidResponse": "Le service de conversion a renvoyé des données dans un format invalide.",
     "aiNotice": "Professional et Business peuvent choisir l’IA, y compris pour les scans. Elle ne s’active jamais automatiquement. Seul ce choix envoie le PDF complet et son nom à Qwen AI Platform via notre serveur. Aucun historique permanent de fichiers ou d’opérations ici. La conservation et l’entraînement chez Qwen suivent ses <link>conditions et sa politique de confidentialité</link>.",
     "checking": "Vérification du PDF et du quota",
@@ -312,7 +314,7 @@
         "description": "Pour les relevés de plusieurs clients, les rapprochements de fin de mois ou un volume mensuel plus élevé. Un quota de pages supérieur avec les mêmes outils d’analyse locale, d’IA facultative, de vérification et d’export que Professionnel."
       }
     },
-    "aiParsing": "IA facultative pour les PDF texte et numérisés ; vérifiez les résultats avant utilisation.",
+    "aiParsing": "IA facultative : jusqu’à {pages, number} pages par mois de facturation, incluses dans le quota total. Pour les PDF texte et numérisés ; vérifiez les résultats avant utilisation.",
     "textParsing": "Analyse locale des PDF texte, sans envoyer le fichier original."
   },
   "Billing": {
@@ -394,6 +396,10 @@
     "ai": {
       "question": "Quelles données sont envoyées à Qwen avec l’IA ?",
       "answer": "L’IA ne s’active jamais automatiquement. Avec Professional ou Business, la choisir envoie le PDF complet et son nom à Qwen AI Platform via notre serveur."
+    },
+    "officialSite": {
+      "question": "Comment reconnaître le site officiel de StatementXL ?",
+      "answer": "Le site officiel de StatementXL est {url}. Vérifiez le domaine complet avant de vous connecter ou de payer. Les profils officiels sont liés depuis notre page À propos."
     }
   },
   "HomeFooter": {
@@ -563,6 +569,8 @@
     "INVALID_FILE": "Aucun fichier téléversé n’a été reçu.",
     "PARSER_UNAVAILABLE": "Impossible de joindre le service de conversion.",
     "QUOTA_EXCEEDED": "Ce PDF contient plus de pages que vous ne pouvez encore en convertir.",
+    "AI_QUOTA_EXHAUSTED": "Votre quota IA est épuisé pour cette période de facturation. L’analyse locale reste disponible dans la limite du quota total.",
+    "AI_QUOTA_EXCEEDED": "Ce PDF dépasse votre quota de pages IA restant pour cette période de facturation.",
     "QUOTA_UNAVAILABLE": "Votre quota de conversion disponible n’a pas pu être déterminé.",
     "FILE_TOO_LARGE": "Ce PDF dépasse {megabytes, number} Mo.",
     "INVALID_FILE_TYPE": "Le fichier téléversé n’est pas un PDF.",
@@ -613,6 +621,7 @@
     "quota": {
       "title": "Quota restant",
       "remaining": "{remaining, plural, one {# page restante} other {# pages restantes}} sur {total, number}",
+      "aiRemaining": "IA : {remaining, number} pages restantes sur {total, number}, incluses dans le quota total.",
       "percentage": "{percent}% restant",
       "progressLabel": "Quota de pages restant",
       "dayEnds": "Le quota quotidien est réinitialisé le {date} UTC.",
@@ -1020,6 +1029,24 @@
             "text": "Comparez format cible, forfait, limites, confidentialité et temps de contrôle. Avec StatementXL, préparez manuellement une copie pour l’import comptable. Les pages officielles précisent les fonctions et tarifs actuels."
           },
           {
+            "title": "Comparer aussi le prix, la fusion et la vérification en équipe",
+            "text": "StatementCheap propose des forfaits de pages moins chers et des formats comptables. FlowParse propose la fusion de plusieurs fichiers et une API. CapyParse annonce des espaces partagés et le traitement par lots dans son offre Firm. Les comparatifs détaillent quotas gratuits, périodes de facturation et traitement des données. Il s’agit de descriptions des fournisseurs, sans mesure indépendante de précision.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe"
+              }
+            ]
+          },
+          {
             "title": "Choisir selon l’étape manquante",
             "text": "Si la banque fournit un CSV exploitable, vérifiez les dates et colonnes avant de payer une extraction PDF. Si seul le PDF est disponible et qu’un tableau à vérifier suffit, essayez un fichier représentatif dans StatementXL. Pour une réception automatique ou un flux connecté, évaluez les fonctions et forfaits concernés.\n\nNotez la sortie requise, les fichiers par tâche et les corrections manuelles. Conservez le PDF original et comparez la livraison complète plutôt que le nombre de fonctions annoncées."
           }
@@ -1249,6 +1276,10 @@
           {
             "question": "Où consulter les preuves ?",
             "answer": "Dans les sources des guides et la méthode et les résultats téléchargeables du rapport. Contactez l’assistance pour le produit."
+          },
+          {
+            "question": "Comment reconnaître le site officiel de StatementXL ?",
+            "answer": "Le site officiel de StatementXL est {url}. Vérifiez le domaine complet avant de vous connecter ou de payer. Les profils officiels sont liés depuis notre page À propos."
           }
         ],
         "metaDescription": "Découvrez StatementXL : conversion de relevés PDF en tableaux, alertes par ligne, références aux sources et limites du fonctionnement."
@@ -1325,6 +1356,24 @@
             "text": "Nanonets présente un accès API, une intégration e-mail et des connecteurs de stockage cloud, avec des intégrations ERP et bases de données dans les offres supérieures. Envisagez-le si des étapes récurrentes suivent l’extraction. Les crédits sont consommés par exécution de blocs : mise en forme, validation et extraction peuvent être des étapes distinctes. Estimez le processus complet sans assimiler un crédit ou une exécution à une page PDF."
           },
           {
+            "title": "Comparer aussi le prix, la fusion et la vérification en équipe",
+            "text": "StatementCheap propose des forfaits de pages moins chers et des formats comptables. FlowParse propose la fusion de plusieurs fichiers et une API. CapyParse annonce des espaces partagés et le traitement par lots dans son offre Firm. Les comparatifs détaillent quotas gratuits, périodes de facturation et traitement des données. Il s’agit de descriptions des fournisseurs, sans mesure indépendante de précision.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe"
+              }
+            ]
+          },
+          {
             "title": "Six questions avant de choisir",
             "text": "Entrée : PDF texte ou scan, et le format représentatif peut-il être traité ?\nSortie : tableau Excel/CSV général, QBO ou format spécifique au logiciel cible ?\nVolume : fichier unique ou lots récurrents ?\nIntégration : import manuel ou envoi automatique vers un autre système ?\nDonnées : où le PDF complet et les transactions seront-ils traités, et les conditions répondent-elles à vos exigences ?\nCoût de vérification : comparez le nombre de lignes, les dates, le sens des montants, les libellés sur plusieurs lignes et les soldes à l’original. Incluez les corrections et les limites des offres. Des totaux identiques ne prouvent pas que chaque ligne est correcte."
           }
@@ -1343,8 +1392,138 @@
             "answer": "Vérifiez le format exact et le logiciel cible. StatementXL fournit des exports Excel/CSV généraux à préparer puis à importer manuellement, sans QBO ni connexion comptable directe. DocuClipper annonce des exports comptables et des intégrations, Nanonets des connecteurs de workflow. Confirmez les fonctions et l’offre auprès du fournisseur."
           }
         ]
+      },
+      "statementcheap": {
+        "title": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables",
+        "intro": "Comparez la vérification locale dans le navigateur à la conversion cloud moins chère et aux formats comptables. Comparatif rédigé par StatementXL à partir des descriptions officielles, sans test indépendant de vitesse ou de précision. Les prix correspondent à la date de vérification ci-dessous ; consultez les conditions actuelles avant achat.",
+        "sections": [
+          {
+            "title": "Quand choisir StatementCheap",
+            "text": "StatementCheap annonce les envois par lots, les contrôles de soldes et les exports Excel, CSV, QBO, Xero, OFX et QFX. Facturation mensuelle : Starter USD 9/500 pages, Pro USD 19/2 000, Business USD 49/7 500. Le pack unique USD 6/150 pages n’expire pas. À la date vérifiée, son forfait mensuel de 500 pages coûte moins que l’entrée de gamme StatementXL. Tenez aussi compte des données et du format requis. Sa politique décrit un traitement distant et des résultats chiffrés conservés sept jours, supprimables plus tôt par l’utilisateur."
+          },
+          {
+            "title": "Quand choisir StatementXL",
+            "text": "Sélectionnez un PDF avec texte pour une analyse locale dans le navigateur : ni PDF, ni nom de fichier, ni transactions ne sont envoyés. Après réussite, seul le nombre de pages est envoyé au service de quota. Limite par fichier : {megabytes} Mo et {pages} pages ; les PDF protégés par mot de passe ne sont pas pris en charge. Professional et Business permettent de choisir explicitement l’IA, y compris pour essayer un scan. Le PDF complet et son nom passent alors par notre serveur vers Qwen. Le site ne conserve pas d’historique permanent des fichiers ; cet onglet peut garder temporairement le résultat. Exports Excel, CSV, TSV, JSON, Markdown et HTML avec risques par ligne et références sources. Aucun traitement par lots, export natif QBO/OFX, lien comptable direct ou API publique d’extraction."
+          },
+          {
+            "title": "Vérifier le résultat et la préparation de l’import",
+            "text": "Avec le même échantillon autorisé, comparez nombre de transactions, dates, signes des montants, descriptions sur plusieurs lignes et soldes au PDF original. Les mentions OK et les soldes concordants ne prouvent ni l’exhaustivité ni l’exactitude. Préparez une copie d’import distincte selon les exigences du logiciel comptable.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Comment les quotas gratuits diffèrent-ils ?",
+            "answer": "StatementXL permet l’analyse locale et le téléchargement de {anonymousPages} page PDF par jour UTC sans connexion, ou {authenticatedPages} avec connexion. Un échec ne consomme pas de quota ; un résultat partiel compte toutes les pages du PDF original. StatementCheap annonce 5 pages gratuites par jour avec un compte e-mail, tous formats d’export inclus."
+          },
+          {
+            "question": "StatementXL crée-t-il des fichiers QBO/OFX ou se connecte-t-il à la comptabilité ?",
+            "answer": "Non. Les exports génériques de tableaux et de texte servent à la vérification puis à la préparation manuelle. Un format comptable proposé par un concurrent ne prouve pas une connexion directe à QuickBooks ou Xero ; confirmez le processus avec le fournisseur."
+          },
+          {
+            "question": "Quel convertisseur est le plus précis ?",
+            "answer": "Nous n’avons pas réalisé de test comparatif contrôlé. Les vérifications de soldes et les risques par ligne facilitent la relecture sans prouver que chaque transaction a été correctement extraite. Comparez le même PDF autorisé et gardez l’original."
+          }
+        ],
+        "metaDescription": "StatementXL et StatementCheap : analyse PDF locale, traitement cloud, prix mensuels, pages gratuites quotidiennes, lots et exports comptables."
+      },
+      "flowparse": {
+        "title": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers",
+        "intro": "Comparez la vérification locale d’un PDF à la fusion de relevés et à l’extraction via API. Comparatif rédigé par StatementXL à partir des descriptions officielles, sans test indépendant de vitesse ou de précision. Les prix correspondent à la date de vérification ci-dessous ; consultez les conditions actuelles avant achat.",
+        "sections": [
+          {
+            "title": "Quand choisir FlowParse",
+            "text": "FlowParse annonce Smart Merge avec le fichier source conservé par ligne, les exports Excel, CSV, QBO, QFX, OFX et une API. Starter coûte EUR 15 par mois pour 300 pages et jusqu’à 20 fichiers fusionnés. Pro affiche un tarif mensuel normal de EUR 59 pour 1 000 pages et jusqu’à 100 fichiers. Distinguez les promotions de ces tarifs normaux. La page indique des serveurs UE et la suppression des originaux après 30 jours. Conservez les devises EUR et USD sans supposer de taux de change ni de traitement identique."
+          },
+          {
+            "title": "Quand choisir StatementXL",
+            "text": "Sélectionnez un PDF avec texte pour une analyse locale dans le navigateur : ni PDF, ni nom de fichier, ni transactions ne sont envoyés. Après réussite, seul le nombre de pages est envoyé au service de quota. Limite par fichier : {megabytes} Mo et {pages} pages ; les PDF protégés par mot de passe ne sont pas pris en charge. Professional et Business permettent de choisir explicitement l’IA, y compris pour essayer un scan. Le PDF complet et son nom passent alors par notre serveur vers Qwen. Le site ne conserve pas d’historique permanent des fichiers ; cet onglet peut garder temporairement le résultat. Exports Excel, CSV, TSV, JSON, Markdown et HTML avec risques par ligne et références sources. Aucun traitement par lots, export natif QBO/OFX, lien comptable direct ou API publique d’extraction."
+          },
+          {
+            "title": "Vérifier le résultat et la préparation de l’import",
+            "text": "Avec le même échantillon autorisé, comparez nombre de transactions, dates, signes des montants, descriptions sur plusieurs lignes et soldes au PDF original. Les mentions OK et les soldes concordants ne prouvent ni l’exhaustivité ni l’exactitude. Préparez une copie d’import distincte selon les exigences du logiciel comptable.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Comment les quotas gratuits diffèrent-ils ?",
+            "answer": "StatementXL permet l’analyse locale et le téléchargement de {anonymousPages} page PDF par jour UTC sans connexion, ou {authenticatedPages} avec connexion. Un échec ne consomme pas de quota ; un résultat partiel compte toutes les pages du PDF original. FlowParse annonce 10 pages gratuites par mois, les exports, l’API et la fusion de 5 fichiers maximum dans ce quota."
+          },
+          {
+            "question": "StatementXL crée-t-il des fichiers QBO/OFX ou se connecte-t-il à la comptabilité ?",
+            "answer": "Non. Les exports génériques de tableaux et de texte servent à la vérification puis à la préparation manuelle. Un format comptable proposé par un concurrent ne prouve pas une connexion directe à QuickBooks ou Xero ; confirmez le processus avec le fournisseur."
+          },
+          {
+            "question": "Quel convertisseur est le plus précis ?",
+            "answer": "Nous n’avons pas réalisé de test comparatif contrôlé. Les vérifications de soldes et les risques par ligne facilitent la relecture sans prouver que chaque transaction a été correctement extraite. Comparez le même PDF autorisé et gardez l’original."
+          }
+        ],
+        "metaDescription": "StatementXL et FlowParse : analyse locale, Smart Merge, API, forfaits mensuels en EUR, quotas gratuits, formats comptables et traitement des fichiers."
+      },
+      "capyparse": {
+        "title": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe",
+        "intro": "Comparez la vérification locale d’un fichier à l’extraction IA cloud, aux espaces partagés et aux formats comptables. Comparatif rédigé par StatementXL à partir des descriptions officielles, sans test indépendant de vitesse ou de précision. Les prix correspondent à la date de vérification ci-dessous ; consultez les conditions actuelles avant achat.",
+        "sections": [
+          {
+            "title": "Quand choisir CapyParse",
+            "text": "CapyParse annonce l’extraction IA, des contrôles de soldes et des mentions Needs review, avec CSV, Excel et QBO. Starter comprend 150 pages par mois et 3 membres ; Firm, 600 pages, 10 membres et le scan/export par lots. Prix mensuels vérifiés : USD 29 et USD 79. Les totaux USD 290 et USD 790 sont facturés annuellement ; les équivalents affichés USD 24/USD 66 ne sont pas des abonnements mensuels. Les documents sont envoyés au service ; vérifiez la confidentialité et la conservation avant envoi."
+          },
+          {
+            "title": "Quand choisir StatementXL",
+            "text": "Sélectionnez un PDF avec texte pour une analyse locale dans le navigateur : ni PDF, ni nom de fichier, ni transactions ne sont envoyés. Après réussite, seul le nombre de pages est envoyé au service de quota. Limite par fichier : {megabytes} Mo et {pages} pages ; les PDF protégés par mot de passe ne sont pas pris en charge. Professional et Business permettent de choisir explicitement l’IA, y compris pour essayer un scan. Le PDF complet et son nom passent alors par notre serveur vers Qwen. Le site ne conserve pas d’historique permanent des fichiers ; cet onglet peut garder temporairement le résultat. Exports Excel, CSV, TSV, JSON, Markdown et HTML avec risques par ligne et références sources. Aucun traitement par lots, export natif QBO/OFX, lien comptable direct ou API publique d’extraction."
+          },
+          {
+            "title": "Vérifier le résultat et la préparation de l’import",
+            "text": "Avec le même échantillon autorisé, comparez nombre de transactions, dates, signes des montants, descriptions sur plusieurs lignes et soldes au PDF original. Les mentions OK et les soldes concordants ne prouvent ni l’exhaustivité ni l’exactitude. Préparez une copie d’import distincte selon les exigences du logiciel comptable.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Comment les quotas gratuits diffèrent-ils ?",
+            "answer": "StatementXL permet l’analyse locale et le téléchargement de {anonymousPages} page PDF par jour UTC sans connexion, ou {authenticatedPages} avec connexion. Un échec ne consomme pas de quota ; un résultat partiel compte toutes les pages du PDF original. CapyParse annonce 10 pages gratuites une seule fois, sans expiration ni carte bancaire. Elles ne se renouvellent pas chaque jour ou chaque mois. Les packs achetés sont valables un an."
+          },
+          {
+            "question": "StatementXL crée-t-il des fichiers QBO/OFX ou se connecte-t-il à la comptabilité ?",
+            "answer": "Non. Les exports génériques de tableaux et de texte servent à la vérification puis à la préparation manuelle. Un format comptable proposé par un concurrent ne prouve pas une connexion directe à QuickBooks ou Xero ; confirmez le processus avec le fournisseur."
+          },
+          {
+            "question": "Quel convertisseur est le plus précis ?",
+            "answer": "Nous n’avons pas réalisé de test comparatif contrôlé. Les vérifications de soldes et les risques par ligne facilitent la relecture sans prouver que chaque transaction a été correctement extraite. Comparez le même PDF autorisé et gardez l’original."
+          }
+        ],
+        "metaDescription": "StatementXL et CapyParse : analyse locale, OCR IA, vérification des lignes, QBO, espaces partagés, prix mensuels et quota gratuit unique."
       }
-    }
+    },
+    "officialWebsite": "Site officiel : {url}"
   },
   "BalanceChecker": {
     "title": "Vérification du solde",
@@ -1396,7 +1575,7 @@
       "workflow": "Un PDF à la fois ; analyse classique dans le navigateur, risques par ligne et sources. L’IA facultative envoie le PDF complet à Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML ; pas de QBO.",
       "integration": "Import comptable manuel ; sans banque ni API publique d’extraction.",
-      "pricing": "Dès US${price}/mois pour {pages} pages PDF ; voir forfaits actuels.",
+      "pricing": "Dès {price}/mois pour {pages} pages PDF ; voir les offres actuelles.",
       "processing": "L’analyse standard s’exécute dans le navigateur sans envoyer le PDF ni les opérations. L’IA facultative transmet le PDF complet et son nom à Qwen.",
       "review": "Les risques par ligne et les références sources aident à vérifier avec le PDF. Des soldes concordants ne prouvent pas que chaque opération est correcte."
     },
@@ -1415,6 +1594,38 @@
       "pricing": "Crédits par exécution de bloc ; comptez toutes les étapes requises, pas les pages PDF.",
       "processing": "Le traitement nécessite l’envoi des documents à Nanonets. Consultez les conditions applicables de confidentialité et de conservation.",
       "review": "Le guide des relevés bancaires demande de comparer les lignes extraites au PDF original et de corriger les erreurs avant l’export."
+    },
+    "names": {
+      "statementxl": "StatementXL",
+      "docuclipper": "DocuClipper",
+      "nanonets": "Nanonets",
+      "statementcheap": "StatementCheap",
+      "flowparse": "FlowParse",
+      "capyparse": "CapyParse"
+    },
+    "statementcheap": {
+      "workflow": "Conversion cloud et envois par lots.",
+      "processing": "Traitement distant ; selon la politique, résultats chiffrés pendant 7 jours et suppression anticipée possible.",
+      "review": "Annonce des contrôles de soldes ; vérifiez les transactions dans le PDF.",
+      "exports": "Excel, CSV, QBO, Xero, OFX et QFX.",
+      "integration": "Formats comptables ; connexion directe à confirmer séparément.",
+      "pricing": "Mensuel : USD 9/500 pages. Compte e-mail : 5 pages gratuites/jour. Pack unique USD 6/150 pages sans expiration."
+    },
+    "flowparse": {
+      "workflow": "Smart Merge fusionne plusieurs relevés dans un classeur ; limites selon l’offre.",
+      "processing": "Traitement cloud ; la page indique des serveurs UE et des originaux supprimés après 30 jours.",
+      "review": "Annonce des contrôles de soldes et le fichier source sur les lignes fusionnées.",
+      "exports": "Excel, CSV, QBO, QFX et OFX.",
+      "integration": "API annoncée ; l’export ne prouve pas une connexion comptable directe.",
+      "pricing": "Starter mensuel normal : EUR 15/300 pages. Gratuit : 10 pages/mois. Promotions et équivalents annuels distincts."
+    },
+    "capyparse": {
+      "workflow": "Extraction IA et espaces partagés ; Firm inclut le scan/export par lots.",
+      "processing": "Documents envoyés pour traitement ; vérifiez les conditions de confidentialité et de conservation.",
+      "review": "Annonce des contrôles de soldes, la comparaison au PDF et des mentions Needs review.",
+      "exports": "CSV, Excel et QBO.",
+      "integration": "Espaces partagés ; intégrations sur mesure à confirmer.",
+      "pricing": "Mensuel : USD 29/150 pages ou USD 79/600. Gratuit : 10 pages une fois, sans expiration. Les équivalents annuels ne sont pas des prix mensuels."
     }
   },
   "Resources": {
@@ -1452,7 +1663,10 @@
       "checker": "Vérificateur de solde et modèle Excel",
       "benchmark": "Rapport d’exemples publics",
       "csv": "Relevé bancaire PDF en CSV",
-      "bestConverters": "Meilleurs convertisseurs de relevés (2026)"
+      "bestConverters": "Meilleurs convertisseurs de relevés (2026)",
+      "statementcheap": "StatementXL ou StatementCheap : vérification locale, prix et exports comptables",
+      "flowparse": "StatementXL ou FlowParse : vérification locale ou fusion de fichiers",
+      "capyparse": "StatementXL ou CapyParse : vérification locale, OCR et travail en équipe"
     },
     "groupDescriptions": {
       "conversion": "PDF texte : analyse standard dans le navigateur. Scan : IA facultative sous conditions. Les exports sont des tableaux, pas des fichiers FEC.",

@@ -37,7 +37,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     null,
   );
   const [isDragging, setIsDragging] = useState(false);
-  const preflight = usePdfPreflight(file);
+  const preflight = usePdfPreflight(file, method);
   const errorMessage = error ? t(error, conversionLimits) : preflight.error;
   const { start } = useConversionActions();
   const isPending = useAtomValue(conversionPendingAtom);

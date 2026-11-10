@@ -8,7 +8,10 @@ const resourceGroups = [
   { id: "banks", pageIds: ["chase", "bofa", "wellsFargo", "hsbc"] },
   { id: "accounting", pageIds: ["quickbooks", "xero", "wave", "sage"] },
   { id: "bookkeeping", pageIds: ["loan", "tax", "catchup"] },
-  { id: "comparisons", pageIds: ["bestConverters", "docuclipper", "alternatives", "nanonets"] },
+  {
+    id: "comparisons",
+    pageIds: ["bestConverters", "docuclipper", "alternatives", "nanonets", "statementcheap", "flowparse", "capyparse"],
+  },
   { id: "tools", pageIds: ["checker", "benchmark"] },
 ] as const satisfies readonly { id: string; pageIds: readonly ResourcePageId[] }[];
 

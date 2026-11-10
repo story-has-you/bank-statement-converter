@@ -3,11 +3,12 @@ import { cache } from "react";
 
 import type { AppLocale } from "@/i18n/routing";
 import { usageQuotaConfig } from "@/lib/usage/config";
+import { brandConfig } from "@/config/brand";
 
 export const getHomeFaq = cache(async (locale: AppLocale) => {
   const t = await getTranslations({ locale, namespace: "HomeFaq" });
   const quota = usageQuotaConfig;
-  return (["banks", "accuracy", "quota", "scans", "ai", "storage", "failure"] as const).map((id) => ({
+  return (["banks", "accuracy", "quota", "scans", "ai", "storage", "failure", "officialSite"] as const).map((id) => ({
     id,
     question: t(`${id}.question`),
     answer:
@@ -19,6 +20,6 @@ export const getHomeFaq = cache(async (locale: AppLocale) => {
             professionalPages: quota.subscriptions.professional.pages,
             enterprisePages: quota.subscriptions.enterprise.pages,
           })
-        : t(`${id}.answer`),
+        : t(`${id}.answer`, { url: brandConfig.url }),
   }));
 });

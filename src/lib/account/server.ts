@@ -40,11 +40,14 @@ export async function getAccountSnapshot(user: { id: string; email?: string }): 
     const record = await getUsageRecord(actor);
     const usedPages = record && isUsageRecordCurrent(record, context) ? Math.max(record.used_pages, 0) : 0;
     const remainingPages = Math.max(context.limitPages - usedPages, 0);
+    const usedAiPages = record && isUsageRecordCurrent(record, context) ? Math.max(record.used_ai_pages, 0) : 0;
     snapshot.quota = {
       period: context.window.period,
       usedPages,
       remainingPages,
       limitPages: context.limitPages,
+      remainingAiPages: Math.max(context.aiLimitPages - usedAiPages, 0),
+      aiLimitPages: context.aiLimitPages,
       remainingPercent: Math.min(100, Math.max(0, (remainingPages / context.limitPages) * 100)),
       periodEnd: context.window.end.toISOString(),
     };

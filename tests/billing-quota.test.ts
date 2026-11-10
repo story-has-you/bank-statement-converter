@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { registerHooks } from "node:module";
 import { test, type TestContext } from "node:test";
+import { freeQuotaConfig, subscriptionConfig } from "@/config/plans";
 
 import type { BillingEvent, BillingNotification, ProviderSubscription } from "@/lib/billing/provider";
 import type { BillingSubscription } from "@/lib/billing/server";
@@ -199,6 +200,99 @@ test("failed quota writes reject and invalid page counts never deduct", async (t
   state.failWrites = true;
   await assert.rejects(consumeConversionQuota(context, 1));
   assert.equal(tables.conversion_usage.length, 0);
+});
+
+test("plan A keeps prices, total pages and free quotas with AI sublimits", () => {
+  assert.deepEqual(Object.values(subscriptionConfig).map(({ monthlyPrice, pages, aiPages, aiParsing }) => [monthlyPrice, pages, aiPages, aiParsing]), [
+    [9.9, 500, 0, false], [24.9, 1000, 200, true], [39.9, 2000, 400, true],
+  ]);
+  assert.deepEqual(freeQuotaConfig, { anonymous: { period: "day", pages: 1 }, authenticated: { period: "day", pages: 5 } });
+});
+
+for (const tier of ["professional", "enterprise"] as const) {
+  test(`${tier} AI sublimit counts toward total and cannot be exceeded concurrently`, async (t) => {
+    const existing = subscription({ tier });
+    const { tables } = setup(t, [existing]);
+    const [{ getQuotaContext, consumeConversionQuota }] = await modules;
+    const context = getQuotaContext(actor, existing);
+    const limit = subscriptionConfig[tier].aiPages;
+    await consumeConversionQuota(context, limit - 1, "llm");
+    const results = await Promise.all([consumeConversionQuota(context, 1, "llm"), consumeConversionQuota(context, 1, "llm")]);
+    assert.deepEqual(results.map((result) => result.status).sort(), ["consumed", "exceeded"]);
+    assert.equal(tables.conversion_usage[0].used_pages, limit);
+    assert.equal(tables.conversion_usage[0].used_ai_pages, limit);
+    assert.equal((await consumeConversionQuota(context, 3)).allowed, true);
+    assert.equal(tables.conversion_usage[0].used_pages, limit + 3);
+    assert.equal(tables.conversion_usage[0].used_ai_pages, limit);
+  });
+}
+
+test("AI also obeys total pages and a rejected request changes neither counter", async (t) => {
+  const existing = subscription();
+  const { tables } = setup(t, [existing]);
+  const [{ getQuotaContext, consumeConversionQuota }] = await modules;
+  const context = getQuotaContext(actor, existing);
+  await consumeConversionQuota(context, context.limitPages - 1);
+  const before = structuredClone(tables.conversion_usage);
+  assert.equal((await consumeConversionQuota(context, 2, "llm")).allowed, false);
+  assert.deepEqual(tables.conversion_usage, before);
+  assert.equal((await consumeConversionQuota(context, 1, "llm")).allowed, true);
+  assert.equal(tables.conversion_usage[0].used_ai_pages, 1);
+});
+
+for (const tier of [null, "standard"] as const) {
+  test(`${tier ?? "free"} cannot consume AI quota`, async (t) => {
+    const existing = tier ? subscription({ tier }) : null;
+    const { tables } = setup(t, existing ? [existing] : []);
+    const [{ getQuotaContext, consumeConversionQuota }] = await modules;
+    assert.equal((await consumeConversionQuota(getQuotaContext(actor, existing), 1, "llm")).allowed, false);
+    assert.equal(tables.conversion_usage.length, 0);
+  });
+}
+
+test("AI refunds preserve concurrent local deductions", async (t) => {
+  const existing = subscription();
+  const { tables } = setup(t, [existing]);
+  const [{ getQuotaContext, consumeConversionQuota, releaseAiQuota }] = await modules;
+  const context = getQuotaContext(actor, existing);
+  await consumeConversionQuota(context, 3, "llm");
+  await Promise.all([releaseAiQuota(context, 3), consumeConversionQuota(context, 2)]);
+  assert.equal(tables.conversion_usage[0].used_pages, 2);
+  assert.equal(tables.conversion_usage[0].used_ai_pages, 0);
+});
+
+test("renewal resets both counters and old AI refunds cannot change the new period", async (t) => {
+  const existing = subscription();
+  const { tables } = setup(t, [existing]);
+  const [{ getQuotaContext, consumeConversionQuota, releaseAiQuota }] = await modules;
+  const old = getQuotaContext(actor, existing);
+  await consumeConversionQuota(old, 5, "llm");
+  Object.assign(tables.billing_subscriptions[0], {
+    current_period_start: new Date(Date.now() - 3_600_000).toISOString(),
+    current_period_end: new Date(Date.now() + 30 * day).toISOString(),
+  });
+  const current = getQuotaContext(actor, tables.billing_subscriptions[0] as BillingSubscription);
+  await consumeConversionQuota(current, 2, "llm");
+  await releaseAiQuota(old, 5);
+  assert.equal(tables.conversion_usage[0].used_pages, 2);
+  assert.equal(tables.conversion_usage[0].used_ai_pages, 2);
+  const before = structuredClone(tables.conversion_usage);
+  assert.equal((await consumeConversionQuota(old, 1, "llm")).status, "stale");
+  assert.deepEqual(tables.conversion_usage, before);
+});
+
+test("account quota exposes AI remaining pages from the same billing window", async (t) => {
+  const existing = subscription();
+  setup(t, [existing]);
+  const [{ getQuotaContext, consumeConversionQuota }] = await modules;
+  const { getAccountSnapshot } = await import("@/lib/account/server");
+  const context = getQuotaContext(actor, existing);
+  await consumeConversionQuota(context, 30);
+  await consumeConversionQuota(context, 10, "llm");
+  const snapshot = await getAccountSnapshot({ id: actor.key, email: actor.email });
+  assert.equal(snapshot.quota?.remainingPages, 960);
+  assert.equal(snapshot.quota?.remainingAiPages, 190);
+  assert.equal(snapshot.quota?.aiLimitPages, 200);
 });
 
 test("duplicate paid notifications advance the period only once", async (t) => {

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "pnpm test:unit && pnpm verify:pdfjs && pnpm verify:conversion",
-    "test:unit": "node --import tsx --test tests/account-summary.test.ts tests/billing-quota.test.ts tests/billing-pricing.test.ts tests/conversion-evidence.test.ts tests/conversion-spreadsheet-export.test.tsx tests/merchant-normalization.test.ts",
+    "test:unit": "node --import tsx --test tests/account-summary.test.ts tests/billing-quota.test.ts tests/billing-pricing.test.ts tests/conversion-evidence.test.ts tests/conversion-spreadsheet-export.test.tsx tests/merchant-normalization.test.ts tests/public-content.test.ts",
     "test:account": "node --import tsx --test tests/account-summary.test.ts",
     "test:exports": "node --import tsx --test tests/conversion-spreadsheet-export.test.tsx",
     "test:merchants": "node --import tsx --test tests/merchant-normalization.test.ts",

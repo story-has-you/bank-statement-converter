@@ -84,6 +84,8 @@
     "browserStorageUnavailable": "ブラウザーのストレージを利用できません。",
     "emptyFile": "選択したPDFファイルは空です。",
     "quotaExhausted": "今期の変換可能ページ数を使い切りました。",
+    "aiQuotaExhausted": "この請求期間のAIページ枠を使い切りました。総ページ枠が残っていればローカル解析を利用できます。",
+    "aiQuotaExceeded": "このPDFは{pageCount, number}ページですが、この請求期間のAI枠は残り{remainingPages, number}ページです。",
     "invalidResponse": "変換サービスから返されたデータの形式が無効です。",
     "aiNotice": "Professional・Businessは任意でAIを選び、スキャンも試せます。自動では有効になりません。選択時のみPDF全体とファイル名を当サイトのサーバー経由でQwen AI Platformに送信します。当サイトにファイルや取引の永続的な履歴はありません。Qwenの保存・学習方針は<link>規約とプライバシーポリシー</link>をご確認ください。",
     "checking": "PDF と残りページ数を確認中",
@@ -312,7 +314,7 @@
         "description": "複数の顧客の帳簿整理、月末の照合、毎月の明細量が多い業務向け。月間ページ枠を増やし、プロフェッショナルと同じローカル解析、任意の AI 解析、確認・出力機能を利用できます。"
       }
     },
-    "aiParsing": "文字・スキャンPDFにAIを任意で利用可能。使用前に結果を確認してください。",
+    "aiParsing": "AI解析は任意です。請求月ごとに最大{pages, number}ページで、総ページ枠に含まれます。テキストPDFやスキャンに対応し、結果の確認が必要です。",
     "textParsing": "文字PDFをブラウザー内で解析。原本のアップロードは不要です。"
   },
   "Billing": {
@@ -394,6 +396,10 @@
     "ai": {
       "question": "AI を選ぶと明細はどこへ送られますか？",
       "answer": "自動では有効になりません。Professional・BusinessでAIを選ぶと、PDF全体とファイル名を当サイトのサーバー経由でQwen AI Platformに送信します。"
+    },
+    "officialSite": {
+      "question": "StatementXL の公式サイトはどう確認できますか？",
+      "answer": "StatementXL の公式サイトは {url} です。ログインや支払いの前にドメイン全体を確認し、「概要」ページに掲載した公式プロフィールのリンクをご利用ください。"
     }
   },
   "HomeFooter": {
@@ -563,6 +569,8 @@
     "INVALID_FILE": "アップロードされたファイルを受信できませんでした。",
     "PARSER_UNAVAILABLE": "変換サービスに接続できませんでした。",
     "QUOTA_EXCEEDED": "このPDFのページ数が、残りの変換可能ページ数を超えています。",
+    "AI_QUOTA_EXHAUSTED": "この請求期間のAIページ枠を使い切りました。総ページ枠内でローカル解析を利用できます。",
+    "AI_QUOTA_EXCEEDED": "このPDFは、この請求期間の残りのAIページ枠を超えています。",
     "QUOTA_UNAVAILABLE": "現在利用できる変換枠を確認できませんでした。",
     "FILE_TOO_LARGE": "このPDFのファイルサイズは{megabytes, number} MBを超えています。",
     "INVALID_FILE_TYPE": "アップロードされたファイルはPDFではありません。",
@@ -613,6 +621,7 @@
     "quota": {
       "title": "残りの利用枠",
       "remaining": "残り {remaining, number} / {total, number} ページ",
+      "aiRemaining": "AI枠：{total, number}ページ中、残り{remaining, number}ページ。総ページ枠に含まれます。",
       "percentage": "残り {percent}%",
       "progressLabel": "残りのページ利用枠",
       "dayEnds": "毎日の利用枠は {date} UTC にリセットされます。",
@@ -1020,6 +1029,24 @@
             "text": "出力先の形式、プランとファイル制限、プライバシー条件、確認時間を比較してください。StatementXL の会計取込は手動で副本を整える必要があります。機能と価格は公式の最新条件で確認してください。"
           },
           {
+            "title": "料金、複数ファイルの結合、チームでの確認も比較する",
+            "text": "StatementCheap は低価格のページプランと会計用出力形式、FlowParse は複数ファイルの結合と API、CapyParse は共有ワークスペースと Firm プランでの一括スキャン・出力を案内しています。無料枠、課金周期、データ処理の違いは各比較をご覧ください。内容は各社の説明に基づき、独立した精度測定ではありません。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL と FlowParse：ローカル確認と複数ファイル結合"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業"
+              }
+            ]
+          },
+          {
             "title": "不足する工程から代替案を選ぶ",
             "text": "銀行のCSVが利用できる場合は、PDF抽出に費用をかける前に期間と列を確認してください。PDFしかなく確認済みの表が必要なら、代表的なファイルをStatementXLで試せます。自動受付やシステム連携が必要なら、各社の機能とプランを評価します。\n\n必要な出力、1回のファイル数、手動修正を記録し、元のPDFを保管してください。広告の機能数ではなく受け渡しまでの全工程を比較します。"
           }
@@ -1249,6 +1276,10 @@
           {
             "question": "主張の根拠はどこにありますか？",
             "answer": "各記事の出典とレポートの方法・結果を確認してください。製品の質問はサポートへ。"
+          },
+          {
+            "question": "StatementXL の公式サイトはどう確認できますか？",
+            "answer": "StatementXL の公式サイトは {url} です。ログインや支払いの前にドメイン全体を確認し、「概要」ページに掲載した公式プロフィールのリンクをご利用ください。"
           }
         ],
         "metaDescription": "StatementXLのPDFから表計算への変換、行ごとのリスク表示、出典位置、機能の範囲を紹介します。"
@@ -1325,6 +1356,24 @@
             "text": "Nanonets は API、メール連携、クラウドストレージ接続を案内し、上位プランには ERP・データベース連携もあります。表を1回ダウンロードするだけでなく、抽出後の処理を繰り返し実行する場合の候補です。料金はワークフローの各ブロック実行に対するクレジット制で、整形・検証・抽出が別のステップになることがあります。1クレジットや1回の実行を PDF 1ページと見なさず、処理全体を見積もってください。"
           },
           {
+            "title": "料金、複数ファイルの結合、チームでの確認も比較する",
+            "text": "StatementCheap は低価格のページプランと会計用出力形式、FlowParse は複数ファイルの結合と API、CapyParse は共有ワークスペースと Firm プランでの一括スキャン・出力を案内しています。無料枠、課金周期、データ処理の違いは各比較をご覧ください。内容は各社の説明に基づき、独立した精度測定ではありません。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL と FlowParse：ローカル確認と複数ファイル結合"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業"
+              }
+            ]
+          },
+          {
             "title": "選ぶ前に確認する6項目",
             "text": "入力：文字層のある PDF かスキャンか。代表的なレイアウトを処理できるか。\n出力：汎用の Excel・CSV か、QBO や取込先専用の形式か。\n件数：単発の1ファイルか、繰り返し発生する一括処理か。\n連携：人が手動で取り込むか、次のシステムへ自動で送るか。\nデータ処理：PDF 全体と取引内容はどこで処理され、その条件が要件に合うか。\n確認の費用：行数、日付、金額の向き、折り返された摘要、残高を原本と照合する。修正作業とプランの制限も費用に含める。合計が一致しても各行が正しいとは限りません。"
           }
@@ -1343,8 +1392,138 @@
             "answer": "出力形式と取込先を確認してください。StatementXL は汎用の Excel・CSV を出力し、整形と手動取込が必要です。QBO 出力や会計ソフトへの直接接続はありません。DocuClipper は会計用出力と連携、Nanonets はワークフロー接続を案内しています。必要な機能とプランを各社に確認してください。"
           }
         ]
+      },
+      "statementcheap": {
+        "title": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力",
+        "intro": "ブラウザー内での明細確認と、低価格のクラウド変換・会計用出力を比較します。 本比較は StatementXL が各社の公式説明に基づいて作成したもので、独立した速度・精度試験ではありません。料金は下記の確認日時点の情報です。購入前に最新の条件をご確認ください。",
+        "sections": [
+          {
+            "title": "StatementCheap が適する作業",
+            "text": "StatementCheap は一括アップロード、残高確認、Excel・CSV・QBO・Xero・OFX・QFX 出力を案内しています。月払いは Starter が USD 9/500ページ、Pro が USD 19/2,000ページ、Business が USD 49/7,500ページです。買い切り USD 6 の150ページ分は無期限です。確認時点では500ページの月額料金は StatementXL の入門プランより低くなっています。料金に加えデータの扱いと必要な形式で選んでください。プライバシーポリシーは遠隔処理と、暗号化した変換結果を7日間保存し利用者が早期削除できることを説明しています。"
+          },
+          {
+            "title": "StatementXL が適する作業",
+            "text": "テキスト付き PDF を1件選び、ブラウザー内で解析します。PDF、ファイル名、取引データはアップロードせず、成功後にページ数のみを利用枠の API に送信します。1ファイルは {megabytes} MB・{pages} ページまでで、パスワード保護には対応しません。Professional・Business の利用者が AI を明示的に選ぶと、スキャンも試せますが、PDF 全体とファイル名を当社サーバー経由で Qwen に送ります。サイトに永続的なファイル履歴はなく、このタブで結果を一時保存できます。行別リスクと出典位置を付けて Excel、CSV、TSV、JSON、Markdown、HTML を出力できます。一括受付、ネイティブ QBO/OFX、会計ソフトとの直接接続、公開抽出 API はありません。"
+          },
+          {
+            "title": "結果と引き渡し先の要件を確認する",
+            "text": "処理権限のある同じサンプルで、取引件数、日付、金額の符号、複数行の摘要、残高を元の PDF と照合してください。OK や残高の一致は完全性・正確性を証明しません。会計ソフトの要件に合わせた別のインポート用コピーを作成してください。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL と FlowParse：ローカル確認と複数ファイル結合"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "無料枠はどう違いますか？",
+            "answer": "StatementXL は匿名で UTC 日あたり {anonymousPages} ページ、ログインすると {authenticatedPages} ページをローカル解析・ダウンロードできます。失敗時は枠を消費せず、部分結果は元の PDF の全ページを計上します。 StatementCheap はメールアカウントで毎日5ページ無料、全出力形式に対応すると案内しています。"
+          },
+          {
+            "question": "StatementXL は QBO・OFX を作成したり、会計ソフトに接続したりできますか？",
+            "answer": "できません。汎用の表計算・テキスト出力を確認し、手動で整えて利用します。他社の会計用ファイル出力も QuickBooks・Xero への直接接続を意味するものではありません。必要な手順を各社に確認してください。"
+          },
+          {
+            "question": "どちらの変換サービスが正確ですか？",
+            "answer": "条件をそろえた比較試験は行っていません。各社の残高確認や StatementXL の行別リスクは確認の補助であり、すべての取引を正しく抽出した証明ではありません。同じ許可済み PDF と照合し、原本を保管してください。"
+          }
+        ],
+        "metaDescription": "StatementXL と StatementCheap のローカル PDF 解析、クラウド処理、月額料金、毎日の無料枠、一括変換、会計用出力を比較。"
+      },
+      "flowparse": {
+        "title": "StatementXL と FlowParse：ローカル確認と複数ファイル結合",
+        "intro": "PDF を1件ずつローカルで確認する作業と、複数明細の結合・API 利用を比較します。 本比較は StatementXL が各社の公式説明に基づいて作成したもので、独立した速度・精度試験ではありません。料金は下記の確認日時点の情報です。購入前に最新の条件をご確認ください。",
+        "sections": [
+          {
+            "title": "FlowParse が適する作業",
+            "text": "FlowParse は結合後の取引行に元ファイルを残す Smart Merge と、Excel・CSV・QBO・QFX・OFX 出力、API を案内しています。Starter は月 EUR 15/300ページで最大20ファイルを結合。Pro の通常月額は EUR 59/1,000ページで最大100ファイルです。割引価格は通常月額と区別してください。料金ページには EU サーバーと原本の30日後削除が記載されています。EUR と USD は通貨を分け、為替や処理条件が同じとは見なさないでください。"
+          },
+          {
+            "title": "StatementXL が適する作業",
+            "text": "テキスト付き PDF を1件選び、ブラウザー内で解析します。PDF、ファイル名、取引データはアップロードせず、成功後にページ数のみを利用枠の API に送信します。1ファイルは {megabytes} MB・{pages} ページまでで、パスワード保護には対応しません。Professional・Business の利用者が AI を明示的に選ぶと、スキャンも試せますが、PDF 全体とファイル名を当社サーバー経由で Qwen に送ります。サイトに永続的なファイル履歴はなく、このタブで結果を一時保存できます。行別リスクと出典位置を付けて Excel、CSV、TSV、JSON、Markdown、HTML を出力できます。一括受付、ネイティブ QBO/OFX、会計ソフトとの直接接続、公開抽出 API はありません。"
+          },
+          {
+            "title": "結果と引き渡し先の要件を確認する",
+            "text": "処理権限のある同じサンプルで、取引件数、日付、金額の符号、複数行の摘要、残高を元の PDF と照合してください。OK や残高の一致は完全性・正確性を証明しません。会計ソフトの要件に合わせた別のインポート用コピーを作成してください。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "無料枠はどう違いますか？",
+            "answer": "StatementXL は匿名で UTC 日あたり {anonymousPages} ページ、ログインすると {authenticatedPages} ページをローカル解析・ダウンロードできます。失敗時は枠を消費せず、部分結果は元の PDF の全ページを計上します。 FlowParse は月10ページ無料で、出力・API と、枠内で最大5ファイルの結合を案内しています。"
+          },
+          {
+            "question": "StatementXL は QBO・OFX を作成したり、会計ソフトに接続したりできますか？",
+            "answer": "できません。汎用の表計算・テキスト出力を確認し、手動で整えて利用します。他社の会計用ファイル出力も QuickBooks・Xero への直接接続を意味するものではありません。必要な手順を各社に確認してください。"
+          },
+          {
+            "question": "どちらの変換サービスが正確ですか？",
+            "answer": "条件をそろえた比較試験は行っていません。各社の残高確認や StatementXL の行別リスクは確認の補助であり、すべての取引を正しく抽出した証明ではありません。同じ許可済み PDF と照合し、原本を保管してください。"
+          }
+        ],
+        "metaDescription": "StatementXL と FlowParse のローカル解析、Smart Merge、API、ユーロ建て月額プラン、無料枠、会計形式、ファイル処理を比較。"
+      },
+      "capyparse": {
+        "title": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業",
+        "intro": "ローカルでの単一ファイル確認と、クラウド AI 抽出・共有ワークスペース・会計用出力を比較します。 本比較は StatementXL が各社の公式説明に基づいて作成したもので、独立した速度・精度試験ではありません。料金は下記の確認日時点の情報です。購入前に最新の条件をご確認ください。",
+        "sections": [
+          {
+            "title": "CapyParse が適する作業",
+            "text": "CapyParse は AI 抽出、残高確認、Needs review マークと CSV・Excel・QBO 出力を案内しています。Starter は月150ページ・3メンバー、Firm は月600ページ・10メンバーと一括スキャン・出力を含みます。確認時点の月払いは USD 29 と USD 79。年額 USD 290 と USD 790 は年単位の請求で、表示上の USD 24・USD 66 は年払いの月額換算です。月払いとは異なります。文書はアップロードして処理するため、送信前にプライバシー・保存条件を確認してください。"
+          },
+          {
+            "title": "StatementXL が適する作業",
+            "text": "テキスト付き PDF を1件選び、ブラウザー内で解析します。PDF、ファイル名、取引データはアップロードせず、成功後にページ数のみを利用枠の API に送信します。1ファイルは {megabytes} MB・{pages} ページまでで、パスワード保護には対応しません。Professional・Business の利用者が AI を明示的に選ぶと、スキャンも試せますが、PDF 全体とファイル名を当社サーバー経由で Qwen に送ります。サイトに永続的なファイル履歴はなく、このタブで結果を一時保存できます。行別リスクと出典位置を付けて Excel、CSV、TSV、JSON、Markdown、HTML を出力できます。一括受付、ネイティブ QBO/OFX、会計ソフトとの直接接続、公開抽出 API はありません。"
+          },
+          {
+            "title": "結果と引き渡し先の要件を確認する",
+            "text": "処理権限のある同じサンプルで、取引件数、日付、金額の符号、複数行の摘要、残高を元の PDF と照合してください。OK や残高の一致は完全性・正確性を証明しません。会計ソフトの要件に合わせた別のインポート用コピーを作成してください。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL と FlowParse：ローカル確認と複数ファイル結合"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "無料枠はどう違いますか？",
+            "answer": "StatementXL は匿名で UTC 日あたり {anonymousPages} ページ、ログインすると {authenticatedPages} ページをローカル解析・ダウンロードできます。失敗時は枠を消費せず、部分結果は元の PDF の全ページを計上します。 CapyParse の無料10ページは一度限りで無期限、カード不要です。毎日・毎月の更新枠ではありません。購入ページパックは1年間有効です。"
+          },
+          {
+            "question": "StatementXL は QBO・OFX を作成したり、会計ソフトに接続したりできますか？",
+            "answer": "できません。汎用の表計算・テキスト出力を確認し、手動で整えて利用します。他社の会計用ファイル出力も QuickBooks・Xero への直接接続を意味するものではありません。必要な手順を各社に確認してください。"
+          },
+          {
+            "question": "どちらの変換サービスが正確ですか？",
+            "answer": "条件をそろえた比較試験は行っていません。各社の残高確認や StatementXL の行別リスクは確認の補助であり、すべての取引を正しく抽出した証明ではありません。同じ許可済み PDF と照合し、原本を保管してください。"
+          }
+        ],
+        "metaDescription": "StatementXL と CapyParse のローカル解析、AI OCR、行別確認、QBO 出力、チーム機能、月額料金、一度限りの無料枠を比較。"
       }
-    }
+    },
+    "officialWebsite": "公式サイト：{url}"
   },
   "BalanceChecker": {
     "title": "残高確認",
@@ -1396,7 +1575,7 @@
       "workflow": "PDF を1件ずつブラウザーでローカル解析。行のリスクと元の位置を表示。任意の AI は PDF 全体を Qwen に送信。",
       "exports": "Excel、CSV、TSV、JSON、Markdown、HTML。QBO なし。",
       "integration": "手動会計取込。銀行接続や公開抽出 API なし。",
-      "pricing": "月 US${price} から、PDF {pages} ページ。現行プラン参照。",
+      "pricing": "月額 {price} から、PDF {pages} ページ。現行プランをご確認ください。",
       "processing": "通常解析はブラウザー内で行い、PDF や取引をアップロードしません。任意の AI を選ぶと PDF 全体とファイル名を Qwen に送信します。",
       "review": "行のリスクと元の位置を使って PDF と照合します。残高が一致しても全取引の正確さは証明できません。"
     },
@@ -1415,6 +1594,38 @@
       "pricing": "ワークフローのブロック実行に対するクレジット。PDF ページ数ではなく必要な全工程を計算。",
       "processing": "処理には Nanonets への文書アップロードが必要です。適用されるプライバシー・保存条件を確認してください。",
       "review": "銀行明細ガイドでは抽出行を原本 PDF と照合し、誤りを修正してから出力するよう案内しています。"
+    },
+    "names": {
+      "statementxl": "StatementXL",
+      "docuclipper": "DocuClipper",
+      "nanonets": "Nanonets",
+      "statementcheap": "StatementCheap",
+      "flowparse": "FlowParse",
+      "capyparse": "CapyParse"
+    },
+    "statementcheap": {
+      "workflow": "クラウド変換と一括アップロード。",
+      "processing": "アップロード後に遠隔処理。ポリシーでは暗号化した結果を7日間保存し、早期削除が可能。",
+      "review": "残高確認を案内。取引は PDF と照合してください。",
+      "exports": "Excel、CSV、QBO、Xero、OFX、QFX。",
+      "integration": "会計用ファイル出力。直接接続の有無は別途確認が必要。",
+      "pricing": "月払い USD 9/500ページ。メール登録で毎日5ページ無料。USD 6/150ページの買い切り枠は無期限。"
+    },
+    "flowparse": {
+      "workflow": "Smart Merge で複数の明細を1つのブックへ結合。上限はプランごと。",
+      "processing": "クラウド処理。料金ページは EU サーバーと原本の30日後削除を記載。",
+      "review": "明細の残高確認と結合行の元ファイル参照を案内。",
+      "exports": "Excel、CSV、QBO、QFX、OFX。",
+      "integration": "API を案内。ファイル出力は会計ソフトへの直接接続を意味しません。",
+      "pricing": "Starter 通常月払い EUR 15/300ページ。無料は月10ページ。割引と年払い換算は別条件。"
+    },
+    "capyparse": {
+      "workflow": "AI 抽出と共有ワークスペース。Firm は一括スキャン・出力を含む。",
+      "processing": "文書をアップロードして処理。プライバシー・保存条件を確認してください。",
+      "review": "残高確認、元 PDF との照合、Needs review マークを案内。",
+      "exports": "CSV、Excel、QBO。",
+      "integration": "共有ワークスペース。個別連携は提供元へ確認。",
+      "pricing": "月払い USD 29/150ページ、USD 79/600ページ。無料10ページは一度限り・無期限。年払い換算とは異なります。"
     }
   },
   "Resources": {
@@ -1452,7 +1663,10 @@
       "checker": "残高チェッカーと Excel テンプレート",
       "benchmark": "公開サンプルの実測レポート",
       "csv": "入出金明細 PDF を CSV に変換",
-      "bestConverters": "銀行明細変換ツールの選び方（2026年）"
+      "bestConverters": "銀行明細変換ツールの選び方（2026年）",
+      "statementcheap": "StatementXL と StatementCheap：ローカル確認、料金、会計用出力",
+      "flowparse": "StatementXL と FlowParse：ローカル確認と複数ファイル結合",
+      "capyparse": "StatementXL と CapyParse：ローカル確認、OCR、チーム作業"
     },
     "groupDescriptions": {
       "conversion": "ワークシートなら Excel、取り込み前の整理なら CSV を選びます。スキャンは通常解析と利用条件が異なります。",

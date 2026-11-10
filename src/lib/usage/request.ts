@@ -55,9 +55,12 @@ export async function getRequestQuota(request: Request) {
   const context = getQuotaContext(actor, subscription);
   const currentUsage = await getUsageRecord(actor);
   const usedPages = currentUsage && isUsageRecordCurrent(currentUsage, context) ? currentUsage.used_pages : 0;
+  const usedAiPages = currentUsage && isUsageRecordCurrent(currentUsage, context) ? currentUsage.used_ai_pages : 0;
   const quota: ConversionQuota = {
     remainingPages: Math.max(0, context.limitPages - usedPages),
     limitPages: context.limitPages,
+    remainingAiPages: Math.max(0, context.aiLimitPages - usedAiPages),
+    aiLimitPages: context.aiLimitPages,
     period: context.window.period,
     periodEnd: context.window.end.toISOString(),
   };

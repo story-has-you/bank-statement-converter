@@ -84,6 +84,8 @@
     "browserStorageUnavailable": "浏览器存储不可用。",
     "emptyFile": "所选 PDF 文件为空。",
     "quotaExhausted": "本期可转换页数已用完。",
+    "aiQuotaExhausted": "本计费周期的 AI 子额度已用完。总页数有剩余时，仍可使用常规解析。",
+    "aiQuotaExceeded": "这份 PDF 共 {pageCount, number} 页，超过本计费周期剩余的 {remainingPages, number} 页 AI 子额度。",
     "invalidResponse": "转换服务返回的数据格式异常。",
     "aiNotice": "专业和商业套餐可主动选择 AI，尝试扫描件，不会自动启用。选择后，完整 PDF 和文件名经本站服务端发送至千问。本站不保存文件或流水历史；千问的留存和训练政策以其条款为准。查看<link>条款与隐私详情</link>。",
     "checking": "正在检查 PDF 和额度",
@@ -312,7 +314,7 @@
         "description": "适合需要整理多位客户账目、月末对账或每月流水量较大的业务。提供更高的月度页数额度，沿用专业套餐的本地解析、可选 AI 和核对导出功能。"
       }
     },
-    "aiParsing": "可主动选择 AI 解析文字 PDF 或扫描件，使用前需核对结果。",
+    "aiParsing": "可主动选择 AI 解析文字 PDF 或扫描件，每个计费月最多 {pages, number} 页，计入总页数。使用前需核对结果。",
     "textParsing": "在浏览器内解析文字型 PDF，无需上传原件。"
   },
   "Billing": {
@@ -394,6 +396,10 @@
     "ai": {
       "question": "会自动使用 AI 吗？",
       "answer": "不会。专业和商业套餐可主动选择 AI；选择后，完整 PDF 和文件名会经本站服务端发送至千问 AI 平台。"
+    },
+    "officialSite": {
+      "question": "如何确认 StatementXL 官方站点？",
+      "answer": "StatementXL 官方网站为 {url}。登录或付款前请核对完整域名，官方主页以“关于”页面列出的链接为准。"
     }
   },
   "HomeFooter": {
@@ -563,6 +569,8 @@
     "INVALID_FILE": "未收到上传文件。",
     "PARSER_UNAVAILABLE": "无法连接转换服务。",
     "QUOTA_EXCEEDED": "这份 PDF 的页数超过了剩余可转换页数。",
+    "AI_QUOTA_EXHAUSTED": "本计费周期的 AI 子额度已用完，总页数有剩余时仍可使用常规解析。",
+    "AI_QUOTA_EXCEEDED": "这份 PDF 的页数超过本计费周期剩余的 AI 子额度。",
     "QUOTA_UNAVAILABLE": "未能确认当前可用的转换额度。",
     "FILE_TOO_LARGE": "这份 PDF 的大小超过了 {megabytes, number} MB。",
     "INVALID_FILE_TYPE": "上传的文件不是 PDF。",
@@ -613,6 +621,7 @@
     "quota": {
       "title": "剩余额度",
       "remaining": "剩余 {remaining, number} / {total, number} 页",
+      "aiRemaining": "AI 子额度剩余 {remaining, number} / {total, number} 页，计入总页数。",
       "percentage": "剩余 {percent}%",
       "progressLabel": "剩余可转换页数",
       "dayEnds": "每日额度将在 {date} UTC 重置。",
@@ -1020,6 +1029,24 @@
             "text": "比较目标软件格式、套餐限制、隐私条款及人工复核成本。StatementXL 导出后仍需手工整理会计导入副本。功能和价格可能变化，以各产品官方页面的当前条款为准。"
           },
           {
+            "title": "同时比较价格、多文件合并和团队审阅",
+            "text": "StatementCheap 提供价格更低的页数套餐和会计导出格式；FlowParse 提供多文件合并与 API；CapyParse 提供共享工作区，Firm 套餐包含批量扫描与导出。详细对比列明免费额度、计费周期和数据处理边界。这些内容来自厂商描述，不是独立准确率评测。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL 与 FlowParse：本地审阅与多文件合并"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程"
+              }
+            ]
+          },
+          {
             "title": "按流程中缺少的环节选择替代方案",
             "text": "银行已有可用 CSV 时，先检查时间范围和列字段，再决定是否需要 PDF 提取。只有 PDF 且需要人工复核表格时，可在 StatementXL 中尝试一份有代表性的文件。如果缺少的是自动收件或系统衔接，应评估供应商对应功能及套餐。\n\n逐项写清所需输出、每次处理的文件数和人工修正工作。保留原始 PDF，比较完整交付流程，而不是广告中的功能数量。"
           }
@@ -1249,6 +1276,10 @@
           {
             "question": "在哪里查看产品说法的依据？",
             "answer": "查看指南来源链接，以及样本报告的方法和可下载结果。产品问题可以联系支持邮箱。"
+          },
+          {
+            "question": "如何确认 StatementXL 官方站点？",
+            "answer": "StatementXL 官方网站为 {url}。登录或付款前请核对完整域名，官方主页以“关于”页面列出的链接为准。"
           }
         ],
         "metaDescription": "了解 StatementXL 的银行流水 PDF 转表格流程、逐行风险标记、来源位置及现有功能边界。"
@@ -1325,6 +1356,24 @@
             "text": "Nanonets 列出 API、邮件和云存储连接能力，高阶套餐还包括 ERP 和数据库集成。提取后还有多道重复处理步骤时，可考虑这类工作流。它按工作流模块运行消耗积分，格式整理、校验和提取可能分别计费。应估算完整流程，不能把一个积分或一次模块运行当作一页 PDF。"
           },
           {
+            "title": "同时比较价格、多文件合并和团队审阅",
+            "text": "StatementCheap 提供价格更低的页数套餐和会计导出格式；FlowParse 提供多文件合并与 API；CapyParse 提供共享工作区，Firm 套餐包含批量扫描与导出。详细对比列明免费额度、计费周期和数据处理边界。这些内容来自厂商描述，不是独立准确率评测。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL 与 FlowParse：本地审阅与多文件合并"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程"
+              }
+            ]
+          },
+          {
             "title": "选择前确认六件事",
             "text": "输入：PDF 有文字层还是扫描件，代表版式能否处理？\n输出：需要通用 Excel、CSV，还是 QBO 或目标软件专用格式？\n数量：只有一份文件，还是持续收到多份账单？\n集成：由人手动导入，还是需要自动交给下游系统？\n数据处理：完整 PDF 和交易内容在哪里处理，相关条款是否符合要求？\n复核成本：逐项核对交易行数、日期、金额方向、跨行描述和余额，将修正工作及套餐限制计入成本。汇总金额相符不能证明每行都正确。"
           }
@@ -1343,8 +1392,138 @@
             "answer": "需要核对具体格式和目标软件。StatementXL 导出的是通用 Excel、CSV，需要整理后手动导入，没有 QBO 导出或会计软件直连。DocuClipper 宣传会计导出与集成，Nanonets 提供工作流连接能力；具体功能和套餐应向对应厂商确认。"
           }
         ]
+      },
+      "statementcheap": {
+        "title": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出",
+        "intro": "比较浏览器本地流水审阅与价格更低的云端转换和会计格式导出。 本文由 StatementXL 根据官方产品说明编写，未进行独立速度或准确率评测。价格对应下方核实日期，购买前请确认厂商现行条款。",
+        "sections": [
+          {
+            "title": "StatementCheap 适合哪些任务",
+            "text": "StatementCheap 宣称支持批量上传、余额检查及 Excel、CSV、QBO、Xero、OFX、QFX 导出。月付 Starter 为 USD 9/500 页，Pro 为 USD 19/2,000 页，Business 为 USD 49/7,500 页；一次性 USD 6 页包包含 150 页且不过期。核实当日，其 500 页月付套餐价格低于 StatementXL 入门套餐。选择时同时考虑数据去向和所需输出。其隐私政策描述了远程处理，以及加密转换结果保留七天、用户可提前删除的规则。"
+          },
+          {
+            "title": "StatementXL 适合哪些任务",
+            "text": "每次选择一份文字型 PDF，在浏览器本地解析，不上传 PDF、文件名或交易明细；成功后仅向额度接口提交页数。单文件上限为 {megabytes} MB、{pages} 页，不支持密码保护文件。Professional 和 Business 用户可主动选择 AI，尝试处理扫描件；此时完整 PDF 和文件名经本站服务端发送至千问。本站没有持久化文件历史，当前标签页可临时保存结果。支持 Excel、CSV、TSV、JSON、Markdown 和 HTML，保留行级风险与来源位置。目前不提供批量接收、原生 QBO/OFX 导出、会计直连或公开提取 API。"
+          },
+          {
+            "title": "核对结果及后续导入要求",
+            "text": "使用同一份有权处理的样本，对照原始 PDF 检查交易笔数、日期、金额正负、跨行摘要和余额。OK 标签及余额一致都不证明完整或准确。另存一份导入副本，按目标会计软件的具体要求整理。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL 与 FlowParse：本地审阅与多文件合并"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "免费额度有什么区别？",
+            "answer": "StatementXL 匿名每天可本地解析并下载 {anonymousPages} 页，登录后为 {authenticatedPages} 页，按 UTC 日重置。转换失败不扣额度；部分结果按原始 PDF 全部页数计额。 StatementCheap 宣称使用邮箱账号每天可免费处理 5 页，包含全部导出格式。"
+          },
+          {
+            "question": "StatementXL 能生成 QBO、OFX 或直连会计软件吗？",
+            "answer": "不能。StatementXL 提供通用表格和文本导出，供核对后手动整理。竞品宣称支持某种会计导出格式，也不等于直接连接 QuickBooks 或 Xero；请向厂商确认具体流程。"
+          },
+          {
+            "question": "哪个转换器更准确？",
+            "answer": "我们没有进行受控的同样本对比测试。厂商的余额检查和 StatementXL 的行级风险标签均辅助审阅，不证明每笔交易都被正确提取。请对照同一份获授权 PDF 核对，并保留原件。"
+          }
+        ],
+        "metaDescription": "对比 StatementXL 和 StatementCheap 的本地 PDF 解析、云端处理、月付价格、每日免费额度、批量转换与会计导出格式。"
+      },
+      "flowparse": {
+        "title": "StatementXL 与 FlowParse：本地审阅与多文件合并",
+        "intro": "比较本地逐份审阅 PDF，与合并多份流水及通过 API 接入提取流程。 本文由 StatementXL 根据官方产品说明编写，未进行独立速度或准确率评测。价格对应下方核实日期，购买前请确认厂商现行条款。",
+        "sections": [
+          {
+            "title": "FlowParse 适合哪些任务",
+            "text": "FlowParse 宣称 Smart Merge 会为合并后的每笔交易保留来源文件，并支持 Excel、CSV、QBO、QFX、OFX 和 API。Starter 月付 EUR 15，含 300 页，一次最多合并 20 份文件；Pro 常规月价 EUR 59，含 1,000 页，一次最多合并 100 份。促销价与这些常规月价应分开看。其定价页注明欧盟服务器托管，原始文件 30 天后删除。比较时保留 EUR 与 USD 币种，不假定汇率或相同的数据处理方式。"
+          },
+          {
+            "title": "StatementXL 适合哪些任务",
+            "text": "每次选择一份文字型 PDF，在浏览器本地解析，不上传 PDF、文件名或交易明细；成功后仅向额度接口提交页数。单文件上限为 {megabytes} MB、{pages} 页，不支持密码保护文件。Professional 和 Business 用户可主动选择 AI，尝试处理扫描件；此时完整 PDF 和文件名经本站服务端发送至千问。本站没有持久化文件历史，当前标签页可临时保存结果。支持 Excel、CSV、TSV、JSON、Markdown 和 HTML，保留行级风险与来源位置。目前不提供批量接收、原生 QBO/OFX 导出、会计直连或公开提取 API。"
+          },
+          {
+            "title": "核对结果及后续导入要求",
+            "text": "使用同一份有权处理的样本，对照原始 PDF 检查交易笔数、日期、金额正负、跨行摘要和余额。OK 标签及余额一致都不证明完整或准确。另存一份导入副本，按目标会计软件的具体要求整理。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "免费额度有什么区别？",
+            "answer": "StatementXL 匿名每天可本地解析并下载 {anonymousPages} 页，登录后为 {authenticatedPages} 页，按 UTC 日重置。转换失败不扣额度；部分结果按原始 PDF 全部页数计额。 FlowParse 宣称每月免费 10 页，包含导出、API，并可在额度内合并最多 5 份文件。"
+          },
+          {
+            "question": "StatementXL 能生成 QBO、OFX 或直连会计软件吗？",
+            "answer": "不能。StatementXL 提供通用表格和文本导出，供核对后手动整理。竞品宣称支持某种会计导出格式，也不等于直接连接 QuickBooks 或 Xero；请向厂商确认具体流程。"
+          },
+          {
+            "question": "哪个转换器更准确？",
+            "answer": "我们没有进行受控的同样本对比测试。厂商的余额检查和 StatementXL 的行级风险标签均辅助审阅，不证明每笔交易都被正确提取。请对照同一份获授权 PDF 核对，并保留原件。"
+          }
+        ],
+        "metaDescription": "对比 StatementXL 和 FlowParse 的本地解析、Smart Merge、API、欧元月付套餐、免费额度、会计格式和文件处理方式。"
+      },
+      "capyparse": {
+        "title": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程",
+        "intro": "比较本地单文件审阅与云端 AI 提取、共享工作区和会计导出格式。 本文由 StatementXL 根据官方产品说明编写，未进行独立速度或准确率评测。价格对应下方核实日期，购买前请确认厂商现行条款。",
+        "sections": [
+          {
+            "title": "CapyParse 适合哪些任务",
+            "text": "CapyParse 宣称提供 AI 提取、余额检查和 Needs review 待审阅标记，支持 CSV、Excel、QBO。Starter 每月 150 页、3 名工作区成员；Firm 每月 600 页、10 名成员，并包含批量扫描与导出。核实当日月付分别为 USD 29、USD 79。年付总额 USD 290、USD 790 按年收取；页面显示的 USD 24、USD 66 折算价不是月付订阅价。定价页描述上传文档处理，发送流水前请确认隐私和留存条款。"
+          },
+          {
+            "title": "StatementXL 适合哪些任务",
+            "text": "每次选择一份文字型 PDF，在浏览器本地解析，不上传 PDF、文件名或交易明细；成功后仅向额度接口提交页数。单文件上限为 {megabytes} MB、{pages} 页，不支持密码保护文件。Professional 和 Business 用户可主动选择 AI，尝试处理扫描件；此时完整 PDF 和文件名经本站服务端发送至千问。本站没有持久化文件历史，当前标签页可临时保存结果。支持 Excel、CSV、TSV、JSON、Markdown 和 HTML，保留行级风险与来源位置。目前不提供批量接收、原生 QBO/OFX 导出、会计直连或公开提取 API。"
+          },
+          {
+            "title": "核对结果及后续导入要求",
+            "text": "使用同一份有权处理的样本，对照原始 PDF 检查交易笔数、日期、金额正负、跨行摘要和余额。OK 标签及余额一致都不证明完整或准确。另存一份导入副本，按目标会计软件的具体要求整理。",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL 与 FlowParse：本地审阅与多文件合并"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "免费额度有什么区别？",
+            "answer": "StatementXL 匿名每天可本地解析并下载 {anonymousPages} 页，登录后为 {authenticatedPages} 页，按 UTC 日重置。转换失败不扣额度；部分结果按原始 PDF 全部页数计额。 CapyParse 宣称注册后一次性赠送 10 页，不过期且无需信用卡，并非每日或每月重置。另购额度包有效期为一年。"
+          },
+          {
+            "question": "StatementXL 能生成 QBO、OFX 或直连会计软件吗？",
+            "answer": "不能。StatementXL 提供通用表格和文本导出，供核对后手动整理。竞品宣称支持某种会计导出格式，也不等于直接连接 QuickBooks 或 Xero；请向厂商确认具体流程。"
+          },
+          {
+            "question": "哪个转换器更准确？",
+            "answer": "我们没有进行受控的同样本对比测试。厂商的余额检查和 StatementXL 的行级风险标签均辅助审阅，不证明每笔交易都被正确提取。请对照同一份获授权 PDF 核对，并保留原件。"
+          }
+        ],
+        "metaDescription": "对比 StatementXL 和 CapyParse 的本地解析、AI OCR、逐行审阅、QBO 导出、团队工作区、月付价格及一次性免费额度。"
       }
-    }
+    },
+    "officialWebsite": "官方网站：{url}"
   },
   "BalanceChecker": {
     "title": "余额核对",
@@ -1396,7 +1575,7 @@
       "workflow": "逐份处理 PDF；本地解析在浏览器执行，附行风险与来源位置。可选 AI 会将完整 PDF 发送至 Qwen。",
       "exports": "Excel、CSV、TSV、JSON、Markdown、HTML，无 QBO。",
       "integration": "手工会计导入，没有银行连接或公开提取 API。",
-      "pricing": "每月 US${price} 起，含 {pages} 页 PDF，参阅当前套餐。",
+      "pricing": "每月 {price} 起，含 {pages} 页 PDF，参阅当前套餐。",
       "processing": "常规解析在浏览器内完成，不上传 PDF 或交易明细。主动选择 AI 时，完整 PDF 和文件名会发送至 Qwen。",
       "review": "行级风险与来源位置帮助对照 PDF 复核；余额相符不代表每笔交易都正确。"
     },
@@ -1415,6 +1594,38 @@
       "pricing": "按工作流模块运行消耗积分，应计算所需步骤，不能等同于 PDF 页数。",
       "processing": "需要将文档上传至 Nanonets 处理；隐私和保留期限以适用条款为准。",
       "review": "银行流水指南要求将提取行与原始 PDF 对照，纠错后再导出。"
+    },
+    "names": {
+      "statementxl": "StatementXL",
+      "docuclipper": "DocuClipper",
+      "nanonets": "Nanonets",
+      "statementcheap": "StatementCheap",
+      "flowparse": "FlowParse",
+      "capyparse": "CapyParse"
+    },
+    "statementcheap": {
+      "workflow": "云端转换，支持批量上传。",
+      "processing": "上传后远程处理；隐私政策称加密结果保留 7 天，可提前删除。",
+      "review": "宣称提供余额检查；仍需对照 PDF 核对交易。",
+      "exports": "Excel、CSV、QBO、Xero、OFX 和 QFX。",
+      "integration": "提供会计导出格式；是否直连需另行确认。",
+      "pricing": "月付 USD 9/500 页；邮箱账号每日免费 5 页。USD 6/150 页一次性页包不过期。"
+    },
+    "flowparse": {
+      "workflow": "Smart Merge 将多份流水合并到一个工作簿，上限按套餐区分。",
+      "processing": "云端处理；定价页注明欧盟服务器和原件 30 天后删除。",
+      "review": "宣称检查流水余额，并为合并行保留来源文件。",
+      "exports": "Excel、CSV、QBO、QFX 和 OFX。",
+      "integration": "宣称提供 API；文件导出本身不代表会计直连。",
+      "pricing": "Starter 常规月付 EUR 15/300 页；每月免费 10 页。促销价和年付折算另计。"
+    },
+    "capyparse": {
+      "workflow": "AI 提取与共享工作区；Firm 包含批量扫描与导出。",
+      "processing": "文档需上传处理；请确认适用的隐私与留存条款。",
+      "review": "宣称提供余额检查、原始 PDF 对照和 Needs review 标记。",
+      "exports": "CSV、Excel 和 QBO。",
+      "integration": "共享工作区；定制集成需向厂商确认。",
+      "pricing": "月付 USD 29/150 页或 USD 79/600 页；一次性免费 10 页，不过期。年付折算不是月付价。"
     }
   },
   "Resources": {
@@ -1452,7 +1663,10 @@
       "checker": "余额核对器与 Excel 模板",
       "benchmark": "公开样本实测报告",
       "csv": "银行流水 PDF 转 CSV",
-      "bestConverters": "2026 银行流水转换工具选型"
+      "bestConverters": "2026 银行流水转换工具选型",
+      "statementcheap": "StatementXL 与 StatementCheap：本地审阅、价格和会计导出",
+      "flowparse": "StatementXL 与 FlowParse：本地审阅与多文件合并",
+      "capyparse": "StatementXL 与 CapyParse：本地审阅、OCR 和团队流程"
     },
     "groupDescriptions": {
       "conversion": "Excel 用于多工作表核对，CSV 用于按表整理数据。纯图片 PDF 先看扫描件要求，再决定是否使用 AI。",

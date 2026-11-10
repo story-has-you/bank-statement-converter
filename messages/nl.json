@@ -84,6 +84,8 @@
     "browserStorageUnavailable": "Browseropslag is niet beschikbaar.",
     "emptyFile": "Het geselecteerde PDF-bestand is leeg.",
     "quotaExhausted": "Je hebt alle beschikbare pagina’s voor deze periode gebruikt.",
+    "aiQuotaExhausted": "Je AI-paginategoed is op voor deze factureringsperiode. Je kunt lokaal blijven analyseren als je nog pagina’s in je totale tegoed hebt.",
+    "aiQuotaExceeded": "Deze pdf heeft {pageCount, number} pagina’s; er zijn nog {remainingPages, number} AI-pagina’s beschikbaar in deze factureringsperiode.",
     "invalidResponse": "De conversieservice heeft gegevens in een ongeldig formaat teruggestuurd.",
     "aiNotice": "Professional en Business kunnen AI kiezen, ook voor scans. AI start nooit automatisch. Alleen bij die keuze gaan de volledige PDF en bestandsnaam via onze server naar Qwen AI Platform. We bewaren geen permanente bestands- of transactiegeschiedenis. Voor Qwens opslag en training gelden de <link>voorwaarden en het privacybeleid</link>.",
     "checking": "PDF en tegoed controleren",
@@ -312,7 +314,7 @@
         "description": "Voor afschriften van meerdere klanten, maandafsluitingen of grotere maandelijkse hoeveelheden. Meer pagina’s met dezelfde lokale verwerking, optionele AI, controle- en exportfuncties als Professioneel."
       }
     },
-    "aiParsing": "Optionele AI voor tekst- en gescande PDF’s; controleer de resultaten vóór gebruik.",
+    "aiParsing": "Optionele AI: maximaal {pages, number} pagina’s per factureringsmaand, inbegrepen in het totale paginategoed. Voor tekst- en gescande pdf’s; controleer de resultaten voor gebruik.",
     "textParsing": "Lokale verwerking van tekst-PDF’s, zonder het origineel te uploaden."
   },
   "Billing": {
@@ -394,6 +396,10 @@
     "ai": {
       "question": "Wat ontvangt Qwen wanneer ik AI kies?",
       "answer": "AI wordt nooit automatisch ingeschakeld. Kiest u AI met Professional of Business, dan gaan de volledige PDF en bestandsnaam via onze server naar Qwen AI Platform."
+    },
+    "officialSite": {
+      "question": "Hoe herken ik de officiële StatementXL-website?",
+      "answer": "De officiële website van StatementXL is {url}. Controleer het volledige domein voordat u inlogt of betaalt en gebruik de officiële profielen op onze Over-pagina."
     }
   },
   "HomeFooter": {
@@ -563,6 +569,8 @@
     "INVALID_FILE": "Er is geen geüpload bestand ontvangen.",
     "PARSER_UNAVAILABLE": "De conversieservice kon niet worden bereikt.",
     "QUOTA_EXCEEDED": "Deze PDF bevat meer pagina's dan je nog kunt converteren.",
+    "AI_QUOTA_EXHAUSTED": "Je AI-paginategoed is op voor deze factureringsperiode. Lokale analyse blijft beschikbaar binnen je totale paginategoed.",
+    "AI_QUOTA_EXCEEDED": "Deze pdf overschrijdt je resterende AI-paginategoed voor deze factureringsperiode.",
     "QUOTA_UNAVAILABLE": "Je beschikbare conversietegoed kon niet worden bepaald.",
     "FILE_TOO_LARGE": "Deze PDF is groter dan {megabytes, number} MB.",
     "INVALID_FILE_TYPE": "Het geüploade bestand is geen PDF.",
@@ -613,6 +621,7 @@
     "quota": {
       "title": "Resterend tegoed",
       "remaining": "{remaining, number} van {total, plural, one {# pagina} other {# pagina's}} over",
+      "aiRemaining": "AI: {remaining, number} van {total, number} pagina’s over, inbegrepen in je totale paginategoed.",
       "percentage": "{percent}% over",
       "progressLabel": "Resterend paginategoed",
       "dayEnds": "Het dagtegoed wordt op {date} UTC vernieuwd.",
@@ -1020,6 +1029,24 @@
             "text": "Vergelijk doelformaat, abonnement, limieten, privacy en controlewerk. Bij StatementXL bereidt u een importkopie handmatig voor. Actuele functies en prijzen staan op officiële pagina’s."
           },
           {
+            "title": "Vergelijk ook prijs, samenvoegen en teamcontrole",
+            "text": "StatementCheap biedt goedkopere paginaplannen en boekhoudformaten. FlowParse biedt samenvoegen van meerdere bestanden en een API. CapyParse noemt gedeelde werkruimten en batchscan/-export in Firm. De vergelijkingen beschrijven gratis tegoed, factureringsperioden en gegevensverwerking. Het betreft aanbiedersbeschrijvingen, geen onafhankelijke nauwkeurigheidsmetingen.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk"
+              }
+            ]
+          },
+          {
             "title": "Kies op basis van de ontbrekende stap",
             "text": "Biedt de bank een bruikbare CSV, controleer dan periode en kolommen voordat u betaalt voor PDF-extractie. Is alleen een PDF beschikbaar en wilt u een tabel controleren, probeer dan een representatief bestand in StatementXL. Beoordeel voor automatische ontvangst of gekoppelde processen de functies en abonnementen van de aanbieder.\n\nNoteer vereiste uitvoer, bestanden per opdracht en handmatige correcties. Bewaar de originele PDF en vergelijk de hele overdracht in plaats van het aantal geadverteerde functies."
           }
@@ -1249,6 +1276,10 @@
           {
             "question": "Waar staat het bewijs?",
             "answer": "In de bronnen van gidsen en de methode en downloadbare rapportresultaten. Neem bij productvragen contact op met support."
+          },
+          {
+            "question": "Hoe herken ik de officiële StatementXL-website?",
+            "answer": "De officiële website van StatementXL is {url}. Controleer het volledige domein voordat u inlogt of betaalt en gebruik de officiële profielen op onze Over-pagina."
           }
         ],
         "metaDescription": "Leer StatementXL kennen: afschrift-PDF’s als tabellen met risicomeldingen per rij, bronverwijzingen en duidelijke functiegrenzen."
@@ -1325,6 +1356,24 @@
             "text": "Nanonets noemt API-toegang, e-mailintegratie en cloudopslagconnectors, met ERP- en databasekoppelingen in hogere abonnementen. Overweeg dit als extractie deel is van een terugkerend proces. Credits worden verbruikt per uitvoering van een workflowblok; opmaak, validatie en extractie kunnen afzonderlijke stappen zijn. Bereken het hele proces en stel een credit of blokuitvoering niet gelijk aan één PDF-pagina."
           },
           {
+            "title": "Vergelijk ook prijs, samenvoegen en teamcontrole",
+            "text": "StatementCheap biedt goedkopere paginaplannen en boekhoudformaten. FlowParse biedt samenvoegen van meerdere bestanden en een API. CapyParse noemt gedeelde werkruimten en batchscan/-export in Firm. De vergelijkingen beschrijven gratis tegoed, factureringsperioden en gegevensverwerking. Het betreft aanbiedersbeschrijvingen, geen onafhankelijke nauwkeurigheidsmetingen.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk"
+              }
+            ]
+          },
+          {
             "title": "Zes vragen vóór de keuze",
             "text": "Invoer: tekst-PDF of scan, en kan een representatieve indeling worden verwerkt?\nUitvoer: algemene Excel/CSV-tabel, QBO of een specifiek importformaat?\nVolume: één bestand of terugkerende batches?\nKoppeling: handmatig importeren of automatisch doorsturen naar een ander systeem?\nGegevens: waar worden de volledige PDF en transacties verwerkt, en passen de voorwaarden bij uw eisen?\nControlekosten: vergelijk rijen, datums, richting van bedragen, doorlopende omschrijvingen en saldi met het origineel. Tel correcties en abonnementsgrenzen mee. Gelijke totalen bewijzen niet dat elke rij klopt."
           }
@@ -1343,8 +1392,138 @@
             "answer": "Controleer het precieze formaat en de bestemming. StatementXL levert algemene Excel/CSV-bestanden die voorbereiding en handmatige import vereisen, zonder QBO of directe boekhoudkoppeling. DocuClipper adverteert met boekhouduitvoer en integraties, Nanonets met workflowconnectors. Bevestig functie en abonnement bij de leverancier."
           }
         ]
+      },
+      "statementcheap": {
+        "title": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport",
+        "intro": "Vergelijk lokale controle in de browser met goedkopere cloudconversie en boekhoudformaten. Deze vergelijking is door StatementXL geschreven op basis van officiële beschrijvingen, zonder onafhankelijke snelheids- of nauwkeurigheidstest. Prijzen gelden op de genoemde controledatum; controleer actuele voorwaarden vóór aankoop.",
+        "sections": [
+          {
+            "title": "Wanneer StatementCheap past",
+            "text": "StatementCheap noemt batchuploads, saldocontroles en Excel, CSV, QBO, Xero, OFX en QFX. Maandbetaling: Starter USD 9/500 pagina’s, Pro USD 19/2.000 en Business USD 49/7.500. Het eenmalige pakket USD 6/150 pagina’s verloopt niet. Op de controledatum kost het maandplan met 500 pagina’s minder dan het instapplan van StatementXL. Let ook op verwerking en benodigde uitvoer. Het privacybeleid beschrijft externe verwerking en versleutelde resultaten die zeven dagen blijven staan en eerder door de gebruiker kunnen worden verwijderd."
+          },
+          {
+            "title": "Wanneer StatementXL past",
+            "text": "Kies één PDF met tekst voor lokale verwerking in de browser. PDF, bestandsnaam en transacties worden niet geüpload; na succes gaat alleen het aantal pagina’s naar de tegoedservice. Per bestand gelden {megabytes} MB en {pages} pagina’s; PDF’s met wachtwoord worden niet ondersteund. Professional en Business kunnen bewust AI kiezen, ook om scans te proberen. De volledige PDF en bestandsnaam gaan dan via onze server naar Qwen. De website bewaart geen permanente bestandsgeschiedenis; dit tabblad kan het resultaat tijdelijk opslaan. Excel, CSV, TSV, JSON, Markdown en HTML bevatten regelrisico’s en bronposities. Geen batchinvoer, native QBO/OFX, directe boekhoudkoppeling of openbare extractie-API."
+          },
+          {
+            "title": "Controleer het resultaat en de overdracht",
+            "text": "Vergelijk met hetzelfde toegestane voorbeeld transactieaantal, datums, tekens van bedragen, meerregelige omschrijvingen en saldi met de oorspronkelijke PDF. OK-labels en kloppende saldi bewijzen geen volledigheid of nauwkeurigheid. Bereid een aparte importkopie voor volgens de eisen van de boekhoudsoftware.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Hoe verschilt het gratis tegoed?",
+            "answer": "StatementXL biedt lokaal verwerken en downloaden van {anonymousPages} PDF-pagina per UTC-dag zonder login of {authenticatedPages} met login. Mislukkingen kosten geen tegoed; gedeeltelijke resultaten tellen alle oorspronkelijke PDF-pagina’s. StatementCheap noemt dagelijks 5 gratis pagina’s met een e-mailaccount en alle exportformaten."
+          },
+          {
+            "question": "Maakt StatementXL QBO/OFX of koppelt het direct aan boekhoudsoftware?",
+            "answer": "Nee. Algemene tabellen en tekst zijn bedoeld voor controle en handmatige voorbereiding. Een boekhoudformaat van een concurrent bewijst ook geen directe QuickBooks- of Xero-koppeling; bevestig het proces bij de aanbieder."
+          },
+          {
+            "question": "Welke converter is nauwkeuriger?",
+            "answer": "We hebben geen gecontroleerde onderlinge test uitgevoerd. Saldocontroles en regelrisico’s helpen bij controle, maar bewijzen niet dat iedere transactie juist is uitgelezen. Vergelijk dezelfde toegestane PDF en bewaar het origineel."
+          }
+        ],
+        "metaDescription": "StatementXL en StatementCheap: lokale PDF-verwerking, cloudverwerking, maandprijzen, dagelijks gratis pagina’s, batchconversie en boekhoudexport."
+      },
+      "flowparse": {
+        "title": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen",
+        "intro": "Vergelijk lokale controle van één PDF met het samenvoegen van afschriften en extractie via API. Deze vergelijking is door StatementXL geschreven op basis van officiële beschrijvingen, zonder onafhankelijke snelheids- of nauwkeurigheidstest. Prijzen gelden op de genoemde controledatum; controleer actuele voorwaarden vóór aankoop.",
+        "sections": [
+          {
+            "title": "Wanneer FlowParse past",
+            "text": "FlowParse noemt Smart Merge met het bronbestand op elke transactieregel, Excel, CSV, QBO, QFX, OFX en API. Starter kost EUR 15 per maand voor 300 pagina’s en maximaal 20 samengevoegde bestanden. Pro noemt normaal EUR 59 per maand voor 1.000 pagina’s en maximaal 100 bestanden. Actieprijzen staan los van die normale tarieven. De prijspagina noemt EU-servers en verwijdering van originelen na 30 dagen. Houd EUR en USD apart zonder wisselkoers of identieke verwerking aan te nemen."
+          },
+          {
+            "title": "Wanneer StatementXL past",
+            "text": "Kies één PDF met tekst voor lokale verwerking in de browser. PDF, bestandsnaam en transacties worden niet geüpload; na succes gaat alleen het aantal pagina’s naar de tegoedservice. Per bestand gelden {megabytes} MB en {pages} pagina’s; PDF’s met wachtwoord worden niet ondersteund. Professional en Business kunnen bewust AI kiezen, ook om scans te proberen. De volledige PDF en bestandsnaam gaan dan via onze server naar Qwen. De website bewaart geen permanente bestandsgeschiedenis; dit tabblad kan het resultaat tijdelijk opslaan. Excel, CSV, TSV, JSON, Markdown en HTML bevatten regelrisico’s en bronposities. Geen batchinvoer, native QBO/OFX, directe boekhoudkoppeling of openbare extractie-API."
+          },
+          {
+            "title": "Controleer het resultaat en de overdracht",
+            "text": "Vergelijk met hetzelfde toegestane voorbeeld transactieaantal, datums, tekens van bedragen, meerregelige omschrijvingen en saldi met de oorspronkelijke PDF. OK-labels en kloppende saldi bewijzen geen volledigheid of nauwkeurigheid. Bereid een aparte importkopie voor volgens de eisen van de boekhoudsoftware.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport"
+              },
+              {
+                "href": "/compare/statementxl-vs-capyparse",
+                "label": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Hoe verschilt het gratis tegoed?",
+            "answer": "StatementXL biedt lokaal verwerken en downloaden van {anonymousPages} PDF-pagina per UTC-dag zonder login of {authenticatedPages} met login. Mislukkingen kosten geen tegoed; gedeeltelijke resultaten tellen alle oorspronkelijke PDF-pagina’s. FlowParse noemt 10 gratis pagina’s per maand, exports, API en samenvoegen van maximaal 5 bestanden binnen het tegoed."
+          },
+          {
+            "question": "Maakt StatementXL QBO/OFX of koppelt het direct aan boekhoudsoftware?",
+            "answer": "Nee. Algemene tabellen en tekst zijn bedoeld voor controle en handmatige voorbereiding. Een boekhoudformaat van een concurrent bewijst ook geen directe QuickBooks- of Xero-koppeling; bevestig het proces bij de aanbieder."
+          },
+          {
+            "question": "Welke converter is nauwkeuriger?",
+            "answer": "We hebben geen gecontroleerde onderlinge test uitgevoerd. Saldocontroles en regelrisico’s helpen bij controle, maar bewijzen niet dat iedere transactie juist is uitgelezen. Vergelijk dezelfde toegestane PDF en bewaar het origineel."
+          }
+        ],
+        "metaDescription": "StatementXL en FlowParse: lokale verwerking, Smart Merge, API, EUR-maandplannen, gratis tegoed, boekhoudformaten en bestandsverwerking."
+      },
+      "capyparse": {
+        "title": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk",
+        "intro": "Vergelijk lokale controle van één bestand met cloud-AI, gedeelde werkruimten en boekhoudformaten. Deze vergelijking is door StatementXL geschreven op basis van officiële beschrijvingen, zonder onafhankelijke snelheids- of nauwkeurigheidstest. Prijzen gelden op de genoemde controledatum; controleer actuele voorwaarden vóór aankoop.",
+        "sections": [
+          {
+            "title": "Wanneer CapyParse past",
+            "text": "CapyParse noemt AI-extractie, saldocontroles en Needs review-labels met CSV, Excel en QBO. Starter bevat 150 pagina’s per maand en 3 leden; Firm 600 pagina’s, 10 leden en batchscan/-export. Gecontroleerde maandprijzen: USD 29 en USD 79. USD 290 en USD 790 worden jaarlijks gefactureerd; de getoonde USD 24/USD 66 zijn jaarequivalenten, geen maandabonnementen. Documenten worden geüpload; controleer privacy en bewaartermijnen vóór verzending."
+          },
+          {
+            "title": "Wanneer StatementXL past",
+            "text": "Kies één PDF met tekst voor lokale verwerking in de browser. PDF, bestandsnaam en transacties worden niet geüpload; na succes gaat alleen het aantal pagina’s naar de tegoedservice. Per bestand gelden {megabytes} MB en {pages} pagina’s; PDF’s met wachtwoord worden niet ondersteund. Professional en Business kunnen bewust AI kiezen, ook om scans te proberen. De volledige PDF en bestandsnaam gaan dan via onze server naar Qwen. De website bewaart geen permanente bestandsgeschiedenis; dit tabblad kan het resultaat tijdelijk opslaan. Excel, CSV, TSV, JSON, Markdown en HTML bevatten regelrisico’s en bronposities. Geen batchinvoer, native QBO/OFX, directe boekhoudkoppeling of openbare extractie-API."
+          },
+          {
+            "title": "Controleer het resultaat en de overdracht",
+            "text": "Vergelijk met hetzelfde toegestane voorbeeld transactieaantal, datums, tekens van bedragen, meerregelige omschrijvingen en saldi met de oorspronkelijke PDF. OK-labels en kloppende saldi bewijzen geen volledigheid of nauwkeurigheid. Bereid een aparte importkopie voor volgens de eisen van de boekhoudsoftware.",
+            "links": [
+              {
+                "href": "/compare/statementxl-vs-statementcheap",
+                "label": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport"
+              },
+              {
+                "href": "/compare/statementxl-vs-flowparse",
+                "label": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen"
+              }
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Hoe verschilt het gratis tegoed?",
+            "answer": "StatementXL biedt lokaal verwerken en downloaden van {anonymousPages} PDF-pagina per UTC-dag zonder login of {authenticatedPages} met login. Mislukkingen kosten geen tegoed; gedeeltelijke resultaten tellen alle oorspronkelijke PDF-pagina’s. CapyParse noemt eenmalig 10 gratis pagina’s zonder verval of creditcard. Geen dagelijkse of maandelijkse aanvulling. Gekochte pakketten zijn één jaar geldig."
+          },
+          {
+            "question": "Maakt StatementXL QBO/OFX of koppelt het direct aan boekhoudsoftware?",
+            "answer": "Nee. Algemene tabellen en tekst zijn bedoeld voor controle en handmatige voorbereiding. Een boekhoudformaat van een concurrent bewijst ook geen directe QuickBooks- of Xero-koppeling; bevestig het proces bij de aanbieder."
+          },
+          {
+            "question": "Welke converter is nauwkeuriger?",
+            "answer": "We hebben geen gecontroleerde onderlinge test uitgevoerd. Saldocontroles en regelrisico’s helpen bij controle, maar bewijzen niet dat iedere transactie juist is uitgelezen. Vergelijk dezelfde toegestane PDF en bewaar het origineel."
+          }
+        ],
+        "metaDescription": "StatementXL en CapyParse: lokale verwerking, AI-OCR, regelcontrole, QBO, teamwerkruimten, maandprijzen en eenmalig gratis tegoed."
       }
-    }
+    },
+    "officialWebsite": "Officiële website: {url}"
   },
   "BalanceChecker": {
     "title": "Saldocontrole",
@@ -1396,7 +1575,7 @@
       "workflow": "Eén PDF tegelijk; reguliere verwerking in de browser, rijrisico’s en bronnen. Optionele AI verstuurt de volledige PDF naar Qwen.",
       "exports": "Excel, CSV, TSV, JSON, Markdown, HTML; geen QBO.",
       "integration": "Handmatige import; geen bank of openbare extractie-API.",
-      "pricing": "Vanaf US${price}/maand voor {pages} PDF-pagina’s; zie huidige plannen.",
+      "pricing": "Vanaf {price}/maand voor {pages} PDF-pagina’s; bekijk de huidige plannen.",
       "processing": "Standaardanalyse gebeurt in je browser zonder PDF of transacties te uploaden. Optionele AI verstuurt het volledige PDF-bestand en de bestandsnaam naar Qwen.",
       "review": "Rijrisico’s en bronverwijzingen helpen bij controle met het PDF-bestand. Gelijke saldi bewijzen niet dat elke transactie correct is."
     },
@@ -1415,6 +1594,38 @@
       "pricing": "Credits per workflowblokuitvoering; bereken alle vereiste stappen, niet de PDF-pagina’s.",
       "processing": "Voor verwerking moet je documenten naar Nanonets uploaden. Controleer de toepasselijke privacy- en bewaartermijnen.",
       "review": "De bankafschriftgids vraagt om de geëxtraheerde rijen met het originele PDF-bestand te vergelijken en fouten vóór de export te corrigeren."
+    },
+    "names": {
+      "statementxl": "StatementXL",
+      "docuclipper": "DocuClipper",
+      "nanonets": "Nanonets",
+      "statementcheap": "StatementCheap",
+      "flowparse": "FlowParse",
+      "capyparse": "CapyParse"
+    },
+    "statementcheap": {
+      "workflow": "Cloudconversie met batchuploads.",
+      "processing": "Externe verwerking; volgens het beleid versleutelde resultaten voor 7 dagen, eerder te verwijderen.",
+      "review": "Adverteert saldocontroles; vergelijk transacties met de PDF.",
+      "exports": "Excel, CSV, QBO, Xero, OFX en QFX.",
+      "integration": "Boekhoudformaten; directe koppelingen apart bevestigen.",
+      "pricing": "Maandelijks USD 9/500 pagina’s; dagelijks 5 gratis met e-mailaccount. Eenmalig USD 6/150 zonder verval."
+    },
+    "flowparse": {
+      "workflow": "Smart Merge voegt afschriften samen in één werkmap; grenzen per plan.",
+      "processing": "Cloud; de prijspagina noemt EU-servers en verwijdering van originelen na 30 dagen.",
+      "review": "Adverteert saldocontroles en bronbestandsverwijzingen op samengevoegde regels.",
+      "exports": "Excel, CSV, QBO, QFX en OFX.",
+      "integration": "API genoemd; bestandsuitvoer bewijst geen directe boekhoudkoppeling.",
+      "pricing": "Starter normaal EUR 15/300 pagina’s per maand. Gratis: 10 pagina’s/maand. Acties en jaarprijsequivalenten apart."
+    },
+    "capyparse": {
+      "workflow": "AI-extractie en gedeelde werkruimten; Firm bevat batchscan/-export.",
+      "processing": "Documenten worden geüpload; controleer privacy en bewaartermijnen.",
+      "review": "Adverteert saldocontroles, vergelijking met de PDF en Needs review-labels.",
+      "exports": "CSV, Excel en QBO.",
+      "integration": "Gedeelde werkruimten; aangepaste integraties bij de aanbieder bevestigen.",
+      "pricing": "Maandelijks USD 29/150 pagina’s of USD 79/600. Eenmalig 10 gratis zonder verval. Jaarequivalenten zijn geen maandprijzen."
     }
   },
   "Resources": {
@@ -1452,7 +1663,10 @@
       "checker": "Saldocontrole en Excel-sjabloon",
       "benchmark": "Openbaar voorbeeldrapport",
       "csv": "Bankafschrift PDF naar CSV",
-      "bestConverters": "Beste bankafschriftconverters (2026)"
+      "bestConverters": "Beste bankafschriftconverters (2026)",
+      "statementcheap": "StatementXL vs StatementCheap: lokale controle, prijs en boekhoudexport",
+      "flowparse": "StatementXL vs FlowParse: lokale controle of bestanden samenvoegen",
+      "capyparse": "StatementXL vs CapyParse: lokale controle, OCR en teamwerk"
     },
     "groupDescriptions": {
       "conversion": "Tekst-PDFs worden gewoon in de browser verwerkt. Scans vereisen optionele AI. Excel en CSV zijn geen MT940- of CAMT.053-bestanden.",
