@@ -25,7 +25,6 @@
 /.wrangler/
 .dev.vars*
 /.clerk/
-/supabase/.temp/
 
 # production
 /build
