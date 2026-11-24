@@ -1,5 +1,6 @@
 "use client";
 
+import { useClerk } from "@clerk/nextjs";
 import { LogOutIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -7,15 +8,14 @@ import { useConversionActions } from "@/components/conversion/conversion-provide
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
-import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
 import { Link } from "@/i18n/navigation";
-import { createClient } from "@/lib/supabase/browser";
 
 export function AuthControl() {
-  const { user } = usePublicAccount();
+  const { user, configured } = usePublicAccount();
+  const { signOut: clerkSignOut } = useClerk();
   const email = user?.email ?? null;
   const imageUrl = user?.avatarUrl ?? null;
   const signedIn = Boolean(user);
@@ -27,21 +27,11 @@ export function AuthControl() {
 
   async function signOut() {
     setError(null);
-    const supabase = createClient();
-    if (!supabase) {
-      setError(t("unavailable"));
-      return;
-    }
-
     setPending(true);
     try {
-      const { error: authError } = await supabase.auth.signOut();
-      if (authError) {
-        setError(t("signOutFailed"));
-      } else {
-        reset();
-        router.refresh();
-      }
+      await clerkSignOut();
+      reset();
+      router.refresh();
     } catch {
       setError(t("signOutFailed"));
     } finally {
@@ -71,9 +61,9 @@ export function AuthControl() {
               <TooltipContent>{t("signOut")}</TooltipContent>
             </Tooltip>
           </>
-        ) : (
-          <GoogleSignInButton />
-        )}
+        ) : configured ? (
+          <Button variant="outline" render={<Link href="/sign-in" />}>{t("signIn")}</Button>
+        ) : null}
       </div>
       {error && (
         <p role="alert" className="max-w-48 text-right text-xs text-destructive">

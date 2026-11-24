@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "statementxl-preview",
+  "account_id": "4e0c2f64cf2cd17f3e633dd0ed984b15",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-24",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": { "binding": "ASSETS", "directory": ".open-next/assets", "run_worker_first": true, "html_handling": "none" },
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "statementxl-preview",
+      "database_id": "2fa61257-23a5-43bc-899b-479c45e1feec",
+      "migrations_dir": "d1/migrations"
+    }
+  ],
+  "vars": { "NEXT_PUBLIC_APP_ENV": "preview", "WAFFO_PAYMENT_ENABLED": "false" }
+}

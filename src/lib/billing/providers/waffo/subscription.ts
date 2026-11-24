@@ -1,5 +1,6 @@
 import "server-only";
 
+import { isClerkUserId } from "@/lib/auth/identity";
 import { requireRecurringAmount, usdFromDecimal, usdFromMinorUnits, usdToDecimal } from "@/lib/billing/usd";
 import type { ProviderSubscription } from "@/lib/billing/provider";
 import type { SubscriptionStatus } from "@/lib/billing/types";
@@ -23,7 +24,7 @@ export function normalizeWaffoSubscription(remote: WaffoSubscription): ProviderS
     remote.storeId !== config.storeId ||
     remote.testMode !== (config.environment === "test") ||
     !tier ||
-    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(userId) ||
+    !isClerkUserId(userId) ||
     !/^wco_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(remote.orderMerchantExternalId ?? "") ||
     !Object.hasOwn(statuses, remote.status)
   ) {

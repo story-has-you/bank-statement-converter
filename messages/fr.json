@@ -32,7 +32,8 @@
   },
   "AuthControl": {
     "account": "Compte",
-    "signInWithGoogle": "Se connecter avec Google",
+    "signIn": "Se connecter",
+    "signUp": "Créer un compte",
     "signingIn": "Connexion en cours…",
     "signOut": "Se déconnecter",
     "unavailable": "La connexion n’a pas été configurée.",
@@ -505,7 +506,7 @@
     },
     "accountData": {
       "title": "Informations sur le compte, le quota et la facturation",
-      "body": "Lorsque vous vous connectez avec Google, Supabase stocke les détails d'identité et de compte nécessaires pour fournir les services de compte. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Waffo, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Waffo gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons identifiant de compte, copie de l’e-mail, heure, état et codes d’erreur sûrs uniquement pour l’analyse IA choisie, à des fins de dépannage. L’analyse locale ne transmet que le nombre de pages utilisées. Les journaux ne contiennent ni nom ou contenu de fichier, ni transactions ou sorties du modèle. Pour créer le paiement, nous transmettons la formule choisie et un identifiant de rattachement au compte au prestataire sélectionné. Waffo reçoit aussi l’adresse e-mail du compte du site. Les métadonnées de facturation peuvent également inclure les identifiants de formule et de payeur du prestataire, le montant et la devise, le montant initial, le montant et l’identifiant de remise, ainsi que les identifiants d’événements de paiement.",
+      "body": "Clerk conserve les données d’identité et de compte nécessaires à la connexion avec Google ou par lien envoyé par e-mail. Une fois qu'un abonnement est activé, nous stockons son statut, son forfait, son identifiant d'abonnement Waffo, sa période de facturation, l'e-mail du payeur et un instantané de l'e-mail du compte du site Web lors de l'achat. Waffo gère les informations de paiement. Ces enregistrements ne contiennent pas d'originaux PDF, de transactions extraites ou de contenu Excel. Pour les utilisateurs connectés, nous enregistrons identifiant de compte, copie de l’e-mail, heure, état et codes d’erreur sûrs uniquement pour l’analyse IA choisie, à des fins de dépannage. L’analyse locale ne transmet que le nombre de pages utilisées. Les journaux ne contiennent ni nom ou contenu de fichier, ni transactions ou sorties du modèle. Pour créer le paiement, nous transmettons la formule choisie et un identifiant de rattachement au compte au prestataire sélectionné. Waffo reçoit aussi l’adresse e-mail du compte du site. Les métadonnées de facturation peuvent également inclure les identifiants de formule et de payeur du prestataire, le montant et la devise, le montant initial, le montant et l’identifiant de remise, ainsi que les identifiants d’événements de paiement.",
       "checkout": "Le paiement hébergé Waffo reçoit l’identifiant et l’e-mail du compte, le forfait choisi, la référence de paiement et une offre de prix signée. Waffo conserve les sessions impayées ; le site ne crée pas un nouvel abonnement local en attente pour chaque session. Après vérification du paiement, nous conservons le prix mensuel de base convenu et les justificatifs, notamment les montants initial et payé et, le cas échéant, le montant de la remise et l’identifiant du coupon. Nous ne conservons pas le code du coupon. Les données historiques, y compris celles de Creem et PayPal, peuvent être conservées pour le service et les obligations légales ; cela ne signifie pas que ces prestataires sont disponibles pour de nouveaux achats."
     },
     "technicalData": {
@@ -523,7 +524,7 @@
     },
     "providers": {
       "title": "Fournisseurs et traitement international",
-      "body": "La connexion au compte utilise Google et Supabase. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions. Si vous choisissez Waffo, il agit en tant que prestataire de paiement et Merchant of Record, traite les informations de paiement et de compte et transmet les mises à jour de votre abonnement à ce service."
+      "body": "Clerk gère l’authentification, Google est proposé comme moyen de connexion et Cloudflare héberge le site et la base de données de l’application. La mesure des visites utilise Google Analytics et Pageview, qui peuvent traiter des informations techniques sur les visites conformément à leurs conditions et politiques de confidentialité applicables. Si le traitement a lieu au-delà des frontières, nous appliquerons les garanties requises par la loi applicable et décrirons les modalités réelles. Nous ne vendons pas de relevés bancaires ni d'informations sur les transactions. Si vous choisissez Waffo, il agit en tant que prestataire de paiement et Merchant of Record, traite les informations de paiement et de compte et transmet les mises à jour de votre abonnement à ce service."
     },
     "storage": {
       "title": "Stockage du navigateur",

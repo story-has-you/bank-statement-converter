@@ -1,4 +1,4 @@
-const production = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
+const production = process.env.NEXT_PUBLIC_APP_ENV === "production";
 const testMeasurementId = process.env.NEXT_PUBLIC_GA4_TEST_MEASUREMENT_ID?.trim();
 export const productionMeasurementId = "G-93LC8N8C85";
 export const analyticsMeasurementId = production

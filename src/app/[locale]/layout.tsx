@@ -1,3 +1,6 @@
+import { ClerkProvider } from "@clerk/nextjs";
+import { deDE, enUS, esES, frFR, hiIN, idID, itIT, jaJP, koKR, nlNL, ptBR, zhCN } from "@clerk/localizations";
+import { shadcn } from "@clerk/ui/themes";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -12,16 +15,23 @@ import { PublicAccountProvider } from "@/components/account/public-account-provi
 import { ConversionProvider } from "@/components/conversion/conversion-provider";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { routing } from "@/i18n/routing";
+import { routing, type AppLocale } from "@/i18n/routing";
+import { getLocalizedPath } from "@/i18n/metadata";
 import { analyticsMeasurementId, analyticsTestMode } from "@/config/analytics";
 import { siteConfig } from "@/config/site";
 import "../globals.css";
+import "@clerk/ui/themes/shadcn.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
 const newsreader = Newsreader({ variable: "--font-editorial", subsets: ["latin"] });
 const notoSerif = Noto_Serif_SC({ variable: "--font-editorial-cjk", weight: ["500", "600"], preload: false });
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+const clerkLocales = {
+  en: enUS, "zh-CN": zhCN, ja: jaJP, ko: koKR, de: deDE, fr: frFR,
+  es: esES, "pt-BR": ptBR, it: itIT, nl: nlNL, hi: hiIN, id: idID,
+} satisfies Record<AppLocale, typeof enUS>;
 
 type LocaleLayoutProps = { children: ReactNode; params: Promise<{ locale: string }> };
 
@@ -58,20 +68,28 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <OrganizationStructuredData />
-        <NextIntlClientProvider
-          messages={{ LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult: { stream: ConversionResult.stream }, ApiErrors }}
+        <ClerkProvider
+          appearance={{ theme: shadcn }}
+          localization={clerkLocales[locale]}
+          signInUrl={getLocalizedPath(locale, "/sign-in")}
+          signUpUrl={getLocalizedPath(locale, "/sign-up")}
+          afterSignOutUrl={getLocalizedPath(locale, "/")}
         >
-          <ThemeProvider>
-            <TooltipProvider>
-              <PublicAccountProvider>
-                <ConversionProvider>{children}</ConversionProvider>
-              </PublicAccountProvider>
-            </TooltipProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+          <OrganizationStructuredData />
+          <NextIntlClientProvider
+            messages={{ LanguageSwitcher, AuthControl, ThemeToggle, ConversionResult: { stream: ConversionResult.stream }, ApiErrors }}
+          >
+            <ThemeProvider>
+              <TooltipProvider>
+                <PublicAccountProvider>
+                  <ConversionProvider>{children}</ConversionProvider>
+                </PublicAccountProvider>
+              </TooltipProvider>
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </ClerkProvider>
       </body>
-      {process.env.NODE_ENV === "production" && (
+      {process.env.NEXT_PUBLIC_APP_ENV === "production" && (
         <Script src="https://app.pageview.app/js/script.js" data-domain="bankstatementconverter.xyz" strategy="afterInteractive" />
       )}
       {analyticsMeasurementId && <GoogleAnalytics gaId={analyticsMeasurementId} debugMode={analyticsTestMode} />}

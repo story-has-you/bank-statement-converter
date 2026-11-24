@@ -1,11 +1,11 @@
-import { createServerClient } from "@supabase/ssr";
+import { clerkMiddleware } from "@clerk/nextjs/server";
+
 import createMiddleware from "next-intl/middleware";
 import { hasLocale } from "next-intl";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
 import { publicPaths } from "./config/public-pages";
-import { getSupabaseConfig } from "./lib/supabase/config";
 import { getAgentDocumentUrl } from "./lib/geo/links";
 
 const handleLocale = createMiddleware(routing);
@@ -29,46 +29,17 @@ function withAgentLinks(response: NextResponse, request: NextRequest): NextRespo
   return response;
 }
 
-export default async function proxy(request: NextRequest) {
-  const segments = request.nextUrl.pathname.split("/").filter(Boolean);
-  if (hasLocale(routing.locales, segments[0])) {
-    segments.shift();
+export default clerkMiddleware(async (_auth, request) => {
+  const pathname = request.nextUrl.pathname;
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
   }
-  const path = `/${segments.join("/")}`;
-  if (publicPaths.includes(path)) {
-    return withAgentLinks(handleLocale(request), request);
-  }
-  const config = getSupabaseConfig();
-  if (!config) {
-    return withAgentLinks(handleLocale(request), request);
-  }
+  return withAgentLinks(handleLocale(request), request);
+});
 
-  let authResponse = NextResponse.next({ request });
-  const supabase = createServerClient(config.url, config.key, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet, headers) {
-        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-        authResponse = NextResponse.next({ request });
-        cookiesToSet.forEach(({ name, value, options }) => authResponse.cookies.set(name, value, options));
-        Object.entries(headers).forEach(([name, value]) => authResponse.headers.set(name, value));
-      },
-    },
-  });
-
-  await supabase.auth.getClaims();
-
-  const response = handleLocale(request);
-  authResponse.cookies.getAll().forEach((cookie) => response.cookies.set(cookie));
-  for (const header of ["cache-control", "expires", "pragma"]) {
-    const value = authResponse.headers.get(header);
-    if (value) {
-      response.headers.set(header, value);
-    }
-  }
-  return withAgentLinks(response, request);
-}
-
-export const config = { matcher: "/((?!api|ai/|ai$|trpc|_next|_vercel|.*\\..*).*)" };
+export const config = {
+  matcher: [
+    "/((?!api|ai/|ai$|trpc|_next|_vercel|.*\\..*).*)",
+    "/api/((?!billing/webhooks/|auth/webhook$).*)",
+  ],
+};

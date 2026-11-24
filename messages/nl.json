@@ -32,7 +32,8 @@
   },
   "AuthControl": {
     "account": "Account",
-    "signInWithGoogle": "Inloggen met Google",
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
     "signingIn": "Bezig met inloggen…",
     "signOut": "Uitloggen",
     "unavailable": "Het aanmelden is nog niet ingesteld.",
@@ -505,7 +506,7 @@
     },
     "accountData": {
       "title": "Account-, tegoed- en factuurgegevens",
-      "body": "Wanneer je met Google inlogt, bewaart Supabase de identiteits- en accountgegevens die nodig zijn voor de accountdienst. Na activering van een abonnement bewaren we status, abonnementstype, Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De lokale analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Waffo ontvangt ook het e-mailadres van het websiteaccount. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten.",
+      "body": "Clerk bewaart de identiteits- en accountgegevens die nodig zijn om in te loggen met Google of een e-maillink. Na activering van een abonnement bewaren we status, abonnementstype, Waffo-abonnementsnummer, factuurperiode, e-mail van de betaler en een kopie van het e-mailadres van je websiteaccount bij aankoop. Waffo verwerkt betaalgegevens. Deze registraties bevatten geen originele PDF's, uitgelezen transacties of Excel-inhoud. Voor aangemelde gebruikers registreren we voor foutonderzoek account-ID, e-mailkopie, tijdstip, status en veilige foutcodes alleen voor de gekozen AI-analyse. De lokale analyse meldt alleen paginaverbruik. De registraties bevatten geen bestandsnamen, bestandsinhoud, transacties of modeluitvoer. Voor het aanmaken van de betaling sturen we het gekozen abonnement en een identificatie voor de accountkoppeling naar de gekozen betaalprovider. Waffo ontvangt ook het e-mailadres van het websiteaccount. Factureringsmetadata kunnen ook plan- en betaleridentificaties van de provider, betaalbedrag en valuta, oorspronkelijk bedrag, kortingsbedrag en kortingsidentificatie en identificaties van betaalgebeurtenissen bevatten.",
       "checkout": "De gehoste Waffo-checkout ontvangt je account-ID, account-e-mail, gekozen abonnement, checkoutreferentie en ondertekende prijsopgave. Waffo bewaart onbetaalde checkoutsessies; de site maakt niet voor elke checkout een nieuw lokaal openstaand abonnementsrecord. Na gecontroleerde betaling bewaren we de afgesproken maandelijkse basisprijs en betaalbewijs, inclusief oorspronkelijk en betaald bedrag en waar van toepassing kortingsbedrag en coupon-ID. De couponcode bewaren we niet. Historische factureringsgegevens, ook van Creem en PayPal, kunnen voor dienstverlening en wettelijke verplichtingen bewaard blijven; dit betekent niet dat deze providers voor nieuwe aankopen beschikbaar zijn."
     },
     "technicalData": {
@@ -523,7 +524,7 @@
     },
     "providers": {
       "title": "Dienstverleners en internationale verwerking",
-      "body": "Inloggen gebruikt Google en Supabase. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens. Als je Waffo kiest, verwerkt Waffo als betaalprovider en Merchant of Record betaal- en accountgegevens en stuurt het abonnementsupdates naar deze dienst."
+      "body": "Clerk beheert accountauthenticatie, Google is een aanmeldoptie en Cloudflare host de website en de applicatiedatabase. Bezoeken worden gemeten met Google Analytics en Pageview, die technische bezoekgegevens kunnen verwerken volgens hun voorwaarden en privacybeleid. Bij verwerking over landsgrenzen passen we de wettelijk vereiste waarborgen toe en beschrijven we de feitelijke werkwijze. We verkopen geen bankafschriften of transactiegegevens. Als je Waffo kiest, verwerkt Waffo als betaalprovider en Merchant of Record betaal- en accountgegevens en stuurt het abonnementsupdates naar deze dienst."
     },
     "storage": {
       "title": "Browseropslag",

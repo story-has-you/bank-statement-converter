@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { readCheckoutAttribution } from "@/lib/analytics-attribution";
 import { siteConfig } from "@/config/site";
 import { resolveLocale } from "@/i18n/locale";
-import { createClient } from "@/lib/supabase/server";
+import { getAccountUser, getSession } from "@/lib/auth/server";
 
 import { isMembershipTier } from "./config";
 import { BillingError } from "./errors";
@@ -39,16 +39,9 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
   const errorResponse = (code: Parameters<typeof t>[0], status: number) => NextResponse.json({ error: t(code), code }, { status, headers });
   try {
     requireSameOrigin(request);
-    const supabase = await createClient();
-    if (!supabase) {
-      throw new BillingError("loginUnavailable", 503);
-    }
-    const { data, error } = await supabase.auth.getUser();
-    if (error || !data.user) {
+    const { userId } = await getSession();
+    if (!userId) {
       throw new BillingError("loginRequired", 401);
-    }
-    if (action === "create" && !data.user.email) {
-      throw new BillingError("emailMissing", 422);
     }
     let payload: unknown;
     try {
@@ -62,6 +55,10 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
     const input = payload as Record<string, unknown>;
     const provider = getPaymentProvider(input.provider);
     if (action === "create") {
+      const user = await getAccountUser();
+      if (!user?.email) {
+        throw new BillingError("emailMissing", 422);
+      }
       if (!isMembershipTier(input.tier)) {
         throw new BillingError("invalidTier", 400);
       }
@@ -69,7 +66,7 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       const prefix = locale === "en" ? "" : `/${locale}`;
       const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);
       returnUrl.searchParams.set("tier", input.tier);
-      const result = await createSubscription(provider, input.tier, { id: data.user.id, email: data.user.email! }, returnUrl.href);
+      const result = await createSubscription(provider, input.tier, { id: userId, email: user.email }, returnUrl.href);
       const attribution = readCheckoutAttribution(input.analytics);
       await saveCheckoutAttribution(result.checkoutId, locale, attribution, provider.getCheckoutConfig().settings.environment === "test");
       return NextResponse.json(result, { headers });
@@ -79,7 +76,7 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
         throw new BillingError("invalidRequest", 400);
       }
       requireConfiguredProvider(provider, input.tier);
-      const checkout = await provider.resolveCheckout(input.checkoutId, input.tier, data.user.id);
+      const checkout = await provider.resolveCheckout(input.checkoutId, input.tier, userId);
       if (checkout.status === "closed") {
         throw new BillingError("checkoutClosed", 409);
       }
@@ -88,19 +85,19 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       }
       const subscriptionId = checkout.subscriptionId;
       const remote = await provider.getSubscription(subscriptionId);
-      if (remote.userId !== data.user.id) {
+      if (remote.userId !== userId) {
         throw new BillingError("subscriptionBelongsToAnotherAccount", 409);
       }
       if (remote.tier !== input.tier || remote.planId !== provider.getPlanId(input.tier)) {
         throw new BillingError("planMismatch", 409);
       }
-      const result = await confirmSubscription(provider, subscriptionId, input.tier, data.user.id);
+      const result = await confirmSubscription(provider, subscriptionId, input.tier, userId);
       return NextResponse.json(result, { status: result.status === "PENDING" ? 202 : 200, headers: { "Cache-Control": "no-store" } });
     }
     if (!provider.isSubscriptionId(input.subscriptionId)) {
       throw new BillingError("invalidRequest", 400);
     }
-    return NextResponse.json(await cancelSubscription(provider, input.subscriptionId, data.user.id), { headers });
+    return NextResponse.json(await cancelSubscription(provider, input.subscriptionId, userId), { headers });
   } catch (error) {
     if (error instanceof BillingError) {
       return NextResponse.json(
@@ -139,11 +136,8 @@ export async function handleBillingWebhook(request: Request, providerId: unknown
       return NextResponse.json({ error: t(error.code) }, { status: error.status });
     }
     const reason = error instanceof BillingError ? error.code : "WEBHOOK_PROCESSING_FAILED";
-    const failure = error && typeof error === "object" ? error as { code?: unknown; message?: unknown } : null;
     console.error("Failed to process billing webhook", {
       provider: providerId, reason, eventId, subscriptionId,
-      errorCode: typeof failure?.code === "string" ? failure.code : undefined,
-      errorMessage: typeof failure?.message === "string" ? failure.message : undefined,
     });
     return NextResponse.json({ error: t("webhookProcessingFailed") }, { status: 502 });
   }

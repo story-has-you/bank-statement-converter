@@ -3,7 +3,7 @@ import "server-only";
 import { after } from "next/server";
 
 import { ConversionError } from "@/lib/conversion-errors";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/db/server";
 import type { UsageActor } from "@/lib/usage/server";
 
 export type ConversionParseRecord = {
@@ -61,17 +61,11 @@ export function scheduleParseRecord(record: ConversionParseRecord): void {
   try {
     after(async () => {
       try {
-        const admin = createAdminClient();
-        if (!admin) {
-          console.error("Conversion parse record failed", { code: "PARSE_RECORD_UNAVAILABLE" });
-          return;
-        }
-        const { error } = await admin.from("conversion_parse_records").insert(snapshot);
-        if (error) {
-          // PostgREST details and messages can contain row values; log only a recognized code format.
-          const databaseCode = /^(?:[0-9A-Z]{5}|PGRST\d{3})$/.test(error.code) ? error.code : "UNKNOWN";
-          console.error("Conversion parse record failed", { code: "PARSE_RECORD_FAILED", databaseCode });
-        }
+        await getDatabase()
+          .prepare(`INSERT INTO conversion_parse_records (user_id, email, parse_method, status, error_code, created_at)
+            SELECT ?1, ?2, ?3, ?4, ?5, ?6 WHERE NOT EXISTS (SELECT 1 FROM deleted_accounts WHERE user_id = ?1)`)
+          .bind(snapshot.user_id, snapshot.email, snapshot.parse_method, snapshot.status, snapshot.error_code, new Date().toISOString())
+          .run();
       } catch {
         console.error("Conversion parse record failed", { code: "PARSE_RECORD_FAILED" });
       }

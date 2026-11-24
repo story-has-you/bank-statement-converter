@@ -5,7 +5,7 @@
 Run `pnpm test` with Node.js 24 or later to execute the retained unit regressions and the PDF.js/conversion integration checks. No credentials or real services are required.
 
 - `conversion-evidence.test.ts` covers omitted transactions, subtotals, section stops, continuation risks, and invalid fields hidden by valid fields.
-- `billing-quota.test.ts` runs the real application modules and Supabase client against an in-memory HTTP transport. It exercises insert contention, CAS retries, stale periods, failed writes, duplicate and concurrent billing events, signature rejection, and exact money values. It does not verify PostgreSQL constraints or real provider behavior.
+- `billing-quota.test.ts`, `billing-pricing.test.ts`, and `analytics-auth.test.ts` apply the migration to isolated Miniflare D1 instances and exercise quota contention, payment and auth events, account deletion, signature validation, and exact money values. External services use test doubles.
 - The Calc acceptance below remains an explicit `pnpm test:exports:calc` command and is not part of CI.
 
 # Spreadsheet export safety

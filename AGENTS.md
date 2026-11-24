@@ -21,10 +21,9 @@
 - 工作树首次启动前安装根目录 pnpm 依赖；开发和构建命令会准备同版本 PDF.js 静态资源。
 
 # 其他说明
-- 开发调试默认使用专用本地 Supabase 实例 `bank-statement-converter`（`http://127.0.0.1:56321`），由 `/Users/fangxi/Independent.localized/docker/bank-statement-converter` 管理；项目 `.env.local` 只使用该实例的本地地址和密钥。未经用户明确要求，不关联或操作云端 Supabase。
-- 在本项目目录使用 `supabase db push --dry-run` 预览迁移，再用 `supabase db push` 应用到专用本地实例；不要执行 `db reset` 或删除数据卷，启停统一使用上述实例目录的 `make start` / `make stop`。
-- 复用已有 3000 端口的 Next.js 服务；常规解析在浏览器执行，AI 解析由 Next.js 服务端处理。
-- Supabase 操作使用 CLI：优先使用 `supabase`，未全局安装时使用 `npx supabase`；执行前通过 `--help` 确认命令和参数。
+- 开发调试默认使用 Wrangler 的本地 D1，数据库绑定为 `DB`。用 `pnpm db:local` 应用迁移。预览库独立，明确指定 `--remote` 才对预览库操作。
+- 复用已有 3000 端口的 Next.js 服务。常规解析在浏览器执行，AI 解析由 Next.js 服务端处理。
+- Clerk 开发密钥保存在被 Git 忽略的 `.env.local`。部署到 Workers 的服务端密钥通过 Secrets 配置，不输出其内容。
 
 <!-- BEGIN:nextjs-agent-rules -->
 

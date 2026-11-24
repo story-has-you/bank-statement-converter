@@ -51,7 +51,7 @@ export async function POST(request: Request): Promise<Response> {
   let availablePages: number;
   let availableAiPages: number;
   try {
-    const resolved = await getRequestQuota(request);
+    const resolved = await getRequestQuota(request, true);
     context = resolved.context;
     anonymousCookie = resolved.anonymousCookie;
     if (!canUseQwen(resolved.subscription?.tier)) {

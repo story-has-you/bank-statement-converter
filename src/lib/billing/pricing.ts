@@ -2,7 +2,6 @@ import "server-only";
 
 import { readCheckoutQuote } from "./checkout-quote";
 import type { CheckoutQuoteIdentity } from "./checkout-quote";
-import { findCheckoutIntent } from "./checkout-intents";
 import type { PaymentProviderId, ProviderSubscription } from "./provider";
 import { findBillingSubscriptionByProviderId } from "./server";
 import { checkSubscriptionIdentity } from "./subscriptions";
@@ -23,18 +22,13 @@ export async function getLockedSubscriptionAmount(
   if (existing) {
     checkSubscriptionIdentity(existing, remote);
     const amount = requireRecurringAmount(existing.recurring_amount_usd);
-    if (signedAmount !== null && amount !== signedAmount) throw new Error("Subscription agreed price mismatch");
+    if (signedAmount !== null && amount !== signedAmount) {
+      throw new Error("Subscription agreed price mismatch");
+    }
     return amount;
   }
-  if (signedAmount !== null) return signedAmount;
-  const intent = await findCheckoutIntent(remote.userId, attemptId);
-  if (
-    !intent || intent.provider !== provider || intent.tier !== remote.tier || intent.provider_plan_id !== remote.planId ||
-    intent.status === "CLOSED" || intent.status === "COMPLETED" ||
-    intent.attempt_id !== attemptId ||
-    (intent.checkout_id !== null && intent.checkout_id !== `wco_${attemptId}`)
-  ) {
-    throw new Error("Subscription has no matching checkout price");
+  if (signedAmount === null) {
+    throw new Error("Subscription has no signed checkout price");
   }
-  return requireRecurringAmount(intent.quoted_amount_usd);
+  return signedAmount;
 }

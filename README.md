@@ -5,7 +5,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
+pnpm db:local
 pnpm dev
 ```
 
@@ -13,22 +14,11 @@ pnpm dev
 
 `pnpm dev` 将开发服务的 HTTP 请求头上限设为 64 KiB，容纳本地登录会话及同一 `localhost` 下其他项目的 Cookie，避免超过 Node.js 默认 16 KiB 上限而返回 HTTP 431。此设置仅用于开发服务。
 
-### 本地 Supabase
+### 本地 D1 与 Clerk
 
-开发调试默认连接 OrbStack 中的专用本地实例 `bank-statement-converter`，由 `/Users/fangxi/Independent.localized/docker/bank-statement-converter` 统一管理，数据卷与其他项目独立，不关联 Supabase Cloud。
+`pnpm db:local` 将 `d1/migrations/` 应用到 Wrangler 管理的本地 D1。Next.js 开发服务通过 OpenNext 读取同一个 `DB` 绑定。本地数据与 Cloudflare 预览库独立。
 
-```sh
-make -C /Users/fangxi/Independent.localized/docker/bank-statement-converter start
-# 在本项目根目录预览并应用迁移（Supabase CLI 3.x 默认操作本地）
-supabase db push --dry-run
-supabase db push
-```
-
-根目录 `.env.local` 使用 `NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:56321`，以及该实例的 `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` 和 `SUPABASE_SERVICE_ROLE_KEY`。密钥通过实例目录中的 `supabase status -o env` 获取：分别对应 `PUBLISHABLE_KEY` 和 `SERVICE_ROLE_KEY`，不要提交到 Git。修改后重启已有 Next.js 开发服务。
-
-Studio 为 [http://127.0.0.1:56323](http://127.0.0.1:56323)，测试邮件箱为 [http://127.0.0.1:56324](http://127.0.0.1:56324)，PostgreSQL 端口为 `56322`。本地用户、订阅和额度独立于云端及原共享实例，不自动迁移已有数据。不要运行 `supabase db reset` 或删除数据卷；停止服务使用实例目录中的 `make stop`，再次启动会保留数据。
-
-专用实例的 Google OAuth 已启用，凭据保存在实例目录的 `.env`（不提交 Git），由该目录的 `supabase/config.toml` 引用。Google Cloud 的 OAuth 客户端必须将 `http://127.0.0.1:56321/auth/v1/callback` 加入 Authorized redirect URIs；应用回调为 `http://localhost:3000/api/auth/callback`。Google 授权仍连接 Google，登录用户及会话保存在本地 Supabase。切换 Supabase 不会改变 Qwen 和支付渠道的配置，它们仍按各自环境变量连接外部服务。
+在 Clerk 中选择 StatementXL 的开发实例，并按 Clerk CLI 指引将开发密钥写入未跟踪的 `.env.local`。所需变量为 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` 和 `CLERK_SECRET_KEY`。在开发实例启用 Google 和邮箱验证链接，保留同设备、同浏览器验证。
 
 打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
 
@@ -62,9 +52,9 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 
 首页、结构化数据、GEO 文档、条款、账户额度和转换接口都读取这些配置。服务端根据有效订阅选择套餐上限，转换前检查剩余额度，解析完成后检查 PDF 页数，现有 CAS 扣减使用同一上限；订阅额度替代免费额度。调整页数不重置当前已用页数，已有有效订阅也会按新上限计算剩余额度。
 
-新订阅仅接入 Waffo，购买入口是否开放由环境配置决定；Creem、PayPal 不再提供新购入口，历史账单和已付权益仍保留。Waffo 是支付服务商与名义商户，具体可用的付款方式以其结账页为准。三档套餐均以美元按月自动续费；展示价格为税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
+新订阅由 Waffo 提供，购买入口是否开放由环境配置决定。Waffo 是支付服务商与名义商户，具体可用的付款方式以其结账页为准。三档套餐均以美元按月自动续费；展示价格为税前价，税费和最终总额以结账页为准。取消自动续费后，已付权益保留至确认的账期结束。订阅购买及续费不支持退款，适用法律另有强制规定的除外。
 
-这些是代码配置，修改后需要重新发布才能在已部署环境生效。新结账会将 `monthlyPrice` 传给 Waffo，并在 Waffo metadata 保存签名报价；不需要同步修改平台商品价格或环境变量映射。已有结账和订阅继续按各自约定价格付款、续费。付款成功前可重新选择任意套餐，每次点击会建立独立结账，不写入本地待支付表；核实成功付款后才保存订阅及锁定月价。仅修改页数额度不需要调整渠道产品价格或 ID。首次上线需配置签名密钥，并核实旧订阅快照与存量回填，部署后分别验证真实付款、权益入库与运行结果。
+这些是代码配置，修改后需要重新发布才能在已部署环境生效。新结账会将 `monthlyPrice` 传给 Waffo，并在 Waffo metadata 保存签名报价；不需要同步修改平台商品价格或环境变量映射。已有结账和订阅继续按各自约定价格付款、续费。付款成功前可重新选择任意套餐，每次点击会建立独立结账，不写入本地待支付表；核实成功付款后才保存订阅及锁定月价。仅修改页数额度不需要调整渠道产品价格或 ID。部署后分别验证付款、权益入库与运行结果。
 
 产品名称、描述复用 `messages/en.json` 的 `UsageTiers.plans.<tier>.name`、`description`，新建结账前自动同步到 Waffo 商品；无需在平台后台分别修改。平台共享商品采用英文，网站其他语言仍使用各自翻译。名称、描述不能为空，同步失败时不创建结账；详情见 [支付配置说明](BILLING.md)。
 
@@ -83,17 +73,17 @@ CSV/TSV 防护已在 LibreOffice Calc 26.8 中验证，包含启用公式计算�
 
 ## 订阅配置
 
-订阅支持 Waffo 托管结账。服务端环境变量见本文的 [Vercel Next.js 配置](#vercel-nextjs)，需配置 Waffo 凭据、产品及 Webhook。Waffo 价格为税前价，适用税费在结账时计算。
+订阅支持 Waffo 托管结账。服务端环境变量见本文的 [Cloudflare Workers 预览](#cloudflare-workers-预览)，需配置 Waffo 凭据、产品及 Webhook。Waffo 价格为税前价，适用税费在结账时计算。
 
 `WAFFO_PAYMENT_ENABLED` 控制新建支付，仅显式设为 `true` 时开启。关闭时隐藏购买入口，新建订阅返回 HTTP 503；已有订阅的确认、回调与取消继续处理。价格由 `src/config/plans.ts` 决定，下单时锁定，已有订阅按原约定价格续费。
 
-新建结账要求 Supabase 登录。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/waffo`，本地联调需要公开 HTTPS 地址。
+新建结账要求 Clerk 登录，账号须有已验证邮箱。只有验签并核实远端付款证据的回调才能写入订阅权益，付款返回页只确认已落库状态。公开 Webhook 地址为 `https://<your-domain>/api/billing/webhooks/waffo`，本地联调需要公开 HTTPS 地址。
 
-价格快照迁移、存量回填及已停用渠道下线前置检查见 [支付价格统一与上线说明](BILLING.md)。
+签名报价和回调核验规则见 [支付配置说明](BILLING.md)。
 
 `BILLING_QUOTE_SIGNING_SECRET` 是至少 32 字节的独立随机签名密钥，仅服务端使用，需长期保留；不要随部署重新生成，以免旧支付链接无法核账。
 
-本地环境变量修改后需重启现有 Next.js 进程，Vercel 修改后需重新部署。
+本地环境变量修改后需重启现有 Next.js 进程。Worker 环境变量由 Wrangler 部署配置及 Secrets 提供。
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -108,57 +98,35 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Cloudflare Workers 预览
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+当前预览目标为 `statementxl-preview`，绑定独立 D1。部署要求 Wrangler 已登录对应 Cloudflare 账户。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Production deployment
-
-根目录 Next.js 可部署到 Vercel，不再需要 Python 服务或 Cloudflare Containers。现有线上容器、域名和密钥资源不由本次代码改动删除，切换部署后可由管理员另行清理。
-
-[`.github/workflows/ci-parser.yml`](.github/workflows/ci-parser.yml) 在 `master` 推送及 Pull Request 时使用 Node.js 24 执行 `pnpm test`，覆盖账户、解析证据、导出、计费及额度回归和既有集成检查，不连接真实服务或部署解析容器。
-
-### Vercel Next.js
-
-将仓库根目录连接到 Vercel，使用 `pnpm install --frozen-lockfile` 和 `pnpm build`。Production 环境需要配置：
-
-```text
-NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-SUPABASE_SERVICE_ROLE_KEY
-BILLING_QUOTE_SIGNING_SECRET
-WAFFO_PAYMENT_ENABLED=true
-WAFFO_ENVIRONMENT=prod
-WAFFO_MERCHANT_ID
-WAFFO_PRIVATE_KEY
-WAFFO_STORE_ID
-WAFFO_PRODUCT_ID_STANDARD
-WAFFO_PRODUCT_ID_PROFESSIONAL
-WAFFO_PRODUCT_ID_ENTERPRISE
-WAFFO_RETURN_BASE_URL=https://example.com
+```sh
+pnpm exec wrangler d1 migrations apply DB --remote
+pnpm cf:build
+pnpm cf:deploy
 ```
 
-将自己的域名添加为 Vercel Production Domain。Supabase Auth 回调地址示例：
+`pnpm cf:preview` 可先在本地 Workerd 运行构建结果。构建后会清空 OpenNext 生成的运行时环境模块，避免把本地凭据打入 Worker。Next.js 构建读取公开变量 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` 和可选的 `NEXT_PUBLIC_GA4_TEST_MEASUREMENT_ID`。预览构建设置 `NEXT_PUBLIC_APP_ENV=preview`，响应携带 `X-Robots-Tag: noindex`，统计只用测试属性。部署前将服务端变量配置为 Workers Secrets：
 
-```text
-https://example.com/api/auth/callback
-```
+- `CLERK_SECRET_KEY`。使用与公开密钥相同的 Clerk 开发实例。
+- `CLERK_WEBHOOK_SIGNING_SECRET`。在该实例为 `https://statementxl-preview.reavid.workers.dev/api/auth/webhook` 配置 `user.deleted` 事件，将对应签名密钥保存为 Secret。
+- `QWEN_API_KEY`。仅 AI 解析所需。
+- `GA4_MEASUREMENT_PROTOCOL_API_SECRET`。用于测试属性的服务端付款事件。
+- Waffo 使用沙箱时配置 `WAFFO_ENVIRONMENT=test`、`WAFFO_MERCHANT_ID`、`WAFFO_PRIVATE_KEY`、`WAFFO_STORE_ID`、`WAFFO_PRODUCT_ID_STANDARD`、`WAFFO_PRODUCT_ID_PROFESSIONAL`、`WAFFO_PRODUCT_ID_ENTERPRISE`、`WAFFO_RETURN_BASE_URL` 和 `BILLING_QUOTE_SIGNING_SECRET`。Waffo 回调路径为 `/api/billing/webhooks/waffo`。默认关闭预览新购。
 
-Waffo Webhook 地址示例：
+开发密钥和测试环境变量用被 Git 忽略的 `.env.local` 保存，Workerd 本地预览的运行时密钥可用 `.dev.vars`。对 Worker 使用 `pnpm exec wrangler secret put <名称>`，密钥留在输入或 Secret 管理工具中。
 
-```text
-https://example.com/api/billing/webhooks/waffo
-```
+预览 D1 从空库开始，旧账号在 Clerk 重新注册，旧库记录保留在原环境。预览回滚使用 Wrangler 恢复上一 Worker 版本，D1 保留。正式域名和生产配置另行切换。
 
-不要把 `SUPABASE_SERVICE_ROLE_KEY`、`BILLING_QUOTE_SIGNING_SECRET`、`WAFFO_PRIVATE_KEY` 放入 `NEXT_PUBLIC_*` 变量或提交到 Git。
+[CI](.github/workflows/ci-parser.yml) 使用 Node.js 24 运行 `pnpm test`，测试使用隔离 D1 实例和支付替身。
 
 ### 主动选择 Qwen 与流式预览
 
 Professional 和 Business 使用资格有效时可主动选择 AI 解析，包括尝试扫描件。有效计费周期内已取消续费的高阶订阅也保留此能力。默认常规解析不请求 AI，匿名、免费和 Standard 只可使用常规解析。
 
-在根目录 `.env.local` 和相应的 Vercel 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响 AI，不影响浏览器常规解析。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
+在根目录 `.env.local` 和相应的 Worker 环境中配置仅服务端使用的 `QWEN_API_KEY`。模型 API 地址固定为 `https://maas.qianwenaiapi.com/compatible-mode/v1`；不使用 `DASHSCOPE_API_KEY` 或 `NEXT_PUBLIC_*` 密钥。缺少 Qwen 密钥只影响 AI，不影响浏览器常规解析。千问的 PDF 理解当前不支持 Responses API，因此采用 Chat Completions。PDF 在内存中编码为 Base64 发送至千问，不使用 Files API 或持久化存储。
 
 浏览器通过 `Accept: text/event-stream` 请求 `/api/convert`（multipart 中显式携带 `method=llm`），开始转换后立即进入结果页，依次接收 `status`、`table`、`rows`，在完整 JSON 校验和请求开始时的剩余额度检查通过后接收 `complete`；流开始后的失败通过 `error` 事件传递。最终事件只包含版本、文件名、页数、统计和页面错误，不重复发送全部交易行。未请求 SSE 的调用方仍接收原有完整 `ParseResponse` JSON。
 
@@ -170,12 +138,4 @@ Professional 和 Business 使用资格有效时可主动选择 AI 解析，包�
 
 ## 迁移验证
 
-`pnpm test` 运行已保留的回归测试和两项集成检查。`pnpm verify:pdfjs` 使用内存生成的 PDF 验证自动表格提取、无表头续页风险、小计后的交易和异常场景；`pnpm verify:conversion` 使用隔离接口替身验证接口及 AI 请求资格。`tests/billing-quota.test.ts` 使用真实额度、计费模块及 Supabase 客户端，仅替换 HTTP 传输，验证并发 CAS、周期切换、重复与乱序事件、验签和金额边界；它不等同于 PostgreSQL 约束或真实支付验收。检查均不连接真实数据库、支付渠道或模型。
-
-可使用本地获准样本和已有 Python 对照 JSON 执行逐单元格比较：
-
-```bash
-pnpm verify:pdfjs /absolute/path/statement.pdf /absolute/path/python-baseline.json
-```
-
-此可选对照使用迁移时的 8 页、112 行样本；真实 PDF 和对照结果仅保存在忽略的本地目录中，不提交 Git。历史公开基准保留原解析器及测量时间，不代表 PDF.js 当前效果。
+`pnpm test` 运行已保留的回归测试和两项集成检查。`pnpm verify:pdfjs` 使用内存生成的 PDF 验证自动表格提取、无表头续页风险、小计后的交易和异常场景；`pnpm verify:conversion` 使用隔离接口替身验证接口及 AI 请求资格。计费和认证测试在 Miniflare 的 D1 绑定上应用实际迁移，覆盖并发额度更新、周期切换、重复或乱序付款回调、账号删除、验签和金额边界。测试使用隔离数据，支付和模型请求走固定测试响应。

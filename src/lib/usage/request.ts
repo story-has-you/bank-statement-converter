@@ -3,7 +3,7 @@ import "server-only";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { createClient } from "@/lib/supabase/server";
+import { getAccountUser, getSession } from "@/lib/auth/server";
 import {
   createAnonymousId,
   getEntitledSubscription,
@@ -33,24 +33,23 @@ export async function setAnonymousCookie(response: NextResponse | Promise<NextRe
   return resolvedResponse;
 }
 
-async function getRequestActor(request: Request): Promise<{ actor: UsageActor; cookieValue: string | null }> {
-  const supabase = await createClient();
-  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
-  if (user) {
-    return { actor: { type: "user", key: user.id, email: user.email ?? null }, cookieValue: null };
+async function getRequestActor(request: Request, includeEmail: boolean): Promise<{ actor: UsageActor; cookieValue: string | null }> {
+  const { userId } = await getSession();
+  if (userId) {
+    const user = includeEmail ? await getAccountUser() : null;
+    return { actor: { type: "user", key: userId, email: user?.email ?? null }, cookieValue: null };
   }
 
   const cookieStore = await cookies();
   const existingCookie = cookieStore.get(ANONYMOUS_COOKIE)?.value;
   const cookieValue = existingCookie ?? createAnonymousId();
-  const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
-  const clientAddress = forwarded || request.headers.get("x-real-ip")?.trim();
+  const clientAddress = request.headers.get("cf-connecting-ip")?.trim();
   const actorKey = clientAddress ? hashAnonymousId(`network:${clientAddress}`) : hashAnonymousId(`cookie:${cookieValue}`);
   return { actor: { type: "anonymous", key: actorKey, email: null }, cookieValue: existingCookie ? null : cookieValue };
 }
 
-export async function getRequestQuota(request: Request) {
-  const { actor, cookieValue } = await getRequestActor(request);
+export async function getRequestQuota(request: Request, includeEmail = false) {
+  const { actor, cookieValue } = await getRequestActor(request, includeEmail);
   const subscription = actor.type === "user" ? await getEntitledSubscription(actor.key) : null;
   const context = getQuotaContext(actor, subscription);
   const currentUsage = await getUsageRecord(actor);

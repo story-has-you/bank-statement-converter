@@ -6,7 +6,7 @@ import { useLocale, useTranslations, type AppConfig } from "next-intl";
 import { conversionLimits } from "@/config/conversion";
 import { ConversionError } from "@/lib/conversion-errors";
 
-import { createClient } from "@/lib/supabase/browser";
+import { useAuth } from "@clerk/nextjs";
 import { analyticsPage, trackEvent } from "@/lib/analytics";
 import { canDownloadResult } from "@/lib/conversion-export";
 import { usePathname } from "@/i18n/navigation";
@@ -68,24 +68,16 @@ function ConversionController({ children }: { children: ReactNode }) {
     }
   }, [locale, reset]);
 
+  const { isLoaded, userId } = useAuth();
+  const previousUser = useRef<string | null | undefined>(undefined);
   useEffect(() => {
-    const client = createClient();
-    if (!client) {
+    if (!isLoaded) {
       return;
     }
-    let identity: string | null | undefined;
-    const { data } = client.auth.onAuthStateChange((event, session) => {
-      const nextIdentity = session?.user.id ?? null;
-      // INITIAL_SESSION establishes the baseline, preserving a refreshed result.
-      if (identity !== undefined && nextIdentity !== identity) {
-        reset();
-      } else if (identity === undefined && event === "SIGNED_OUT") {
-        reset();
-      }
-      identity = nextIdentity;
-    });
-    return () => data.subscription.unsubscribe();
-  }, [reset]);
+    const nextUser = userId ?? null;
+    if (previousUser.current !== undefined && previousUser.current !== nextUser) {reset();}
+    previousUser.current = nextUser;
+  }, [isLoaded, userId, reset]);
 
   useEffect(() => {
     function abortRequest(): void {
@@ -132,7 +124,7 @@ function ConversionController({ children }: { children: ReactNode }) {
             signal: controller.signal,
           });
           if (!response.ok) {
-            const payload = await response.json();
+            const payload = (await response.json()) as { message?: string; code?: string };
             throw new ConversionStreamError("request", payload.message, payload.code);
           }
         } else {

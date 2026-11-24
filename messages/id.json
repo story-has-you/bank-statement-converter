@@ -32,7 +32,8 @@
   },
   "AuthControl": {
     "account": "Akun",
-    "signInWithGoogle": "Masuk dengan Google",
+    "signIn": "Masuk",
+    "signUp": "Daftar",
     "signingIn": "Sedang masuk…",
     "signOut": "Keluar",
     "unavailable": "Layanan login belum dikonfigurasi.",
@@ -505,7 +506,7 @@
     },
     "accountData": {
       "title": "Informasi akun, kuota, dan tagihan",
-      "body": "Saat Anda login dengan Google, Supabase menyimpan data identitas dan akun yang diperlukan untuk layanan akun. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian lokal hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Waffo juga menerima email akun situs. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran.",
+      "body": "Clerk menyimpan data identitas dan akun yang diperlukan untuk masuk dengan Google atau tautan email. Setelah langganan aktif, kami menyimpan status, paket, ID langganan Waffo, periode tagihan, email pembayar, dan salinan email akun situs saat pembelian. Waffo menangani informasi pembayaran. Catatan ini tidak memuat PDF asli, transaksi hasil ekstraksi, atau isi Excel. Untuk pengguna yang masuk, kami mencatat ID akun, salinan email, waktu, status, dan kode kesalahan aman hanya untuk penguraian AI yang dipilih, guna menyelidiki masalah. Penguraian lokal hanya melaporkan penggunaan halaman. Catatan penguraian tidak memuat nama atau isi berkas, transaksi, atau keluaran model. Untuk membuat checkout, kami mengirim paket yang dipilih dan pengenal penghubung akun ke penyedia pembayaran yang dipilih. Waffo juga menerima email akun situs. Metadata penagihan juga dapat mencakup pengenal paket dan pembayar dari penyedia, jumlah dan mata uang pembayaran, jumlah awal, jumlah dan pengenal diskon, serta pengenal peristiwa pembayaran.",
       "checkout": "Checkout yang dihosting Waffo menerima pengenal akun, email akun, paket yang dipilih, referensi checkout, dan penawaran harga bertanda tangan. Sesi yang belum dibayar disimpan oleh Waffo; situs tidak membuat catatan langganan lokal tertunda baru untuk setiap checkout. Setelah pembayaran diverifikasi, kami menyimpan harga dasar bulanan yang disepakati dan bukti pembayaran, termasuk jumlah awal dan yang dibayar serta jumlah diskon dan pengenal kupon jika berlaku. Kami tidak menyimpan kode kupon. Catatan tagihan historis, termasuk Creem dan PayPal, dapat disimpan untuk layanan dan kewajiban hukum; hal ini tidak berarti penyedia tersebut tersedia untuk pembelian baru."
     },
     "technicalData": {
@@ -523,7 +524,7 @@
     },
     "providers": {
       "title": "Penyedia dan pemrosesan internasional",
-      "body": "Login menggunakan Google dan Supabase. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Saat Anda memilih Waffo, Waffo bertindak sebagai penyedia pembayaran dan Merchant of Record, memproses informasi pembayaran serta akun, dan mengirim pembaruan langganan ke layanan ini."
+      "body": "Clerk mengelola autentikasi akun, Google tersedia sebagai opsi masuk, dan Cloudflare menghosting situs web serta basis data aplikasi. Kunjungan diukur dengan Google Analytics dan Pageview, yang dapat memproses informasi teknis sesuai ketentuan dan kebijakan privasinya. Jika pemrosesan dilakukan lintas negara, kami akan menerapkan perlindungan yang diwajibkan hukum dan menjelaskan pengaturan sebenarnya. Kami tidak menjual rekening koran atau informasi transaksi. Saat Anda memilih Waffo, Waffo bertindak sebagai penyedia pembayaran dan Merchant of Record, memproses informasi pembayaran serta akun, dan mengirim pembaruan langganan ke layanan ini."
     },
     "storage": {
       "title": "Penyimpanan browser",

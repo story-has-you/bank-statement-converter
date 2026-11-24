@@ -8,7 +8,7 @@ import { usePathname } from "@/i18n/navigation";
 import { conversionLimits } from "@/config/conversion";
 import type { ConversionErrorPayload } from "@/lib/conversion-errors";
 import type { ConversionMethod } from "@/lib/conversion-types";
-import { createClient } from "@/lib/supabase/browser";
+import { useAuth } from "@clerk/nextjs";
 import type { ConversionQuota } from "@/lib/usage/types";
 
 class PreflightError extends Error {
@@ -102,22 +102,19 @@ export function usePdfPreflight(file: File | null, method: ConversionMethod) {
     };
   }, [file, cancel]);
 
+  const { isLoaded, userId } = useAuth();
+  const previousUser = useRef<string | null | undefined>(undefined);
   useEffect(() => {
-    const client = createClient();
-    if (!client || !file) {
+    if (!isLoaded) {
       return;
     }
-    let identity: string | null | undefined;
-    const { data } = client.auth.onAuthStateChange((event, session) => {
-      const nextIdentity = session?.user.id ?? null;
-      if ((identity !== undefined && nextIdentity !== identity) || (identity === undefined && event === "SIGNED_OUT")) {
-        cancel();
-        setState({ phase: "idle" });
-      }
-      identity = nextIdentity;
-    });
-    return () => data.subscription.unsubscribe();
-  }, [cancel, file]);
+    const nextUser = userId ?? null;
+    if (file && previousUser.current !== undefined && previousUser.current !== nextUser) {
+      cancel();
+      setState({ phase: "idle" });
+    }
+    previousUser.current = nextUser;
+  }, [isLoaded, userId, file, cancel]);
 
   const current = state.phase !== "idle" && state.file === file ? state : null;
   const isChecking = file !== null && current?.phase === "checking";

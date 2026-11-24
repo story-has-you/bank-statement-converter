@@ -36,7 +36,8 @@
   },
   "AuthControl": {
     "account": "Account",
-    "signInWithGoogle": "Sign in with Google",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
     "signingIn": "Signing in…",
     "signOut": "Sign out",
     "unavailable": "Sign-in has not been configured.",
@@ -509,7 +510,7 @@
     },
     "accountData": {
       "title": "Account, quota, and billing information",
-      "body": "When you sign in with Google, Supabase stores the identity and account details needed to provide account services. After a subscription is activated, we store its status, plan, Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Waffo receives the website account email. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers.",
+      "body": "Clerk stores the identity and account details needed for Google sign-in or email sign-in links. After a subscription is activated, we store its status, plan, Waffo subscription identifier, billing period, payer email, and a snapshot of the website account email at purchase. Waffo handles payment information. These records do not contain PDF originals, extracted transactions, or Excel content. For signed-in users, we record account ID, email snapshot, time, status and safe error codes only for AI parsing they choose, for troubleshooting. Local parsing reports page usage only. Parsing records contain no filenames, file contents, transactions or model output. To create checkout, we send the selected plan and an account identifier to the chosen payment provider. Waffo receives the website account email. Billing metadata may also include provider plan and payer identifiers, payment amount and currency, original amount, discount amount and identifier, and payment event identifiers.",
       "checkout": "Waffo hosted checkout receives your account identifier, account email, selected plan, checkout reference and signed price quote. Unpaid checkout sessions are held by Waffo; the website does not save a new pending subscription record for each checkout. After verified payment, we retain the agreed base monthly price and payment evidence, including original and paid amounts, discount amount and coupon identifier when applicable. We do not store the coupon code. Historical billing records, including Creem and PayPal records, may remain for service and legal obligations; they do not indicate those providers are available for new purchases."
     },
     "technicalData": {
@@ -527,7 +528,7 @@
     },
     "providers": {
       "title": "Providers and international processing",
-      "body": "Account sign-in uses Google and Supabase. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. When you select Waffo, it acts as payment provider and Merchant of Record, processes payment and account information, and sends subscription updates to this service."
+      "body": "Clerk manages account authentication, Google is available as a sign-in option, and Cloudflare hosts the website and business database. Site visit measurement uses Google Analytics and Pageview, which may process technical visit information under their applicable terms and privacy policies. If processing occurs across borders, we will apply the safeguards required by applicable law and describe the actual arrangement. We do not sell bank statements or transaction information. When you select Waffo, it acts as payment provider and Merchant of Record, processes payment and account information, and sends subscription updates to this service."
     },
     "storage": {
       "title": "Browser storage",

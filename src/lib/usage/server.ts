@@ -3,7 +3,7 @@ import "server-only";
 import { createHash, randomUUID } from "node:crypto";
 
 import { findEntitledBillingSubscription, type BillingSubscription } from "@/lib/billing/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/db/server";
 import type { ConversionMethod } from "@/lib/conversion-types";
 
 import { usageQuotaConfig, type UsagePeriod } from "./config";
@@ -113,33 +113,23 @@ export function getQuotaContext(actor: UsageActor, subscription: BillingSubscrip
 }
 
 export async function getEntitledSubscription(userId: string): Promise<BillingSubscription | null> {
-  if (!createAdminClient()) {
-    throw new UsageUnavailableError();
-  }
+  requireUsageDatabase();
   return findEntitledBillingSubscription(userId);
 }
 
-function requireAdminClient() {
-  const admin = createAdminClient();
-  if (!admin) {
+function requireUsageDatabase() {
+  try {
+    return getDatabase();
+  } catch {
     throw new UsageUnavailableError();
   }
-  return admin;
 }
 
-export async function getUsageRecord(actor: UsageActor): Promise<UsageRecord | null> {
-  const admin = requireAdminClient();
-  const { data, error } = await admin
-    .from("conversion_usage")
-    .select("actor_type, actor_key, email, period, period_start, period_end, used_pages, used_ai_pages, updated_at")
-    .eq("actor_type", actor.type)
-    .eq("actor_key", actor.key)
-    .maybeSingle();
-
-  if (error) {
-    throw error;
-  }
-  return data as UsageRecord | null;
+export function getUsageRecord(actor: UsageActor): Promise<UsageRecord | null> {
+  return requireUsageDatabase()
+    .prepare("SELECT * FROM conversion_usage WHERE actor_type = ? AND actor_key = ?")
+    .bind(actor.type, actor.key)
+    .first<UsageRecord>();
 }
 
 function validateQuotaInput(context: QuotaContext, pageCount: number): void {
@@ -168,7 +158,7 @@ function validateQuotaInput(context: QuotaContext, pageCount: number): void {
 
 export async function consumeConversionQuota(context: QuotaContext, pageCount: number, method: ConversionMethod = "code"): Promise<QuotaResult> {
   validateQuotaInput(context, pageCount);
-  const admin = requireAdminClient();
+  const db = requireUsageDatabase();
   const periodStart = context.window.start.toISOString();
   const periodEnd = context.window.end.toISOString();
 
@@ -217,41 +207,27 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
       return quota;
     }
 
-    const changes = {
-      email: context.email,
-      period: context.window.period,
-      period_start: periodStart,
-      period_end: periodEnd,
-      used_pages: nextUsedPages,
-      used_ai_pages: nextUsedAiPages,
-      updated_at: new Date().toISOString(),
-    };
+    const updatedAt = new Date().toISOString();
     if (!record) {
-      const { error } = await admin.from("conversion_usage").insert({ actor_type: context.type, actor_key: context.key, ...changes });
-      if (error?.code === "23505") {
+      const { meta } = await db
+        .prepare(`INSERT INTO conversion_usage (
+          actor_type, actor_key, email, period, period_start, period_end, used_pages, used_ai_pages, updated_at
+        )
+        SELECT ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9
+        WHERE ?1 = 'anonymous' OR NOT EXISTS (SELECT 1 FROM deleted_accounts WHERE user_id = ?2)
+        ON CONFLICT (actor_type, actor_key) DO NOTHING`)
+        .bind(context.type, context.key, context.email, context.window.period, periodStart, periodEnd, nextUsedPages, nextUsedAiPages, updatedAt)
+        .run();
+      if (!meta.changes) {
         continue;
       }
-      if (error) {
-        throw error;
-      }
     } else {
-      // 仅更新读取时的版本；其他请求已扣减或切换周期时，重读后重新计算。
-      const { data, error } = await admin
-        .from("conversion_usage")
-        .update(changes)
-        .eq("actor_type", context.type)
-        .eq("actor_key", context.key)
-        .eq("period", record.period)
-        .eq("period_start", record.period_start)
-        .eq("period_end", record.period_end)
-        .eq("used_pages", record.used_pages)
-        .eq("used_ai_pages", record.used_ai_pages)
-        .eq("updated_at", record.updated_at)
-        .select("actor_key");
-      if (error) {
-        throw error;
-      }
-      if (!data.length) {
+      // Match the read version so a concurrent write forces a fresh entitlement and quota check.
+      const changed = await updateUsageRecord(db, record, {
+        email: context.email, period: context.window.period, period_start: periodStart, period_end: periodEnd,
+        used_pages: nextUsedPages, used_ai_pages: nextUsedAiPages, updated_at: updatedAt,
+      });
+      if (!changed) {
         continue;
       }
     }
@@ -264,32 +240,40 @@ export async function consumeConversionQuota(context: QuotaContext, pageCount: n
 
 export async function releaseAiQuota(context: QuotaContext, pageCount: number): Promise<void> {
   validateQuotaInput(context, pageCount);
-  const admin = requireAdminClient();
+  const db = requireUsageDatabase();
   for (let attempt = 0; attempt < MAX_QUOTA_ATTEMPTS; attempt += 1) {
     const record = await getUsageRecord(context);
     if (!record || !isUsageRecordCurrent(record, context)) {
       return;
     }
-    const { data, error } = await admin
-      .from("conversion_usage")
-      .update({
-        used_pages: Math.max(0, record.used_pages - pageCount),
-        used_ai_pages: Math.max(0, record.used_ai_pages - pageCount),
-        updated_at: new Date().toISOString(),
-      })
-      .eq("actor_type", context.type)
-      .eq("actor_key", context.key)
-      .eq("period", record.period)
-      .eq("period_start", record.period_start)
-      .eq("period_end", record.period_end)
-      .eq("used_pages", record.used_pages)
-      .eq("used_ai_pages", record.used_ai_pages)
-      .eq("updated_at", record.updated_at)
-      .select("actor_key");
-    if (error) throw error;
-    if (data.length) return;
+    const changed = await updateUsageRecord(db, record, {
+      ...record,
+      used_pages: Math.max(0, record.used_pages - pageCount),
+      used_ai_pages: Math.max(0, record.used_ai_pages - pageCount),
+      updated_at: new Date().toISOString(),
+    });
+    if (changed) {
+      return;
+    }
   }
   throw new UsageUnavailableError();
+}
+
+async function updateUsageRecord(
+  db: D1Database,
+  previous: UsageRecord,
+  next: Omit<UsageRecord, "actor_type" | "actor_key">,
+): Promise<boolean> {
+  const { meta } = await db
+    .prepare(`UPDATE conversion_usage
+      SET email = ?, period = ?, period_start = ?, period_end = ?, used_pages = ?, used_ai_pages = ?, updated_at = ?
+      WHERE actor_type = ? AND actor_key = ? AND period = ? AND period_start = ? AND period_end = ?
+        AND used_pages = ? AND used_ai_pages = ? AND updated_at = ?`)
+    .bind(next.email, next.period, next.period_start, next.period_end, next.used_pages, next.used_ai_pages, next.updated_at,
+      previous.actor_type, previous.actor_key, previous.period, previous.period_start, previous.period_end,
+      previous.used_pages, previous.used_ai_pages, previous.updated_at)
+    .run();
+  return meta.changes > 0;
 }
 
 export function isUsageRecordCurrent(record: UsageRecord, context: QuotaContext): boolean {

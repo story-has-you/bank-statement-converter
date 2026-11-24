@@ -32,7 +32,8 @@
   },
   "AuthControl": {
     "account": "Konto",
-    "signInWithGoogle": "Mit Google anmelden",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
     "signingIn": "Anmeldung läuft…",
     "signOut": "Abmelden",
     "unavailable": "Die Anmeldung ist noch nicht konfiguriert.",
@@ -505,7 +506,7 @@
     },
     "accountData": {
       "title": "Konto-, Kontingent- und Rechnungsinformationen",
-      "body": "Wenn Sie sich bei Google anmelden, speichert Supabase die Identitäts- und Kontodaten, die für die Bereitstellung von Kontodiensten erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Waffo erhält außerdem die E-Mail-Adresse des Website-Kontos. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören.",
+      "body": "Clerk speichert die Identitäts- und Kontodaten, die für die Anmeldung mit Google oder per E-Mail-Link erforderlich sind. Nachdem ein Abonnement aktiviert wurde, speichern wir dessen Status, Plan, Waffo-Abonnement-ID, Abrechnungszeitraum, E-Mail-Adresse des Zahlers und eine Momentaufnahme der E-Mail-Adresse des Website-Kontos beim Kauf. Waffo verarbeitet Zahlungsinformationen. Diese Datensätze enthalten keine PDF-Originale, extrahierten Transaktionen oder Excel-Inhalte. Für angemeldete Nutzer erfassen wir zur Fehleranalyse Konto-ID, E-Mail-Snapshot, Zeitpunkt, Status und sichere Fehlercodes nur für die gewählte KI-Analyse. Die reguläre Analyse meldet nur den Seitenverbrauch. Analysedatensätze enthalten keine Dateinamen, Dateiinhalte, Transaktionen oder Modellausgaben. Für den Checkout übermitteln wir den gewählten Tarif und eine Kontozuordnung an den Zahlungsanbieter. Waffo erhält außerdem die E-Mail-Adresse des Website-Kontos. Zu den Abrechnungsmetadaten können auch Tarif- und Zahlerkennungen des Anbieters, Zahlungsbetrag und Währung, ursprünglicher Betrag, Rabattbetrag und Rabattkennung sowie Kennungen von Zahlungsereignissen gehören.",
       "checkout": "Der gehostete Waffo-Checkout erhält Kontokennung, Konto-E-Mail, gewählten Tarif, Checkout-Referenz und signiertes Preisangebot. Unbezahlte Checkout-Sitzungen werden von Waffo gespeichert; die Website legt nicht für jeden Checkout einen neuen lokalen Datensatz für ein ausstehendes Abonnement an. Nach geprüfter Zahlung speichern wir den vereinbarten monatlichen Grundpreis und Zahlungsnachweise, einschließlich ursprünglichem und gezahltem Betrag sowie gegebenenfalls Rabattbetrag und Gutschein-ID. Den Gutscheincode speichern wir nicht. Historische Abrechnungsdaten, auch von Creem und PayPal, können für Servicezwecke und gesetzliche Pflichten erhalten bleiben; diese Anbieter stehen damit nicht für neue Käufe zur Verfügung."
     },
     "technicalData": {
@@ -523,7 +524,7 @@
     },
     "providers": {
       "title": "Anbieter und internationale Abwicklung",
-      "body": "Für die Kontoanmeldung werden Google und Supabase verwendet. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Wenn Sie Waffo wählen, verarbeitet Waffo als Zahlungsanbieter und Merchant of Record Zahlungs- und Kontoinformationen und übermittelt Abonnement-Updates an diesen Dienst."
+      "body": "Clerk verwaltet die Kontoanmeldung, Google steht als Anmeldeoption zur Verfügung, und Cloudflare hostet die Website und die Anwendungsdatenbank. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können technische Besuchsinformationen gemäß ihren geltenden Bedingungen und Datenschutzrichtlinien verarbeiten. Erfolgt die Verarbeitung grenzüberschreitend, wenden wir die nach geltendem Recht erforderlichen Garantien an und beschreiben die tatsächliche Regelung. Wir verkaufen keine Kontoauszüge oder Transaktionsinformationen. Wenn Sie Waffo wählen, verarbeitet Waffo als Zahlungsanbieter und Merchant of Record Zahlungs- und Kontoinformationen und übermittelt Abonnement-Updates an diesen Dienst."
     },
     "storage": {
       "title": "Browserspeicher",

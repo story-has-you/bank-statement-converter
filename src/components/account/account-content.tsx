@@ -5,13 +5,12 @@ import { AccountQuota } from "@/components/account/account-quota";
 import { AccountSubscriptions } from "@/components/account/account-subscriptions";
 import { ClientMessages } from "@/components/shared/client-messages";
 import { redirect } from "@/i18n/navigation";
-import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { getAccountSnapshot } from "@/lib/account/server";
-import { getRenderAuthContext } from "@/lib/supabase/server";
+import { getAccountUser } from "@/lib/auth/server";
 
 export async function AccountContent() {
   const locale = await getLocale();
-  const { user } = await getRenderAuthContext();
+  const user = await getAccountUser();
   if (!user) {
     return redirect({ href: "/", locale });
   }
@@ -22,7 +21,7 @@ export async function AccountContent() {
       <div className="grid gap-6">
         <AccountProfile
           email={user.email ?? null}
-          imageUrl={getUserAvatarUrl(user.user_metadata)}
+          imageUrl={user.avatarUrl}
           tier={snapshot.currentTier}
           available={snapshot.subscriptions !== null}
         />

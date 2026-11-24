@@ -1,13 +1,12 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { useUser } from "@clerk/nextjs";
 import { useLocale } from "next-intl";
 
 import { trackTrialStart, trackVerifiedLogin } from "@/lib/analytics";
-import { getUserAvatarUrl } from "@/lib/account/avatar";
 import { anonymousAccountSummary } from "@/lib/account/summary";
 import { createAccountSummaryLoader, type PublicAccountState } from "@/lib/account/summary-loader";
-import { createClient } from "@/lib/supabase/browser";
 
 type AccountState = PublicAccountState & { configured: boolean };
 type AccountContext = AccountState & {
@@ -15,17 +14,24 @@ type AccountContext = AccountState & {
   refresh: () => Promise<void>;
 };
 const PublicAccountContext = createContext<AccountContext | null>(null);
+const loadingSummary: PublicAccountState = { status: "loading", summary: anonymousAccountSummary };
 
 /** One session subscription and a refreshable summary shared by public page controls. */
 export function PublicAccountProvider({ children }: { children: ReactNode }) {
   const locale = useLocale();
-  const [state, setState] = useState<AccountState>({ status: "loading", configured: false, summary: anonymousAccountSummary });
-  const [user, setUser] = useState<AccountContext["user"]>(null);
+  const { isLoaded, user: clerkUser } = useUser();
+  const user = clerkUser ? {
+    id: clerkUser.id,
+    email: clerkUser.primaryEmailAddress?.emailAddress ?? null,
+    avatarUrl: clerkUser.hasImage ? clerkUser.imageUrl : null,
+  } : null;
   const refreshRef = useRef<() => Promise<void>>(() => Promise.resolve());
   const refresh = useCallback(() => refreshRef.current(), []);
-  const userId = user?.id;
+  const userId = user?.id ?? null;
+  const [loadedSummary, setLoadedSummary] = useState<{ userId: string | null; state: PublicAccountState }>();
+  const state = loadedSummary?.userId === userId ? loadedSummary.state : loadingSummary;
   useEffect(() => {
-    if (userId) trackVerifiedLogin(userId, locale);
+    if (userId) { trackVerifiedLogin(userId, locale); }
   }, [userId, locale]);
   useEffect(() => {
     if (userId && state.status === "ready" && state.summary.user) {
@@ -33,35 +39,18 @@ export function PublicAccountProvider({ children }: { children: ReactNode }) {
     }
   }, [userId, state.status, state.summary, locale]);
   useEffect(() => {
-    const client = createClient();
-    let disposed = false;
-    if (!client) {
-      queueMicrotask(() => {
-        if (!disposed) {
-          setState({ status: "ready", configured: false, summary: anonymousAccountSummary });
-        }
-      });
-      return () => {
-        disposed = true;
-      };
+    if (!isLoaded) {
+      return;
     }
-    const loader = createAccountSummaryLoader((next) => setState({ ...next, configured: true }));
+    const loader = createAccountSummaryLoader((next) => setLoadedSummary({ userId, state: next }));
     refreshRef.current = loader.refresh;
-    const { data } = client.auth.onAuthStateChange((_event, session) => {
-      setUser(
-        session
-          ? { id: session.user.id, email: session.user.email ?? null, avatarUrl: getUserAvatarUrl(session.user.user_metadata) }
-          : null,
-      );
-      loader.setUser(session?.user.id ?? null);
-    });
+    loader.setUser(userId);
     return () => {
       loader.dispose();
       refreshRef.current = () => Promise.resolve();
-      data.subscription.unsubscribe();
     };
-  }, []);
-  return <PublicAccountContext.Provider value={{ ...state, user, refresh }}>{children}</PublicAccountContext.Provider>;
+  }, [isLoaded, userId]);
+  return <PublicAccountContext.Provider value={{ ...state, configured: isLoaded, user, refresh }}>{children}</PublicAccountContext.Provider>;
 }
 
 export function usePublicAccount(): AccountContext {

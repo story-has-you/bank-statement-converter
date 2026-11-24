@@ -1,6 +1,8 @@
 import "server-only";
 
-import { createAdminClient } from "@/lib/supabase/admin";
+import { clerkClient } from "@clerk/nextjs/server";
+import { getVerifiedEmail } from "@/lib/auth/server";
+import { getDatabase } from "@/lib/db/server";
 import type { BillingEvent, BillingNotification } from "./provider";
 import { insertActivatedBillingSubscription, findBillingSubscriptionByProviderId, updateBillingSubscriptionFromWebhook } from "./server";
 import { checkSubscriptionIdentity } from "./subscriptions";
@@ -111,7 +113,7 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification, onF
   }
   if (!existing) {
     const result = await insertConfirmedSubscription(event, remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE");
-    if (result === "applied" && event.payment.periodNumber === 1) onFirstPayment?.(event);
+    if (result === "applied" && event.payment.periodNumber === 1) { onFirstPayment?.(event); }
     return result;
   }
   const status = existing.status === "CANCELLED" || remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE";
@@ -142,17 +144,14 @@ async function insertConfirmedSubscription(
   event: Extract<BillingEvent, { type: "subscription-paid" }>,
   status: "ACTIVE" | "CANCELLED",
 ): Promise<"applied" | "ignored"> {
-  const admin = createAdminClient();
-  if (!admin) {
-    throw new Error("Supabase admin configuration is incomplete");
-  }
   const remote = event.subscription;
-  const { data, error } = await admin.auth.admin.getUserById(remote.userId);
-  if (error) {
-    throw error;
+  const deleted = await getDatabase().prepare("SELECT 1 FROM deleted_accounts WHERE user_id = ?").bind(remote.userId).first();
+  if (deleted) {
+    return "ignored";
   }
-  if (!data.user?.email) {
-    throw new Error("Subscription user has no account email");
+  const email = getVerifiedEmail(await (await clerkClient()).users.getUser(remote.userId));
+  if (!email) {
+    throw new Error("Subscription user has no verified account email");
   }
   return insertActivatedBillingSubscription({
     provider: event.provider,
@@ -162,7 +161,7 @@ async function insertConfirmedSubscription(
     subscriptionId: remote.subscriptionId,
     planId: remote.planId,
     userId: remote.userId,
-    email: data.user.email,
+    email,
     tier: remote.tier,
     amount: event.amount,
     recurringAmount: event.recurringAmount,

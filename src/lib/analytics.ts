@@ -25,9 +25,9 @@ type FunnelEvents = {
   export_success: Export;
   export_failed: Export & { error_code: "EXPORT_FAILED" | "EXPORT_LOAD_FAILED" };
   view_plans: Page;
-  login: Page & { method: "google" };
-  sign_up: Page & { method: "google" };
-  start_trial: Page & { method: "google" };
+  login: Page & { method: "clerk" };
+  sign_up: Page & { method: "clerk" };
+  start_trial: Page & { method: "clerk" };
   begin_checkout: Checkout;
   checkout_failed: Checkout & { error_code: "CHECKOUT_CREATE_FAILED" | "CHECKOUT_REDIRECT_FAILED" };
 };
@@ -80,7 +80,7 @@ function trackAccountOnce(name: "sign_up" | "start_trial", userId: string, local
   } catch {
     // The account identifier is only used for browser-local deduplication.
   }
-  if (!trackEvent(name, { locale, method: "google" })) return;
+  if (!trackEvent(name, { locale, method: "clerk" })) return;
   sentEvents.add(storageKey);
   try {
     localStorage.setItem(storageKey, "1");
@@ -105,7 +105,7 @@ export function trackVerifiedLogin(userId: string, locale: string): void {
   if (!analyticsMeasurementId) return;
   const notification = consumeAnalyticsCookie(loginPendingCookie);
   if (notification !== "login" && notification !== "sign_up") return;
-  trackEvent("login", { locale, method: "google" });
+  trackEvent("login", { locale, method: "clerk" });
   if (notification === "sign_up") trackAccountOnce("sign_up", userId, locale);
 }
 

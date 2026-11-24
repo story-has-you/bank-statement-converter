@@ -1,32 +1,36 @@
 import assert from "node:assert/strict";
 import { registerHooks } from "node:module";
-import { test, type TestContext } from "node:test";
+import { test } from "node:test";
+import { setupD1 } from "./helpers/d1";
 import { freeQuotaConfig, subscriptionConfig } from "@/config/plans";
 
 import type { BillingEvent, BillingNotification, ProviderSubscription } from "@/lib/billing/provider";
 import type { BillingSubscription } from "@/lib/billing/server";
 
+const fixtureModules = new Map([
+  ["server-only", "export {};"],
+  ["@/lib/db/server", "export const getDatabase = () => globalThis.testDatabase;"],
+]);
 registerHooks({
   resolve(specifier, context, next) {
-    return specifier === "server-only" ? { url: "data:text/javascript,export{}", shortCircuit: true } : next(specifier, context);
+    const source = fixtureModules.get(specifier);
+    return source === undefined ? next(specifier, context) : {
+      url: `data:text/javascript,${encodeURIComponent(source)}`, shortCircuit: true,
+    };
   },
   load(url, context, next) {
-    return url === "data:text/javascript,export{}" ? { format: "module", source: "export{}", shortCircuit: true } : next(url, context);
+    return url.startsWith("data:text/javascript,")
+      ? { format: "module", source: decodeURIComponent(url.slice(21)), shortCircuit: true }
+      : next(url, context);
   },
 });
-
-// Use the real Supabase client and application modules; replace only the HTTP transport.
-process.env.NEXT_PUBLIC_SUPABASE_URL = "https://billing-test.invalid";
-process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "fixture-public-key";
-process.env.SUPABASE_SERVICE_ROLE_KEY = "fixture-service-key";
 
 const modules = Promise.all([
   import("@/lib/usage/server"),
   import("@/lib/billing/events"),
   import("@/lib/billing/usd"),
 ]);
-type Row = Record<string, unknown>;
-const actor = { type: "user" as const, key: "00000000-0000-4000-8000-000000000001", email: "fixture@example.invalid" };
+const actor = { type: "user" as const, key: "user_quotaFixture", email: "fixture@example.invalid" };
 const day = 86_400_000;
 
 function subscription(changes: Partial<BillingSubscription> = {}): BillingSubscription {
@@ -49,64 +53,11 @@ function subscription(changes: Partial<BillingSubscription> = {}): BillingSubscr
     subscriber_email: actor.email,
     current_period_start: new Date(Date.now() - day).toISOString(),
     current_period_end: new Date(Date.now() + 29 * day).toISOString(),
-    last_webhook_event_id: null,
-    last_event_at: null,
+    last_webhook_event_id: "fixture-first",
+    last_event_at: new Date(Date.now() - day).toISOString(),
     created_at: new Date(Date.now() - day).toISOString(),
     ...changes,
   };
-}
-
-function setup(t: TestContext, subscriptions: BillingSubscription[] = []) {
-  const tables: Record<string, Row[]> = {
-    conversion_usage: [],
-    billing_subscriptions: structuredClone(subscriptions),
-    billing_subscription_intents: [],
-  };
-  const state = { casMisses: 0, insertConflicts: 0, failWrites: false };
-  t.mock.method(globalThis, "fetch", async (input: string | URL | Request, init?: RequestInit) => {
-    const url = new URL(input instanceof Request ? input.url : input);
-    assert.equal(url.origin, "https://billing-test.invalid", "Tests must never call a real service");
-    const table = url.pathname.split("/").at(-1)!;
-    assert(Object.hasOwn(tables, table), `Unexpected database resource: ${url.pathname}`);
-    const method = init?.method ?? "GET";
-    const headers = new Headers(init?.headers);
-    const json = (value: unknown, status = 200) =>
-      new Response(JSON.stringify(value), { status, headers: { "Content-Type": "application/json" } });
-    if (state.failWrites && method !== "GET") return json({ code: "FIXTURE_FAILURE", message: "Fixture write failed" }, 500);
-    const matches = (row: Row) =>
-      [...url.searchParams].every(([key, value]) => {
-        if (["select", "order", "limit"].includes(key)) return true;
-        if (value.startsWith("eq.")) return String(row[key]) === value.slice(3);
-        if (value.startsWith("is.")) return row[key] === null && value === "is.null";
-        if (value.startsWith("in.(")) return value.slice(4, -1).split(",").includes(String(row[key]));
-        throw new Error(`Unexpected filter: ${key}=${value}`);
-      });
-    let selected = tables[table].filter(matches);
-    if (method === "POST") {
-      const row: Row = JSON.parse(String(init?.body));
-      const duplicate = tables[table].some((existing) =>
-        table === "conversion_usage"
-          ? existing.actor_type === row.actor_type && existing.actor_key === row.actor_key
-          : existing.provider === row.provider && existing.provider_subscription_id === row.provider_subscription_id,
-      );
-      if (duplicate) {
-        state.insertConflicts++;
-        return json({ code: "23505", message: "Fixture unique constraint" }, 409);
-      }
-      tables[table].push(row);
-      selected = [row];
-    } else if (method === "PATCH") {
-      if (!selected.length) state.casMisses++;
-      const changes: Row = JSON.parse(String(init?.body));
-      selected.forEach((row) => Object.assign(row, changes));
-    } else {
-      assert.equal(method, "GET");
-    }
-    if (url.searchParams.has("limit")) selected = selected.slice(0, Number(url.searchParams.get("limit")));
-    if (method !== "GET" && !headers.get("prefer")?.includes("return=representation")) return new Response(null, { status: 204 });
-    return json(headers.get("accept")?.includes("application/vnd.pgrst.object+json") ? (selected[0] ?? null) : selected);
-  });
-  return { tables, state };
 }
 
 function notification(
@@ -157,50 +108,46 @@ function notification(
 }
 
 test("real quota insert contention admits only the pages that fit", async (t) => {
-  const { tables, state } = setup(t);
+  const { rows } = await setupD1(t);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const context = getQuotaContext(actor, null);
   const results = await Promise.all([consumeConversionQuota(context, 3), consumeConversionQuota(context, 3)]);
   assert.deepEqual(results.map((result) => result.status).sort(), ["consumed", "exceeded"]);
-  assert.equal(tables.conversion_usage[0].used_pages, 3);
-  assert.equal(state.insertConflicts, 1);
+  assert.equal((await rows("conversion_usage"))[0].used_pages, 3);
 });
 
 test("real quota CAS retries a lost update instead of losing a deduction", async (t) => {
-  const { tables, state } = setup(t);
+  const { rows } = await setupD1(t);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const context = getQuotaContext(actor, null);
   await consumeConversionQuota(context, 1);
   const results = await Promise.all([consumeConversionQuota(context, 2), consumeConversionQuota(context, 2)]);
   assert(results.every((result) => result.allowed));
-  assert.equal(tables.conversion_usage[0].used_pages, 5);
-  assert(state.casMisses > 0);
+  assert.equal((await rows("conversion_usage"))[0].used_pages, 5);
 });
 
 test("a stale billing window cannot overwrite usage in a renewed window", async (t) => {
   const original = subscription();
-  const { tables } = setup(t, [original]);
+  const { rows, db } = await setupD1(t, [original]);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const old = getQuotaContext(actor, original);
-  Object.assign(tables.billing_subscriptions[0], {
-    current_period_start: new Date(Date.now() - 3_600_000).toISOString(),
-    current_period_end: new Date(Date.now() + 30 * day).toISOString(),
-  });
-  const current = getQuotaContext(actor, tables.billing_subscriptions[0] as BillingSubscription);
+  await db.prepare("UPDATE billing_subscriptions SET current_period_start = ?, current_period_end = ?")
+    .bind(new Date(Date.now() - 3_600_000).toISOString(), new Date(Date.now() + 30 * day).toISOString()).run();
+  const current = getQuotaContext(actor, (await rows<BillingSubscription>("billing_subscriptions"))[0]);
   await consumeConversionQuota(current, 7);
-  const before = structuredClone(tables.conversion_usage);
+  const before = structuredClone((await rows("conversion_usage")));
   assert.equal((await consumeConversionQuota(old, 2)).status, "stale");
-  assert.deepEqual(tables.conversion_usage, before);
+  assert.deepEqual((await rows("conversion_usage")), before);
 });
 
 test("failed quota writes reject and invalid page counts never deduct", async (t) => {
-  const { tables, state } = setup(t);
+  const { rows, db } = await setupD1(t);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const context = getQuotaContext(actor, null);
-  for (const pages of [0, -1, 1.2, Number.MAX_SAFE_INTEGER + 1]) await assert.rejects(consumeConversionQuota(context, pages));
-  state.failWrites = true;
+  for (const pages of [0, -1, 1.2, Number.MAX_SAFE_INTEGER + 1]) {await assert.rejects(consumeConversionQuota(context, pages));}
+  await db.prepare("CREATE TRIGGER test_write_failure BEFORE INSERT ON conversion_usage BEGIN SELECT RAISE(ABORT, 'test write failure'); END").run();
   await assert.rejects(consumeConversionQuota(context, 1));
-  assert.equal(tables.conversion_usage.length, 0);
+  assert.equal((await rows("conversion_usage")).length, 0);
 });
 
 test("plan A keeps prices, total pages and free quotas with AI sublimits", () => {
@@ -213,78 +160,76 @@ test("plan A keeps prices, total pages and free quotas with AI sublimits", () =>
 for (const tier of ["professional", "enterprise"] as const) {
   test(`${tier} AI sublimit counts toward total and cannot be exceeded concurrently`, async (t) => {
     const existing = subscription({ tier });
-    const { tables } = setup(t, [existing]);
+    const { rows } = await setupD1(t, [existing]);
     const [{ getQuotaContext, consumeConversionQuota }] = await modules;
     const context = getQuotaContext(actor, existing);
     const limit = subscriptionConfig[tier].aiPages;
     await consumeConversionQuota(context, limit - 1, "llm");
     const results = await Promise.all([consumeConversionQuota(context, 1, "llm"), consumeConversionQuota(context, 1, "llm")]);
     assert.deepEqual(results.map((result) => result.status).sort(), ["consumed", "exceeded"]);
-    assert.equal(tables.conversion_usage[0].used_pages, limit);
-    assert.equal(tables.conversion_usage[0].used_ai_pages, limit);
+    assert.equal((await rows("conversion_usage"))[0].used_pages, limit);
+    assert.equal((await rows("conversion_usage"))[0].used_ai_pages, limit);
     assert.equal((await consumeConversionQuota(context, 3)).allowed, true);
-    assert.equal(tables.conversion_usage[0].used_pages, limit + 3);
-    assert.equal(tables.conversion_usage[0].used_ai_pages, limit);
+    assert.equal((await rows("conversion_usage"))[0].used_pages, limit + 3);
+    assert.equal((await rows("conversion_usage"))[0].used_ai_pages, limit);
   });
 }
 
 test("AI also obeys total pages and a rejected request changes neither counter", async (t) => {
   const existing = subscription();
-  const { tables } = setup(t, [existing]);
+  const { rows } = await setupD1(t, [existing]);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const context = getQuotaContext(actor, existing);
   await consumeConversionQuota(context, context.limitPages - 1);
-  const before = structuredClone(tables.conversion_usage);
+  const before = structuredClone((await rows("conversion_usage")));
   assert.equal((await consumeConversionQuota(context, 2, "llm")).allowed, false);
-  assert.deepEqual(tables.conversion_usage, before);
+  assert.deepEqual((await rows("conversion_usage")), before);
   assert.equal((await consumeConversionQuota(context, 1, "llm")).allowed, true);
-  assert.equal(tables.conversion_usage[0].used_ai_pages, 1);
+  assert.equal((await rows("conversion_usage"))[0].used_ai_pages, 1);
 });
 
 for (const tier of [null, "standard"] as const) {
   test(`${tier ?? "free"} cannot consume AI quota`, async (t) => {
     const existing = tier ? subscription({ tier }) : null;
-    const { tables } = setup(t, existing ? [existing] : []);
+    const { rows } = await setupD1(t, existing ? [existing] : []);
     const [{ getQuotaContext, consumeConversionQuota }] = await modules;
     assert.equal((await consumeConversionQuota(getQuotaContext(actor, existing), 1, "llm")).allowed, false);
-    assert.equal(tables.conversion_usage.length, 0);
+    assert.equal((await rows("conversion_usage")).length, 0);
   });
 }
 
 test("AI refunds preserve concurrent local deductions", async (t) => {
   const existing = subscription();
-  const { tables } = setup(t, [existing]);
+  const { rows } = await setupD1(t, [existing]);
   const [{ getQuotaContext, consumeConversionQuota, releaseAiQuota }] = await modules;
   const context = getQuotaContext(actor, existing);
   await consumeConversionQuota(context, 3, "llm");
   await Promise.all([releaseAiQuota(context, 3), consumeConversionQuota(context, 2)]);
-  assert.equal(tables.conversion_usage[0].used_pages, 2);
-  assert.equal(tables.conversion_usage[0].used_ai_pages, 0);
+  assert.equal((await rows("conversion_usage"))[0].used_pages, 2);
+  assert.equal((await rows("conversion_usage"))[0].used_ai_pages, 0);
 });
 
 test("renewal resets both counters and old AI refunds cannot change the new period", async (t) => {
   const existing = subscription();
-  const { tables } = setup(t, [existing]);
+  const { rows, db } = await setupD1(t, [existing]);
   const [{ getQuotaContext, consumeConversionQuota, releaseAiQuota }] = await modules;
   const old = getQuotaContext(actor, existing);
   await consumeConversionQuota(old, 5, "llm");
-  Object.assign(tables.billing_subscriptions[0], {
-    current_period_start: new Date(Date.now() - 3_600_000).toISOString(),
-    current_period_end: new Date(Date.now() + 30 * day).toISOString(),
-  });
-  const current = getQuotaContext(actor, tables.billing_subscriptions[0] as BillingSubscription);
+  await db.prepare("UPDATE billing_subscriptions SET current_period_start = ?, current_period_end = ?")
+    .bind(new Date(Date.now() - 3_600_000).toISOString(), new Date(Date.now() + 30 * day).toISOString()).run();
+  const current = getQuotaContext(actor, (await rows<BillingSubscription>("billing_subscriptions"))[0]);
   await consumeConversionQuota(current, 2, "llm");
   await releaseAiQuota(old, 5);
-  assert.equal(tables.conversion_usage[0].used_pages, 2);
-  assert.equal(tables.conversion_usage[0].used_ai_pages, 2);
-  const before = structuredClone(tables.conversion_usage);
+  assert.equal((await rows("conversion_usage"))[0].used_pages, 2);
+  assert.equal((await rows("conversion_usage"))[0].used_ai_pages, 2);
+  const before = structuredClone((await rows("conversion_usage")));
   assert.equal((await consumeConversionQuota(old, 1, "llm")).status, "stale");
-  assert.deepEqual(tables.conversion_usage, before);
+  assert.deepEqual((await rows("conversion_usage")), before);
 });
 
 test("account quota exposes AI remaining pages from the same billing window", async (t) => {
   const existing = subscription();
-  setup(t, [existing]);
+  await setupD1(t, [existing]);
   const [{ getQuotaContext, consumeConversionQuota }] = await modules;
   const { getAccountSnapshot } = await import("@/lib/account/server");
   const context = getQuotaContext(actor, existing);
@@ -301,29 +246,29 @@ test("duplicate paid notifications advance the period only once", async (t) => {
     current_period_start: new Date(Date.now() - 31 * day).toISOString(),
     current_period_end: new Date(Date.now() - day).toISOString(),
   });
-  const { tables } = setup(t, [existing]);
+  const { rows } = await setupD1(t, [existing]);
   const [, { applyBillingEvent }] = await modules;
   const paid = notification("subscription-paid", "paid-1", existing, {
     periodStart: existing.current_period_end,
     periodEnd: new Date(Date.now() + 29 * day).toISOString(),
   });
   assert.equal(await applyBillingEvent(paid), "applied");
-  const before = structuredClone(tables.billing_subscriptions);
+  const before = structuredClone((await rows("billing_subscriptions")));
   assert.equal(await applyBillingEvent(paid), "ignored");
-  assert.deepEqual(tables.billing_subscriptions, before);
+  assert.deepEqual((await rows("billing_subscriptions")), before);
 });
 
 test("payment failure and same-period recovery keep the already consumed quota", async (t) => {
   const existing = subscription();
-  const { tables } = setup(t, [existing]);
+  const { rows } = await setupD1(t, [existing]);
   const [{ getQuotaContext, consumeConversionQuota }, { applyBillingEvent }] = await modules;
   await consumeConversionQuota(getQuotaContext(actor, existing), 7);
-  const before = structuredClone(tables.conversion_usage);
+  const before = structuredClone((await rows("conversion_usage")));
   await applyBillingEvent(notification("subscription-status-changed", "failure", existing, { status: "PAYMENT_FAILED" }));
-  assert.equal(tables.billing_subscriptions[0].status, "PAYMENT_FAILED");
+  assert.equal((await rows("billing_subscriptions"))[0].status, "PAYMENT_FAILED");
   await applyBillingEvent(notification("subscription-paid", "recovered", existing, { status: "ACTIVE" }));
-  assert.equal(tables.billing_subscriptions[0].status, "ACTIVE");
-  assert.deepEqual(tables.conversion_usage, before);
+  assert.equal((await rows("billing_subscriptions"))[0].status, "ACTIVE");
+  assert.deepEqual((await rows("conversion_usage")), before);
 });
 
 test("concurrent payment and older cancellation require a retry and preserve cancellation", async (t) => {
@@ -331,7 +276,7 @@ test("concurrent payment and older cancellation require a retry and preserve can
     current_period_start: new Date(Date.now() - 31 * day).toISOString(),
     current_period_end: new Date(Date.now() - day).toISOString(),
   });
-  const { tables, state } = setup(t, [existing]);
+  const { rows } = await setupD1(t, [existing]);
   const [, { applyBillingEvent }] = await modules;
   const periodEnd = new Date(Date.now() + 29 * day).toISOString();
   const events = [
@@ -340,27 +285,26 @@ test("concurrent payment and older cancellation require a retry and preserve can
   ];
   const results = await Promise.allSettled(events.map((event) => applyBillingEvent(event)));
   assert.equal(results.filter((result) => result.status === "rejected").length, 1);
-  assert.equal(state.casMisses, 1);
-  for (const [index, result] of results.entries()) if (result.status === "rejected") await applyBillingEvent(events[index]);
-  assert.equal(tables.billing_subscriptions[0].status, "CANCELLED");
-  assert.equal(tables.billing_subscriptions[0].current_period_end, periodEnd);
+  for (const [index, result] of results.entries()) {if (result.status === "rejected") {await applyBillingEvent(events[index]);}}
+  assert.equal((await rows("billing_subscriptions"))[0].status, "CANCELLED");
+  assert.equal((await rows("billing_subscriptions"))[0].current_period_end, periodEnd);
 });
 
 test("payment notifications cannot change the owner or resurrect an expired subscription", async (t) => {
   const existing = subscription();
-  const { tables } = setup(t, [existing]);
+  const { rows, db } = await setupD1(t, [existing]);
   const [, { applyBillingEvent }] = await modules;
   await assert.rejects(applyBillingEvent(notification("subscription-paid", "wrong-owner", existing, { userId: "another-user" })));
-  assert.deepEqual(tables.billing_subscriptions[0], existing);
-  tables.billing_subscriptions[0].status = "EXPIRED";
+  assert.equal((await rows("billing_subscriptions"))[0].last_webhook_event_id, existing.last_webhook_event_id);
+  await db.prepare("UPDATE billing_subscriptions SET status = 'EXPIRED'").run();
   assert.equal(await applyBillingEvent(notification("subscription-paid", "late", existing)), "ignored");
-  assert.equal(tables.billing_subscriptions[0].status, "EXPIRED");
+  assert.equal((await rows("billing_subscriptions"))[0].status, "EXPIRED");
 });
 
 test("USD cents stay exact and reject unsafe, negative or over-precision inputs", async () => {
   const [, , { usdFromDecimal, usdFromMinorUnits, usdToDecimal }] = await modules;
   assert.equal(usdFromDecimal("49.90"), 4990);
   assert.equal(usdToDecimal(usdFromDecimal("0")), "0.00");
-  for (const value of ["-1", "1.001", " 1", "1e2", "9007199254740991"]) assert.throws(() => usdFromDecimal(value));
-  for (const value of [-1, 1.2, Infinity, Number.MAX_SAFE_INTEGER + 1]) assert.throws(() => usdFromMinorUnits(value));
+  for (const value of ["-1", "1.001", " 1", "1e2", "9007199254740991"]) {assert.throws(() => usdFromDecimal(value));}
+  for (const value of [-1, 1.2, Infinity, Number.MAX_SAFE_INTEGER + 1]) {assert.throws(() => usdFromMinorUnits(value));}
 });

@@ -1,9 +1,9 @@
 import { conversionLimits } from "@/config/conversion";
 
-const environment = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_VERCEL_ENV : "development";
+const environment = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_APP_ENV : "development";
 let url = "http://localhost:3000";
 if (environment === "preview") {
-  url = "https://preview.bankstatementconverter.xyz";
+  url = "https://statementxl-preview.reavid.workers.dev";
 } else if (environment === "production") {
   url = "https://bankstatementconverter.xyz";
 }

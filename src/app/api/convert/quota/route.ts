@@ -44,7 +44,7 @@ export async function POST(request: Request): Promise<Response> {
   }
   let resolved: Awaited<ReturnType<typeof getRequestQuota>>;
   try {
-    resolved = await getRequestQuota(request);
+    resolved = await getRequestQuota(request, true);
   } catch (error) {
     return errorResponse(
       error instanceof SubscriptionPeriodUnavailableError ? "QUOTA_PERIOD_UNAVAILABLE" : "QUOTA_UNAVAILABLE",
