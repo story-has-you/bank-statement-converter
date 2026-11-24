@@ -118,6 +118,8 @@ pnpm cf:deploy
 
 开发密钥和测试环境变量用被 Git 忽略的 `.env.local` 保存，Workerd 本地预览的运行时密钥可用 `.dev.vars`。对 Worker 使用 `pnpm exec wrangler secret put <名称>`，密钥留在输入或 Secret 管理工具中。
 
+在本地 Workerd 启动后，运行 `node scripts/verify-workers.mjs` 检查路由、禁止索引响应头以及携带 Cookie 的匿名额度扣减。OpenNext 适配器升级后，用该检查确认可以移除当前的 Cookie 解析补丁。
+
 预览 D1 从空库开始，旧账号在 Clerk 重新注册，旧库记录保留在原环境。预览回滚使用 Wrangler 恢复上一 Worker 版本，D1 保留。正式域名和生产配置另行切换。
 
 [CI](.github/workflows/ci-parser.yml) 使用 Node.js 24 运行 `pnpm test`，测试使用隔离 D1 实例和支付替身。

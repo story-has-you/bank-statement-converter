@@ -162,6 +162,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@opennextjs/aws@4.2.0': d7a13530b8b6896570644db79d03548f498ff8231bf3a0154be585188035370c
+
 importers:
 
   .:
@@ -6283,7 +6286,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@opennextjs/aws@4.2.0(next@16.4.6(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)':
+  '@opennextjs/aws@4.2.0(patch_hash=d7a13530b8b6896570644db79d03548f498ff8231bf3a0154be585188035370c)(next@16.4.6(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)':
     dependencies:
       '@ast-grep/napi': 0.45.3
       '@aws-sdk/client-cloudfront': 3.984.0
@@ -6310,7 +6313,7 @@ snapshots:
     dependencies:
       '@ast-grep/napi': 0.45.3
       '@dotenvx/dotenvx': 2.38.2
-      '@opennextjs/aws': 4.2.0(next@16.4.6(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)
+      '@opennextjs/aws': 4.2.0(patch_hash=d7a13530b8b6896570644db79d03548f498ff8231bf3a0154be585188035370c)(next@16.4.6(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)
       ci-info: 4.5.0
       cloudflare: 4.5.0
       comment-json: 4.6.2

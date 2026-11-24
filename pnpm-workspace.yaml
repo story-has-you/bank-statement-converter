@@ -10,3 +10,5 @@ minimumReleaseAgeExclude:
   - '@cloudflare/workers-utils@0.57.0'
   - miniflare@5.20261123.0-beta
   - wrangler@4.167.0
+patchedDependencies:
+  '@opennextjs/aws@4.2.0': patches/@opennextjs__aws@4.2.0.patch
