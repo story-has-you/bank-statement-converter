@@ -4,6 +4,8 @@ import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { analyticsPage, getCheckoutAttribution, trackEvent } from "@/lib/analytics";
+import { usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { CreditCard } from "lucide-react";
 import { CheckoutSession } from "@/components/billing/checkout-session";
@@ -16,6 +18,7 @@ type SubscriptionButtonProps = { checkout: CheckoutConfig; tier: MembershipTier 
 const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => {
   const t = useTranslations("Billing");
   const locale = useLocale();
+  const analytics = { ...analyticsPage(locale, usePathname()), plan_tier: tier, payment_provider: checkout.provider };
   const providerName = t(`providers.${checkout.provider}`);
   const [failure, setFailure] = useState<string | null>(null);
   const mounted = useRef(false);
@@ -28,10 +31,11 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
 
   async function createCheckout(): Promise<CheckoutResult> {
     try {
+      const attribution = await getCheckoutAttribution();
       const response = await fetch("/api/billing/subscriptions/create", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-app-locale": locale },
-        body: JSON.stringify({ provider: checkout.provider, tier }),
+        body: JSON.stringify({ provider: checkout.provider, tier, analytics: attribution }),
       });
       const payload: unknown = await response.json().catch(() => null);
       if (!response.ok || !isCheckoutResult(payload)) {
@@ -65,7 +69,9 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
     <CheckoutSession
       provider={checkout.provider}
       createCheckout={createCheckout}
-      onError={() => {
+      onReady={() => trackEvent("begin_checkout", analytics)}
+      onError={(errorCode) => {
+        trackEvent("checkout_failed", { ...analytics, error_code: errorCode });
         if (mounted.current) {
           setFailure((value) => value ?? t("paymentFailed"));
         }

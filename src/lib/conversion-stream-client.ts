@@ -8,6 +8,7 @@ export class ConversionStreamError extends Error {
   constructor(
     public readonly reason: "invalid" | "interrupted" | "request",
     public readonly serverMessage?: string,
+    public readonly serverCode?: string,
   ) {
     super(reason);
   }
@@ -20,7 +21,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 export async function readConversionStream(response: Response, onPreview: (preview: ConversionPreview) => void): Promise<ParseResponse> {
   if (!response.ok) {
     const error: unknown = await response.json().catch(() => null);
-    throw new ConversionStreamError("request", isRecord(error) && typeof error.message === "string" ? error.message : undefined);
+    throw new ConversionStreamError(
+      "request",
+      isRecord(error) && typeof error.message === "string" ? error.message : undefined,
+      isRecord(error) && typeof error.code === "string" ? error.code : undefined,
+    );
   }
   if (!response.headers.get("content-type")?.includes("text/event-stream") || !response.body) {
     throw new ConversionStreamError("invalid");
@@ -72,7 +77,7 @@ export async function readConversionStream(response: Response, onPreview: (previ
       throw new ConversionStreamError("invalid");
     }
     if (type === "error") {
-      throw new ConversionStreamError("request", typeof data.message === "string" ? data.message : undefined);
+      throw new ConversionStreamError("request", typeof data.message === "string" ? data.message : undefined, typeof data.code === "string" ? data.code : undefined);
     }
     if (type === "status") {
       if (data.stage !== "reading" && data.stage !== "extracting" && data.stage !== "finalizing") {

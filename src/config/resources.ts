@@ -70,7 +70,12 @@ const marketResources = {
 } as const satisfies Record<AppLocale, { groups: readonly ResourceGroupId[]; featured: readonly ResourcePageId[] }>;
 
 export function getResourceGroups(locale: AppLocale) {
-  return marketResources[locale].groups.map((id) => resourceGroups.find((group) => group.id === id)!);
+  return marketResources[locale].groups.map((id) => {
+    const group = resourceGroups.find((item) => item.id === id)!;
+    return locale === "fr" && group.id === "accounting"
+      ? { ...group, pageIds: ["wave", ...group.pageIds.filter((pageId) => pageId !== "wave")] as const }
+      : group;
+  });
 }
 
 export function getResourcePage(id: ResourcePageId) {

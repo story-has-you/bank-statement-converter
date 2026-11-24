@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { usePublicAccount } from "@/components/account/public-account-provider";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
 import { readBillingResponse } from "@/lib/billing/response";
 import { startStatusPolling, type PollState } from "@/lib/billing/status-polling";
 import type { MembershipTier } from "@/lib/billing/types";
@@ -47,7 +46,7 @@ function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatu
     });
     const payload = readBillingResponse(await response.json());
     if (response.ok && response.status !== 202 && payload.status === "ACTIVE") {
-      return { kind: "done" as const, subscriptionId: payload.subscriptionId };
+      return { kind: "done" as const };
     }
     if (response.status !== 202 || payload.status !== "PENDING") {
       return { kind: "failed" as const, error: payload.error ?? t("failed") };
@@ -55,25 +54,10 @@ function CheckoutReturnCheck({ provider, checkoutId, tier }: CheckoutReturnStatu
     return { kind: "pending" as const };
   });
   useEffect(() => {
-    let subscriptionId: string | undefined;
     return startStatusPolling({
       initialDelayMs: 0,
-      async read(signal) {
-        const next = await readStatus(signal);
-        if (next.kind === "done") subscriptionId = next.subscriptionId;
-        return next;
-      },
-      onState(next) {
-        if (next.kind === "done" && subscriptionId) {
-          const transactionId = `${provider}:${subscriptionId}`;
-          trackEvent(
-            "purchase",
-            { locale, payment_provider: provider, plan_tier: tier, transaction_id: transactionId, items: [{ item_id: tier, quantity: 1 }] },
-            `purchase:${transactionId}`,
-          );
-        }
-        handleState(next);
-      },
+      read: (signal) => readStatus(signal),
+      onState: (next) => handleState(next),
     });
   }, [provider, checkoutId, tier, locale, retry]);
   return (

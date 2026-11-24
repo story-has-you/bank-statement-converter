@@ -15,6 +15,7 @@ export type EditorialSection = {
   title: string;
   text: string;
   quickbooksLink?: string;
+  example?: string;
   links?: { href: string; label: string }[];
 };
 
@@ -31,6 +32,8 @@ export async function getEditorialContent(params: EditorialParams) {
     anonymousPages: freeQuotaConfig.anonymous.pages,
     authenticatedPages: freeQuotaConfig.authenticated.pages,
   };
+  // next-intl cannot infer ICU arguments for message keys inside JSON arrays.
+  const formatBody = t as unknown as (key: `sections.${number}.text` | `faq.${number}.answer`, values: Record<string, string | number>) => string;
   return {
     page,
     locale,
@@ -39,11 +42,11 @@ export async function getEditorialContent(params: EditorialParams) {
     metaDescription: t("metaDescription"),
     sections: (t.raw("sections") as EditorialSection[]).map((section, i) => ({
       ...section,
-      text: t(`sections.${i}.text`, values),
+      text: formatBody(`sections.${i}.text`, values),
     })),
     faq: (t.raw("faq") as { question: string; answer: string }[]).map((item, i) => ({
       ...item,
-      answer: t(`faq.${i}.answer`, values),
+      answer: formatBody(`faq.${i}.answer`, values),
     })),
   };
 }

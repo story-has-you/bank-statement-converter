@@ -237,6 +237,11 @@ await assert.rejects(parse(await scanned.save()), (e) => e.code === "UNSUPPORTED
 const empty = await PDFDocument.create();
 empty.addPage().drawText("Not a bank statement");
 await assert.rejects(parse(await empty.save()), (e) => e.code === "TABLE_NOT_FOUND");
+const demoPdf = new File([await readFile("public/samples/demo-statement.pdf")], "demo-statement.pdf", { type: "application/pdf" });
+const demo = await parseWithPdfJs(demoPdf, new AbortController().signal, () => {});
+assert.equal(demo.summary.status, "success");
+assert.equal(demo.summary.validRowCount, 5);
+assert.deepEqual(demo, JSON.parse(await readFile("public/samples/demo-statement-result.json", "utf8")));
 console.log(
   "PDF.js integration: bordered/borderless, continuation, subtotals, headerless-page risks, cross-page merging, multiple tables, watermark, partial result, invalid/empty/oversized/scanned/unsupported PDF, page limit and cancellation passed.",
 );

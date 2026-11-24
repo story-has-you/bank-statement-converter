@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ChevronDownIcon, CircleAlertIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { trackEvent, trackExportSuccess } from "@/lib/analytics";
 import { ExcelDownload } from "@/components/conversion/excel-download";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -21,12 +22,12 @@ import {
 import type { ParseResponse } from "@/lib/conversion-types";
 import { getParseErrorKey, getParseIssueKey } from "@/lib/parse-issues";
 
-type ConversionDownloadsProps = { filename: string; result: ParseResponse; merchants?: MerchantExport };
+type ConversionDownloadsProps = { filename: string; result: ParseResponse; merchants?: MerchantExport; conversionId?: string };
 type SpreadsheetExport = typeof import("@/lib/conversion-spreadsheet-export");
 
 const formats: ExportFormat[] = ["csv", "json", "markdown", "tsv", "html"];
 
-export function ConversionDownloads({ filename, result, merchants }: ConversionDownloadsProps) {
+export function ConversionDownloads({ filename, result, merchants, conversionId }: ConversionDownloadsProps) {
   const t = useTranslations("ConversionResult");
   const locale = useLocale();
   const [failed, setFailed] = useState(false);
@@ -51,13 +52,14 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
       () => {
         if (current) {
           setLoadFailed(true);
+          trackEvent("export_failed", { locale, format: "xlsx", error_code: "EXPORT_LOAD_FAILED" });
         }
       },
     );
     return () => {
       current = false;
     };
-  }, [canDownload, retry]);
+  }, [canDownload, locale, retry]);
 
   const labels = {
     locale,
@@ -78,7 +80,9 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
     setFailed(false);
     try {
       spreadsheet.downloadExcelWorkbook(filename, result, labels, merchants);
+      trackExportSuccess({ locale, format: "xlsx" }, conversionId);
     } catch {
+      trackEvent("export_failed", { locale, format: "xlsx", error_code: "EXPORT_FAILED" });
       setFailed(true);
     }
   }
@@ -98,7 +102,9 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
       }
       setTableDownloads(files.length > 1 ? { format, files } : null);
       downloadExportFiles(files);
+      trackExportSuccess({ locale, format }, conversionId);
     } catch {
+      trackEvent("export_failed", { locale, format, error_code: "EXPORT_FAILED" });
       setFailed(true);
     }
   }
@@ -171,7 +177,9 @@ export function ConversionDownloads({ filename, result, merchants }: ConversionD
                   setFailed(false);
                   try {
                     downloadExportFiles([file]);
+                    trackExportSuccess({ locale, format: tableDownloads.format }, conversionId);
                   } catch {
+                    trackEvent("export_failed", { locale, format: tableDownloads.format, error_code: "EXPORT_FAILED" });
                     setFailed(true);
                   }
                 }}

@@ -40,7 +40,7 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
     setNormalization(next);
     setExportRevision((revision) => revision + 1);
     try {
-      saveConversionPayload(payload.filename, result, next);
+      saveConversionPayload(payload.filename, result, next, payload.conversionId);
       setStorageFailed(false);
     } catch {
       setStorageFailed(true);
@@ -69,7 +69,7 @@ export function ConversionWorkspace({ payload, initialStorageFailed, onReset }: 
             <p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>
           </div>
         </div>
-        <ConversionDownloads key={exportRevision} filename={payload.filename} result={result} merchants={merchants} />
+        <ConversionDownloads key={exportRevision} filename={payload.filename} result={result} merchants={merchants} conversionId={payload.conversionId} />
       </div>
 
       {storageFailed && (

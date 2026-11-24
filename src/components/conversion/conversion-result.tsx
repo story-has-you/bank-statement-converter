@@ -37,7 +37,7 @@ export function ConversionResult() {
 
   let payload: ConversionPayload | null = null;
   if (state.phase === "complete") {
-    payload = { version: 1, filename: state.filename, result: state.result };
+    payload = { version: 1, filename: state.filename, result: state.result, conversionId: state.conversionId };
   } else if (state.phase === "idle" && restored?.revision === revision) {
     payload = restored.payload;
   }

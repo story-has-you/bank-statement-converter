@@ -53,7 +53,8 @@
   "HomeIntro": {
     "eyebrow": "Konversi rekening koran PDF",
     "title": "Konversi rekening koran ke Excel atau CSV",
-    "description": "Ubah rekening koran PDF berbasis teks menjadi Excel atau CSV di browser tanpa mengunggah berkas. Periksa transaksi dan peringatan sebelum mengunduh. Kuota halaman gratis harian: {anonymousPages, number} tanpa masuk, {authenticatedPages, number} setelah masuk."
+    "description": "Analisis standar memproses PDF dengan teks yang bisa dipilih langsung di browser. Periksa baris yang ditandai sebelum mengunduh. Coba {anonymousPages, number} halaman gratis per hari tanpa masuk.",
+    "sampleLink": "Lihat contoh konversi"
   },
   "PdfUpload": {
     "title": "Pilih rekening koran",
@@ -509,7 +510,7 @@
     },
     "technicalData": {
       "title": "Informasi teknis yang diperlukan",
-      "body": "Untuk menjalankan situs, menjaga keamanan, dan menyelidiki kegagalan, kami dapat memproses waktu akses, alamat IP, informasi browser atau perangkat, dan catatan kesalahan tanpa isi rekening koran. Untuk mengukur kunjungan, Google Analytics dan Pageview dapat menerima waktu akses, alamat IP, serta informasi browser atau perangkat. Kami tidak mengirim rekening koran, transaksi hasil ekstraksi, atau isi Excel ke layanan analitik tersebut. Google Analytics juga menerima peristiwa unggah berkas, konversi selesai, awal penggunaan akun gratis, dan langganan terkonfirmasi, beserta bahasa halaman, status dan jumlah halaman konversi, paket, penyedia pembayaran, serta pengenal transaksi langganan untuk menganalisis alur konversi. Peristiwa ini tidak menyertakan nama berkas, alamat email, atau ID akun situs."
+      "body": "Untuk menjalankan situs, menjaga keamanan, dan menyelidiki kegagalan, kami dapat memproses waktu akses, alamat IP, informasi browser atau perangkat, dan catatan kesalahan tanpa isi rekening koran. Untuk mengukur kunjungan, Google Analytics dan Pageview dapat menerima waktu akses, alamat IP, serta informasi browser atau perangkat. Google Analytics mengukur pemilihan berkas, unggahan AI, konversi, ekspor, masuk akun, tampilan paket, checkout, dan pembayaran pertama yang terkonfirmasi. Peristiwa dapat mencakup bahasa, jalur halaman, metode analisis, jumlah halaman, hasil, format, kode kesalahan, paket, penyedia pembayaran, nilai, pajak, mata uang, dan referensi pembayaran. Untuk mengaitkan pembayaran dengan kunjungan, server kami menyimpan sebentar pengenal browser dan sesi Google Analytics. Peristiwa analitik tidak mencakup rekening koran, transaksi, isi berkas hasil, nama berkas, alamat email, atau ID akun StatementXL."
     },
     "purposes": {
       "title": "Tujuan pemrosesan",
@@ -526,7 +527,7 @@
     },
     "storage": {
       "title": "Penyimpanan browser",
-      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser. Alur konversi saat ini juga menyimpan sementara nama berkas dan hasil ekstraksi dalam penyimpanan sesi browser untuk pratinjau dan unduhan. Ini bukan riwayat berkas permanen di server. Kolom sumber merchant yang dipilih, pemetaan alias, dan nama merchant baku yang dikonfirmasi juga disimpan bersama hasil saat ini dalam penyimpanan sesi tab ini. Data dapat dipulihkan setelah memuat ulang dan dihapus bersama hasil saat Anda memulai konversi baru atau membersihkan hasil. Data tidak disimpan di server atau dipakai ulang antarfile; penyeragaman nama tidak membuat permintaan model tambahan. Untuk menghindari peristiwa analitik ganda, penyimpanan lokal browser juga menyimpan penanda per akun atau langganan. Setelah login berhasil, cookie analitik tertunda ditetapkan dan kedaluwarsa setelah 5 menit. Penanda ini tidak berisi isi rekening koran."
+      "body": "Situs menggunakan penyimpanan lokal browser untuk mengingat preferensi tampilan serta cookie sesi yang diperlukan untuk mempertahankan login. Layanan analitik juga dapat menggunakan cookie atau pengenal serupa untuk mengukur kunjungan. Anda dapat mengelolanya melalui pengaturan browser. Alur konversi saat ini juga menyimpan sementara nama berkas dan hasil ekstraksi dalam penyimpanan sesi browser untuk pratinjau dan unduhan. Ini bukan riwayat berkas permanen di server. Kolom sumber merchant yang dipilih, pemetaan alias, dan nama merchant baku yang dikonfirmasi juga disimpan bersama hasil saat ini dalam penyimpanan sesi tab ini. Data dapat dipulihkan setelah memuat ulang dan dihapus bersama hasil saat Anda memulai konversi baru atau membersihkan hasil. Data tidak disimpan di server atau dipakai ulang antarfile; penyeragaman nama tidak membuat permintaan model tambahan. Penanda di browser membantu mencegah penghitungan ganda untuk akun baru, penggunaan gratis, dan ekspor. Cookie pemberitahuan masuk kedaluwarsa dalam lima menit."
     },
     "security": {
       "title": "Keamanan informasi",

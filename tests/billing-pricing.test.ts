@@ -11,10 +11,12 @@ import type { WaffoSubscription, WaffoPayment } from "@/lib/billing/providers/wa
 
 registerHooks({ resolve(specifier, context, next) {
   if (specifier === "@/lib/supabase/server") return { url: "data:text/javascript,billing-auth-fixture", shortCircuit: true };
+  if (specifier === "next/server") return { url: "data:text/javascript,billing-next-fixture", shortCircuit: true };
   if (specifier === "next-intl/server") return { url: "data:text/javascript,billing-i18n-fixture", shortCircuit: true };
   return specifier === "server-only" ? { url: "data:text/javascript,export{}", shortCircuit: true } : next(specifier, context);
 }, load(url, context, next) {
   if (url === "data:text/javascript,billing-auth-fixture") return { format: "module", source: `export async function createClient() { return { auth: { getUser: async () => ({ data: { user: { id: "00000000-0000-4000-8000-000000000001", email: "buyer@example.invalid" } }, error: null }) } }; }`, shortCircuit: true };
+  if (url === "data:text/javascript,billing-next-fixture") return { format: "module", source: `export class NextResponse extends Response {} export function after(callback) { if (globalThis.billingAfter) globalThis.billingAfter.push(callback); }`, shortCircuit: true };
   if (url === "data:text/javascript,billing-i18n-fixture") return { format: "module", source: "export async function getTranslations() { return key => key; }", shortCircuit: true };
   return url === "data:text/javascript,export{}" ? { format: "module", source: "export{}", shortCircuit: true } : next(url, context);
 } });
@@ -23,6 +25,7 @@ const attemptId = "00000000-0000-4000-8000-000000000002";
 const otherAttempt = "00000000-0000-4000-8000-000000000003";
 const productId = "PROD_0123456789012345678901";
 Object.assign(process.env, {
+  NEXT_PUBLIC_GA4_TEST_MEASUREMENT_ID: "G-STATEMENTXLTEST",
   NEXT_PUBLIC_SUPABASE_URL: "https://billing-test.invalid", NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "fixture-public",
   SUPABASE_SERVICE_ROLE_KEY: "fixture-secret", BILLING_QUOTE_SIGNING_SECRET: "fixture-quote-signing-key-at-least-32-bytes", WAFFO_PAYMENT_ENABLED: "true",
   WAFFO_PRODUCT_ID_STANDARD: productId, WAFFO_PRODUCT_ID_PROFESSIONAL: "PROD_1123456789012345678901",
@@ -80,10 +83,10 @@ function waffoPayment(): WaffoPayment {
     snapshotAmountDetails: { subtotal: "19.90", total: "21.89", listTotal: "21.89", discountAmount: "0.00", taxAmount: "1.99", currency: "USD" }, createdAt: new Date(now).toISOString() };
 }
 function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intents: CheckoutIntent[] = []) {
-  const tables: Record<string, Row[]> = { billing_subscriptions: structuredClone(subscriptions), billing_subscription_intents: structuredClone(intents) };
+  const tables: Record<string, Row[]> = { billing_subscriptions: structuredClone(subscriptions), billing_subscription_intents: structuredClone(intents), billing_checkout_analytics: [] };
   const calls: { url: URL; body: Row; method: string }[] = [];
   const state = { orders: [waffoRemote()], payment: waffoPayment(), failCreate: false, copySyncFails: false,
-    copySyncMismatch: false, backfillConflict: false, billingInsertError: null as Row | null,
+    copySyncMismatch: false, backfillConflict: false, analyticsTimeout: false, billingInsertError: null as Row | null,
     beforeCreate: undefined as ((body: Row) => Promise<void>) | undefined };
   t.mock.method(globalThis, "fetch", async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(input instanceof Request ? input.url : input);
@@ -91,12 +94,18 @@ function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intent
     const body = init?.body && !url.pathname.endsWith("token") ? JSON.parse(String(init.body)) : {};
     calls.push({ url, body, method });
     const json = (data: unknown, status = 200) => Response.json(data, { status });
+    if (url.origin === "https://www.google-analytics.com") {
+      if (state.analyticsTimeout) throw new DOMException("Fixture timeout", "TimeoutError");
+      return new Response(null, { status: 204 });
+    }
     if (url.origin === "https://billing-test.invalid") {
       if (url.pathname.startsWith("/auth/v1/admin/users/")) return json({ id: user.id, email: user.email });
       const table = url.pathname.split("/").at(-1)!;
       assert(Object.hasOwn(tables, table), `Unexpected DB table ${table}`);
       const matches = (row: Row) => [...url.searchParams].every(([key, value]) => {
         if (["select", "order", "limit", "offset"].includes(key)) return true;
+        if (value.startsWith("gte.")) return String(row[key]) >= value.slice(4);
+        if (value.startsWith("lt.")) return String(row[key]) < value.slice(3);
         if (value.startsWith("eq.")) return String(row[key]) === value.slice(3);
         if (value === "is.null") return row[key] === null;
         if (value.startsWith("in.(")) return value.slice(4, -1).split(",").includes(String(row[key]));
@@ -105,12 +114,15 @@ function setup(t: TestContext, subscriptions: BillingSubscription[] = [], intent
       let rows = tables[table].filter(matches);
       if (method === "POST") {
         if (table === "billing_subscriptions" && state.billingInsertError) return json(state.billingInsertError, 400);
-        const duplicate = tables[table].some((row) => table === "billing_subscription_intents" ? row.attempt_id === body.attempt_id : row.provider === body.provider && row.provider_subscription_id === body.provider_subscription_id);
+        const duplicate = tables[table].some((row) => table === "billing_checkout_analytics" ? row.checkout_id === body.checkout_id : table === "billing_subscription_intents" ? row.attempt_id === body.attempt_id : row.provider === body.provider && row.provider_subscription_id === body.provider_subscription_id);
         if (duplicate) return json({ code: "23505", message: "Fixture conflict" }, 409);
+        if (table === "billing_checkout_analytics") body.created_at = new Date().toISOString();
         tables[table].push(body); rows = [body];
       } else if (method === "PATCH") {
         if (state.backfillConflict && ("recurring_amount_usd" in body || "quoted_amount_usd" in body)) return json([]);
         rows.forEach((row) => Object.assign(row, body));
+      } else if (method === "DELETE") {
+        tables[table] = tables[table].filter((row) => !matches(row));
       } else assert.equal(method, "GET");
       const headers = new Headers(init?.headers);
       const offset = Number(url.searchParams.get("offset") ?? 0);
@@ -278,6 +290,116 @@ test("signed zero-dollar Waffo webhook stores the discount once and keeps the re
   assert.equal(row.recurring_amount_usd, "24.90");
 });
 
+
+test("authenticated checkout and signed Waffo callbacks send one attributed first purchase", async (t) => {
+  const { tables, calls, state } = setup(t);
+  const { handleBillingWebhook, handleSubscriptionRequest } = await import("@/lib/billing/http");
+  const keys = generateKeyPairSync("rsa", { modulusLength: 2048 });
+  const env = { ...process.env };
+  const queue = globalThis as typeof globalThis & { billingAfter?: (() => Promise<void>)[] };
+  queue.billingAfter = [];
+  t.after(() => {
+    process.env = env;
+    delete queue.billingAfter;
+  });
+  process.env.GA4_MEASUREMENT_PROTOCOL_API_SECRET = "fixture-only";
+  process.env.WAFFO_WEBHOOK_TEST_PUBLIC_KEY = keys.publicKey.export({ type: "spki", format: "pem" }).toString();
+  const remote = state.orders[0];
+  const checkout = () => handleSubscriptionRequest(new Request("https://site.example.invalid/api/billing/subscriptions/create", {
+    method: "POST",
+    headers: { origin: "https://site.example.invalid", "content-type": "application/json", "x-app-locale": "fr" },
+    body: JSON.stringify({ provider: "waffo", tier: "standard", analytics: { clientId: "12345.67890", sessionId: 1234567, email: "excluded@example.invalid" } }),
+  }), "create");
+
+  state.failCreate = true;
+  t.mock.method(console, "error", () => {});
+  assert.equal((await checkout()).status, 502);
+  assert.equal(tables.billing_checkout_analytics.length, 0);
+  state.failCreate = false;
+  tables.billing_checkout_analytics.push({ checkout_id: "expired", created_at: "2000-01-01T00:00:00Z" });
+  const created = await checkout();
+  assert.equal(created.status, 200);
+  const { checkoutId } = await created.json();
+  const request = calls.filter((call) => call.url.pathname.endsWith("create-session")).at(-1)!;
+  assert(!JSON.stringify(request.body).includes("12345.67890"));
+  assert.equal(tables.billing_checkout_analytics.length, 1);
+  assert.equal(tables.billing_checkout_analytics[0].checkout_id, checkoutId);
+  assert.equal(Object.hasOwn(tables.billing_checkout_analytics[0], "email"), false);
+
+  remote.orderMerchantExternalId = checkoutId;
+  remote.metadata = JSON.stringify(request.body.metadata);
+  const subtotal = subscriptionConfig.standard.monthlyPrice;
+  const tax = 1.99;
+  const amount = (subtotal + tax).toFixed(2);
+  remote.priceSnapshot!.regularPhase = { subtotal: subtotal.toFixed(2), total: amount, taxAmount: tax.toFixed(2) };
+  state.payment.orderMerchantExternalId = checkoutId;
+  state.payment.pspAmountDetails.amount = amount;
+  Object.assign(state.payment.snapshotAmountDetails, { subtotal: subtotal.toFixed(2), listTotal: amount, total: amount });
+  const event = { id: "event-purchase", eventId: state.payment.id, eventType: "subscription.payment_succeeded",
+    timestamp: new Date(now).toISOString(), mode: "test", storeId: "fixture-store", data: {
+      orderId: remote.id, paymentId: state.payment.id, periodNumber: 1, currency: "USD", chargedAmount: amount, paymentStatus: "succeeded",
+      merchantProvidedBuyerIdentity: user.id, orderMerchantExternalId: checkoutId,
+    } };
+  const send = () => {
+    const body = JSON.stringify(event);
+    const timestamp = String(Date.now());
+    const signature = sign("RSA-SHA256", Buffer.from(`${timestamp}.${body}`), keys.privateKey).toString("base64");
+    return handleBillingWebhook(new Request("https://site.example.invalid/api/billing/webhooks/waffo", {
+      method: "POST", body, headers: { "x-waffo-signature": `t=${timestamp},v1=${signature}` },
+    }), "waffo");
+  };
+
+  assert.deepEqual((await Promise.all([send(), send(), send()])).map((res) => res.status), [200, 200, 200]);
+  assert.equal(tables.billing_subscriptions.length, 1);
+  assert.equal(queue.billingAfter.length, 1);
+  assert.equal(calls.filter((call) => call.url.pathname === "/mp/collect").length, 0);
+  await queue.billingAfter.shift()!();
+  const requests = calls.filter((call) => call.url.pathname === "/mp/collect");
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].url.searchParams.get("measurement_id"), "G-STATEMENTXLTEST");
+  assert.deepEqual(requests[0].body, {
+    client_id: "12345.67890", timestamp_micros: now * 1_000,
+    events: [{ name: "purchase", params: {
+      session_id: 1234567, debug_mode: true, engagement_time_msec: 1, transaction_id: "waffo:PAY_fixture",
+      currency: "USD", value: subtotal, tax, locale: "fr", plan_tier: "standard", payment_provider: "waffo",
+      items: [{ item_id: "standard", price: subtotal, quantity: 1 }],
+    } }],
+  });
+  assert.equal(tables.billing_checkout_analytics.length, 0);
+  assert.equal((await send()).status, 200);
+  assert.equal(queue.billingAfter.length, 0);
+});
+
+test("GA4 delivery skips missing attribution and treats timeouts as non-blocking", async (t) => {
+  const { tables, calls, state } = setup(t);
+  const previousSecret = process.env.GA4_MEASUREMENT_PROTOCOL_API_SECRET;
+  t.after(() => {
+    if (previousSecret === undefined) delete process.env.GA4_MEASUREMENT_PROTOCOL_API_SECRET;
+    else process.env.GA4_MEASUREMENT_PROTOCOL_API_SECRET = previousSecret;
+  });
+  process.env.GA4_MEASUREMENT_PROTOCOL_API_SECRET = "fixture-only";
+  const { reportFirstPurchase, saveCheckoutAttribution } = await import("@/lib/billing/analytics");
+  const { normalizeWaffoSubscription } = await billingModules();
+  const remote = state.orders[0];
+  const payment = state.payment;
+  const event = {
+    provider: "waffo", id: "event-fixture", at: new Date(now).toISOString(), type: "subscription-paid",
+    subscription: normalizeWaffoSubscription(remote), amount: payment.snapshotAmountDetails.total, recurringAmount: "19.90",
+    originalAmount: payment.snapshotAmountDetails.total, discountAmount: "0.00", providerDiscountId: null, currencyCode: "USD", paidAt: payment.createdAt,
+    payment: { id: payment.id, periodNumber: 1, checkoutId: payment.orderMerchantExternalId!, taxAmount: "1.99", testMode: true },
+  } as const;
+  await reportFirstPurchase(event);
+  assert.equal(calls.some((call) => call.url.pathname === "/mp/collect"), false);
+  const attribution = { clientId: "123.456", sessionId: 987 };
+  await saveCheckoutAttribution(event.payment.checkoutId, "en", attribution, false);
+  assert.equal(tables.billing_checkout_analytics.length, 0);
+  await saveCheckoutAttribution(event.payment.checkoutId, "en", attribution, true);
+  state.analyticsTimeout = true;
+  const warning = t.mock.method(console, "warn", () => {});
+  await reportFirstPurchase(event);
+  assert.deepEqual(warning.mock.calls.map((call) => call.arguments), [["GA4_PURCHASE_DELIVERY_FAILED"]]);
+  assert.equal(tables.billing_checkout_analytics.length, 1);
+});
 
 test("price backfill is read-only by default and uses subscription-level evidence", async (t) => {
   const { tables } = setup(t, [stored({ recurring_amount_usd: null })], [intent({ quoted_amount_usd: null })]);
@@ -600,7 +722,8 @@ async function paidNotification(remote: WaffoSubscription, payment: WaffoPayment
       });
       const verified = verifyWaffoPayment(remote, payment, recurringAmount);
       return { provider: "waffo" as const, id: "event-paid", at: new Date(now).toISOString(), type: "subscription-paid" as const,
-        subscription, recurringAmount, ...verified, currencyCode: "USD" };
+        subscription, recurringAmount, ...verified, currencyCode: "USD",
+        payment: { id: payment.id, periodNumber: payment.periodNumber!, checkoutId: remote.orderMerchantExternalId!, taxAmount: payment.snapshotAmountDetails.taxAmount, testMode: payment.testMode } };
     },
   };
 }

@@ -53,7 +53,8 @@
   "HomeIntro": {
     "eyebrow": "Kontoauszüge als PDF konvertieren",
     "title": "Kontoauszüge in Excel oder CSV umwandeln",
-    "description": "Wandeln Sie textbasierte Kontoauszug-PDFs direkt im Browser in Excel oder CSV um, ohne die Datei hochzuladen. Prüfen Sie Buchungen und Hinweise vor dem Download. Kostenloses Tageskontingent: {anonymousPages, number} ohne Anmeldung, {authenticatedPages, number} nach Anmeldung."
+    "description": "Text-PDFs bleiben bei der Standardverarbeitung in deinem Browser. Prüfe markierte Zeilen vor dem Download. Ohne Anmeldung sind {anonymousPages, number} Seiten pro Tag kostenlos.",
+    "sampleLink": "Konvertierungsbeispiel ansehen"
   },
   "PdfUpload": {
     "title": "Kontoauszug auswählen",
@@ -509,7 +510,7 @@
     },
     "technicalData": {
       "title": "Notwendige technische Informationen",
-      "body": "Für den Betrieb der Website, die Sicherheit und die Fehleranalyse können wir Zugriffszeit, IP-Adresse, Browser- oder Geräteinformationen sowie Fehleraufzeichnungen ohne Kontoauszugsinhalte verarbeiten. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können Zugriffszeit, IP-Adresse sowie Browser- oder Geräteinformationen erhalten. Kontoauszüge, extrahierte Transaktionen und erzeugte Excel-Inhalte werden nicht an diese Analysedienste übermittelt. Google Analytics erhält außerdem Ereignisse zu Datei-Uploads, abgeschlossenen Konvertierungen, dem Beginn der kostenlosen Kontonutzung und bestätigten Abonnements sowie Seitensprache, Konvertierungsstatus und Seitenzahl, Tarif, Zahlungsanbieter und Abonnement-Transaktionskennung, um den Konversionsablauf auszuwerten. Diese Ereignisse enthalten keine Dateinamen, E-Mail-Adressen oder Website-Konto-IDs."
+      "body": "Für den Betrieb der Website, die Sicherheit und die Fehleranalyse können wir Zugriffszeit, IP-Adresse, Browser- oder Geräteinformationen sowie Fehleraufzeichnungen ohne Kontoauszugsinhalte verarbeiten. Für die Besuchsstatistik nutzen wir Google Analytics und Pageview; diese Dienste können Zugriffszeit, IP-Adresse sowie Browser- oder Geräteinformationen erhalten. Google Analytics erfasst Dateiauswahl, KI-Upload, Konvertierung, Export, Anmeldung, Tarifansicht, Checkout und die erste bestätigte Zahlung. Ereignisse können Sprache, Seitenpfad, Verarbeitungsmethode, Seitenzahl, Ergebnis, Exportformat, Fehlercode, Tarif, Zahlungsanbieter, Betrag, Steuer, Währung und Zahlungsreferenz enthalten. Zur Zuordnung der bestätigten Zahlung zum Besuch speichert unser Server die Browser- und Sitzungskennungen von Google Analytics vorübergehend. Kontoauszüge, Transaktionen, Inhalte erzeugter Dateien, Dateinamen, E-Mail-Adressen und StatementXL-Konto-IDs sind von diesen Ereignissen ausgenommen."
     },
     "purposes": {
       "title": "Verarbeitungszwecke",
@@ -526,7 +527,7 @@
     },
     "storage": {
       "title": "Browserspeicher",
-      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten. Im aktuellen Ablauf werden Dateiname und extrahierte Ergebnisse vorübergehend im Sitzungsspeicher des Browsers für Vorschau und Download gespeichert. Dies ist keine dauerhafte Dateihistorie auf dem Server. Auch die ausgewählten Quellspalten für Händlernamen, Aliaszuordnungen und bestätigten einheitlichen Namen werden mit dem aktuellen Ergebnis im Sitzungsspeicher dieses Tabs abgelegt. Sie lassen sich nach dem Neuladen wiederherstellen und werden bei einer neuen Konvertierung oder beim Löschen des Ergebnisses entfernt. Sie werden weder auf dem Server gespeichert noch für andere Dateien verwendet. Die Namensvereinheitlichung löst keine zusätzliche Modellanfrage aus. Um doppelte Statistikereignisse zu vermeiden, speichert der Browser lokal auch Markierungen je Konto oder Abonnement. Nach erfolgreicher Anmeldung wird ein Cookie für die ausstehende Erfassung gesetzt, das nach 5 Minuten abläuft. Diese Markierungen enthalten keine Kontoauszugsinhalte."
+      "body": "Die Website verwendet den lokalen Speicher des Browsers für Darstellungseinstellungen und notwendige Sitzungscookies, um die Anmeldung aufrechtzuerhalten. Analysedienste können für die Besuchsstatistik auch Cookies oder ähnliche Browserkennungen verwenden. Sie können den lokalen Speicher und Cookies über Ihre Browsereinstellungen verwalten. Im aktuellen Ablauf werden Dateiname und extrahierte Ergebnisse vorübergehend im Sitzungsspeicher des Browsers für Vorschau und Download gespeichert. Dies ist keine dauerhafte Dateihistorie auf dem Server. Auch die ausgewählten Quellspalten für Händlernamen, Aliaszuordnungen und bestätigten einheitlichen Namen werden mit dem aktuellen Ergebnis im Sitzungsspeicher dieses Tabs abgelegt. Sie lassen sich nach dem Neuladen wiederherstellen und werden bei einer neuen Konvertierung oder beim Löschen des Ergebnisses entfernt. Sie werden weder auf dem Server gespeichert noch für andere Dateien verwendet. Die Namensvereinheitlichung löst keine zusätzliche Modellanfrage aus. Browsermarkierungen verhindern Mehrfachzählungen bei neuen Konten, kostenloser Nutzung und Exporten. Das Cookie für die Anmeldebenachrichtigung läuft nach fünf Minuten ab."
     },
     "security": {
       "title": "Informationssicherheit",

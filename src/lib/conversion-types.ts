@@ -56,7 +56,7 @@ export type ParseResponse = {
   errors: Array<{ code: string; page: number | null }>;
 };
 
-export type ConversionPayload = { version: 1; filename: string; result: ParseResponse; merchantNormalization?: MerchantNormalization };
+export type ConversionPayload = { version: 1; filename: string; result: ParseResponse; merchantNormalization?: MerchantNormalization; conversionId?: string };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);

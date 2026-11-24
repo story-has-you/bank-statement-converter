@@ -1,7 +1,8 @@
 import "server-only";
 
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
+import { readCheckoutAttribution } from "@/lib/analytics-attribution";
 import { siteConfig } from "@/config/site";
 import { resolveLocale } from "@/i18n/locale";
 import { createClient } from "@/lib/supabase/server";
@@ -12,6 +13,7 @@ import { getPaymentProvider } from "./providers";
 import { cancelSubscription, confirmSubscription, requireConfiguredProvider } from "./subscriptions";
 import { createSubscription } from "./checkouts";
 import { applyBillingEvent } from "./events";
+import { reportFirstPurchase, saveCheckoutAttribution } from "./analytics";
 
 type SubscriptionAction = "create" | "activate" | "cancel";
 
@@ -68,6 +70,8 @@ export async function handleSubscriptionRequest(request: Request, action: Subscr
       const returnUrl = new URL(`${prefix}/billing/return`, siteConfig.url);
       returnUrl.searchParams.set("tier", input.tier);
       const result = await createSubscription(provider, input.tier, { id: data.user.id, email: data.user.email! }, returnUrl.href);
+      const attribution = readCheckoutAttribution(input.analytics);
+      await saveCheckoutAttribution(result.checkoutId, locale, attribution, provider.getCheckoutConfig().settings.environment === "test");
       return NextResponse.json(result, { headers });
     }
     if (action === "activate") {
@@ -120,7 +124,13 @@ export async function handleBillingWebhook(request: Request, providerId: unknown
     if (event) {
       eventId = event.id;
       subscriptionId = event.subscriptionId;
-      const result = await applyBillingEvent(event);
+      const result = await applyBillingEvent(event, (paidEvent) => {
+        try {
+          after(() => reportFirstPurchase(paidEvent));
+        } catch {
+          console.warn("GA4_PURCHASE_SCHEDULING_FAILED");
+        }
+      });
       console.info("Billing webhook event processed", { provider: provider.id, eventId: event.id, type: event.type, result });
     }
     return NextResponse.json({ received: true });

@@ -53,7 +53,8 @@
   "HomeIntro": {
     "eyebrow": "Conversione di estratti conto PDF",
     "title": "Da estratto conto PDF a Excel o CSV",
-    "description": "Converti gli estratti conto PDF con testo in Excel o CSV nel browser, senza caricare il file. Controlla movimenti e avvisi prima del download. Quota gratuita giornaliera: {anonymousPages, number} senza accesso, {authenticatedPages, number} dopo l’accesso."
+    "description": "L’analisi standard elabora i PDF con testo selezionabile nel browser. Controlla le righe segnalate prima di scaricare. Prova {anonymousPages, number} pagina gratis al giorno senza accedere.",
+    "sampleLink": "Vedi un esempio di conversione"
   },
   "PdfUpload": {
     "title": "Seleziona un estratto conto",
@@ -509,7 +510,7 @@
     },
     "technicalData": {
       "title": "Informazioni tecniche necessarie",
-      "body": "Per gestire il sito, garantirne la sicurezza e indagare sui guasti, possiamo trattare orari di accesso, indirizzi IP, informazioni su browser o dispositivo e registri degli errori privi del contenuto degli estratti conto. Per misurare le visite, Google Analytics e Pageview possono ricevere orari di accesso, indirizzi IP e informazioni su browser o dispositivo. Non inviamo estratti conto, movimenti estratti o contenuti Excel a questi servizi di analisi. Google Analytics riceve anche eventi di caricamento dei file, conversione completata, inizio dell’uso gratuito dell’account e abbonamento confermato, insieme a lingua della pagina, stato e numero di pagine della conversione, piano, fornitore di pagamento e identificativo della transazione dell’abbonamento, per analizzare il percorso di conversione. Questi eventi non includono nomi di file, indirizzi e-mail o ID degli account del sito."
+      "body": "Per gestire il sito, garantirne la sicurezza e indagare sui guasti, possiamo trattare orari di accesso, indirizzi IP, informazioni su browser o dispositivo e registri degli errori privi del contenuto degli estratti conto. Per misurare le visite, Google Analytics e Pageview possono ricevere orari di accesso, indirizzi IP e informazioni su browser o dispositivo. Google Analytics misura la selezione dei file, il caricamento per l’IA, la conversione, l’esportazione, l’accesso, la visualizzazione dei piani, l’avvio del pagamento e il primo pagamento confermato. Gli eventi possono includere lingua, percorso della pagina, metodo di analisi, numero di pagine, risultato, formato, codice di errore, piano, fornitore di pagamento, importo, imposta, valuta e riferimento del pagamento. Per associare il pagamento alla visita, il nostro server conserva brevemente gli identificativi del browser e della sessione di Google Analytics. Gli eventi escludono estratti conto, transazioni, contenuti dei file generati, nomi dei file, indirizzi email e ID account StatementXL."
     },
     "purposes": {
       "title": "Finalità del trattamento",
@@ -526,7 +527,7 @@
     },
     "storage": {
       "title": "Archiviazione nel browser",
-      "body": "Il sito usa l'archiviazione locale del browser per ricordare le preferenze di aspetto e i cookie di sessione necessari a mantenere l'accesso. I servizi di analisi possono usare cookie o identificatori simili per misurare le visite. Puoi gestirli nelle impostazioni del browser. Il flusso corrente conserva anche temporaneamente il nome del file e i risultati estratti nella memoria di sessione del browser per anteprima e download. Non si tratta di una cronologia permanente sul server. Anche le colonne di origine scelte per gli esercenti, le associazioni degli alias e i nomi uniformati confermati vengono salvati con il risultato corrente nello spazio di sessione di questa scheda. Si possono recuperare dopo un aggiornamento e vengono cancellati insieme al risultato avviando un’altra conversione o eliminando quella corrente. Non sono salvati sul server né riutilizzati tra file; l’uniformazione non invia ulteriori richieste al modello. Per evitare eventi di analisi duplicati, l’archiviazione locale del browser conserva anche indicatori per account o abbonamento. Dopo un accesso riuscito viene impostato un cookie di analisi in attesa, che scade dopo 5 minuti. Questi indicatori non contengono dati degli estratti conto."
+      "body": "Il sito usa l'archiviazione locale del browser per ricordare le preferenze di aspetto e i cookie di sessione necessari a mantenere l'accesso. I servizi di analisi possono usare cookie o identificatori simili per misurare le visite. Puoi gestirli nelle impostazioni del browser. Il flusso corrente conserva anche temporaneamente il nome del file e i risultati estratti nella memoria di sessione del browser per anteprima e download. Non si tratta di una cronologia permanente sul server. Anche le colonne di origine scelte per gli esercenti, le associazioni degli alias e i nomi uniformati confermati vengono salvati con il risultato corrente nello spazio di sessione di questa scheda. Si possono recuperare dopo un aggiornamento e vengono cancellati insieme al risultato avviando un’altra conversione o eliminando quella corrente. Non sono salvati sul server né riutilizzati tra file; l’uniformazione non invia ulteriori richieste al modello. I marcatori nel browser evitano doppi conteggi di nuovi account, uso gratuito ed esportazioni. Il cookie di notifica dell’accesso scade dopo cinque minuti."
     },
     "security": {
       "title": "Sicurezza delle informazioni",

@@ -13,6 +13,7 @@ import { ConversionProvider } from "@/components/conversion/conversion-provider"
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { routing } from "@/i18n/routing";
+import { analyticsMeasurementId, analyticsTestMode } from "@/config/analytics";
 import { siteConfig } from "@/config/site";
 import "../globals.css";
 
@@ -73,7 +74,7 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
       {process.env.NODE_ENV === "production" && (
         <Script src="https://app.pageview.app/js/script.js" data-domain="bankstatementconverter.xyz" strategy="afterInteractive" />
       )}
-      <GoogleAnalytics gaId="G-93LC8N8C85" />
+      {analyticsMeasurementId && <GoogleAnalytics gaId={analyticsMeasurementId} debugMode={analyticsTestMode} />}
     </html>
   );
 }

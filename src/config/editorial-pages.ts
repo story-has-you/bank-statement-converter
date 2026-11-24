@@ -75,7 +75,10 @@ export const editorialPages = [
     path: "/guides/bank-statement-to-wave",
     kind: "guide",
     checkedOn: "2026-10-19",
-    sources: ["https://support.waveapps.com/hc/en-us/articles/208621626-Upload-a-bank-or-credit-card-statement-in-csv-format"],
+    sources: [
+      "https://support.waveapps.com/hc/en-us/articles/208621626-Upload-a-bank-or-credit-card-statement-in-csv-format",
+      "https://support.waveapps.com/hc/en-us/articles/208622596",
+    ],
   },
   {
     id: "sage",

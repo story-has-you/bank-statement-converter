@@ -149,6 +149,7 @@ function notification(
             providerDiscountId: null,
             currencyCode: "USD",
             paidAt: at,
+            payment: { id, periodNumber: 1, checkoutId: "wco_fixture", taxAmount: "0.00", testMode: true },
           }
         : { ...base, type };
     },
@@ -337,7 +338,7 @@ test("concurrent payment and older cancellation require a retry and preserve can
     notification("subscription-paid", "renewal", existing, { status: "ACTIVE", periodStart: existing.current_period_end, periodEnd }),
     notification("subscription-cancelled", "cancel", existing, { status: "CANCELLED" }, new Date(Date.now() - 1000).toISOString()),
   ];
-  const results = await Promise.allSettled(events.map(applyBillingEvent));
+  const results = await Promise.allSettled(events.map((event) => applyBillingEvent(event)));
   assert.equal(results.filter((result) => result.status === "rejected").length, 1);
   assert.equal(state.casMisses, 1);
   for (const [index, result] of results.entries()) if (result.status === "rejected") await applyBillingEvent(events[index]);

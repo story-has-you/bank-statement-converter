@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { funnelAnalyticsEnabled, trialPendingCookie } from "@/config/analytics";
+import { funnelAnalyticsEnabled, loginPendingCookie, trialPendingCookie } from "@/config/analytics";
 import { getLocalizedPath } from "@/i18n/metadata";
 import { routing } from "@/i18n/routing";
 import { syncBillingSubscriptionStatus } from "@/lib/billing/subscriptions";
@@ -25,12 +25,18 @@ export async function GET(request: Request) {
             console.error("Failed to verify login user for subscription synchronization");
           } else {
             if (funnelAnalyticsEnabled) {
-              response.cookies.set(trialPendingCookie, "true", {
+              const createdAt = Date.parse(data.user.created_at);
+              const lastSignInAt = Date.parse(data.user.last_sign_in_at ?? "");
+              const signInDelay = lastSignInAt - createdAt;
+              const notification = signInDelay >= 0 && signInDelay <= 60_000 ? "sign_up" : "login";
+              const options = {
                 maxAge: 300,
                 path: "/",
-                sameSite: "lax",
+                sameSite: "lax" as const,
                 secure: process.env.NODE_ENV === "production",
-              });
+              };
+              response.cookies.set(loginPendingCookie, notification, options);
+              response.cookies.set(trialPendingCookie, "true", options);
             }
             await syncBillingSubscriptionStatus(data.user.id);
           }

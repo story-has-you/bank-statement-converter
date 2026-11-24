@@ -7,7 +7,8 @@ import { conversionLimits } from "@/config/conversion";
 import { ConversionError } from "@/lib/conversion-errors";
 
 import { createClient } from "@/lib/supabase/browser";
-import { trackEvent } from "@/lib/analytics";
+import { analyticsPage, trackEvent } from "@/lib/analytics";
+import { canDownloadResult } from "@/lib/conversion-export";
 import { usePathname } from "@/i18n/navigation";
 import { clearConversionPayload, saveConversionPayload } from "@/lib/conversion-storage";
 import { conversionRevisionAtom, conversionStateAtom } from "@/lib/conversion-state";
@@ -101,6 +102,9 @@ function ConversionController({ children }: { children: ReactNode }) {
     active.current?.abort();
     const controller = new AbortController();
     active.current = controller;
+    const analytics = { ...analyticsPage(locale, pathname), method };
+    const conversionId = window.crypto?.randomUUID?.() ?? `conversion-${performance.timeOrigin}-${performance.now()}`;
+    trackEvent("conversion_start", analytics);
     enteredResult.current = false;
     try {
       clearConversionPayload();
@@ -129,32 +133,44 @@ function ConversionController({ children }: { children: ReactNode }) {
           });
           if (!response.ok) {
             const payload = await response.json();
-            throw new ConversionStreamError("request", payload.message);
+            throw new ConversionStreamError("request", payload.message, payload.code);
           }
         } else {
           const body = new FormData();
           body.append("file", file);
           body.append("method", "llm");
-          trackEvent("file_upload", { locale });
+          trackEvent("upload_start", analytics);
           const response = await fetch("/api/convert", {
             method: "POST",
             body,
             headers: { "x-app-locale": locale, Accept: "text/event-stream" },
             signal: controller.signal,
           });
-          result = await readConversionStream(response, onPreview);
+          let uploadAcknowledged = false;
+          result = await readConversionStream(response, (preview) => {
+            if (!uploadAcknowledged && active.current === controller && !controller.signal.aborted) {
+              uploadAcknowledged = true;
+              trackEvent("upload_success", analytics);
+            }
+            onPreview(preview);
+          });
         }
         if (active.current !== controller || controller.signal.aborted) {
           return;
         }
-        trackEvent("conversion_success", { locale, result_status: result.summary.status, page_count: result.pageCount });
+        const status = result.summary.status;
+        if (status !== "failed" && canDownloadResult(result)) {
+          trackEvent("conversion_success", { ...analytics, result_status: status, page_count: result.pageCount });
+        } else {
+          trackEvent("conversion_failed", { ...analytics, stage: "conversion", error_code: "NO_VERIFIABLE_TRANSACTIONS" });
+        }
         let storageFailed = false;
         try {
-          saveConversionPayload(file.name, result);
+          saveConversionPayload(file.name, result, undefined, conversionId);
         } catch {
           storageFailed = true;
         }
-        setState({ phase: "complete", filename: file.name, result, storageFailed });
+        setState({ phase: "complete", filename: file.name, result, storageFailed, conversionId });
       } catch (error) {
         if (active.current !== controller || controller.signal.aborted) {
           return;
@@ -166,6 +182,11 @@ function ConversionController({ children }: { children: ReactNode }) {
         } else if (error instanceof ConversionStreamError) {
           message = error.serverMessage ?? t(`errors.${error.reason}`);
         }
+        const reportedCode = error instanceof ConversionStreamError ? error.serverCode : code;
+        const errorCode = reportedCode && /^[A-Z0-9_]+$/.test(reportedCode) && apiErrors.has(reportedCode as keyof AppConfig["Messages"]["ApiErrors"])
+          ? reportedCode
+          : error instanceof ConversionStreamError ? `STREAM_${error.reason.toUpperCase()}` : "UNKNOWN";
+        trackEvent("conversion_failed", { ...analytics, stage: "conversion", error_code: errorCode });
         setState({ phase: "error", filename: file.name, message });
       } finally {
         if (active.current === controller) {

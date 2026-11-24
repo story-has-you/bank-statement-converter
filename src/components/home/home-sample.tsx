@@ -10,7 +10,7 @@ export async function HomeSample() {
   const table = sample.tables[0];
 
   return (
-    <section className="px-5 sm:px-8" aria-labelledby="sample-title">
+    <section id="sample" className="scroll-mt-6 px-5 sm:px-8" aria-labelledby="sample-title">
       <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-5 border-t border-foreground pb-12 pt-6">
         <div className="grid items-baseline gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <h2 id="sample-title" className="font-heading text-2xl font-medium sm:text-3xl">

@@ -14,12 +14,14 @@ function requireTime(value: string | null): number {
 }
 
 /** 仅接受渠道验签和远端核实后的标准化事件，统一控制持久化及账期演进。 */
-export async function applyBillingEvent(notification: BillingNotification): Promise<"applied" | "ignored"> {
+type OnFirstPayment = (event: Extract<BillingEvent, { type: "subscription-paid" }>) => void;
+
+export async function applyBillingEvent(notification: BillingNotification, onFirstPayment?: OnFirstPayment): Promise<"applied" | "ignored"> {
   if (notification.type === "subscription-resumed") {
     return resumeCancelledSubscription(notification);
   }
   if (notification.type === "subscription-paid" || notification.type === "subscription-status-changed") {
-    return applyPaidSubscriptionEvent(notification);
+    return applyPaidSubscriptionEvent(notification, onFirstPayment);
   }
   const existing = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
   if (!existing) {
@@ -70,7 +72,7 @@ async function resumeCancelledSubscription(notification: BillingNotification): P
 }
 
 /** 渠道付款先核实交易，再按已有记录区分首次付款、恢复与续费。 */
-async function applyPaidSubscriptionEvent(notification: BillingNotification): Promise<"applied" | "ignored"> {
+async function applyPaidSubscriptionEvent(notification: BillingNotification, onFirstPayment?: OnFirstPayment): Promise<"applied" | "ignored"> {
   const existing = await findBillingSubscriptionByProviderId(notification.provider, notification.subscriptionId);
   if (existing?.last_webhook_event_id === notification.id) {
     return "ignored";
@@ -108,7 +110,9 @@ async function applyPaidSubscriptionEvent(notification: BillingNotification): Pr
     throw new Error("Paid subscription period is invalid");
   }
   if (!existing) {
-    return insertConfirmedSubscription(event, remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE");
+    const result = await insertConfirmedSubscription(event, remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE");
+    if (result === "applied" && event.payment.periodNumber === 1) onFirstPayment?.(event);
+    return result;
   }
   const status = existing.status === "CANCELLED" || remote.status === "CANCELLED" ? "CANCELLED" : "ACTIVE";
   const previousEnd = requireTime(existing.current_period_end);

@@ -53,7 +53,8 @@
   "HomeIntro": {
     "eyebrow": "Conversion de relevés bancaires PDF",
     "title": "Convertir un relevé bancaire en Excel ou CSV",
-    "description": "Convertissez les relevés PDF contenant du texte en Excel ou CSV dans votre navigateur, sans envoyer le fichier. Vérifiez les opérations et les alertes avant de télécharger. Quota gratuit quotidien : {anonymousPages, number} sans connexion, {authenticatedPages, number} après connexion."
+    "description": "L’analyse standard traite les PDF dont le texte est sélectionnable dans votre navigateur. Vérifiez les lignes signalées avant le téléchargement. Essayez gratuitement {anonymousPages, number} page par jour sans connexion.",
+    "sampleLink": "Voir un exemple de conversion"
   },
   "PdfUpload": {
     "title": "Choisir un relevé bancaire",
@@ -509,7 +510,7 @@
     },
     "technicalData": {
       "title": "Informations techniques nécessaires",
-      "body": "Pour exploiter le site, maintenir la sécurité et analyser les erreurs, nous pouvons traiter l'heure d'accès, l'adresse IP, les informations sur le navigateur ou l'appareil et des journaux d'erreurs sans contenu des relevés. Pour mesurer les visites, Google Analytics et Pageview peuvent recevoir l'heure d'accès, l'adresse IP et les informations sur le navigateur ou l'appareil. Les relevés bancaires, les transactions extraites et le contenu des fichiers Excel générés ne sont pas transmis à ces services d'analyse. Google Analytics reçoit aussi des événements de téléversement de fichiers, de conversion terminée, de début d’utilisation gratuite du compte et d’abonnement confirmé, ainsi que la langue de la page, le statut et le nombre de pages de la conversion, la formule, le prestataire de paiement et l’identifiant de transaction de l’abonnement, afin d’analyser le parcours de conversion. Ces événements ne contiennent ni nom de fichier, ni adresse e-mail, ni identifiant de compte du site."
+      "body": "Pour exploiter le site, maintenir la sécurité et analyser les erreurs, nous pouvons traiter l'heure d'accès, l'adresse IP, les informations sur le navigateur ou l'appareil et des journaux d'erreurs sans contenu des relevés. Pour mesurer les visites, Google Analytics et Pageview peuvent recevoir l'heure d'accès, l'adresse IP et les informations sur le navigateur ou l'appareil. Google Analytics mesure la sélection de fichiers, l’envoi pour analyse IA, la conversion, l’exportation, la connexion, la consultation des offres, le passage en caisse et le premier paiement confirmé. Les événements peuvent inclure la langue, le chemin de page, le mode d’analyse, le nombre de pages, le résultat, le format d’export, le code d’erreur, l’offre, le prestataire de paiement, le montant, la taxe, la devise et une référence de paiement. Pour associer le paiement confirmé à la visite, notre serveur conserve brièvement les identifiants de navigateur et de session de Google Analytics. Les événements excluent relevés bancaires, opérations, contenu des fichiers générés, noms de fichiers, adresses e-mail et identifiants de compte StatementXL."
     },
     "purposes": {
       "title": "Finalités du traitement",
@@ -526,7 +527,7 @@
     },
     "storage": {
       "title": "Stockage du navigateur",
-      "body": "Le site utilise le stockage local du navigateur pour mémoriser les préférences d'apparence et les cookies de session nécessaires pour maintenir la connexion. Les services d'analyse peuvent aussi utiliser des cookies ou des identifiants de navigateur similaires pour mesurer les visites. Vous pouvez gérer le stockage local et les cookies dans les paramètres de votre navigateur. Le parcours de conversion conserve aussi temporairement le nom du fichier et les résultats extraits dans le stockage de session du navigateur pour l’aperçu et le téléchargement. Il ne s’agit pas d’un historique permanent côté serveur. Les colonnes sources choisies pour les commerçants, les correspondances d’alias et les noms uniformisés confirmés sont aussi conservés avec le résultat dans le stockage de session de cet onglet. Ils peuvent être restaurés après actualisation et sont effacés avec le résultat lors d’une nouvelle conversion ou de sa suppression. Ils ne sont ni enregistrés sur le serveur ni réutilisés pour d’autres fichiers. L’uniformisation ne déclenche aucun appel supplémentaire au modèle. Pour éviter les événements statistiques en double, le stockage local du navigateur conserve aussi des marqueurs par compte ou abonnement. Après une connexion réussie, un cookie de suivi en attente est défini et expire au bout de 5 minutes. Ces marqueurs ne contiennent aucun contenu de relevé."
+      "body": "Le site utilise le stockage local du navigateur pour mémoriser les préférences d'apparence et les cookies de session nécessaires pour maintenir la connexion. Les services d'analyse peuvent aussi utiliser des cookies ou des identifiants de navigateur similaires pour mesurer les visites. Vous pouvez gérer le stockage local et les cookies dans les paramètres de votre navigateur. Le parcours de conversion conserve aussi temporairement le nom du fichier et les résultats extraits dans le stockage de session du navigateur pour l’aperçu et le téléchargement. Il ne s’agit pas d’un historique permanent côté serveur. Les colonnes sources choisies pour les commerçants, les correspondances d’alias et les noms uniformisés confirmés sont aussi conservés avec le résultat dans le stockage de session de cet onglet. Ils peuvent être restaurés après actualisation et sont effacés avec le résultat lors d’une nouvelle conversion ou de sa suppression. Ils ne sont ni enregistrés sur le serveur ni réutilisés pour d’autres fichiers. L’uniformisation ne déclenche aucun appel supplémentaire au modèle. Des marqueurs dans le navigateur évitent de compter deux fois les nouveaux comptes, l’utilisation gratuite et les exports. Le cookie de notification de connexion expire après cinq minutes."
     },
     "security": {
       "title": "Sécurité des informations",
@@ -1131,20 +1132,21 @@
         "planCta": "Comparer les offres de conversion"
       },
       "wave": {
-        "title": "Relevé PDF vers Wave : vérifier et charger les transactions",
-        "intro": "Procédure CSV manuelle pour Wave aux États-Unis et au Canada. Convertissez seulement sans export bancaire adapté ; vérifiez compte et sens des montants dans Wave.",
+        "title": "Importer un relevé bancaire dans Wave avec un CSV",
+        "intro": "Aux États-Unis et au Canada, partez d’un export bancaire compatible si vous en avez un. Si vous disposez seulement d’un PDF, vérifiez les opérations dans StatementXL, puis préparez une copie CSV pour l’import manuel dans Wave.",
         "sections": [
           {
-            "title": "Conserver deux copies",
-            "text": "Comparez dates, libellés, montants et risques au PDF. Gardez l’export complet ; retirez de la copie d’import soldes, lignes vides et colonnes de risque/source. Ne mélangez ni comptes ni devises."
+            "title": "Préparer une copie CSV",
+            "text": "Gardez l’export StatementXL complet. Dans une copie, retirez le solde, les totaux, les lignes vides ainsi que les colonnes de risque et de source. Wave accepte trois colonnes (date, description et montant), ou quatre si dépôts et retraits sont séparés. Utilisez des dates AAAA-MM-JJ. Préparez un fichier par compte et par devise. Voici deux opérations fictives d’un compte courant.",
+            "example": "Date,Description,Amount\n2026-10-01,Achat,-12.34\n2026-10-02,Virement reçu,200.00"
           },
           {
-            "title": "Utiliser l’aperçu Wave",
-            "text": "Accounting → Transactions → More → Upload transactions : choisissez fichier et compte. Confirmez date, montant et libellé avant Upload my statement. La sélection distingue dépôts d’un compte courant et dépenses de carte : vérifiez le sens."
+            "title": "Importer et vérifier les colonnes dans Wave",
+            "text": "Dans Accounting → Transactions → More → Upload transactions, choisissez le CSV et le compte dans Payment Account, puis cliquez sur Upload. Vérifiez les correspondances de date, de montant et de description. Pour un compte courant, sélectionnez la colonne représentant les dépôts lorsqu’elle est proposée. Pour une carte de crédit, les achats sont positifs et les paiements négatifs. Vérifiez le sens des opérations dans l’aperçu, puis cliquez sur Upload my statement."
           },
           {
-            "title": "Contrôler l’existant",
-            "text": "Comparez avec connexions bancaires et anciens chargements pour éviter les doublons, puis catégorisez et rapprochez. Ce guide n’ajoute ni connexion Wave, ni classement automatique, ni export dédié."
+            "title": "Contrôler les doublons",
+            "text": "Comparez les opérations avec les connexions bancaires et les chargements précédents. Après l’import, vérifiez le nombre d’opérations et rapprochez les montants avec le relevé original."
           }
         ],
         "faq": [
@@ -1153,7 +1155,7 @@
             "answer": "Non. Téléchargez et contrôlez les données, préparez un CSV puis chargez-le et confirmez les champs dans Wave."
           }
         ],
-        "metaDescription": "Préparez un import CSV manuel dans Wave aux États-Unis ou au Canada. Vérifiez le compte, les dates et le sens des montants."
+        "metaDescription": "Préparez le CSV d’un relevé bancaire pour Wave. Vérifiez les colonnes, le compte, les dates et le sens des montants avant l’import manuel."
       },
       "sage": {
         "title": "Relevé PDF vers Sage Accounting UK : préparer un CSV",
@@ -1652,7 +1654,7 @@
       "hsbc": "HSBC personnel GBP (Royaume-Uni)",
       "quickbooks": "QuickBooks CSV (sources américaines)",
       "xero": "Import dans Xero",
-      "wave": "Wave : import manuel",
+      "wave": "Importer un relevé bancaire dans Wave (CSV manuel)",
       "sage": "Sage Accounting (Royaume-Uni)",
       "loan": "Dossier de demande de prêt",
       "tax": "Justificatifs fiscaux (IRS américain)",

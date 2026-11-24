@@ -7,11 +7,12 @@ import type { CheckoutResult, PaymentProviderId } from "@/lib/billing/provider";
 type CheckoutSessionProps = {
   provider: PaymentProviderId;
   createCheckout: () => Promise<CheckoutResult>;
-  onError: () => void;
+  onReady: () => void;
+  onError: (code: "CHECKOUT_CREATE_FAILED" | "CHECKOUT_REDIRECT_FAILED") => void;
   children: (session: { labels: { subscribe: string; processing: string }; pending: boolean; start: () => Promise<void> }) => ReactNode;
 };
 
-const CheckoutSession: FC<CheckoutSessionProps> = ({ provider, createCheckout, onError, children }) => {
+const CheckoutSession: FC<CheckoutSessionProps> = ({ provider, createCheckout, onReady, onError, children }) => {
   const t = useTranslations("Billing");
   const [pending, setPending] = useState(false);
   async function start(): Promise<void> {
@@ -19,12 +20,15 @@ const CheckoutSession: FC<CheckoutSessionProps> = ({ provider, createCheckout, o
       return;
     }
     setPending(true);
+    let errorCode: Parameters<CheckoutSessionProps["onError"]>[0] = "CHECKOUT_CREATE_FAILED";
     try {
       const result = await createCheckout();
+      errorCode = "CHECKOUT_REDIRECT_FAILED";
+      onReady();
       window.location.assign(result.checkoutUrl);
     } catch {
       setPending(false);
-      onError();
+      onError(errorCode);
     }
   }
   const name = t(`providers.${provider}`);

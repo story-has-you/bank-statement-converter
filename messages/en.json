@@ -57,7 +57,8 @@
   "HomeIntro": {
     "eyebrow": "Bank statement PDF conversion",
     "title": "Bank Statement Converter: PDF to Excel & CSV",
-    "description": "Convert a text-based bank statement PDF to Excel or CSV without uploading it. Standard parsing runs in your browser. Review transactions and flagged rows before downloading. Try {anonymousPages, plural, one {# page} other {# pages}} a day without signing in, or {authenticatedPages, plural, one {# page} other {# pages}} after signing in."
+    "description": "Standard parsing handles PDFs with selectable text in your browser. Check flagged rows before downloading. Try {anonymousPages, plural, one {# page} other {# pages}} free each day without signing in.",
+    "sampleLink": "See a conversion example"
   },
   "PdfUpload": {
     "title": "Choose a bank statement",
@@ -513,7 +514,7 @@
     },
     "technicalData": {
       "title": "Necessary technical information",
-      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. To measure visits, Google Analytics and Pageview may receive access time, IP address, and browser or device information. We do not send bank statements, extracted transactions, or generated Excel content to these analytics services. Google Analytics also receives events for file uploads, completed conversions, starting free account usage, and confirmed subscriptions, along with the page language, conversion status and page count, plan, payment provider, and subscription transaction identifier, to analyze the conversion journey. These events do not include filenames, email addresses, or website account IDs."
+      "body": "To operate the website, maintain security, and investigate failures, we may process access time, IP address, browser or device information, and error records that do not contain statement content. To measure visits, Google Analytics and Pageview may receive access time, IP address, and browser or device information. Google Analytics measures file selection, AI upload, conversion, export, sign-in, plan views, checkout and first confirmed payments. Events may include language, page path, parsing method, page count, result status, output format, error code, plan, payment provider, amount, tax, currency and a payment reference. For checkout attribution, our server briefly stores the Google Analytics browser and session identifiers and uses them to associate the confirmed payment with the visit. Analytics events exclude bank statements, transactions, generated file contents, filenames, email addresses and StatementXL account IDs."
     },
     "purposes": {
       "title": "Processing purposes",
@@ -530,7 +531,7 @@
     },
     "storage": {
       "title": "Browser storage",
-      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history. Selected merchant source columns, alias mappings and confirmed merchant names are also stored with the current result in this tab’s session storage. They can be restored on refresh and are cleared with the result when you start another conversion or clear the current one. They are not saved on the server or reused across files; merchant normalization makes no additional model request. To avoid duplicate analytics events, browser local storage also keeps markers for each account or subscription. A pending analytics cookie expires 5 minutes after successful sign-in. These markers contain no statement content."
+      "body": "The website uses browser local storage to remember appearance preferences and necessary session cookies to maintain sign-in. Analytics services may also use cookies or similar browser identifiers to measure visits. You can manage local storage and cookies through your browser settings. The current conversion also temporarily stores the filename and extracted results in browser session storage for preview and download. This is not server-side persistent file history. Selected merchant source columns, alias mappings and confirmed merchant names are also stored with the current result in this tab’s session storage. They can be restored on refresh and are cleared with the result when you start another conversion or clear the current one. They are not saved on the server or reused across files; merchant normalization makes no additional model request. Browser markers help avoid counting new account, free usage and export events twice. The sign-in notification cookie expires after 5 minutes."
     },
     "security": {
       "title": "Information security",
@@ -1089,8 +1090,8 @@
     "officialProfiles": "Official profiles",
     "pages": {
       "docuclipper": {
-        "title": "StatementXL vs DocuClipper: bank statement conversion",
-        "intro": "Choose StatementXL to review one PDF and export Excel or CSV with local parsing in your browser. Consider DocuClipper for batches, QBO output or QuickBooks/Xero integrations. StatementXL wrote this comparison from official product descriptions; we have not run an independent speed or accuracy test.",
+        "title": "StatementXL vs DocuClipper for bank statement conversion",
+        "intro": "Review a single statement PDF and download Excel or CSV with StatementXL’s browser parser. Choose DocuClipper if your work requires batches, QBO output, or a direct QuickBooks Online or Xero connection. The comparison uses published product information.",
         "sections": [
           {
             "title": "When DocuClipper is a better fit",
@@ -1105,8 +1106,8 @@
             "text": "Both products publish page-based plans, but their included features and limits differ. StatementXL separates local parsing from optional AI by tier. DocuClipper says its trial allows inspection of extracted transactions, with an upgrade required to export or sync. Compare the plan needed for your actual files and handoff, including manual corrections. Use the current official pricing rather than assuming a trial includes a usable export."
           },
           {
-            "title": "Check the handoff your job requires",
-            "text": "For one monthly PDF, check that the spreadsheet contains every transaction and keeps the evidence needed to review uncertain rows. If your handoff requires QBO, a batch of files or an API, confirm that requirement and the applicable plan with DocuClipper.\n\nBefore choosing, use the same permitted sample to check row count, dates, amount direction and wrapped descriptions. Reconcile opening balance plus incoming money minus outgoing money with the closing balance. Matching totals do not prove every row is correct."
+            "title": "Test your actual handoff",
+            "text": "Check row count, dates, incoming and outgoing amounts, and wrapped descriptions on one representative PDF. If you need QBO, batch intake or an API, verify those steps on the DocuClipper plan you intend to use."
           }
         ],
         "faq": [
@@ -1131,45 +1132,33 @@
             "answer": "We have not run a controlled head-to-head test. Compare the same permitted sample against its PDF: transaction count, dates, amount direction, descriptions and balances. Matching totals alone do not prove that every transaction is correct."
           }
         ],
-        "metaDescription": "StatementXL vs DocuClipper: compare browser-based PDF review, batch processing, Excel/CSV/QBO exports, accounting integrations and page-based plans."
+        "metaDescription": "Compare StatementXL and DocuClipper for bank statement conversion, including local review, batch processing, Excel, CSV and QBO exports, and page-based pricing."
       },
       "alternatives": {
         "title": "DocuClipper alternatives for bank statement conversion",
-        "intro": "Choosing a bank statement converter? Compare StatementXL, Nanonets and your bank's own export before replacing DocuClipper. The right option depends on the output and review work you need. Use a native CSV or Excel download when it meets those needs.",
+        "intro": "Before replacing DocuClipper, check what you need at the end of the job. A bank export may already have the right columns. For a single PDF, try a spreadsheet you can review. For batches or automated handoffs, check the outputs and connections your team requires.",
         "sections": [
           {
-            "title": "Try a native transaction download first",
-            "text": "If online banking offers a CSV or Excel download for the required period, use it before converting a PDF. Check whether it includes the booked date, description, amount and required account or currency. A native export and an official PDF statement serve different purposes; keep the original PDF when supporting evidence is needed."
+            "title": "Use your bank’s export if it fits",
+            "text": "Download the CSV or Excel file for the required dates. Check the account, currency, transaction dates, descriptions and amounts. Keep the original PDF if you need it as supporting evidence."
           },
           {
-            "title": "Compare three different workflows",
-            "text": "StatementXL focuses on one-PDF conversion with row-level risk and source references. DocuClipper advertises broader financial-document extraction, batch processing and accounting-oriented exports. Nanonets offers configurable automation, API access and workflow blocks. A small manual job and a high-volume integration have different requirements."
+            "title": "Review a single PDF in StatementXL",
+            "text": "For a text-based PDF, select the file in your browser, compare flagged rows with the source, and download Excel or CSV. The sample above includes dates, descriptions, amounts and balances from a synthetic PDF. Try an allowed representative statement before moving your monthly workflow."
           },
           {
-            "title": "Evaluate the complete handoff",
-            "text": "Check the output required by your destination software, the available plan, file limits, privacy terms and review effort. StatementXL exports require manual preparation for accounting imports. Vendor features and prices can change; the linked official pages are the source for current commercial terms."
-          },
-          {
-            "title": "Also compare price, merging and team review",
-            "text": "StatementCheap offers lower-priced page plans and accounting export formats. FlowParse offers multi-file merging and an API. CapyParse offers shared workspaces and batch review on its Firm plan. Read the detailed comparisons for free allowances, billing periods and processing boundaries. These are vendor descriptions, not independent accuracy measurements.",
+            "title": "Check batch processing and connected workflows",
+            "text": "For QBO output or a QuickBooks Online or Xero connection, confirm the workflow and plan with DocuClipper before switching. For automated email or cloud storage intake, check Nanonets connectors and estimate the workflow credits for one complete job.",
             "links": [
               {
-                "href": "/compare/statementxl-vs-statementcheap",
-                "label": "StatementXL vs StatementCheap: local review, price and accounting exports"
+                "href": "/compare/statementxl-vs-docuclipper",
+                "label": "Compare StatementXL and DocuClipper"
               },
               {
-                "href": "/compare/statementxl-vs-flowparse",
-                "label": "StatementXL vs FlowParse: local review or multi-file merging"
-              },
-              {
-                "href": "/compare/statementxl-vs-capyparse",
-                "label": "StatementXL vs CapyParse: local review, OCR and team workflows"
+                "href": "/compare/statementxl-vs-nanonets",
+                "label": "Compare StatementXL and Nanonets"
               }
             ]
-          },
-          {
-            "title": "Choose an alternative by the missing step",
-            "text": "If the bank already supplies a usable CSV, check its date range and columns before paying for PDF extraction. If only a PDF is available and you need a reviewed spreadsheet, try a representative file in StatementXL. If the missing step is automated intake or a connected workflow, evaluate the relevant vendor features and plan.\n\nFor each option, write down the required output, files per job and manual corrections. Keep the original PDF and compare a complete handoff rather than the number of advertised features."
           }
         ],
         "faq": [
@@ -1178,11 +1167,11 @@
             "answer": "Try the bank’s native export first. If only a PDF is available, choose a tool by the required output and review workflow, then check it with a representative file."
           }
         ],
-        "metaDescription": "Explore DocuClipper alternatives: a native bank export, StatementXL or Nanonets. Choose by output requirements, automation and review effort."
+        "metaDescription": "Choose a DocuClipper alternative for your banking workflow. Compare native bank exports, single-PDF review in StatementXL and connected batch or automated options."
       },
       "nanonets": {
-        "title": "StatementXL vs Nanonets: bank statement conversion",
-        "intro": "Choose StatementXL for reviewing one PDF and downloading Excel or CSV with local parsing in your browser. Consider Nanonets when extraction must connect to email, cloud storage or a broader automated workflow. StatementXL wrote this comparison using official descriptions; it does not establish which service is more accurate.",
+        "title": "StatementXL vs Nanonets for bank statement conversion",
+        "intro": "For a single statement, use StatementXL to review transactions in your browser and export Excel or CSV. For an automated pipeline, evaluate Nanonets for email intake, storage connectors and configurable workflows. Compare page quotas and workflow credits over a complete job.",
         "sections": [
           {
             "title": "Where Nanonets has an advantage",
@@ -1197,8 +1186,8 @@
             "text": "Nanonets describes credit-based pricing for workflow block runs, while StatementXL’s paid plans use monthly PDF-page quotas. Credits, block runs and pages are not interchangeable units. Evaluate a complete job, including manual review, rather than deriving a per-page comparison from unlike plan units."
           },
           {
-            "title": "Separate a spreadsheet task from an automation project",
-            "text": "For a one-off statement, check extracted dates, amounts, descriptions and risk flags before downloading. For a recurring pipeline, first list where files arrive, the fields required by the next system and who reviews uncertain results. Confirm that Nanonets supports those steps and connectors under the proposed plan.\n\nCompare one complete job: input pages, workflow runs, corrections and delivery. Do not treat workflow credits as PDF pages, or the two-layout StatementXL sample report as a head-to-head benchmark."
+            "title": "Test one job from intake to delivery",
+            "text": "For a spreadsheet, check dates, amounts, descriptions and flagged rows before downloading. For an automated pipeline, list where documents arrive, which fields the next system requires, and who reviews exceptions. Confirm the required connectors and credit use for those steps."
           }
         ],
         "faq": [
@@ -1223,7 +1212,7 @@
             "answer": "No. StatementXL paid plans use PDF-page quotas; Nanonets charges for workflow block runs using credits. Estimate every step, run and manual correction for the same complete job. Do not treat one credit or one block run as one PDF page."
           }
         ],
-        "metaDescription": "StatementXL vs Nanonets: compare browser-based PDF review with document workflows, Excel/CSV handoffs, connectors and page quotas versus workflow credits."
+        "metaDescription": "Compare StatementXL and Nanonets for bank statement conversion, from browser-based Excel and CSV review to email intake, connectors and credit-based automation."
       },
       "xero": {
         "title": "Bank statement PDF to Xero: prepare a CSV import",
@@ -1646,7 +1635,9 @@
         "metaDescription": "Compare StatementXL and CapyParse: local parsing, AI OCR, row review, QBO exports, team workspaces, monthly prices and the one-time free allowance."
       }
     },
-    "officialWebsite": "Official website: {url}"
+    "officialWebsite": "Official website: {url}",
+    "comparisonSample": "See a sample StatementXL conversion",
+    "comparisonPricing": "Check official competitor pricing"
   },
   "BalanceChecker": {
     "title": "Balance checker",

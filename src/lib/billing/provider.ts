@@ -52,6 +52,7 @@ export type BillingEvent = EventBase &
         providerDiscountId: string | null;
         currencyCode: string;
         paidAt: string;
+        payment: { id: string; periodNumber: number; checkoutId: string; taxAmount: string; testMode: boolean };
       }
     | { type: "subscription-status-changed" }
     | { type: "subscription-resumed" }

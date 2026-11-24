@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { useAtomValue } from "jotai";
 import { ArrowRightIcon, CircleAlertIcon, FileTextIcon, LoaderCircleIcon, UploadIcon, XIcon } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 
+import { analyticsPage, trackEvent } from "@/lib/analytics";
 import { conversionLimits, maxUploadBytes } from "@/config/conversion";
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
@@ -26,6 +27,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
   const t = useTranslations("PdfUpload");
   const format = useFormatter();
   const router = useRouter();
+  const analytics = analyticsPage(useLocale(), usePathname());
   const inputRef = useRef<HTMLInputElement>(null);
   const account = usePublicAccount();
   const tier = account.summary.activeTier;
@@ -77,6 +79,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     if (!candidate.name.toLowerCase().endsWith(".pdf") || (candidate.type && candidate.type !== "application/pdf")) {
       setFile(null);
       setError("invalidPdf");
+      trackEvent("conversion_failed", { ...analytics, stage: "selection", error_code: "INVALID_FILE_TYPE" });
       if (inputRef.current) {
         inputRef.current.value = "";
       }
@@ -86,6 +89,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     if (candidate.size === 0 || candidate.size > maxUploadBytes) {
       setFile(null);
       setError(candidate.size === 0 ? "emptyFile" : "fileTooLarge");
+      trackEvent("conversion_failed", { ...analytics, stage: "selection", error_code: candidate.size === 0 ? "EMPTY_FILE" : "FILE_TOO_LARGE" });
       if (inputRef.current) {
         inputRef.current.value = "";
       }
@@ -93,6 +97,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
     }
 
     setFile(candidate);
+    trackEvent("file_selected", analytics);
     setError(null);
   }
 
@@ -112,6 +117,7 @@ export function PdfUpload({ showFreeQuota = true }: { showFreeQuota?: boolean })
       preflight.cancel();
       setFile(null);
       setError("multipleFiles");
+      trackEvent("conversion_failed", { ...analytics, stage: "selection", error_code: "MULTIPLE_FILES" });
       if (inputRef.current) {
         inputRef.current.value = "";
       }

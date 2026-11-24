@@ -6,7 +6,7 @@ import type { ParseResponse } from "@/lib/conversion-types";
 export type ConversionState =
   | { phase: "idle" }
   | { phase: "pending"; filename: string; preview: ConversionPreview }
-  | { phase: "complete"; filename: string; result: ParseResponse; storageFailed: boolean }
+  | { phase: "complete"; filename: string; result: ParseResponse; storageFailed: boolean; conversionId?: string }
   | { phase: "error"; filename: string; message: string };
 
 export const conversionStateAtom = atom<ConversionState>({ phase: "idle" });

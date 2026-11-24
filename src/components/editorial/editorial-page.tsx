@@ -21,6 +21,8 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
     getTranslations({ locale: c.locale, namespace: "Editorial" }),
     getFormatter({ locale: c.locale }),
   ]);
+  const comparisonIntro = c.locale === "en" && c.page.kind === "comparison" &&
+    (c.page.id === "alternatives" || c.page.id === "docuclipper" || c.page.id === "nanonets");
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <EditorialStructuredData content={c} />
@@ -36,6 +38,12 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
                 {t("updated", { date: format.dateTime(new Date(`${c.page.checkedOn}T12:00:00Z`), { dateStyle: "long", timeZone: "UTC" }) })}
               </time>
             </p>
+            {comparisonIntro && (
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                <Link href="/#sample" className="underline underline-offset-4">{t("comparisonSample")}</Link>
+                <a href={c.page.sources[0]} className="underline underline-offset-4">{t("comparisonPricing")}</a>
+              </div>
+            )}
           </header>
           {c.page.id === "xero" && (
             <div className="grid gap-4">
@@ -52,12 +60,15 @@ export async function EditorialPage({ params }: { params: EditorialParams }) {
               <BalanceChecker />
             </ClientMessages>
           )}
-          {c.page.kind === "comparison" && <ComparisonTable id={c.page.id} />}
+          {c.page.kind === "comparison" && !(c.locale === "en" && c.page.id === "alternatives") && <ComparisonTable id={c.page.id} />}
           {c.page.kind === "research" && <BenchmarkResults />}
           {c.sections.map((s, i) => (
             <section key={i} className="grid gap-3">
               <h2 className="text-xl font-semibold">{s.title}</h2>
               <p className="whitespace-pre-line text-sm leading-8 text-muted-foreground">{s.text}</p>
+              {s.example && (
+                <pre className="overflow-x-auto rounded-md border border-border bg-muted p-3 text-xs"><code>{s.example}</code></pre>
+              )}
               {s.links && (
                 <ul className="grid gap-2 text-sm leading-7">
                   {s.links.map((link) => (

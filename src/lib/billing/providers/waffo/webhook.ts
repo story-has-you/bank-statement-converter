@@ -98,5 +98,12 @@ async function resolveWaffoEvent(event: WebhookEvent<WebhookEventData>, type: Bi
     ...verified,
     recurringAmount,
     currencyCode: "USD",
+    payment: {
+      id: paymentId!,
+      periodNumber: payment.periodNumber!,
+      checkoutId: remote.orderMerchantExternalId!,
+      taxAmount: payment.snapshotAmountDetails.taxAmount,
+      testMode: payment.testMode,
+    },
   };
 }

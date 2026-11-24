@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { analyticsPage, trackEvent } from "@/lib/analytics";
+import { usePathname } from "@/i18n/navigation";
 import { conversionLimits } from "@/config/conversion";
 import type { ConversionErrorPayload } from "@/lib/conversion-errors";
 import type { ConversionMethod } from "@/lib/conversion-types";
@@ -26,9 +28,11 @@ type PreflightState =
 
 export function usePdfPreflight(file: File | null, method: ConversionMethod) {
   const locale = useLocale();
+  const pathname = usePathname();
   const t = useTranslations("PdfUpload");
   const [state, setState] = useState<PreflightState>({ phase: "idle" });
   const active = useRef<AbortController | null>(null);
+  const reportedPreflight = useRef<{ file: File; method: ConversionMethod } | null>(null);
   const cachedPages = useRef<{ file: File; count: number } | null>(null);
 
   const cancel = useCallback(() => {
@@ -53,7 +57,23 @@ export function usePdfPreflight(file: File | null, method: ConversionMethod) {
       }
       cachedPages.current = { file, count: pageCount };
       setState({ phase: "ready", file, pageCount, quota });
-      return pageCount <= conversionLimits.pages && pageCount <= quota.remainingPages && (method !== "llm" || pageCount <= quota.remainingAiPages);
+      const errorCode = pageCount > conversionLimits.pages
+        ? "TOO_MANY_PAGES"
+        : pageCount > quota.remainingPages
+          ? (quota.remainingPages === 0 ? "QUOTA_EXHAUSTED" : "QUOTA_EXCEEDED")
+          : method === "llm" && pageCount > quota.remainingAiPages
+            ? (quota.remainingAiPages === 0 ? "AI_QUOTA_EXHAUSTED" : "AI_QUOTA_EXCEEDED")
+            : null;
+      const analytics = { ...analyticsPage(locale, pathname), method };
+      if (errorCode) {
+        trackEvent("conversion_failed", { ...analytics, stage: "preflight", error_code: errorCode });
+        return false;
+      }
+      if (reportedPreflight.current?.file !== file || reportedPreflight.current.method !== method) {
+        reportedPreflight.current = { file, method };
+        trackEvent("file_preflight_success", { ...analytics, page_count: pageCount });
+      }
+      return true;
     } catch (error) {
       if (controller.signal.aborted) {
         return false;
@@ -61,9 +81,11 @@ export function usePdfPreflight(file: File | null, method: ConversionMethod) {
       controller.abort();
       const failure = error instanceof PreflightError ? error : new PreflightError("quotaUnavailable");
       setState({ phase: "error", file, pageCount: previousCount, error: failure });
+      const errorCodes = { unreadablePdf: "UNREADABLE_PDF", passwordProtectedPdf: "PASSWORD_PROTECTED_PDF", quotaUnavailable: "QUOTA_UNAVAILABLE" };
+      trackEvent("conversion_failed", { ...analyticsPage(locale, pathname), method, stage: "preflight", error_code: errorCodes[failure.code] });
       return false;
     }
-  }, [cancel, file, locale, method]);
+  }, [cancel, file, locale, method, pathname]);
 
   const check = useCallback((): Promise<boolean> => {
     if (file) {
@@ -73,7 +95,12 @@ export function usePdfPreflight(file: File | null, method: ConversionMethod) {
     return runCheck();
   }, [file, runCheck]);
 
-  useEffect(() => cancel, [file, cancel]);
+  useEffect(() => {
+    return () => {
+      cancel();
+      reportedPreflight.current = null;
+    };
+  }, [file, cancel]);
 
   useEffect(() => {
     const client = createClient();

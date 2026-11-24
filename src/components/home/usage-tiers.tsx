@@ -1,5 +1,6 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 
+import { PlansAnalytics } from "@/components/home/plans-analytics";
 import { PublicPlanState } from "@/components/billing/public-plan-state";
 import { ClientMessages } from "@/components/shared/client-messages";
 import { subscriptionConfig } from "@/config/plans";
@@ -16,6 +17,7 @@ export async function UsageTiers() {
   return (
     <ClientMessages namespaces={["UsageTiers", "Billing"]}>
       <section id="plans" className="border-t border-border" aria-labelledby="plans-title">
+        <PlansAnalytics />
         <div className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
           <div className="flex flex-col gap-2">
             <h2 id="plans-title" className="font-heading text-3xl font-medium sm:text-4xl">

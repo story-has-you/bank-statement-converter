@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Bankafschrift PDF naar Excel of CSV omzetten | StatementXL",
-    "description": "Zet bankafschrift-PDF’s met tekst lokaal in je browser om naar Excel of CSV, zonder bestanden te uploaden. Controleer transacties en saldi vóór het downloaden.",
+    "title": "Bankafschrift omzetten naar Excel of CSV | StatementXL",
+    "description": "Zet een bankafschrift met selecteerbare tekst in je browser om naar Excel of CSV. Controleer bij- en afschrijvingen en het saldo vóór het downloaden.",
     "keywords": "bankafschrift PDF Excel, bankafschrift PDF CSV omzetten, bankafschrift converter, bankafschrift scan en herken",
     "brand": "StatementXL",
     "alternateName": "Bankafschrift van PDF naar Excel of CSV"
@@ -52,8 +52,9 @@
   },
   "HomeIntro": {
     "eyebrow": "Bankafschriften in PDF converteren",
-    "title": "Bankafschrift van PDF naar Excel of CSV",
-    "description": "Zet bankafschrift-PDF’s met tekst in je browser om naar Excel of CSV, zonder het bestand te uploaden. Controleer transacties en waarschuwingen vóór het downloaden. Gratis daglimiet: {anonymousPages, number} zonder inloggen, {authenticatedPages, number} na inloggen."
+    "title": "Bankafschrift omzetten naar Excel of CSV",
+    "description": "Bij standaardverwerking blijft je PDF met selecteerbare tekst in je browser. Controleer vóór het downloaden de gemarkeerde bij- en afschrijvingen en het saldo. Probeer zonder inloggen {anonymousPages, number} pagina per dag gratis. Biedt je bank voor dezelfde periode een bruikbare CSV of Excel aan? Gebruik die direct.",
+    "sampleLink": "Bekijk een voorbeeldconversie"
   },
   "PdfUpload": {
     "title": "Bankafschrift selecteren",
@@ -509,7 +510,7 @@
     },
     "technicalData": {
       "title": "Noodzakelijke technische informatie",
-      "body": "Voor de werking en beveiliging van de website en onderzoek naar fouten kunnen we toegangstijden, IP-adressen, browser- of apparaatgegevens en foutregistraties zonder afschriftinhoud verwerken. Voor bezoekersstatistieken kunnen Google Analytics en Pageview toegangstijden, IP-adressen en browser- of apparaatgegevens ontvangen. We sturen geen bankafschriften, uitgelezen transacties of Excel-inhoud naar deze analysediensten. Google Analytics ontvangt ook gebeurtenissen voor bestandsuploads, voltooide conversies, de start van gratis accountgebruik en bevestigde abonnementen, samen met de paginataal, conversiestatus en het aantal pagina’s, het pakket, de betaalprovider en de transactiecode van het abonnement, om het conversietraject te analyseren. Deze gebeurtenissen bevatten geen bestandsnamen, e-mailadressen of website-account-ID’s."
+      "body": "Voor de werking en beveiliging van de website en onderzoek naar fouten kunnen we toegangstijden, IP-adressen, browser- of apparaatgegevens en foutregistraties zonder afschriftinhoud verwerken. Voor bezoekersstatistieken kunnen Google Analytics en Pageview toegangstijden, IP-adressen en browser- of apparaatgegevens ontvangen. Google Analytics meet onder meer bestandsselectie, AI-upload, conversie, export, inloggen, abonnementsweergaven, afrekenen en de eerste bevestigde betaling. Gebeurtenissen kunnen taal, paginapad, analysemethode, aantal pagina’s, resultaat, formaat, foutcode, abonnement, betaalprovider, bedrag, belasting, valuta en betaalreferentie bevatten. Onze server bewaart de browser- en sessie-ID’s van Google Analytics tijdelijk om de bevestigde betaling te koppelen aan het bezoek. Bankafschriften, transacties, inhoud van gemaakte bestanden, bestandsnamen, e-mailadressen en StatementXL-account-ID’s worden niet meegestuurd."
     },
     "purposes": {
       "title": "Doeleinden van verwerking",
@@ -526,7 +527,7 @@
     },
     "storage": {
       "title": "Browseropslag",
-      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen. De huidige conversie slaat ook de bestandsnaam en geëxtraheerde resultaten tijdelijk op in de sessieopslag van de browser voor voorvertoning en download. Dit is geen permanente bestandsgeschiedenis op de server. Ook de gekozen bronkolommen voor handelaars, aliaskoppelingen en bevestigde uniforme namen worden met het huidige resultaat in de sessieopslag van dit tabblad bewaard. Ze kunnen na vernieuwen worden hersteld en worden bij een nieuwe conversie of het wissen van het resultaat verwijderd. Ze worden niet op de server opgeslagen of voor andere bestanden gebruikt; naamnormalisatie doet geen extra modelaanvraag. Om dubbele statistiekgebeurtenissen te voorkomen, bewaart de lokale browseropslag ook markeringen per account of abonnement. Na een geslaagde aanmelding wordt een cookie voor de nog te registreren gebeurtenis ingesteld die na 5 minuten verloopt. Deze markeringen bevatten geen afschriftinhoud."
+      "body": "De website gebruikt lokale browseropslag voor weergavevoorkeuren en noodzakelijke sessiecookies om je ingelogd te houden. Analysediensten kunnen ook cookies of vergelijkbare identificatoren gebruiken om bezoeken te meten. Je kunt deze beheren via je browserinstellingen. De huidige conversie slaat ook de bestandsnaam en geëxtraheerde resultaten tijdelijk op in de sessieopslag van de browser voor voorvertoning en download. Dit is geen permanente bestandsgeschiedenis op de server. Ook de gekozen bronkolommen voor handelaars, aliaskoppelingen en bevestigde uniforme namen worden met het huidige resultaat in de sessieopslag van dit tabblad bewaard. Ze kunnen na vernieuwen worden hersteld en worden bij een nieuwe conversie of het wissen van het resultaat verwijderd. Ze worden niet op de server opgeslagen of voor andere bestanden gebruikt; naamnormalisatie doet geen extra modelaanvraag. Markeringen in de browser helpen dubbeltellingen van nieuwe accounts, gratis gebruik en exports te voorkomen. De cookie voor de aanmeldmelding vervalt na vijf minuten."
     },
     "security": {
       "title": "Informatiebeveiliging",
@@ -750,15 +751,15 @@
     "pages": {
       "pdf": {
         "label": "Bankafschrift PDF naar Excel",
-        "title": "Bankafschrift PDF naar Excel",
-        "intro": "Een bankafschrift PDF naar Excel omzetten helpt bij het vergelijken van transacties met uw administratie. Controleer het rekeningafschrift en sla één werkblad per logische tabel op. Dagelijks zijn {anonymousPages} pagina zonder inloggen of {authenticatedPages} pagina’s met inloggen gratis.",
-        "metaDescription": "Bankafschrift PDF naar Excel omzetten? Controleer bij, af, omschrijvingen en saldi met het origineel. Bewaar bronregels en controleopmerkingen in de werkmap.",
+        "title": "Een bankafschrift in PDF omzetten naar Excel",
+        "intro": "Gebruik het originele PDF-afschrift met selecteerbare tekst. Vergelijk de bij- en afschrijvingen, omschrijvingen en het saldo met je afschrift voordat je de werkmap opslaat. Probeer dagelijks {anonymousPages} pagina gratis zonder inloggen of {authenticatedPages} pagina’s met een account.",
+        "metaDescription": "Zet een bankafschrift in PDF om naar Excel. Vergelijk bij- en afschrijvingen, omschrijvingen en saldo en bewaar bronregels en controleopmerkingen.",
         "requirementsTitle": "Gebruik de originele tekst-PDF",
-        "requirements": "Download het digitale afschrift via internetbankieren. Selecteerbare tekst kan in de browser worden verwerkt; een scan vereist een geschikt abonnement en een bewuste AI-keuze.",
+        "requirements": "Download het originele afschrift via internetbankieren en kijk of je tekst kunt selecteren. Probeer eerst één pagina: de indeling van je afschrift bepaalt of een tabel wordt herkend. Voor scans kun je met een geschikt abonnement bewust voor AI kiezen. De voorbeeldbestanden komen uit een Engelstalige, fictieve PDF.",
         "preparationTitle": "Leg rekening en periode vast",
-        "preparation": "Controleer rekening, valuta en afschriftperiode. Bewaar het origineel naast de werkmap en vergelijk omschrijvingen die over meerdere regels lopen.",
-        "limitationsTitle": "Excel is geen MT940-bankbestand",
-        "limitations": "De werkmap is een werkkopie, geen officieel afschrift. StatementXL maakt geen MT940 of CAMT.053 en koppelt niet rechtstreeks met uw boekhoudpakket.",
+        "preparation": "Controleer of de rekening, valuta en afschriftperiode kloppen. Bewaar het origineel bij de werkmap en vergelijk omschrijvingen die over meerdere regels lopen.",
+        "limitationsTitle": "Excel en CSV naast MT940 en CAMT.053",
+        "limitations": "Gebruik de Excel- of CSV-export als controlekopie. Vereist je boekhoudpakket MT940 of CAMT.053? Download dat formaat rechtstreeks bij je bank als zij het aanbiedt.",
         "stepsTitle": "Van afschrift naar gecontroleerde werkmap",
         "steps": {
           "upload": {
@@ -766,8 +767,8 @@
             "text": "Kies één PDF van maximaal {megabytes} MB en {pages} pagina’s, bij voorkeur het digitale origineel met tekst."
           },
           "review": {
-            "title": "Vergelijk bij en af met de bron",
-            "text": "Controleer datums, tekens, omschrijvingen en saldi, inclusief alle regels met een risicomelding."
+            "title": "Vergelijk bij- en afschrijvingen en saldo",
+            "text": "Controleer datums, tekens, omschrijvingen en het saldo met het origineel. Bekijk ook alle regels met een controleopmerking."
           },
           "download": {
             "title": "Sla Excel met broninformatie op",
