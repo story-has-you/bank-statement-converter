@@ -3,15 +3,14 @@
 import { useClerk } from "@clerk/nextjs";
 import { LogOutIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useConversionActions } from "@/components/conversion/conversion-provider";
 import { useState } from "react";
 
 import { usePublicAccount } from "@/components/account/public-account-provider";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { UserAvatar } from "@/components/shared/user-avatar";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 
 export function AuthControl() {
   const { user, configured } = usePublicAccount();
@@ -31,7 +30,7 @@ export function AuthControl() {
     try {
       await clerkSignOut();
       reset();
-      router.refresh();
+      router.replace("/");
     } catch {
       setError(t("signOutFailed"));
     } finally {
@@ -62,7 +61,9 @@ export function AuthControl() {
             </Tooltip>
           </>
         ) : configured ? (
-          <Button variant="outline" render={<Link href="/sign-in" />}>{t("signIn")}</Button>
+          <Link href="/sign-in" className={buttonVariants({ variant: "outline" })}>
+            {t("signIn")}
+          </Link>
         ) : null}
       </div>
       {error && (

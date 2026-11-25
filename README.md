@@ -18,6 +18,12 @@ pnpm dev
 
 `pnpm db:local` 将 `d1/migrations/` 应用到 Wrangler 管理的本地 D1。Next.js 开发服务通过 OpenNext 读取同一个 `DB` 绑定。本地数据与 Cloudflare 预览库独立。
 
+本地 SQLite 文件位于仓库的 `.wrangler/state/v3/d1/miniflare-D1DatabaseObject/`，由 Wrangler 以哈希命名。Finder 可用 `⌘⇧.` 显示隐藏目录。查看本地表结构也可以直接按 `DB` 绑定查询：
+
+```sh
+pnpm exec wrangler d1 execute DB --local --command "SELECT name FROM sqlite_schema WHERE type = 'table' ORDER BY name"
+```
+
 在 Clerk 中选择 StatementXL 的开发实例，并按 Clerk CLI 指引将开发密钥写入未跟踪的 `.env.local`。所需变量为 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` 和 `CLERK_SECRET_KEY`。在开发实例启用 Google 和邮箱验证链接，保留同设备、同浏览器验证。
 
 打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
