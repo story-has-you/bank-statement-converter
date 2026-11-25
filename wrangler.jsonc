@@ -17,5 +17,21 @@
       "migrations_dir": "d1/migrations"
     }
   ],
-  "vars": { "NEXT_PUBLIC_APP_ENV": "preview", "WAFFO_PAYMENT_ENABLED": "false" }
+  "vars": { "NEXT_PUBLIC_APP_ENV": "preview", "WAFFO_PAYMENT_ENABLED": "false" },
+  "env": {
+    "production": {
+      "name": "statementxl-production",
+      "workers_dev": false,
+      "preview_urls": false,
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "statementxl-production",
+          "database_id": "31198edd-9b48-4107-aa9d-94c185b193a5",
+          "migrations_dir": "d1/migrations"
+        }
+      ],
+      "vars": { "NEXT_PUBLIC_APP_ENV": "production", "WAFFO_PAYMENT_ENABLED": "false", "WAFFO_ENVIRONMENT": "prod" }
+    }
+  }
 }

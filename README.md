@@ -24,7 +24,7 @@ pnpm dev
 pnpm exec wrangler d1 execute DB --local --command "SELECT name FROM sqlite_schema WHERE type = 'table' ORDER BY name"
 ```
 
-在 Clerk 中选择 StatementXL 的开发实例，并按 Clerk CLI 指引将开发密钥写入未跟踪的 `.env.local`。所需变量为 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` 和 `CLERK_SECRET_KEY`。在开发实例启用 Google 和邮箱验证链接，保留同设备、同浏览器验证。
+在 Clerk 中选择 StatementXL 的开发实例，并按 Clerk CLI 指引将开发密钥写入未跟踪的 `.env.local`。所需变量为 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` 和 `CLERK_SECRET_KEY`。开发实例支持 Google 登录，邮箱登录和注册验证都使用邮件验证码。
 
 打开 [http://localhost:3000/zh-CN](http://localhost:3000/zh-CN) 使用中文页面。
 
@@ -126,7 +126,19 @@ pnpm cf:deploy
 
 在本地 Workerd 启动后，运行 `node scripts/verify-workers.mjs` 检查路由、禁止索引响应头以及携带 Cookie 的匿名额度扣减。OpenNext 适配器升级后，用该检查确认可以移除当前的 Cookie 解析补丁。
 
-预览 D1 从空库开始，旧账号在 Clerk 重新注册，旧库记录保留在原环境。预览回滚使用 Wrangler 恢复上一 Worker 版本，D1 保留。正式域名和生产配置另行切换。
+预览 D1 从空库开始，旧账号在 Clerk 重新注册，旧库记录保留在原环境。预览回滚使用 Wrangler 恢复上一 Worker 版本，D1 保留。
+
+## Cloudflare Workers 生产部署
+
+`production` 环境指向独立的 `statementxl-production` Worker 和同名 D1。使用 Clerk 生产实例配置 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`、`CLERK_SECRET_KEY` 和 `CLERK_WEBHOOK_SIGNING_SECRET`。构建时在进程环境提供生产公开密钥，服务端密钥由 Worker Secrets 提供。生产新购由 `WAFFO_PAYMENT_ENABLED` 控制，默认关闭。
+
+```sh
+pnpm exec wrangler d1 migrations apply DB --env production --remote
+pnpm cf:build:prod
+pnpm cf:deploy --env production --no-upload-source-maps --minify
+```
+
+在 Cloudflare 给生产 Worker 绑定 `bankstatementconverter.xyz`，在 Clerk 配置该域名的 `user.deleted` 回调 `/api/auth/webhook`。正式切换后验证域名、登录和注册、账号删除回调、额度接口及 PDF.js 静态资源。
 
 [CI](.github/workflows/ci-parser.yml) 使用 Node.js 24 运行 `pnpm test`，测试使用隔离 D1 实例和支付替身。
 

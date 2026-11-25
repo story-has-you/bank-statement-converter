@@ -21,6 +21,7 @@
     "db:local": "wrangler d1 migrations apply DB --local",
     "cf:types": "CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false wrangler types --env-interface CloudflareEnv --include-main-module=false --include-runtime=false --strict-vars=false",
     "cf:build": "NEXT_PUBLIC_APP_ENV=preview opennextjs-cloudflare build && node scripts/cloudflare-env.mjs",
+    "cf:build:prod": "NEXT_PUBLIC_APP_ENV=production opennextjs-cloudflare build --env production && node scripts/cloudflare-env.mjs",
     "cf:preview": "opennextjs-cloudflare preview",
     "cf:deploy": "node scripts/cloudflare-env.mjs --check && opennextjs-cloudflare deploy"
   },
