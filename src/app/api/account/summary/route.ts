@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { anonymousAccountSummary, type PublicAccountSummary } from "@/lib/account/summary";
+import { getCheckoutConfigs } from "@/lib/billing/providers";
 import { findEntitledBillingSubscription, findOpenBillingSubscription } from "@/lib/billing/server";
 import { getAccountUser } from "@/lib/auth/server";
 
@@ -20,6 +21,7 @@ export async function GET(): Promise<Response> {
       activeTier: active?.tier ?? null,
       hasSubscription: Boolean(active || open),
       cancelledPeriodEnd: active?.status === "CANCELLED" ? active.current_period_end : null,
+      checkouts: getCheckoutConfigs(),
     };
     return NextResponse.json(summary, { headers });
   } catch {

@@ -6,13 +6,11 @@ import { ClientMessages } from "@/components/shared/client-messages";
 import { subscriptionConfig } from "@/config/plans";
 import { Link } from "@/i18n/navigation";
 import { membershipTiers } from "@/lib/billing/config";
-import { getCheckoutConfigs } from "@/lib/billing/providers";
 import { usageQuotaConfig } from "@/lib/usage/config";
 
 export async function UsageTiers() {
   const t = await getTranslations("UsageTiers");
   const format = await getFormatter();
-  const checkouts = getCheckoutConfigs();
 
   return (
     <ClientMessages namespaces={["UsageTiers", "Billing"]}>
@@ -62,7 +60,7 @@ export async function UsageTiers() {
                   {subscriptionConfig[tier].aiParsing ? t("aiParsing", { pages: subscriptionConfig[tier].aiPages }) : t("textParsing")}
                 </p>
                 <p className="mt-auto text-sm font-medium">{t("planQuota", { pages: usageQuotaConfig.subscriptions[tier].pages })}</p>
-                <PublicPlanState checkouts={checkouts} tier={tier} />
+                <PublicPlanState tier={tier} />
               </article>
             ))}
           </div>

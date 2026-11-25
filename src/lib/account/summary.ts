@@ -1,3 +1,4 @@
+import type { CheckoutConfig } from "@/lib/billing/provider";
 import type { MembershipTier } from "@/lib/billing/types";
 
 export type PublicAccountSummary = {
@@ -5,6 +6,7 @@ export type PublicAccountSummary = {
   activeTier: MembershipTier | null;
   hasSubscription: boolean;
   cancelledPeriodEnd: string | null;
+  checkouts: CheckoutConfig[];
 };
 
 export const anonymousAccountSummary: PublicAccountSummary = {
@@ -12,4 +14,5 @@ export const anonymousAccountSummary: PublicAccountSummary = {
   activeTier: null,
   hasSubscription: false,
   cancelledPeriodEnd: null,
+  checkouts: [],
 };

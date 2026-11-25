@@ -31,7 +31,7 @@
           "migrations_dir": "d1/migrations"
         }
       ],
-      "vars": { "NEXT_PUBLIC_APP_ENV": "production", "WAFFO_PAYMENT_ENABLED": "false", "WAFFO_ENVIRONMENT": "prod" }
+      "vars": { "NEXT_PUBLIC_APP_ENV": "production", "WAFFO_PAYMENT_ENABLED": "true", "WAFFO_ENVIRONMENT": "prod" }
     }
   }
 }

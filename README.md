@@ -130,7 +130,7 @@ pnpm cf:deploy
 
 ## Cloudflare Workers 生产部署
 
-`production` 环境指向独立的 `statementxl-production` Worker 和同名 D1。使用 Clerk 生产实例配置 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`、`CLERK_SECRET_KEY` 和 `CLERK_WEBHOOK_SIGNING_SECRET`。构建时在进程环境提供生产公开密钥，服务端密钥由 Worker Secrets 提供。生产新购由 `WAFFO_PAYMENT_ENABLED` 控制，默认关闭。
+`production` 环境指向独立的 `statementxl-production` Worker 和同名 D1。使用 Clerk 生产实例配置 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`、`CLERK_SECRET_KEY` 和 `CLERK_WEBHOOK_SIGNING_SECRET`。构建时在进程环境提供生产公开密钥，服务端密钥由 Worker Secrets 提供。生产环境启用 Waffo 新购。将上文列出的 Waffo 凭据、正式商品 ID、回跳地址和 `BILLING_QUOTE_SIGNING_SECRET` 配置到生产 Worker，正式订阅回调使用 `https://bankstatementconverter.xyz/api/billing/webhooks/waffo`。
 
 ```sh
 pnpm exec wrangler d1 migrations apply DB --env production --remote

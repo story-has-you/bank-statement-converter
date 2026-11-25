@@ -95,7 +95,7 @@ const SubscriptionButton: FC<SubscriptionButtonProps> = ({ checkout, tier }) => 
               disabled={pending}
             >
               <CreditCard aria-hidden="true" data-icon="inline-start" />
-              <span className="truncate">{pending ? label : providerName}</span>
+              <span className="truncate">{label}</span>
             </Button>
             {failure && (
               <p role="alert" className="text-sm text-destructive">
